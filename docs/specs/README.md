@@ -1,5 +1,6 @@
 ## General
-Due to our development primarily being spec-driven, all specifications live in Notion. Do not duplicate them into the repo and instead refer to notion for specifications.
+All specifications live in Notion. Do not duplicate them into the repo and instead refer to notion for specifications — it should be the single, authoritative source of truth for specs. The notion specs live at this link: 
+
 
 ## Claude
 For claude specifically: 
