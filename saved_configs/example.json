@@ -1,0 +1,172 @@
+{
+  "config": {
+    "name": "Typhoon Watch — Western Pacific"
+  },
+
+  "defaults": {
+    "language": "en",
+    "script_model": "claude-opus-5",
+    "tts_model": "eleven_multilingual_v2",
+    "tts_voice": "Rachel"
+  },
+
+  "content_library": {
+    "topic_descriptions": {
+      "show_open": {
+        "label": "Show open",
+        "content": "A short cold open introducing the broadcast as a continuously updating typhoon watch for the Western Pacific basin. Sets expectations that the information refreshes throughout the stream."
+      },
+      "storm_position": {
+        "label": "Current storm position",
+        "content": "The current position, intensity, movement vector, and central pressure of every active tropical cyclone in the Western Pacific basin, as reported by official warning agencies."
+      },
+      "track_forecast": {
+        "label": "Track and intensity forecast",
+        "content": "The projected track and intensity forecast over the next 72 hours, including forecast uncertainty and any disagreement between agencies."
+      },
+      "local_impacts": {
+        "label": "Expected local impacts",
+        "content": "Expected on-the-ground impacts for populated areas in the storm's path: rainfall totals, storm surge, wind damage potential, evacuation orders, and school or transport suspensions."
+      },
+      "show_close": {
+        "label": "Show close",
+        "content": "A brief sign-off reminding viewers that the broadcast loops with refreshed data and pointing them to official agency channels for evacuation decisions."
+      }
+    },
+
+    "system_instructions": {
+      "anchor_neutral": {
+        "label": "Neutral news anchor",
+        "content": "You are writing copy to be read aloud by a single news anchor. Write in plain spoken English, in complete sentences, with no headings, bullet points, stage directions, or markdown. Lead with the most recent and most decision-relevant fact. Attribute every claim to its source agency by name. Never invent numbers, timestamps, or place names that are not present in the supplied source material; if a figure is missing, say that it has not been reported. Target roughly 45 to 60 seconds of spoken delivery."
+      },
+      "anchor_urgent": {
+        "label": "Urgent safety bulletin",
+        "content": "You are writing an urgent public-safety bulletin to be read aloud by a single anchor. Write in plain spoken English with short, direct sentences. Lead with the specific action the audience should take and the areas affected. Attribute every instruction to the issuing authority. Never invent an evacuation order, a shelter location, or a casualty figure that is not present in the supplied source material. Do not speculate beyond what the sources state. Target roughly 40 to 55 seconds of spoken delivery."
+      },
+      "station_ident": {
+        "label": "Station identification",
+        "content": "You are writing a short station identification to be read aloud by a single anchor. Write two to three sentences of plain spoken English. Do not cite specific figures or forecasts. Target roughly 15 to 20 seconds of spoken delivery."
+      }
+    },
+
+    "sources": {
+      "jtwc_warnings": {
+        "label": "JTWC active warnings",
+        "url": "https://www.metoc.navy.mil/jtwc/jtwc.html"
+      },
+      "jma_tropical": {
+        "label": "JMA tropical cyclone information",
+        "url": "https://www.jma.go.jp/bosai/map.html#contents=typhoon"
+      },
+      "pagasa_bulletin": {
+        "label": "PAGASA severe weather bulletin",
+        "url": "https://www.pagasa.dost.gov.ph/tropical-cyclone/severe-weather-bulletin"
+      },
+      "nhc_products": {
+        "label": "PAGASA regional forecast",
+        "url": "https://www.pagasa.dost.gov.ph/weather"
+      }
+    }
+  },
+
+  "graph": {
+    "nodes": [
+      {
+        "key": "start",
+        "type": "start"
+      },
+      {
+        "key": "open",
+        "type": "scene_card",
+        "scene": {
+          "title": "Show Open",
+          "topic_description": "show_open",
+          "final_script_system_instructions": "station_ident",
+          "do_web_search": false,
+          "sources": ["jtwc_warnings"],
+          "language": "en"
+        }
+      },
+      {
+        "key": "position",
+        "type": "scene_card",
+        "scene": {
+          "title": "Current Position",
+          "topic_description": "storm_position",
+          "final_script_system_instructions": "anchor_neutral",
+          "do_web_search": false,
+          "sources": ["jtwc_warnings", "jma_tropical", "pagasa_bulletin"],
+          "language": "en"
+        }
+      },
+      {
+        "key": "forecast",
+        "type": "scene_card",
+        "scene": {
+          "title": "Track Forecast",
+          "topic_description": "track_forecast",
+          "final_script_system_instructions": "anchor_neutral",
+          "do_web_search": false,
+          "sources": ["jtwc_warnings", "jma_tropical", "nhc_products"],
+          "language": "en",
+          "generation": {
+            "script_model": "claude-opus-5"
+          }
+        }
+      },
+      {
+        "key": "impacts",
+        "type": "scene_card",
+        "scene": {
+          "title": "Local Impacts",
+          "topic_description": "local_impacts",
+          "final_script_system_instructions": "anchor_urgent",
+          "do_web_search": true,
+          "sources": [],
+          "language": "en",
+          "generation": {
+            "tts_voice": "Antoni"
+          }
+        }
+      },
+      {
+        "key": "close",
+        "type": "scene_card",
+        "scene": {
+          "title": "Show Close",
+          "topic_description": "show_close",
+          "final_script_system_instructions": "station_ident",
+          "do_web_search": false,
+          "sources": ["pagasa_bulletin"],
+          "language": "en"
+        }
+      },
+      {
+        "key": "end",
+        "type": "termination"
+      }
+    ],
+
+    "edges": [
+      { "id": "e1", "source": "start",    "target": "open",     "type": "normal" },
+      { "id": "e2", "source": "open",     "target": "position", "type": "normal" },
+      { "id": "e3", "source": "position", "target": "forecast", "type": "normal" },
+      { "id": "e4", "source": "forecast", "target": "impacts",  "type": "normal" },
+      { "id": "e5", "source": "impacts",  "target": "position", "type": "repeat_back" },
+      { "id": "e6", "source": "impacts",  "target": "close",    "type": "continuation" },
+      { "id": "e7", "source": "close",    "target": "end",      "type": "normal" }
+    ],
+
+    "cycles": [
+      {
+        "id": "c1",
+        "start_node": "position",
+        "end_node": "impacts",
+        "repeat_back_edge": "e5",
+        "continuation_edge": "e6",
+        "repetitions": 6,
+        "repetitions_until_update": 2
+      }
+    ]
+  }
+}
