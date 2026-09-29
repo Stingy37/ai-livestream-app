@@ -354,10 +354,10 @@ def broadcast(graph: BroadcastGraph, ctx: RunContext) -> None:
     db = Database(ctx.database_root)
     player = AudioPlayer()
 
-    # One background worker: regeneration is heavyweight and we never want two
-    # regenerations of the same cycle in flight (PRD job rule 5).
+    # One background thread to handle regen jobs 
     with ThreadPoolExecutor(max_workers=1, thread_name_prefix="regen") as regen_pool:
-        pending: dict[str, Any] = {}  # cycle id -> Future
+        pending: dict[str, Any] = {}  # cycle id -> stores the future object created from the thread spawning new processes for regen scenes
+                                      #                                                             
 
         for step in graph.traversal():
             asset = db.load_audio(step.scene.id)
@@ -379,7 +379,7 @@ def broadcast(graph: BroadcastGraph, ctx: RunContext) -> None:
                     step.cycle_id,
                     len(scenes),
                 )
-                pending[step.cycle_id] = regen_pool.submit(generate_scenes, scenes, ctx)
+                pending[step.cycle_id] = regen_pool.submit(generate_scenes, scenes, ctx) # Submit is non-blocking -> moves on to the next traversal item while regen runs on processes  
 
     player.stop()
 
@@ -407,7 +407,7 @@ def _reap_regenerations(pending: dict[str, Any]) -> None:
                 "cycle %s regeneration failed; continuing with previous audio",
                 cycle_id,
             )
-        del pending[cycle_id]
+        del pending[cycle_id] # Manage the bookkeeping dictionary for cycle regenerations 
 
 
 # ─────────────────────────────────────────────────────────────────────────────
