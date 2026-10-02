@@ -1,1 +1,2 @@
 Project members: Andy Shi    Jatin Sarabu    Jonathan Tran    Nirvaan Thawani    Trinh Gia Anh    Ayushi Dalal    Anmol Mrig    Esther Wang    Karthik Sista    Aiden Wang    Evelyn Ding    Yitong Zhong
+    James Lee    Fiona Zhao    Jingyi Wu
