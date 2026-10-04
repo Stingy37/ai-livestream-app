@@ -1,25 +1,22 @@
 """Backend pipeline entrypoint for the AI Livestream Hub.
 
-This module owns *sequencing only*. Every unit of real work lives in a module
-under ``src/modules/`` and is reached through that module's public interface
+This module owns *sequencing only*. Every unit of real work lives in a team
+package under ``src/`` and is reached through that package's public interface
 class. main.py must never call an LLM, embedding, NER, or NLI model directly —
-those calls belong behind ``models.py``, which only the worker modules touch.
+those calls belong behind ``models/``, which only the team packages touch.
 
-Pipeline stages, in order:
+Pipeline stages, in order (one per team boundary — see the Team Interface
+Contract and ``src/contracts/``):
 
-    1. Webscraping ........ webscrapper.WebScraper + quality_control.WebsiteScorer
-    2. Split & cluster .... cluster.SentenceSplitter + cluster.SentenceClusterIndex
-    3. Retrieve & write ... retrieval.Retriever + quality_control.ScriptHarness
-    4. Script QC .......... quality_control.ScriptHarness
-    5. Audio generation ... audio.AudioGenerator
-    6. Broadcast .......... graph.BroadcastGraph + audio.AudioPlayer
+    1. Sources ............ scraper.WebScraper + qc.WebsiteScorer   → list[ScoredDocument]
+    2. Context ............ rag.Retriever                           → RetrievedContext
+    3. Script ............. qc.ScriptHarness (+ writer.ScriptWriter) → ScriptOutcome
+    4. Audio .............. audio.AudioGenerator                    → AudioAsset
+    5. Broadcast .......... graph.BroadcastGraph + audio.AudioPlayer
 
-Stages 3 and 4 share a single per-scene process on purpose: the QC revision loop
-feeds the judge's verdict back to the writer, which needs the retrieved context
-still in hand. Splitting them across a barrier would mean re-retrieving. Script
-generation is a plain LLM call with system instructions, so it has no module of
-its own — it lives inside ``ScriptHarness``, which owns the write/score/judge/
-rewrite loop end to end.
+Stage 3 is a loop, not a line: the harness runs write → score → judge → rewrite
+inside one per-scene process, because every rewrite needs the same retrieved
+context still in hand.
 
 CONCURRENCY MODEL (locked in — see ``run_scene_stage``)
 
@@ -33,11 +30,12 @@ CONCURRENCY MODEL (locked in — see ``run_scene_stage``)
     Two consequences that constrain every module interface:
 
       * Stage payloads cross a process boundary, so every task and every result
-        must be picklable. Modules hand back plain dataclasses and references,
+        must be picklable. Modules hand back the plain contract dataclasses,
         never open handles, live sockets, or loaded model objects.
-      * Large intermediates (cleaned documents, cluster indices, audio) are
-        persisted by ``database.Database`` and referenced by handle. Only the
-        handle is returned across the boundary.
+      * There is no database in M1. Each stage's output travels back to this
+        process in ``SceneResult.value`` and is handed to the next stage's
+        worker for the same scene. Audio clips are files in ``--out-dir``; the
+        ``AudioAsset`` pointing at each one is kept in memory for broadcast.
 """
 
 from __future__ import annotations
@@ -51,13 +49,13 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Callable, Iterable, Sequence
 
-from modules.audio import AudioGenerator, AudioPlayer
-from modules.cluster import SentenceClusterIndex, SentenceSplitter
-from modules.database import Database
-from modules.graph import BroadcastGraph, Scene
-from modules.quality_control import ScriptHarness, WebsiteScorer
-from modules.retrieval import Retriever
-from modules.webscrapper import WebScraper
+from audio import AudioGenerator, AudioPlayer
+from contracts import AudioAsset, RetrievedContext, Scene, ScoredDocument, ScriptOutcome
+from graph import BroadcastGraph
+from qc import ScriptHarness, WebsiteScorer
+from rag import Retriever
+from scraper import WebScraper
+from writer import ScriptWriter
 
 log = logging.getLogger("livestream")
 
@@ -92,15 +90,15 @@ class RunContext:
     """Everything a worker process needs to reconstruct its own dependencies.
 
     Deliberately picklable and inert — paths and settings, never live objects.
-    A worker builds its own ``Database``, model clients, and module interfaces
-    from this on the far side of the process boundary.
+    A worker builds its own model clients and module interfaces from this on
+    the far side of the process boundary.
     """
 
     config_path: Path
-    database_root: Path
+    out_dir: Path
     mode: str
     max_workers: int
-    scrape_top_k: int
+    scrape_max_threads: int
     retrieval_top_k: int
     max_script_attempts: int
 
@@ -112,16 +110,19 @@ class RunContext:
 
 def run_scene_stage(
     stage_name: str,
-    worker: Callable[[Scene, RunContext], SceneResult], # The actual stage we are running is passed in here 
+    worker: Callable[[Scene, RunContext, Any], SceneResult], # The actual stage we are running is passed in here
     scenes: Sequence[Scene],
     ctx: RunContext,
+    upstream: dict[str, Any] | None = None,
 ) -> dict[str, SceneResult]:
     """Run ``worker`` once per scene, one process each, and wait for all of them.
 
     This is the single place the concurrency model is enforced. ``worker`` must
-    be a module-level function (spawn-picklable) that takes a ``Scene`` plus the
-    inert ``RunContext`` and returns a ``SceneResult``. Whatever threading it
-    wants to do inside its process is its own business.
+    be a module-level function (spawn-picklable) that takes a ``Scene``, the
+    inert ``RunContext``, and that scene's output from the previous stage
+    (``upstream[scene.id]``, or ``None`` for the first stage), and returns a
+    ``SceneResult``. Whatever threading it wants to do inside its process is its
+    own business.
 
     Returns a result per scene, keyed by scene id. Never raises on a scene-level
     failure — a crashed worker is converted into a failed ``SceneResult`` so the
@@ -146,7 +147,10 @@ def run_scene_stage(
     ) as pool: # pool -> interface with interacting with all of our (parallel) processes 
                #                                                  /- worker -> whatever stage (scraping, clustering, etc.) we are running
                #                                                  |      one worker / scene pair submitted for each processes                             
-        futures: dict[Future[SceneResult], Scene] = {pool.submit(worker, scene, ctx): scene for scene in scenes}
+        #                                                  |      the previous stage's output for this scene rides along, pickled like everything else
+        futures: dict[Future[SceneResult], Scene] = {
+            pool.submit(worker, scene, ctx, (upstream or {}).get(scene.id)): scene for scene in scenes
+        }
 
         # Collect the Future objects as they complete (Future -> a "promise" \ contract of a certain task's future output — in this case, within a process)
         for future in as_completed(futures):
@@ -201,16 +205,17 @@ class PipelineError(RuntimeError):
 # ─────────────────────────────────────────────────────────────────────────────
 
 
-def scrape_scene(scene: Scene, ctx: RunContext) -> SceneResult:
-    """Stage 1 — gather, clean, score, and stage this scene's source documents.
+def sources_stage(scene: Scene, ctx: RunContext, _upstream: None) -> SceneResult:
+    """Stage 1 — gather, clean, and score this scene's source documents.
 
-    Threads live inside ``WebScraper``: the agent picks top-k sites, then fetches
-    and cleans them concurrently. Scoring is deliberately *after* the full set is
-    in hand, because ``website_score`` includes a cross-website entity-agreement
-    term that has no meaning for a single document.
+    Threads live inside ``WebScraper``: it fetches and cleans the scene's sites
+    concurrently. Scoring is deliberately *after* the full set is in hand,
+    because ``website_score`` includes a cross-website agreement term that has
+    no meaning for a single document.
+
+    ``value`` → the accepted ``list[ScoredDocument]``.
     """
-    db = Database(ctx.database_root)
-    scraper = WebScraper(top_k=ctx.scrape_top_k)
+    scraper = WebScraper(max_threads=ctx.scrape_max_threads)
     scorer = WebsiteScorer()
 
     # Kick off scraping with concurrent threads (shares a GIL)
@@ -234,51 +239,35 @@ def scrape_scene(scene: Scene, ctx: RunContext) -> SceneResult:
             error="every source failed website quality control",
         )
 
-    # All passage / pipe between different processes is with db (reading and writing to database) rather than pickling 
-    db.stage_documents(scene.id, [s.document for s in accepted])
-    return SceneResult(scene.id, ok=True, value=len(accepted), warnings=warnings)
+    return SceneResult(scene.id, ok=True, value=accepted, warnings=warnings)
 
 
-def cluster_scene(scene: Scene, ctx: RunContext) -> SceneResult:
-    """Stage 2 — split this scene's staged documents into a sentence pool, then cluster.
+def context_stage(scene: Scene, ctx: RunContext, documents: list[ScoredDocument]) -> SceneResult:
+    """Stage 2 — split, cluster, and retrieve this scene's context (all inside RAG).
 
-    The pool is flat and scene-wide: sentences from every accepted document for
-    the scene go into one HDBSCAN run, so a cluster can span sources and
-    cross-source agreement becomes visible to retrieval.
+    The cluster index is built and queried inside ``Retriever.retrieve`` and
+    never leaves this process; only the ``RetrievedContext`` comes back.
 
-    Returns a *reference* to the persisted index, not the index itself — the
-    fitted model does not cross the process boundary.
+    ``value`` → ``RetrievedContext``.
     """
-    db = Database(ctx.database_root)
-    documents = db.load_staged_documents(scene.id)
-
-    sentences = SentenceSplitter().split(documents)
-    if not sentences:
-        return SceneResult(scene.id, ok=False, error="no sentences survived splitting")
-
-    index = SentenceClusterIndex.build(sentences)
-    ref = db.save_cluster_index(scene.id, index)
-    return SceneResult(scene.id, ok=True, value=ref)
-
-
-def write_script_for_scene(scene: Scene, ctx: RunContext) -> SceneResult:
-    """Stages 3 and 4 — retrieve this scene's context, then hand it to the QC harness.
-
-    One process because writing and scoring are a cycle, not a line: the harness
-    runs write → score → judge → rewrite until the script is acceptable or the
-    attempt budget is spent, and every rewrite needs the same retrieved sentences
-    in hand. main.py deliberately does not drive that loop — it asks once and
-    stores what comes back.
-    """
-    db = Database(ctx.database_root)
-    index = db.load_cluster_index(scene.id)
-
-    retriever = Retriever(index, top_k=ctx.retrieval_top_k)
-    context = retriever.retrieve(scene)
+    retriever = Retriever(top_k=ctx.retrieval_top_k)
+    context = retriever.retrieve(scene, documents)
     if not context.is_populated():
         return SceneResult(scene.id, ok=False, error="retrieval returned no sentences")
 
-    harness = ScriptHarness(max_attempts=ctx.max_script_attempts)
+    warnings = [f"no source answered: {query}" for query in context.unanswered_queries()]
+    return SceneResult(scene.id, ok=True, value=context, warnings=warnings)
+
+
+def script_stage(scene: Scene, ctx: RunContext, context: RetrievedContext) -> SceneResult:
+    """Stage 3 — hand the context to the QC harness, which runs the write/score/judge loop.
+
+    main.py deliberately does not drive that loop — it asks once and keeps what
+    comes back.
+
+    ``value`` → ``ScriptOutcome``.
+    """
+    harness = ScriptHarness(writer=ScriptWriter(), max_attempts=ctx.max_script_attempts)
     outcome = harness.produce(scene=scene, context=context)
 
     if not outcome.accepted:
@@ -289,56 +278,64 @@ def write_script_for_scene(scene: Scene, ctx: RunContext) -> SceneResult:
             error="no candidate script passed quality control",
         )
 
-    ref = db.save_script(scene.id, outcome.script, outcome.score)
-    return SceneResult(scene.id, ok=True, value=ref, warnings=outcome.warnings)
+    return SceneResult(scene.id, ok=True, value=outcome, warnings=outcome.warnings)
 
 
-def generate_audio_for_scene(scene: Scene, ctx: RunContext) -> SceneResult:
-    """Stage 5 — synthesize the accepted script and persist a playable asset."""
-    db = Database(ctx.database_root)
-    script = db.load_script(scene.id)
+def audio_stage(scene: Scene, ctx: RunContext, outcome: ScriptOutcome) -> SceneResult:
+    """Stage 4 — synthesize the accepted script into a clip in ``out_dir``.
 
-    generator = AudioGenerator(model=scene.tts_model, voice=scene.tts_voice)
-    audio = generator.synthesize(scene=scene, script=script)
-    ref = db.save_audio(scene.id, audio)
-    return SceneResult(scene.id, ok=True, value=ref)
+    ``value`` → ``AudioAsset``.
+    """
+    generator = AudioGenerator(out_dir=ctx.out_dir)
+    audio = generator.synthesize(scene=scene, script=outcome.script)
+    return SceneResult(scene.id, ok=True, value=audio)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Generation — stages 1 through 5
+# Generation — stages 1 through 4
 # ─────────────────────────────────────────────────────────────────────────────
 
 
-def generate_scenes(scenes: Sequence[Scene], ctx: RunContext) -> None:
+def generate_scenes(scenes: Sequence[Scene], ctx: RunContext) -> dict[str, AudioAsset]:
     """Run the full generation pipeline over an arbitrary set of scenes.
 
     Called with every scene for the initial build, and with just a cycle's scenes
     when the orchestrator triggers a mid-broadcast regeneration. Each stage is a
     barrier; a stage error aborts the whole call.
+
+    Each stage's per-scene outputs become the next stage's inputs. Returns the
+    final ``AudioAsset`` per scene id.
     """
     # typehinting -> stages must be some iterable object (lists, tuples, etc.) containing a 
     # tuple of a string and a callable (function, class, etc.) returning a SceneResult class object 
-    stages: Iterable[tuple[str, Callable[[Scene, RunContext], SceneResult]]] = (
-        ("webscrape", scrape_scene),
-        ("cluster", cluster_scene),
-        ("script", write_script_for_scene),
-        ("audio", generate_audio_for_scene),
+    stages: Iterable[tuple[str, Callable[[Scene, RunContext, Any], SceneResult]]] = (
+        ("sources", sources_stage),
+        ("context", context_stage),
+        ("script", script_stage),
+        ("audio", audio_stage),
     )
 
+    upstream: dict[str, Any] | None = None  # scene id -> previous stage's output for that scene
     #                 /- the callable in the iterable defined above 
     for stage_name, worker in stages:
-        results = run_scene_stage(stage_name, worker, scenes, ctx)
+        results = run_scene_stage(stage_name, worker, scenes, ctx, upstream)
         assert_stage_ok(stage_name, results)
+        upstream = {scene_id: result.value for scene_id, result in results.items()}
         log.info("[%s] complete for %d scene(s)", stage_name, len(scenes))
 
+    return upstream or {}
+
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Broadcast — stage 6
+# Broadcast — stage 5
 # ─────────────────────────────────────────────────────────────────────────────
 
 
-def broadcast(graph: BroadcastGraph, ctx: RunContext) -> None:
+def broadcast(graph: BroadcastGraph, ctx: RunContext, audio: dict[str, AudioAsset]) -> None:
     """Walk the graph and play each scene's audio in order.
+
+    ``audio`` maps scene id → its current ``AudioAsset`` (the output of
+    ``generate_scenes``). It lives in memory for the whole broadcast.
 
     Playback is strictly sequential — exactly one scene is on air at a time, and
     ``AudioPlayer.play`` blocks until the clip is finished before the traversal
@@ -351,7 +348,6 @@ def broadcast(graph: BroadcastGraph, ctx: RunContext) -> None:
     is not on air; if it isn't ready when the loop comes back around, the
     previous asset replays and the loop still counts toward the next update.
     """
-    db = Database(ctx.database_root)
     player = AudioPlayer()
 
     # One background thread to handle regen jobs 
@@ -360,7 +356,7 @@ def broadcast(graph: BroadcastGraph, ctx: RunContext) -> None:
                                       #                                                             
 
         for step in graph.traversal():
-            asset = db.load_audio(step.scene.id)
+            asset = audio.get(step.scene.id)
             if asset is None:
                 log.warning(
                     "no audio asset for %r; skipping to next scene", step.scene.title
@@ -370,7 +366,7 @@ def broadcast(graph: BroadcastGraph, ctx: RunContext) -> None:
             log.info("on air: %s", step.scene.title)
             player.play(asset)  # blocks until the clip finishes
 
-            _reap_regenerations(pending)
+            _reap_regenerations(pending, audio)
 
             if step.update_due and step.cycle_id not in pending:
                 scenes = graph.scenes_in_cycle(step.cycle_id)
@@ -384,23 +380,23 @@ def broadcast(graph: BroadcastGraph, ctx: RunContext) -> None:
     player.stop()
 
 
-def _reap_regenerations(pending: dict[str, Any]) -> None:
-    """Retire finished regeneration jobs so their cycle can be updated again.
+def _reap_regenerations(pending: dict[str, Any], audio: dict[str, AudioAsset]) -> None:
+    """Retire finished regeneration jobs and swap their new audio in.
 
-    The swap itself is implicit: ``generate_scenes`` has already written the new
-    audio asset, so the next ``db.load_audio`` picks it up. No "is it on air?"
-    guard is needed — the asset is loaded before ``play`` blocks, so a
-    regeneration that lands mid-clip cannot replace what is currently playing;
-    it simply becomes visible the next time the traversal reaches that scene.
+    The swap is just a dict update: the finished job's ``AudioAsset``s replace
+    the old ones in ``audio``. No "is it on air?" guard is needed — the asset is
+    looked up before ``play`` blocks, so a regeneration that lands mid-clip
+    cannot replace what is currently playing; it simply becomes visible the next
+    time the traversal reaches that scene.
 
-    All this does is clear the in-flight marker and surface failures without
-    killing the stream.
+    Also clears the in-flight marker and surfaces failures without killing the
+    stream.
     """
     for cycle_id, future in list(pending.items()):
         if not future.done():
             continue
         try:
-            future.result()
+            audio.update(future.result())
             log.info("cycle %s regeneration complete", cycle_id)
         except Exception:
             log.exception(
@@ -427,20 +423,21 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
         help="path to the saved broadcast configuration json",
     )
     parser.add_argument(
-        "--database-root",
+        "--out-dir",
         type=Path,
-        default=Path("output/database"),
-        help="local database root (stands in for PostgreSQL + S3)",
+        default=Path("output/audio"),
+        help="local folder where generated audio clips are written",
     )
+    # "broadcast"-only mode (replaying audio from an earlier run) needs persistence,
+    # which M1 does not have — it comes back once there is somewhere to load from.
     parser.add_argument(
         "--mode",
-        choices=("full", "generate", "broadcast"),
+        choices=("full", "generate"),
         default="full",
-        help="full = generate then broadcast; generate = stages 1-5 only; "
-        "broadcast = stage 6 against already-generated audio",
+        help="full = generate then broadcast; generate = stages 1-4 only",
     )
     parser.add_argument("--max-workers", type=int, default=4)
-    parser.add_argument("--scrape-top-k", type=int, default=8)
+    parser.add_argument("--scrape-max-threads", type=int, default=8)
     parser.add_argument("--retrieval-top-k", type=int, default=5)
     parser.add_argument("--max-script-attempts", type=int, default=3)
     parser.add_argument("--log-level", default="INFO")
@@ -453,9 +450,8 @@ def validate_args(args: argparse.Namespace) -> None:
         raise SystemExit(f"config not found: {args.config}")
     if args.max_workers < 1:
         raise SystemExit("--max-workers must be at least 1")
-    args.database_root.mkdir(parents=True, exist_ok=True)
-    # TODO: validate mode//artifact preconditions — "broadcast" needs a populated
-    # database, "generate" must not clobber a run that is currently on air.
+    args.out_dir.mkdir(parents=True, exist_ok=True)
+    # TODO: "generate" must not clobber a run that is currently on air.
 
 
 def main(argv: Sequence[str] | None = None) -> int:
@@ -468,10 +464,10 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     ctx = RunContext(
         config_path=args.config,
-        database_root=args.database_root,
+        out_dir=args.out_dir,
         mode=args.mode,
         max_workers=args.max_workers,
-        scrape_top_k=args.scrape_top_k,
+        scrape_max_threads=args.scrape_max_threads,
         retrieval_top_k=args.retrieval_top_k,
         max_script_attempts=args.max_script_attempts,
     )
@@ -486,10 +482,9 @@ def main(argv: Sequence[str] | None = None) -> int:
         return 1
 
     try:
-        if args.mode in ("full", "generate"):
-            generate_scenes(graph.active_scenes(), ctx)
-        if args.mode in ("full", "broadcast"):
-            broadcast(graph, ctx)
+        audio = generate_scenes(graph.active_scenes(), ctx)
+        if args.mode == "full":
+            broadcast(graph, ctx, audio)
     except PipelineError as exc:
         log.error("%s", exc)
         return 1

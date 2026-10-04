@@ -4,6 +4,7 @@ Methods pertaining to building and interacting with the cluster class go here, i
 converting into their embedding representation, HDBSCAN algorithm + hyperparameters, exemplar lookup, returning a cluster, etc.
 
 However, logic for building the lookup for querying this cluster belongs in retrieval.py.
+Internal to the RAG team — the only public entry point is ``rag.Retriever``.
 We expect ths module to recieve sentences (for initial building) and cluster query requests (for querying the built clusters,) and output a HDBSCAN class which acts as a interface.
 """
 
@@ -13,22 +14,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Sequence
 
-from modules.webscrapper import ScrapedDocument
-
-
-@dataclass
-class Sentence:
-    """One sentence in a scene's flat pool, with provenance kept attached.
-
-    Provenance survives all the way into the generated script's context so the
-    writer can attribute claims to a source agency, and so ``script_score`` can
-    tell which document a contradicting fact came from.
-    """
-
-    text: str
-    source_url: str
-    document_index: int  # position within the scene's staged document list
-    sentence_index: int  # position within that document, for ordering
+from contracts import ScrapedDocument, Sentence
 
 
 @dataclass
@@ -64,9 +50,10 @@ class SentenceClusterIndex:
     This is the interface object the module docstring calls for: built once from
     sentences, then queried by retrieval.py with embedded query vectors.
 
-    Does *not* cross a process boundary as a live object — stage 2 persists it
-    via ``database.Database`` and stage 3 loads it back in its own process, so
-    ``save``/``load`` are part of the contract rather than a convenience.
+    Never leaves RAG's process: ``Retriever.retrieve`` builds and queries it in
+    the same call, so it does not need to be picklable. ``save``/``load`` are
+    optional conveniences (e.g. caching an index between experiments), not part
+    of the team contract.
     """
 
     @classmethod

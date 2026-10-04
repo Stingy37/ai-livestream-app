@@ -10,37 +10,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Iterator
 
-
-@dataclass
-class Scene:
-    """One playable node of the broadcast, and the unit of work for the pipeline.
-
-    This is the object threaded through every stage: webscraping, clustering,
-    retrieval, script generation, and TTS all key off a ``Scene``. It crosses
-    process boundaries, so it stays a plain picklable dataclass — no open
-    handles, no loaded models, no database connections.
-
-    Division of labour with the config file: everything below ``node_key`` is
-    authored by the user and read verbatim out of the json. ``id`` is minted
-    here at construction and is what the rest of the pipeline (and the database)
-    uses to address this scene's artifacts.
-    """
-
-    id: str
-    node_key: str
-
-    title: str
-    topic_description: str
-    system_instructions: str
-    do_web_search: bool
-    sources: list[str]
-    language: str
-
-    # Resolved against the config's top-level ``defaults`` block at build time,
-    # so downstream stages never have to know a default existed.
-    script_model: str
-    tts_model: str
-    tts_voice: str
+from contracts import Scene
 
 
 @dataclass

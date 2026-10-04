@@ -20,8 +20,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-from modules.cluster import Sentence, SentenceClusterIndex
-from modules.graph import Scene
+from contracts import RetrievedContext, Scene, ScoredDocument
+from rag.cluster import SentenceClusterIndex, SentenceSplitter
 
 
 @dataclass
@@ -32,41 +32,16 @@ class SearchQuery:
     vector: list[float] = field(default_factory=list)
 
 
-@dataclass
-class RetrievedContext:
-    """The structured retrieval output: sentences grouped by the query that found them.
-
-    Grouping is load-bearing rather than cosmetic. Keeping the decomposed query
-    attached tells the writer *why* each block of sentences is present, and
-    keeps coverage visible — an empty group is a question the sources did not
-    answer, which is worth surfacing rather than silently flattening away.
-    """
-
-    scene_id: str
-    relevant_sentences: dict[str, list[Sentence]] = field(default_factory=dict)
-
-    def is_populated(self) -> bool:
-        """True if any query returned at least one sentence.
-
-        The caller treats an unpopulated context as fatal for the scene: there
-        is nothing to write a script from.
-        """
-        raise NotImplementedError
-
-    def unanswered_queries(self) -> list[str]:
-        """Decomposed queries that matched nothing — coverage gaps worth warning on."""
-        raise NotImplementedError
-
-
 class Retriever:
     """Turns a scene into the structured context its script will be written from.
 
-    Wraps one scene's fitted cluster index. Decomposition uses a small LLM;
-    lookup is semantic search over cluster exemplars with the decomposed query
-    vectors.
+    The RAG team's single public entry point. Takes the accepted documents,
+    builds the scene's cluster index internally (``SentenceSplitter`` →
+    ``SentenceClusterIndex``), decomposes the scene into queries with a small
+    LLM, and looks them up by semantic search over cluster exemplars.
     """
 
-    def __init__(self, index: SentenceClusterIndex, top_k: int = 5) -> None:
+    def __init__(self, top_k: int = 5) -> None:
         raise NotImplementedError
 
     def decompose(self, scene: Scene) -> list[SearchQuery]:
@@ -78,8 +53,11 @@ class Retriever:
         """
         raise NotImplementedError
 
-    def retrieve(self, scene: Scene) -> RetrievedContext:
-        """Decompose, query the cluster index, and assemble the grouped result.
+    def retrieve(self, scene: Scene, documents: list[ScoredDocument]) -> RetrievedContext:
+        """Build the index from ``documents``, decompose, query, and assemble the grouped result.
+
+        ``documents`` are the accepted ``ScoredDocument``s from QC website
+        scoring; ``score`` is available for weighting or tie-breaking.
 
         Deduplicates sentences that several queries pull in, while keeping each
         under every query that matched it.

@@ -15,29 +15,21 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-from modules.graph import Scene
-from modules.retrieval import RetrievedContext
-from modules.webscrapper import ScrapedDocument
+from contracts import (
+    LLMOutput,
+    RetrievedContext,
+    Scene,
+    ScoredDocument,
+    ScrapedDocument,
+    ScriptOutcome,
+    ScriptScore,
+)
+from writer import ScriptWriter
 
 
 # ─────────────────────────────────────────────────────────────────────────────
 # 1. Website scoring — after scraping, before clustering
 # ─────────────────────────────────────────────────────────────────────────────
-
-
-@dataclass
-class ScoredDocument:
-    """A scraped document with its ``website_score`` and the accept/reject call.
-
-    ``components`` keeps the individual terms (rank, cross-website agreement,
-    recency) rather than only the weighted total, so a rejection can be
-    explained to the user in a warning instead of being an opaque number.
-    """
-
-    document: ScrapedDocument
-    score: float
-    components: dict[str, float] = field(default_factory=dict)
-    accepted: bool = False
 
 
 class WebsiteScorer:
@@ -67,21 +59,6 @@ class WebsiteScorer:
 # ─────────────────────────────────────────────────────────────────────────────
 
 
-@dataclass
-class ScriptScore:
-    """Result of ``script_score`` over one candidate script.
-
-    The total is a contradiction count summed per entity, so **lower is better**
-    and zero is a clean script. ``per_entity`` keeps the breakdown so the judge
-    and the rewrite feedback can point at the specific entity in dispute.
-    """
-
-    total: float
-    per_entity: dict[str, float] = field(default_factory=dict)
-    contradictions: list[str] = field(default_factory=list)
-    passes_threshold: bool = False
-
-
 class ScriptScorer:
     """The cheap, deterministic consistency check run before any judge call.
 
@@ -94,7 +71,7 @@ class ScriptScorer:
     def __init__(self, threshold: float = 0.0) -> None:
         raise NotImplementedError
 
-    def score(self, script: str, context: RetrievedContext) -> ScriptScore:
+    def score(self, script: LLMOutput, context: RetrievedContext) -> ScriptScore:
         """Score one script for internal contradictions.
 
         The retrieved context is passed in because a claim is only contradictory
@@ -128,7 +105,7 @@ class LLMJudge:
     def __init__(self, model: str | None = None) -> None:
         raise NotImplementedError
 
-    def review(self, script: str, context: RetrievedContext, score: ScriptScore) -> JudgeVerdict:
+    def review(self, script: LLMOutput, context: RetrievedContext, score: ScriptScore) -> JudgeVerdict:
         """Adjudicate the contradictions ``score`` claims to have found."""
         raise NotImplementedError
 
@@ -138,29 +115,18 @@ class LLMJudge:
 # ─────────────────────────────────────────────────────────────────────────────
 
 
-@dataclass
-class ScriptOutcome:
-    """What the harness hands back after the loop settles."""
-
-    script: str
-    score: ScriptScore
-    accepted: bool
-    attempts: int
-    warnings: list[str] = field(default_factory=list)
-
-
 class ScriptHarness:
     """Produces an acceptable script for one scene, iterating until it has one.
 
-    Script *generation* has no module of its own because it is a plain LLM call
-    with the scene's system instructions — it lives here, inside the loop that
-    owns it, rather than being handed in as a callback. Keeping the writer and
-    the scorers behind one interface is also what lets main.py stay free of
-    model calls: it asks for a script and stores what comes back.
+    Script *generation* lives in ``writer.ScriptWriter`` (owned by RAG) and is
+    passed in at construction, so QC can test the loop with a stand-in writer
+    instead of a real LLM. Keeping the loop behind one interface is what lets
+    main.py stay free of model calls: it asks for a script and stores what
+    comes back.
 
     The loop, per attempt:
 
-        write(context, feedback, previous) → script_score → LLMJudge
+        writer.write(scene, context, feedback) → script_score → LLMJudge
 
     and it exits on the first of:
 
@@ -175,7 +141,9 @@ class ScriptHarness:
 
     def __init__(
         self,
+        writer: ScriptWriter,
         max_attempts: int = 3,
+        score_threshold: float = 0.0,
         scorer: ScriptScorer | None = None,
         judge: LLMJudge | None = None,
     ) -> None:
@@ -185,10 +153,7 @@ class ScriptHarness:
         """Run the loop until the script is acceptable or the budget is spent.
 
         Every attempt re-uses the same ``context`` — retrieval does not re-run —
-        and a rewrite additionally receives the judge's feedback plus the script
-        that earned it, so the writer can see what it is fixing.
-
-        Uses ``scene.script_model`` for the write call and
-        ``scene.system_instructions`` as the system prompt.
+        and a rewrite additionally receives the judge's feedback, so the writer
+        can see what it is fixing.
         """
         raise NotImplementedError
