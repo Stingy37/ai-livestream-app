@@ -2,3 +2,6 @@
 # Python
 __pycache__/
 .pytest_cache/
+
+# Runtime state (pid files, server logs)
+.run/
