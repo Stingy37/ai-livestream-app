@@ -1,0 +1,589 @@
+{
+  "_note": "SYNTHETIC GROUND TRUTH for fakes/qc/scraped_documents.json. Part A (cross-source) means pairs of different documents. A pair is listed only when BOTH documents state the fact and the values differ. Pairs are unordered. Accuracy: compare the pipeline's flagged document pairs with the union of expected_flagged_pairs.",
+  "story": "Typhoon Marisol, fictional, October 2026, northern Philippines.",
+  "consensus_facts": {
+    "max_sustained_winds": "130 km/h",
+    "landfall_location": "Aurora province",
+    "landfall_time": "about 8 PM, October 14, 2026",
+    "evacuees": "about 12,000",
+    "signal_over_aurora": "No. 3",
+    "warned_provinces": "Aurora, Isabela, Quezon, Nueva Vizcaya",
+    "motion": "west-northwest at 15 km/h",
+    "rainfall": "up to 200 mm"
+  },
+  "documents": {
+    "doc_01": {
+      "source_name": "Republic Weather Bureau",
+      "source_type": "government weather agency",
+      "url": "https://news.example.invalid/bulletin-18"
+    },
+    "doc_02": {
+      "source_name": "Pacific Wire Service",
+      "source_type": "national wire",
+      "url": "https://news.example.invalid/marisol-landfall"
+    },
+    "doc_03": {
+      "source_name": "The Daily Meridian",
+      "source_type": "newspaper",
+      "url": "https://news.example.invalid/marisol-makes-landfall"
+    },
+    "doc_04": {
+      "source_name": "Northern Courier",
+      "source_type": "newspaper",
+      "url": "https://news.example.invalid/marisol-hits-aurora"
+    },
+    "doc_05": {
+      "source_name": "Metro Vision News Online",
+      "source_type": "TV network website",
+      "url": "https://news.example.invalid/marisol-live-updates"
+    },
+    "doc_06": {
+      "source_name": "Sierra Madre Gazette",
+      "source_type": "regional outlet",
+      "url": "https://news.example.invalid/marisol-aurora-coast"
+    },
+    "doc_07": {
+      "source_name": "Storm Notes Blog",
+      "source_type": "personal blog",
+      "url": "https://news.example.invalid/night-in-the-gym"
+    },
+    "doc_08": {
+      "source_name": "Typhoon Watch Roundup",
+      "source_type": "social media roundup",
+      "url": "https://news.example.invalid/marisol-roundup"
+    },
+    "doc_09": {
+      "source_name": "Global Pacific Report",
+      "source_type": "international outlet",
+      "url": "https://news.example.invalid/philippines-typhoon"
+    },
+    "doc_10": {
+      "source_name": "Daily Buzz Today",
+      "source_type": "low-quality tabloid site",
+      "url": "https://news.example.invalid/marisol-cover-up"
+    }
+  },
+  "planted_disagreements": [
+    {
+      "id": "winds",
+      "fact": "maximum sustained winds (km/h)",
+      "consensus_value": 130,
+      "values_by_doc": {
+        "doc_01": 130,
+        "doc_02": 130,
+        "doc_03": 130,
+        "doc_04": 150,
+        "doc_05": 130,
+        "doc_06": 130,
+        "doc_08": 130,
+        "doc_09": 130,
+        "doc_10": 190
+      },
+      "expected_flagged_pairs": [
+        [
+          "doc_01",
+          "doc_04"
+        ],
+        [
+          "doc_01",
+          "doc_10"
+        ],
+        [
+          "doc_02",
+          "doc_04"
+        ],
+        [
+          "doc_02",
+          "doc_10"
+        ],
+        [
+          "doc_03",
+          "doc_04"
+        ],
+        [
+          "doc_03",
+          "doc_10"
+        ],
+        [
+          "doc_04",
+          "doc_05"
+        ],
+        [
+          "doc_04",
+          "doc_06"
+        ],
+        [
+          "doc_04",
+          "doc_08"
+        ],
+        [
+          "doc_04",
+          "doc_09"
+        ],
+        [
+          "doc_04",
+          "doc_10"
+        ],
+        [
+          "doc_05",
+          "doc_10"
+        ],
+        [
+          "doc_06",
+          "doc_10"
+        ],
+        [
+          "doc_08",
+          "doc_10"
+        ],
+        [
+          "doc_09",
+          "doc_10"
+        ]
+      ],
+      "notes": "doc_04 says 150. doc_10 says 190."
+    },
+    {
+      "id": "landfall_location",
+      "fact": "landfall province",
+      "consensus_value": "Aurora",
+      "values_by_doc": {
+        "doc_01": "Aurora",
+        "doc_02": "Aurora",
+        "doc_03": "Aurora",
+        "doc_04": "Aurora",
+        "doc_05": "Quezon",
+        "doc_06": "Aurora",
+        "doc_08": "Aurora",
+        "doc_09": "Aurora in sentence 0, Quezon in sentence 6 (self-contradiction)",
+        "doc_10": "Batangas"
+      },
+      "expected_flagged_pairs": [
+        [
+          "doc_01",
+          "doc_05"
+        ],
+        [
+          "doc_01",
+          "doc_10"
+        ],
+        [
+          "doc_02",
+          "doc_05"
+        ],
+        [
+          "doc_02",
+          "doc_10"
+        ],
+        [
+          "doc_03",
+          "doc_05"
+        ],
+        [
+          "doc_03",
+          "doc_10"
+        ],
+        [
+          "doc_04",
+          "doc_05"
+        ],
+        [
+          "doc_04",
+          "doc_10"
+        ],
+        [
+          "doc_05",
+          "doc_06"
+        ],
+        [
+          "doc_05",
+          "doc_08"
+        ],
+        [
+          "doc_05",
+          "doc_10"
+        ],
+        [
+          "doc_06",
+          "doc_10"
+        ],
+        [
+          "doc_08",
+          "doc_10"
+        ]
+      ],
+      "ambiguous_pairs_not_scored": [
+        [
+          "doc_01",
+          "doc_09"
+        ],
+        [
+          "doc_02",
+          "doc_09"
+        ],
+        [
+          "doc_03",
+          "doc_09"
+        ],
+        [
+          "doc_04",
+          "doc_09"
+        ],
+        [
+          "doc_05",
+          "doc_09"
+        ],
+        [
+          "doc_06",
+          "doc_09"
+        ],
+        [
+          "doc_08",
+          "doc_09"
+        ],
+        [
+          "doc_09",
+          "doc_10"
+        ]
+      ],
+      "notes": "doc_05 says Quezon. doc_10 says Batangas. doc_09 states both Aurora and Quezon, so its pairs with other documents are ambiguous and are not scored."
+    },
+    {
+      "id": "landfall_date",
+      "fact": "landfall date",
+      "consensus_value": "October 14 (8 PM, evening and night phrasings agree)",
+      "values_by_doc": {
+        "doc_01": "Oct 14",
+        "doc_02": "Oct 14",
+        "doc_03": "Oct 14",
+        "doc_04": "Oct 14",
+        "doc_05": "Oct 14",
+        "doc_06": "Oct 15",
+        "doc_08": "Oct 14",
+        "doc_09": "Oct 14",
+        "doc_10": "Oct 13"
+      },
+      "expected_flagged_pairs": [
+        [
+          "doc_01",
+          "doc_06"
+        ],
+        [
+          "doc_01",
+          "doc_10"
+        ],
+        [
+          "doc_02",
+          "doc_06"
+        ],
+        [
+          "doc_02",
+          "doc_10"
+        ],
+        [
+          "doc_03",
+          "doc_06"
+        ],
+        [
+          "doc_03",
+          "doc_10"
+        ],
+        [
+          "doc_04",
+          "doc_06"
+        ],
+        [
+          "doc_04",
+          "doc_10"
+        ],
+        [
+          "doc_05",
+          "doc_06"
+        ],
+        [
+          "doc_05",
+          "doc_10"
+        ],
+        [
+          "doc_06",
+          "doc_08"
+        ],
+        [
+          "doc_06",
+          "doc_09"
+        ],
+        [
+          "doc_06",
+          "doc_10"
+        ],
+        [
+          "doc_08",
+          "doc_10"
+        ],
+        [
+          "doc_09",
+          "doc_10"
+        ]
+      ],
+      "notes": "Only real conflicts are scored: doc_06 says Oct 15 2 AM, doc_10 says Oct 13."
+    },
+    {
+      "id": "evacuees",
+      "fact": "number of evacuees",
+      "consensus_value": 12000,
+      "values_by_doc": {
+        "doc_02": 12000,
+        "doc_03": 12000,
+        "doc_04": 12000,
+        "doc_05": 12000,
+        "doc_06": 12000,
+        "doc_08": 30000,
+        "doc_09": 12000,
+        "doc_10": 80000
+      },
+      "expected_flagged_pairs": [
+        [
+          "doc_02",
+          "doc_08"
+        ],
+        [
+          "doc_02",
+          "doc_10"
+        ],
+        [
+          "doc_03",
+          "doc_08"
+        ],
+        [
+          "doc_03",
+          "doc_10"
+        ],
+        [
+          "doc_04",
+          "doc_08"
+        ],
+        [
+          "doc_04",
+          "doc_10"
+        ],
+        [
+          "doc_05",
+          "doc_08"
+        ],
+        [
+          "doc_05",
+          "doc_10"
+        ],
+        [
+          "doc_06",
+          "doc_08"
+        ],
+        [
+          "doc_06",
+          "doc_10"
+        ],
+        [
+          "doc_08",
+          "doc_09"
+        ],
+        [
+          "doc_08",
+          "doc_10"
+        ],
+        [
+          "doc_09",
+          "doc_10"
+        ]
+      ],
+      "notes": "doc_08 says 30,000. doc_10 says 80,000. doc_01 gives no figure."
+    },
+    {
+      "id": "warning_signal",
+      "fact": "wind signal level over Aurora",
+      "consensus_value": 3,
+      "values_by_doc": {
+        "doc_01": 3,
+        "doc_02": 3,
+        "doc_03": 3,
+        "doc_04": 3,
+        "doc_05": 3,
+        "doc_06": 4,
+        "doc_08": 3,
+        "doc_09": 3,
+        "doc_10": 5
+      },
+      "expected_flagged_pairs": [
+        [
+          "doc_01",
+          "doc_06"
+        ],
+        [
+          "doc_01",
+          "doc_10"
+        ],
+        [
+          "doc_02",
+          "doc_06"
+        ],
+        [
+          "doc_02",
+          "doc_10"
+        ],
+        [
+          "doc_03",
+          "doc_06"
+        ],
+        [
+          "doc_03",
+          "doc_10"
+        ],
+        [
+          "doc_04",
+          "doc_06"
+        ],
+        [
+          "doc_04",
+          "doc_10"
+        ],
+        [
+          "doc_05",
+          "doc_06"
+        ],
+        [
+          "doc_05",
+          "doc_10"
+        ],
+        [
+          "doc_06",
+          "doc_08"
+        ],
+        [
+          "doc_06",
+          "doc_09"
+        ],
+        [
+          "doc_06",
+          "doc_10"
+        ],
+        [
+          "doc_08",
+          "doc_10"
+        ],
+        [
+          "doc_09",
+          "doc_10"
+        ]
+      ],
+      "notes": "doc_06 says Signal No. 4 over Aurora (and No. 3 elsewhere). doc_10 says Signal No. 5 over Batangas and southern Luzon."
+    },
+    {
+      "id": "rainfall",
+      "fact": "rainfall (mm), extra conflict from the outlier only",
+      "consensus_value": 200,
+      "values_by_doc": {
+        "doc_01": 200,
+        "doc_04": 200,
+        "doc_09": 200,
+        "doc_10": 500
+      },
+      "expected_flagged_pairs": [
+        [
+          "doc_01",
+          "doc_10"
+        ],
+        [
+          "doc_04",
+          "doc_10"
+        ],
+        [
+          "doc_09",
+          "doc_10"
+        ]
+      ]
+    },
+    {
+      "id": "motion",
+      "fact": "storm motion, extra conflict from the outlier only",
+      "consensus_value": "west-northwest at 15 km/h",
+      "values_by_doc": {
+        "doc_01": "WNW 15",
+        "doc_02": "WNW 15",
+        "doc_03": "WNW 15",
+        "doc_04": "WNW 15",
+        "doc_05": "WNW 15",
+        "doc_06": "WNW 15",
+        "doc_08": "WNW 15",
+        "doc_09": "WNW 15",
+        "doc_10": "E 40"
+      },
+      "expected_flagged_pairs": [
+        [
+          "doc_01",
+          "doc_10"
+        ],
+        [
+          "doc_02",
+          "doc_10"
+        ],
+        [
+          "doc_03",
+          "doc_10"
+        ],
+        [
+          "doc_04",
+          "doc_10"
+        ],
+        [
+          "doc_05",
+          "doc_10"
+        ],
+        [
+          "doc_06",
+          "doc_10"
+        ],
+        [
+          "doc_08",
+          "doc_10"
+        ],
+        [
+          "doc_09",
+          "doc_10"
+        ]
+      ]
+    }
+  ],
+  "self_contradiction": {
+    "doc": "doc_09",
+    "description": "Sentence 0 says the storm struck Aurora province. Sentence 6 says it came ashore in Quezon.",
+    "expected_flagged_pair_within_doc": [
+      [
+        "doc_09",
+        0
+      ],
+      [
+        "doc_09",
+        6
+      ]
+    ],
+    "note": "Use with cross_source_only=False (Part B). Sentence indices assume the nltk splitter on main_text."
+  },
+  "outlier": {
+    "doc": "doc_10",
+    "description": "Low-quality source. Disagrees with the consensus on winds, landfall location, landfall date, evacuees, signal level, rainfall and motion."
+  },
+  "no_overlap": {
+    "doc": "doc_07",
+    "description": "Personal account with invented local names (Barangay Mabuhay, Aling Rosa, Mang Tonyo). It names no storm, province, agency or number, so it should produce no pairs."
+  },
+  "messy_docs": [
+    "doc_03",
+    "doc_05",
+    "doc_08"
+  ],
+  "known_false_positive_risks": [
+    "The numeric rule matches same-unit values anywhere in a sentence. 'winds of 130 km/h' versus 'moving at 15 km/h' share the unit km/h with different values, so any two sentences that share an entity and contain those two numbers would be flagged by the rule even though they do not conflict.",
+    "doc_06 lists Signal No. 4 and Signal No. 3 in one sentence. Its No. 3 clause for Isabela, Quezon and Nueva Vizcaya agrees with the other documents.",
+    "Messy documents contain duplicate headlines and menu text that the sentence splitter may turn into odd sentences.",
+    "Documents with different wording of the same time (evening, night, 8 PM) agree and should not be flagged."
+  ]
+}
