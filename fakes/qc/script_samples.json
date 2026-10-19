@@ -1,0 +1,51 @@
+{
+  "_note": "Fake live stream scripts for Part B (self contradiction). Each label gives a piece of the two sentences that contradict each other. Scripts with an empty list are clean, so any flag on them is a false alarm.",
+  "scripts": [
+    {
+      "id": "clean_short",
+      "text": "ANCHOR: Good evening, this is your Typhoon Marisol update.\n[RADAR GRAPHIC]\nMarisol is now about 300 kilometers east of Aurora province. It is moving west at 20 kilometers per hour. PAGASA has raised Signal No. 2 over Aurora and Quezon. Classes in both provinces are suspended tomorrow. Stay safe, and we will update you again at 8 PM.",
+      "contradictions": []
+    },
+    {
+      "id": "numbers_short",
+      "text": "ANCHOR: Typhoon Marisol is getting stronger tonight.\nThe storm now has maximum sustained winds of 150 kilometers per hour. Gusts are reaching 185 kilometers per hour near the center. Signal No. 3 is up over northern Aurora. With winds of 120 kilometers per hour, Marisol remains a strong typhoon. Residents near the coast should move to evacuation centers now.",
+      "contradictions": [
+        {"a": "maximum sustained winds of 150", "b": "winds of 120 kilometers per hour"}
+      ]
+    },
+    {
+      "id": "pronoun_medium",
+      "text": "ANCHOR: Here is the latest on Typhoon Marisol.\n[MAP]\nPAGASA says the typhoon will make landfall on Thursday morning. It is expected to cross northern Luzon in about twelve hours. Heavy rain is already falling over Isabela and Cagayan. Rainfall of up to 200 millimeters is possible in the mountains. Landslides are a danger in Benguet and Ifugao. The Department of Education has suspended classes in the Cordillera region. Fishing boats should stay in port until the warning is lifted. Flights to Tuguegarao have been cancelled. When it reaches the coast on Wednesday evening, storm surges of up to two meters are possible. Evacuation centers in Aurora are open. Please keep your phones charged and follow your local officials.",
+      "contradictions": [
+        {"a": "landfall on Thursday morning", "b": "coast on Wednesday evening"}
+      ]
+    },
+    {
+      "id": "clean_tricky",
+      "text": "ANCHOR: Marisol strengthened today.\nThis morning its winds were 130 kilometers per hour. By this afternoon they had reached 150 kilometers per hour. Signal No. 2 was raised over Aurora at noon. At 5 PM, PAGASA raised it to Signal No. 3. About 12,000 people have left their homes in Aurora. Another 3,000 people have been evacuated in Quezon. The typhoon is not expected to hit Manila directly, but Manila will still get heavy rain.",
+      "contradictions": []
+    },
+    {
+      "id": "negation_medium",
+      "text": "REPORTER: I am standing in Baler, Aurora, where the wind is picking up.\nThe local government says no deaths have been reported so far. Power is out in most of the town. Volunteers are handing out food at the town gym. The mayor says around 4,000 people are staying in evacuation centers. Two people died earlier today when a tree fell on their house. The main bridge to the next town is still open. Roads along the coast are flooded. Back to you in the studio.",
+      "contradictions": [
+        {"a": "no deaths have been reported", "b": "Two people died"}
+      ]
+    },
+    {
+      "id": "first_vs_second",
+      "text": "ANCHOR: Marisol is the first typhoon to hit Aurora this year.\nIt is the second typhoon to hit Aurora this year, after Typhoon Lando in July. The storm will weaken after it crosses the Sierra Madre mountains. It should leave the country by Saturday.",
+      "contradictions": [
+        {"a": "first typhoon to hit Aurora this year", "b": "second typhoon to hit Aurora this year"}
+      ]
+    },
+    {
+      "id": "long_script",
+      "text": "ANCHOR: Good evening. Typhoon Marisol is the top story tonight.\n[RADAR GRAPHIC]\nMarisol is about 250 kilometers east of Baler, Aurora. It is moving west northwest at 15 kilometers per hour. The typhoon has maximum sustained winds of 140 kilometers per hour. PAGASA has raised Signal No. 3 over Aurora. Signal No. 2 is up over Quezon, Nueva Ecija and Isabela. Signal No. 1 covers Metro Manila and Bulacan. Landfall is expected on Friday afternoon. Heavy rain is likely across central Luzon. Up to 250 millimeters of rain could fall in the next two days. Flooding is likely in low areas of Pampanga. Classes at all levels are suspended in Aurora tomorrow. Government offices in Aurora will also close. The coast guard has stopped all sea travel from Dingalan.\n[CUT TO REPORTER]\nREPORTER: Here in Baler, families have started moving to evacuation centers. The provincial government says 8,000 people have been evacuated so far. Shops are closing early, and the streets are quiet. Fishermen pulled their boats far up the beach this afternoon. Officials say the sea wall should protect the town center.\n[BACK TO STUDIO]\nANCHOR: Thank you. Marisol is a weak tropical storm with winds of 140 kilometers per hour. Forecasters say it will weaken after crossing the Sierra Madre. It should exit into the West Philippine Sea by Sunday. The provincial government now says 5,000 people have been evacuated so far. Relief goods are on the way from Manila. Keep watching for our next update at 10 PM. Stay safe, everyone.",
+      "contradictions": [
+        {"a": "The typhoon has maximum sustained winds of 140", "b": "weak tropical storm"},
+        {"a": "8,000 people have been evacuated", "b": "5,000 people have been evacuated"}
+      ]
+    }
+  ]
+}
