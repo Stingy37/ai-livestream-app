@@ -1,0 +1,145 @@
+{
+  "_note": "SYNTHETIC TEST DATA. Typhoon Marisol, all outlets, URLs, people and numbers are invented. Field names match src/contracts/documents.py ScrapedDocument. published_at and fetched_at are ISO 8601 strings; convert with datetime.fromisoformat() before building ScrapedDocument(**d). metadata.fake_id (doc_01 .. doc_10) matches scraped_documents_labels.json.",
+  "documents": [
+    {
+      "url": "https://news.example.invalid/bulletin-18",
+      "title": "Tropical Cyclone Bulletin No. 18: Typhoon Marisol",
+      "main_text": "Typhoon Marisol made landfall in Aurora province at about 8 PM on October 14, 2026. The Republic Weather Bureau reported maximum sustained winds of 130 km/h near the center. Tropical Cyclone Wind Signal No. 3 remains raised over Aurora, Isabela, Quezon and Nueva Vizcaya. The typhoon is moving west-northwest at 15 km/h across northern Luzon. Rainfall of up to 200 mm is expected in the next 24 hours. Residents in low-lying areas should follow instructions from the National Disaster Office. The next bulletin will be issued at 5 AM.",
+      "source_name": "Republic Weather Bureau",
+      "published_at": "2026-10-15T05:00:00+08:00",
+      "author": null,
+      "fetched_at": "2026-10-15T06:10:00+08:00",
+      "metadata": {
+        "fake_id": "doc_01",
+        "source_type": "government weather agency",
+        "language": "en"
+      }
+    },
+    {
+      "url": "https://news.example.invalid/marisol-landfall",
+      "title": "Typhoon Marisol slams into northern Philippines",
+      "main_text": "Typhoon Marisol slammed into Aurora province on the evening of October 14, 2026, authorities said. The Republic Weather Bureau recorded maximum sustained winds of 130 km/h. More than 12,000 people were moved to evacuation centers in Aurora and Isabela, according to the National Disaster Office. Signal No. 3 was raised over Aurora, Isabela, Quezon and Nueva Vizcaya. The storm is heading west-northwest at 15 km/h over Luzon. Flights at several northern airports were cancelled. Officials warned of flooding and landslides in mountain areas.",
+      "source_name": "Pacific Wire Service",
+      "published_at": "2026-10-15T07:30:00+08:00",
+      "author": "Wire staff",
+      "fetched_at": "2026-10-15T09:00:00+08:00",
+      "metadata": {
+        "fake_id": "doc_02",
+        "source_type": "national wire",
+        "language": "en"
+      }
+    },
+    {
+      "url": "https://news.example.invalid/marisol-makes-landfall",
+      "title": "Typhoon Marisol makes landfall in Aurora",
+      "main_text": "MENU  Home | News | Weather | Sports | Opinion | Subscribe\nWe use cookies to improve your experience. By continuing you agree to our cookie policy. [Accept]\nTyphoon Marisol makes landfall in Aurora\nTyphoon Marisol makes landfall in Aurora\nBy Staff Reporter\nTyphoon Marisol made landfall in Aurora province around 8 PM on October 14, 2026, bringing heavy rain across northern Luzon. The weather bureau said maximum sustained winds reached 130 km/h. Around 12,000 residents were evacuated, the National Disaster Office said. Warning Signal No. 3 is in effect for Aurora, Isabela, Quezon and Nueva Vizcaya. The storm is crawling west-northwest at 15 km/h. Schools in the affected provinces are closed until further notice.\nRead more: Where to find help\nShare this: Link | Email | Print\nRelated articles\n- Airlines cancel flights\n- How to prepare a go bag\n- Fuel prices rise again",
+      "source_name": "The Daily Meridian",
+      "published_at": "2026-10-15T08:15:00+08:00",
+      "author": "Staff Reporter",
+      "fetched_at": "2026-10-15T09:05:00+08:00",
+      "metadata": {
+        "fake_id": "doc_03",
+        "source_type": "newspaper",
+        "language": "en"
+      }
+    },
+    {
+      "url": "https://news.example.invalid/marisol-hits-aurora",
+      "title": "Marisol hits Aurora with fierce winds",
+      "main_text": "Typhoon Marisol hit Aurora province on the night of October 14, 2026, with maximum sustained winds of 150 km/h, the Northern Courier has learned. Forecasters at the Republic Weather Bureau said the typhoon is moving west-northwest at 15 km/h. The National Disaster Office said about 12,000 people left their homes for evacuation centers. Signal No. 3 covers Aurora, Isabela, Quezon and Nueva Vizcaya. Farmers in Isabela fear heavy losses to rice and corn. Power was cut in several towns in Aurora. Rainfall of up to 200 mm is forecast.",
+      "source_name": "Northern Courier",
+      "published_at": "2026-10-15T06:45:00+08:00",
+      "author": "Ramon Estrada",
+      "fetched_at": "2026-10-15T09:10:00+08:00",
+      "metadata": {
+        "fake_id": "doc_04",
+        "source_type": "newspaper",
+        "language": "en"
+      }
+    },
+    {
+      "url": "https://news.example.invalid/marisol-live-updates",
+      "title": "WATCH: Typhoon Marisol live updates",
+      "main_text": "Skip to content | Live TV | Programs | Search\nWATCH: Typhoon Marisol live updates\nTyphoon Marisol live updates\nTyphoon Marisol made landfall in Quezon province at about 8 PM on October 14, 2026. The Republic Weather Bureau said maximum sustained winds were 130 km/h. Signal No. 3 is up over Aurora, Isabela, Quezon and Nueva Vizcaya. About 12,000 people are staying in evacuation centers, according to the National Disaster Office. The storm is moving west-northwest at 15 km/h. Our correspondents report strong gusts and rising rivers.\nRead more\nShare this story\nRelated articles: Evacuation center guide | Road closures list",
+      "source_name": "Metro Vision News Online",
+      "published_at": "2026-10-15T09:20:00+08:00",
+      "author": null,
+      "fetched_at": "2026-10-15T09:30:00+08:00",
+      "metadata": {
+        "fake_id": "doc_05",
+        "source_type": "TV network website",
+        "language": "en"
+      }
+    },
+    {
+      "url": "https://news.example.invalid/marisol-aurora-coast",
+      "title": "Marisol batters the Aurora coast",
+      "main_text": "Typhoon Marisol made landfall in Aurora province at about 2 AM on October 15, 2026, residents and local officials said. The Republic Weather Bureau recorded maximum sustained winds of 130 km/h. Signal No. 4 was raised over Aurora, while Signal No. 3 covers Isabela, Quezon and Nueva Vizcaya. The National Disaster Office said about 12,000 people were evacuated. The storm is moving west-northwest at 15 km/h across northern Luzon. Several coastal villages in Aurora were flooded. Local rescuers are still checking remote barangays.",
+      "source_name": "Sierra Madre Gazette",
+      "published_at": "2026-10-15T10:05:00+08:00",
+      "author": "Lita Navarro",
+      "fetched_at": "2026-10-15T10:30:00+08:00",
+      "metadata": {
+        "fake_id": "doc_06",
+        "source_type": "regional outlet",
+        "language": "en"
+      }
+    },
+    {
+      "url": "https://news.example.invalid/night-in-the-gym",
+      "title": "A night in the school gym",
+      "main_text": "Our family spent the night in the old school gym in Barangay Mabuhay. Aling Rosa brought rice and canned sardines for the neighbors. Mang Tonyo tied down the roof of his sari-sari store with ropes. The wind howled for hours and the lights went out around midnight. By morning the road to the market was covered in fallen branches. The kids slept through most of it. We are grateful that everyone in our street is safe.",
+      "source_name": "Storm Notes Blog",
+      "published_at": "2026-10-15T12:00:00+08:00",
+      "author": "Joy M.",
+      "fetched_at": "2026-10-15T12:20:00+08:00",
+      "metadata": {
+        "fake_id": "doc_07",
+        "source_type": "personal blog",
+        "language": "en"
+      }
+    },
+    {
+      "url": "https://news.example.invalid/marisol-roundup",
+      "title": "Typhoon Marisol roundup: what people are posting",
+      "main_text": "Trending now: #Marisol | Top posts | Newest first\nCookie notice: this site uses cookies.\nTyphoon Marisol roundup: what people are posting\nTyphoon Marisol roundup: what people are posting\nUsers report that Typhoon Marisol came ashore in Aurora on the night of October 14, 2026. One widely shared post says the Republic Weather Bureau measured 130 km/h winds. Another post claims 30,000 people have been evacuated in Aurora and Isabela, citing the National Disaster Office. Several users say Signal No. 3 is up over Aurora, Isabela, Quezon and Nueva Vizcaya. Photos show floodwater in towns of Aurora. A few posts note the storm is moving west-northwest at 15 km/h. Many users are asking for rescue boats.\nRead more | Share this | Report a post\nRelated articles\n- Marisol: how to help",
+      "source_name": "Typhoon Watch Roundup",
+      "published_at": "2026-10-15T11:00:00+08:00",
+      "author": null,
+      "fetched_at": "2026-10-15T11:15:00+08:00",
+      "metadata": {
+        "fake_id": "doc_08",
+        "source_type": "social media roundup",
+        "language": "en"
+      }
+    },
+    {
+      "url": "https://news.example.invalid/philippines-typhoon",
+      "title": "Typhoon Marisol batters the Philippines",
+      "main_text": "Typhoon Marisol struck Aurora province in the Philippines on October 14, 2026, the Republic Weather Bureau said. The storm had maximum sustained winds of 130 km/h. Signal No. 3 was raised over Aurora, Isabela, Quezon and Nueva Vizcaya. The National Disaster Office said about 12,000 people were evacuated. The typhoon is moving west-northwest at 15 km/h across northern Luzon. International aid groups are on standby. Officials said the storm came ashore in Quezon late on October 14 before crossing the mountains. Heavy rain of up to 200 mm is expected.",
+      "source_name": "Global Pacific Report",
+      "published_at": "2026-10-15T04:30:00+08:00",
+      "author": "Foreign desk",
+      "fetched_at": "2026-10-15T09:40:00+08:00",
+      "metadata": {
+        "fake_id": "doc_09",
+        "source_type": "international outlet",
+        "language": "en"
+      }
+    },
+    {
+      "url": "https://news.example.invalid/marisol-cover-up",
+      "title": "SUPER TYPHOON MARISOL: what they are not telling you",
+      "main_text": "Super Typhoon Marisol devastated Batangas province on October 13, 2026, with maximum sustained winds of 190 km/h. The Republic Weather Bureau has raised Signal No. 5 over Batangas and southern Luzon. The National Disaster Office says 80,000 people were evacuated. The storm is racing east at 40 km/h. Rainfall of 500 mm is reported. Experts say the government is hiding the true scale of the disaster. Share this post before it is deleted.",
+      "source_name": "Daily Buzz Today",
+      "published_at": "2026-10-15T13:00:00+08:00",
+      "author": null,
+      "fetched_at": "2026-10-15T13:05:00+08:00",
+      "metadata": {
+        "fake_id": "doc_10",
+        "source_type": "low-quality tabloid site",
+        "language": "en"
+      }
+    }
+  ]
+}

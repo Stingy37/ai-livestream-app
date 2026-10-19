@@ -1,0 +1,6 @@
+openai
+transformers
+torch
+sentencepiece
+nltk
+pytest
