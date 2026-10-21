@@ -782,8 +782,8 @@ const THUMB = new URLSearchParams(location.search).get("thumb") === "1";
    ticker labels, place names) goes through t(). Operator-only controls (key hint, data editor) stay English.
    Add a language by adding a table here; tf() fills {placeholders}. HOME is the time zone the on-air times use. */
 const LANG = (new URLSearchParams(location.search).get("lang") || "en").toLowerCase();
-const LOCALE = { tl: "fil-PH", ja: "ja-JP" }[LANG] || "en-US";
-const HOME = LANG === "ja" ? { tz: "Asia/Tokyo", label: "JST" } : { tz: "Asia/Manila", label: "UTC+8" };
+const LOCALE = { tl: "fil-PH", ja: "ja-JP", zh: "zh-TW" }[LANG] || "en-US";
+const HOME = LANG === "ja" ? { tz: "Asia/Tokyo", label: "JST" } : LANG === "zh" ? { tz: "Asia/Taipei", label: "台灣時間" } : { tz: "Asia/Manila", label: "UTC+8" };
 const I18N = {
   tl: {
     // static markup
@@ -880,6 +880,63 @@ const I18N = {
     "SHOW CLOSE": "エンディング", "STATION ID": "ステーションID",
     "Show Open": "オープニング", "Current Position": "現在の位置", "Track Forecast": "進路予報", "Local Impacts": "沖縄への影響",
     "Show Close": "エンディング"
+  },
+  zh: {
+    // static markup (Traditional Chinese, Taiwan usage)
+    "Typhoon Desk": "颱風資訊台", "Manila · Taipei": "台北・馬尼拉", "Okinawa · Tokyo": "沖繩・東京",
+    "TRACK + FORECAST": "路徑與預報", "JMA forecast": "日本氣象廳預報",
+    "Tropical storm": "輕度颱風以下", "Typhoon": "颱風", "Very strong": "非常強", "Violent / super": "猛烈・超級颱風",
+    "Past track": "過去路徑", "Forecast center": "預報中心位置", "Probability area (70%)": "70%機率範圍", "PAR boundary": "菲律賓責任區邊界",
+    "Times in UTC+8 (Manila, Taipei)": "時間為台灣時間（UTC+8）",
+    "Latest numbers": "最新數據", "by agency": "各機關", "Agency": "機關", "Winds": "最大風速", "Gusts": "最大陣風",
+    "Pressure": "中心氣壓", "Moving": "移動", "Warnings": "警特報",
+    "WHERE WILL IT GO?": "路徑參考：數值模式", "Computer model runs": "數值模式預測（僅供參考，非官方預報）",
+    "US GEFS ensemble": "美國 GEFS 系集", "US Navy FNMOC ensemble": "美國海軍 FNMOC 系集", "Official JMA forecast": "日本氣象廳官方預報",
+    "Reading the lines": "怎麼看這些線", "spaghetti plot": "系集路徑圖",
+    "Chance of a close pass": "接近機率", "center within 100 km": "中心通過100公里內",
+    "How much they agree": "預測分歧程度", "typical spread": "典型分散範圍",
+    "UPDATES": "最新消息", "ON AIR": "播出中", "Waiting for the first package": "等待第一筆播出資料", "ALERT": "警戒",
+    "SATELLITE": "衛星雲圖",
+    "EXPLAIN": "每一條線是<b>氣象模式的一次預測</b>，各自從略為不同的初始條件計算。<b>線條集中</b>表示模式預測一致；<b>線條分散</b>表示路徑仍不確定。",
+    // generated labels
+    "INFRARED · ENHANCED": "紅外線・色調強化", "TRUE COLOR": "真實色彩",
+    "PHILIPPINE AREA OF RESPONSIBILITY": "菲律賓責任區（PAR）", "INSIDE PAR": "PAR內", "OUTSIDE PAR": "PAR外",
+    "Local name: Rosal": "菲律賓命名：Rosal", "About {km} east of the boundary": "位於邊界以東約{km}",
+    "Past": "路徑",
+    "Labels in UTC+8 (Manila, Taipei). Storm-force radius in red, gale-force radius dashed yellow. Center position: {src}, {when} UTC+8.":
+      "時間為台灣時間（UTC+8）。紅色為暴風範圍，黃色虛線為強風範圍。中心位置：{src}，{when}（台灣時間）。",
+    "CLOSEST PASS · {town}": "最接近・{town}", "CLOSEST PASS OF THE FORECAST CENTER": "預報中心最接近處",
+    "About {km} km from the center": "距中心約{km}公里", "Around {when} local time": "當地時間 {when}前後",
+    "center line, not an impact zone": "預測中心路徑（非影響範圍）", "Official forecast": "官方預報",
+    "Philippines": "菲律賓", "Taiwan": "台灣", "Japan": "日本", "Guam": "關島",
+    "from center": "距中心", "Camera": "攝影機", "via YouTube": "（YouTube）",
+    "Storm": "颱風", "Center": "中心", "Distances are from the storm center": "距離以颱風中心起算",
+    "Wind signals": "風信號（菲律賓）", "No. {n} raised": "已發布{n}號", "up to No. {n} possible": "最高可能{n}號", "none raised": "未發布",
+    "Closest pass": "最接近", "around {when}": "{when}前後",
+    "Closest pass: storm center, JMA forecast, local time. Source: {src}": "最接近：颱風中心、日本氣象廳預報、當地時間。資料來源：{src}",
+    "Model runs from {when} UTC+8": "{when}（台灣時間）起算的模式預測", "{n} runs, thick line = average": "{n}條，粗線＝平均",
+    "In 3 days": "3天後", "In 5 days": "5天後",
+    "{i} of {n}": "{i}/{n}", "Updated {when} UTC+8": "更新 {when}（台灣時間）", "{n} min ago": "{n}分鐘前", "delayed": "延遲",
+    "Generated {when}": "製作 {when}", "Sources": "資料來源", "Package": "資料包",
+    "AI-written script, checked for contradictions": "AI撰寫稿件（已檢查矛盾）",
+    // place names (map, impact cards, camera wall, model targets)
+    "Manila": "馬尼拉", "Legazpi": "黎牙實比", "Virac": "維拉克", "Aparri": "阿帕里", "Basco": "巴斯科", "Taipei": "台北", "Yilan": "宜蘭",
+    "Hualien": "花蓮", "Taitung": "台東", "Yonaguni": "與那國島", "Ishigaki": "石垣島", "Miyakojima": "宮古島", "Naha": "那霸",
+    "Yaeyama Is.": "八重山群島", "Batanes": "巴丹群島", "Okinawa": "沖繩",
+    "Ishigaki Port": "石垣港", "Lanyang Plain, Yilan": "宜蘭・蘭陽平原", "Ishigaki City": "石垣市", "Naha Port": "那霸港",
+    "Kabira Bay, Ishigaki": "石垣島・川平灣", "Tamsui, New Taipei": "新北・淡水", "Okinawa, Japan": "日本沖繩",
+    // desk vocabulary: JMA intensity classes, status tags, ticker labels
+    "Violent": "猛烈", "Strong": "強", "Severe trop. storm": "颱風",
+    "WARNING": "警報", "WATCH": "注意", "MONITORING": "監測中", "SIGNAL NO. {n}": "{n}號風信號",
+    "WINDS": "風速說明", "SAFETY": "安全資訊",
+    "Follow your local government's evacuation orders. This stream is not an official warning service.":
+      "請依各地方政府的撤離指示行動。本直播並非官方警報服務。",
+    "Max winds": "最大風速", "Movement": "移動", "Next advisory": "下次發布",
+    // scene names (package titles and headline tags)
+    "SHOW OPEN": "開場", "CURRENT POSITION": "目前位置", "TRACK FORECAST": "路徑預報", "LOCAL IMPACTS": "對台灣的影響",
+    "SHOW CLOSE": "結尾", "STATION ID": "台呼",
+    "Show Open": "開場", "Current Position": "目前位置", "Track Forecast": "路徑預報", "Local Impacts": "對台灣的影響",
+    "Show Close": "結尾"
   }
 };
 const t = s => (I18N[LANG] && I18N[LANG][s]) || s;
@@ -889,7 +946,9 @@ const NOTE = {
   tl: { ten: a => `${a}: 10-minutong average ng hangin`, one: a => `${a}: 1-minutong hangin, kaya mas mataas ang basa`, sep: "; ",
         tail: ". Nagkakaiba rin ang mga numero ayon sa oras ng paglabas at sa pagsusuri." },
   ja: { ten: a => `${a}：10分間平均風速`, one: a => `${a}：1分間平均風速（値は大きめに出ます）`, sep: "、",
-        tail: "。発表時刻や解析の違いによっても数値は異なります。" }
+        tail: "。発表時刻や解析の違いによっても数値は異なります。" },
+  zh: { ten: a => `${a}：10分鐘平均風速`, one: a => `${a}：1分鐘平均風速（數值偏高）`, sep: "；",
+        tail: "。發布時間與分析方式不同，數值也會有差異。" }
 };
 function tNote(note) {
   const L = NOTE[LANG];
@@ -898,7 +957,7 @@ function tNote(note) {
   const one = (note.match(/(?:^|; )([^;:]+): 1-minute winds, which read higher/) || [])[1];
   if (!ten && !one) return note;
   const parts = [];
-  if (ten) parts.push(L.ten(LANG === "ja" ? ten.replace(/, /g, "・") : ten));
+  if (ten) parts.push(L.ten(LANG === "ja" || LANG === "zh" ? ten.replace(/, /g, "・") : ten));
   if (one) parts.push(L.one(one));
   return parts.join(L.sep) + L.tail;
 }
@@ -911,9 +970,17 @@ function tTag(tag) {
 }
 // header: in Japanese the storm goes by its JMA number (台風30号), taken from the published names line
 const jmaName = st => LANG === "ja" && /Japan:\s*(台風\d+号)\s*([^·]*)/.exec(st.names || "");
-const stormLabel = () => { const jp = jmaName(DATA.storm); return jp ? `${jp[1]} ${jp[2].trim()}`.trim() : `${DATA.storm.title} ${DATA.storm.name}`; };
+const twName = st => LANG === "zh" && /Taiwan:\s*([^·]+)/.exec(st.names || "");
+const stormLabel = () => { const jp = jmaName(DATA.storm), tw = twName(DATA.storm);
+  return jp ? `${jp[1]} ${jp[2].trim()}`.trim() : tw ? `${tw[1].trim()}颱風` : `${DATA.storm.title} ${DATA.storm.name}`; };
 function stormHeader() {
-  const st = DATA.storm, jp = jmaName(st);
+  const st = DATA.storm, jp = jmaName(st), tw = twName(st);
+  if (tw) {
+    $("stormTitle").innerHTML = `${esc(tw[1].trim())}颱風 <em>${esc(st.name)}</em>`;
+    $("stormNames").textContent = `${st.title} ${st.name}` + (st.names || "").split("·").map(x => x.trim()).filter(x => !x.startsWith("Taiwan:"))
+      .map(x => " · " + x.replace(/^(\w+):/, (m, k) => t(k) + ":")).join("");
+    return;
+  }
   if (jp) {
     $("stormTitle").innerHTML = `${esc(jp[1])} <em>${esc(jp[2].trim() || st.name)}</em>`;
     $("stormNames").textContent = `${st.title} ${st.name}` + (st.names || "").split("·").map(x => x.trim()).filter(x => !x.startsWith("Japan:"))
@@ -1163,7 +1230,7 @@ function drawImpact() {
   const key = JSON.stringify([DATA.impact, DATA.center, DATA.forecast, DATA.cams]);
   if (key === impactKey) return; impactKey = key;
   const byName = Object.fromEntries(DATA.cities.map(c => [c.n, c]));
-  $("impactCols").innerHTML = (LANG === "ja" ? ["JP", "TW", "PH"] : ["PH", "TW", "JP"]).map(k => {
+  $("impactCols").innerHTML = (LANG === "ja" ? ["JP", "TW", "PH"] : LANG === "zh" ? ["TW", "JP", "PH"] : ["PH", "TW", "JP"]).map(k => {
     const x = DATA.impact[k];
     let top;
     if (x.cam != null && DATA.cams[x.cam]) top = `<div class="cam">${camTile(DATA.cams[x.cam], { lazy: true })}</div>`;
@@ -1404,7 +1471,7 @@ function drawCPA(tg, box) {
   const km = Math.round(ca.d / 10) * 10, when = new Date(Math.round(ca.t / 3600e3) * 3600e3).toISOString();
   const lines = [
     [20, 14, "#ffc23a", 700, t("CLOSEST PASS OF THE FORECAST CENTER")],
-    [47, 27, "#ffffff", 800, LANG === "ja" ? `${t(CC_NAME[c.cc] || "")}・${t(c.n)}` : `${t(c.n).toUpperCase()}, ${t(CC_NAME[c.cc] || "").toUpperCase()}`],
+    [47, 27, "#ffffff", 800, LANG === "ja" || LANG === "zh" ? `${t(CC_NAME[c.cc] || "")}・${t(c.n)}` : `${t(c.n).toUpperCase()}, ${t(CC_NAME[c.cc] || "").toUpperCase()}`],
     [71, 17, "#e6eef8", 500, tf("About {km} km from the center", { km: km.toLocaleString(LOCALE) }), "IBM Plex Sans, system-ui, sans-serif"],
     [92, 15, "#9fb4cc", 500, tf("Around {when} local time", { when: fmtTime(when, c.tz, { minute: undefined }) }), "IBM Plex Sans, system-ui, sans-serif"]];
   const est = ([, size, , , text, fam]) => textW(text, size * (fam ? 0.56 : 0.64));
@@ -1795,7 +1862,7 @@ let idleT; addEventListener("mousemove", () => { document.body.classList.remove(
    - intensity word: JMA's own classes from the JMA 10-minute wind (強い ≥ 33 m/s, 非常に強い ≥ 44, 猛烈な ≥ 54)
    - towns: closest-pass towns of the home country within 300 km of the forecast center (JMA's definition of 接近)
    scripts/youtube_thumbnail.sh screenshots the page once body[data-thumb-ready] is set. */
-const THUMB_COUNTRY = { ja: "JP", tl: "PH" }[LANG] || "JP";
+const THUMB_COUNTRY = { ja: "JP", tl: "PH", zh: "TW" }[LANG] || "JP";
 const SAKISHIMA = new Set(["Yonaguni", "Ishigaki", "Miyakojima"]);
 function thumbText() {
   const jma = (DATA.agencies || []).find(a => a.agency === "JMA") || {};

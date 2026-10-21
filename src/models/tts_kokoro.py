@@ -2,8 +2,8 @@
 
 Weights: ``config.json`` + ``kokoro-v1_0.pth`` + ``voices/<voice>.pt`` (downloaded once into
 ~/pre-models/Kokoro-82M). One model per process, built on first use; voices are cached by name.
-``lang_code`` 'a' = American English, 'b' = British English, 'j' = Japanese (the voice prefix decides: a*/b*/j*;
-Japanese needs ``misaki[ja]``).
+``lang_code`` 'a' = American English, 'b' = British English, 'j' = Japanese, 'z' = Mandarin (the voice prefix decides:
+a*/b*/j*/z*; Japanese needs ``misaki[ja]``, Mandarin ``misaki[zh]``).
 """
 
 from __future__ import annotations
@@ -55,10 +55,10 @@ def voice_path(kokoro_dir: Path, voice: str) -> Path:
 def synthesize(text: str, voice: str, kokoro_dir: Path, device: str = "cuda", speed: float = 1.0,
                sample_rate: int = 24000) -> tuple[np.ndarray, int]:
     """Spoken audio (float32 mono) for ``text`` with ``voice``; sentences are synthesised in order."""
-    lang = {"b": "b", "j": "j"}.get(voice[:1], "a")
+    lang = {"b": "b", "j": "j", "z": "z"}.get(voice[:1], "a")
     pipe = _pipeline(Path(kokoro_dir), device, lang)
     vp = str(voice_path(Path(kokoro_dir), voice))
-    text = normalise_ja(text) if lang == "j" else normalise_for_speech(text)
+    text = normalise_ja(text) if lang == "j" else normalise_zh(text) if lang == "z" else normalise_for_speech(text)
     chunks: list[np.ndarray] = []
     with _lock:
         for _gs, _ps, audio in pipe(text, voice=vp, speed=speed, split_pattern=r"\n+"):
@@ -120,6 +120,33 @@ def normalise_ja(text: str) -> str:
     for k, v in _JA_UNITS:
         text = re.sub(rf"(?<=\d)\s*{re.escape(k)}(?![A-Za-z])", v, text)
     for k, v in _JA_AGENCY.items():
+        text = re.sub(rf"(?<![A-Za-z]){k}(?![A-Za-z])", v, text)
+    text = re.sub(r"\s+", " ", text).strip()
+    return re.sub(r"(?<=[。！？])\s*", "\n", text).strip()
+
+
+# Mandarin (Taiwan): the same idea for Kokoro 'z', in the words a Taiwanese newsreader uses (氣象署, 百帕, 公里, 公尺)
+_ZH_AGENCY = {"JMA": "日本氣象廳", "JTWC": "美軍聯合颱風警報中心", "PAGASA": "菲律賓氣象局", "CWA": "中央氣象署",
+              "NOAA": "美國國家海洋暨大氣總署", "UTC": "世界協調時間", "JST": "日本時間", "PHT": "菲律賓時間", "PAR": "菲律賓責任區"}
+_ZH_UNITS = [("hPa", "百帕"), ("mm", "毫米"), ("km", "公里"),
+             ("kt", "節"), ("knots", "節"), ("%", "%"), ("m", "公尺")]
+
+
+def normalise_zh(text: str) -> str:
+    """Mandarin script for Kokoro 'z': agency acronyms and units in Chinese, coordinates as 北緯/東經, clock times as
+    點/分, one sentence per line."""
+    # no \b before the digits: CJK characters count as word characters
+    text = re.sub(_ISO.pattern.removeprefix(r"\b"), lambda m: f"世界協調時間{int(m.group(2))}月{int(m.group(3))}日{int(m.group(4))}點", text)
+    # speeds the way they are read in Taiwan: 每小時215公里, 每秒85公尺 (keeping a 每秒 the translation already wrote)
+    text = re.sub(r"(?:每小時\s*)?(\d+(?:\.\d+)?)\s*(?:km/h|kph)(?![A-Za-z])", r"每小時\1公里", text)
+    text = re.sub(r"(?:每秒\s*)?(\d+(?:\.\d+)?)\s*m/s(?![A-Za-z])", r"每秒\1公尺", text)
+    text = re.sub(r"(\d+(?:\.\d+)?)\s*°?\s*N\b", r"北緯\1度", text)
+    text = re.sub(r"(\d+(?:\.\d+)?)\s*°?\s*E\b", r"東經\1度", text)
+    text = re.sub(r"(?<![\d:])(\d{1,2}):(\d{2})(?![\d:])", lambda m: f"{int(m.group(1))}點" + (f"{int(m.group(2))}分" if int(m.group(2)) else ""), text)
+    text = re.sub(r"(\d+(?:\.\d+)?)\s*%", r"百分之\1", text)
+    for k, v in _ZH_UNITS:
+        text = re.sub(rf"(?<=\d)\s*{re.escape(k)}(?![A-Za-z])", v, text)
+    for k, v in _ZH_AGENCY.items():
         text = re.sub(rf"(?<![A-Za-z]){k}(?![A-Za-z])", v, text)
     text = re.sub(r"\s+", " ", text).strip()
     return re.sub(r"(?<=[。！？])\s*", "\n", text).strip()

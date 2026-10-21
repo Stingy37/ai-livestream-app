@@ -55,13 +55,29 @@ def language_name(code: str) -> str:
     return LANGUAGE_NAMES.get(c, LANGUAGE_NAMES.get(c.split("-")[0], code))
 
 
+# how a newsreader in that market writes it (the script is read by TTS for that market)
+LANGUAGE_STYLE = {"zh-tw": "Use Traditional Chinese characters and Taiwan usage, as on a Taiwanese newscast (颱風, 中央氣象署, 公尺, 公里, "
+                           "百帕); never Simplified Chinese."}
+_LOCAL_NAME = re.compile(r"\(([^()]*[\u3040-\u30ff\u3400-\u9fff][^()]*)\)")
+
+
+def local_names_line(code: str, scene: Scene) -> str:
+    """Style note for the language, and the local names the segment brief gives in parentheses (e.g. "Champi (薔琵)"),
+    so the script says the storm's name the way that audience knows it instead of the English one."""
+    out = [LANGUAGE_STYLE.get((code or "").strip().lower(), "")]
+    names = list(dict.fromkeys(_LOCAL_NAME.findall(scene.topic_description or "")))
+    if names:
+        out.append("The segment brief gives these local names; use them instead of the English names they follow: " + "; ".join(names) + ".")
+    return " ".join(x for x in out if x)
+
+
 def is_english(code: str) -> bool:
     return (code or "en").strip().lower().split("-")[0] == "en"
 
 
 TRANSLATE_PROMPT = """You translate broadcast scripts. Translate the script into {lang} faithfully, sentence by sentence, as it would be read on a news broadcast in that language.
 Keep every fact exactly: write every number as digits exactly as in the script, keep units, agency names and place names as they are. Add nothing, drop nothing, explain nothing.
-Leave out time-of-day greetings or sign-offs ("good morning", "good evening"): the segment airs at any hour.
+Leave out time-of-day greetings or sign-offs ("good morning", "good evening"): the segment airs at any hour.{extra}
 Output only the translated spoken script."""
 
 BACK_TRANSLATE_PROMPT = """Translate this {lang} broadcast script into English literally and completely, sentence by sentence, for a fact check.
@@ -92,6 +108,10 @@ SENSITIVE_TERMS = ["landfall*", "evacuat*", "casualt*", "death*", "dead", "kille
                    "closed", "closure*", "shut down", "state of emergency", "curfew*", "evacuation order*", "mandatory",
                    "record-breaking", "record high", "record low", "new record", "unprecedented", "rare", "historic*",
                    "catastroph*", "devastat*", "certainly", "will definitely", "guarantee*"]
+
+# terms a faithful translation swaps for each other (停班停課 back-translates as "work and class suspensions" for the
+# draft's "closures"): a term is new only when the draft has no term of its group
+TERM_GROUPS = [{"closed", "closure", "suspend", "suspension", "cancel", "shut down"}]
 
 COMMON_CAPS = {"I", "A", "An", "The", "UTC", "AM", "PM", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday",
                "Saturday", "Sunday", "January", "February", "March", "April", "May", "June", "July", "August",
@@ -175,13 +195,19 @@ def new_terms(rewrite: str, draft: str) -> list[str]:
     def has(text: str, term: str) -> bool:
         pat = r"\b" + re.escape(term.rstrip("*")) + ("" if term.endswith("*") else r"\b(?!-)")
         return re.search(pat, text.lower()) is not None
-    return [t.rstrip("*") for t in terms if has(rewrite, t) and not has(draft, t)]
+    def in_draft(term: str) -> bool:
+        group = next((g for g in TERM_GROUPS if term.rstrip("*") in g), None)
+        if group is None:
+            return has(draft, term)
+        return any(has(draft, t + ("" if t in ("closed", "shut down") else "*")) for t in group)
+    return [t.rstrip("*") for t in terms if has(rewrite, t) and not in_draft(t)]
 
 
 # generic place-type words a translation adds around a name it already has (沖縄本島 -> "Okinawa Main Island",
 # グアム島 -> "Guam Island"); the name itself is still checked
 PLACE_TYPES = {"island", "islands", "main", "prefecture", "city", "town", "village", "region", "regions", "area", "areas",
-               "sea", "ocean", "strait", "bay", "port", "peninsula", "coast", "province", "district", "archipelago"}
+               "sea", "ocean", "strait", "bay", "port", "peninsula", "coast", "province", "district", "archipelago",
+               "mountain", "mountains", "range", "plain", "valley", "county"}
 
 
 def new_names(rewrite: str, allowed_text: str) -> list[str]:
@@ -280,7 +306,8 @@ class ScriptRewriter:
         english = is_english(scene.language)
         lang = language_name(scene.language)
         language_line = "" if english else (f"\nWrite the final script in {lang}. The draft is in English; translate while you rewrite, "
-                                            "keeping every number as digits and every agency and place name as written.\n")
+                                            "keeping every number as digits and every agency and place name as written. "
+                                            f"{local_names_line(scene.language, scene)}\n")
         for i in range(1, self.max_attempts + 1):
             user = USER_TEMPLATE.format(title=scene.title, brief=scene.topic_description.strip(),
                                         rules=scene.system_instructions.strip() or "(none)", words=len(draft.split()),
@@ -343,7 +370,8 @@ class ScriptRewriter:
 
     def translate(self, scene: Scene, draft: str, lang: str, attempts: list[dict[str, Any]]) -> RewriteResult | None:
         try:
-            text = clean(self._plain_chat(TRANSLATE_PROMPT.format(lang=lang), draft))
+            extra = local_names_line(scene.language, scene)
+            text = clean(self._plain_chat(TRANSLATE_PROMPT.format(lang=lang, extra="\n" + extra if extra else ""), draft))
         except Exception as error:  # noqa: BLE001
             attempts.append({"attempt": "translate", "error": f"{type(error).__name__}: {error}"})
             return None

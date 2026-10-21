@@ -8,10 +8,10 @@
     }
   },
   "defaults": {
-    "language": "en",
+    "language": "zh-tw",
     "script_model": "qwen3-8b",
     "tts_model": "kokoro",
-    "tts_voice": "am_michael"
+    "tts_voice": "zm_yunyang"
   },
   "content_library": {
     "topic_descriptions": {
@@ -25,15 +25,15 @@
       },
       "track_forecast": {
         "label": "Track and intensity forecast",
-        "content": "The forecast track and intensity of Super Typhoon Champi over the next 72 to 120 hours as it relates to Taiwan: when CWA expects to issue sea and land typhoon warnings, the closest approach to Taiwan, the expected northward turn, the chance of landfall on the east coast, forecast uncertainty, and any disagreement between CWA, JMA and JTWC."
+        "content": "The forecast track and intensity of Super Typhoon Champi (薔琵) over the next 72 to 120 hours as it relates to Taiwan: when CWA expects to issue sea and land typhoon warnings, the closest approach to Taiwan, the expected northward turn, the chance of landfall on the east coast, forecast uncertainty, and any disagreement between CWA, JMA and JTWC."
       },
       "local_impacts": {
         "label": "Expected local impacts in Taiwan",
-        "content": "Expected impacts of Super Typhoon Champi in Taiwan, especially Yilan, Hualien, Taitung, Taipei, New Taipei and Keelung and the central mountains: CWA sea and land typhoon warnings, heavy and torrential rain advisories and rainfall totals, strong-wind probabilities, rough seas, ferry and flight disruptions, and any work and school closures announced by city and county governments, each attributed to the issuing authority."
+        "content": "Expected impacts of Super Typhoon Champi (薔琵) in Taiwan, especially Yilan, Hualien, Taitung, Taipei, New Taipei and Keelung and the central mountains: CWA sea and land typhoon warnings, heavy and torrential rain advisories and rainfall totals, strong-wind probabilities, rough seas, ferry and flight disruptions, and any work and school closures announced by city and county governments, each attributed to the issuing authority."
       },
       "show_close": {
         "label": "Show close",
-        "content": "A brief sign-off reminding viewers in Taiwan that the broadcast loops with refreshed data on Typhoon Champi and pointing them to the Central Weather Administration and their city or county government for warnings and closure decisions."
+        "content": "A brief sign-off reminding viewers in Taiwan that the broadcast loops with refreshed data on Typhoon Champi (薔琵) and pointing them to the Central Weather Administration and their city or county government for warnings and closure decisions."
       }
     },
     "system_instructions": {
@@ -94,7 +94,7 @@
           "sources": [
             "jma_tropical"
           ],
-          "language": "en"
+          "language": "zh-tw"
         }
       },
       {
@@ -111,7 +111,7 @@
             "jma_tropical",
             "jtwc_warnings"
           ],
-          "language": "en"
+          "language": "zh-tw"
         }
       },
       {
@@ -128,7 +128,7 @@
             "jma_forecast",
             "jtwc_warnings"
           ],
-          "language": "en"
+          "language": "zh-tw"
         }
       },
       {
@@ -143,9 +143,9 @@
             "cwa_ty_warn",
             "cwa_ty_news"
           ],
-          "language": "en",
+          "language": "zh-tw",
           "generation": {
-            "tts_voice": "af_heart"
+            "tts_voice": "zm_yunyang"
           }
         }
       },
@@ -160,7 +160,7 @@
           "sources": [
             "cwa_ty_news"
           ],
-          "language": "en"
+          "language": "zh-tw"
         }
       },
       {

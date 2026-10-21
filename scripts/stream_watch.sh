@@ -3,12 +3,13 @@
 #
 #   RUN_ID=jp-live-1 CONFIG_STEM=japan bash scripts/stream_watch.sh
 #   RUN_ID=jp-live-1 bash scripts/stream_watch.sh --loop 120 1800   # check every 120 s; exit on a problem or after 1800 s
+#   NO_PIPELINE=1 CONFIG_STEM=philippines EC2_STREAM_ID=philippines bash scripts/stream_watch.sh   # pipeline runs elsewhere
 #
 # Checks: pipeline launcher + harness, YouTube launcher + its last health line, encoder processes (Xvfb, chromium,
 # ffmpeg), vLLM, SearXNG, the preview server and its EC2 data path, the desk updater's freshness, and that the
 # harness log is still moving.
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-RUN_ID="${RUN_ID:?set RUN_ID}"; STEM="${CONFIG_STEM:-japan}"
+RUN_ID="${RUN_ID:-${NO_PIPELINE:+remote}}"; RUN_ID="${RUN_ID:?set RUN_ID}"; STEM="${CONFIG_STEM:-japan}"
 LOG="$REPO_ROOT/.run/livestream/$RUN_ID.log"
 YT_LOG="${YT_LOG:-$REPO_ROOT/.run/youtube/$STEM.console.log}"
 QUIET_MIN="${QUIET_MIN:-45}"; DESK_MAX_MIN="${DESK_MAX_MIN:-25}"
@@ -17,9 +18,12 @@ age_min() { [[ -e "$1" ]] && echo $(( ( $(date +%s) - $(stat -c %Y "$1") ) / 60 
 
 check() {
   local bad=() info=()
-  pgrep -f "scripts/run_livestream.sh" >/dev/null || bad+=("pipeline launcher not running")
-  pgrep -f "src/main.py" >/dev/null || bad+=("harness (main.py) not running")
-  (( $(age_min "$LOG") <= QUIET_MIN )) || bad+=("harness log quiet for $(age_min "$LOG") min")
+  # NO_PIPELINE=1: the pipeline runs on another machine (e.g. a teammate's server); watch only this side
+  if [[ "${NO_PIPELINE:-0}" != 1 ]]; then
+    pgrep -f "scripts/run_livestream.sh" >/dev/null || bad+=("pipeline launcher not running")
+    pgrep -f "src/main.py" >/dev/null || bad+=("harness (main.py) not running")
+    (( $(age_min "$LOG") <= QUIET_MIN )) || bad+=("harness log quiet for $(age_min "$LOG") min")
+  fi
   if [[ "${NO_YOUTUBE:-0}" != 1 ]]; then
     pgrep -f "scripts/youtube_live.py" >/dev/null || bad+=("youtube_live.py not running")
     for p in Xvfb chromium ffmpeg; do pgrep -x "$p" >/dev/null || pgrep -f "/usr/bin/$p|^$p " >/dev/null || bad+=("encoder: $p not running"); done

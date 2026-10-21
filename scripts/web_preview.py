@@ -46,6 +46,9 @@ class Handler(SimpleHTTPRequestHandler):
                 return self.end_headers()
             if rest.startswith("/live/"):
                 return self.proxy("GET")
+            if rest != "/" and (WEB_DIR / rest.lstrip("/")).resolve().is_relative_to(WEB_DIR.resolve()) and (WEB_DIR / rest.lstrip("/")).is_file():
+                self.path = rest + query            # another file of the site (thumb-hero.html, thumb/...) for this stream
+                return super().do_GET()
             self.path = "/champi-desk.html" + query
             return super().do_GET()
         if self.path.startswith(PROXIED):

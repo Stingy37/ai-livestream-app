@@ -1,8 +1,15 @@
-"""Render the YouTube thumbnail from live data: the stream page in thumbnail mode (html/champi-desk.html ?thumb=1).
+"""Render the YouTube thumbnail from live data.
 
-    /home/andyshi2/.conda/envs/ai-livestream/bin/python scripts/youtube_thumbnail.py --lang ja [--out output/youtube/thumb_ja.jpg]
+    /home/andyshi2/.conda/envs/ai-livestream/bin/python scripts/youtube_thumbnail.py --lang ja [--style hero|map] [--out output/youtube/thumb_ja.jpg]
 
-The page draws the newest Himawari infrared frame, the official track and cone, and a headline built from the
+Two styles (THUMB_STYLE, default hero):
+- hero: Himawari-9's rapid-scan image of the storm fills the frame (scripts/thumb_sat.py fetches it from CIRA RAMMB SLIDER),
+  with the motion arrow, the home agency's big number and a headline built from the desk (html/thumb-hero.html; ja, zh, tl, en).
+  Falls back to map when the rapid-scan sector is not on the storm. THUMB_SAT_PRODUCT: ir (default, day and night),
+  geocolor (true color, daylight only) or auto (geocolor while the sun is up over the storm).
+- map: the stream page in thumbnail mode (html/champi-desk.html ?thumb=1).
+
+The map page draws the newest Himawari infrared frame, the official track and cone, and a headline built from the
 desk (JMA intensity class, the towns the forecast center passes closest), then sets body[data-thumb-ready] to a
 JSON summary of what it drew. This script loads it in headless Chromium inside the encoder container (yt-encoder,
 over the DevTools protocol), waits for that flag, and saves a 1920x1080 JPEG under YouTube's 2 MB limit plus a
@@ -66,6 +73,9 @@ async def _capture(ws_url: str, url: str, out: Path, timeout: float) -> dict:
             ready = r.get("result", {}).get("value") or ""
             if ready:
                 break
+            r = await call("Runtime.evaluate", expression="document.body && document.body.dataset.thumbError || ''", returnByValue=True)
+            if r.get("result", {}).get("value"):
+                raise RuntimeError(f"thumbnail page failed: {r['result']['value']}")
             await asyncio.sleep(1)
         if not ready:
             raise TimeoutError(f"the page did not report thumbnail-ready within {timeout:.0f}s ({url})")
@@ -79,14 +89,27 @@ async def _capture(ws_url: str, url: str, out: Path, timeout: float) -> dict:
         return json.loads(ready)
 
 
-def render(lang: str = "", out: Path | None = None, timeout: float = 120) -> tuple[Path, dict]:
+def hero_ready() -> bool:
+    """Fetch the newest rapid-scan image for the hero style; False when it is not usable (not on the storm, SLIDER down)."""
+    r = subprocess.run([sys.executable, str(REPO / "scripts" / "thumb_sat.py"), "--desk", stream_page() + "live/desk.json",
+                        "--product", os.environ.get("THUMB_SAT_PRODUCT", "ir")], capture_output=True, text=True, timeout=300)
+    if r.returncode != 0:
+        print(f"hero image unavailable, using the map thumbnail: {(r.stderr or r.stdout).strip()[-300:]}", file=sys.stderr)
+    return r.returncode == 0
+
+
+def render(lang: str = "", out: Path | None = None, timeout: float = 120, style: str | None = None) -> tuple[Path, dict]:
     """Render and save the thumbnail; returns (path, the page's summary: sat time, desk time, text)."""
     out = Path(out or REPO / "output" / "youtube" / f"thumb_{lang or 'en'}.jpg")
     out.parent.mkdir(parents=True, exist_ok=True)
-    url = stream_page() + "?thumb=1&live=0" + (f"&lang={lang}" if lang else "")
+    style = style or os.environ.get("THUMB_STYLE", "hero")
+    if style == "hero" and hero_ready():
+        url = stream_page() + "thumb-hero.html" + (f"?lang={lang}" if lang else "")
+    else:
+        url = stream_page() + "?thumb=1&live=0" + (f"&lang={lang}" if lang else "")
     log = open(REPO / ".run" / "encoder" / "thumbnail_chromium.log", "a")
     proc = subprocess.Popen([UDOCKER, "run", "--nobanner", "-v", "/tmp:/tmp", "yt-encoder", "chromium", "--headless=new", "--no-sandbox",
-                             "--disable-gpu", "--hide-scrollbars", "--window-size=1920,1080", "--user-data-dir=/tmp/thumb-profile",
+                             "--disable-gpu", "--hide-scrollbars", "--window-size=1920,1080", f"--user-data-dir=/tmp/thumb-profile-{CDP_PORT}",
                              f"--remote-debugging-port={CDP_PORT}", "--remote-debugging-address=127.0.0.1", "about:blank"],
                             stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
     try:
@@ -115,10 +138,11 @@ def render(lang: str = "", out: Path | None = None, timeout: float = 120) -> tup
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--lang", default="", help="page language (ja, tl; empty = English)")
+    ap.add_argument("--lang", default="", help="language (ja, zh, tl; empty = English); the map style has no zh")
+    ap.add_argument("--style", default=None, choices=["hero", "map"], help="default: THUMB_STYLE or hero")
     ap.add_argument("--out", default=None)
     a = ap.parse_args()
-    path, info = render(a.lang, Path(a.out) if a.out else None)
+    path, info = render(a.lang, Path(a.out) if a.out else None, style=a.style)
     print(f"{path} ({path.stat().st_size / 1024:.0f} KB): {json.dumps(info['text'], ensure_ascii=False)}")
     return 0
 

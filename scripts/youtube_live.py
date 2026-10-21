@@ -44,6 +44,8 @@ STOP_FILE = REPO / ".run" / "STOP_YOUTUBE"
 STATE_DIR = REPO / ".run" / "youtube"
 PREVIEW = f"http://127.0.0.1:{os.environ.get('PREVIEW_PORT', '8095')}/"
 LANGUAGE_NAMES_JA = {"en": "英語", "ja": "日本語", "tl": "タガログ語", "zh": "中国語"}
+LANGUAGE_NAMES_ZH = {"en": "英語", "ja": "日語", "tl": "他加祿語", "zh": "中文"}
+YT_LANGUAGE = {"zh": "zh-TW", "zh-tw": "zh-TW"}   # YouTube language codes where ours differ
 
 
 def desk_storm() -> dict:
@@ -54,21 +56,26 @@ def desk_storm() -> dict:
 
 
 def metadata(cfg: dict, lang: str, thumb: dict) -> dict:
-    """Title, description and tags. Japanese-first for --lang ja (pattern: 【LIVE】台風NN号 + headline | topics | English),
-    from the same live summary the thumbnail drew; the narration language comes from the config."""
+    """Title, description and tags, from the same live summary the thumbnail drew; the narration language comes from the config.
+    ja: 【LIVE】猛烈な台風NN号 + headline | number + topics | English.  zh (Taiwan): 【直播】強烈颱風 name + headline | number + topics.
+    tl/en: LIVE + PAGASA name + headline. Key words first: phones cut titles at about 40 characters."""
     name = cfg.get("config", {}).get("name", "Typhoon Desk")
     audio = (cfg.get("defaults") or {}).get("language", "en")
     st = desk_storm() or cfg.get("config", {}).get("storm", {})
     en_storm = f"{st.get('title', 'Typhoon')} {st.get('name', '')}".strip().title()
     tx = thumb.get("text", {})
     towns = [place_ja(t) for t in tx.get("towns", [])]
+    stamp = tx.get("stamp", "")
     if lang == "ja":
         voice = "" if audio == "ja" else f"（{LANGUAGE_NAMES_JA.get(audio, audio)}解説）"
-        title = f"【LIVE】{tx.get('num', '')} {tx.get('head', '')}｜進路・予報円・衛星画像{voice}｜{en_storm} Live"
+        word = tx.get("kicker", "").removesuffix("勢力で")          # 猛烈な / 非常に強い / 強い (JMA class)
+        title = f"【LIVE】{word}{tx.get('num', '')} {tx.get('head', '')}｜{stamp + ' ' if stamp else ''}最新進路・衛星画像{voice}｜{en_storm} Live"
         num, _, jname = ((st.get("names") or "").split("Japan:")[-1].strip() or tx.get("num", "")).partition(" ")
         intl = f"{num}（{jname.strip()}）" if jname.strip() else num
+        town, _, when = tx.get("when", "").partition(" 最接近 ")     # "与那国島 最接近 23日(金)夜遅く"
+        lead = (f"{word}{intl}は中心気圧{stamp}、{tx.get('head', '')}。" + (f"{town}には{when}に最接近する見込みです。" if when else "")) if stamp else ""
         desc = "\n".join([
-            f"{intl}の最新情報を、気象庁などの発表に基づいてライブでお伝えします。ひまわり9号の衛星画像、気象庁の予報円と暴風域、"
+            lead + f"{intl}の最新情報を、気象庁などの発表に基づいてライブでお伝えします。ひまわり9号の衛星画像、気象庁の予報円と暴風域、"
             "各機関の観測値、警報・注意報を随時更新しています。",
             f"Live desk for {en_storm} (JMA {tx.get('num', '')}) near Okinawa and the Sakishima Islands: Himawari-9 satellite loops, "
             "the JMA forecast track and cone, agency-by-agency numbers and warnings, updated continuously.",
@@ -93,6 +100,62 @@ def metadata(cfg: dict, lang: str, thumb: dict) -> dict:
         ])
         tags = [tx.get("num", ""), "台風", "台風情報", "台風 進路", "沖縄 台風", "先島諸島", *towns, "ライブ", en_storm,
                 f"Typhoon {st.get('name', '').title()}", "typhoon live", "Okinawa typhoon"]
+    elif lang == "zh":
+        voice = "" if audio.split("-")[0] == "zh" else f"（{LANGUAGE_NAMES_ZH.get(audio, audio)}解說）"
+        local = (st.get("names") or "").split("Taiwan:")[-1].split("·")[0].strip() or st.get("name", "")
+        title = f"【直播】{tx.get('kicker', '')}{local} {tx.get('head', '')}｜{stamp + ' ' if stamp else ''}最新路徑・衛星雲圖{voice}｜{en_storm} Live"
+        town, _, when = tx.get("when", "").partition("最接近 ")       # "台北最接近 10/24(六)清晨"
+        lead = (f"{tx.get('kicker', '')}{local}中心氣壓{stamp}，{tx.get('head', '')}" + (f"，預計{when}最接近{town}。" if when else "。")) if stamp else ""
+        desc = "\n".join([
+            lead + f"{local}颱風（{en_storm}）最新動態直播：向日葵9號衛星雲圖、各國氣象機關（中央氣象署、日本氣象廳、JTWC）的路徑預報與觀測數值、"
+            "最接近時間與警報，持續自動更新。",
+            f"Live desk for {en_storm} near Taiwan: Himawari-9 satellite, official forecast tracks, agency numbers and warnings.",
+            "",
+            "■ 注意",
+            f"・本直播為AI語音（{LANGUAGE_NAMES_ZH.get(audio.split('-')[0], audio)}）自動解說，內容由AI依各機關發布資料撰寫並經一致性檢查。",
+            "・本直播說明官方預報，並非獨立預報；數值模式圖（系集路徑）僅供參考。",
+            "・海上／陸上颱風警報以中央氣象署發布為準；停班停課以各縣市政府公告為準。",
+            "・畫面時間為台灣時間（UTC+8）。",
+            "",
+            "■ 官方資訊",
+            "中央氣象署 颱風消息: https://www.cwa.gov.tw/V8/C/P/Typhoon/TY_NEWS.html",
+            "行政院人事行政總處 停班停課資訊: https://www.dgpa.gov.tw/typh/daily/nds.html",
+            "日本氣象廳 颱風資訊: https://www.jma.go.jp/bosai/map.html#contents=typhoon",
+            "",
+            "■ About",
+            f"{name}. Student-run typhoon desk. AI-written from agency sources and checked for contradictions; synthetic voice. "
+            "Not an official warning service: follow CWA and your local government.",
+            "",
+            " ".join([f"#{local}颱風", "#颱風", "#颱風路徑", "#" + en_storm.replace(" ", "")]),
+        ])
+        tags = [f"{local}颱風", local, "颱風", "颱風路徑", "颱風動態", "衛星雲圖", "颱風假", "中央氣象署", "直播", en_storm,
+                f"Typhoon {st.get('name', '').title()}", "Taiwan typhoon", "typhoon live"]
+    elif tx.get("num"):
+        local = tx["num"].split()[-1].title()
+        head = tx.get("head", "").title()
+        title = f"LIVE: {tx['num'].title()} ({en_storm}) — {head}{' | ' + stamp.replace('km/h', ' km/h') if stamp else ''}"
+        ph = tx.get("when", "")
+        desc = "\n".join([
+            f"{tx['num'].title()} ({en_storm}): {head.replace(': ', ' sa ')}. Lakas ng hangin {stamp.replace('km/h', ' km/h')}. {ph + '.' if ph else ''}".strip(),
+            f"Live na update sa Bagyong {local}: Himawari-9 satellite, landas at taya ng PAGASA, JMA at JTWC, mga Wind Signal at "
+            "pinakamalapit na paglapit sa Batanes at Northern Luzon. Tuloy-tuloy na ina-update.",
+            f"Live updates on Typhoon {local} ({en_storm}): satellite, official PAGASA / JMA / JTWC tracks, wind signals and closest approach.",
+            "",
+            "■ PAALALA / NOTE",
+            "• Ang narration ay AI voice. Ang script ay isinulat ng AI mula sa mga opisyal na bulletin at sinuri kung may salungatan.",
+            "• Hindi ito opisyal na babala. Sundin ang PAGASA, NDRRMC at ang inyong LGU para sa babala at paglikas.",
+            "• Oras sa screen: Philippine time (UTC+8).",
+            "",
+            "■ OPISYAL NA IMPORMASYON",
+            "PAGASA Tropical Cyclone Bulletin: https://www.pagasa.dost.gov.ph/tropical-cyclone/severe-weather-bulletin",
+            "NDRRMC: https://ndrrmc.gov.ph/",
+            "",
+            "■ About",
+            f"{name}. Student-run typhoon desk. AI-written from agency sources and checked for contradictions; synthetic voice.",
+            "",
+            f"#Bagyong{local} #{local}PH #PAGASA #{en_storm.replace(' ', '')}",
+        ])
+        tags = [f"Bagyong {local}", en_storm, "typhoon", "typhoon live", "PAGASA", "bagyo", *tx.get("towns", [])]
     else:
         title = f"LIVE: {name}"
         desc = (f"{name}. A continuously updating student-run typhoon desk: agency positions and forecasts, satellite loops, "
@@ -103,7 +166,7 @@ def metadata(cfg: dict, lang: str, thumb: dict) -> dict:
     while sum(len(t) + 2 for t in tags) > 480:          # YouTube's tag budget is 500 characters
         tags.pop()
     return {"title": os.environ.get("YOUTUBE_TITLE") or title, "description": os.environ.get("YOUTUBE_DESCRIPTION") or desc,
-            "tags": tags, "language": lang or "en", "audio_language": audio}
+            "tags": tags, "language": YT_LANGUAGE.get(lang, lang or "en"), "audio_language": YT_LANGUAGE.get(audio, audio)}
 
 
 def place_ja(name: str) -> str:

@@ -12,3 +12,6 @@ __pycache__/
 output/
 secrets/
 *.wav
+
+# thumbnail hero images (scripts/thumb_sat.py)
+html/thumb/
