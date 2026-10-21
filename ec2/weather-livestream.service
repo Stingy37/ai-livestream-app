@@ -1,0 +1,21 @@
+[Unit]
+Description=Weather livestream broadcast server (HTTPS api + website)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/weather-livestream
+EnvironmentFile=/etc/weather-livestream/env
+ExecStart=/home/ubuntu/weather-aws-env/bin/python /home/ubuntu/weather-livestream/server.py
+Restart=always
+RestartSec=3
+# a t3.micro: keep the process modest and let journald keep the logs
+MemoryMax=400M
+Nice=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

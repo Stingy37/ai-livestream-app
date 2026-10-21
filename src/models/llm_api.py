@@ -1,45 +1,28 @@
+"""Provider LLM API (Lumen) for the Web Scraper team.
+
+Thin wrapper over ``models.lumen`` so that older call sites (``chat(messages)``) keep working
+while every request goes through the shared API-key pool with rotation (see lumen.py).
+"""
+
 from __future__ import annotations
 
-import os
-import threading
 from typing import Any
 
-from openai import OpenAI
+from models import lumen
 
-API_KEY_ENV = "API_KEY_ENV"                           # environment variable holding the key
 BASE_URL = "https://lumen.computes.illinois.edu/v1"   # Lumen's OpenAI-compatible endpoint
-MODEL = "deepseek-v4-flash"                           # name callers pass as model=
+MODEL = "deepseek-v4-flash"                           # default model (LUMEN_MODEL overrides)
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# Public entry points
-# ─────────────────────────────────────────────────────────────────────────────
-
-_client: OpenAI | None = None
-_client_lock = threading.Lock()
-
-
-def get_client() -> OpenAI:
-    """Return this process's Lumen client.
-
-    The first call builds it from ``API_KEY_ENV``; later calls return the same
-    object.
-    """
-    global _client
-    with _client_lock:
-        if _client is None:
-            api_key = os.environ.get(API_KEY_ENV)
-            if not api_key:
-                raise RuntimeError(f"set {API_KEY_ENV} to your API key")
-            _client = OpenAI(base_url=BASE_URL, api_key=api_key)
-        return _client
+def get_pool() -> lumen.LumenPool:
+    """This process's key pool (built on first use from the environment)."""
+    return lumen.get_pool()
 
 
 def chat(messages: list[dict[str, Any]], **kwargs: Any) -> str:
-    """Send one chat request and return just the answer text.
+    """Send one chat request through the key pool and return just the answer text."""
+    return lumen.chat(messages, **kwargs)
 
-    ``kwargs`` are passed through to ``chat.completions.create`` (temperature,
-    max_tokens, extra_body, ...).
-    """
-    resp = get_client().chat.completions.create(model=MODEL, messages=messages, **kwargs)
-    return resp.choices[0].message.content or ""
+
+def ask(system_prompt: str, user_text: str, **kwargs: Any) -> str:
+    return lumen.ask(system_prompt, user_text, **kwargs)

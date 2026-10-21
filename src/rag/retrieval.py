@@ -1,65 +1,75 @@
-"""Contains methods for building the multi-coverage lookup queries for our HDBSCAN cluster, given a input query.
+"""Context retrieval for one scene: build the sentence index and retrieve once up front.
 
-Uses a small LLM to split a scene title + scene description into specific items needed to answer the scene,
-and embeds them into vector representations for cluster exemplar lookup.
-Concatates and returns a structured list of relevant sentences from the retrieved cluster(s).
-
-Example:
-    1. Input: "This scene summarizes the forecasted local impacts to the local region of Cebu"  + sys_instruction + scene_title
-                        [ LLM: "What information is needed to generate the for this scene" ]
-    2. LLM Query decomposition: "Wind forecasts," "local terrain," "Cebu warnings" etc.
-                         [ HDBSCAN query with the decomposed query vectors ]
-    3. Structured output:
-        relevant_sentences = {
-                                "decomposed query one": decomposed query one relevant sentences
-                                "decomposed query two": decomposed query two relevant sentences
-                            }
+The dynamic-RAG script writer retrieves iteratively *during* generation (writer/dynrag.py) from
+the index this module saves under the run folder. ``Retriever.retrieve`` is the safety net the
+user asked for: one retrieval at the beginning of generation with the original scene description
+as the query, returned as the contract's ``RetrievedContext`` and spliced into the writer's first
+``<information>`` block.
 """
 
 from __future__ import annotations
 
+import logging
 from dataclasses import dataclass, field
 
-from contracts import RetrievedContext, Scene, ScoredDocument
+from config_env import Settings
+from contracts import RetrievedContext, Scene, ScoredDocument, Sentence
 from rag.cluster import SentenceClusterIndex, SentenceSplitter
+
+log = logging.getLogger(__name__)
 
 
 @dataclass
 class SearchQuery:
-    """One decomposed information need, with its embedding for cluster lookup."""
+    """One information need, with its embedding for index lookup."""
 
     text: str
     vector: list[float] = field(default_factory=list)
 
 
 class Retriever:
-    """Turns a scene into the structured context its script will be written from.
-
-    The RAG team's single public entry point. Takes the accepted documents,
-    builds the scene's cluster index internally (``SentenceSplitter`` →
-    ``SentenceClusterIndex``), decomposes the scene into queries with a small
-    LLM, and looks them up by semantic search over cluster exemplars.
-    """
+    """The RAG team's single public entry point."""
 
     def __init__(self, top_k: int = 5) -> None:
-        raise NotImplementedError
+        self.top_k = top_k
+        self.settings = Settings.from_env()
+        self.splitter = SentenceSplitter(min_chars=self.settings.min_sentence_chars)
+        self.last_index: SentenceClusterIndex | None = None
 
     def decompose(self, scene: Scene) -> list[SearchQuery]:
-        """Split the scene into the specific information items needed to answer it.
-
-        Driven by the scene's title, topic description, and system instructions —
-        the same three fields the writer will work from, so retrieval targets
-        what the script actually has to say.
-        """
-        raise NotImplementedError
+        """The up-front queries: the scene description itself (the user's safety-net query) and its title."""
+        queries = [scene.topic_description.strip()]
+        if scene.title and scene.title.lower() not in scene.topic_description.lower():
+            queries.append(f"{scene.title}: {scene.topic_description.strip()}")
+        return [SearchQuery(text=q) for q in queries]
 
     def retrieve(self, scene: Scene, documents: list[ScoredDocument]) -> RetrievedContext:
-        """Build the index from ``documents``, decompose, query, and assemble the grouped result.
+        """Build the index from the accepted documents, save it, and retrieve for each query."""
+        accepted = [d for d in documents if d.accepted] or list(documents)
+        docs = [d.document for d in accepted]
+        sentences = self.splitter.split(docs)
+        titles = {i: d.title for i, d in enumerate(docs)}
+        index = SentenceClusterIndex.build(sentences, titles=titles)
+        index_dir = self.settings.layout().index_dir(scene.id)
+        index.save(index_dir)
+        self.last_index = index
+        log.info("[rag] %s: %d sentences from %d documents -> %s", scene.title, len(sentences), len(docs), index_dir)
 
-        ``documents`` are the accepted ``ScoredDocument``s from QC website
-        scoring; ``score`` is available for weighting or tie-breaking.
-
-        Deduplicates sentences that several queries pull in, while keeping each
-        under every query that matched it.
-        """
-        raise NotImplementedError
+        queries = self.decompose(scene)
+        context = RetrievedContext(scene_id=scene.id)
+        if not sentences:
+            for q in queries:
+                context.relevant_sentences[q.text] = []
+            return context
+        hits = index.search_texts([q.text for q in queries], top_k=self.top_k)
+        for q, row in zip(queries, hits):
+            seen: set[tuple[str, int]] = set()
+            picked: list[Sentence] = []
+            for m in row:
+                key = (m.sentence.source_url, m.sentence.sentence_index)
+                if key in seen:
+                    continue
+                seen.add(key)
+                picked.append(m.sentence)
+            context.relevant_sentences[q.text] = picked
+        return context

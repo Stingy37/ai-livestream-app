@@ -1,0 +1,235 @@
+{
+  "config": {
+    "name": "Typhoon Champi Watch — Okinawa and Sakishima",
+    "storm": {
+      "title": "SUPER TYPHOON",
+      "name": "CHAMPI",
+      "names": "Philippines: Rosal · Taiwan: 薔琵 · Japan: 台風30号 チャンパー"
+    }
+  },
+  "defaults": {
+    "language": "ja",
+    "script_model": "qwen3-8b",
+    "tts_model": "kokoro",
+    "tts_voice": "jf_alpha"
+  },
+  "content_library": {
+    "topic_descriptions": {
+      "show_open": {
+        "label": "Show open",
+        "content": "A short cold open introducing a continuously updating watch on Typhoon Champi (台風30号) as it approaches Okinawa Prefecture and the Sakishima Islands. Sets expectations that the information refreshes throughout the stream."
+      },
+      "storm_position": {
+        "label": "Current storm position",
+        "content": "The current position of Typhoon Champi (JMA typhoon number 30, 2630; JTWC 29W) relative to Okinawa and the Sakishima Islands (Miyako and Yaeyama): distance and direction, intensity class, sustained winds, gusts, central pressure, storm- and gale-force wind radii and movement, as reported by the Japan Meteorological Agency (JMA) and JTWC, with the time of each analysis."
+      },
+      "track_forecast": {
+        "label": "Track and intensity forecast",
+        "content": "JMA's forecast track and intensity for Typhoon Champi over the next 72 to 120 hours as it relates to the Sakishima Islands and Okinawa's main island: when the storm-force wind area may reach Ishigaki, Miyakojima and Yonaguni, the closest approach, the 70 percent probability circle, expected weakening over the East China Sea, forecast uncertainty and any disagreement with JTWC."
+      },
+      "local_impacts": {
+        "label": "Expected local impacts in Okinawa",
+        "content": "Expected impacts of Typhoon Champi in Okinawa Prefecture, especially the Yaeyama and Miyako regions and Okinawa's main island: the warnings and advisories that JMA's sources show as currently issued (often none yet while the storm is far away), peak wind and wave forecasts, rainfall totals, and any flight and ferry cancellations, school closures or evacuation information issued by municipalities, each attributed to the issuing authority. Report only warnings, advisories, cancellations and closures that the sources say are in effect; if the sources report none, say plainly that none has been reported yet."
+      },
+      "show_close": {
+        "label": "Show close",
+        "content": "A brief sign-off reminding viewers that the broadcast loops with refreshed data on Typhoon Champi and pointing them to JMA and their municipality for warnings and evacuation information."
+      }
+    },
+    "system_instructions": {
+      "anchor_neutral": {
+        "label": "Neutral news anchor",
+        "content": "You are writing copy to be read aloud by a single news anchor. Write in plain spoken Japanese for viewers in Japan, including residents and visitors in Okinawa. Write in complete sentences, with no headings, bullet points, stage directions, or markdown. Lead with the most recent and most decision-relevant fact. Attribute every claim to its source agency by name. Never invent numbers, timestamps, or place names that are not present in the supplied source material; if a figure is missing, say that it has not been reported. Target roughly 220 to 260 seconds (about 4 minutes) of spoken delivery. Use the time to cover every reported detail and explain how the pieces fit together, not to repeat yourself."
+      },
+      "anchor_urgent": {
+        "label": "Urgent safety bulletin",
+        "content": "You are writing an urgent public-safety bulletin to be read aloud by a single anchor. Write in plain spoken Japanese for viewers in Japan, including residents and visitors in Okinawa. Use short, direct sentences. Lead with the specific action the audience should take and the areas affected. Attribute every instruction to the issuing authority. Never invent an evacuation order, a shelter location, a suspension or a casualty figure that is not present in the supplied source material. Do not speculate beyond what the sources state. Target roughly 220 to 260 seconds (about 4 minutes) of spoken delivery. Use the time to cover every reported detail and explain how the pieces fit together, not to repeat yourself."
+      },
+      "station_ident": {
+        "label": "Station identification",
+        "content": "You are writing a short station identification to be read aloud by a single anchor. Write in plain spoken Japanese for viewers in Japan, including residents and visitors in Okinawa. Write two to three sentences. Do not cite specific figures or forecasts. Target roughly 15 to 20 seconds of spoken delivery."
+      }
+    },
+    "sources": {
+      "jtwc_warnings": {
+        "label": "JTWC warning 29W (Champi)",
+        "url": "https://www.metoc.navy.mil/jtwc/products/wp2926web.txt"
+      },
+      "jma_tropical": {
+        "label": "JMA tropical cyclone information (TC2636 Champi)",
+        "url": "https://www.jma.go.jp/bosai/typhoon/data/TC2636/specifications.json"
+      },
+      "jma_forecast": {
+        "label": "JMA typhoon forecast (TC2636 Champi)",
+        "url": "https://www.jma.go.jp/bosai/typhoon/data/TC2636/forecast.json"
+      },
+      "jma_warn_okinawa": {
+        "label": "JMA warnings, Okinawa main island area",
+        "url": "https://www.jma.go.jp/bosai/warning/data/warning/471000.json"
+      },
+      "jma_warn_miyako": {
+        "label": "JMA warnings, Miyako area",
+        "url": "https://www.jma.go.jp/bosai/warning/data/warning/473000.json"
+      },
+      "jma_warn_yaeyama": {
+        "label": "JMA warnings, Yaeyama area",
+        "url": "https://www.jma.go.jp/bosai/warning/data/warning/474000.json"
+      },
+      "jma_overview_okinawa": {
+        "label": "JMA weather overview, Okinawa",
+        "url": "https://www.jma.go.jp/bosai/forecast/data/overview_forecast/471000.json"
+      },
+      "jma_overview_yaeyama": {
+        "label": "JMA weather overview, Yaeyama",
+        "url": "https://www.jma.go.jp/bosai/forecast/data/overview_forecast/474000.json"
+      }
+    }
+  },
+  "graph": {
+    "nodes": [
+      {
+        "key": "start",
+        "type": "start"
+      },
+      {
+        "key": "open",
+        "type": "scene_card",
+        "scene": {
+          "title": "Show Open",
+          "topic_description": "show_open",
+          "final_script_system_instructions": "station_ident",
+          "do_web_search": false,
+          "sources": [
+            "jma_tropical"
+          ],
+          "language": "ja"
+        }
+      },
+      {
+        "key": "position",
+        "type": "scene_card",
+        "scene": {
+          "title": "Current Position",
+          "topic_description": "storm_position",
+          "final_script_system_instructions": "anchor_neutral",
+          "do_web_search": false,
+          "sources": [
+            "jma_tropical",
+            "jtwc_warnings"
+          ],
+          "language": "ja"
+        }
+      },
+      {
+        "key": "forecast",
+        "type": "scene_card",
+        "scene": {
+          "title": "Track Forecast",
+          "topic_description": "track_forecast",
+          "final_script_system_instructions": "anchor_neutral",
+          "do_web_search": false,
+          "sources": [
+            "jma_forecast",
+            "jma_tropical",
+            "jtwc_warnings"
+          ],
+          "language": "ja"
+        }
+      },
+      {
+        "key": "impacts",
+        "type": "scene_card",
+        "scene": {
+          "title": "Local Impacts",
+          "topic_description": "local_impacts",
+          "final_script_system_instructions": "anchor_urgent",
+          "do_web_search": true,
+          "sources": [
+            "jma_warn_yaeyama",
+            "jma_warn_miyako",
+            "jma_warn_okinawa",
+            "jma_overview_yaeyama",
+            "jma_overview_okinawa"
+          ],
+          "language": "ja",
+          "generation": {
+            "tts_voice": "jf_gongitsune"
+          }
+        }
+      },
+      {
+        "key": "close",
+        "type": "scene_card",
+        "scene": {
+          "title": "Show Close",
+          "topic_description": "show_close",
+          "final_script_system_instructions": "station_ident",
+          "do_web_search": false,
+          "sources": [
+            "jma_tropical"
+          ],
+          "language": "ja"
+        }
+      },
+      {
+        "key": "end",
+        "type": "termination"
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "source": "start",
+        "target": "open",
+        "type": "normal"
+      },
+      {
+        "id": "e2",
+        "source": "open",
+        "target": "position",
+        "type": "normal"
+      },
+      {
+        "id": "e3",
+        "source": "position",
+        "target": "forecast",
+        "type": "normal"
+      },
+      {
+        "id": "e4",
+        "source": "forecast",
+        "target": "impacts",
+        "type": "normal"
+      },
+      {
+        "id": "e5",
+        "source": "impacts",
+        "target": "position",
+        "type": "repeat_back"
+      },
+      {
+        "id": "e6",
+        "source": "impacts",
+        "target": "close",
+        "type": "continuation"
+      },
+      {
+        "id": "e7",
+        "source": "close",
+        "target": "end",
+        "type": "normal"
+      }
+    ],
+    "cycles": [
+      {
+        "id": "c1",
+        "start_node": "position",
+        "end_node": "impacts",
+        "repeat_back_edge": "e5",
+        "continuation_edge": "e6",
+        "repetitions": 6,
+        "repetitions_until_update": 2
+      }
+    ]
+  }
+}

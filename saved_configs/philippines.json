@@ -1,0 +1,223 @@
+{
+  "config": {
+    "name": "Bagyong Rosal (Champi) — Philippines",
+    "storm": {
+      "title": "SUPER TYPHOON",
+      "name": "CHAMPI",
+      "names": "Philippines: Rosal · Taiwan: 薔琵 · Japan: 台風30号 チャンパー"
+    }
+  },
+  "defaults": {
+    "language": "tl",
+    "script_model": "qwen3-8b",
+    "tts_model": "moss-tts-v1.5",
+    "tts_voice": "default"
+  },
+  "content_library": {
+    "topic_descriptions": {
+      "show_open": {
+        "label": "Show open",
+        "content": "A short cold open introducing a continuously updating watch on Super Typhoon Rosal (international name Champi) for listeners in the Philippines. Sets expectations that the information refreshes throughout the stream."
+      },
+      "storm_position": {
+        "label": "Current storm position",
+        "content": "The current position of Super Typhoon Rosal (international name Champi, JTWC 29W) relative to the Philippines: whether it is inside the Philippine Area of Responsibility, distance from Batanes and the Luzon coast, intensity (sustained winds, gusts, central pressure) and movement, as reported by PAGASA, with JMA and JTWC for comparison, with the time of each bulletin."
+      },
+      "track_forecast": {
+        "label": "Track and intensity forecast",
+        "content": "PAGASA's forecast track and intensity for Super Typhoon Rosal over the next 72 to 120 hours: closest approach to Batanes, the Babuyan Islands and Northern Luzon, when it is expected to leave the Philippine Area of Responsibility, possible changes in strength, forecast uncertainty and any difference from JMA and JTWC."
+      },
+      "local_impacts": {
+        "label": "Expected local impacts in the Philippines",
+        "content": "Expected impacts of Super Typhoon Rosal in the Philippines, especially Batanes, the Babuyan Islands, Cagayan, Isabela, Northern Luzon and Bicol: PAGASA tropical cyclone wind signals by area, heavy rainfall outlooks, storm surge and gale warnings, sea travel suspensions by the Coast Guard, class and work suspensions, and evacuation information from local government units and NDRRMC, each attributed to the issuing authority."
+      },
+      "show_close": {
+        "label": "Show close",
+        "content": "A brief sign-off reminding listeners that the broadcast loops with refreshed data on Super Typhoon Rosal and pointing them to PAGASA, NDRRMC and their local government unit for warnings and evacuation decisions."
+      }
+    },
+    "system_instructions": {
+      "anchor_neutral": {
+        "label": "Neutral news anchor",
+        "content": "You are writing copy to be read aloud by a single news anchor. Write in plain spoken Filipino (Tagalog) as used in Philippine radio and TV news, keeping agency names, place names and units as they are and writing numbers as digits. Write in complete sentences, with no headings, bullet points, stage directions, or markdown. Lead with the most recent and most decision-relevant fact. Attribute every claim to its source agency by name. Never invent numbers, timestamps, or place names that are not present in the supplied source material; if a figure is missing, say that it has not been reported. Target roughly 220 to 260 seconds (about 4 minutes) of spoken delivery. Use the time to cover every reported detail and explain how the pieces fit together, not to repeat yourself."
+      },
+      "anchor_urgent": {
+        "label": "Urgent safety bulletin",
+        "content": "You are writing an urgent public-safety bulletin to be read aloud by a single anchor. Write in plain spoken Filipino (Tagalog) as used in Philippine radio and TV news, keeping agency names, place names and units as they are and writing numbers as digits. Use short, direct sentences. Lead with the specific action the audience should take and the areas affected. Attribute every instruction to the issuing authority. Never invent an evacuation order, a shelter location, a suspension or a casualty figure that is not present in the supplied source material. Do not speculate beyond what the sources state. Target roughly 220 to 260 seconds (about 4 minutes) of spoken delivery. Use the time to cover every reported detail and explain how the pieces fit together, not to repeat yourself."
+      },
+      "station_ident": {
+        "label": "Station identification",
+        "content": "You are writing a short station identification to be read aloud by a single anchor. Write in plain spoken Filipino (Tagalog) as used in Philippine radio and TV news, keeping agency names, place names and units as they are and writing numbers as digits. Write two to three sentences. Do not cite specific figures or forecasts. Target roughly 15 to 20 seconds of spoken delivery."
+      }
+    },
+    "sources": {
+      "jtwc_warnings": {
+        "label": "JTWC warning 29W (Champi)",
+        "url": "https://www.metoc.navy.mil/jtwc/products/wp2926web.txt"
+      },
+      "jma_tropical": {
+        "label": "JMA tropical cyclone information (TC2636 Champi)",
+        "url": "https://www.jma.go.jp/bosai/typhoon/data/TC2636/specifications.json"
+      },
+      "jma_forecast": {
+        "label": "JMA typhoon forecast (TC2636 Champi)",
+        "url": "https://www.jma.go.jp/bosai/typhoon/data/TC2636/forecast.json"
+      },
+      "pagasa_bulletin": {
+        "label": "PAGASA severe weather bulletin",
+        "url": "https://www.pagasa.dost.gov.ph/tropical-cyclone/severe-weather-bulletin"
+      },
+      "pagasa_weather": {
+        "label": "PAGASA weather outlook",
+        "url": "https://www.pagasa.dost.gov.ph/weather"
+      },
+      "pagasa_gale": {
+        "label": "PAGASA gale warning",
+        "url": "https://www.pagasa.dost.gov.ph/marine/gale-warning"
+      }
+    }
+  },
+  "graph": {
+    "nodes": [
+      {
+        "key": "start",
+        "type": "start"
+      },
+      {
+        "key": "open",
+        "type": "scene_card",
+        "scene": {
+          "title": "Show Open",
+          "topic_description": "show_open",
+          "final_script_system_instructions": "station_ident",
+          "do_web_search": false,
+          "sources": [
+            "pagasa_bulletin"
+          ],
+          "language": "tl"
+        }
+      },
+      {
+        "key": "position",
+        "type": "scene_card",
+        "scene": {
+          "title": "Current Position",
+          "topic_description": "storm_position",
+          "final_script_system_instructions": "anchor_neutral",
+          "do_web_search": false,
+          "sources": [
+            "pagasa_bulletin",
+            "jma_tropical",
+            "jtwc_warnings"
+          ],
+          "language": "tl"
+        }
+      },
+      {
+        "key": "forecast",
+        "type": "scene_card",
+        "scene": {
+          "title": "Track Forecast",
+          "topic_description": "track_forecast",
+          "final_script_system_instructions": "anchor_neutral",
+          "do_web_search": false,
+          "sources": [
+            "pagasa_bulletin",
+            "jma_forecast",
+            "jtwc_warnings"
+          ],
+          "language": "tl"
+        }
+      },
+      {
+        "key": "impacts",
+        "type": "scene_card",
+        "scene": {
+          "title": "Local Impacts",
+          "topic_description": "local_impacts",
+          "final_script_system_instructions": "anchor_urgent",
+          "do_web_search": true,
+          "sources": [
+            "pagasa_bulletin",
+            "pagasa_gale",
+            "pagasa_weather"
+          ],
+          "language": "tl"
+        }
+      },
+      {
+        "key": "close",
+        "type": "scene_card",
+        "scene": {
+          "title": "Show Close",
+          "topic_description": "show_close",
+          "final_script_system_instructions": "station_ident",
+          "do_web_search": false,
+          "sources": [
+            "pagasa_bulletin"
+          ],
+          "language": "tl"
+        }
+      },
+      {
+        "key": "end",
+        "type": "termination"
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "source": "start",
+        "target": "open",
+        "type": "normal"
+      },
+      {
+        "id": "e2",
+        "source": "open",
+        "target": "position",
+        "type": "normal"
+      },
+      {
+        "id": "e3",
+        "source": "position",
+        "target": "forecast",
+        "type": "normal"
+      },
+      {
+        "id": "e4",
+        "source": "forecast",
+        "target": "impacts",
+        "type": "normal"
+      },
+      {
+        "id": "e5",
+        "source": "impacts",
+        "target": "position",
+        "type": "repeat_back"
+      },
+      {
+        "id": "e6",
+        "source": "impacts",
+        "target": "close",
+        "type": "continuation"
+      },
+      {
+        "id": "e7",
+        "source": "close",
+        "target": "end",
+        "type": "normal"
+      }
+    ],
+    "cycles": [
+      {
+        "id": "c1",
+        "start_node": "position",
+        "end_node": "impacts",
+        "repeat_back_edge": "e5",
+        "continuation_edge": "e6",
+        "repetitions": 6,
+        "repetitions_until_update": 2
+      }
+    ]
+  }
+}
