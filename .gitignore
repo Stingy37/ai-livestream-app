@@ -7,7 +7,7 @@ __pycache__/
 .run/
 
 # Model weights (reassembled LoRA etc.), run outputs, secrets
-model_weights/*
+
 !model_weights/.gitkeep
 output/
 secrets/
