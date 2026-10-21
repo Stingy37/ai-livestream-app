@@ -328,9 +328,27 @@ def _parse_pool():
             import multiprocessing as mp
             from concurrent.futures import ProcessPoolExecutor
 
+            from multiprocessing.util import Finalize
+
             _PARSE_POOL = ProcessPoolExecutor(max_workers=int(os.environ.get("SCRAPE_PARSE_WORKERS", "3")),
                                               mp_context=mp.get_context("spawn"))
+            # When this process is itself a multiprocessing worker (the harness's scene processes), its exit joins every
+            # child *before* concurrent.futures' own shutdown hook runs, so idle parse helpers that were never told to
+            # stop would hang it forever. Finalizers with a priority run before that join: stop the pool there.
+            Finalize(_PARSE_POOL, _stop_parse_pool, args=(_PARSE_POOL,), exitpriority=10)
         return _PARSE_POOL
+
+
+def _stop_parse_pool(pool) -> None:
+    procs = list((getattr(pool, "_processes", None) or {}).values())
+    try:
+        pool.shutdown(wait=False, cancel_futures=True)
+    except Exception:  # noqa: BLE001
+        pass
+    for p in procs:
+        p.join(5)
+        if p.is_alive():
+            p.kill()
 
 
 def _reset_parse_pool(broken) -> None:
