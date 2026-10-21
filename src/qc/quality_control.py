@@ -184,7 +184,8 @@ class ScriptScorer:
             qc.save_caches()
         unsupported_msgs = self._check_unsupported_figures(qc, checker, script, context.scene_id)
         alert_msgs = self._check_unsupported_alerts(qc, checker, script, context.scene_id)
-        unsupported_msgs += alert_msgs
+        track_msgs = self._check_track_claims(qc, checker, script)
+        unsupported_msgs += alert_msgs + track_msgs
         per_entity = dict(within.per_entity)
         for e in disputed_entities:
             per_entity[e] = per_entity.get(e, 0) + 1
@@ -194,6 +195,8 @@ class ScriptScorer:
         total = float(len(contradictions))
         if alert_msgs:
             per_entity["unsupported alert"] = len(alert_msgs)
+        if track_msgs:
+            per_entity[TRACK_PREFIX] = len(track_msgs)
         self.last_details = {"within_total": within.total, "disputed_total": len(disputed_msgs), "alert_total": len(alert_msgs),
                              "unsupported_total": len(unsupported_msgs), "stats": qc.stats()}
         return ScriptScore(total=total, per_entity=per_entity, contradictions=contradictions,
@@ -250,6 +253,16 @@ class ScriptScorer:
         return msgs
 
 
+    def _check_track_claims(self, qc: SceneQC, checker: ScriptChecker, script: LLMOutput) -> list[str]:
+        """Closest-approach times and distances from named places must agree with the official track (the desk's JMA
+        center, forecast points and closest-pass table, desk.json in DESK_DIR). The writer has invented both ("180 km
+        off Taiwan's east coast" with the center ~1,000 km away; a closest approach a day early), and no source
+        sentence contradicts a made-up figure, so the other checks pass them. Hard failures like alerts."""
+        desk = load_desk()
+        if not desk:
+            return []
+        return track_claim_problems(qc.ner.split_sentences(checker.clean_script(script.llm_output)), desk)
+
     def _check_unsupported_alerts(self, qc: SceneQC, checker: ScriptChecker, script: LLMOutput, scene_id: str) -> list[str]:
         """Every warning, advisory, evacuation, cancellation or closure the script says is in effect must be named
         by a source sentence (English or Japanese wording). Invented alerts are the most harmful error a safety
@@ -261,7 +274,8 @@ class ScriptScorer:
         pool = " ".join(r["text"] for r in rows).lower()
         msgs = []
         for sent in qc.ner.split_sentences(checker.clean_script(script.llm_output)):
-            low = sent.lower()
+            low = _WARNING_CENTER.sub(" ", sent.lower())       # "Joint Typhoon Warning Center" names an agency, not a warning
+            low = _ADVICE.sub(" ", low)                         # "monitor the latest typhoon warnings" is advice, not a claim
             if _NEGATED.search(low):
                 continue                                   # "no warning has been issued" states nothing new
             for name, (claim, evidence) in ALERTS.items():
@@ -272,6 +286,10 @@ class ScriptScorer:
 
 
 ALERT_PREFIX = "unsupported alert"
+_ADVICE = re.compile(r"\b(?:monitor|check|follow|heed|consult|watch for|look out for|pay attention to|refer to|"
+                     r"stay (?:updated|informed|tuned|alert)(?: on| with| to| for)?|keep (?:up|track) (?:with|of))\b[^.;,]{0,60}?"
+                     r"\b(?:warnings?|advisor(?:y|ies)|bulletins?)\b")
+_WARNING_CENTER = re.compile(r"\b(?:joint )?typhoon warning cent(?:er|re)\b|\bwarning cent(?:er|re)\b")
 _NEGATED = re.compile(r"\b(no|not|none|without|yet to|has not|have not|hasn't|haven't|neither|nor|if|unless|may|might|could|possible|possibly|in case)\b")   # denied or conditional
 ALERTS = {   # name: (claim in the script, evidence in the sources)
     "storm warning": (re.compile(r"\b(storm|violent wind|typhoon) warnings?\b"), re.compile(r"storm warning|violent wind warning|暴風警報|暴風特別警報")),
@@ -292,6 +310,124 @@ ALERTS = {   # name: (claim in the script, evidence in the sources)
                        re.compile(r"school|休校|臨時休業|class suspension")),
     "wind signal": (re.compile(r"\b(tropical cyclone )?wind signal\b|\bsignal no\.?\s*\d"), re.compile(r"wind signal|signal no|signal #")),
 }
+
+
+# ---- track claims: distances and closest-approach times checked against the official track (desk.json) ----------
+TRACK_PREFIX = "unsupported track claim"
+DESK_MAX_AGE_H = 6
+_MONTH = {m: i for i, m in enumerate(["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"], 1)}
+_MONTH_RE = r"(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|June?|July?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\.?"
+_DATE = re.compile(rf"\b{_MONTH_RE}\s+(\d{{1,2}})\b|\b(\d{{1,2}})\s+{_MONTH_RE}\b", re.I)
+_UTC_CLOCK = re.compile(r"\b(midnight|noon|(\d{1,2}):(\d{2}))\s*(?:UTC|GMT|Z)\b", re.I)
+_KM = re.compile(r"(\d[\d,]*(?:\.\d+)?)\s*(?:km|kilomet(?:er|re)s?)\b(?P<rest>[^.;]{0,60})", re.I)
+_FROM_PLACE = re.compile(r"\b(?:from|of|off)\s+(?:the\s+)?(?P<place>[A-Z][\w'’-]*(?:\s+[A-Z][\w'’-]*){0,3})")
+_PRESENT = re.compile(r"\b(?:is|are)\s+(?:currently\s+|now\s+)?(?:located|centered|centred|positioned|situated)\b|\bcurrently\b|\bat (?:this|the moment|present)\b|\bright now\b", re.I)
+_NOT_NOW = re.compile(r"\b(?:will|would|expected|forecast|projected|predicted|anticipated|could|may|might|closest|nearest|by (?:the|then|that))\b", re.I)
+_CLOSEST = re.compile(r"\b(?:closest|nearest)\b|\bmost direct\b", re.I)
+REGIONS = {"taiwan": "TW", "japan": "JP", "okinawa": "JP", "sakishima": "JP", "yaeyama": "JP", "miyako": "JP", "ryukyu": "JP",
+           "ryukyus": "JP", "philippines": "PH", "luzon": "PH", "batanes": "PH", "babuyan": "PH", "cagayan": "PH"}
+
+
+def load_desk(path: Path | None = None) -> dict | None:
+    """The desk the harness keeps fresh (DESK_DIR/desk.json), or None when missing or older than DESK_MAX_AGE_H."""
+    import os
+
+    from config_env import REPO_ROOT
+
+    p = path or Path(os.environ.get("DESK_DIR") or REPO_ROOT / "output" / "desk") / "desk.json"
+    try:
+        desk = read_json(p)
+        made = datetime.fromisoformat(desk["generated_at"].replace("Z", "+00:00"))
+    except (OSError, ValueError, KeyError, TypeError):
+        return None
+    if (datetime.now(timezone.utc) - made).total_seconds() > DESK_MAX_AGE_H * 3600 or not desk.get("center"):
+        return None
+    return desk
+
+
+def _km(a: tuple[float, float], b: tuple[float, float]) -> float:
+    la1, lo1, la2, lo2 = map(math.radians, (a[0], a[1], b[0], b[1]))
+    h = math.sin((la2 - la1) / 2) ** 2 + math.cos(la1) * math.cos(la2) * math.sin((lo2 - lo1) / 2) ** 2
+    return 2 * 6371 * math.asin(math.sqrt(h))
+
+
+def _towns_named(text: str, cpa: list[dict]) -> list[dict]:
+    """Closest-pass rows for the towns and regions a phrase names ("Taiwan's east coast" -> every TW town)."""
+    words = {w.lower().replace("’s", "").replace("'s", "") for w in re.findall(r"[A-Za-z’']+", text)}
+    rows = [c for c in cpa if c["city"].lower() in words or c["city"].lower().removesuffix("jima") in words]
+    ccs = {REGIONS[w] for w in words if w in REGIONS}
+    rows += [c for c in cpa if c["cc"] in ccs and c not in rows]
+    return rows
+
+
+def _claimed_time(sent: str, year: int) -> tuple[datetime, float] | None:
+    """(instant, tolerance in hours) of the first date in the sentence; a UTC clock time narrows it."""
+    m = _DATE.search(sent)
+    if not m:
+        return None
+    mon, day = (m.group(1), m.group(2)) if m.group(1) else (m.group(4), m.group(3))
+    try:
+        d = datetime(year, _MONTH[mon[:3].lower()], int(day), tzinfo=timezone.utc)
+    except ValueError:
+        return None
+    c = _UTC_CLOCK.search(sent)
+    if c:
+        hh, mm = (0, 0) if c.group(1).lower() == "midnight" else (12, 0) if c.group(1).lower() == "noon" else (int(c.group(2)), int(c.group(3)))
+        return d.replace(hour=hh % 24, minute=mm), 12.0
+    return d.replace(hour=12), 24.0          # a bare date: any time that day in any time zone of the region, plus slack
+
+
+def track_claim_problems(sentences: list[str], desk: dict) -> list[str]:
+    """Sentences whose closest-approach time or distance from a named place disagrees with the official track.
+
+    Distances: "N km (to the east) of/from/off <place>". A sentence about the storm now (present tense, no forecast
+    wording) is compared with the current center only; any other with the center, every forecast point and the
+    place's closest pass; it fails when none is within max(75 km, 35 %). Closest-approach times: a sentence naming a
+    closest approach and a date fails when no closest pass of the places it names (all places when it names none)
+    falls within 12 h of a stated UTC time, or within the stated day +-12 h. Lenient on purpose: only plainly
+    invented figures fail."""
+    cpa = [c for c in desk.get("cpa") or [] if c.get("lat") is not None and c.get("timeUTC")]
+    if not cpa:
+        return []
+    c0 = desk["center"]
+    now_pts = [(c0["lat"], c0["lon"])] + [(a["lat"], a["lon"]) for a in desk.get("agencies") or [] if a.get("lat") is not None]
+    fc_pts = [(p["lat"], p["lon"]) for p in (desk.get("forecast") or {}).get("points") or []]
+    year = int(str(desk.get("generated_at", "2026"))[:4])
+    out = []
+    for sent in sentences:
+        present = bool(_PRESENT.search(sent)) and not _NOT_NOW.search(sent)
+        for m in _KM.finditer(sent):
+            pm = _FROM_PLACE.search(m.group("rest"))
+            towns = _towns_named(pm.group("place"), cpa) if pm else []
+            if not towns:
+                continue
+            claim = float(m.group(1).replace(",", ""))
+            refs = now_pts if present else now_pts + fc_pts
+            actual = [min(_km(r, (t["lat"], t["lon"])) for t in towns) for r in refs]
+            if not present:
+                actual += [float(t["km"]) for t in towns if t.get("km") is not None]
+            if not any(abs(claim - a) <= max(75.0, 0.35 * a) for a in actual):
+                ref = min(_km(now_pts[0], (t["lat"], t["lon"])) for t in towns)
+                near = min(towns, key=lambda t: _km(now_pts[0], (t["lat"], t["lon"])))
+                out.append(f'{TRACK_PREFIX}: "{sent.strip()}" puts the storm {claim:,.0f} km from {re.sub(r"[’']s$", "", pm.group("place"))}, but the official '
+                           f'center ({c0.get("source", "JMA")}, {c0.get("timeUTC", "")}) is about {round(ref, -1):,.0f} km from {near["city"]} '
+                           f'and its forecast track never comes within that distance at the time described. Use only distances the sources state.')
+                break
+        else:
+            if not _CLOSEST.search(sent):
+                continue
+            ct = _claimed_time(sent, year)
+            if not ct:
+                continue
+            towns = _towns_named(sent, cpa) or cpa
+            when, tol = ct
+            times = [(t, datetime.fromisoformat(t["timeUTC"].replace("Z", "+00:00"))) for t in towns]
+            if not any(abs((tt - when).total_seconds()) <= tol * 3600 for _, tt in times):
+                t, tt = min(times, key=lambda x: float(x[0].get("km") or 1e9))
+                out.append(f'{TRACK_PREFIX}: "{sent.strip()}" gives a closest approach around {when:%B %d %H:%M} UTC, but on the official '
+                           f'forecast track the center passes closest to {t["city"]} (about {t["km"]} km) at {tt:%B %d %H:%M} UTC. '
+                           f'State the closest-approach time only as the sources give it.')
+    return out
 
 
 _FIGURE = re.compile(r"(?<![\w.:])(\d{1,3}(?:,\d{3})+|\d+(?:\.\d+)?)(?![\w:])")

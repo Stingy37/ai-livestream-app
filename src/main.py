@@ -263,12 +263,13 @@ def script_stage(scene, ctx: RunContext, context) -> SceneResult:
                             scorer=ScriptScorer(threshold=s.script_score_threshold, scene_dir=layout.scene_dir(scene.id)),
                             attempts_path=layout.script_attempts(scene.id))
     outcome = harness.produce(scene=scene, context=context)
-    from qc.quality_control import ALERT_PREFIX
-    bad = [c for c in (outcome.score.contradictions if outcome.score else []) if c.startswith(ALERT_PREFIX)]
+    from qc.quality_control import ALERT_PREFIX, TRACK_PREFIX
+    bad = [c for c in (outcome.score.contradictions if outcome.score else []) if c.startswith((ALERT_PREFIX, TRACK_PREFIX))]
     if bad:
         write_json(layout.scene_dir(scene.id) / "script_rejected.json", {"alerts": bad, "script": outcome.script.llm_output})
+        what = "unsupported track claim(s)" if bad[0].startswith(TRACK_PREFIX) else "unsupported alert(s)"
         return SceneResult(scene.id, ok=False, warnings=outcome.warnings,
-                           error=f"best script still states {len(bad)} unsupported alert(s): {bad[0][:160]}")
+                           error=f"best script still states {len(bad)} {what}: {bad[0][:160]}")
     write_json(path, outcome_to_json(outcome))
     _mark(layout, scene.id, "script", ctx.generation)
     if not outcome.accepted or not outcome.script.llm_output.strip():
