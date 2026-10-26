@@ -182,6 +182,13 @@ def _reusable(ctx: RunContext, layout: RunLayout, scene_id: str, stage: str, art
     return ctx.settings.resume and artifact.is_file() and _state(layout, scene_id).get(stage) == ctx.generation
 
 
+def _desk_template(scene) -> str | None:
+    """A scene whose sources include ``desk://<template>`` is read from desk.json (desk.bulletin), not written by the LLM."""
+    from desk.bulletin import template_of
+
+    return template_of(getattr(scene, "sources", None))
+
+
 def sources_stage(scene, ctx: RunContext, _upstream: None) -> SceneResult:
     """Stage 1: agentic scraping + QC Part A. ``value`` -> accepted list[ScoredDocument]."""
     from artifacts import document_to_json, scored_from_json, scored_to_json
@@ -189,6 +196,9 @@ def sources_stage(scene, ctx: RunContext, _upstream: None) -> SceneResult:
     from scraper import WebScraper
 
     layout = ctx.settings.layout()
+    if _desk_template(scene):                     # read from desk.json at the script stage; nothing to scrape
+        _mark(layout, scene.id, "sources", ctx.generation)
+        return SceneResult(scene.id, ok=True, value=[])
     scored_path = layout.scored_json(scene.id)
     if _reusable(ctx, layout, scene.id, "sources", scored_path):
         scored = [scored_from_json(o) for o in read_json(scored_path)]
@@ -230,6 +240,9 @@ def context_stage(scene, ctx: RunContext, documents) -> SceneResult:
     from rag import Retriever
 
     layout = ctx.settings.layout()
+    if _desk_template(scene):
+        _mark(layout, scene.id, "context", ctx.generation)
+        return SceneResult(scene.id, ok=True, value=None)
     path = layout.context_json(scene.id)
     if _reusable(ctx, layout, scene.id, "context", path) and (layout.index_dir(scene.id) / "vectors.npy").is_file():
         context = context_from_json(read_json(path))
@@ -253,6 +266,24 @@ def script_stage(scene, ctx: RunContext, context) -> SceneResult:
 
     layout = ctx.settings.layout()
     path = layout.script_json(scene.id)
+    template = _desk_template(scene)
+    if template:                                  # official text from desk.json: no writer, no QC loop, no translation
+        from contracts import LLMOutput, ScriptOutcome, ScriptScore
+        from desk.bulletin import build
+        from qc.quality_control import load_desk
+
+        desk = load_desk()
+        if not desk:
+            return SceneResult(scene.id, ok=False, error="desk.json is missing or older than the freshness limit")
+        try:
+            text = build(template, desk)
+        except ValueError as error:
+            return SceneResult(scene.id, ok=False, error=f"desk template {template}: {error}")
+        outcome = ScriptOutcome(script=LLMOutput(llm_output=text), score=ScriptScore(total=0.0, passes_threshold=True),
+                                accepted=True, attempts=1, warnings=[f"read from desk.json ({desk.get('generated_at')}) by template {template}"])
+        write_json(path, outcome_to_json(outcome))
+        _mark(layout, scene.id, "script", ctx.generation)
+        return SceneResult(scene.id, ok=True, value=outcome)
     if _reusable(ctx, layout, scene.id, "script", path):
         outcome = outcome_from_json(read_json(path))
         if outcome.accepted and outcome.script.llm_output.strip():
@@ -263,11 +294,12 @@ def script_stage(scene, ctx: RunContext, context) -> SceneResult:
                             scorer=ScriptScorer(threshold=s.script_score_threshold, scene_dir=layout.scene_dir(scene.id)),
                             attempts_path=layout.script_attempts(scene.id))
     outcome = harness.produce(scene=scene, context=context)
-    from qc.quality_control import ALERT_PREFIX, TRACK_PREFIX
-    bad = [c for c in (outcome.score.contradictions if outcome.score else []) if c.startswith((ALERT_PREFIX, TRACK_PREFIX))]
+    from qc.quality_control import ALERT_PREFIX, CLOSURE_PREFIX, TRACK_PREFIX
+    bad = [c for c in (outcome.score.contradictions if outcome.score else []) if c.startswith((ALERT_PREFIX, TRACK_PREFIX, CLOSURE_PREFIX))]
     if bad:
         write_json(layout.scene_dir(scene.id) / "script_rejected.json", {"alerts": bad, "script": outcome.script.llm_output})
-        what = "unsupported track claim(s)" if bad[0].startswith(TRACK_PREFIX) else "unsupported alert(s)"
+        what = ("unsupported track claim(s)" if bad[0].startswith(TRACK_PREFIX) else
+                "unsupported closure claim(s)" if bad[0].startswith(CLOSURE_PREFIX) else "unsupported alert(s)")
         return SceneResult(scene.id, ok=False, warnings=outcome.warnings,
                            error=f"best script still states {len(bad)} {what}: {bad[0][:160]}")
     write_json(path, outcome_to_json(outcome))
@@ -290,7 +322,7 @@ def rewrite_stage(scene, ctx: RunContext, outcome) -> SceneResult:
 
     layout = ctx.settings.layout()
     path = layout.scene_dir(scene.id) / "rewrite.json"
-    if os.environ.get("REWRITE_ENABLED", "1") != "1":
+    if os.environ.get("REWRITE_ENABLED", "1") != "1" or _desk_template(scene):     # desk text is already final, in its language
         return SceneResult(scene.id, ok=True, value=outcome)
     if _reusable(ctx, layout, scene.id, "rewrite", path):
         saved = read_json(path)

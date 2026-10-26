@@ -40,7 +40,7 @@ from desk.text import Source, TextResult, country_text, dump_dropped, headline_t
 log = logging.getLogger(__name__)
 
 SCHEMA_VERSION = 1
-SECTIONS = ["storm", "center", "forecast", "past", "agencies", "agencyNote", "warnings", "headlines", "ticker",
+SECTIONS = ["storm", "center", "forecast", "past", "agencies", "agencyNote", "warnings", "headlines", "ticker", "tw", "jp",
             "impact", "ensemble", "cpa"]
 REQUIRED = ("storm", "center", "forecast", "agencies")
 COUNTRIES = {
@@ -118,6 +118,8 @@ def collect(storm_hint: str, fallback_jma: str, fallback_jtwc: str) -> dict[str,
         "jtwc": lambda: S.jtwc_storm(jid),
         "pagasa": S.pagasa_bulletin,
         "cwa": lambda: S.cwa_storm(hint),
+        "cwa_warn": S.cwa_warnings,
+        "dgpa": S.dgpa_closures,
         "ensemble": lambda: S.ensemble(basin, number),
     }
     with ThreadPoolExecutor(max_workers=len(jobs)) as pool:
@@ -130,6 +132,137 @@ def collect(storm_hint: str, fallback_jma: str, fallback_jtwc: str) -> dict[str,
                 raw[k] = e
     raw["fetched_at"] = now_iso()
     return raw
+
+
+TW_EN = {"基隆市": "Keelung", "臺北市": "Taipei", "新北市": "New Taipei", "桃園市": "Taoyuan", "新竹市": "Hsinchu City",
+         "新竹縣": "Hsinchu County", "苗栗縣": "Miaoli", "臺中市": "Taichung", "彰化縣": "Changhua", "雲林縣": "Yunlin",
+         "南投縣": "Nantou", "嘉義市": "Chiayi City", "嘉義縣": "Chiayi County", "臺南市": "Tainan", "高雄市": "Kaohsiung",
+         "屏東縣": "Pingtung", "宜蘭縣": "Yilan", "花蓮縣": "Hualien", "臺東縣": "Taitung", "澎湖縣": "Penghu",
+         "金門縣": "Kinmen", "連江縣": "Lienchiang (Matsu)"}
+CWA_WARN_EN = {"海上陸上颱風警報": "Sea and Land Typhoon Warning", "海上颱風警報": "Sea Typhoon Warning"}
+RAIN_EN = {"大雨": "heavy rain", "豪雨": "extremely heavy rain", "大豪雨": "torrential rain", "超大豪雨": "extremely torrential rain"}
+
+
+def sec_tw(raw, prev_tw: dict | None) -> dict:
+    """Taiwan block for the zh page: CWA's typhoon warning, wind / rain advisories by county, DGPA closures. A source
+    that failed this run keeps its previous value (stamped), so the board never blanks out mid-stream."""
+    prev_tw = prev_tw or {}
+    cw, dg = raw.get("cwa_warn"), raw.get("dgpa")
+    out = {}
+    if ok(cw):
+        out.update({"warning": cw["typhoon"], "wind": cw["wind"], "rain": cw["rain"], "warn_url": cw["url"]})
+    else:
+        out.update({k: prev_tw.get(k) for k in ("warning", "wind", "rain", "warn_url")})
+    out["closures"] = dg if ok(dg) else prev_tw.get("closures")
+    if not any(out.get(k) for k in ("warning", "wind", "rain", "closures")):
+        raise RuntimeError(f"CWA warnings: {cw}; DGPA: {dg}")
+    return out
+
+
+# ---- Japan (?lang=ja page and the JMA relay scenes): JMA's own Japanese wording, plus which islands lie inside
+# JMA's CURRENT storm / gale areas (geometry on JMA's analysis, never a forecast of ours) --------------------------------
+JP_ISLANDS = [("与那国島", 24.47, 123.00), ("石垣島", 24.34, 124.16), ("宮古島", 24.80, 125.28), ("沖縄本島", 26.21, 127.68)]
+JA_BEARING = {"北": 0, "北北東": 22.5, "北東": 45, "東北東": 67.5, "東": 90, "東南東": 112.5, "南東": 135, "南南東": 157.5, "南": 180,
+              "南南西": 202.5, "南西": 225, "西南西": 247.5, "西": 270, "西北西": 292.5, "北西": 315, "北北西": 337.5}
+
+
+def _jma_area(items: list | None, lat: float, lon: float) -> tuple[float, float, float] | None:
+    """JMA's "北西側330km、南東側280km" -> the circle it describes: (centre lat, centre lon, radius km)."""
+    import math
+    rs = [(a.get("area"), (a.get("range") or {}).get("km")) for a in items or [] if (a.get("range") or {}).get("km")]
+    if not rs:
+        return None
+    if len(rs) == 1 or rs[0][0] not in JA_BEARING:
+        return lat, lon, float(max(r for _, r in rs))
+    (a1, r1), (_, r2) = rs[0], rs[1]
+    off, th = (r1 - r2) / 2, math.radians(JA_BEARING[a1])
+    return (lat + off * math.cos(th) / 111.2, lon + off * math.sin(th) / (111.2 * math.cos(math.radians(lat))), (r1 + r2) / 2)
+
+
+def sec_jp(raw) -> dict:
+    jma = raw.get("jma")
+    if not ok(jma) or not jma.get("_spec"):
+        raise RuntimeError(f"JMA: {jma}")
+    spec = jma["_spec"]
+    title = next((p for p in spec if p.get("part") == "title"), {})
+    cls = lambda p: "で".join(x for x in (p.get("scale"), p.get("intensity")) if x and x != "-")
+    ms = lambda p, k: ((p.get("maximumWind") or {}).get(k) or {}).get("m/s")
+    now = next((p for p in spec if isinstance(p.get("part"), dict) and p["part"].get("en") == "Analysis"), None)
+    if not now:
+        raise RuntimeError("JMA specifications.json has no analysis")
+    lat, lon = now["position"]["deg"]
+    area = lambda key: [[a.get("area") or "", a["range"]["km"]] for a in now.get(key) or [] if a.get("range")]
+    storm, gale = _jma_area(now.get("stormWarning"), lat, lon), _jma_area(now.get("galeWarning"), lat, lon)
+    islands = []
+    for name, ilat, ilon in JP_ISLANDS:
+        km = geo.dist_km((lat, lon), (ilat, ilon))
+        inside = lambda c: c is not None and geo.dist_km((c[0], c[1]), (ilat, ilon)) <= c[2]
+        islands.append({"name": name, "km": round(km), "zone": "storm" if inside(storm) else "gale" if inside(gale) else "none"})
+    fc = [{"time": p["validtime"]["JST"], "location": p.get("location"), "class": cls(p), "pressure": p.get("pressure"),
+           "wind_ms": ms(p, "sustained"), "gust_ms": ms(p, "gust")}
+          for p in spec if isinstance(p.get("part"), dict) and p["part"].get("en", "").startswith("Forecast") and p.get("location")]
+    return {"issued": (title.get("issue") or {}).get("JST"), "number": int(str(title.get("typhoonNumber", "0"))[-2:]),
+            "name": (title.get("name") or {}).get("jp", ""), "url": jma.get("url", ""),
+            "now": {"time": now["validtime"]["JST"], "location": now.get("location"), "class": cls(now), "course": now.get("course"),
+                    "speed_kmh": (now.get("speed") or {}).get("km/h"), "pressure": now.get("pressure"), "wind_ms": ms(now, "sustained"),
+                    "gust_ms": ms(now, "gust"), "storm": area("stormWarning"), "gale": area("galeWarning")},
+            "forecast": fc, "islands": islands}
+
+
+def merge_cwa_warning(raw) -> None:
+    """CWA's warning bulletin (every 3 h, sometimes hourly) is newer than TY_NEWS: take its center and numbers when so."""
+    cw, cwa = raw.get("cwa_warn"), raw.get("cwa")
+    w = (cw or {}).get("typhoon") if ok(cw) else None
+    if not w or not ok(cwa) or not cwa.get("active") or not w.get("issuedUTC"):
+        return
+    now = w.get("now") or {}
+    pos = re.search(r"(\d+)日(\d+)時的中心位置在北緯\s*([\d.]+)\s*度，東經\s*([\d.]+)\s*度", now.get("中心位置", ""))
+    if not pos:
+        return
+    issued = S.parse_iso(w["issuedUTC"]).astimezone(timezone(timedelta(hours=8)))
+    t = issued.replace(day=int(pos.group(1)), hour=int(pos.group(2)), minute=0, second=0, microsecond=0).astimezone(timezone.utc)
+    if cwa.get("timeUTC") and S.parse_iso(cwa["timeUTC"]) >= t:
+        return
+    num = lambda k, rx: (float(m.group(1)) if (m := re.search(rx, now.get(k, ""))) else None)
+    cwa.update({"timeUTC": S.iso(t), "lat": float(pos.group(3)), "lon": float(pos.group(4)),
+                "pressure_hpa": num("中心氣壓", r"(\d+)\s*百帕") or cwa.get("pressure_hpa"),
+                "wind_ms": num("近中心最大風速", r"每秒\s*(\d+)\s*公尺") or cwa.get("wind_ms"),
+                "gust_ms": num("瞬間之最大陣風", r"每秒\s*(\d+)\s*公尺") or cwa.get("gust_ms"),
+                "url": cw["url"]})
+    mv = re.search(r"(\d+)公里速度，向([^進]+)進行", now.get("前進方向", ""))
+    if mv:
+        cwa["speed_kmh"], cwa["course"] = float(mv.group(1)), S.COMPASS_JP.get(mv.group(2), cwa.get("course", ""))
+
+
+def tw_summary_en(tw: dict | None) -> tuple[str, str]:
+    """(warning sentence, closures note) in English for the warnings list, ticker and QC."""
+    if not tw:
+        return "", ""
+    parts = []
+    w = tw.get("warning")
+    if w:
+        rep = f" (Report No. {w['report']})" if w.get("report") else ""
+        parts.append(f"{CWA_WARN_EN.get(w['title'], 'Typhoon Warning')} in effect{rep}, issued {fmt_local(w.get('issuedUTC'), 'UTC+8')}.")
+    wind = (tw.get("wind") or {}).get("counties") or {}
+    orange = [TW_EN[c] for c, v in wind.items() if v in ("orange", "red")]
+    if orange:
+        parts.append(f"Land gale advisory (orange) for {len(orange)} counties and cities, including {', '.join(orange[:4])}.")
+    rain = (tw.get("rain") or {}).get("counties") or {}
+    if rain:
+        top = max(rain.values(), key=S.RAIN_LEVELS.index)
+        where = [TW_EN[c] for c, v in rain.items() if v == top]
+        parts.append(f"Heavy rain advisory: {RAIN_EN[top]} possible in {', '.join(where)}.")
+    note = ""
+    cl = (tw.get("closures") or {}).get("counties") or {}
+    if cl:
+        off = [c for c, v in cl.items() if v.get("status") == "off"]
+        part = [c for c, v in cl.items() if v.get("status") == "partial"]
+        if off or part:
+            md = re.match(r"(\d+)月(\d+)日", tw["closures"].get("day") or "")
+            day = f" on {datetime(2000, int(md.group(1)), 1):%b} {int(md.group(2))}" if md else ""
+            note = (f"Work and school closed{day} in {len(off)} of {len(cl)} counties and cities"
+                    + (f", partly in {', '.join(TW_EN[c] for c in part)}" if part else "") + " (DGPA).")
+    return " ".join(parts), note
 
 
 def ok(x) -> bool:
@@ -330,6 +463,7 @@ def build_desk(prev: dict | None, *, storm_hint: str = "", ask: Callable[[str, s
                fallback_jtwc: str = "wp2926") -> tuple[dict, dict]:
     prev = prev or {}
     raw = raw if raw is not None else collect(storm_hint, fallback_jma, fallback_jtwc)
+    merge_cwa_warning(raw)
     fetched = raw.get("fetched_at") or now_iso()
     doc: dict[str, Any] = {"schema_version": SCHEMA_VERSION, "generated_at": now_iso()}
     prov: dict[str, dict] = {}
@@ -377,6 +511,8 @@ def build_desk(prev: dict | None, *, storm_hint: str = "", ask: Callable[[str, s
             raise RuntimeError("no track")
         return geo.cpa_table([{"lat": c["lat"], "lon": c["lon"], "timeUTC": c["timeUTC"]}] + f["points"])
     put("cpa", cpa, "derived from the JMA forecast track")
+    put("tw", lambda: sec_tw(raw, prev.get("tw")), "CWA warning scripts + DGPA closures", S.CWA_WARN_CONTENT)
+    put("jp", lambda: sec_jp(raw), "JMA specifications.json (Japanese wording) + island zones from JMA's current radii", jma_url)
 
     # ---- text sections --------------------------------------------------------------------
     pag = raw.get("pagasa")
@@ -416,7 +552,12 @@ def build_desk(prev: dict | None, *, storm_hint: str = "", ask: Callable[[str, s
             if cc == "PH" and sig and sig["raised"]:
                 lvl = "hot"
                 note = f"Wind Signal No. {sig['max_raised']} raised (PAGASA Bulletin #{sig['bulletin']})"
-            if w:
+            tw_text, tw_note = tw_summary_en(doc.get("tw")) if cc == "TW" else ("", "")
+            if tw_text:                            # CWA's own warning scripts beat the LLM's reading of news pages
+                tw_w = doc["tw"].get("warning") or {}
+                items.append({"cc": cc, "level": "hot" if tw_w else "watch", "text": f"<b>CWA:</b> {_html(tw_text)}", "note": tw_note,
+                              "source_url": doc["tw"].get("warn_url") or "", "quote": tw_w.get("text", "")})
+            elif w:
                 items.append({"cc": cc, "level": lvl, "text": f"<b>{meta['agency']}:</b> {_html(w['text'])}", "note": note,
                               "source_url": w["source_url"], "quote": w["quote"]})
             elif cc == "PH" and sig and sig["raised"]:
@@ -450,6 +591,11 @@ def build_desk(prev: dict | None, *, storm_hint: str = "", ask: Callable[[str, s
                 if sig["raised"]:
                     lvl = "hot"
                     status = status or f"Wind Signal No. {sig['max_raised']} raised."
+            if cc == "TW":
+                tw_text, tw_note = tw_summary_en(doc.get("tw"))
+                if tw_text:
+                    lvl = "hot" if (doc["tw"].get("warning")) else "watch"
+                    status = " ".join(x for x in (tw_text, tw_note) if x)
             col["level"] = lvl
             col["statusTag"] = (f"SIGNAL NO. {sig['max_raised']}" if cc == "PH" and sig and sig["raised"]
                                 else {"hot": "WARNING", "watch": "WATCH"}.get(lvl, "MONITORING"))
@@ -492,6 +638,11 @@ def build_desk(prev: dict | None, *, storm_hint: str = "", ask: Callable[[str, s
             items.append(["PAGASA", "Highest wind signal that may be raised: No. " + " or ".join(map(str, sig["possible"]))])
         if "CWA" in rows:
             items.append(["CWA", f"{rows['CWA']['winds']} winds, {rows['CWA']['pressure']} ({rows['CWA']['time']})"])
+        tw_text, tw_note = tw_summary_en(doc.get("tw"))
+        if tw_text:
+            items.append(["CWA", tw_text])
+        if tw_note:
+            items.append(["DGPA", tw_note])
         for cc in COUNTRIES:
             r = results.get(cc)
             for t in ((r.items.get("ticker") if r else None) or []):
@@ -562,10 +713,14 @@ def validate(doc: dict) -> list[str]:
         ll(pt[1], pt[2], f"past[{i}]")
     for s in (doc.get("ensemble") or {}).get("sets") or []:
         for m in s.get("members") or []:
-            for la, lo in m.get("pts") or []:
-                if not (-60 <= la <= 60 and 80 <= lo <= 220):
+            # a member's extratropical tail can run off the map (past 60N / 140W): cut the track there instead of
+            # rejecting the whole desk; these are reference model runs, and a stale desk would freeze the live numbers
+            pts_m = m.get("pts") or []
+            cut = next((i for i, (la, lo) in enumerate(pts_m) if not (-60 <= la <= 60 and 80 <= lo <= 220)), None)
+            if cut is not None:
+                m["pts"] = pts_m[:cut]
+                if cut < 2:
                     p.append(f"ensemble {s.get('name')} {m.get('id')}: point out of range")
-                    break
     for a in doc.get("agencies") or []:
         for k in ("agency", "sub", "time", "winds", "gusts", "pressure", "moving"):
             if k not in a:

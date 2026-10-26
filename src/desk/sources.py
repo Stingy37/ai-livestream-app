@@ -9,6 +9,8 @@ failure; build.py decides what to do with a failure. Nothing here calls an LLM.
     jtwc_storm(id)               <id>.tcw (forecast + 6-hourly past track) + <id>web.txt (warning text)
     pagasa_bulletin()            PAGASA severe weather bulletin page -> {"active": bool, ...}
     cwa_storm(name)              CWA TY_NEWS-Data.js (public, no API key) -> current CWA analysis
+    cwa_warnings()               CWA Warning_Content.js + TY_WARN-Data.js -> typhoon warning, wind / rain advisories by county
+    dgpa_closures()              DGPA nds.html -> work and school closures by county (停班停課)
     ensemble(basin, number)      NCEP ens_tracker on NOMADS -> GEFS + FNMOC member tracks
 """
 
@@ -29,6 +31,9 @@ JTWC_RSS = "https://www.metoc.navy.mil/jtwc/rss/jtwc.rss"
 JTWC_PRODUCTS = "https://www.metoc.navy.mil/jtwc/products"
 PAGASA_BULLETIN = "https://www.pagasa.dost.gov.ph/tropical-cyclone/severe-weather-bulletin"
 CWA_TY_NEWS = "https://www.cwa.gov.tw/Data/js/typhoon/TY_NEWS-Data.js"
+CWA_WARN_CONTENT = "https://www.cwa.gov.tw/Data/js/warn/Warning_Content.js"
+CWA_TY_WARN = "https://www.cwa.gov.tw/Data/js/typhoon/TY_WARN-Data.js"
+DGPA_NDS = "https://www.dgpa.gov.tw/typh/daily/nds.html"
 NOMADS_ENS = "https://nomads.ncep.noaa.gov/pub/data/nccf/com/ens_tracker/prod"
 
 COMPASS_JP = {"北": "N", "北北東": "NNE", "北東": "NE", "東北東": "ENE", "東": "E", "東南東": "ESE", "南東": "SE",
@@ -350,6 +355,163 @@ def parse_cwa(js: str, name: str | None = None) -> dict:
 
 def cwa_storm(name: str | None = None) -> dict:
     return parse_cwa(get_text(CWA_TY_NEWS), name)
+
+
+# Taiwan's 22 counties and cities, north to south then the outer islands (DGPA and CWA spell them with 臺)
+TW_COUNTIES = ["基隆市", "臺北市", "新北市", "桃園市", "新竹市", "新竹縣", "苗栗縣", "臺中市", "彰化縣", "雲林縣", "南投縣",
+               "嘉義市", "嘉義縣", "臺南市", "高雄市", "屏東縣", "宜蘭縣", "花蓮縣", "臺東縣", "澎湖縣", "金門縣", "連江縣"]
+RAIN_LEVELS = ["大雨", "豪雨", "大豪雨", "超大豪雨"]
+WIND_LIGHTS = {"紅色燈號": "red", "橙色燈號": "orange", "黃色燈號": "yellow"}
+
+
+def _counties_named(text: str) -> list[str]:
+    """Counties a CWA clause names, in full (臺北市) or short (臺北地區, 新竹 = both 新竹市 and 新竹縣)."""
+    text = text.replace("台", "臺")
+    out = [c for c in TW_COUNTIES if c in text]
+    for short in re.findall(r"([\u4e00-\u9fff]{2})(?=[、及和]|地區|山區|$)", text):
+        out += [c for c in TW_COUNTIES if c.startswith(short) and c not in out]
+    return [c for c in TW_COUNTIES if c in out]
+
+
+def _js_entries(js: str) -> dict[str, dict]:
+    """Warning_Content.js: {'TY_WARN': {'title', 'issued', 'validto', 'content'}, 'W25': ...} (Chinese blocks)."""
+    out = {}
+    for m in re.finditer(r"'([A-Za-z0-9_]+)':\{\s*'C':\{\s*'title':'([^']*)',\s*'issued':'([^']*)',\s*'validto':'([^']*)',"
+                         r"\s*'content':'((?:[^'\\]|\\.)*)'", js):
+        body = m.group(5).replace("\\n", "\n")
+        body = re.sub(r"^發布時間：[^\n]*\n*", "", body).strip()
+        out[m.group(1)] = {"title": m.group(2), "issued": m.group(3), "validto": m.group(4), "content": body}
+    return out
+
+
+def _tw_time(s: str) -> str | None:
+    """'2026/10/23 02:30' (Taiwan time) -> ISO UTC."""
+    m = re.match(r"(\d{4})/(\d{2})/(\d{2}) (\d{2}):(\d{2})", s or "")
+    return iso(datetime(*map(int, m.groups()), tzinfo=timezone(timedelta(hours=8))).astimezone(timezone.utc)) if m else None
+
+
+def parse_wind_advisory(text: str) -> dict[str, str]:
+    """陸上強風特報: the counties listed before each (橙色燈號) / (黃色燈號) marker -> {county: 'orange' | 'yellow' | 'red'}."""
+    out: dict[str, str] = {}
+    pos = 0
+    for m in re.finditer(r"[（(](紅色燈號|橙色燈號|黃色燈號)[)）]", text):
+        for c in _counties_named(text[pos:m.start()]):
+            out.setdefault(c, WIND_LIGHTS[m.group(1)])
+        pos = m.end()
+    return out
+
+
+def parse_rain_advisory(text: str) -> dict[str, str]:
+    """豪雨特報: each clause '<counties>有局部<levels>' -> {county: strongest level named for it}."""
+    out: dict[str, str] = {}
+    head = text.split("請注意")[0]
+    for clause in re.split(r"[，。]", head):
+        if "有" not in clause:
+            continue
+        where, what = clause.split("有", 1)
+        lv = [l for l in RAIN_LEVELS if l in what]
+        if not lv:
+            continue
+        top = max(lv, key=RAIN_LEVELS.index)
+        for c in _counties_named(where):
+            if c not in out or RAIN_LEVELS.index(top) > RAIN_LEVELS.index(out[c]):
+                out[c] = top
+    for lvl, names in re.findall(r"(超大豪雨|大豪雨|豪雨)地區：([^。]+)", text):   # the summary lines at the end
+        for c in _counties_named(names):
+            if c not in out or RAIN_LEVELS.index(lvl) > RAIN_LEVELS.index(out[c]):
+                out[c] = lvl
+    return out
+
+
+def parse_cwa_warnings(content_js: str, ty_warn_js: str = "") -> dict:
+    """CWA's warning scripts (public, no API key) -> the typhoon warning plus wind / rain advisories by county."""
+    e = _js_entries(content_js)
+    out: dict = {"url": "https://www.cwa.gov.tw/V8/C/P/Typhoon/TY_WARN.html", "typhoon": None, "wind": None, "rain": None}
+    ty = e.get("TY_WARN")
+    if ty:
+        rep = re.search(r"第(\d+(?:-\d+)?)報", ty["content"])       # "第10報", or an interim update "第10-2報"
+        report = (int(rep.group(1)) if rep.group(1).isdigit() else rep.group(1)) if rep else None
+        out["typhoon"] = {"title": ty["title"], "report": report, "issued": ty["issued"],
+                          "issuedUTC": _tw_time(ty["issued"]), "validto": ty["validto"], "text": ty["content"],
+                          "kind": "land" if "陸上" in ty["title"] else "sea"}
+    if e.get("W25"):
+        out["wind"] = {**e["W25"], "issuedUTC": _tw_time(e["W25"]["issued"]), "counties": parse_wind_advisory(e["W25"]["content"])}
+    if e.get("W26"):
+        out["rain"] = {**e["W26"], "issuedUTC": _tw_time(e["W26"]["issued"]), "counties": parse_rain_advisory(e["W26"]["content"])}
+    if out["typhoon"] and ty_warn_js:
+        t = out["typhoon"]
+        body = re.search(r"TabBody_C = (.*?);\s*\n", ty_warn_js, re.S)
+        raw = "".join(re.findall(r"'((?:[^'\\]|\\.)*)'", body.group(1))) if body else ""
+        now = {k.rstrip("："): htmllib.unescape(re.sub(r"<[^>]+>", "", v)).strip()
+               for k, v in re.findall(r"<li><span>([^<]+)</span><span>(.*?)</span></li>", raw)}
+        t["now"] = now
+        fc = re.search(r"颱風預測</h4>\s*<p>(.*?)</p>", raw, re.S)
+        t["forecast"] = htmllib.unescape(re.sub(r"<[^>]+>", "", fc.group(1))).strip() if fc else ""
+        area = re.search(r"var WarningArea = (\{.*?\});", ty_warn_js)
+        if area:
+            import json
+            a = json.loads(area.group(1))
+            t["land_area"], t["sea_area"] = a.get("LandWarningArea", ""), a.get("SeaWarningArea", "")
+        nxt = re.search(r"下次警報預定發布時間為([^'。]+)", ty_warn_js)
+        t["next"] = nxt.group(1).strip() if nxt else ""
+        mv = re.search(r"var Movement = '([^']*)'", ty_warn_js)
+        t["movement"] = mv.group(1) if mv else ""
+    return out
+
+
+def cwa_warnings() -> dict:
+    content = get_text(CWA_WARN_CONTENT)
+    try:
+        ty = get_text(CWA_TY_WARN)
+    except FetchError:
+        ty = ""
+    return parse_cwa_warnings(content, ty)
+
+
+def parse_dgpa(page: str) -> dict:
+    """DGPA's 天然災害停止上班及上課情形 page -> {county: {"status": off | partial | normal | none, "text": [...]}}."""
+    body = re.sub(r"<script.*?</script>|<style.*?</style>", "", page, flags=re.S | re.I)
+    lines = [l.strip() for l in htmllib.unescape(re.sub(r"<[^>]+>", "\n", body)).split("\n") if l.strip()]
+    upd = next((re.search(r"(\d{4}/\d{2}/\d{2} \d{2}:\d{2}(?::\d{2})?)", l) for l in lines if "更新時間" in l), None)
+    day = re.search(r"(\d+)月\s*(\d+)日\s*天然災害停止上班", " ".join(lines))
+    counties: dict[str, dict] = {}
+    cur = None
+    started = False
+    for l in lines:
+        if "是否停止上班上課情形" in l:
+            started = True
+            continue
+        if not started:
+            continue
+        if l.startswith("備註"):
+            break
+        name = l.replace("台", "臺")
+        if name in TW_COUNTIES:
+            cur = counties.setdefault(name, {"text": []})
+        elif re.fullmatch(r"[\u4e00-\u9fff]{2}地區", l):
+            continue
+        elif cur is not None:
+            cur["text"].append(l)
+    for c in counties.values():
+        txt = " ".join(c["text"])
+        whole = [t for t in c["text"] if not re.match(r"^[\u4e00-\u9fff]{1,6}[鄉鎮市區]\s*[:：]", t)]
+        if whole and all("停止上班" in t and "停止上課" in t for t in whole):
+            c["status"] = "off"
+        elif "停止上班" in txt or "停止上課" in txt:
+            c["status"] = "partial"
+        elif "照常" in txt or "尚未列入" in txt:
+            c["status"] = "normal"
+        else:
+            c["status"] = "none"
+    if not counties:
+        raise ValueError("DGPA page has no county rows")
+    return {"url": DGPA_NDS, "updated": upd.group(1) if upd else "",
+            "updatedUTC": _tw_time(upd.group(1)[:16]) if upd else None,
+            "day": f"{day.group(1)}月{day.group(2)}日" if day else "", "counties": counties}
+
+
+def dgpa_closures() -> dict:
+    return parse_dgpa(get_text(DGPA_NDS))
 
 
 # ─────────────────────────────────────────────────────────────────────────────

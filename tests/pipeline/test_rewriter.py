@@ -115,3 +115,28 @@ def test_translation_false_positives():
     assert new_names("Nasa labas ito ng PAR ngayon.", "It is outside the Philippine Area of Responsibility.") == []
     assert new_terms("JMA recorded winds of 185 km/h.", "JMA reports winds of 185 km/h.") == []
     assert new_terms("It was a record-breaking storm.", "It is a strong storm.") == ["record-breaking"]
+
+
+def test_utc_times_become_local_before_translation():
+    from datetime import datetime, timezone
+    from writer.rewriter import localize_utc_times
+
+    now = datetime(2026, 10, 22, 19, 40, tzinfo=timezone.utc)
+    assert localize_utc_times("As of 17:00 UTC on October 22, JMA reported", "zh-tw", now) == \
+        "As of 1 AM Taiwan time on October 23, JMA reported"
+    assert localize_utc_times("JTWC (Oct 22, 12:00 UTC) said", "zh-tw", now) == "JTWC (8 PM Taiwan time on October 22) said"
+    assert localize_utc_times("by 03:00 UTC the center", "ja", now) == "by 12 PM Japan time on October 23 the center"
+    assert localize_utc_times("As of 17:00 UTC on October 22", "en", now) == "As of 17:00 UTC on October 22"
+
+
+def test_chinese_translation_guards():
+    zh = Scene(id="sc-z", node_key="z", title="Local Impacts", topic_description="Impacts in Taiwan.", system_instructions="",
+               sources=[], language="zh-tw", script_model="qwen3-8b", tts_model="kokoro", tts_voice="zm_yunyang")
+    draft = "Some ferry routes are suspended. The storm is moving northwest toward Taiwan at 15 km/h."
+    rw = ScriptRewriter(model="m", max_attempts=1, chat=lambda m: "")
+    left = rw.problems(zh, draft, "部分 ferry 航線停航。颱風以每小時15公里向西北移動。", english=draft)
+    assert any("untranslated: ferry" in p for p in left)
+    away = rw.problems(zh, draft, "部分渡輪航線停航。颱風以每小時15公里向西北移動，離台灣會越來越遠。", english=draft)
+    assert any("moving away" in p for p in away)
+    ok = rw.problems(zh, draft, "部分渡輪航線停航。颱風以每小時15公里向西北朝台灣移動，JTWC與CWA持續追蹤。", english=draft)
+    assert not [p for p in ok if "untranslated" in p or "moving away" in p]

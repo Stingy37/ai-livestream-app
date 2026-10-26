@@ -23,6 +23,7 @@ import logging
 import os
 import re
 from dataclasses import dataclass, field
+from datetime import datetime, timedelta, timezone
 from typing import Any, Callable
 
 from contracts import LLMOutput, RetrievedContext, Scene, ScriptOutcome, ScriptScore
@@ -117,6 +118,50 @@ COMMON_CAPS = {"I", "A", "An", "The", "UTC", "AM", "PM", "Monday", "Tuesday", "W
                "Saturday", "Sunday", "January", "February", "March", "April", "May", "June", "July", "August",
                "September", "October", "November", "December", "North", "South", "East", "West", "Northern",
                "Southern", "Eastern", "Western"}
+
+
+# where each stream's audience lives: UTC times in an English draft are converted before translation, because a
+# translator drops the "UTC" and keeps the digits ("17:00 UTC" became 「下午5點」, eight hours off, for Taiwan)
+HOME_ZONES = {"zh": (8, "Taiwan time"), "ja": (9, "Japan time"), "tl": (8, "Philippine time"), "fil": (8, "Philippine time")}
+_MONTHS = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"]
+_MON = r"(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|June?|July?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)"
+_UTC_TIME = re.compile(rf"(?:(?:on\s+)?(?P<mon1>{_MON})\.?\s+(?P<day1>\d{{1,2}}),?\s+(?:at\s+)?)?(?P<h>\d{{1,2}}):(?P<m>\d{{2}})\s*(?:UTC|GMT|Z)\b"
+                       rf"(?:,?\s+on\s+(?P<mon2>{_MON})\.?\s+(?P<day2>\d{{1,2}}))?", re.I)
+
+
+def localize_utc_times(text: str, code: str, now: datetime | None = None) -> str:
+    """'17:00 UTC on October 22' -> '1 AM Taiwan time on October 23' for a zh-tw stream (no change for English)."""
+    zone = HOME_ZONES.get((code or "en").lower().split("-")[0])
+    if not zone:
+        return text
+    offset, label = zone
+    now = now or datetime.now(timezone.utc)
+
+    def sub(m: re.Match) -> str:
+        mon, day = m.group("mon1") or m.group("mon2"), m.group("day1") or m.group("day2")
+        h, mi = int(m.group("h")), int(m.group("m"))
+        if h > 23 or mi > 59:
+            return m.group(0)
+        if mon and day:
+            month = next(i for i, name in enumerate(_MONTHS, 1) if name.startswith(mon.lower()[:3]))
+            t = datetime(now.year, month, int(day), h, mi, tzinfo=timezone.utc)
+        else:                                     # no date given: the occurrence nearest to now
+            t = min((now.replace(hour=h, minute=mi, second=0, microsecond=0) + timedelta(days=k) for k in (-1, 0, 1)),
+                    key=lambda c: abs((c - now).total_seconds()))
+        loc = t + timedelta(hours=offset)
+        clock = f"{loc.hour % 12 or 12}{':%02d' % loc.minute if loc.minute else ''} {'AM' if loc.hour < 12 else 'PM'}"
+        lead = "on " if m.group(0).lower().startswith("on ") else ""
+        return f"{lead}{clock} {label} on {loc:%B} {loc.day}"
+    return _UTC_TIME.sub(sub, text)
+
+
+# words a Chinese or Japanese script may keep in Latin letters (agency acronyms, units, the storm's names)
+LATIN_OK = {"jma", "jtwc", "cwa", "utc", "pagasa", "dgpa", "nhc", "gefs", "km", "hpa", "kt", "mm", "champi", "rosal", "himawari",
+            "live", "ok", "noaa", "fnmoc", "ncep", "ecmwf", "youtube"}
+_LATIN_WORD = re.compile(r"[A-Za-z][A-Za-z'-]{2,}")
+# "moving away" added by a translation (「離台灣會越來越遠」 for a storm that was approaching)
+AWAY_TERMS = {"zh": ["越來越遠", "遠離", "漸行漸遠"], "ja": ["遠ざか"]}
+_AWAY_EN = re.compile(r"\b(away|farther|further from|receding|recede)\b", re.I)
 
 
 def _env_float(name: str, default: float) -> float:
@@ -279,6 +324,14 @@ class ScriptRewriter:
         extra = sorted(numbers(text) - allowed)
         if extra:
             out.append(f"it contains numbers that are not in the draft: {', '.join(extra[:8])}. Use only the draft's numbers, written exactly as there.")
+        lang = (scene.language or "en").lower().split("-")[0]
+        if lang in ("zh", "ja", "ko"):
+            latin = sorted({w for w in _LATIN_WORD.findall(text) if w.lower() not in LATIN_OK and not w.isupper()})
+            if latin:
+                out.append(f"it leaves English words untranslated: {', '.join(latin[:8])}. Translate them.")
+        away = [t for t in AWAY_TERMS.get(lang, []) if t in text]
+        if away and not _AWAY_EN.search(draft):
+            out.append(f"it says something is moving away ({', '.join(away)}), which the draft does not say. Remove it.")
         text = english or text
         added = new_terms(text, draft)
         if added:
@@ -297,7 +350,7 @@ class ScriptRewriter:
         return out
 
     def rewrite(self, scene: Scene, outcome: ScriptOutcome, context: RetrievedContext | None = None) -> RewriteResult:
-        draft = outcome.script.llm_output.strip()
+        draft = localize_utc_times(outcome.script.llm_output.strip(), scene.language)
         if not draft:
             return RewriteResult(outcome, False, "empty draft")
         context = context or RetrievedContext(scene_id=scene.id)

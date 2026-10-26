@@ -185,6 +185,8 @@ class ScriptScorer:
         unsupported_msgs = self._check_unsupported_figures(qc, checker, script, context.scene_id)
         alert_msgs = self._check_unsupported_alerts(qc, checker, script, context.scene_id)
         track_msgs = self._check_track_claims(qc, checker, script)
+        closure_msgs = self._check_closure_claims(qc, checker, script)
+        track_msgs += closure_msgs
         unsupported_msgs += alert_msgs + track_msgs
         per_entity = dict(within.per_entity)
         for e in disputed_entities:
@@ -263,6 +265,12 @@ class ScriptScorer:
             return []
         return track_claim_problems(qc.ner.split_sentences(checker.clean_script(script.llm_output)), desk)
 
+    def _check_closure_claims(self, qc: SceneQC, checker: ScriptChecker, script: LLMOutput) -> list[str]:
+        desk = load_desk()
+        if not desk:
+            return []
+        return closure_claim_problems(qc.ner.split_sentences(checker.clean_script(script.llm_output)), desk)
+
     def _check_unsupported_alerts(self, qc: SceneQC, checker: ScriptChecker, script: LLMOutput, scene_id: str) -> list[str]:
         """Every warning, advisory, evacuation, cancellation or closure the script says is in effect must be named
         by a source sentence (English or Japanese wording). Invented alerts are the most harmful error a safety
@@ -292,27 +300,73 @@ _ADVICE = re.compile(r"\b(?:monitor|check|follow|heed|consult|watch for|look out
 _WARNING_CENTER = re.compile(r"\b(?:joint )?typhoon warning cent(?:er|re)\b|\bwarning cent(?:er|re)\b")
 _NEGATED = re.compile(r"\b(no|not|none|without|yet to|has not|have not|hasn't|haven't|neither|nor|if|unless|may|might|could|possible|possibly|in case)\b")   # denied or conditional
 ALERTS = {   # name: (claim in the script, evidence in the sources)
-    "storm warning": (re.compile(r"\b(storm|violent wind|typhoon) warnings?\b"), re.compile(r"storm warning|violent wind warning|暴風警報|暴風特別警報")),
+    "storm warning": (re.compile(r"\b(storm|violent wind|typhoon) warnings?\b"), re.compile(r"storm warning|violent wind warning|暴風警報|暴風特別警報|颱風警報|(?<!joint )typhoon warnings?(?! cent)")),
     "high wave warning": (re.compile(r"\bhigh[- ]wave warnings?\b"), re.compile(r"high[- ]wave warning|波浪警報")),
     "storm surge warning": (re.compile(r"\bstorm[- ]surge warnings?\b"), re.compile(r"storm[- ]surge warning|高潮警報")),
     "heavy rain warning": (re.compile(r"\bheavy[- ]rain(fall)? warnings?\b"), re.compile(r"heavy[- ]rain(fall)? warning|大雨警報")),
     "flood warning": (re.compile(r"\bflood(ing)? warnings?\b"), re.compile(r"flood(ing)? warning|洪水警報")),
     "emergency warning": (re.compile(r"\b(emergency|special) warnings?\b"), re.compile(r"emergency warning|special warning|特別警報")),
-    "gale or strong wind advisory": (re.compile(r"\b(gale|strong[- ]wind) (advisory|warning)\b"), re.compile(r"gale (advisory|warning)|strong[- ]wind advisory|強風注意報|gale warning")),
+    "gale or strong wind advisory": (re.compile(r"\b(gale|strong[- ]wind) (advisory|warning)\b"), re.compile(r"gale (advisory|warning)|strong[- ]wind advisory|強風注意報|強風特報|gale warning")),
     "high wave advisory": (re.compile(r"\bhigh[- ]wave advisor(y|ies)\b"), re.compile(r"high[- ]wave advisory|波浪注意報")),
-    "heavy rain advisory": (re.compile(r"\bheavy[- ]rain advisor(y|ies)\b"), re.compile(r"heavy[- ]rain advisory|大雨注意報")),
+    "heavy rain advisory": (re.compile(r"\bheavy[- ]rain advisor(y|ies)\b"), re.compile(r"heavy[- ]rain advisory|大雨注意報|豪雨特報|大雨特報")),
     "storm surge advisory": (re.compile(r"\bstorm[- ]surge advisor(y|ies)\b"), re.compile(r"storm[- ]surge advisory|高潮注意報")),
     "evacuation order": (re.compile(r"\bevacuat(ion|e|ed)\b.{0,40}\b(order|orders|ordered|instruction|instructed|advisory|issued|mandatory)\b|\b(ordered|told) to evacuate\b"),
                          re.compile(r"evacuat|避難指示|避難勧告|高齢者等避難|緊急安全確保")),
     "cancellation or suspension": (re.compile(r"\b(flights?|ferr(y|ies)|ships?|boats?|buses|trains?|services?)\b.{0,50}\b(cancel+ed|suspended|grounded|halted)\b|\b(cancel+ed|suspended)\b.{0,40}\b(flights?|ferr(y|ies)|sailings?|services?)\b"),
-                                   re.compile(r"cancel|suspend|欠航|運休|運航を見合わせ|見合わせ")),
+                                   re.compile(r"cancel|suspend|欠航|運休|運航を見合わせ|見合わせ|停駛|停航|停飛|取消")),
     "school closure": (re.compile(r"\bschools?\b.{0,40}\b(closed|closure|cancel+ed|shut)\b|\bclass(es)? (are |have been )?(cancel+ed|suspended)\b"),
-                       re.compile(r"school|休校|臨時休業|class suspension")),
+                       re.compile(r"school|休校|臨時休業|class suspension|停課|停止上課")),
     "wind signal": (re.compile(r"\b(tropical cyclone )?wind signal\b|\bsignal no\.?\s*\d"), re.compile(r"wind signal|signal no|signal #")),
 }
 
 
 # ---- track claims: distances and closest-approach times checked against the official track (desk.json) ----------
+CLOSURE_PREFIX = "unsupported closure claim"
+_CLOSURE = re.compile(r"\bDGPA\b|Directorate[- ]General of Personnel|\b(?:work|offices?|schools?|classes)\b[^.;]{0,60}\b(?:clos|suspen|cancel|shut)"
+                      r"|\b(?:clos|suspen|cancel)\w*\b[^.;]{0,40}\b(?:work|offices?|schools?|classes)\b|typhoon day off", re.I)
+_CLOCK = re.compile(r"\b\d{1,2}(?::\d{2})?\s*(?:a\.?m\.?|p\.?m\.?)|\b\d{1,2}:\d{2}\b|\btonight\b|\bthis (?:evening|afternoon)\b|\bnoon\b", re.I)
+_COUNT = re.compile(r"\b(\d{1,2})\s+(?:counties|cities|counties and cities|cities and counties|local governments)\b", re.I)
+TW_PLACES = {"keelung": "基隆市", "taipei": "臺北市", "new taipei": "新北市", "taoyuan": "桃園市", "hsinchu": "新竹", "miaoli": "苗栗縣",
+             "taichung": "臺中市", "changhua": "彰化縣", "yunlin": "雲林縣", "nantou": "南投縣", "chiayi": "嘉義", "tainan": "臺南市",
+             "kaohsiung": "高雄市", "pingtung": "屏東縣", "yilan": "宜蘭縣", "hualien": "花蓮縣", "taitung": "臺東縣", "penghu": "澎湖縣",
+             "kinmen": "金門縣", "lienchiang": "連江縣", "matsu": "連江縣"}
+
+
+def closure_claim_problems(sentences: list[str], desk: dict) -> list[str]:
+    """Work and school closure claims (停班停課) checked against DGPA's list in desk.json: a sentence fails when it gives
+    the closures a clock time (DGPA decides by the day; "from 8 PM tonight" came from a stale article), says "only",
+    names a county DGPA lists as open, or gives a county count that DGPA's list does not have. Taiwan only."""
+    cl = ((desk.get("tw") or {}).get("closures") or {}).get("counties") or {}
+    if not cl:
+        return []
+    closed = {k for k, v in cl.items() if v.get("status") in ("off", "partial")}
+    out = []
+    prev_closure = False
+    for sent in sentences:
+        if not _CLOSURE.search(sent):
+            # "These decisions are in effect starting tonight at 8 PM." right after a closure sentence
+            if prev_closure and _CLOCK.search(sent) and re.search(r"\b(?:decisions?|closures?|suspensions?|in effect|announce\w*)\b", sent, re.I):
+                out.append(f'{CLOSURE_PREFIX}: "{sent.strip()}": it gives the closures a clock time; DGPA\'s list is by day. '
+                           "Closures are read on air from DGPA's own list; do not restate them.")
+            prev_closure = False
+            continue
+        prev_closure = True
+        low = sent.lower().replace("new taipei", "newtaipei")
+        named = {zh for en, zh in TW_PLACES.items() if re.search(rf"\b{en.replace('new taipei', 'newtaipei')}\b", low)}
+        open_ = sorted(n for n in named if not any(c.startswith(n) for c in closed))
+        n = _COUNT.search(sent)
+        why = ("it gives the closures a clock time; DGPA's list is by day" if _CLOCK.search(sent) else
+               "it says only some places closed" if re.search(r"\bonly\b", low) else
+               f"DGPA lists {', '.join(open_)} as open" if open_ else
+               f"it names {len(named)} of the {len(closed)} places DGPA lists as closed, which reads as if only those closed"
+               if named and len(closed) >= 6 and len(named) < len(closed) / 2 else
+               f"DGPA's list has {len([k for k, v in cl.items() if v.get('status') == 'off'])} closed, not {n.group(1)}"
+               if n and int(n.group(1)) not in (len([k for k, v in cl.items() if v.get("status") == "off"]), len(closed)) else "")
+        if why:
+            out.append(f'{CLOSURE_PREFIX}: "{sent.strip()}": {why}. Closures are read on air from DGPA\'s own list; do not restate them.')
+    return out
+
+
 TRACK_PREFIX = "unsupported track claim"
 DESK_MAX_AGE_H = 6
 _MONTH = {m: i for i, m in enumerate(["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"], 1)}
@@ -321,7 +375,8 @@ _DATE = re.compile(rf"\b{_MONTH_RE}\s+(\d{{1,2}})\b|\b(\d{{1,2}})\s+{_MONTH_RE}\
 _UTC_CLOCK = re.compile(r"\b(midnight|noon|(\d{1,2}):(\d{2}))\s*(?:UTC|GMT|Z)\b", re.I)
 _KM = re.compile(r"(\d[\d,]*(?:\.\d+)?)\s*(?:km|kilomet(?:er|re)s?)\b(?P<rest>[^.;]{0,60})", re.I)
 _FROM_PLACE = re.compile(r"\b(?:from|of|off)\s+(?:the\s+)?(?P<place>[A-Z][\w'’-]*(?:\s+[A-Z][\w'’-]*){0,3})")
-_PRESENT = re.compile(r"\b(?:is|are)\s+(?:currently\s+|now\s+)?(?:located|centered|centred|positioned|situated)\b|\bcurrently\b|\bat (?:this|the moment|present)\b|\bright now\b", re.I)
+_PRESENT = re.compile(r"\b(?:is|are)\s+(?:currently\s+|now\s+)?(?:located|centered|centred|positioned|situated)\b|\bcurrently\b|\bat (?:this|the moment|present)\b|\bright now\b"
+                      r"|\b(?:is|lies|sits)\s+(?:now\s+|currently\s+)?(?:approximately|about|roughly|around|some|nearly)\b|\bplaces it\b", re.I)
 _NOT_NOW = re.compile(r"\b(?:will|would|expected|forecast|projected|predicted|anticipated|could|may|might|closest|nearest|by (?:the|then|that))\b", re.I)
 _CLOSEST = re.compile(r"\b(?:closest|nearest)\b|\bmost direct\b", re.I)
 REGIONS = {"taiwan": "TW", "japan": "JP", "okinawa": "JP", "sakishima": "JP", "yaeyama": "JP", "miyako": "JP", "ryukyu": "JP",

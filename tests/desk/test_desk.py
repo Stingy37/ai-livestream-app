@@ -80,6 +80,37 @@ def test_cwa_parser():
     assert c["timeUTC"] == "2026-10-20T00:00:00Z"
 
 
+def test_cwa_warnings_parser():
+    w = S.parse_cwa_warnings(fx("cwa_warning_content.js"), fx("cwa_ty_warn_data.js"))
+    ty = w["typhoon"]
+    assert (ty["title"], ty["report"], ty["issuedUTC"], ty["kind"], ty["next"]) == \
+        ("海上陸上颱風警報", 10, "2026-10-22T18:30:00Z", "land", "10月23日05時30分")
+    assert "相當於 14 級風" in ty["now"]["近中心最大風速"] and "宜蘭的東北東方約 80 公里" in ty["forecast"]
+    wind, rain = w["wind"]["counties"], w["rain"]["counties"]
+    assert len(wind) == 22 and list(wind.values()).count("orange") == 16
+    assert (wind["宜蘭縣"], wind["臺北市"], wind["金門縣"]) == ("orange", "yellow", "yellow")
+    assert (rain["宜蘭縣"], rain["臺北市"], rain["新竹縣"], rain["基隆市"]) == ("超大豪雨", "大豪雨", "豪雨", "大雨")
+    assert "臺南市" not in rain
+
+
+def test_dgpa_parser():
+    d = S.parse_dgpa(fx("dgpa_nds.html"))
+    st = {k: v["status"] for k, v in d["counties"].items()}
+    assert (d["day"], d["updatedUTC"], len(st)) == ("10月23日", "2026-10-22T18:17:00Z", 22)
+    assert list(st.values()).count("off") == 20
+    assert (st["臺東縣"], st["金門縣"], st["臺北市"]) == ("partial", "normal", "off")
+
+
+def test_cwa_warning_feeds_taiwan_sections():
+    raw = raw_fixture(cwa_warn=S.parse_cwa_warnings(fx("cwa_warning_content.js"), fx("cwa_ty_warn_data.js")),
+                      dgpa=S.parse_dgpa(fx("dgpa_nds.html")))
+    doc, rep = build_desk(None, storm_hint="CHAMPI", ask=None, raw=raw)
+    assert doc["tw"]["warning"]["report"] == 10 and len(doc["tw"]["closures"]["counties"]) == 22
+    cwa = next(a for a in doc["agencies"] if a["agency"] == "CWA")      # the 02:30 bulletin is newer than TY_NEWS
+    assert (cwa["timeUTC"], cwa["pressure_hpa"], cwa["lat"], cwa["lon"]) == ("2026-10-22T18:00:00Z", 945.0, 21.8, 124.3)
+    assert any(k == "DGPA" and "20 of 22" in v for k, v in doc["ticker"])
+
+
 def test_atcf_parser_12_hourly():
     pts = S.parse_atcf(fx("gefs_ap01.trackatcfunix"), "WP", "29")
     assert pts[0] == [15.6, 136.8] and len(pts) >= 10
@@ -208,3 +239,30 @@ def test_server_desk_endpoints(server):
     assert st == 200 and json.loads(body)["center"] == doc["center"]   # ... and the good one is still served
     (data_dir / "desk.json").unlink()                                  # main file lost: newest history copy is served
     assert json.loads(_req(base + "/live/desk.json")[1])["generated_at"] == doc["generated_at"]
+
+
+def test_tw_bulletin_reads_official_text():
+    from desk.bulletin import build, template_of
+
+    w = S.parse_cwa_warnings(fx("cwa_warning_content.js"), fx("cwa_ty_warn_data.js"))
+    desk = {"tw": {"warning": w["typhoon"], "wind": w["wind"], "rain": w["rain"], "closures": S.parse_dgpa(fx("dgpa_nds.html"))}}
+    t = build("tw_bulletin", desk)
+    assert template_of(["https://x", "desk://tw_bulletin"]) == "tw_bulletin" and template_of(["https://x"]) is None
+    for want in ("10月23日凌晨2點30分，發布海上陸上颱風警報第10報", "相當於14級風", "共20個縣市停止上班、停止上課",
+                 "臺東縣綠島鄉、蘭嶼鄉停止上班、停止上課", "金門縣照常上班、照常上課", "為橙色燈號", "22日晚至23日宜蘭縣山區",
+                 "預定在10月23日清晨5點30分發布"):
+        assert want in t, want
+    assert not any(c in t for c in "()（）") and "None" not in t
+
+
+def test_closure_claims_checked_against_dgpa():
+    from qc.quality_control import closure_claim_problems
+
+    desk = {"tw": {"closures": S.parse_dgpa(fx("dgpa_nds.html"))}}
+    stale = ["The DGPA has announced work and school closures for Taipei, Taoyuan, and Keelung.",
+             "These decisions are in effect starting tonight at 8 PM."]
+    assert len(closure_claim_problems(stale, desk)) == 2
+    assert closure_claim_problems(["Work and school are closed today in Kinmen."], desk)
+    assert closure_claim_problems(["Only Taipei and Keelung have closed schools."], desk)
+    assert not closure_claim_problems(["The DGPA says 20 counties and cities have suspended work and classes today.",
+                                       "Flights were cancelled at Taoyuan airport."], desk)

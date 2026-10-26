@@ -1,6 +1,6 @@
 {
   "config": {
-    "name": "Typhoon Champi Watch — Okinawa and Sakishima",
+    "name": "台風30号 先島諸島・沖縄 ライブ (USAL 台風情報)",
     "storm": {
       "title": "SUPER TYPHOON",
       "name": "CHAMPI",
@@ -34,6 +34,10 @@
       "show_close": {
         "label": "Show close",
         "content": "A brief sign-off reminding viewers that the broadcast loops with refreshed data on Typhoon Champi and pointing them to JMA and their municipality for warnings and evacuation information."
+      },
+      "official_text": {
+        "label": "Official text (read verbatim)",
+        "content": "JMA's typhoon information relayed as announced by src/desk/bulletin.py; not written by a model. Never a forecast of our own (Meteorological Service Act)."
       }
     },
     "system_instructions": {
@@ -82,6 +86,26 @@
       "jma_overview_yaeyama": {
         "label": "JMA weather overview, Yaeyama",
         "url": "https://www.jma.go.jp/bosai/forecast/data/overview_forecast/474000.json"
+      },
+      "desk_jp_open": {
+        "label": "fixed station open (desk:// template)",
+        "url": "desk://jp_open"
+      },
+      "desk_jp_now": {
+        "label": "JMA analysis, relayed as announced (desk:// template)",
+        "url": "desk://jp_now"
+      },
+      "desk_jp_forecast": {
+        "label": "JMA forecast, relayed as announced (desk:// template)",
+        "url": "desk://jp_forecast"
+      },
+      "desk_jp_close": {
+        "label": "fixed station close (desk:// template)",
+        "url": "desk://jp_close"
+      },
+      "desk_jp_islands": {
+        "label": "islands inside JMA's current storm / gale area (desk:// template)",
+        "url": "desk://jp_islands"
       }
     }
   },
@@ -96,26 +120,39 @@
         "type": "scene_card",
         "scene": {
           "title": "Show Open",
-          "topic_description": "show_open",
+          "topic_description": "official_text",
           "final_script_system_instructions": "station_ident",
           "do_web_search": false,
           "sources": [
-            "jma_tropical"
+            "desk_jp_open"
           ],
           "language": "ja"
         }
       },
       {
-        "key": "position",
+        "key": "now",
         "type": "scene_card",
         "scene": {
           "title": "Current Position",
-          "topic_description": "storm_position",
-          "final_script_system_instructions": "anchor_neutral",
+          "topic_description": "official_text",
+          "final_script_system_instructions": "station_ident",
           "do_web_search": false,
           "sources": [
-            "jma_tropical",
-            "jtwc_warnings"
+            "desk_jp_now"
+          ],
+          "language": "ja"
+        }
+      },
+      {
+        "key": "islands",
+        "type": "scene_card",
+        "scene": {
+          "title": "Island Status",
+          "topic_description": "official_text",
+          "final_script_system_instructions": "station_ident",
+          "do_web_search": false,
+          "sources": [
+            "desk_jp_islands"
           ],
           "language": "ja"
         }
@@ -125,36 +162,13 @@
         "type": "scene_card",
         "scene": {
           "title": "Track Forecast",
-          "topic_description": "track_forecast",
-          "final_script_system_instructions": "anchor_neutral",
+          "topic_description": "official_text",
+          "final_script_system_instructions": "station_ident",
           "do_web_search": false,
           "sources": [
-            "jma_forecast",
-            "jma_tropical",
-            "jtwc_warnings"
+            "desk_jp_forecast"
           ],
           "language": "ja"
-        }
-      },
-      {
-        "key": "impacts",
-        "type": "scene_card",
-        "scene": {
-          "title": "Local Impacts",
-          "topic_description": "local_impacts",
-          "final_script_system_instructions": "anchor_urgent",
-          "do_web_search": true,
-          "sources": [
-            "jma_warn_yaeyama",
-            "jma_warn_miyako",
-            "jma_warn_okinawa",
-            "jma_overview_yaeyama",
-            "jma_overview_okinawa"
-          ],
-          "language": "ja",
-          "generation": {
-            "tts_voice": "jf_gongitsune"
-          }
         }
       },
       {
@@ -162,11 +176,11 @@
         "type": "scene_card",
         "scene": {
           "title": "Show Close",
-          "topic_description": "show_close",
+          "topic_description": "official_text",
           "final_script_system_instructions": "station_ident",
           "do_web_search": false,
           "sources": [
-            "jma_tropical"
+            "desk_jp_close"
           ],
           "language": "ja"
         }
@@ -186,30 +200,30 @@
       {
         "id": "e2",
         "source": "open",
-        "target": "position",
+        "target": "now",
         "type": "normal"
       },
       {
         "id": "e3",
-        "source": "position",
-        "target": "forecast",
+        "source": "now",
+        "target": "islands",
         "type": "normal"
       },
       {
         "id": "e4",
-        "source": "forecast",
-        "target": "impacts",
+        "source": "islands",
+        "target": "forecast",
         "type": "normal"
       },
       {
         "id": "e5",
-        "source": "impacts",
-        "target": "position",
+        "source": "forecast",
+        "target": "now",
         "type": "repeat_back"
       },
       {
         "id": "e6",
-        "source": "impacts",
+        "source": "forecast",
         "target": "close",
         "type": "continuation"
       },
@@ -223,11 +237,11 @@
     "cycles": [
       {
         "id": "c1",
-        "start_node": "position",
-        "end_node": "impacts",
+        "start_node": "now",
+        "end_node": "forecast",
         "repeat_back_edge": "e5",
         "continuation_edge": "e6",
-        "repetitions": 6,
+        "repetitions": 12,
         "repetitions_until_update": 2
       }
     ]
