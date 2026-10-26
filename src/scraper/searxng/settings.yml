@@ -1,0 +1,12 @@
+# Minimal SearXNG settings for the scraper: defaults plus the JSON API.
+# The secret key comes from the SEARXNG_SECRET environment variable (docker-compose.yml).
+use_default_settings: true
+
+server:
+  limiter: false      # a private localhost instance does not need bot protection
+  image_proxy: false
+
+search:
+  formats:
+    - html
+    - json            # required: the scraper calls /search?format=json

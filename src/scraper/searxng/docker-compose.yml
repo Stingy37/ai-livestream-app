@@ -1,0 +1,15 @@
+# Local SearXNG for the scraper. See README.md in this folder.
+# Run from the repo root:
+#   docker compose --env-file .env -f src/scraper/searxng/docker-compose.yml up -d
+services:
+  searxng:
+    image: searxng/searxng:latest
+    container_name: searxng
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8888:8080"  # localhost only; not reachable from other machines
+    environment:
+      SEARXNG_BASE_URL: http://localhost:8888/
+      SEARXNG_SECRET: ${SEARXNG_SECRET:?set SEARXNG_SECRET in .env (see README.md)}
+    volumes:
+      - ./settings.yml:/etc/searxng/settings.yml:ro
