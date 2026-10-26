@@ -68,6 +68,7 @@ def test_llm_only_sees_trimmed_text():
     assert "snippet " * 30 not in select_prompt  # 640-char snippets cut to 200
     assert "body " * 100 not in judge_prompt  # 2500-char pages cut to 400
     assert len(judge_prompt) < 1000
+    assert "Today's date: " in llm.prompts[0]  # so queries do not target the model's training year
 
 
 def test_round_cap_stops_a_planner_that_never_says_enough(monkeypatch):

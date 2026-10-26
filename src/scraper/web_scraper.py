@@ -6,7 +6,16 @@ Output is cleaned, unsplit text of the website's main body, used for downstream 
 
 from __future__ import annotations
 
+import logging
+import os
+
 from contracts import Scene, ScrapedDocument
+
+log = logging.getLogger(__name__)
+
+# Heavy libraries (langgraph, trafilatura, httpx, openai) are imported inside
+# gather(), so importing this module stays cheap and dependency-free — the
+# contract tests import it with nothing but pytest installed.
 
 
 class WebScraper:
@@ -28,7 +37,7 @@ class WebScraper:
     """
 
     def __init__(self, max_threads: int = 8) -> None:
-        raise NotImplementedError
+        self.max_threads = max(1, max_threads)
 
     def gather(self, scene: Scene) -> list[ScrapedDocument]:
         """Find, fetch, and clean this scene's source documents.
@@ -43,4 +52,44 @@ class WebScraper:
         Where the agent already has parsing capability, the main body comes back
         directly from the agent rather than through a separate extraction pass.
         """
-        raise NotImplementedError
+        from models.llm_api import KEY_NAME, LumenClient
+        from scraper.fetch import Fetcher
+
+        _load_dotenv()
+        fetcher = Fetcher(max_threads=self.max_threads)
+        llm = None
+        try:
+            if scene.sources:
+                log.info("%s: fetching %d user-supplied source(s), no discovery", scene.title, len(scene.sources))
+                documents = fetcher.fetch_all(scene.sources)
+                for document in documents:
+                    document.metadata.setdefault("discovered_via", "user")
+            else:
+                from scraper.agent import DiscoveryAgent
+                from scraper.search import Searcher
+
+                if os.environ.get(KEY_NAME):
+                    llm = LumenClient()
+                else:
+                    log.warning("%s is not set; discovering sources without the LLM.", KEY_NAME)
+                log.info("%s: no sources given, discovering sites", scene.title)
+                documents = DiscoveryAgent(Searcher(), fetcher, llm).run(scene)
+        except Exception:  # an empty result is how we report failure; the caller decides it is fatal
+            log.exception("%s: scraping failed", scene.title)
+            documents = []
+        finally:
+            fetcher.client.close()
+
+        log.info("%s: %d usable document(s)", scene.title, len(documents))
+        if llm is not None:
+            log.info("%s: LLM usage this run: %s", scene.title, llm.usage_summary())
+        return documents
+
+
+def _load_dotenv() -> None:
+    """Fill in LUMEN_API_KEY / SEARXNG_URL from a local .env, never overriding real environment variables."""
+    try:
+        from dotenv import load_dotenv
+    except ImportError:
+        return
+    load_dotenv()

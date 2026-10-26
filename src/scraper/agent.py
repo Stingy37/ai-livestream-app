@@ -19,6 +19,7 @@ query and search order becomes the ranking.
 from __future__ import annotations
 
 import logging
+from datetime import date
 from typing import TypedDict
 from urllib.parse import urlsplit
 
@@ -202,6 +203,7 @@ class DiscoveryAgent:
             f"Segment title: {self.scene.title}",
             f"Topic: {self.scene.topic_description}",
             f"Broadcast language: {self.scene.language}",
+            f"Today's date: {date.today().isoformat()}",  # the model's own sense of 'now' is its training cutoff
         ]
         if state["past_queries"]:
             lines.append("Earlier queries: " + "; ".join(state["past_queries"]))
