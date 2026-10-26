@@ -24,18 +24,27 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.parse import urljoin, urlsplit
 from urllib.robotparser import RobotFileParser
 
 from contracts import ScrapedDocument
 
 log = logging.getLogger(__name__)
 
-USER_AGENT = "ai-livestream-scraper/0.1 (research project; respects robots.txt)"
+# Sites such as Wikipedia refuse bots whose User-Agent has no way to contact the operator.
+USER_AGENT = "ai-livestream-scraper/0.1 (+https://github.com/Stingy37/ai-livestream-app; respects robots.txt)"
+CONTACT_NAME = "SCRAPER_CONTACT"  # optional extra contact (e.g. a team email), read from the environment
+
+
+def user_agent():
+    contact = os.environ.get(CONTACT_NAME, "").strip()
+    return f"{USER_AGENT[:-1]}; {contact})" if contact else USER_AGENT
 TIMEOUT = 15  # seconds per request
 MAX_PAGE_BYTES = 5_000_000  # skip anything bigger; it is not an article
 MIN_BODY_CHARS = 200  # shorter "bodies" are leftovers like a nav word on a JavaScript-only page
+MAX_REDIRECTS = 5
 CACHE_TTL = 3600  # seconds a cached page stays fresh
+CACHE_KEEP = 24 * 3600  # seconds before an old cache file is deleted
 CACHE_DIR = Path(os.environ.get("SCRAPER_CACHE_DIR", Path(__file__).resolve().parents[2] / ".cache" / "scraper"))
 
 
@@ -45,12 +54,15 @@ class RobotsPolicy:
     def __init__(self, client):
         self.client = client
         self.parsers = {}
-        self.lock = threading.Lock()
+        self.host_locks = {}
+        self.lock = threading.Lock()  # guards host_locks only
 
     def allowed(self, url):
         parts = urlsplit(url)
         host = f"{parts.scheme}://{parts.netloc}"
-        with self.lock:  # one thread reads a host's robots.txt; the others wait for its answer
+        with self.lock:
+            host_lock = self.host_locks.setdefault(host, threading.Lock())
+        with host_lock:  # one thread reads a host's robots.txt; others for that host wait, other hosts do not
             if host not in self.parsers:
                 self.parsers[host] = self._read(host)
             return self.parsers[host].can_fetch(USER_AGENT, url)
@@ -75,9 +87,20 @@ class RobotsPolicy:
 class PageCache:
     """Raw HTML on disk, one JSON file per URL."""
 
-    def __init__(self, directory=CACHE_DIR, ttl=CACHE_TTL):
+    def __init__(self, directory=CACHE_DIR, ttl=CACHE_TTL, keep=CACHE_KEEP):
         self.directory = Path(directory)
         self.ttl = ttl
+        self.keep = keep
+
+    # Delete cache files older than ``keep`` so the folder does not grow forever.
+    def prune(self):
+        cutoff = time.time() - self.keep
+        for path in self.directory.rglob("*.json"):  # pages and the search/ subfolder
+            try:
+                if path.stat().st_mtime < cutoff:
+                    path.unlink()
+            except OSError:
+                pass  # another scene process got there first
 
     def _path(self, url):
         return self.directory / (hashlib.sha256(url.encode()).hexdigest() + ".json")
@@ -94,7 +117,7 @@ class PageCache:
     def put(self, url, html, fetched_at):
         self.directory.mkdir(parents=True, exist_ok=True)
         entry = {"url": url, "html": html, "fetched_at": fetched_at.isoformat(), "saved": time.time()}
-        tmp = self._path(url).with_suffix(f".{threading.get_ident()}.tmp")
+        tmp = self._path(url).with_suffix(f".{os.getpid()}.{threading.get_ident()}.tmp")  # unique across scene processes
         tmp.write_text(json.dumps(entry), encoding="utf-8")
         os.replace(tmp, self._path(url))  # atomic, so a reader never sees half a file
 
@@ -114,23 +137,34 @@ def extract(html, url, fetched_at=None):
         return None
     host = urlsplit(url).netloc.removeprefix("www.")
     metadata = {k: v for k, v in {"hostname": page.hostname, "language": page.language}.items() if v}
+    published_at, date_only = _parse_date(page.date)
+    if date_only:
+        metadata["published_date_only"] = True  # the page gave a day, not a time; 00:00 UTC is a stand-in
     return ScrapedDocument(
         url=url,
         title=page.title or url,
         main_text=page.text,
         source_name=page.sitename or host,
-        published_at=_parse_date(page.date),
+        published_at=published_at,
         author=page.author or None,
         fetched_at=fetched_at,
         metadata=metadata,
     )
 
 
+# (datetime, date_only) from trafilatura's date string. Always timezone-aware, so it can be
+# compared with fetched_at (UTC): a date without a time or zone becomes midnight UTC.
 def _parse_date(value):
     try:
-        return datetime.fromisoformat(value) if value else None
+        parsed = datetime.fromisoformat(value) if value else None
     except ValueError:
-        return None
+        parsed = None
+    if parsed is None:
+        return None, False
+    date_only = "T" not in value and " " not in value.strip()
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=timezone.utc)
+    return parsed, date_only
 
 
 class Fetcher:
@@ -141,9 +175,10 @@ class Fetcher:
 
         self.max_threads = max_threads
         self.client = client or httpx.Client(
-            headers={"User-Agent": USER_AGENT}, timeout=TIMEOUT, follow_redirects=True
+            headers={"User-Agent": user_agent()}, timeout=TIMEOUT, follow_redirects=True
         )
         self.cache = cache if cache is not None else PageCache()
+        self.cache.prune()
         self.robots = RobotsPolicy(self.client)
 
     # Documents for the URLs that worked, in the same order as ``urls``.
@@ -175,13 +210,22 @@ class Fetcher:
             return None
 
     def _download(self, url):
-        if urlsplit(url).scheme not in ("http", "https"):
-            log.info("dropped %s: not an http(s) URL", url)
+        # Redirects are followed by hand so that robots.txt is checked for every hop, not just the first URL.
+        current = url
+        for _ in range(MAX_REDIRECTS + 1):
+            if urlsplit(current).scheme not in ("http", "https"):
+                log.info("dropped %s: not an http(s) URL (%s)", url, current)
+                return None, None
+            if not self.robots.allowed(current):
+                log.info("dropped %s: disallowed by robots.txt (%s)", url, current)
+                return None, None
+            response = self.client.get(current, follow_redirects=False)
+            if not response.is_redirect:
+                break
+            current = urljoin(current, response.headers["location"])
+        else:
+            log.info("dropped %s: too many redirects", url)
             return None, None
-        if not self.robots.allowed(url):
-            log.info("dropped %s: disallowed by robots.txt", url)
-            return None, None
-        response = self.client.get(url)
         response.raise_for_status()
         kind = response.headers.get("content-type", "")
         if kind and "html" not in kind:
