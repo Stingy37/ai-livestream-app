@@ -91,3 +91,33 @@ def test_ddgs_retries_with_other_backends(monkeypatch):
     results = Searcher(base_url="").search("q")
     assert tried == ["auto", "bing, yahoo"]
     assert [r.url for r in results] == ["https://bing.example/a"]
+
+
+def test_results_are_cached_between_runs(monkeypatch, tmp_path):
+    calls = []
+    monkeypatch.setattr(Searcher, "_search_network", lambda self, q: calls.append(q) or [SearchResult("https://a", "A", "s", "ddgs")])
+    first = Searcher(base_url="", cache_dir=tmp_path).search("q")
+    second = Searcher(base_url="", cache_dir=tmp_path).search("q")  # a later run, e.g. a regeneration cycle
+    assert first == second and calls == ["q"]
+
+
+def test_empty_results_are_not_cached(monkeypatch, tmp_path):
+    calls = []
+    monkeypatch.setattr(Searcher, "_search_network", lambda self, q: calls.append(q) or [])
+    searcher = Searcher(base_url="", cache_dir=tmp_path)
+    searcher.search("q")
+    searcher.search("q")
+    assert calls == ["q", "q"]  # a block may be temporary, so it is asked again
+
+
+def test_network_searches_are_spaced_out(monkeypatch, tmp_path):
+    from scraper import search
+
+    monkeypatch.setattr(search, "MIN_INTERVAL", 1.0)
+    waits = []
+    monkeypatch.setattr(search.time, "sleep", waits.append)
+    monkeypatch.setattr(Searcher, "_search_network", lambda self, q: [])
+    searcher = Searcher(base_url="", cache_dir=tmp_path)
+    searcher.search("a")
+    searcher.search("b")
+    assert len(waits) == 1 and 0 < waits[0] <= 1.0
