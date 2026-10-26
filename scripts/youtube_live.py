@@ -24,6 +24,7 @@ import argparse
 import json
 import logging
 import os
+import re
 import signal
 import subprocess
 import sys
@@ -66,7 +67,31 @@ def metadata(cfg: dict, lang: str, thumb: dict) -> dict:
     tx = thumb.get("text", {})
     towns = [place_ja(t) for t in tx.get("towns", [])]
     stamp = tx.get("stamp", "")
-    if lang == "ja":
+    if lang == "ja" and tx.get("l1"):     # the news-style thumbnail (THUMB_STYLE=tw, lang=ja): its lines are the title's hooks
+        clean = lambda s: re.sub(r"\s*(?:最接近まで)?\s*あと\s*\d+\s*時間", " 最接近へ", re.sub(r"[{}\[\]]", "", s or "")).strip()
+        day = datetime.now(timezone(timedelta(hours=9)))
+        title = f"【LIVE】{clean(tx['l1'])} {clean(tx.get('l2'))}｜最新進路・暴風域・衛星画像（気象庁発表） {day.month}/{day.day}"
+        lead = "、".join(clean(tx.get(k)) for k in ("l1", "l2", "l3") if clean(tx.get(k))) + "。"
+        desc = "\n".join([
+            lead + f"台風第{st.get('jma_number', '')[-2:] or ''}号（{en_storm}）の最新情報を、気象庁の発表そのままにお伝えするライブ配信です。"
+            "ひまわり9号の衛星画像、気象庁の予報円・進路、沖縄・先島諸島のライブカメラを随時更新しています。",
+            "",
+            "■ ご注意",
+            "・解説は気象庁の発表内容をAI音声で読み上げたものです。独自の予報ではありません。",
+            "・警報・避難情報は気象庁と各市町村の発表をご確認ください。",
+            "・時刻は日本時間（JST）です。",
+            "",
+            "■ 公式情報",
+            "気象庁 台風情報: https://www.jma.go.jp/bosai/map.html#contents=typhoon",
+            "",
+            "■ About",
+            f"{name}. Student-run typhoon desk relaying JMA's announcements with a synthetic voice. Not an official warning service.",
+            "",
+            "#台風30号 #台風 #沖縄 #先島諸島 #与那国島 #石垣島 #宮古島",
+        ])
+        tags = ["台風30号", "台風", "台風情報", "台風 進路", "沖縄 台風", "先島諸島", "与那国島", "石垣島", "宮古島", "暴風域", "ライブ",
+                en_storm, "typhoon live", "Okinawa typhoon"]
+    elif lang == "ja":
         voice = "" if audio == "ja" else f"（{LANGUAGE_NAMES_JA.get(audio, audio)}解説）"
         word = tx.get("kicker", "").removesuffix("勢力で")          # 猛烈な / 非常に強い / 強い (JMA class)
         title = f"【LIVE】{word}{tx.get('num', '')} {tx.get('head', '')}｜{stamp + ' ' if stamp else ''}最新進路・衛星画像{voice}｜{en_storm} Live"
@@ -106,9 +131,15 @@ def metadata(cfg: dict, lang: str, thumb: dict) -> dict:
         title = f"【直播】{tx.get('kicker', '')}{local} {tx.get('head', '')}｜{stamp + ' ' if stamp else ''}最新路徑・衛星雲圖{voice}｜{en_storm} Live"
         town, _, when = tx.get("when", "").partition("最接近 ")       # "台北最接近 10/24(六)清晨"
         lead = (f"{tx.get('kicker', '')}{local}中心氣壓{stamp}，{tx.get('head', '')}" + (f"，預計{when}最接近{town}。" if when else "。")) if stamp else ""
+        if tx.get("l1"):         # the Taiwan news-style thumbnail (THUMB_STYLE=tw): its lines are the title's hooks
+            # the countdown ("倒數12小時") stays in the thumbnail only: in the title it would force an hourly title update
+            clean = lambda s: re.sub(r"\s*倒數\s*\d+\s*小時", "", re.sub(r"[{}\[\]]", "", s or "")).strip()
+            day = datetime.now(timezone(timedelta(hours=8)))
+            title = f"【LIVE】{clean(tx['l1'])} {clean(tx.get('l2'))}｜各縣市颱風假・豪雨強風特報・最新路徑・各地即時影像 {day.month}/{day.day}"
+            lead = "，".join(clean(tx.get(k)) for k in ("l1", "l2", "l3") if clean(tx.get(k))) + "。"
         desc = "\n".join([
-            lead + f"{local}颱風（{en_storm}）最新動態直播：向日葵9號衛星雲圖、各國氣象機關（中央氣象署、日本氣象廳、JTWC）的路徑預報與觀測數值、"
-            "最接近時間與警報，持續自動更新。",
+            lead + f"{local}颱風（{en_storm}）最新動態直播：各縣市停班停課一覽（行政院人事行政總處）、中央氣象署颱風警報與豪雨／強風特報、"
+            "台灣各地即時影像、向日葵9號衛星雲圖、各國氣象機關（中央氣象署、日本氣象廳、JTWC）的路徑預報與觀測數值，持續自動更新。",
             f"Live desk for {en_storm} near Taiwan: Himawari-9 satellite, official forecast tracks, agency numbers and warnings.",
             "",
             "■ 注意",
@@ -126,9 +157,10 @@ def metadata(cfg: dict, lang: str, thumb: dict) -> dict:
             f"{name}. Student-run typhoon desk. AI-written from agency sources and checked for contradictions; synthetic voice. "
             "Not an official warning service: follow CWA and your local government.",
             "",
-            " ".join([f"#{local}颱風", "#颱風", "#颱風路徑", "#" + en_storm.replace(" ", "")]),
+            " ".join([f"#{local}颱風", "#颱風假", "#停班停課", "#颱風", "#颱風路徑", "#" + en_storm.replace(" ", "")]),
         ])
-        tags = [f"{local}颱風", local, "颱風", "颱風路徑", "颱風動態", "衛星雲圖", "颱風假", "中央氣象署", "直播", en_storm,
+        tags = [f"{local}颱風", local, "颱風假", "停班停課", "颱風", "颱風路徑", "颱風動態", "海上陸上颱風警報", "豪雨特報", "即時影像",
+                "衛星雲圖", "中央氣象署", "直播", en_storm,
                 f"Typhoon {st.get('name', '').title()}", "Taiwan typhoon", "typhoon live"]
     elif tx.get("num"):
         local = tx["num"].split()[-1].title()
@@ -261,23 +293,29 @@ def main() -> int:
     log.info("broadcast status: %s", status)
     deadline = time.time() + a.hours * 3600
     next_refresh = time.time() + a.refresh_min * 60
+    health_every = float(os.environ.get("YOUTUBE_HEALTH_MIN", "10")) * 60    # 2 quota units per check: every minute = 2,880/day
+    next_health = 0.0
     try:
         while not stopping["flag"] and time.time() < deadline and not stop_file.exists():
             time.sleep(60)
             if enc.poll() is not None:
                 log.warning("encoder exited (rc %s); restarting", enc.returncode)
                 enc = start_encoder()
-            try:
-                h = youtube.health(stream["id"], yt)
-                log.info("stream %s, health %s, broadcast %s", h.get("streamStatus"), (h.get("healthStatus") or {}).get("status"),
-                         youtube.broadcast_status(bc_id, yt))
-            except Exception as error:  # noqa: BLE001 - monitoring must never stop the stream
-                log.warning("health check failed: %s", error)
+            if time.time() >= next_health:
+                next_health = time.time() + health_every
+                try:
+                    h = youtube.health(stream["id"], yt)
+                    log.info("stream %s, health %s, broadcast %s", h.get("streamStatus"), (h.get("healthStatus") or {}).get("status"),
+                             youtube.broadcast_status(bc_id, yt))
+                except Exception as error:  # noqa: BLE001 - monitoring must never stop the stream
+                    log.warning("health check failed: %s", error)
             if a.refresh_min > 0 and time.time() >= next_refresh and not os.environ.get("YOUTUBE_TITLE"):
                 next_refresh = time.time() + a.refresh_min * 60
                 try:
                     thumb_path, thumb = youtube_thumbnail.render(a.lang)
                     meta = metadata(cfg, a.lang, thumb)
+                    # a fresh client: after an idle hour the old connection is gone, and uploads (POST) are not retried
+                    yt = youtube.service()
                     if meta["title"] != state.get("title"):
                         apply_metadata(bc_id, meta, thumb_path, yt)
                         state["title"] = meta["title"]

@@ -501,6 +501,89 @@ body.thumb .track-map { width: 1920px; height: 1080px; }
 #thumb .th-kicker { color: #ffd23a; font: 900 84px/1.05 var(--font-display); text-shadow: 0 4px 0 #000, 0 0 24px rgba(0,0,0,.6); }
 #thumb .th-head { color: #fff; font: 900 128px/1.06 var(--font-display); letter-spacing: -.01em; text-shadow: 0 6px 0 #000, 0 0 30px rgba(0,0,0,.7); white-space: nowrap; }
 #thumb .th-en { margin-top: 14px; color: #cfe2ff; font: 800 40px/1 var(--font-display); letter-spacing: .08em; }
+
+/* ---------- Taiwan board (?lang=zh): DGPA closures + CWA warning / advisories by county ---------- */
+html[lang=zh] .par-chip, html[lang=zh] #par { display: none; }
+/* ?lang=ja: Japan only. No Philippine boundary, no closest-pass markers of our own (JMA's forecast circles stay) */
+html[lang=ja] .par-chip, html[lang=ja] #par, html[lang=ja] #cpa { display: none; }
+html[lang=ja] .storm-title span { font: 800 20px/1.2 var(--font-cjk); color: var(--amber); }
+.jpb { position: absolute; inset: 0; display: grid; grid-template-columns: 760px 1fr; gap: 16px; padding: 16px 18px; background: var(--stage); }
+.jp-now { border: 1px solid #a3243a; border-radius: 6px; background: linear-gradient(180deg, #3a0b14, #160810 60%); display: flex; flex-direction: column; overflow: hidden; }
+.jp-now .top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 12px 18px; background: var(--alert); }
+.jp-now .top b { font: 900 34px/1 var(--font-cjk); }
+.jp-now .top span { font: 700 18px/1 var(--font-cjk); color: #ffe3e7; }
+.jp-now .cls { padding: 18px 22px 0; font: 900 58px/1.1 var(--font-cjk); color: var(--amber); }
+.jp-now .loc { padding: 6px 22px 0; font: 900 64px/1.15 var(--font-cjk); }
+.jp-now .mv { padding: 6px 22px 0; font: 700 26px/1.3 var(--font-cjk); color: #f3d9de; }
+.jp-now .nums { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #5a1a26; margin: 18px 0 0; border-top: 1px solid #5a1a26; border-bottom: 1px solid #5a1a26; }
+.jp-now .nums div { background: #24090f; padding: 12px 16px; }
+.jp-now .nums small { display: block; font: 700 17px/1.2 var(--font-cjk); color: #d9a9b2; }
+.jp-now .nums b { font: 900 46px/1.1 var(--font-display); }
+.jp-now .nums b em { font: 700 20px/1 var(--font-cjk); font-style: normal; color: #d9a9b2; margin-left: 4px; }
+.jp-now .areas { padding: 14px 22px; font: 700 23px/1.45 var(--font-cjk); }
+.jp-now .areas i { display: inline-block; width: 16px; height: 16px; border-radius: 3px; margin-right: 8px; vertical-align: -1px; }
+.jp-now .note { margin-top: auto; padding: 10px 22px 12px; font: 500 15px/1.35 var(--font-cjk); color: #d9a9b2; border-top: 1px solid #5a1a26; }
+.jp-right { display: grid; grid-template-rows: auto 300px 1fr; gap: 14px; min-height: 0; }
+.jp-cams { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; min-height: 0; }
+.jp-cams .cam { position: relative; border-radius: 6px; overflow: hidden; min-height: 0; }
+.jp-isl { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.jp-isl .card { padding: 14px 16px 16px; }
+.jp-isl .card b { display: block; font: 900 34px/1.1 var(--font-cjk); }
+.jp-isl .card small { display: block; font: 700 18px/1.3 var(--font-cjk); color: var(--muted); margin-top: 6px; }
+.jp-isl .zone { display: inline-block; margin-top: 12px; font: 900 24px/1 var(--font-cjk); padding: 9px 14px 8px; border-radius: 5px; color: #10151c; }
+.jp-fc { border: 1px solid var(--line); border-radius: 6px; background: var(--panel); overflow: hidden; display: flex; flex-direction: column; min-height: 0; }
+.jp-fc .card-h b { font-family: var(--font-cjk); font-size: 24px; }
+.jp-fc .card-h span { font-family: var(--font-cjk); font-size: 15px; text-transform: none; }
+.jp-fc table { width: 100%; border-collapse: collapse; }
+.jp-fc td { padding: 12px 16px; border-top: 1px solid var(--line); font: 700 24px/1.25 var(--font-cjk); }
+.jp-fc td.t { color: var(--amber); white-space: nowrap; width: 1%; }
+.jp-fc td.n { color: #cfe0f4; font-size: 20px; white-space: nowrap; width: 1%; }
+.jp-fc .foot { margin-top: auto; padding: 10px 16px 12px; font: 500 15px/1.35 var(--font-cjk); color: var(--muted); border-top: 1px solid var(--line); }
+html[lang=zh] .storm-title span { font: 800 20px/1.2 var(--font-cjk); color: var(--amber); }
+.twb { position: absolute; inset: 0; display: grid; grid-template-columns: 700px 1fr; background: var(--stage); }
+.tw-map { position: relative; background: radial-gradient(120% 90% at 60% 40%, #0d2a4b, #051427); border-right: 2px solid var(--line); overflow: hidden; }
+.tw-map svg { position: absolute; left: 50px; top: 28px; height: 800px; width: auto; }
+.tw-map path.cty { stroke: #061527; stroke-width: 1.1; transition: fill .9s ease; }
+.tw-map text { font: 800 17px/1 var(--font-cjk); fill: #fff; paint-order: stroke; stroke: rgba(4,12,24,.9); stroke-width: 4px; text-anchor: middle; dominant-baseline: middle; pointer-events: none; }
+.tw-map .inset { fill: none; stroke: #4c6f95; stroke-width: 1; stroke-dasharray: 4 3; }
+.tw-map .inset-l { font-size: 13px; font-weight: 700; fill: #b9cde4; }
+.tw-mode { position: absolute; left: 18px; top: 16px; display: flex; flex-direction: column; gap: 6px; }
+.tw-mode b { background: var(--slab); color: var(--slab-ink); font: 900 34px/1 var(--font-cjk); padding: 10px 16px 9px; box-shadow: 0 6px 20px rgba(0,0,0,.45); }
+.tw-mode span { align-self: flex-start; background: var(--brand); font: 700 17px/1 var(--font-cjk); padding: 7px 12px; }
+.tw-dots { position: absolute; left: 20px; bottom: 18px; display: flex; gap: 8px; }
+.tw-dots i { width: 34px; height: 6px; border-radius: 3px; background: #2a4466; }
+.tw-dots i.on { background: var(--amber); }
+.tw-legend { position: absolute; right: 16px; bottom: 16px; display: grid; gap: 7px; background: rgba(5,15,29,.88); border: 1px solid var(--line); border-radius: 6px; padding: 12px 14px; }
+.tw-legend div { display: flex; align-items: center; gap: 10px; font: 700 19px/1 var(--font-cjk); }
+.tw-legend i { width: 26px; height: 18px; border-radius: 3px; border: 1px solid rgba(255,255,255,.25); }
+.tw-legend small { font: 600 13px/1.2 var(--font-cjk); color: var(--muted); max-width: 220px; }
+.tw-rail { padding: 16px 18px; display: grid; grid-template-rows: auto auto 1fr; gap: 14px; min-height: 0; }
+.tw-hero { display: grid; grid-template-columns: auto 1fr; gap: 6px 22px; align-items: center; padding: 16px 22px; background: linear-gradient(90deg, #5c0d1b, #2a0a12 70%); border: 1px solid #a3243a; border-radius: 6px; }
+.tw-hero .n { grid-row: span 2; font: 900 148px/0.85 var(--font-display); color: #fff; letter-spacing: -.02em; }
+.tw-hero .n small { font: 900 46px/1 var(--font-cjk); margin-left: 6px; }
+.tw-hero .h { font: 900 52px/1.05 var(--font-cjk); color: var(--amber); }
+.tw-hero .s { font: 600 21px/1.35 var(--font-cjk); color: #f3d9de; }
+.tw-hero .src { grid-column: 1 / -1; font: 500 15px/1.2 var(--font-cjk); color: #d9a9b2; }
+.tw-warn { border: 1px solid var(--line); border-radius: 6px; background: var(--panel); overflow: hidden; }
+.tw-warn .top { display: flex; align-items: baseline; gap: 16px; padding: 12px 18px; background: var(--alert); }
+.tw-warn .top b { font: 900 36px/1 var(--font-cjk); }
+.tw-warn .top span { font: 700 20px/1 var(--font-cjk); color: #ffe3e7; }
+.tw-warn p { margin: 0; padding: 12px 18px 4px; font: 600 23px/1.42 var(--font-cjk); }
+.tw-warn .nums { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border-top: 1px solid var(--line); margin-top: 10px; }
+.tw-warn .nums div { background: var(--panel-2); padding: 10px 14px; }
+.tw-warn .nums small { display: block; font: 600 15px/1.2 var(--font-cjk); color: var(--muted); }
+.tw-warn .nums b { font: 800 30px/1.15 var(--font-cjk); }
+.tw-warn .nums b em { font-style: normal; font-size: 18px; color: var(--muted); margin-left: 4px; }
+.tw-warn .fc { padding: 10px 18px 12px; font: 600 19px/1.35 var(--font-cjk); color: #cfe0f4; border-top: 1px solid var(--line); }
+.tw-list { border: 1px solid var(--line); border-radius: 6px; background: var(--panel); overflow: hidden; display: flex; flex-direction: column; min-height: 0; }
+.tw-list .card-h b { font-family: var(--font-cjk); font-size: 22px; }
+.tw-list .card-h span { font-family: var(--font-cjk); font-size: 15px; text-transform: none; }
+.tw-rows { padding: 10px 16px; display: grid; gap: 9px; align-content: start; }
+.tw-row { display: grid; grid-template-columns: 150px 1fr; gap: 14px; align-items: start; }
+.tw-row .lv { font: 900 21px/1 var(--font-cjk); padding: 8px 0 7px; border-radius: 4px; text-align: center; color: #10151c; }
+.tw-row .who { font: 700 23px/1.4 var(--font-cjk); }
+.tw-row .who small { color: var(--muted); font-size: 17px; font-weight: 600; }
+.tw-note { margin-top: auto; padding: 8px 16px 10px; font: 500 14px/1.3 var(--font-cjk); color: var(--muted); border-top: 1px solid var(--line); }
 </style>
 </head>
 <body>
@@ -596,6 +679,36 @@ body.thumb .track-map { width: 1920px; height: 1080px; }
     <!-- Scene 3: impacts -->
     <section class="scene" id="scene-impact">
       <div class="impact" id="impactCols"></div>
+    </section>
+
+    <!-- Scene 3b (?lang=zh): Taiwan board -->
+    <section class="scene" id="scene-tw">
+      <div class="twb">
+        <div class="tw-map">
+          <svg id="twSvg" viewBox="0 0 513 702" aria-label="Taiwan counties"></svg>
+          <div class="tw-mode"><b id="twModeT"></b><span id="twModeS"></span></div>
+          <div class="tw-dots" id="twDots"></div>
+          <div class="tw-legend" id="twLegend"></div>
+        </div>
+        <div class="tw-rail">
+          <div class="tw-hero" id="twHero"></div>
+          <div class="tw-warn" id="twWarn"></div>
+          <div class="tw-list"><div class="card-h"><b id="twListT"></b><span id="twListS"></span></div><div class="tw-rows" id="twRows"></div><div class="tw-note" id="twNote"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scene 3c (?lang=ja): Japan board, JMA's own information -->
+    <section class="scene" id="scene-jp">
+      <div class="jpb">
+        <div class="jp-now" id="jpNow"></div>
+        <div class="jp-right">
+          <div class="jp-isl" id="jpIsl"></div>
+          <div class="jp-cams" id="jpCams"></div>
+          <div class="jp-fc"><div class="card-h"><b>気象庁の進路予報</b><span id="jpFcS"></span></div><table id="jpFc"></table>
+            <div class="foot">気象庁の発表をそのままお伝えしています。独自の予報ではありません。最新の情報は気象庁の発表をご確認ください。</div></div>
+        </div>
+      </div>
     </section>
 
     <!-- Scene 4: model tracks -->
@@ -712,6 +825,25 @@ const STATIC = {
     { id: "84io3g_BGiY", place: "Kabira Bay, Ishigaki", area: "Okinawa, Japan", credit: "八重山諸島の風景", lat: 24.46, lon: 124.14 },
     { id: "wamdV7N__Zg", place: "Tamsui, New Taipei", area: "Taiwan", credit: "紅樹林有線電視", lat: 25.17, lon: 121.44 }
   ],
+  // ?lang=zh: official Taiwanese tourism / scenic-area cameras facing the storm (checked live Oct 23, 02:45 Taiwan time)
+  camsZh: [
+    { id: "z_fY1pj1VBw", place: "象山看台北", area: "台北市", credit: "Taipei Travel Live", lat: 25.03, lon: 121.57 },
+    { id: "HpJS5o4FZuA", place: "東北角・鼻頭", area: "新北市", credit: "東北角暨宜蘭海岸國家風景區", lat: 25.12, lon: 121.92 },
+    { id: "ZjuY4qKaj40", place: "野柳地質公園", area: "新北市", credit: "北觀國家風景區管理處", lat: 25.21, lon: 121.69 },
+    { id: "XSD5ptYisw8", place: "九份", area: "新北市", credit: "新北旅客 New Taipei Travel", lat: 25.11, lon: 121.84 },
+    { id: "ZdqHgQwvZOw", place: "東海岸・金樽", area: "臺東縣", credit: "東部海岸國家風景區管理處", lat: 22.95, lon: 121.30 },
+    { id: "91PfFoqvuUk", place: "桃園國際機場", area: "桃園市", credit: "遊桃園 Taoyuan Travel", lat: 25.08, lon: 121.23 },
+    { id: "wamdV7N__Zg", place: "淡水渡船頭", area: "新北市", credit: "紅樹林有線電視", lat: 25.17, lon: 121.44 }
+  ],
+  // ?lang=ja: Okinawa cameras live on Oct 23 (found through the channels' upload lists)
+  camsJa: [
+    { id: "PLigpUzNEr4", place: "石垣島・730交差点", area: "沖縄県石垣市", credit: "石垣島ライブカメラ", lat: 24.34, lon: 124.16 },
+    { id: "rxIS16Zb0pg", place: "石垣港離島ターミナル", area: "沖縄県石垣市", credit: "石垣島ユーグレナ離島ターミナル側LIVEカメラ", lat: 24.34, lon: 124.16 },
+    { id: "SXryMsQs5rE", place: "石垣島・川平湾", area: "沖縄県石垣市", credit: "八重山諸島の風景", lat: 24.46, lon: 124.14 },
+    { id: "c4qTwj4fOss", place: "那覇空港 滑走路北側", area: "沖縄県那覇市", credit: "KIN-TAKA", lat: 26.21, lon: 127.65 },
+    { id: "USxBjGrn8Zg", place: "那覇クルーズターミナル", area: "沖縄県那覇市", credit: "KIN-TAKA", lat: 26.22, lon: 127.67 },
+    { id: "AD_CKsOoIms", place: "那覇・泊大橋", area: "沖縄県那覇市", credit: "KIN-TAKA", lat: 26.23, lon: 127.68 }
+  ],
   featureCam: 0,
   impactCams: { TW: 1, JP: 0 },       // which camera tops each country column (PH shows the signal scale)
   windy: { lat: 19.5, lon: 128, zoom: 5, overlay: "wind" },
@@ -721,7 +853,7 @@ const STATIC = {
     { name: "Batanes", pts: [[20.45, 121.97], [20.75, 121.84], [19.6, 121.9]] },
     { name: "Okinawa", pts: [[26.21, 127.68], [24.8, 125.28]] }
   ],
-  rotateSeconds: { track: 60, cams: 45, impact: 30, models: 40 }
+  rotateSeconds: { track: 60, cams: 45, impact: 30, models: 40, tw: 42, jp: 40 }
 };
 
 /* ===================================================================== */
@@ -736,7 +868,11 @@ function deskMerge(doc) {
   const d = JSON.parse(JSON.stringify(STATIC));
   d.headlines = []; d.ticker = []; d.agencies = []; d.warnings = { stamp: "", items: [] };   // empty until live data arrives
   if (!doc) return d;
-  for (const k of ["center", "forecast", "past", "agencies", "agencyNote", "warnings", "headlines", "ticker", "impact"]) if (doc[k] != null) d[k] = doc[k];
+  for (const k of ["center", "forecast", "past", "agencies", "agencyNote", "warnings", "headlines", "ticker", "impact", "tw", "jp"]) if (doc[k] != null) d[k] = doc[k];
+  if (LANG === "ja" && d.camsJa) { d.cams = d.camsJa; d.featureCam = 0; }
+  if (LANG === "ja" && d.jp) jaLocalize(d);
+  if (LANG === "zh" && d.camsZh) { d.cams = d.camsZh; d.featureCam = 0; }
+  if (LANG === "zh" && d.tw) twLocalize(d);
   if (doc.storm) d.storm = Object.assign({}, d.storm, doc.storm);
   for (const [cc, cam] of Object.entries(STATIC.impactCams || {})) if (d.impact && d.impact[cc] && d.impact[cc].cam == null) d.impact[cc].cam = cam;
   if (doc.ensemble) d.ensemble = Object.assign({}, doc.ensemble, { targets: STATIC.ensembleTargets });
@@ -879,7 +1015,7 @@ const I18N = {
     "SHOW OPEN": "オープニング", "CURRENT POSITION": "現在の位置", "TRACK FORECAST": "進路予報", "LOCAL IMPACTS": "沖縄への影響",
     "SHOW CLOSE": "エンディング", "STATION ID": "ステーションID",
     "Show Open": "オープニング", "Current Position": "現在の位置", "Track Forecast": "進路予報", "Local Impacts": "沖縄への影響",
-    "Show Close": "エンディング"
+    "Show Close": "エンディング", "Island Status": "先島諸島の状況"
   },
   zh: {
     // static markup (Traditional Chinese, Taiwan usage)
@@ -936,7 +1072,7 @@ const I18N = {
     "SHOW OPEN": "開場", "CURRENT POSITION": "目前位置", "TRACK FORECAST": "路徑預報", "LOCAL IMPACTS": "對台灣的影響",
     "SHOW CLOSE": "結尾", "STATION ID": "台呼",
     "Show Open": "開場", "Current Position": "目前位置", "Track Forecast": "路徑預報", "Local Impacts": "對台灣的影響",
-    "Show Close": "結尾"
+    "Show Close": "結尾", "Official Bulletin": "官方快報", "OFFICIAL BULLETIN": "官方快報", "Typhoon Warning": "颱風警報", "Closures": "停班停課", "Wind & Rain Advisories": "強風豪雨特報"
   }
 };
 const t = s => (I18N[LANG] && I18N[LANG][s]) || s;
@@ -975,10 +1111,22 @@ const stormLabel = () => { const jp = jmaName(DATA.storm), tw = twName(DATA.stor
   return jp ? `${jp[1]} ${jp[2].trim()}`.trim() : tw ? `${tw[1].trim()}颱風` : `${DATA.storm.title} ${DATA.storm.name}`; };
 function stormHeader() {
   const st = DATA.storm, jp = jmaName(st), tw = twName(st);
+  if (tw && DATA.tw) {
+    const S = twClosureSummary(DATA.tw), w = DATA.tw.warning;
+    $("stormTitle").innerHTML = `${esc(tw[1].trim())}颱風 <em>${esc(st.name)}</em>`;
+    $("stormNames").textContent = [w ? `${w.title} 第${w.report || ""}報` : "", S.all ? `${DATA.tw.closures.day || "今天"} ${S.off.length}縣市停班停課` : ""].filter(Boolean).join("　・　");
+    return;
+  }
   if (tw) {
     $("stormTitle").innerHTML = `${esc(tw[1].trim())}颱風 <em>${esc(st.name)}</em>`;
     $("stormNames").textContent = `${st.title} ${st.name}` + (st.names || "").split("·").map(x => x.trim()).filter(x => !x.startsWith("Taiwan:"))
       .map(x => " · " + x.replace(/^(\w+):/, (m, k) => t(k) + ":")).join("");
+    return;
+  }
+  if (jp && DATA.jp) {
+    const J = DATA.jp, storm = (J.islands || []).filter(i => i.zone === "storm").map(i => i.name);
+    $("stormTitle").innerHTML = `${esc(jp[1])} <em>${esc(jp[2].trim() || st.name)}</em>`;
+    $("stormNames").textContent = [J.now.class ? `${J.now.class}台風` : "", storm.length ? `${storm.join("・")}が暴風域に` : "", `気象庁 ${jaTime(J.issued)}発表`].filter(Boolean).join("　・　");
     return;
   }
   if (jp) {
@@ -1131,7 +1279,10 @@ function drawMap() {
   const nt = el("text", { x: sx + 130, y: sy - 125, fill: "#fff", "font-size": 24, "font-weight": 800, "font-family": "Barlow Condensed, Arial Narrow, sans-serif", "letter-spacing": "1.5" }, nm); nt.textContent = DATA.storm.name;
 
   // Strip + note
-  $("trackStrip").textContent = DATA.forecast.source + " · " + t("Past") + ": " + DATA.past.source;
+  if (LANG === "ja") { $("trackStrip").textContent = `気象庁の予報（${DATA.jp ? jaTime(DATA.jp.issued) + "発表" : ""}）`; return; }
+  $("trackStrip").textContent = LANG === "zh" && /^JMA/.test(DATA.forecast.source || "")
+    ? `日本氣象廳預報（${fmtTime(DATA.forecast.issuedUTC, HOME.tz, { weekday: undefined })} 發布）・過去路徑：JTWC 每6小時定位`
+    : DATA.forecast.source + " · " + t("Past") + ": " + DATA.past.source;
   $("mapKeyNote").textContent = tf("Labels in UTC+8 (Manila, Taipei). Storm-force radius in red, gale-force radius dashed yellow. Center position: {src}, {when} UTC+8.", { src: c.source, when: fmtTime(c.timeUTC, HOME.tz, { weekday: "short", day: "numeric", month: "short" }) });
 
   // PAR status (east boundary at 135°E between 5°N and 25°N)
@@ -1443,6 +1594,10 @@ function tourAnim(to, ms, done) {
 function cpaTargets() {
   if (!DATA.forecast || !(DATA.forecast.points || []).length || !DATA.cities) return [];
   const byName = Object.fromEntries(DATA.cities.map(c => [c.n, c])), out = [];
+  if (LANG === "zh") {       // Taiwan page: the three Taiwanese towns the forecast center passes closest, in time order
+    return DATA.cities.filter(c => c.cc === "TW").map(c => ({ city: c, ca: closest(c) })).filter(x => x.ca && x.ca.d <= TOUR.maxKm)
+      .sort((a, b) => a.ca.d - b.ca.d).slice(0, 3).sort((a, b) => a.ca.t - b.ca.t);
+  }
   for (const cc of ["PH", "TW", "JP"]) {
     const named = (((DATA.impact || {})[cc] || {}).passes || []).map(n => byName[n]).filter(Boolean);
     const pool = named.length ? named : DATA.cities.filter(c => c.cc === cc);
@@ -1486,7 +1641,8 @@ function drawCPA(tg, box) {
     const r = lt.getBBox(), under = r.x < bx + w && r.x + r.width > bx && r.y < by + h && r.y + r.height > by;
     lt.style.opacity = (lt.textContent === t(c.n) || under) ? 0 : "";
   });
-  tourStrip(tf("CLOSEST PASS · {town}", { town: t(c.n).toUpperCase() }), `${(DATA.forecast && DATA.forecast.source) || t("Official forecast")} · ${t("center line, not an impact zone")}`);
+  const fsrc = LANG === "zh" && /^JMA/.test((DATA.forecast && DATA.forecast.source) || "") ? "日本氣象廳預報" : (DATA.forecast && DATA.forecast.source) || t("Official forecast");
+  tourStrip(tf("CLOSEST PASS · {town}", { town: t(c.n).toUpperCase() }), `${fsrc} · ${t("center line, not an impact zone")}`);
 }
 function tourStrip(title, sub) {
   const b = $("trackMap").querySelector(".map-strip b"), sp = $("trackStrip");
@@ -1514,6 +1670,12 @@ function tourStop() {
 function tourStart() {
   tourStop();
   if (THUMB) return;
+  if (LANG === "ja") {        // a fixed view on the Sakishima Islands and Okinawa, JMA's track and forecast circles in frame
+    const [x0, y0] = proj(27.2, 120.6), [x1, y1] = proj(21.0, 128.6);
+    const w = Math.max(x1 - x0, (y1 - y0) * 1.6), h = w / 1.6;
+    tourVB([(x0 + x1) / 2 - w / 2, (y0 + y1) / 2 - h / 2, w, h]); $("mapSvg").classList.add("zoomed");
+    return;
+  }
   const targets = cpaTargets(); if (!targets.length) return;
   let t = TOUR.startMs;
   for (const tg of targets) { TOUR.timers.push(setTimeout(() => tourFocus(tg), t)); t += TOUR.moveMs + TOUR.holdMs; }
@@ -1650,8 +1812,230 @@ function tick() {
 }
 setInterval(tick, 1000); tick();
 
+
+/* ---------- Taiwan board (?lang=zh) ----------
+   desk.json "tw" (src/desk/build.py sec_tw): CWA's typhoon warning and its land wind / heavy rain advisories by county,
+   and DGPA's work and school closures (停班停課) by county. The map cycles closures -> rain -> wind. In zh the
+   headlines, ticker and warnings card are rebuilt from the same block in Chinese (the desk's own text is English). */
+const TW_MAP = {"w":513,"h":702,"c":{"連江縣":{"en":"Lienchiang County","d":"M34.5,117.0L35.1,117.4L33.5,119.6L30.5,120.7L32.3,117.6ZM27.9,114.9L28.4,115.6L25.7,117.5L24.7,115.1ZM23.4,80.3L25.2,80.9L24.5,82.7L26.4,84.0L27.4,83.2L27.1,82.0L31.3,81.8L30.0,84.4L28.8,84.2L27.5,86.0L26.2,85.6L24.6,87.0L22.0,85.7L23.5,83.4L22.6,83.1ZM36.4,69.0L38.0,69.8L37.5,71.6L39.5,71.0L38.9,73.3L37.5,71.7L35.4,73.2L34.9,72.5L33.0,73.1L32.3,76.0L33.0,77.1L31.5,76.9L31.6,72.0L34.2,71.4ZM35.3,61.2L35.4,63.4L33.8,63.8L34.0,61.8ZM115.7,43.0L116.0,45.2L117.7,45.3L119.0,43.9L119.0,44.9L120.2,44.9L120.9,46.2L119.3,45.6L118.0,47.7L116.5,47.9L116.7,45.6L115.4,45.8L115.2,43.8L114.0,45.2L114.8,43.0Z","c":[26,84]},"宜蘭縣":{"en":"Yilan County","d":"M496.2,107.0L496.8,108.8L494.1,108.9L491.6,106.9L493.2,107.1L494.4,105.6ZM497.4,79.4L490.0,82.3L486.2,88.0L483.4,88.6L482.5,92.4L476.4,98.0L472.0,107.5L470.4,123.0L471.7,129.4L474.2,132.8L474.6,144.7L477.7,152.7L482.7,155.9L480.4,156.7L481.5,157.8L480.2,159.2L481.6,160.1L479.7,161.4L480.3,169.8L474.9,171.8L474.1,173.5L474.4,176.4L476.2,177.1L476.3,179.0L478.4,179.8L475.0,180.6L470.9,183.5L470.0,186.7L467.3,189.1L465.4,194.4L464.6,201.5L461.8,208.5L462.0,213.3L446.5,209.2L446.1,207.9L444.3,208.5L439.6,204.0L439.3,206.1L436.0,201.9L434.2,203.5L435.3,206.0L436.8,206.3L436.4,209.0L433.8,206.9L433.5,209.3L429.6,209.7L431.4,214.1L429.8,212.7L424.2,212.2L420.2,208.4L416.1,207.4L411.0,207.8L403.3,203.1L400.7,199.4L393.8,200.1L390.3,202.6L388.1,201.5L387.3,198.2L385.6,197.4L382.6,198.0L380.6,196.3L380.6,189.2L378.7,187.7L379.8,184.7L383.2,179.7L386.0,178.7L388.6,176.2L388.9,174.0L390.8,173.9L392.0,171.4L394.0,170.2L392.8,164.9L396.0,161.4L394.3,157.7L396.0,155.3L398.8,154.8L403.1,145.8L402.5,144.3L404.6,141.4L410.9,141.3L414.3,139.1L418.8,138.3L420.0,134.9L425.0,133.2L425.7,134.0L426.4,131.5L428.1,131.9L429.9,130.5L428.8,127.0L429.6,126.4L428.3,125.0L429.9,121.5L428.9,118.5L435.0,117.0L435.1,114.2L438.5,114.2L439.1,113.2L441.5,113.8L443.0,112.4L446.6,112.8L446.4,111.0L448.0,109.1L454.3,104.9L457.1,105.4L462.5,103.0L464.3,101.2L463.6,98.1L465.5,96.1L469.1,94.7L472.8,95.0L476.9,90.8L474.1,87.1L475.6,83.9L483.2,83.4L485.8,81.1L493.3,78.4L496.8,78.4Z","c":[443,152]},"彰化縣":{"en":"Changhua County","d":"M221.0,234.6L229.7,237.8L233.4,245.5L233.2,248.1L237.2,252.7L249.5,255.5L250.6,261.0L251.9,262.2L251.8,270.0L255.4,270.8L255.8,269.2L261.6,273.2L260.2,273.9L260.5,274.8L254.2,274.5L253.9,276.9L256.4,279.4L255.0,284.3L253.7,285.5L252.3,284.7L253.4,285.3L252.3,285.6L254.0,288.6L252.3,289.8L254.1,291.1L252.7,293.8L253.6,296.3L250.9,302.3L252.3,304.5L250.1,307.9L252.0,307.6L251.8,308.7L253.4,309.2L251.4,309.9L254.0,309.4L254.5,311.0L253.5,310.8L256.5,313.5L261.2,312.1L262.6,315.7L259.0,317.5L255.0,318.9L238.2,315.8L230.9,316.0L220.1,312.5L216.7,310.0L193.8,311.9L184.0,309.1L177.7,302.8L180.4,298.9L184.1,297.2L185.2,292.1L188.4,289.3L189.1,285.1L193.7,281.4L195.3,276.1L198.7,272.9L199.6,264.1L203.9,259.8L207.7,258.5L208.1,256.6L206.9,257.0L210.0,252.5L214.0,241.3L215.1,239.3L218.7,238.2Z","c":[236,286]},"南投縣":{"en":"Nantou County","d":"M254.6,318.8L262.6,315.3L261.2,312.1L256.5,313.5L253.5,310.8L254.5,311.0L254.0,309.4L251.4,309.9L253.4,309.2L251.8,308.7L252.0,307.6L250.1,307.9L252.3,304.5L250.9,302.3L253.6,296.3L252.7,293.8L254.1,291.1L252.3,289.8L254.0,288.6L252.3,285.6L253.4,285.3L252.3,284.7L253.7,285.5L255.0,284.3L256.4,279.4L253.9,276.9L254.2,274.5L260.5,274.8L260.2,273.9L261.7,273.2L266.7,275.0L271.4,274.2L274.3,276.2L278.5,274.2L282.3,269.9L285.5,262.7L289.2,261.7L289.4,255.6L292.1,251.1L293.7,251.1L294.6,252.7L297.1,252.6L298.4,254.2L298.1,259.0L300.5,256.5L300.8,252.8L305.8,254.5L311.3,250.4L313.4,252.0L318.5,252.3L324.1,244.2L325.6,244.1L326.6,246.3L327.4,244.4L329.2,244.0L330.1,245.0L336.0,240.8L339.2,236.8L345.5,236.7L347.6,233.4L350.0,232.9L351.2,230.9L353.6,233.5L356.5,231.4L358.6,231.7L360.7,230.2L364.1,232.1L367.2,227.4L369.0,226.8L371.8,230.0L374.2,230.2L375.6,228.7L380.3,229.5L383.3,231.3L384.4,236.1L380.1,236.8L376.8,239.9L372.9,240.5L373.3,244.4L371.8,244.4L372.6,245.6L372.0,248.8L374.7,249.5L380.6,253.7L378.9,256.9L379.7,259.0L375.4,263.6L372.3,265.1L372.8,268.1L368.1,277.5L368.8,280.7L370.5,280.9L371.4,282.8L370.3,286.4L371.0,294.0L368.3,295.5L369.6,299.3L368.7,299.8L369.1,301.4L366.8,302.4L364.3,308.0L364.3,311.6L362.0,315.1L362.7,318.3L358.0,321.5L359.5,324.5L363.1,325.9L362.5,330.0L364.3,331.1L364.7,336.3L363.1,340.4L363.7,343.1L361.6,348.2L361.5,351.3L358.3,356.8L356.0,355.9L352.9,359.5L348.6,358.6L348.3,361.2L349.8,362.4L349.3,364.1L347.3,365.0L348.2,370.5L345.3,373.0L342.1,371.7L338.4,371.7L336.6,373.2L333.0,372.3L331.9,376.1L327.6,381.1L331.3,383.6L330.0,385.8L323.3,388.9L322.4,387.3L323.4,385.7L322.0,383.6L316.9,382.2L310.9,382.6L304.0,380.8L299.8,380.9L298.6,382.5L295.5,381.3L291.0,381.8L288.8,379.3L287.6,371.8L285.4,368.8L288.5,358.7L287.1,356.1L282.9,356.6L275.2,353.0L271.2,353.8L271.2,352.4L269.0,350.0L267.9,350.4L268.1,351.8L264.0,351.9L262.5,353.8L258.4,353.9L256.6,352.8L257.0,350.3L255.8,349.8L253.4,352.2L252.6,349.0L256.1,339.4L255.6,335.4L254.4,333.9L254.5,330.2L255.4,328.7L257.5,329.0L257.4,324.9Z","c":[311,305]},"雲林縣":{"en":"Yunlin County","d":"M152.2,371.2L154.5,372.4L154.9,373.9L152.5,373.5L151.6,375.5L150.2,375.2L149.6,376.0L150.9,376.2L149.5,376.3L150.5,377.2L149.8,378.0L149.3,377.1L147.2,377.5L149.2,378.5L148.8,379.9L147.0,380.1L148.0,379.5L147.0,378.4L146.3,380.6L145.2,380.7L146.8,377.4L146.0,377.0L144.8,380.3L143.8,379.4L143.9,380.5L141.9,381.1L141.7,384.1L139.9,384.0L140.7,382.1L139.1,383.0L140.9,388.7L136.8,382.8L137.4,381.4ZM155.6,367.7L157.1,369.2L156.2,369.7L157.8,370.1L155.7,370.1L155.2,371.7L154.0,370.2ZM161.6,363.4L161.1,365.8L160.3,364.2L156.7,367.9L157.7,365.0ZM177.7,302.8L184.0,309.1L193.8,311.9L216.7,310.0L220.1,312.5L230.3,315.9L238.2,315.8L254.6,318.8L257.4,324.9L257.5,329.0L255.4,328.7L254.5,330.2L254.4,333.9L255.6,335.4L256.1,339.4L252.6,349.0L252.9,351.7L253.7,352.0L255.5,349.8L256.9,350.1L256.6,352.8L259.9,354.1L262.5,353.8L264.0,351.9L267.4,352.2L269.0,350.0L271.2,352.4L270.0,355.3L271.5,356.6L272.2,361.9L268.8,362.2L267.2,360.9L264.4,360.7L261.2,361.9L260.0,360.3L256.5,361.5L255.2,360.9L256.2,359.5L255.6,357.3L249.0,359.5L243.6,359.5L235.0,356.6L230.8,352.1L229.6,348.9L220.5,350.7L218.7,349.9L215.3,352.4L214.3,351.0L213.5,351.7L211.8,350.9L211.4,349.2L211.1,350.6L208.2,351.8L206.9,354.0L204.5,354.4L203.0,357.0L198.7,357.4L197.2,361.2L193.7,361.1L194.2,363.1L190.5,363.5L190.6,365.8L188.0,367.3L187.1,369.9L185.6,369.3L184.3,366.8L181.9,367.3L182.6,372.8L181.1,374.5L178.2,375.1L174.9,373.6L170.5,374.0L164.6,372.2L163.9,370.9L164.9,369.6L162.6,363.7L163.6,362.5L163.8,357.0L162.9,356.1L163.0,353.3L161.7,352.9L162.6,349.1L160.3,351.7L158.3,349.1L160.3,346.9L164.3,334.6L166.0,332.9L167.7,327.6L168.3,324.2L166.1,319.1L169.5,315.4L168.5,314.7L170.5,314.0L175.1,309.1L174.8,306.6L176.6,305.9Z","c":[220,347]},"基隆市":{"en":"Keelung City","d":"M467.6,48.8L467.9,51.0L467.4,51.6L466.0,50.7L466.8,52.1L466.0,53.5L462.0,52.0L460.9,53.5L457.8,54.1L459.6,55.9L460.0,60.3L462.5,62.0L460.4,64.5L454.6,65.5L450.9,62.4L448.6,62.5L445.1,60.6L445.1,58.3L443.9,59.4L440.6,57.3L438.2,50.4L435.3,48.1L444.6,44.8L450.4,40.7L450.2,43.0L453.2,42.8L457.6,44.7L460.6,43.3L463.4,44.3L462.0,44.9L462.9,45.7L468.3,46.2Z","c":[454,51]},"臺北市":{"en":"Taipei City","d":"M425.0,36.6L427.4,37.1L426.2,42.6L428.5,43.3L428.5,45.6L431.8,50.0L429.9,54.1L435.2,56.8L435.5,59.3L433.3,63.2L434.8,64.9L433.3,65.9L433.9,67.3L439.0,70.4L442.4,70.0L441.9,71.5L436.3,70.9L434.5,72.5L432.1,71.8L429.9,73.0L430.4,80.6L434.0,82.1L430.6,83.8L426.4,82.7L423.3,83.1L421.7,78.7L420.3,79.2L418.5,77.0L417.9,77.9L417.9,74.4L415.2,71.9L413.7,71.7L410.7,74.1L409.1,68.5L412.9,66.0L413.2,61.1L410.0,56.6L404.2,54.6L404.5,51.4L405.6,51.2L405.7,49.7L412.5,41.3L415.7,42.1L416.0,40.2L419.5,38.6L422.7,34.0Z","c":[425,61]},"新北市":{"en":"New Taipei City","d":"M497.4,79.4L496.8,78.4L493.3,78.4L485.8,81.1L483.2,83.4L475.6,83.9L474.1,87.1L476.9,90.8L473.3,94.6L470.3,95.5L469.1,94.7L465.5,96.1L463.6,98.1L464.3,101.2L462.5,103.0L457.1,105.4L454.3,104.9L448.0,109.1L446.4,111.0L446.6,112.8L443.0,112.4L441.5,113.8L439.1,113.2L438.5,114.2L435.1,114.2L435.0,117.0L428.9,118.5L429.9,121.5L428.3,125.0L429.6,126.4L428.8,127.0L429.9,130.5L428.1,131.9L426.4,131.5L425.7,134.0L425.0,133.2L420.0,134.9L418.8,138.3L414.3,139.1L410.7,141.4L408.4,141.2L407.3,136.8L403.0,134.9L400.0,130.0L398.0,123.7L402.8,118.8L403.0,117.8L400.7,116.9L400.4,113.6L394.2,107.3L391.6,107.5L388.8,109.3L385.5,107.2L382.0,107.2L382.2,106.4L386.0,105.4L383.7,102.6L385.2,100.7L383.8,100.0L383.1,97.5L381.5,97.6L381.6,96.2L380.3,96.8L379.1,96.0L380.2,94.2L378.6,92.7L382.7,90.3L379.5,90.4L378.3,88.3L381.2,86.8L380.7,81.7L379.8,81.4L383.2,79.5L388.2,80.6L391.1,78.7L390.8,76.9L392.7,77.3L394.3,76.1L392.1,73.5L396.0,72.2L393.4,70.0L393.9,68.4L392.0,67.6L393.9,67.4L392.7,66.1L393.9,65.7L390.9,65.5L391.6,63.4L385.5,63.0L383.9,61.9L385.2,61.3L384.6,60.7L382.8,61.2L384.4,59.5L375.9,56.7L375.1,55.1L373.9,55.5L372.3,54.1L372.4,52.4L374.1,52.2L374.8,50.8L379.1,51.3L383.7,50.3L391.9,46.5L392.2,42.4L394.2,44.2L397.2,40.5L394.5,39.4L394.6,38.0L397.2,37.7L403.4,25.4L406.8,24.8L408.6,21.8L413.7,19.4L414.0,17.6L415.5,19.0L418.1,18.0L418.9,15.9L421.3,17.7L426.3,16.2L434.6,21.2L436.6,24.0L436.6,28.1L438.2,29.8L440.0,29.4L439.5,31.5L441.8,34.5L444.7,35.5L449.1,32.7L446.1,38.1L447.3,40.0L450.4,40.8L444.6,44.8L435.3,48.1L438.2,50.4L440.6,57.3L443.9,59.4L445.1,58.3L444.9,60.3L446.6,61.7L450.9,62.4L454.2,65.3L457.1,65.4L460.4,64.5L462.5,62.0L460.0,60.3L459.6,55.9L457.8,54.1L460.9,53.5L462.0,52.0L466.0,53.5L466.8,52.1L466.0,50.7L467.4,51.6L467.9,51.0L467.6,48.8L471.9,48.9L470.6,50.1L471.1,51.7L474.7,50.2L484.8,52.1L490.1,50.1L488.2,53.2L490.2,54.4L487.9,58.9L488.1,60.7L490.5,61.8L491.1,63.4L491.2,68.8L493.9,71.8L499.6,70.7L501.8,71.8L502.0,73.4L503.5,72.1L505.0,73.6L504.6,75.7ZM425.0,36.6L422.7,34.0L419.5,38.6L416.0,40.2L415.7,42.1L412.5,41.3L405.7,49.7L405.6,51.2L404.5,51.4L404.2,54.6L410.0,56.6L413.2,61.1L412.9,66.0L409.1,68.5L410.7,74.1L413.7,71.7L415.2,71.9L417.9,74.4L417.9,77.9L418.5,77.0L420.3,79.2L421.7,78.7L423.3,83.1L426.4,82.7L430.6,83.8L434.0,82.1L430.4,80.6L429.9,73.0L432.1,71.8L434.5,72.5L436.3,70.9L441.9,71.5L442.4,70.0L439.0,70.4L433.9,67.3L433.3,65.9L434.8,64.9L433.3,63.2L435.5,59.3L435.2,56.8L429.9,54.1L431.8,50.0L428.5,45.6L428.5,43.3L426.2,42.6L427.4,37.1Z","c":[431,74]},"臺中市":{"en":"Taichung City","d":"M378.7,187.7L380.6,189.2L380.3,196.0L382.5,198.0L385.6,197.4L387.3,198.2L388.9,202.4L390.7,202.4L393.8,200.1L400.0,199.4L401.6,201.4L402.5,201.0L403.3,203.1L400.7,205.6L400.1,211.5L398.0,214.4L394.7,214.3L393.1,218.3L392.1,218.1L390.2,220.1L391.0,225.0L385.1,227.2L383.3,231.3L380.3,229.5L375.6,228.7L374.2,230.2L371.8,230.0L369.0,226.8L367.2,227.4L364.1,232.1L360.7,230.2L358.6,231.7L356.5,231.4L353.6,233.5L351.2,230.9L350.0,232.9L347.6,233.4L345.5,236.7L339.2,236.8L336.0,240.8L330.1,245.0L329.2,244.0L327.4,244.4L326.6,246.3L325.6,244.1L324.1,244.2L318.5,252.3L313.4,252.0L311.3,250.4L305.8,254.5L300.5,252.9L300.5,256.5L298.1,259.0L298.4,254.2L297.1,252.6L294.6,252.7L293.7,251.1L292.1,251.1L289.4,255.6L289.2,261.7L285.5,262.7L282.3,269.9L278.5,274.2L274.0,276.3L271.4,274.2L264.6,274.6L255.8,269.2L255.4,270.8L251.8,270.0L251.9,262.2L250.6,261.0L249.5,255.5L237.2,252.7L233.2,248.1L233.4,245.5L229.7,237.8L221.0,234.6L222.5,233.1L221.8,232.7L223.2,233.1L224.6,231.1L227.2,224.9L226.4,224.5L227.7,222.8L228.6,223.2L233.3,212.8L239.8,206.0L242.3,200.5L251.2,187.9L254.5,190.4L255.7,193.6L258.9,195.5L264.3,202.6L271.1,205.6L277.1,210.8L285.2,213.0L290.0,217.9L292.9,218.3L297.6,217.0L304.3,217.2L306.3,215.3L305.3,208.9L308.7,207.4L314.3,209.3L321.3,209.6L324.1,214.1L326.9,216.6L329.5,216.8L330.6,213.9L333.3,212.8L333.9,211.4L337.3,212.3L340.4,209.8L342.7,209.9L346.3,204.1L351.2,203.9L352.9,200.7L355.3,199.7L356.6,196.7L359.1,196.9L360.0,200.1L362.8,199.3L365.1,194.9L365.1,192.0L367.7,191.0L367.9,188.4L368.1,190.1L369.9,190.5L376.4,189.5Z","c":[317,227]},"臺南市":{"en":"Tainan City","d":"M257.0,431.1L257.5,432.5L253.9,438.0L254.8,439.4L247.4,447.2L241.2,459.6L225.7,472.9L225.3,475.4L221.7,475.2L221.8,477.8L220.7,477.8L220.3,480.4L218.4,480.5L213.6,492.7L212.2,493.5L210.4,491.5L207.3,491.8L201.8,498.5L198.2,498.1L196.8,495.9L196.0,497.0L189.5,495.1L188.3,495.1L188.5,496.7L184.6,495.7L183.9,497.1L180.1,494.9L179.2,492.6L177.3,494.1L172.5,491.8L169.4,493.7L168.8,486.1L167.1,483.0L165.8,483.1L166.6,481.4L163.2,476.8L154.6,470.2L148.0,467.4L144.5,462.4L142.3,462.4L144.5,453.9L147.4,450.9L148.2,444.2L152.0,434.2L152.1,428.5L154.2,424.1L154.7,416.8L157.6,413.9L158.2,408.8L159.0,408.0L164.5,412.1L164.8,413.4L167.8,414.3L170.1,417.7L172.0,418.0L171.9,415.8L176.2,417.7L178.1,416.3L180.9,410.6L184.5,409.7L186.3,407.9L186.3,407.1L185.1,407.1L186.0,405.5L189.7,406.0L189.3,403.6L191.0,400.9L194.3,400.9L194.6,398.6L198.4,398.8L201.4,395.7L207.1,395.3L212.1,393.3L214.3,395.2L217.9,393.3L224.0,396.4L225.1,398.5L227.8,397.0L228.8,398.4L226.1,400.1L226.0,402.1L226.8,401.4L229.8,402.2L231.2,404.0L230.9,405.2L229.8,405.0L229.8,407.0L235.1,408.7L236.2,410.4L233.1,413.6L233.7,416.8L232.7,421.6L234.8,425.0L232.5,428.4L239.0,432.5L240.9,431.8L243.2,433.0L245.8,428.1L246.8,430.2L249.0,431.5L252.4,430.1Z","c":[207,443]},"桃園市":{"en":"Taoyuan City","d":"M408.4,141.2L404.6,141.4L402.8,143.6L403.1,145.8L398.2,155.4L396.0,155.3L392.1,158.7L388.7,157.2L386.3,153.2L387.6,149.6L386.1,149.3L385.0,147.3L385.2,142.4L382.6,142.7L382.6,140.2L378.7,136.4L375.3,136.9L376.8,132.0L375.1,129.4L376.8,125.0L375.7,123.4L368.1,119.6L368.2,117.4L365.9,116.7L365.1,114.3L361.0,116.1L360.7,113.7L358.0,114.5L357.7,112.5L356.9,113.0L352.3,110.5L352.8,109.6L348.0,107.1L350.0,104.1L349.0,99.9L341.8,99.7L340.2,98.8L340.5,96.5L337.2,97.3L331.0,94.8L331.2,88.6L329.0,87.3L327.4,86.7L324.0,87.9L321.8,86.8L319.2,89.0L317.2,88.0L322.3,81.0L322.2,77.9L325.7,71.9L330.0,67.3L336.3,64.7L337.0,63.4L349.9,58.9L359.6,53.8L364.4,52.9L364.4,51.4L365.2,52.3L368.1,51.3L372.4,52.4L372.3,54.1L373.9,55.5L375.1,55.1L375.9,56.7L384.4,59.5L382.8,61.2L384.6,60.7L385.2,61.3L383.9,61.9L385.5,63.0L392.1,63.7L390.9,65.5L393.9,65.7L392.7,66.1L393.9,67.4L392.0,67.6L393.9,68.4L393.4,70.0L396.0,72.2L392.4,72.9L394.3,76.1L392.7,77.3L390.8,76.9L391.1,78.7L388.2,80.6L383.2,79.5L380.4,80.3L379.8,81.4L380.7,81.7L381.2,86.8L378.3,88.3L379.5,90.4L382.7,90.3L378.6,92.7L380.2,94.2L379.1,96.0L380.3,96.8L381.6,96.2L381.5,97.6L383.1,97.5L383.8,100.0L385.2,100.7L383.7,102.6L386.0,105.4L382.2,106.4L382.0,107.2L385.5,107.2L388.8,109.3L391.6,107.5L394.2,107.3L400.4,113.6L400.7,116.9L403.0,117.8L402.8,118.8L398.0,123.7L400.0,130.0L403.0,134.9L407.3,136.8Z","c":[374,98]},"苗栗縣":{"en":"Miaoli County","d":"M367.9,188.4L367.7,191.0L365.1,192.0L365.1,194.9L362.8,199.3L360.0,200.1L359.1,196.9L356.6,196.7L355.3,199.7L352.9,200.7L351.2,203.9L346.3,204.1L342.7,209.9L340.4,209.8L337.3,212.3L333.9,211.4L333.3,212.8L330.6,213.9L329.5,216.8L326.9,216.6L324.1,214.1L321.3,209.6L314.3,209.3L308.7,207.4L305.3,208.9L306.3,215.3L304.3,217.2L297.6,217.0L292.9,218.3L290.0,217.9L285.2,213.0L277.1,210.8L271.1,205.6L264.3,202.6L258.9,195.5L255.7,193.6L254.5,190.4L251.2,187.9L259.2,179.3L268.4,155.8L275.1,150.5L276.1,147.7L280.0,143.5L288.3,141.3L294.1,135.5L295.1,131.7L297.5,128.3L300.5,129.6L303.6,127.8L304.9,132.6L307.7,132.7L309.8,134.5L311.3,133.8L311.9,135.2L315.7,133.6L315.6,136.6L314.0,139.3L316.0,139.1L318.1,143.2L320.0,145.1L322.3,144.7L322.0,147.1L325.1,147.7L329.9,153.0L331.9,151.6L334.3,153.7L335.7,158.0L333.4,163.3L331.1,164.4L335.2,167.8L334.8,170.2L332.8,171.4L333.6,176.3L336.2,175.7L338.4,176.7L342.0,174.3L345.6,174.7L347.0,173.6L351.5,175.5L360.1,173.0L361.4,174.7L360.5,176.4L363.5,178.5L365.2,182.0L368.6,185.0Z","c":[315,175]},"嘉義市":{"en":"Chiayi City","d":"M219.3,372.4L221.1,372.9L222.6,376.3L224.1,374.6L225.8,374.9L226.0,376.9L229.2,378.0L230.6,381.6L228.0,385.4L223.2,383.7L220.3,387.0L217.8,388.1L216.0,383.8L209.5,383.5L210.4,380.3L208.6,376.3L210.6,376.2L212.2,374.7L212.8,376.2L213.6,374.9L216.7,374.2L216.8,372.6L218.0,373.6L218.0,372.3Z","c":[219,379]},"嘉義縣":{"en":"Chiayi County","d":"M271.2,353.8L275.2,353.0L282.9,356.6L287.1,356.1L288.5,358.7L285.4,368.8L287.6,371.8L288.8,379.3L290.4,381.5L295.5,381.3L298.6,382.5L299.8,380.9L304.0,380.8L310.9,382.6L312.7,382.1L308.9,383.2L307.4,384.9L305.1,384.2L302.2,385.3L299.8,389.0L293.0,391.9L288.5,401.7L284.8,401.8L280.8,407.6L276.2,407.1L275.2,410.7L271.5,413.2L271.2,414.9L267.8,414.3L266.8,415.1L265.5,419.1L255.2,416.8L254.3,422.2L257.0,431.1L252.4,430.1L249.0,431.5L246.8,430.2L245.8,428.1L243.2,433.0L240.9,431.8L239.0,432.5L233.6,429.7L232.4,428.2L234.8,425.0L232.7,421.6L233.7,416.8L233.1,413.6L236.2,410.4L235.1,408.7L229.8,407.0L229.8,405.0L230.9,405.2L231.2,404.0L229.8,402.2L226.8,401.4L226.0,402.1L226.1,400.1L228.8,398.4L227.8,397.0L225.1,398.5L224.0,396.4L217.9,393.3L214.3,395.2L212.1,393.3L207.1,395.3L201.4,395.7L198.4,398.8L196.6,399.3L195.0,398.3L194.3,400.9L191.0,400.9L189.7,402.6L189.7,406.0L186.0,405.5L185.1,407.1L186.3,407.1L186.3,407.9L184.5,409.7L180.9,410.6L178.1,416.3L176.2,417.7L171.9,415.8L172.0,418.0L170.1,417.7L168.4,414.8L164.8,413.4L164.5,412.1L159.0,408.0L161.5,399.0L165.2,398.3L166.0,400.0L165.6,398.4L166.5,398.5L165.6,398.2L167.3,397.4L166.6,394.8L165.1,396.3L164.7,394.8L164.7,391.4L165.9,390.3L164.0,390.3L165.8,386.3L165.0,384.9L162.1,386.5L161.8,385.7L163.8,384.1L163.7,382.0L165.9,379.2L165.8,377.8L168.4,377.6L166.3,377.0L160.2,378.3L159.2,376.9L159.6,372.1L164.2,371.8L170.5,374.0L173.7,373.4L178.2,375.1L181.1,374.5L182.6,372.8L181.9,367.3L184.3,366.8L185.6,369.3L187.1,369.9L188.0,367.3L190.6,365.8L190.5,363.5L194.2,363.1L193.7,361.1L197.2,361.2L198.7,357.4L203.0,357.0L204.5,354.4L206.9,354.0L208.2,351.8L211.1,350.6L211.4,349.2L211.8,350.9L213.5,351.7L214.3,351.0L215.3,352.4L218.7,349.9L220.5,350.7L229.6,348.9L230.8,352.1L235.7,357.1L243.8,359.6L249.0,359.5L251.8,357.9L255.9,357.4L256.2,359.5L255.2,360.9L256.5,361.5L260.0,360.3L261.2,361.9L264.4,360.7L267.2,360.9L268.8,362.2L272.2,361.9L271.5,356.6L270.0,355.3ZM219.3,372.4L218.0,372.3L218.0,373.6L216.8,372.6L216.7,374.2L213.6,374.9L212.8,376.2L212.2,374.7L210.6,376.2L208.6,376.3L210.4,380.3L209.5,383.5L216.0,383.8L217.8,388.1L220.3,387.0L223.2,383.7L228.0,385.4L230.6,381.6L229.2,378.0L226.0,376.9L225.8,374.9L224.1,374.6L222.6,376.3L221.1,372.9Z","c":[235,389]},"金門縣":{"en":"Kinmen County","d":"M0.4,226.8L-0.8,227.3L-2.7,225.4L1.4,225.8ZM1.2,220.7L2.1,222.5L4.0,222.6L4.7,223.9L3.3,224.7L0.9,223.5L0.0,220.9ZM30.8,197.6L33.9,198.5L37.7,201.5L37.9,204.6L35.7,210.3L32.8,209.4L29.6,213.6L28.2,214.5L28.3,213.5L26.2,213.4L22.9,216.9L21.2,215.3L18.6,215.1L18.0,214.2L19.6,213.8L19.8,208.2L22.2,205.0L23.4,200.8L25.5,198.6ZM40.7,198.6L37.6,199.1L39.0,197.0ZM86.6,169.2L87.6,170.6L89.3,169.8L94.2,171.9L93.5,173.0L94.9,175.8L99.9,177.1L100.1,180.9L102.8,186.1L106.3,187.4L106.4,188.6L104.4,190.0L104.7,193.4L106.8,198.0L109.5,199.9L108.1,200.2L107.6,203.2L104.6,203.3L103.5,204.7L105.5,206.9L103.9,209.3L102.4,209.0L101.5,212.6L91.7,216.2L91.7,215.3L93.8,215.1L92.7,214.9L94.0,212.6L92.1,209.8L85.8,208.3L86.4,207.0L83.6,205.6L77.8,205.6L72.5,207.1L65.8,210.9L61.6,217.0L60.1,222.1L57.8,223.6L55.2,224.1L51.5,222.4L50.0,220.3L46.9,220.3L44.9,216.9L40.8,213.9L41.8,212.4L45.2,211.7L49.4,204.3L46.7,195.4L43.6,190.7L45.8,185.0L49.3,183.2L52.8,182.9L61.6,190.6L70.0,191.9L77.8,183.7L77.2,178.2L79.9,176.9L82.9,172.9L81.5,171.6L81.9,170.7L84.6,171.0L85.2,168.4ZM451.5,-1.0L453.1,-0.9L452.2,1.5L448.9,1.5L449.3,-0.4ZM446.1,-2.3L445.6,-0.7L442.4,-1.6L441.0,-5.8L445.2,-4.4Z","c":[80,200]},"高雄市":{"en":"Kaohsiung City","d":"M312.7,382.1L321.8,383.4L323.2,385.1L322.4,387.7L323.1,389.8L325.8,391.4L325.0,393.1L325.7,395.2L321.1,397.0L321.9,399.1L318.3,401.9L318.1,404.3L321.0,405.0L322.3,406.8L324.2,405.9L325.4,408.5L329.3,410.8L329.3,413.1L324.8,417.3L317.9,419.9L315.5,419.6L309.1,427.0L305.0,428.5L303.2,436.1L304.2,439.4L301.9,440.7L301.3,443.9L297.9,445.7L299.5,447.1L300.2,453.9L299.6,458.1L296.5,464.0L298.5,466.4L298.5,468.8L295.1,469.9L295.0,474.4L293.2,475.0L293.0,476.7L287.7,483.5L287.9,489.0L290.0,493.5L289.1,495.2L291.2,499.5L294.8,500.3L295.8,501.6L294.7,503.3L296.6,504.4L295.7,507.4L293.6,504.5L292.5,505.6L290.7,503.2L288.3,502.7L284.1,505.8L282.6,505.6L282.5,507.8L280.0,509.0L275.7,503.1L270.1,499.8L266.4,499.9L263.8,503.0L260.4,504.7L258.4,504.1L257.9,500.1L256.1,500.6L255.5,499.0L248.3,501.4L238.8,510.2L234.5,509.4L230.7,510.3L227.6,508.5L224.6,508.4L223.2,509.9L220.9,520.0L220.8,532.3L217.2,543.7L216.8,552.5L219.0,556.2L219.2,558.8L218.3,564.0L214.8,572.3L215.1,582.3L210.3,580.9L203.0,575.9L198.5,571.7L198.4,570.2L196.9,571.3L197.7,569.2L194.6,573.0L190.2,567.2L193.0,569.5L193.7,568.9L195.4,571.2L196.3,570.4L193.7,567.0L192.0,566.5L192.8,564.4L185.5,555.7L186.0,553.8L184.3,552.5L185.6,550.8L183.1,545.7L183.7,543.0L185.8,541.0L185.5,538.2L184.6,538.1L185.3,535.7L176.8,515.2L173.6,514.9L172.2,513.3L175.3,511.4L172.0,504.3L172.7,503.0L169.4,493.7L172.5,491.8L177.3,494.1L179.2,492.6L180.1,494.9L183.9,497.1L184.6,495.7L188.5,496.7L188.3,495.1L189.5,495.1L196.0,497.0L196.8,495.9L198.2,498.1L201.7,498.5L207.3,491.8L210.4,491.5L212.2,493.5L213.6,492.7L218.4,480.5L220.3,480.4L220.7,477.8L221.8,477.8L221.7,475.2L225.3,475.4L226.3,472.3L239.4,461.7L242.6,457.7L247.4,447.2L254.8,439.4L254.0,437.7L257.5,432.5L254.3,422.2L255.2,416.8L265.5,419.1L266.8,415.1L267.8,414.3L271.2,414.9L271.5,413.2L275.2,410.7L276.2,407.1L280.8,407.6L284.8,401.8L288.5,401.7L293.0,391.9L299.8,389.0L302.2,385.3L305.1,384.2L307.4,384.9L308.9,383.2Z","c":[255,469]},"臺東縣":{"en":"Taitung County","d":"M412.9,659.0L417.3,660.1L424.9,659.5L424.5,661.4L426.0,664.0L424.4,664.4L423.8,666.3L424.4,668.1L430.9,672.0L429.1,675.6L424.9,675.6L422.5,671.7L418.9,671.0L415.2,666.8L413.6,666.7L413.9,662.5L411.9,659.9ZM410.5,540.5L413.9,540.6L413.7,545.2L412.0,546.8L413.2,549.5L411.2,549.5L410.0,547.5L407.2,546.7L407.5,544.3L405.6,541.7L405.8,540.7ZM295.7,507.4L296.6,504.4L294.7,503.3L295.8,501.6L294.8,500.3L291.2,499.5L289.1,495.2L290.0,493.5L287.9,489.0L287.7,483.5L293.0,476.7L293.2,475.0L295.0,474.4L295.1,469.9L298.5,468.8L298.5,466.4L296.5,464.0L299.6,458.1L300.2,453.9L299.5,447.1L297.9,445.7L301.3,443.9L301.9,440.7L304.2,439.4L303.2,436.1L305.0,428.5L309.1,427.0L315.5,419.6L317.9,419.9L327.6,415.9L331.4,418.8L331.9,422.8L335.0,429.5L337.4,429.2L339.8,431.2L344.2,431.3L347.1,436.1L352.6,434.0L355.2,435.3L359.4,445.0L359.3,447.2L362.8,448.2L364.2,450.3L366.2,449.7L367.7,450.8L369.4,453.1L368.9,455.2L370.4,456.4L373.8,454.1L378.3,454.1L379.4,452.6L379.1,448.5L380.4,445.6L378.8,442.4L379.8,440.3L381.8,440.4L384.0,432.6L385.9,431.2L385.1,429.7L386.6,427.1L386.3,425.4L389.7,422.1L389.7,415.9L397.9,404.8L397.9,404.0L394.5,402.5L393.7,398.7L397.3,392.1L402.2,387.3L407.2,387.9L408.8,390.0L411.3,389.0L407.4,398.7L405.1,413.5L402.3,414.2L399.8,418.4L396.5,429.0L397.5,430.7L393.2,435.0L393.4,438.9L395.2,442.6L393.7,449.0L394.9,450.9L398.2,450.9L392.8,453.3L390.6,456.9L387.0,457.2L384.2,463.1L382.2,472.0L379.4,475.6L379.8,477.2L374.5,485.1L372.2,486.6L369.7,493.8L365.7,499.7L364.1,500.5L363.2,503.1L358.8,503.4L355.5,506.1L354.6,509.4L356.7,512.9L357.3,516.9L353.7,519.4L352.8,524.2L343.1,532.8L335.4,536.4L325.2,544.8L322.8,552.1L322.2,558.2L317.8,562.1L316.3,565.2L310.7,584.6L301.2,609.1L300.6,619.4L301.5,626.7L296.1,630.0L294.6,627.8L290.2,626.9L286.6,623.4L283.5,624.4L283.5,620.7L285.1,620.6L284.9,619.2L282.6,618.9L279.6,615.5L279.9,614.3L283.1,612.8L282.5,608.9L281.1,606.9L277.8,606.4L277.1,604.2L273.5,602.6L275.9,598.3L275.3,595.0L279.0,594.6L282.0,592.5L279.4,585.9L274.9,584.0L274.8,580.2L277.3,576.9L272.7,565.3L273.1,562.3L274.5,561.5L273.9,558.1L275.5,555.9L275.2,553.6L281.2,543.8L282.3,540.2L281.4,537.5L285.6,538.3L287.5,536.9L290.6,536.6L292.8,532.6L299.2,532.6L301.2,528.5L300.7,523.3L302.9,520.8L302.8,516.0L300.6,513.7L296.4,512.6L295.1,510.6Z","c":[336,492]},"花蓮縣":{"en":"Hualien County","d":"M403.3,203.1L411.7,208.2L416.1,207.4L420.2,208.4L424.2,212.2L429.8,212.7L431.4,214.1L429.6,209.7L433.5,209.3L433.8,206.9L436.4,209.0L436.8,206.3L435.3,206.0L434.2,203.5L436.0,201.9L439.3,206.1L439.6,204.0L444.3,208.5L446.1,207.9L446.5,209.2L462.2,213.5L458.0,219.0L456.6,224.0L442.0,237.2L441.1,241.6L442.0,249.1L433.9,258.1L433.8,265.4L439.1,274.2L435.5,282.1L434.4,280.4L431.8,284.0L432.5,289.3L430.0,304.6L425.4,315.9L425.3,324.7L421.2,332.7L421.8,336.3L417.8,350.7L416.9,360.7L414.1,365.7L412.7,372.0L413.5,377.8L414.6,378.6L411.3,389.0L408.8,390.0L407.2,387.9L402.2,387.3L397.3,392.1L393.7,399.0L394.5,402.5L397.9,404.0L397.9,404.8L389.7,415.9L389.7,422.1L386.3,425.4L386.6,427.1L385.1,429.7L385.9,431.2L384.0,432.6L381.8,440.4L379.8,440.3L378.8,442.4L380.4,445.6L379.1,448.5L379.4,452.6L378.3,454.1L373.8,454.1L370.4,456.4L368.9,455.2L369.4,453.1L367.7,450.8L366.2,449.7L364.2,450.3L362.8,448.2L359.3,447.2L359.4,445.0L355.2,435.3L352.6,434.0L347.1,436.1L344.2,431.3L339.8,431.2L337.4,429.2L335.0,429.5L330.8,417.9L327.6,415.9L325.7,416.6L328.9,414.4L329.5,411.1L325.4,408.5L324.2,405.9L322.3,406.8L321.0,405.0L318.1,404.3L318.1,402.8L321.9,399.1L321.1,397.0L325.7,395.2L325.0,393.1L325.8,391.4L322.8,389.4L330.0,385.8L331.1,384.0L327.6,381.1L331.9,376.1L333.0,372.3L336.6,373.2L338.4,371.7L342.1,371.7L345.3,373.0L348.2,370.5L347.3,365.0L349.3,364.1L349.8,362.4L348.3,361.2L348.6,358.6L352.9,359.5L356.0,355.9L358.3,356.8L359.5,356.0L363.6,343.7L363.1,340.4L364.3,338.6L364.6,334.2L364.3,331.1L362.4,329.0L363.1,325.9L359.5,324.5L358.0,321.5L362.7,318.3L362.0,315.1L364.3,311.6L364.3,308.0L366.8,302.4L369.1,301.4L368.7,299.8L369.6,299.3L368.3,295.5L371.0,294.0L370.3,286.4L371.4,282.8L370.5,280.9L368.8,280.7L368.1,277.5L372.8,268.1L372.3,265.1L375.4,263.6L379.7,259.0L378.9,256.9L380.6,253.7L374.7,249.5L372.0,248.8L372.6,245.6L371.8,244.4L373.3,244.4L372.9,240.5L376.8,239.9L380.1,236.8L384.4,236.1L383.3,231.3L385.1,227.2L391.0,225.0L390.2,220.1L392.1,218.1L393.1,218.3L394.7,214.3L398.0,214.4L400.1,211.5L400.7,205.6Z","c":[387,325]},"澎湖縣":{"en":"Penghu County","d":"M34.8,431.7L36.3,432.1L35.3,435.9L33.4,436.1L32.9,438.6L31.5,436.8L30.5,437.2L31.2,435.3L29.2,432.7ZM78.3,423.2L77.1,427.1L76.1,424.3ZM52.6,400.9L53.8,403.0L51.7,402.6L50.4,404.5L49.6,404.0L49.4,402.7ZM44.6,396.5L45.6,398.0L47.1,397.5L47.3,400.6L48.2,400.6L47.6,401.9L48.8,401.2L48.8,402.4L47.2,403.1L48.2,405.5L43.3,404.8L44.8,402.9L45.0,398.5L43.8,397.1ZM12.8,393.7L14.8,395.0L12.1,396.3ZM53.3,376.8L51.1,378.7L47.4,378.9L47.8,377.7L48.8,378.7L51.1,376.8ZM61.2,340.7L62.4,341.6L64.1,341.2L65.6,343.4L66.3,346.0L64.5,346.2L63.6,348.1L64.5,349.2L66.0,348.9L64.5,350.3L65.2,351.8L66.6,352.1L66.5,355.6L69.8,354.5L68.7,355.9L68.6,359.9L69.9,359.4L69.9,357.2L71.0,356.2L71.5,358.7L72.3,358.2L73.5,354.0L74.6,354.8L74.2,356.3L76.0,357.0L75.1,357.7L76.5,357.8L77.3,355.8L79.2,359.2L79.3,362.9L81.4,363.9L81.4,365.1L78.4,365.7L78.0,364.1L76.8,363.6L76.8,364.7L76.3,363.7L71.7,364.4L70.6,366.5L69.3,366.5L65.1,370.3L66.2,371.7L65.1,372.8L65.2,374.4L63.7,373.2L59.1,374.4L59.1,371.6L56.2,371.3L54.8,368.2L53.3,368.2L54.7,365.2L54.9,367.9L56.2,368.4L55.8,370.1L56.8,370.7L57.8,369.1L58.9,369.6L59.4,372.0L60.9,369.5L63.3,370.7L64.0,369.7L63.2,368.4L64.7,367.9L64.5,366.4L62.7,365.5L59.2,366.8L57.2,366.0L57.3,364.4L58.3,365.4L59.6,365.0L59.0,363.4L60.3,363.3L59.4,362.4L58.3,363.6L56.1,363.3L58.1,361.0L57.1,358.9L59.4,359.0L61.2,357.1L61.0,360.1L62.1,359.8L61.4,361.3L63.0,361.0L63.6,362.2L64.5,360.6L63.8,359.4L65.4,358.7L64.6,355.9L66.4,354.9L63.6,352.7L65.1,352.0L64.9,351.0L64.1,351.9L62.0,351.5L63.3,348.8L60.6,343.6L58.9,343.5L57.4,345.7L55.8,344.5L53.1,349.2L49.1,350.3L50.0,355.7L48.0,357.6L48.8,363.0L45.1,362.4L43.9,363.5L39.8,363.7L42.3,361.0L44.3,362.0L46.4,360.2L46.4,358.2L43.9,357.0L44.7,355.6L45.4,356.8L46.5,356.6L46.4,354.6L47.4,353.6L45.6,352.0L47.9,346.5L49.3,346.5L48.4,344.9L50.2,344.8L49.7,347.5L52.7,348.1L55.7,344.5L55.0,344.4L55.9,342.3ZM66.4,324.8L68.4,327.2L66.1,327.7L66.8,328.5L65.3,328.6L64.7,330.9L63.3,328.5Z","c":[60,359]},"新竹市":{"en":"Hsinchu City","d":"M308.7,133.5L304.7,132.5L303.6,127.8L300.5,129.6L297.5,128.3L301.8,123.1L300.7,121.3L300.7,117.6L302.7,111.2L305.0,107.8L304.5,105.2L308.7,105.6L312.3,109.1L317.5,109.9L321.3,112.1L325.2,116.2L324.3,117.2L326.6,123.2L324.3,124.7L322.0,121.1L319.2,119.9L317.9,120.6L318.4,122.4L315.0,123.0L312.7,126.9L310.3,127.1Z","c":[312,121]},"新竹縣":{"en":"Hsinchu County","d":"M394.3,157.7L396.0,161.4L392.8,164.9L394.0,170.2L392.0,171.4L390.8,173.9L388.9,174.0L388.6,176.2L386.0,178.7L383.2,179.7L378.7,187.7L376.4,189.5L368.1,190.1L368.6,185.0L365.2,182.0L363.5,178.5L360.5,176.4L361.4,174.7L360.1,173.0L351.5,175.5L347.0,173.6L345.6,174.7L342.0,174.3L338.4,176.7L336.2,175.7L333.6,176.3L332.8,171.4L334.8,170.2L335.2,167.8L331.1,164.4L333.4,163.3L335.7,158.0L334.3,153.7L331.9,151.6L329.9,153.0L325.1,147.7L322.0,147.1L322.3,144.7L320.0,145.1L318.1,143.2L316.0,139.1L314.0,139.3L315.6,136.6L315.7,133.6L311.9,135.2L311.3,133.8L309.8,134.5L308.7,133.5L310.3,127.1L312.7,126.9L315.0,123.0L318.4,122.4L317.9,120.6L319.2,119.9L322.0,121.1L324.3,124.7L326.6,123.2L324.3,117.2L325.2,116.2L322.0,112.8L317.5,109.9L312.3,109.1L309.6,106.0L306.8,105.0L310.0,101.6L314.9,90.3L317.2,88.0L319.2,89.0L321.8,86.8L324.0,87.9L327.4,86.7L331.2,88.6L331.0,94.8L337.2,97.3L340.5,96.5L340.2,98.8L341.8,99.7L349.0,99.9L350.0,104.1L348.0,107.1L352.8,109.6L352.3,110.5L356.9,113.0L357.7,112.5L358.0,114.5L360.7,113.7L361.0,116.1L365.1,114.3L365.9,116.7L368.2,117.4L368.1,119.6L375.7,123.4L376.8,125.0L375.1,129.4L376.8,132.0L375.3,136.9L378.7,136.4L382.6,140.2L382.6,142.7L385.2,142.4L385.0,147.3L386.1,149.3L387.6,149.6L386.2,152.5L387.8,156.2L391.5,158.7Z","c":[346,137]},"屏東縣":{"en":"Pingtung County","d":"M206.9,604.8L208.5,605.9L208.4,607.5L203.9,611.3L202.3,611.3L203.6,606.6ZM215.1,582.3L214.8,572.3L218.3,564.0L219.2,558.8L219.0,556.2L216.8,552.5L217.2,543.7L220.3,535.2L220.5,521.8L224.2,508.6L227.6,508.5L230.7,510.3L234.5,509.4L238.5,510.3L249.6,500.8L255.5,499.0L256.1,500.6L257.9,500.1L258.4,504.1L260.4,504.7L263.8,503.0L266.4,499.9L269.3,499.6L275.7,503.1L280.0,509.0L282.5,507.8L282.6,505.6L284.1,505.8L288.3,502.7L290.7,503.2L292.5,505.6L293.6,504.5L295.7,507.4L295.1,510.6L296.4,512.6L302.3,515.1L302.9,520.8L300.7,523.3L301.4,527.6L299.2,532.6L292.8,532.6L290.6,536.6L287.5,536.9L285.6,538.3L281.4,537.5L282.3,540.2L281.4,543.4L275.6,552.6L275.5,555.9L273.9,558.1L274.5,561.5L273.1,562.3L272.7,565.3L277.3,576.9L274.8,580.2L275.0,584.3L279.4,585.9L282.0,592.5L279.0,594.6L275.3,595.0L275.9,598.3L273.5,602.6L277.1,604.2L277.8,606.4L281.1,606.9L282.5,608.9L283.3,612.3L279.9,614.3L279.8,616.4L282.0,617.3L282.6,618.9L284.9,619.2L285.1,620.6L283.5,620.7L283.5,624.4L286.6,623.4L290.2,626.9L294.6,627.8L296.1,630.0L301.5,626.7L302.0,629.2L300.5,636.9L301.6,647.2L299.7,650.3L300.8,654.1L302.5,654.9L300.9,662.4L302.4,669.4L300.2,670.8L297.7,676.2L292.4,678.6L291.5,684.0L292.8,689.2L295.3,692.5L295.7,696.4L293.2,696.7L292.3,693.3L290.4,692.6L287.9,689.1L280.7,687.3L277.4,684.2L274.4,686.1L272.8,692.1L270.4,692.2L269.1,689.4L267.5,689.2L268.1,680.2L264.4,675.5L262.8,670.9L265.0,667.8L265.1,665.0L266.6,664.0L265.5,659.2L268.6,657.3L268.4,655.0L265.3,648.6L262.8,633.9L260.4,629.3L256.5,625.6L256.8,622.3L255.1,615.7L244.6,602.1L232.1,593.7L221.3,588.1L217.2,584.1L216.7,582.3Z","c":[272,595]}}};
+const TW_LABEL = { "基隆市": null, "臺北市": null, "新竹市": null, "嘉義市": null, "新北市": [478, 96], "高雄市": [246, 505], "澎湖縣": [62, 330],
+  "連江縣": [62, 126], "金門縣": [62, 220], "臺東縣": [345, 505], "嘉義縣": [252, 392] };
+const TW_SHORT = c => c === "連江縣" ? "馬祖" : /^(新竹|嘉義)/.test(c) ? c : c.replace(/[縣市]$/, "");
+const TW_INSET = { "連江縣": 116, "金門縣": 398 };     // the outer islands' inset boxes, moved clear of the mode strip and Penghu
+const TW_C = {
+  closures: { off: ["#e8213d", "停班停課"], partial: ["#ff8a2b", "部分停班停課"], normal: ["#2fbf71", "照常上班上課"], none: ["#3a516b", "尚未公布"] },
+  rain: { "超大豪雨": ["#b5179e", "超大豪雨"], "大豪雨": ["#e8213d", "大豪雨"], "豪雨": ["#ff8a2b", "豪雨"], "大雨": ["#ffd23f", "大雨"] },
+  wind: { red: ["#e8213d", "紅色燈號"], orange: ["#ff8a2b", "橙色燈號"], yellow: ["#ffd23f", "黃色燈號"] },
+};
+const TW_NONE = "#2b4a42";
+const TW_MODES = ["closures", "rain", "wind"];
+const TW = { mode: 0, timer: 0, drawn: false };
+const twTime = iso => iso ? fmtTime(iso, "Asia/Taipei", { weekday: undefined }) : "";
+const twHM = s => (/(\d{2})\/(\d{2}) (\d{2}):(\d{2})/.exec(s || "") || []).slice(1);
+const twWhen = s => { const m = twHM(s); return m.length ? `${+m[0]}/${+m[1]} ${m[2]}:${m[3]}` : ""; };
+function twClosureSummary(tw) {
+  const c = (tw && tw.closures && tw.closures.counties) || {};
+  const by = st => Object.keys(c).filter(k => c[k].status === st);
+  return { all: Object.keys(c).length, off: by("off"), partial: by("partial"), normal: by("normal"), none: by("none"), c };
+}
+function twLevel(mode, county) {
+  const tw = DATA.tw || {};
+  if (mode === "closures") { const r = ((tw.closures || {}).counties || {})[county]; return r ? TW_C.closures[r.status] : null; }
+  if (mode === "rain") { const r = ((tw.rain || {}).counties || {})[county]; return r ? TW_C.rain[r] : null; }
+  const r = ((tw.wind || {}).counties || {})[county]; return r ? TW_C.wind[r] : null;
+}
+function twDrawMap() {
+  const svg = $("twSvg"); if (!svg || TW.drawn) return;
+  const ns = "http://www.w3.org/2000/svg";
+  for (const [b, lab] of [[[10, 34 + TW_INSET["連江縣"], 118, 104], "連江（馬祖）"], [[10, 162 + TW_INSET["金門縣"], 118, 76], "金門"]]) {
+    const r = document.createElementNS(ns, "rect"); r.setAttribute("class", "inset");
+    r.setAttribute("x", b[0]); r.setAttribute("y", b[1]); r.setAttribute("width", b[2]); r.setAttribute("height", b[3]); svg.appendChild(r);
+  }
+  for (const [name, c] of Object.entries(TW_MAP.c)) {
+    const p = document.createElementNS(ns, "path"); p.setAttribute("d", c.d); p.setAttribute("class", "cty"); p.dataset.c = name; p.setAttribute("fill", TW_NONE);
+    if (TW_INSET[name]) p.setAttribute("transform", `translate(0 ${TW_INSET[name]})`);
+    svg.appendChild(p);
+  }
+  for (const [name, c] of Object.entries(TW_MAP.c)) {
+    const at = name in TW_LABEL ? TW_LABEL[name] : c.c; if (!at) continue;
+    const tx = document.createElementNS(ns, "text"); tx.setAttribute("x", at[0]); tx.setAttribute("y", at[1] + (TW_INSET[name] || 0));
+    tx.textContent = name === "連江縣" ? "馬祖" : name.replace(/[縣市]$/, ""); svg.appendChild(tx);
+  }
+  TW.drawn = true;
+}
+function twRows(groups) {
+  return groups.filter(g => g.who.length).map(g => `<div class="tw-row"><span class="lv" style="background:${g.color}">${esc(g.label)}</span><div class="who">${g.who.map(esc).join("、")}${g.note ? `<small>　${esc(g.note)}</small>` : ""}</div></div>`).join("");
+}
+function twMode(i) {
+  const tw = DATA.tw; if (!tw) return;
+  TW.mode = (i + TW_MODES.length) % TW_MODES.length;
+  let mode = TW_MODES[TW.mode];
+  if (mode === "rain" && !tw.rain) mode = TW_MODES[TW.mode = (TW.mode + 1) % 3];
+  if (mode === "wind" && !tw.wind) mode = TW_MODES[TW.mode = 0];
+  if (mode === "closures" && !tw.closures) mode = TW_MODES[TW.mode = 1];
+  twDrawMap();
+  document.querySelectorAll("#twSvg path.cty").forEach(p => { const lv = twLevel(mode, p.dataset.c); p.setAttribute("fill", lv ? lv[0] : TW_NONE); });
+  $("twDots").innerHTML = TW_MODES.map((m, k) => `<i class="${k === TW.mode ? "on" : ""}"></i>`).join("");
+  const pal = TW_C[mode], legend = Object.values(pal).map(([col, lab]) => `<div><i style="background:${col}"></i>${esc(lab)}</div>`).join("");
+  const S = twClosureSummary(tw);
+  if (mode === "closures") {
+    const cl = tw.closures;
+    $("twModeT").textContent = `${cl.day || "今天"} 停班停課`;
+    $("twModeS").textContent = `行政院人事行政總處　${twWhen(cl.updated)} 更新`;
+    $("twLegend").innerHTML = legend;
+    $("twListT").textContent = "各縣市停班停課"; $("twListS").textContent = "資料來源：各縣市政府（人事行政總處彙整）";
+    const part = S.partial.map(k => `${k}（${S.c[k].text.map(x => x.split(/[:：]/)[0]).filter(x => x.length < 8).join("、")}）`);
+    $("twRows").innerHTML = twRows([
+      { color: TW_C.closures.off[0], label: "停班停課", who: S.off.map(TW_SHORT) },
+      { color: TW_C.closures.partial[0], label: "部分停班停課", who: part },
+      { color: TW_C.closures.normal[0], label: "照常上班上課", who: S.normal },
+      { color: TW_C.closures.none[0], label: "尚未公布", who: S.none },
+    ]);
+    $("twNote").textContent = "停班停課以各縣市政府公告為準。民間企業出勤依勞動部規定。";
+  } else if (mode === "rain") {
+    const r = tw.rain, cs = r.counties || {};
+    $("twModeT").textContent = "豪雨特報";
+    $("twModeS").textContent = `中央氣象署　${twWhen(r.issued)} 發布`;
+    $("twLegend").innerHTML = legend + `<small>局部地區可能出現的雨量等級</small>`;
+    $("twListT").textContent = "豪雨特報"; $("twListS").textContent = `有效至 ${twWhen(r.validto)}`;
+    $("twRows").innerHTML = twRows(["超大豪雨", "大豪雨", "豪雨", "大雨"].map(lv => ({ color: TW_C.rain[lv][0], label: lv, who: Object.keys(cs).filter(k => cs[k] === lv) })));
+    $("twNote").textContent = "山區慎防坍方、落石、土石流，低窪地區慎防積淹水，避免前往山區及溪流。";
+  } else {
+    const w = tw.wind, cs = w.counties || {};
+    $("twModeT").textContent = "陸上強風特報";
+    $("twModeS").textContent = `中央氣象署　${twWhen(w.issued)} 發布`;
+    $("twLegend").innerHTML = legend + `<small>橙色：平均風9級或陣風11級以上<br>黃色：平均風6級或陣風8級以上</small>`;
+    $("twListT").textContent = "陸上強風特報"; $("twListS").textContent = `有效至 ${twWhen(w.validto)}`;
+    $("twRows").innerHTML = twRows([["red", "平均風10級以上或陣風12級以上"], ["orange", "平均風9級以上或陣風11級以上"], ["yellow", "平均風6級以上或陣風8級以上"]]
+      .map(([lv, note]) => ({ color: TW_C.wind[lv][0], label: TW_C.wind[lv][1], who: Object.keys(cs).filter(k => cs[k] === lv).map(TW_SHORT), note: "" })));
+    $("twNote").textContent = "強風特報燈號：可能發生的最大平均風與陣風等級。外出請注意掉落物，避免靠近海邊。";
+  }
+}
+function drawTw() {
+  const tw = DATA.tw; if (!tw || LANG !== "zh") return;
+  twDrawMap();
+  const S = twClosureSummary(tw), cl = tw.closures;
+  if (cl && S.all) {
+    const rest = [S.normal.length ? `照常：${S.normal.join("、")}` : "", S.partial.length ? `部分停班停課：${S.partial.join("、")}` : "", S.none.length ? `尚未公布：${S.none.join("、")}` : ""].filter(Boolean).join("　");
+    $("twHero").innerHTML = `<div class="n">${S.off.length}<small>縣市</small></div><div class="h">${esc(cl.day || "今天")} 停班停課</div><div class="s">${esc(rest)}</div>`
+      + `<div class="src">行政院人事行政總處・天然災害停止上班及上課情形　${esc(twWhen(cl.updated))} 更新</div>`;
+  } else $("twHero").innerHTML = "";
+  const w = tw.warning;
+  if (w) {
+    const now = w.now || {}, num = (k, rx) => ((rx.exec(now[k] || "") || [])[1] || "");
+    const lv = num("近中心最大風速", /相當於\s*(\d+)\s*級/), ms = num("近中心最大風速", /每秒\s*(\d+)\s*公尺/);
+    const glv = num("瞬間之最大陣風", /相當於\s*(\d+)\s*級/), gms = num("瞬間之最大陣風", /每秒\s*(\d+)\s*公尺/);
+    const hpa = num("中心氣壓", /(\d+)\s*百帕/), r7 = num("暴風半徑", /七級風平均暴風半徑\s*(\d+)/);
+    const where = (/即在(.+?)之處/.exec(now["中心位置"] || "") || [])[1] || "";
+    $("twWarn").innerHTML = `<div class="top"><b>${esc(w.title)}</b><span>第${esc(w.report || "")}報・${esc(twWhen(w.issued))} 發布${w.next ? `・下次 ${esc(w.next.replace(/^\d+月\d+日/, ""))}` : ""}</span></div>`
+      + `<p>${esc((w.movement || w.text || "").replace(/^根據最新資料顯示，/, ""))}${where ? `目前位置：${esc(where.replace(/\s+/g, ""))}。` : ""}</p>`
+      + `<div class="nums"><div><small>近中心最大風速</small><b>${esc(lv)}級<em>${esc(ms)} m/s</em></b></div><div><small>瞬間最大陣風</small><b>${esc(glv)}級<em>${esc(gms)} m/s</em></b></div>`
+      + `<div><small>七級風暴風半徑</small><b>${esc(r7)}<em>公里</em></b></div><div><small>中心氣壓</small><b>${esc(hpa)}<em>百帕</em></b></div></div>`
+      + (w.forecast ? `<div class="fc">氣象署預測：${esc(w.forecast.replace(/\s+/g, ""))}</div>` : "");
+  } else $("twWarn").innerHTML = "";
+  twMode(TW.mode);
+}
+// zh: the lower third, ticker and warnings card in Chinese, from DATA.tw (falls back to the desk's English when absent)
+function twLocalize(d) {
+  const tw = d.tw, S = twClosureSummary(tw), w = tw.warning, hl = [], tk = [], wr = [];
+  if (w) {
+    hl.push({ main: `${w.title}　第${w.report || ""}報`, sub: (w.movement || w.text || "").replace(/^根據最新資料顯示，/, ""), tag: "氣象署" });
+    tk.push(["氣象署", `${w.title}（第${w.report || ""}報，${twWhen(w.issued)}發布）：${(w.movement || w.text || "").replace(/^根據最新資料顯示，/, "")}`]);
+    if (w.forecast) tk.push(["氣象署", "預測" + w.forecast.replace(/^預測/, "").replace(/\s+/g, "")]);
+    if (w.land_area) tk.push(["陸上警戒", w.land_area]);
+    if (w.sea_area) tk.push(["海上警戒", w.sea_area]);
+    wr.push({ cc: "TW", level: "hot", text: `<b>${esc(w.title)}</b>　第${esc(w.report || "")}報（${esc(twWhen(w.issued))}）`, note: (w.movement || "").replace(/^根據最新資料顯示，/, "") });
+  }
+  if (S.all) {
+    const day = tw.closures.day || "今天";
+    hl.push({ main: `${day}　${S.off.length}縣市停班停課`, sub: [S.normal.length ? `${S.normal.join("、")}照常上班上課` : "", S.partial.length ? `${S.partial.join("、")}部分停班停課` : ""].filter(Boolean).join("；") + `（人事行政總處 ${twWhen(tw.closures.updated)}）`, tag: "颱風假" });
+    tk.push(["停班停課", `${day}停班停課：${S.off.join("、")}` + (S.partial.length ? `；部分：${S.partial.map(k => `${k}（${S.c[k].text.map(x => x.split(/[:：]/)[0]).join("、")}）`).join("、")}` : "") + (S.normal.length ? `；照常：${S.normal.join("、")}` : "")]);
+    wr.push({ cc: "TW", level: "hot", text: `<b>${esc(day)} ${S.off.length}縣市停班停課</b>`, note: S.normal.length ? `${S.normal.join("、")}照常上班上課` : "" });
+  }
+  if (tw.rain) {
+    const cs = tw.rain.counties || {}, top = ["超大豪雨", "大豪雨", "豪雨", "大雨"].find(lv => Object.values(cs).includes(lv));
+    if (top) {
+      const who = Object.keys(cs).filter(k => cs[k] === top);
+      hl.push({ main: `豪雨特報　${who.map(TW_SHORT).join("、")} ${top}`, sub: tw.rain.content.split("請注意")[0].replace(/^第\d+號/, "").slice(0, 80), tag: "豪雨特報" });
+      wr.push({ cc: "TW", level: "watch", text: `<b>豪雨特報</b>　${esc(who.join("、"))}：${esc(top)}`, note: `${twWhen(tw.rain.issued)} 發布` });
+    }
+    tk.push(["豪雨特報", tw.rain.content.split("請注意")[0]]);
+  }
+  if (tw.wind) {
+    const cs = tw.wind.counties || {}, org = Object.keys(cs).filter(k => cs[k] === "orange" || cs[k] === "red");
+    hl.push({ main: `陸上強風特報　${org.length}縣市橙色燈號`, sub: "平均風9級以上或陣風11級以上：" + org.map(TW_SHORT).join("、"), tag: "強風特報" });
+    wr.push({ cc: "TW", level: "watch", text: `<b>陸上強風特報</b>　${org.length}縣市橙色燈號`, note: `${twWhen(tw.wind.issued)} 發布` });
+    tk.push(["強風特報", tw.wind.content.replace(/請注意防範。?\s*$/, "")]);
+  }
+  tk.push(["安全資訊", "停班停課以各縣市政府公告為準，警特報以中央氣象署發布為準。本直播並非官方警報服務。"]);
+  const now = (w && w.now) || {};
+  if (now["中心位置"]) {
+    const pos = now["中心位置"].replace(/\s+/g, ""), mv = (now["前進方向"] || "").replace(/\s+/g, "");
+    hl.splice(1, 0, { main: `${stormLabelFor(d)}　最新位置`, sub: `${pos}，${mv}`, tag: "颱風動態" });
+    tk.splice(1, 0, ["颱風動態", [pos, mv, now["中心氣壓"] && "中心氣壓" + now["中心氣壓"], now["近中心最大風速"], now["瞬間之最大陣風"]].filter(Boolean).join("，").replace(/\s+/g, "")]);
+  }
+  d.headlines = hl;
+  d.ticker = tk;
+  d.agencies = [...(d.agencies || [])].sort((a, b) => (b.agency === "CWA") - (a.agency === "CWA"));   // Taiwan's own agency first
+  d.warnings = { stamp: w ? `${twWhen(w.issued)} 台灣時間` : "", items: wr };
+}
+function stormLabelFor(d) { const m = /Taiwan:\s*([^·]+)/.exec((d.storm && d.storm.names) || ""); return m ? `${m[1].trim()}颱風` : "颱風"; }
+
+/* ---------- Japan board (?lang=ja) ----------
+   desk.json "jp" (src/desk/build.py sec_jp): JMA's own Japanese wording (position text, size and strength, m/s winds,
+   storm and gale areas, forecast locations) and which islands lie inside JMA's CURRENT storm / gale area. Nothing here is
+   a forecast of ours (Meteorological Service Act): forecasts are JMA's, quoted as announced. */
+const JA_ZONE = { storm: ["#e8213d", "暴風域", "風速25m/s以上"], gale: ["#ffd23f", "強風域", "風速15m/s以上"], none: ["#3a516b", "圏外", ""] };
+const jaTime = iso => { const m = /\d{4}-\d{2}-(\d{2})T(\d{2}):(\d{2})/.exec(iso || ""); return m ? `${+m[1]}日${+m[2]}時` + (+m[3] ? `${+m[3]}分` : "") : ""; };
+const jaArea = a => (a || []).map(([d, km]) => `${d ? d + "側" : ""}${km}km`).join("・");
+const jaLoc = s => String(s || "").replace(/(\d)\s*km/g, "$1km");
+function drawJp() {
+  const J = DATA.jp; if (!J || LANG !== "ja") return;
+  const n = J.now;
+  $("jpNow").innerHTML = `<div class="top"><b>気象庁 台風第${J.number}号 実況</b><span>${esc(jaTime(J.issued))}発表・${esc(jaTime(n.time))}現在</span></div>`
+    + `<div class="cls">${esc(n.class ? n.class + "台風" : "台風")}</div><div class="loc">${esc(jaLoc(n.location))}</div>`
+    + `<div class="mv">${esc(n.course || "")}へ ${n.speed_kmh ? esc(n.speed_kmh) + "km/h" : ""}</div>`
+    + `<div class="nums"><div><small>中心気圧</small><b>${esc(n.pressure)}<em>hPa</em></b></div><div><small>最大風速</small><b>${esc(n.wind_ms)}<em>m/s</em></b></div>`
+    + `<div><small>最大瞬間風速</small><b>${esc(n.gust_ms)}<em>m/s</em></b></div></div>`
+    + `<div class="areas"><div><i style="background:${JA_ZONE.storm[0]}"></i>暴風域（25m/s以上）　${esc(jaArea(n.storm))}</div>`
+    + `<div><i style="background:${JA_ZONE.gale[0]}"></i>強風域（15m/s以上）　${esc(jaArea(n.gale))}</div></div>`
+    + `<div class="note">出典：気象庁 台風情報。島ごとの暴風域・強風域は、気象庁が発表した現在の範囲から判定しています。</div>`;
+  $("jpIsl").innerHTML = (J.islands || []).map(i => { const z = JA_ZONE[i.zone] || JA_ZONE.none;
+    return `<div class="card"><b>${esc(i.name)}</b><small>台風の中心から約${esc(i.km)}km</small><span class="zone" style="background:${z[0]}">${esc(z[1])}</span></div>`; }).join("");
+  $("jpFcS").textContent = `${jaTime(J.issued)}発表`;
+  const key = JSON.stringify(DATA.cams.slice(0, 2));
+  if (TW.jpCams !== key) { $("jpCams").innerHTML = DATA.cams.slice(0, 2).map(c => `<div class="cam">${camTile(c, { lazy: true })}</div>`).join(""); TW.jpCams = key; }
+  $("jpFc").innerHTML = (J.forecast || []).slice(0, 4).map(f => `<tr><td class="t">${esc(jaTime(f.time))}</td><td>${esc(jaLoc(f.location))}</td>`
+    + `<td class="n">${f.pressure ? esc(f.pressure) + "hPa" : ""}　${f.gust_ms ? "最大瞬間" + esc(f.gust_ms) + "m/s" : ""}</td></tr>`).join("");
+}
+// ja: the lower third, ticker and warnings card in Japanese, from JMA's own information; the numbers table shows JMA only
+function jaLocalize(d) {
+  const J = d.jp, n = J.now, hl = [], tk = [], wr = [];
+  const storm = (J.islands || []).filter(i => i.zone === "storm").map(i => i.name), gale = (J.islands || []).filter(i => i.zone === "gale").map(i => i.name);
+  const name = `${n.class ? n.class : ""}台風第${J.number}号`;
+  hl.push({ main: `${name}　${jaLoc(n.location)}`, sub: `中心気圧${n.pressure}hPa・最大風速${n.wind_ms}m/s・最大瞬間風速${n.gust_ms}m/s（気象庁 ${jaTime(J.issued)}発表）`, tag: "気象庁" });
+  if (storm.length) hl.push({ main: `${storm.join("・")}が暴風域に`, sub: `気象庁が発表した暴風域：${jaArea(n.storm)}（風速25m/s以上）`, tag: "暴風域" });
+  const f0 = (J.forecast || [])[0];
+  if (f0) hl.push({ main: `${jaTime(f0.time)}には${jaLoc(f0.location)}へ`, sub: `気象庁の予報　中心気圧${f0.pressure}hPa・最大瞬間風速${f0.gust_ms}m/s`, tag: "進路予報" });
+  tk.push(["気象庁", `${name}は${jaTime(n.time)}には${jaLoc(n.location)}にあって、${n.course}へ${n.speed_kmh ? n.speed_kmh + "km/hで" : ""}進んでいます。中心気圧${n.pressure}hPa、最大風速${n.wind_ms}m/s、最大瞬間風速${n.gust_ms}m/s。`]);
+  if (storm.length || gale.length) tk.push(["暴風域", [storm.length ? `暴風域：${storm.join("・")}` : "", gale.length ? `強風域：${gale.join("・")}` : ""].filter(Boolean).join("　")]);
+  tk.push(["進路予報", (J.forecast || []).slice(0, 4).map(f => `${jaTime(f.time)} ${jaLoc(f.location)}`).join("　→　")]);
+  tk.push(["ご注意", "警報・避難の情報は気象庁と各市町村の発表をご確認ください。この配信は気象庁の発表をお伝えするもので、独自の予報ではありません。"]);
+  if (storm.length) wr.push({ cc: "JP", level: "hot", text: `<b>暴風域</b>　${esc(storm.join("・"))}`, note: `気象庁 ${jaTime(J.issued)}発表の暴風域（${jaArea(n.storm)}）による` });
+  if (gale.length) wr.push({ cc: "JP", level: "watch", text: `<b>強風域</b>　${esc(gale.join("・"))}`, note: `気象庁発表の強風域（${jaArea(n.gale)}）による` });
+  wr.push({ cc: "JP", level: "", text: "<b>警報・避難情報</b>　気象庁と各市町村の発表をご確認ください", note: "" });
+  d.headlines = hl; d.ticker = tk;
+  d.warnings = { stamp: `気象庁 ${jaTime(J.issued)}発表`, items: wr };
+  d.agencies = (d.agencies || []).filter(a => a.agency === "JMA").map(a => Object.assign({}, a, {
+    winds: `${n.wind_ms} m/s`, gusts: `${n.gust_ms} m/s`, pressure: `${n.pressure} hPa`, moving: `${n.course}${n.speed_kmh ? " " + n.speed_kmh + "km/h" : ""}`,
+    time: `${jaTime(n.time)}`, sub: "10分間平均" }));
+  d.agencyNote = "";
+  d.cities = (d.cities || []).filter(c => c.cc === "JP" || c.cc === "TW");
+}
 /* ---------- scenes ---------- */
-const SCENES = ["track", "cams", "impact", "models"];
+// ja: no model-track scene. Showing forecasts other than JMA's (GEFS / FNMOC runs) to a Japanese audience reads as
+// issuing our own forecast under the Meteorological Service Act; the track map shows JMA's official forecast only
+const SCENES = LANG === "zh" ? ["track", "tw", "cams", "models"] : LANG === "ja" ? ["track", "jp", "cams"] : ["track", "cams", "impact", "models"];
 let cur = 0, auto = true, timer = null;
 function show(i) {
   cur = (i + SCENES.length) % SCENES.length;
@@ -1662,6 +2046,8 @@ function show(i) {
     els.forEach(p => { p.style.animationName = "none"; }); void $("modelSvg").getBBox(); els.forEach(p => { p.style.animationName = ""; });
   }
   if (SCENES[cur] === "track") tourStart(); else tourStop();
+  clearInterval(TW.timer);
+  if (SCENES[cur] === "tw") { twMode(0); TW.timer = setInterval(() => twMode(TW.mode + 1), 13000); }
   clearTimeout(timer);
   if (auto) timer = setTimeout(() => show(cur + 1), (DATA.rotateSeconds[SCENES[cur]] || 40) * 1000);
 }
@@ -1671,7 +2057,7 @@ function renderAll() {
   if (!deskReady()) return;
   stormHeader();
   $("bugTitle").textContent = DATA.storm.name;
-  drawMap(); if (TOUR.z !== 1) tourScale(TOUR.z); drawRail(); drawWall(); drawImpact(); drawModels(); buildTicker();
+  drawMap(); if (TOUR.z !== 1) tourScale(TOUR.z); drawRail(); drawWall(); drawImpact(); drawModels(); drawTw(); drawJp(); buildTicker();
 }
 i18nStatic();
 satInit();

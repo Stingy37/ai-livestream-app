@@ -22,11 +22,13 @@ import argparse
 import asyncio
 import base64
 import json
+import re
 import os
 import signal
 import subprocess
 import sys
 import time
+import urllib.parse
 import urllib.request
 from pathlib import Path
 
@@ -98,12 +100,56 @@ def hero_ready() -> bool:
     return r.returncode == 0
 
 
-def render(lang: str = "", out: Path | None = None, timeout: float = 120, style: str | None = None) -> tuple[Path, dict]:
+TW_TEXT = Path(os.environ.get("THUMB_TW_TEXT", REPO / "output" / "youtube" / "thumb_tw_text.json"))
+
+
+def tw_ready(desk: str | None = None) -> bool:
+    """Fetch the storm-and-Taiwan infrared frame for the tw style (scripts/thumb_sat.py --frame tw)."""
+    desk = desk or os.environ.get("THUMB_DESK") or stream_page() + "live/desk.json"
+    r = subprocess.run([sys.executable, str(REPO / "scripts" / "thumb_sat.py"), "--frame", "tw", "--desk", desk],
+                       capture_output=True, text=True, timeout=300)
+    if r.returncode != 0:
+        print(f"Taiwan frame unavailable: {(r.stderr or r.stdout).strip()[-300:]}", file=sys.stderr)
+    return r.returncode == 0
+
+
+def jma_point_time(place: str) -> str:
+    """The time of JMA's own forecast point nearest ``place`` ("23日21時 与那国島の西約60km"), from desk.json jp.forecast;
+    "" when JMA names no forecast point by that place (the thumbnail then drops its countdown). JMA's forecast, not ours."""
+    src = os.environ.get("THUMB_DESK") or stream_page() + "live/desk.json"
+    try:
+        desk = json.load(urllib.request.urlopen(src, timeout=15)) if src.startswith("http") else json.loads(Path(src).read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return ""
+    pts = [(0 if "付近" in f["location"] else int(m.group(1)) if (m := re.search(r"約\s*(\d+)\s*km", f["location"])) else 9999, f["time"])
+           for f in (desk.get("jp") or {}).get("forecast") or [] if place in (f.get("location") or "")]    # "与那国島付近" = 0 km
+    return min(pts)[1] if pts else ""
+
+
+def tw_text(over: dict | None = None) -> dict:
+    """The tw style's words (l1, l2, l3, chip, chipLab, stamp, arrow): THUMB_TW_TEXT's JSON file, then any overrides.
+    The operator writes them from official sources; a refresh only changes the time stamp and the satellite frame."""
+    text = json.loads(TW_TEXT.read_text(encoding="utf-8")) if TW_TEXT.is_file() else {}
+    text.update({k: v for k, v in (over or {}).items() if v is not None})
+    if text.get("cdJma"):
+        text["cdTime"] = jma_point_time(text["cdJma"])
+    if not text.get("l2"):
+        raise RuntimeError(f"the tw thumbnail needs its words: write l1/l2 (and optionally l3, chip) to {TW_TEXT} or pass --l1/--l2")
+    return text
+
+
+def render(lang: str = "", out: Path | None = None, timeout: float = 120, style: str | None = None,
+           text: dict | None = None) -> tuple[Path, dict]:
     """Render and save the thumbnail; returns (path, the page's summary: sat time, desk time, text)."""
     out = Path(out or REPO / "output" / "youtube" / f"thumb_{lang or 'en'}.jpg")
     out.parent.mkdir(parents=True, exist_ok=True)
     style = style or os.environ.get("THUMB_STYLE", "hero")
-    if style == "hero" and hero_ready():
+    if style == "tw":
+        words = tw_text(text)                       # fail before fetching anything when the words are missing
+        if not tw_ready():
+            raise RuntimeError("Taiwan satellite frame unavailable")
+        url = stream_page() + "thumb-tw.html?" + urllib.parse.urlencode({k: str(v) for k, v in words.items() if v not in (None, "")})
+    elif style == "hero" and hero_ready():
         url = stream_page() + "thumb-hero.html" + (f"?lang={lang}" if lang else "")
     else:
         url = stream_page() + "?thumb=1&live=0" + (f"&lang={lang}" if lang else "")
@@ -139,10 +185,19 @@ def render(lang: str = "", out: Path | None = None, timeout: float = 120, style:
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--lang", default="", help="language (ja, zh, tl; empty = English); the map style has no zh")
-    ap.add_argument("--style", default=None, choices=["hero", "map"], help="default: THUMB_STYLE or hero")
+    ap.add_argument("--style", default=None, choices=["hero", "map", "tw"], help="default: THUMB_STYLE or hero; tw = Taiwan news style")
     ap.add_argument("--out", default=None)
+    tw = ap.add_argument_group("tw style words (override THUMB_TW_TEXT's file; {..} marks the accent colour)")
+    for k, h in (("l1", "yellow line"), ("l2", "white line, biggest"), ("l3", "small boxed line"), ("chip", "right chip rows, split by |"),
+                 ("chipLab", "chip label (default 中央氣象署)"), ("stamp", "LIVE time stamp (default: now, Taiwan time)"),
+                 ("arrow", "km of forecast track drawn from the eye (default 300; 0 = none)")):
+        tw.add_argument(f"--{k}", default=None, help=h)
+    tw.add_argument("--desk", default=None, help="desk.json path or URL for the tw frame (default: THUMB_DESK or the stream's live/desk.json)")
     a = ap.parse_args()
-    path, info = render(a.lang, Path(a.out) if a.out else None, style=a.style)
+    if a.desk:
+        os.environ["THUMB_DESK"] = a.desk
+    words = {k: getattr(a, k) for k in ("l1", "l2", "l3", "chip", "chipLab", "stamp", "arrow")}
+    path, info = render(a.lang, Path(a.out) if a.out else None, style=a.style, text=words)
     print(f"{path} ({path.stat().st_size / 1024:.0f} KB): {json.dumps(info['text'], ensure_ascii=False)}")
     return 0
 

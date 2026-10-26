@@ -159,16 +159,103 @@ def treat_geocolor(im: Image.Image) -> Image.Image:
     return ImageEnhance.Color(out).enhance(1.35)
 
 
+# --frame tw: a wider, fixed-scale view in which the storm and Taiwan are both in frame (Taiwanese news thumbnails always show
+# the island). Plate carree with square pixels at the box's middle latitude, so html/thumb-tw.html can draw coastlines and
+# towns from lat/lon with a linear map. Source: the full disk at 2 km (band 13; the rapid-scan sector is too small).
+TW_LON_W, TW_TOP = 14.0, 26.0          # box width in degrees; top latitude (Taiwan's north tip, 25.3N, sits near the top)
+TW_SIZE = (1920, 1080)
+
+
+def tw_box(lat: float, lon: float) -> tuple[float, float, float, float]:
+    """(lat0, lat1, lon0, lon1): Taiwan just right of the middle (clear of the LIVE badge) and the storm to its right,
+    kept off the right edge."""
+    lon1 = max(129.0, lon + 4.6)
+    lon0 = lon1 - TW_LON_W
+    lat1 = max(TW_TOP, lat + 4.0)
+    mid = math.radians(lat1 - 3.6)
+    lat0 = lat1 - TW_LON_W * math.cos(mid) * TW_SIZE[1] / TW_SIZE[0]
+    return lat0, lat1, lon0, lon1
+
+
+def region_values(ts: int, box: tuple[float, float, float, float], size: tuple[int, int]) -> np.ndarray:
+    """Band-13 data values resampled (bilinear) from the 2 km full disk onto a lat/lon grid of size (width, height)."""
+    lat0, lat1, lon0, lon1 = box
+    w, h = size
+    lon = lon0 + (np.arange(w) + 0.5) / w * (lon1 - lon0)
+    lat = lat1 - (np.arange(h) + 0.5) / h * (lat1 - lat0)
+    lo, la = np.meshgrid(lon, lat)
+    phi = np.arctan(0.993305616 * np.tan(np.radians(la)))
+    rl = 6356.7523 / np.sqrt(1 - 0.00669438444 * np.cos(phi) ** 2)
+    dl = np.radians(lo - SUB_LON)
+    r1 = 42164 - rl * np.cos(phi) * np.cos(dl)
+    r2 = -rl * np.cos(phi) * np.sin(dl)
+    r3 = rl * np.sin(phi)
+    rn = np.sqrt(r1 * r1 + r2 * r2 + r3 * r3)
+    scale = FD_TILE * 8 / 5500
+    px = (COFF + np.degrees(np.arctan(-r2 / r1)) * CFAC / 2 ** 16 - 1) * scale
+    py = (COFF + np.degrees(np.arcsin(-r3 / rn)) * CFAC / 2 ** 16 - 1) * scale
+    c0, c1 = int(px.min() // FD_TILE), int(px.max() // FD_TILE)
+    r0, r1_ = int(py.min() // FD_TILE), int(py.max() // FD_TILE)
+    mosaic = np.zeros(((r1_ - r0 + 1) * FD_TILE, (c1 - c0 + 1) * FD_TILE))
+    for row in range(r0, r1_ + 1):
+        for col in range(c0, c1 + 1):
+            t = tile("full_disk", "band_13", ts, 3, row, col)
+            if t is None:
+                raise RuntimeError(f"full-disk tile {row},{col} missing for {ts}")
+            mosaic[(row - r0) * FD_TILE:(row - r0 + 1) * FD_TILE, (col - c0) * FD_TILE:(col - c0 + 1) * FD_TILE] = np.asarray(t, dtype=np.float64)
+    x, y = px - c0 * FD_TILE, py - r0 * FD_TILE
+    x0, y0 = np.clip(np.floor(x).astype(int), 0, mosaic.shape[1] - 2), np.clip(np.floor(y).astype(int), 0, mosaic.shape[0] - 2)
+    fx, fy = np.clip(x - x0, 0, 1), np.clip(y - y0, 0, 1)
+    return ((mosaic[y0, x0] * (1 - fx) + mosaic[y0, x0 + 1] * fx) * (1 - fy)
+            + (mosaic[y0 + 1, x0] * (1 - fx) + mosaic[y0 + 1, x0 + 1] * fx) * fy)
+
+
+def tw_frame(desk: dict, out: Path) -> int:
+    """Write thumb/tw_ir.jpg + tw.json: the enhanced-IR full disk over a box holding Taiwan and the storm."""
+    c = desk["center"]
+    ts = max(times("full_disk", "band_13"))
+    box = tw_box(c["lat"], c["lon"])
+    g = region_values(ts, box, TW_SIZE)
+    xs = [x for x, _ in IR_STOPS]
+    rgb = np.stack([np.interp(g, xs, [col[i] for _, col in IR_STOPS]) for i in range(3)], axis=-1)
+    img = Image.fromarray(rgb.clip(0, 255).astype(np.uint8))
+    lat0, lat1, lon0, lon1 = box
+
+    def xy(lat: float, lon: float) -> dict:
+        return {"x": round((lon - lon0) / (lon1 - lon0) * TW_SIZE[0], 1), "y": round((lat1 - lat) / (lat1 - lat0) * TW_SIZE[1], 1)}
+
+    out.mkdir(parents=True, exist_ok=True)
+    img.save(out / ".tw_ir.jpg.tmp", format="JPEG", quality=92)
+    os.replace(out / ".tw_ir.jpg.tmp", out / "tw_ir.jpg")
+    mid = math.radians((lat0 + lat1) / 2)
+    info = {
+        "image": "tw_ir.jpg", "product": "ir", "time": ts_time(ts).isoformat().replace("+00:00", "Z"),
+        "width": TW_SIZE[0], "height": TW_SIZE[1], "box": {"lat0": lat0, "lat1": lat1, "lon0": lon0, "lon1": lon1},
+        "km_per_px": (lon1 - lon0) * 111.32 * math.cos(mid) / TW_SIZE[0],
+        "center": {**xy(c["lat"], c["lon"]), "lat": c["lat"], "lon": c["lon"], "timeUTC": c.get("timeUTC")},
+        "forecast": [{"timeUTC": p["timeUTC"], **xy(p["lat"], p["lon"])} for p in (desk.get("forecast") or {}).get("points") or []],
+        "credit": "Himawari-9 (JMA) · CIRA RAMMB SLIDER",
+    }
+    (out / ".tw.json.tmp").write_text(json.dumps(info, indent=2), encoding="utf-8")
+    os.replace(out / ".tw.json.tmp", out / "tw.json")
+    print(json.dumps({k: info[k] for k in ("image", "time", "box", "center")}))
+    return 0
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--product", default="auto", choices=["auto", "geocolor", "ir"])
     ap.add_argument("--desk", default=str(REPO / "output" / "desk" / "desk.json"), help="desk.json path or URL (storm center, forecast)")
     ap.add_argument("--min-corr", type=float, default=0.6)
     ap.add_argument("--out", default=str(OUT_DIR))
+    ap.add_argument("--frame", default="sector", choices=["sector", "tw"],
+                    help="sector: the rapid-scan box on the storm (hero.json); tw: storm + Taiwan from the full disk, infrared (tw.json)")
     a = ap.parse_args()
 
     raw = get(a.desk) if a.desk.startswith("http") else Path(a.desk).read_bytes()
     desk = json.loads(raw)
+    if a.frame == "tw":
+        return tw_frame(desk, Path(a.out))
     c = desk["center"]
     # newest time both the sector and the full disk have: locate and draw from that one frame, so a sector that
     # JMA re-aimed a few minutes later can never be drawn with a stale offset
