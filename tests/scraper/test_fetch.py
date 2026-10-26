@@ -28,6 +28,8 @@ def fake_web(pages, robots="User-agent: *\nAllow: /\n", robots_status=200):
         page = pages.get(url, 404)
         if isinstance(page, int):
             return httpx.Response(page)
+        if isinstance(page, bytes):  # raw bytes, served without a charset in the header
+            return httpx.Response(200, content=page, headers={"content-type": "text/html"})
         if page.startswith("REDIRECT "):
             return httpx.Response(301, headers={"location": page.split(" ", 1)[1]})
         return httpx.Response(200, text=page, headers={"content-type": "text/html; charset=utf-8"})
@@ -81,7 +83,7 @@ def test_robots_txt_is_respected(tmp_path):
 
 
 def test_unreadable_robots_skips_host(tmp_path):
-    requests, client = fake_web({"https://a.example/ok": ARTICLE}, robots_status=503)
+    _, client = fake_web({"https://a.example/ok": ARTICLE}, robots_status=503)
     assert Fetcher(client=client, cache=PageCache(tmp_path)).fetch_all(["https://a.example/ok"]) == []
 
 
@@ -142,3 +144,44 @@ def test_user_agent_has_contact_and_optional_extra(monkeypatch):
     assert "https://github.com/" in user_agent()
     monkeypatch.setenv("SCRAPER_CONTACT", "team@example.edu")
     assert user_agent().endswith("; team@example.edu)")
+
+
+def test_non_utf8_page_without_header_charset_is_decoded(tmp_path):
+    html = ("<html><head><meta charset='windows-1252'><title>Café</title></head><body><article><p>"
+            + "Le café et la crème brûlée sont servis à Montréal pendant la tempête de neige. " * 5
+            + "</p></article></body></html>").encode("cp1252")
+    _, client = fake_web({"https://fr.example/a": html})
+    [doc] = Fetcher(client=client, cache=PageCache(tmp_path)).fetch_all(["https://fr.example/a"])
+    assert "crème brûlée" in doc.main_text and "�" not in doc.main_text
+
+
+def test_oversized_page_is_dropped(tmp_path, monkeypatch):
+    from scraper import fetch
+
+    monkeypatch.setattr(fetch, "MAX_PAGE_BYTES", 1000)
+    _, client = fake_web({"https://a.example/big": ARTICLE})  # about 2 KB
+    assert Fetcher(client=client, cache=PageCache(tmp_path)).fetch_all(["https://a.example/big"]) == []
+
+
+def test_zero_threads_still_fetches(tmp_path):
+    _, client = fake_web({"https://wire.example/a": ARTICLE})
+    assert len(Fetcher(max_threads=0, client=client, cache=PageCache(tmp_path)).fetch_all(["https://wire.example/a"])) == 1
+
+
+def test_damaged_cache_entry_is_refetched(tmp_path):
+    requests, client = fake_web({"https://wire.example/a": ARTICLE})
+    cache = PageCache(tmp_path)
+    tmp_path.mkdir(exist_ok=True)
+    cache._path("https://wire.example/a").write_text('{"url": "x"}', encoding="utf-8")  # no html, no saved
+    [doc] = Fetcher(client=client, cache=cache).fetch_all(["https://wire.example/a"])
+    assert "12,000 people" in doc.main_text
+    assert any(str(r.url) == "https://wire.example/a" for r in requests)
+
+
+def test_prune_removes_leftover_temp_files(tmp_path):
+    leftover = tmp_path / "abc.123.456.tmp"
+    leftover.write_text("half a file")
+    long_ago = time.time() - 3600
+    os.utime(leftover, (long_ago, long_ago))
+    PageCache(tmp_path, keep=60).prune()
+    assert not leftover.exists()

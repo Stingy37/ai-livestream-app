@@ -3,7 +3,7 @@
 import httpx
 import pytest
 
-from scraper.search import Searcher, SearchResult
+from scraper.search import DDGS_BACKENDS, Searcher, SearchResult
 
 
 class FakeResponse:
@@ -85,12 +85,12 @@ def test_ddgs_retries_with_other_backends(monkeypatch):
             tried.append(backend)
             if backend == "auto":
                 raise ddgs.exceptions.DDGSException("No results found.")
-            return [{"href": "https://bing.example/a", "title": "A", "body": "b"}]
+            return [{"href": "https://yahoo.example/a", "title": "A", "body": "b"}]
 
     monkeypatch.setattr(ddgs, "DDGS", FakeDDGS)
     results = Searcher(base_url="").search("q")
-    assert tried == ["auto", "bing, yahoo"]
-    assert [r.url for r in results] == ["https://bing.example/a"]
+    assert tried == list(DDGS_BACKENDS)
+    assert [r.url for r in results] == ["https://yahoo.example/a"]
 
 
 def test_results_are_cached_between_runs(monkeypatch, tmp_path):
@@ -121,3 +121,22 @@ def test_network_searches_are_spaced_out(monkeypatch, tmp_path):
     searcher.search("a")
     searcher.search("b")
     assert len(waits) == 1 and 0 < waits[0] <= 1.0
+
+
+def test_ddgs_empty_answer_tries_next_backend(monkeypatch):
+    import ddgs
+
+    tried = []
+
+    class FakeDDGS:
+        def __init__(self, timeout=None):
+            pass
+
+        def text(self, query, max_results, backend):
+            tried.append(backend)
+            return [] if backend == "auto" else [{"href": "https://y.example", "title": None, "body": None}]
+
+    monkeypatch.setattr(ddgs, "DDGS", FakeDDGS)
+    [result] = Searcher(base_url="").search("q")
+    assert tried == list(DDGS_BACKENDS)
+    assert result.title == "" and result.snippet == ""  # None from the engine becomes ""

@@ -123,3 +123,33 @@ def test_no_search_results_returns_empty():
             return []
 
     assert DiscoveryAgent(EmptySearcher(), FakeFetcher(), llm=None).run(SCENE) == []
+
+
+def test_sloppy_llm_replies_are_read_safely(monkeypatch):
+    monkeypatch.setattr(agent_module, "TARGET_DOCS", 100)
+    llm = FakeLLM([
+        {"enough": "false", "queries": "cyclone news"},  # string bool, string instead of list
+        {"picks": ["2", True, 99, "x"]},  # numeric string kept; bool, out of range, junk ignored
+        {"enough": "false", "queries": None},  # "false" must not stop the agent; no queries does
+    ])
+    searcher, fetcher = FakeSearcher(), FakeFetcher()
+    docs = DiscoveryAgent(searcher, fetcher, llm).run(SCENE)
+    assert searcher.queries == ["cyclone news"]  # not one query per character
+    assert [d.url for d in docs] == ["https://news.example/cyclone-news/1"]
+
+
+def test_picks_that_are_not_a_list_fetch_nothing():
+    llm = FakeLLM([{"queries": ["q"]}, {"picks": 3}, {"queries": []}])
+    fetcher = FakeFetcher()
+    assert DiscoveryAgent(FakeSearcher(), fetcher, llm).run(SCENE) == []  # no crash
+    assert fetcher.requested == []
+
+
+def test_url_fragments_count_as_the_same_page():
+    class FragmentSearcher:
+        def search(self, query):
+            return [SearchResult("https://a.example/p#top", "A", "", "fake"), SearchResult("https://a.example/p", "A", "", "fake")]
+
+    fetcher = FakeFetcher()
+    DiscoveryAgent(FragmentSearcher(), fetcher, llm=None).run(SCENE)
+    assert fetcher.requested == ["https://a.example/p"]

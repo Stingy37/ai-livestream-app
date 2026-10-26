@@ -72,3 +72,16 @@ def test_unexpected_error_returns_empty_list(monkeypatch):
 
     monkeypatch.setattr(scraper.agent, "DiscoveryAgent", BrokenAgent)
     assert WebScraper().gather(scene([])) == []
+
+
+def test_blank_and_padded_sources_are_cleaned():
+    docs = WebScraper().gather(scene(["  https://a.example/1  ", "", "   "]))
+    assert [d.url for d in docs] == ["https://a.example/1"]
+
+
+def test_fetcher_setup_failure_returns_empty_list(monkeypatch):
+    def broken(*a, **k):
+        raise OSError("disk full")
+
+    monkeypatch.setattr(scraper.fetch, "Fetcher", broken)
+    assert WebScraper().gather(scene(["https://a.example/1"])) == []

@@ -34,11 +34,6 @@ log = logging.getLogger(__name__)
 # Sites such as Wikipedia refuse bots whose User-Agent has no way to contact the operator.
 USER_AGENT = "ai-livestream-scraper/0.1 (+https://github.com/Stingy37/ai-livestream-app; respects robots.txt)"
 CONTACT_NAME = "SCRAPER_CONTACT"  # optional extra contact (e.g. a team email), read from the environment
-
-
-def user_agent():
-    contact = os.environ.get(CONTACT_NAME, "").strip()
-    return f"{USER_AGENT[:-1]}; {contact})" if contact else USER_AGENT
 TIMEOUT = 15  # seconds per request
 MAX_PAGE_BYTES = 5_000_000  # skip anything bigger; it is not an article
 MIN_BODY_CHARS = 200  # shorter "bodies" are leftovers like a nav word on a JavaScript-only page
@@ -46,6 +41,11 @@ MAX_REDIRECTS = 5
 CACHE_TTL = 3600  # seconds a cached page stays fresh
 CACHE_KEEP = 24 * 3600  # seconds before an old cache file is deleted
 CACHE_DIR = Path(os.environ.get("SCRAPER_CACHE_DIR", Path(__file__).resolve().parents[2] / ".cache" / "scraper"))
+
+
+def user_agent():
+    contact = os.environ.get(CONTACT_NAME, "").strip()
+    return f"{USER_AGENT[:-1]}; {contact})" if contact else USER_AGENT
 
 
 class RobotsPolicy:
@@ -95,9 +95,9 @@ class PageCache:
     # Delete cache files older than ``keep`` so the folder does not grow forever.
     def prune(self):
         cutoff = time.time() - self.keep
-        for path in self.directory.rglob("*.json"):  # pages and the search/ subfolder
+        for path in self.directory.rglob("*"):  # pages, the search/ subfolder, and temp files left by a crash
             try:
-                if path.stat().st_mtime < cutoff:
+                if path.is_file() and path.suffix in (".json", ".tmp") and path.stat().st_mtime < cutoff:
                     path.unlink()
             except OSError:
                 pass  # another scene process got there first
@@ -108,11 +108,10 @@ class PageCache:
     def get(self, url):
         try:
             entry = json.loads(self._path(url).read_text(encoding="utf-8"))
-        except (OSError, ValueError):
+            fresh = time.time() - entry["saved"] <= self.ttl and isinstance(entry["html"], str)
+        except (OSError, ValueError, KeyError, TypeError):  # missing or damaged: fetch again
             return None
-        if time.time() - entry["saved"] > self.ttl:
-            return None
-        return entry
+        return entry if fresh else None
 
     def put(self, url, html, fetched_at):
         self.directory.mkdir(parents=True, exist_ok=True)
@@ -173,7 +172,7 @@ class Fetcher:
     def __init__(self, max_threads=8, client=None, cache=None):
         import httpx
 
-        self.max_threads = max_threads
+        self.max_threads = max(1, max_threads)
         self.client = client or httpx.Client(
             headers={"User-Agent": user_agent()}, timeout=TIMEOUT, follow_redirects=True
         )
@@ -219,19 +218,34 @@ class Fetcher:
             if not self.robots.allowed(current):
                 log.info("dropped %s: disallowed by robots.txt (%s)", url, current)
                 return None, None
-            response = self.client.get(current, follow_redirects=False)
-            if not response.is_redirect:
-                break
-            current = urljoin(current, response.headers["location"])
-        else:
-            log.info("dropped %s: too many redirects", url)
-            return None, None
-        response.raise_for_status()
-        kind = response.headers.get("content-type", "")
-        if kind and "html" not in kind:
-            log.info("dropped %s: not an HTML page (%s)", url, kind)
-            return None, None
-        if len(response.content) > MAX_PAGE_BYTES:
-            log.info("dropped %s: page too large", url)
-            return None, None
-        return response.text, datetime.now(timezone.utc)
+            with self.client.stream("GET", current, follow_redirects=False) as response:
+                if response.is_redirect:
+                    current = urljoin(current, response.headers["location"])
+                    continue
+                response.raise_for_status()
+                kind = response.headers.get("content-type", "")
+                if kind and "html" not in kind:
+                    log.info("dropped %s: not an HTML page (%s)", url, kind)
+                    return None, None
+                body = bytearray()
+                for chunk in response.iter_bytes():  # streamed, so a huge file is abandoned early
+                    body += chunk
+                    if len(body) > MAX_PAGE_BYTES:
+                        log.info("dropped %s: page too large", url)
+                        return None, None
+                return _decode(bytes(body), response.charset_encoding), datetime.now(timezone.utc)
+        log.info("dropped %s: too many redirects", url)
+        return None, None
+
+
+# Bytes to text. The HTTP header's charset wins; otherwise trafilatura reads the page's own <meta charset>
+# (httpx would assume UTF-8 and garble e.g. a windows-1252 page).
+def _decode(body, charset):
+    if charset:
+        try:
+            return body.decode(charset, errors="replace")
+        except LookupError:  # a charset name Python does not know
+            pass
+    from trafilatura.utils import decode_file
+
+    return decode_file(body)

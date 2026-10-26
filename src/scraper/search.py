@@ -24,7 +24,9 @@ log = logging.getLogger(__name__)
 
 URL_NAME = "SEARXNG_URL"  # the SearXNG base URL is read from this environment variable only
 TIMEOUT = 15  # seconds
-DDGS_BACKENDS = ("auto", "bing, yahoo")  # tried in order until one returns results
+# ddgs backends, tried in order until one returns results. Only names ddgs lists as available work
+# (an unknown name is silently replaced by "auto"); in live tests only yahoo answered when "auto" did not.
+DDGS_BACKENDS = ("auto", "yahoo")
 CACHE_TTL = 3600  # seconds a query's results are reused, so regeneration cycles do not search again
 MIN_INTERVAL = 1.0  # seconds between two searches that go out to the network, so they never come in a burst
 
@@ -101,20 +103,26 @@ class Searcher:
             raise RuntimeError("403 from SearXNG: the JSON API is disabled on this instance (search.formats)")
         response.raise_for_status()
         results = []
-        for item in response.json().get("results", []):
-            if item.get("url"):
-                results.append(SearchResult(item["url"], item.get("title", ""), item.get("content", ""), "searxng"))
+        for item in response.json().get("results") or []:
+            if isinstance(item, dict) and item.get("url"):
+                results.append(SearchResult(item["url"], item.get("title") or "", item.get("content") or "", "searxng"))
         return results[: self.max_results]
 
     def ddgs(self, query):
         from ddgs import DDGS
 
-        # "auto" often fails when DuckDuckGo itself rate-limits us; Bing and Yahoo (also via ddgs) usually still answer.
+        # "auto" often fails when DuckDuckGo itself rate-limits us; Yahoo (also via ddgs) usually still answers.
+        last_error = RuntimeError("no results")
         for backend in DDGS_BACKENDS:
             try:
                 items = DDGS(timeout=TIMEOUT).text(query, max_results=self.max_results, backend=backend)
             except Exception as error:
                 last_error = error
                 continue
-            return [SearchResult(i["href"], i.get("title", ""), i.get("body", ""), "ddgs") for i in items if i.get("href")]
+            results = [
+                SearchResult(i["href"], i.get("title") or "", i.get("body") or "", "ddgs")
+                for i in items or [] if isinstance(i, dict) and i.get("href")
+            ]
+            if results:  # an empty answer is treated like a failure: try the next backend
+                return results
         raise last_error

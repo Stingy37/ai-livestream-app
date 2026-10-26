@@ -56,12 +56,14 @@ class WebScraper:
         from scraper.fetch import Fetcher
 
         _load_dotenv()
-        fetcher = Fetcher(max_threads=self.max_threads)
+        fetcher = None
         llm = None
+        sources = [url.strip() for url in scene.sources if url and url.strip()]
         try:
-            if scene.sources:
-                log.info("%s: fetching %d user-supplied source(s), no discovery", scene.title, len(scene.sources))
-                documents = fetcher.fetch_all(scene.sources)
+            fetcher = Fetcher(max_threads=self.max_threads)
+            if sources:
+                log.info("%s: fetching %d user-supplied source(s), no discovery", scene.title, len(sources))
+                documents = fetcher.fetch_all(sources)
                 for document in documents:
                     document.metadata.setdefault("discovered_via", "user")
             else:
@@ -78,7 +80,8 @@ class WebScraper:
             log.exception("%s: scraping failed", scene.title)
             documents = []
         finally:
-            fetcher.client.close()
+            if fetcher is not None:
+                fetcher.client.close()
 
         log.info("%s: %d usable document(s)", scene.title, len(documents))
         if llm is not None:

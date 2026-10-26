@@ -80,3 +80,16 @@ def test_missing_key_is_a_clear_error(monkeypatch):
     monkeypatch.setattr("dotenv.load_dotenv", lambda *a, **k: False)
     with pytest.raises(RuntimeError, match="LUMEN_API_KEY"):
         LumenClient().ask("s", "u")
+
+
+def test_client_has_a_timeout_and_no_sdk_retries(monkeypatch):
+    seen = {}
+
+    class FakeOpenAI:
+        def __init__(self, **kwargs):
+            seen.update(kwargs)
+
+    monkeypatch.setenv("LUMEN_API_KEY", "test-key")
+    monkeypatch.setattr(openai, "OpenAI", FakeOpenAI)
+    LumenClient()._get_client()
+    assert seen["timeout"] == llm_api.TIMEOUT <= 120 and seen["max_retries"] == 0

@@ -21,7 +21,7 @@ from __future__ import annotations
 import logging
 from datetime import date
 from typing import TypedDict
-from urllib.parse import urlsplit
+from urllib.parse import urldefrag, urlsplit
 
 from contracts import Scene, ScrapedDocument
 from scraper.search import SearchResult
@@ -111,8 +111,12 @@ class DiscoveryAgent:
     def plan(self, state: AgentState):
         reply = self._ask_json(PLAN_PROMPT, self._plan_request(state))
         if reply is not None:
-            done = bool(reply.get("enough")) and bool(state["documents"])
-            queries = [q.strip() for q in reply.get("queries", []) if isinstance(q, str) and q.strip()]
+            # Read the reply defensively: a string "false" must not count as true, and a single string
+            # instead of a list must not turn into one query per character.
+            done = reply.get("enough") is True and bool(state["documents"])
+            raw = reply.get("queries")
+            raw = [raw] if isinstance(raw, str) else raw if isinstance(raw, list) else []
+            queries = [q.strip() for q in raw if isinstance(q, str) and q.strip()]
         else:  # no LLM: search the title, then the title with the topic, then give up
             done = False
             queries = [self.scene.title, f"{self.scene.title} {self.scene.topic_description}"[:200]]
@@ -135,6 +139,7 @@ class DiscoveryAgent:
         hits = []
         for query in state["queries"]:
             for hit in self.searcher.search(query):
+                hit.url = urldefrag(hit.url).url  # page.html#top and page.html are the same page
                 if hit.url not in seen:
                     seen.add(hit.url)
                     hits.append(hit)
@@ -150,9 +155,11 @@ class DiscoveryAgent:
         if reply is None:  # no LLM answer: trust the search engine's order
             order = list(range(len(hits)))
         else:  # the LLM may also say that nothing here is worth reading
+            raw = reply.get("picks")
             order = []
-            for n in reply.get("picks", []):
-                if isinstance(n, int) and 1 <= n <= len(hits) and n - 1 not in order:
+            for item in raw if isinstance(raw, list) else []:
+                n = int(item) if isinstance(item, str) and item.strip().isdigit() else item  # "3" is as good as 3
+                if isinstance(n, int) and not isinstance(n, bool) and 1 <= n <= len(hits) and n - 1 not in order:
                     order.append(n - 1)
         return {"picks": [hits[i].url for i in order[:budget]]}
 

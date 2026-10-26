@@ -24,6 +24,7 @@ MODEL = "deepseek-v4-flash"  # the one place the scraper's model name lives
 KEY_NAME = "LUMEN_API_KEY"  # the key is read from this environment variable only
 RATE_LIMIT_RETRIES = 3  # how many times to wait and retry after an HTTP 429
 DEFAULT_WAIT = 5  # seconds to wait if the server does not say how long
+TIMEOUT = 60  # seconds per request; the SDK default (10 minutes) would stall a whole scene
 
 
 class QuotaError(Exception):
@@ -83,7 +84,7 @@ class LumenClient:
             if not os.environ.get(KEY_NAME):
                 raise RuntimeError(f"Set the {KEY_NAME} environment variable first.")
             # max_retries=0: our handle_error decides about retries, so a spent quota is never retried.
-            self.client = OpenAI(base_url=BASE_URL, api_key=os.environ[KEY_NAME], max_retries=0)
+            self.client = OpenAI(base_url=BASE_URL, api_key=os.environ[KEY_NAME], max_retries=0, timeout=TIMEOUT)
         return self.client
 
     # Send one question to the LLM and return the text of its reply.
