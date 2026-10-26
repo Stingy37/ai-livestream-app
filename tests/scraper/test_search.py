@@ -70,3 +70,24 @@ def test_both_engines_failing_returns_nothing(monkeypatch):
     monkeypatch.setattr(httpx, "get", boom)
     monkeypatch.setattr(Searcher, "ddgs", boom)
     assert Searcher(base_url="http://searx.local").search("q") == []
+
+
+def test_ddgs_retries_with_other_backends(monkeypatch):
+    import ddgs
+
+    tried = []
+
+    class FakeDDGS:
+        def __init__(self, timeout=None):
+            pass
+
+        def text(self, query, max_results, backend):
+            tried.append(backend)
+            if backend == "auto":
+                raise ddgs.exceptions.DDGSException("No results found.")
+            return [{"href": "https://bing.example/a", "title": "A", "body": "b"}]
+
+    monkeypatch.setattr(ddgs, "DDGS", FakeDDGS)
+    results = Searcher(base_url="").search("q")
+    assert tried == ["auto", "bing, yahoo"]
+    assert [r.url for r in results] == ["https://bing.example/a"]

@@ -20,6 +20,7 @@ log = logging.getLogger(__name__)
 
 URL_NAME = "SEARXNG_URL"  # the SearXNG base URL is read from this environment variable only
 TIMEOUT = 15  # seconds
+DDGS_BACKENDS = ("auto", "bing, yahoo")  # tried in order until one returns results
 
 
 @dataclass
@@ -74,5 +75,12 @@ class Searcher:
     def ddgs(self, query):
         from ddgs import DDGS
 
-        items = DDGS(timeout=TIMEOUT).text(query, max_results=self.max_results)
-        return [SearchResult(i["href"], i.get("title", ""), i.get("body", ""), "ddgs") for i in items if i.get("href")]
+        # "auto" often fails when DuckDuckGo itself rate-limits us; Bing and Yahoo (also via ddgs) usually still answer.
+        for backend in DDGS_BACKENDS:
+            try:
+                items = DDGS(timeout=TIMEOUT).text(query, max_results=self.max_results, backend=backend)
+            except Exception as error:
+                last_error = error
+                continue
+            return [SearchResult(i["href"], i.get("title", ""), i.get("body", ""), "ddgs") for i in items if i.get("href")]
+        raise last_error

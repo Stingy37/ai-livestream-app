@@ -39,8 +39,9 @@ RECURSION_LIMIT = 4 * MAX_ROUNDS + 4  # LangGraph's own step cap, a backstop und
 
 PLAN_PROMPT = (
     "You plan web searches that find factual, current source pages for a short live broadcast segment.\n"
-    f"Write at most {QUERIES_PER_ROUND} short, specific search-engine queries. Prefer queries that reach "
-    "primary sources (official agencies, established news outlets). Do not repeat earlier queries.\n"
+    f"Write at most {QUERIES_PER_ROUND} search-engine queries of 3 to 6 words each, the way a person types "
+    "them. No exact dates, no quotes, no site: operators: over-specific queries return nothing. Prefer queries "
+    "that reach primary sources (official agencies, established news outlets). Do not repeat earlier queries.\n"
     "If pages already found are listed, first decide whether they already cover the topic well enough.\n"
     'Reply in exactly this JSON shape: {"enough": false, "queries": ["..."]}\n'
     "Return ONLY valid JSON."
@@ -48,7 +49,8 @@ PLAN_PROMPT = (
 SELECT_PROMPT = (
     "You choose which search results are worth reading for a broadcast segment.\n"
     f"Pick at most {PICKS_PER_ROUND} results that are most likely to contain relevant, factual, current text. "
-    "Skip video pages, social media, forums, shops, and duplicates of the same story.\n"
+    "Skip video pages, social media, forums, shops, duplicates of the same story, and aggregators such as "
+    "msn.com that load their article text with JavaScript.\n"
     'Reply in exactly this JSON shape: {"picks": [3, 1, 4]} using the result numbers, best first.\n'
     "Return ONLY valid JSON."
 )
