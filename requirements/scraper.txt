@@ -1,0 +1,8 @@
+# Web Scraper team
+langgraph
+trafilatura
+httpx
+openai
+ddgs
+python-dotenv
+pytest
