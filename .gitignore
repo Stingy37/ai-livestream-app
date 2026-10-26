@@ -15,3 +15,7 @@ secrets/
 
 # thumbnail hero images (scripts/thumb_sat.py)
 html/thumb/
+
+# market research caches (research/market/measure.py)
+research/market/cache*/
+research/market/*.log

@@ -1,0 +1,366 @@
+[
+ {
+  "event": "Crypto liquidation crash (Oct 2025)",
+  "domain": "other",
+  "start_utc": "2025-10-10",
+  "end_utc": "2025-10-11",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "bitcoin crash live",
+    "wikipedia_title": null
+   },
+   {
+    "lang": "ja",
+    "country": "JP",
+    "youtube_query": "ビットコイン 暴落",
+    "wikipedia_title": null
+   },
+   {
+    "lang": "es",
+    "country": "MX",
+    "youtube_query": "bitcoin caída en vivo",
+    "wikipedia_title": null
+   },
+   {
+    "lang": "pt",
+    "country": "BR",
+    "youtube_query": "bitcoin despencando ao vivo",
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "AWS us-east-1 outage",
+  "domain": "other",
+  "start_utc": "2025-10-20",
+  "end_utc": "2025-10-20",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "AWS outage live",
+    "wikipedia_title": "Amazon Web Services"
+   },
+   {
+    "lang": "ja",
+    "country": "JP",
+    "youtube_query": "AWS 障害",
+    "wikipedia_title": "Amazon Web Services"
+   }
+  ]
+ },
+ {
+  "event": "Interstellar comet 3I/ATLAS",
+  "domain": "other",
+  "start_utc": "2025-10-29",
+  "end_utc": "2025-12-19",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "3I/ATLAS live",
+    "wikipedia_title": "3I/ATLAS"
+   },
+   {
+    "lang": "es",
+    "country": "MX",
+    "youtube_query": "3I/ATLAS en vivo",
+    "wikipedia_title": "3I/ATLAS"
+   },
+   {
+    "lang": "pt",
+    "country": "BR",
+    "youtube_query": "3I/ATLAS ao vivo",
+    "wikipedia_title": "3I/ATLAS"
+   },
+   {
+    "lang": "ja",
+    "country": "JP",
+    "youtube_query": "3I/ATLAS",
+    "wikipedia_title": "3I/ATLAS"
+   }
+  ]
+ },
+ {
+  "event": "UPS Flight 2976 crash (Louisville)",
+  "domain": "other",
+  "start_utc": "2025-11-04",
+  "end_utc": "2025-11-06",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "UPS plane crash Louisville live",
+    "wikipedia_title": "UPS Airlines Flight 2976"
+   }
+  ]
+ },
+ {
+  "event": "Cloudflare global outage",
+  "domain": "other",
+  "start_utc": "2025-11-18",
+  "end_utc": "2025-11-18",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "Cloudflare down",
+    "wikipedia_title": "Cloudflare"
+   },
+   {
+    "lang": "ja",
+    "country": "JP",
+    "youtube_query": "Cloudflare 障害",
+    "wikipedia_title": "Cloudflare"
+   }
+  ]
+ },
+ {
+  "event": "Airbus A320 emergency software fix",
+  "domain": "other",
+  "start_utc": "2025-11-28",
+  "end_utc": "2025-12-01",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "Airbus A320 recall flights cancelled",
+    "wikipedia_title": "Airbus A320 family"
+   },
+   {
+    "lang": "fr",
+    "country": "FR",
+    "youtube_query": "Airbus A320 rappel vols annulés",
+    "wikipedia_title": "Airbus A320"
+   }
+  ]
+ },
+ {
+  "event": "H3 rocket Flight 8 failure",
+  "domain": "other",
+  "start_utc": "2025-12-22",
+  "end_utc": "2025-12-22",
+  "markets": [
+   {
+    "lang": "ja",
+    "country": "JP",
+    "youtube_query": "H3ロケット 打ち上げ",
+    "wikipedia_title": "H3ロケット"
+   }
+  ]
+ },
+ {
+  "event": "Gold/silver crash (Jan 30 2026)",
+  "domain": "other",
+  "start_utc": "2026-01-30",
+  "end_utc": "2026-01-31",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "silver crash live",
+    "wikipedia_title": null
+   },
+   {
+    "lang": "hi",
+    "country": "IN",
+    "youtube_query": "सोने का भाव गिरा",
+    "wikipedia_title": null
+   },
+   {
+    "lang": "ja",
+    "country": "JP",
+    "youtube_query": "金価格 暴落",
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Total lunar eclipse Mar 3 2026",
+  "domain": "other",
+  "start_utc": "2026-03-03",
+  "end_utc": "2026-03-03",
+  "markets": [
+   {
+    "lang": "ja",
+    "country": "JP",
+    "youtube_query": "皆既月食 ライブ",
+    "wikipedia_title": "2026年3月3日の月食"
+   },
+   {
+    "lang": "zh-Hant",
+    "country": "TW",
+    "youtube_query": "月全食 直播",
+    "wikipedia_title": "2026年3月3日月食"
+   },
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "lunar eclipse live",
+    "wikipedia_title": "March 2026 lunar eclipse"
+   },
+   {
+    "lang": "es",
+    "country": "MX",
+    "youtube_query": "eclipse lunar en vivo",
+    "wikipedia_title": "Eclipse lunar de marzo de 2026"
+   }
+  ]
+ },
+ {
+  "event": "Artemis II crewed lunar flyby",
+  "domain": "other",
+  "start_utc": "2026-04-01",
+  "end_utc": "2026-04-11",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "Artemis II live",
+    "wikipedia_title": "Artemis II",
+    "must": [
+     "artemis",
+     "アルテミス",
+     "阿提米絲",
+     "आर्टेमिस"
+    ]
+   },
+   {
+    "lang": "es",
+    "country": "MX",
+    "youtube_query": "Artemis II en vivo",
+    "wikipedia_title": "Artemis II",
+    "must": [
+     "artemis",
+     "アルテミス",
+     "阿提米絲",
+     "आर्टेमिस"
+    ]
+   },
+   {
+    "lang": "pt",
+    "country": "BR",
+    "youtube_query": "Artemis II ao vivo",
+    "wikipedia_title": "Artemis II",
+    "must": [
+     "artemis",
+     "アルテミス",
+     "阿提米絲",
+     "आर्टेमिस"
+    ]
+   },
+   {
+    "lang": "ja",
+    "country": "JP",
+    "youtube_query": "アルテミス2 ライブ",
+    "wikipedia_title": "アルテミスII",
+    "must": [
+     "artemis",
+     "アルテミス",
+     "阿提米絲",
+     "आर्टेमिस"
+    ]
+   },
+   {
+    "lang": "zh-Hant",
+    "country": "TW",
+    "youtube_query": "阿提米絲2號 直播",
+    "wikipedia_title": "阿提米絲2號",
+    "must": [
+     "artemis",
+     "アルテミス",
+     "阿提米絲",
+     "आर्टेमिस"
+    ]
+   },
+   {
+    "lang": "hi",
+    "country": "IN",
+    "youtube_query": "Artemis 2 live hindi",
+    "wikipedia_title": null,
+    "must": [
+     "artemis",
+     "アルテミス",
+     "阿提米絲",
+     "आर्टेमिस"
+    ]
+   }
+  ]
+ },
+ {
+  "event": "Ebola epidemic 2026 (DRC/Uganda)",
+  "domain": "other",
+  "start_utc": "2026-05-16",
+  "end_utc": "2026-06-15",
+  "markets": [
+   {
+    "lang": "fr",
+    "country": "FR",
+    "youtube_query": "Ebola RDC 2026",
+    "wikipedia_title": "Épidémie de maladie à virus Ebola de 2026",
+    "must": [
+     "ebola"
+    ]
+   },
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "Ebola outbreak 2026",
+    "wikipedia_title": "2026 Ebola epidemic",
+    "must": [
+     "ebola"
+    ]
+   }
+  ]
+ },
+ {
+  "event": "Starship Flight 14 (first orbit)",
+  "domain": "other",
+  "start_utc": "2026-09-28",
+  "end_utc": "2026-09-28",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "Starship launch live",
+    "wikipedia_title": "Starship flight 14",
+    "must": [
+     "starship",
+     "スターシップ"
+    ]
+   },
+   {
+    "lang": "es",
+    "country": "MX",
+    "youtube_query": "Starship en vivo",
+    "wikipedia_title": "Vuelo 14 de la Starship",
+    "must": [
+     "starship",
+     "スターシップ"
+    ]
+   },
+   {
+    "lang": "pt",
+    "country": "BR",
+    "youtube_query": "Starship ao vivo",
+    "wikipedia_title": "Décimo Quarto Voo da SpaceX Starship",
+    "must": [
+     "starship",
+     "スターシップ"
+    ]
+   },
+   {
+    "lang": "ja",
+    "country": "JP",
+    "youtube_query": "スターシップ 打ち上げ ライブ",
+    "wikipedia_title": "スターシップ 第14回飛行試験",
+    "must": [
+     "starship",
+     "スターシップ"
+    ]
+   }
+  ]
+ }
+]

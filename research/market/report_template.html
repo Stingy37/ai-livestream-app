@@ -1,0 +1,239 @@
+<title>Livestream Market Gaps</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@600&display=swap">
+<style>
+/* Layout: a findings report in one reading column; the chart and tables may run wider than the text. */
+:root {
+  --bg: #f3f5f8; --fg: #152031; --muted: #586377; --line: #c9d1dc; --panel: #ffffff; --tint: #e9eef4; --accent: #2a78d6;
+  --c1: #2a78d6; --c2: #eb6834; --c3: #1baf7a; --c4: #8a93a2;
+  --display: "IBM Plex Sans Condensed", "IBM Plex Sans", "Arial Narrow", sans-serif;
+  --sans: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg: #0d131b; --fg: #e3e8ef; --muted: #9aa6b8; --line: #33404f; --panel: #16202b; --tint: #1b2633;
+    --accent: #3987e5; --c1: #3987e5; --c2: #d95926; --c3: #199e70; --c4: #6f7b8d; color-scheme: dark; }
+}
+:root[data-theme="dark"] { --bg: #0d131b; --fg: #e3e8ef; --muted: #9aa6b8; --line: #33404f; --panel: #16202b; --tint: #1b2633;
+  --accent: #3987e5; --c1: #3987e5; --c2: #d95926; --c3: #199e70; --c4: #6f7b8d; color-scheme: dark; }
+body { background: var(--bg); color: var(--fg); font-family: var(--sans); font-size: 15.5px; line-height: 1.6; }
+.wrap { max-width: 980px; margin: 0 auto; padding-block: 32px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 40px; }
+header { display: grid; gap: 10px; }
+.meta { font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: 0.04em; }
+h1 { font-family: var(--display); font-weight: 600; font-size: 38px; line-height: 1.08; margin: 0; letter-spacing: -0.005em; text-wrap: balance; }
+.lede { font-size: 18px; line-height: 1.55; margin: 0; max-width: 64ch; }
+h2 { font-family: var(--display); font-weight: 600; font-size: 24px; line-height: 1.2; margin: 0; text-wrap: balance; }
+h3 { font-size: 17px; font-weight: 600; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+section { display: grid; gap: 16px; min-width: 0; }
+.prose { max-width: 68ch; display: grid; gap: 12px; }
+figure { margin: 0; display: grid; gap: 10px; }
+.chartbox { position: relative; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px; overflow-x: auto; }
+.chart { display: block; width: 100%; min-width: 620px; height: auto; font-family: var(--sans); }
+.chart .grid { stroke: var(--line); stroke-width: 1; }
+.chart .axis { stroke: var(--muted); stroke-width: 1; }
+.chart .tick { fill: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+.chart .axt { fill: var(--muted); font-size: 11.5px; }
+.chart .open { fill: var(--tint); stroke: none; }
+.chart .openlbl { fill: var(--muted); font-size: 11.5px; font-weight: 600; letter-spacing: 0.02em; }
+.chart .dl { fill: var(--fg); font-size: 11.5px; font-weight: 500; paint-order: stroke; stroke: var(--panel); stroke-width: 3px; stroke-linejoin: round; }
+.pt { stroke: var(--panel); stroke-width: 1.5; cursor: pointer; }
+.pt:focus { outline: none; stroke: var(--fg); stroke-width: 2; }
+.pt.c1 { fill: var(--c1); } .pt.c2 { fill: var(--c2); } .pt.c3 { fill: var(--c3); } .pt.c4 { fill: var(--c4); }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 13.5px; color: var(--fg); }
+.lg { display: inline-flex; align-items: center; gap: 7px; }
+.lg svg { overflow: visible; }
+.tip { position: absolute; pointer-events: none; background: var(--fg); color: var(--bg); border-radius: 6px; padding: 8px 10px; font-size: 12.5px;
+  line-height: 1.45; max-width: 300px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18); z-index: 2; }
+.tip b { display: block; font-weight: 600; margin-bottom: 2px; }
+figcaption { color: var(--muted); font-size: 14px; max-width: 72ch; }
+.opps { display: grid; gap: 14px; }
+.opp { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; display: grid; gap: 10px; min-width: 0; }
+.opp header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; }
+.pill { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.03em; padding: 2px 9px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); white-space: nowrap; }
+.facts { display: grid; grid-template-columns: 104px 1fr; gap: 6px 14px; margin: 0; font-size: 14.5px; }
+.facts dt { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; padding-top: 2px; }
+.facts dd { margin: 0; min-width: 0; }
+.num { font-variant-numeric: tabular-nums; }
+ul.avoid { margin: 0; padding-left: 20px; display: grid; gap: 10px; max-width: 72ch; }
+.tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); font-weight: 600; background: var(--tint); }
+td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+.small-table { min-width: 520px; }
+.big-table { min-width: 860px; }
+details { display: grid; gap: 12px; }
+summary { cursor: pointer; font-weight: 600; }
+summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+code { font-family: var(--mono); font-size: 0.88em; }
+@media (max-width: 560px) {
+  h1 { font-size: 30px; }
+  .facts { grid-template-columns: 1fr; gap: 2px; }
+  .facts dd { margin-bottom: 8px; }
+}
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="meta">OCT 22, 2026 · {{N}} MARKETS · LIVE STREAMS FROM OCT 2025 TO OCT 2026</span>
+    <h1>Livestream Market Gaps</h1>
+    <p class="lede">Where a small, automated, fact-checked stream like ours can win viewers. In war and big national elections, channels with over a million subscribers take almost everything. The openings are in slow vote counts in mid-size countries, typhoons in Japanese and Tagalog, eclipses for East Asia, and aurora storms.</p>
+  </header>
+
+  <section>
+    <figure>
+      <div class="chartbox" id="chartbox">
+        {{SVG}}
+        <div class="tip" id="tip" hidden></div>
+      </div>
+      <div class="legend">{{LEGEND}}</div>
+      <figcaption>Each mark is one event in one language. Its height is the share of that event's live-stream views won by channels under 100,000 subscribers; the shaded area marks markets with a large audience where small channels still won a quarter or more. Hover or tab to a mark for its numbers; the full table is at the bottom.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2>Where we can win</h2>
+    <div class="opps">
+
+      <article class="opp">
+        <header><h3>Slow or disputed vote counts in mid-size countries</h3><span class="pill">Spanish · Portuguese · Italian</span></header>
+        <dl class="facts">
+          <dt>Evidence</dt>
+          <dd>Honduras's month-long disputed count drew <span class="num">1.77M</span> live-stream views, and <span class="num">68%</span> went to channels under 100k subscribers; one with <span class="num">6,530</span> subscribers drew <span class="num">179k</span>. Italy's justice referendum: <span class="num">55%</span> to small channels (Il Post, <span class="num">39k</span> subscribers, drew <span class="num">163k</span>). Portugal's presidential election: no channel over 1M subscribers streamed it at all.</dd>
+          <dt>Contrast</dt>
+          <dd>Big national nights are taken: Brazil <span class="num">86%</span> to channels over 1M, Peru <span class="num">84%</span>, New York City <span class="num">80%</span>, Bihar <span class="num">100%</span>.</dd>
+          <dt>Why it fits</dt>
+          <dd>Official results feeds update every few minutes and counts run for days, which matches our 20–40 minute refresh. We already voice all three languages.</dd>
+          <dt>Next</dt>
+          <dd>Spain's snap election on Nov 29 (not measured yet; Spanish TV streams heavily) and Cape Verde on Nov 15 (small). Measuring Spain 2023 and the 2024 US election in Spanish first costs about five searches.</dd>
+          <dt>Risk</dt>
+          <dd>Medium. YouTube's election-misinformation rules apply: cite the official tally, never call a race, label the AI voice.</dd>
+        </dl>
+      </article>
+
+      <article class="opp">
+        <header><h3>Typhoons in Japanese and Tagalog</h3><span class="pill">what we already run</span></header>
+        <dl class="facts">
+          <dt>Evidence</dt>
+          <dd>Our two Champi streams took <span class="num">10%</span> of <span class="num">324k</span> Japanese typhoon live-stream views on a <span class="num">4,310</span>-subscriber channel named for something else, the best small-channel result in that market. Japanese typhoon markets give <span class="num">18–22%</span> to small channels. In Tagalog, Champi gave <span class="num">27%</span> to small channels, and Weather Gazer Philippines (<span class="num">54k</span> subscribers) drew <span class="num">110k</span> per stream.</dd>
+          <dt>Limit</dt>
+          <dd>A landfalling super typhoon becomes a broadcaster event: Uwan's Tagalog streams sent <span class="num">88%</span> of views to channels over 1M.</dd>
+          <dt>Next</dt>
+          <dd>Late-season Philippine typhoons (November–December) and Sea of Japan coast snow events (December–January).</dd>
+          <dt>Risk</dt>
+          <dd>Low. The channel's name and branding still say Houston and flight simulation.</dd>
+        </dl>
+      </article>
+
+      <article class="opp">
+        <header><h3>Eclipses and meteor showers for Japan and Taiwan</h3><span class="pill">Japanese · Chinese</span></header>
+        <dl class="facts">
+          <dt>Evidence</dt>
+          <dd>The Mar 3 lunar eclipse drew <span class="num">2.08M</span> Japanese and <span class="num">614k</span> Taiwanese live-stream views, with <span class="num">40%</span> and <span class="num">44%</span> going to small channels. MED Sky LiVE (<span class="num">19k</span> subscribers) drew <span class="num">305k</span>; the Taipei Astronomical Museum (<span class="num">12.7k</span>) drew <span class="num">154k</span>.</dd>
+          <dt>Next</dt>
+          <dd>The Geminids on Dec 13–14, peaking near 23:00 Japan time on Dec 14 under a thin crescent moon: the best-placed shower of the year for East Asia.</dd>
+          <dt>Catch</dt>
+          <dd>Viewers come to see the sky. We need our own camera or a licensed feed; our pipeline adds cloud forecasts, timing and where to look.</dd>
+        </dl>
+      </article>
+
+      <article class="opp">
+        <header><h3>Geomagnetic storms and aurora alerts</h3><span class="pill">English · Spanish · Italian</span></header>
+        <dl class="facts">
+          <dt>Evidence</dt>
+          <dd>The November 2025 G4 storm: <span class="num">231k</span> English live-stream views with <span class="num">49%</span> to small channels and none to channels over 1M. Spanish and Italian streams behaved the same. It is the only market we measured with no big channel in any language.</dd>
+          <dt>Why it fits</dt>
+          <dd>NOAA's Space Weather Prediction Center publishes everything as JSON (Kp index, aurora oval, solar wind), and storms are forecast one to three days ahead from solar eruptions. The stream can be fully data-driven.</dd>
+          <dt>Catch</dt>
+          <dd>Smaller audiences, and the timing depends on the sun.</dd>
+          <dt>Risk</dt>
+          <dd>Low.</dd>
+        </dl>
+      </article>
+    </div>
+    <p class="prose">Also promising: US winter storms in Spanish. Winter Storm Fern drew <span class="num">894k</span> Spanish live-stream views with only <span class="num">35%</span> going to channels over 1M, though most of the small channels were local Univision and Telemundo stations. The season runs December to February.</p>
+  </section>
+
+  <section>
+    <h2>Where we can't</h2>
+    <ul class="avoid">
+      <li><b>War, terror and military escalation.</b> Across 29 conflict markets, a median 77% of views went to channels over 1M subscribers and 1% to small ones: the Iran war in English (35.5M views, 89%), Japanese (87%) and Hindi (100%), the Houthi strikes on Saudi Arabia (74% in English, 95% in Hindi). This is also where policy and harm risk is highest. The Tagalog safety-tracker idea for Filipino workers in the Gulf found no Tagalog live streams for the Houthi strikes and four for the Iran war; YouTube data cannot tell whether that audience exists, because Philippine news viewing leans on Facebook.</li>
+      <li><b>Big national election nights.</b> Brazil's first round drew 129M live-stream views, 86% to big channels.</li>
+      <li><b>Launches and missions.</b> Artemis II drew 47–129M views per language, 82–100% to NASA and broadcasters. JAXA owns its own H3 launches. One exception: Starship in Japanese (44% to small channels, 220k views).</li>
+      <li><b>Outages and market crashes.</b> People read about them but don't watch them live. The Cloudflare article drew 205k Wikipedia views in one day, while live streams drew 14k.</li>
+      <li><b>Hindi and Telugu.</b> National networks and district TV channels hold the audience on every topic we measured.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>By domain</h2>
+    <div class="tablewrap">
+      <table class="small-table">
+        <thead><tr><th>Domain</th><th class="n">Markets</th><th class="n">Median live-stream views</th><th class="n">To channels over 1M</th><th class="n">To channels under 100k</th></tr></thead>
+        <tbody>
+          <tr><td>Politics</td><td class="n">21</td><td class="n">15.4M</td><td class="n">79%</td><td class="n">2%</td></tr>
+          <tr><td>War, violence and unrest</td><td class="n">29</td><td class="n">2.1M</td><td class="n">77%</td><td class="n">1%</td></tr>
+          <tr><td>Weather and natural hazards</td><td class="n">33</td><td class="n">2.7M</td><td class="n">64%</td><td class="n">8%</td></tr>
+          <tr><td>Space, markets, outages, health</td><td class="n">32</td><td class="n">1.9M</td><td class="n">46%</td><td class="n">6%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>How this was measured</h2>
+    <div class="prose">
+      <p>Four research agents listed notable events from October 2025 to October 2026 and the search terms people use for them in each language. For each event and language, the YouTube Data API returned up to 50 completed live streams from the event's window, ranked by views, along with each channel's subscriber count. Streams count only when their title names the event and, for Japanese, Chinese, Hindi, Telugu, Bengali, Thai and Korean, is written in that language's script. Wikipedia page views gave a second, independent measure of interest.</p>
+      <p>Limits to keep in mind:</p>
+      <ul class="avoid">
+        <li>The 50-stream cap undercounts saturated markets, so their totals are floors.</li>
+        <li>View counts are today's totals, not the audience during the event.</li>
+        <li>"Small" means under 100,000 subscribers. That still includes local TV stations, observatories and newspapers, which carry an established brand.</li>
+        <li>Most markets rest on one or two events.</li>
+        <li>The study sees YouTube only, so audiences that watch news on Facebook are invisible to it.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <details>
+      <summary>All {{N}} markets, ordered by views won by small channels</summary>
+      <div class="tablewrap">
+        <table class="big-table">
+          <thead><tr><th>Event</th><th>Language</th><th>Domain</th><th class="n">Streams</th><th class="n">Live views</th><th class="n">Under 100k</th><th class="n">Over 1M</th><th>Best small-channel stream</th></tr></thead>
+          <tbody>{{TABLE}}</tbody>
+        </table>
+      </div>
+    </details>
+  </section>
+</div>
+
+<script>
+(() => {
+  const box = document.getElementById("chartbox"), tip = document.getElementById("tip");
+  const show = (el) => {
+    const parts = (el.getAttribute("data-tip") || "").split("|");
+    tip.textContent = "";
+    const b = document.createElement("b"); b.textContent = parts[0]; tip.appendChild(b);
+    parts.slice(1).forEach((p) => { const d = document.createElement("div"); d.textContent = p; tip.appendChild(d); });
+    tip.hidden = false;
+    const r = el.getBoundingClientRect(), br = box.getBoundingClientRect();
+    let left = r.left - br.left + box.scrollLeft + 14, top = r.top - br.top - 10;
+    if (left + tip.offsetWidth > box.scrollLeft + box.clientWidth - 8) left = r.left - br.left + box.scrollLeft - tip.offsetWidth - 14;
+    tip.style.left = Math.max(8, left) + "px"; tip.style.top = Math.max(8, top) + "px";
+  };
+  const hide = () => { tip.hidden = true; };
+  box.querySelectorAll(".pt").forEach((el) => {
+    el.addEventListener("pointerenter", () => show(el));
+    el.addEventListener("pointerleave", hide);
+    el.addEventListener("focus", () => show(el));
+    el.addEventListener("blur", hide);
+  });
+})();
+</script>

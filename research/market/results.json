@@ -1,0 +1,4459 @@
+[
+ {
+  "filtered": true,
+  "event": "Total lunar eclipse Mar 3 2026",
+  "domain": "other",
+  "lang": "en",
+  "country": "US",
+  "query": "lunar eclipse live",
+  "streams": 47,
+  "channels": 46,
+  "total_views": 10709969,
+  "small_views": 3324172,
+  "small_share": 0.3103811038108514,
+  "big_share": 0.4349755820955224,
+  "top3": 0.201,
+  "best_small_views": 580110,
+  "best_small_subs": 68700,
+  "best_small_channel": "Griffith Observatory",
+  "best_small_title": "TOTAL LUNAR ECLIPSE | MARCH 3, 2026 | GRIFFITH OBSERVATORY",
+  "wiki_peak": 202474,
+  "wiki_spike": 30.0,
+  "top": [
+   [
+    "Prameya Digital ",
+    594096,
+    148000
+   ],
+   [
+    "Griffith Observatory",
+    580110,
+    68700
+   ],
+   [
+    "Associated Press",
+    513373,
+    4690000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Cyclone Montha",
+  "domain": "hazard",
+  "lang": "en",
+  "country": "IN",
+  "query": "Cyclone Montha live",
+  "streams": 50,
+  "channels": 21,
+  "total_views": 13863313,
+  "small_views": 2451280,
+  "small_share": 0.1768177635461307,
+  "big_share": 0.7927787535345988,
+  "top3": 0.328,
+  "best_small_views": 1062237,
+  "best_small_subs": 23400,
+  "best_small_channel": "BIGTV Karimnagar",
+  "best_small_title": "🌀 LIVE NOW: Severe Cyclone Montha Hitting Andhra Coast | Wind Speed 110 kmph!",
+  "wiki_peak": 398,
+  "wiki_spike": 39.8,
+  "top": [
+   [
+    "BIGTV Karimnagar",
+    1062237,
+    23400
+   ],
+   [
+    "TV9 Telugu Live",
+    1044881,
+    14600000
+   ],
+   [
+    "BIG TV West Godavari",
+    1038772,
+    69200
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Total solar eclipse Aug 12 2026",
+  "domain": "hazard",
+  "lang": "en",
+  "country": "GB",
+  "query": "total solar eclipse 2026 live",
+  "streams": 50,
+  "channels": 39,
+  "total_views": 25652761,
+  "small_views": 2411360,
+  "small_share": 0.094,
+  "big_share": 0.649,
+  "top3": 0.292,
+  "best_small_views": 985527,
+  "best_small_subs": 23500,
+  "best_small_channel": "Royal Observatory Greenwich",
+  "best_small_title": "Partial solar eclipse LIVE, 12 August 2026 | Telescope feed | Live from the Royal Observat",
+  "wiki_peak": 218979,
+  "wiki_spike": 12.5,
+  "top": [
+   [
+    "NASA",
+    3496959,
+    15100000
+   ],
+   [
+    "BR24",
+    1513801,
+    568000
+   ],
+   [
+    "European Space Agency, ESA",
+    1481635,
+    1470000
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Japan snap general election Feb 2026",
+  "domain": "politics",
+  "lang": "ja",
+  "country": "JP",
+  "query": "衆院選 開票速報",
+  "streams": 50,
+  "channels": 41,
+  "total_views": 30674078,
+  "small_views": 1748422,
+  "small_share": 0.057,
+  "big_share": 0.547,
+  "top3": 0.408,
+  "best_small_views": 533883,
+  "best_small_subs": 89000,
+  "best_small_channel": "「チームみらい」公式チャンネル",
+  "best_small_title": "【衆院選2026】開票LIVE (2026年2月8日)20:00ごろ〜 【チームみらい】",
+  "wiki_peak": 66272,
+  "wiki_spike": 13.3,
+  "top": [
+   [
+    "選挙ドットコムちゃんねる",
+    3878487,
+    426000
+   ],
+   [
+    "髙橋洋一チャンネル",
+    2902173,
+    1450000
+   ],
+   [
+    "ReHacQ−リハック−【公式】",
+    2737168,
+    1990000
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Total solar eclipse Aug 12 2026",
+  "domain": "hazard",
+  "lang": "es",
+  "country": "ES",
+  "query": "eclipse total en directo",
+  "streams": 50,
+  "channels": 41,
+  "total_views": 20869428,
+  "small_views": 1606946,
+  "small_share": 0.077,
+  "big_share": 0.77,
+  "top3": 0.359,
+  "best_small_views": 481960,
+  "best_small_subs": 43800,
+  "best_small_channel": "Ciel & Espace",
+  "best_small_title": "En direct depuis l'Espagne, suivez l'éclipse totale du 12 août",
+  "wiki_peak": 61122,
+  "wiki_spike": 6.0,
+  "top": [
+   [
+    "NASA",
+    3496959,
+    15100000
+   ],
+   [
+    "European Space Agency, ESA",
+    1481635,
+    1470000
+   ],
+   [
+    "Associated Press",
+    1437303,
+    4690000
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Hurricane Melissa",
+  "domain": "hazard",
+  "lang": "en",
+  "country": "JM",
+  "query": "Hurricane Melissa live",
+  "streams": 50,
+  "channels": 27,
+  "total_views": 20910843,
+  "small_views": 1568313,
+  "small_share": 0.075,
+  "big_share": 0.666,
+  "top3": 0.43,
+  "best_small_views": 230342,
+  "best_small_subs": 81400,
+  "best_small_channel": "TwisterChasers",
+  "best_small_title": "Live Coverage Hurricane Melissa Sant Cruz Jamaica",
+  "wiki_peak": 114062,
+  "wiki_spike": 11406.2,
+  "top": [
+   [
+    "Max Velocity - Severe Weather Center",
+    2835599,
+    2200000
+   ],
+   [
+    "Reuters",
+    2211011,
+    4360000
+   ],
+   [
+    "ABC News",
+    2026460,
+    19900000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Venezuela earthquake doublet",
+  "domain": "hazard",
+  "lang": "es",
+  "country": "VE",
+  "query": "terremoto Venezuela en vivo",
+  "streams": 37,
+  "channels": 20,
+  "total_views": 19726678,
+  "small_views": 1435782,
+  "small_share": 0.0727837702830654,
+  "big_share": 0.3417760456170066,
+  "top3": 0.444,
+  "best_small_views": 566150,
+  "best_small_subs": 48600,
+  "best_small_channel": "ACTUALIDAD GLOBAL",
+  "best_small_title": "🔴 LA GUAIRA, EL DEBATE POLÍTICO Y LOS NUEVOS TEMAS QUE MARCAN LA AGENDA DE VENEZUELA",
+  "wiki_peak": 26330,
+  "wiki_spike": 2633.0,
+  "top": [
+   [
+    "MBN Digital",
+    1624955,
+    610000
+   ],
+   [
+    "YOLO AVENTURAS",
+    922178,
+    71100000
+   ],
+   [
+    "Ani Cat",
+    898861,
+    16700000
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Bangladesh general election 2026",
+  "domain": "politics",
+  "lang": "bn",
+  "country": "BD",
+  "query": "নির্বাচনের ফলাফল লাইভ",
+  "streams": 50,
+  "channels": 36,
+  "total_views": 47439873,
+  "small_views": 1423196,
+  "small_share": 0.03,
+  "big_share": 0.789,
+  "top3": 0.711,
+  "best_small_views": 556519,
+  "best_small_subs": 5750,
+  "best_small_channel": "Agency Bangladesh Press-ABP",
+  "best_small_title": "ভোটগ্রহণ শেষ, শুরু হয়েছে গণনা | Voting Ends, Counting Begins: Live from Election Commissio",
+  "wiki_peak": 51410,
+  "wiki_spike": 25.1,
+  "top": [
+   [
+    "Channel 24 Bulletin",
+    15173921,
+    1760000
+   ],
+   [
+    "Daily Jugantor",
+    6947850,
+    3590000
+   ],
+   [
+    "Channel 24 Bulletin",
+    4970854,
+    1760000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Gold/silver crash (Jan 30 2026)",
+  "domain": "other",
+  "lang": "en",
+  "country": "US",
+  "query": "silver crash live",
+  "streams": 49,
+  "channels": 29,
+  "total_views": 3283036,
+  "small_views": 1362118,
+  "small_share": 0.41489584640558314,
+  "big_share": 0.5310782458675446,
+  "top3": 0.394,
+  "best_small_views": 393788,
+  "best_small_subs": 69200,
+  "best_small_channel": "BIG TV West Godavari",
+  "best_small_title": "Gold Price Today LIVE: Gold Price Crash Today | Today Gold And Silver Rate | దిగొస్తున్న బ",
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "BIG TV West Godavari",
+    393788,
+    69200
+   ],
+   [
+    "Firstpost",
+    392463,
+    9790000
+   ],
+   [
+    "Republic Bharat",
+    383655,
+    32000000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Honduras election + disputed count",
+  "domain": "politics",
+  "lang": "es",
+  "country": "HN",
+  "query": "resultados elecciones Honduras en vivo",
+  "streams": 35,
+  "channels": 19,
+  "total_views": 1773121,
+  "small_views": 1205211,
+  "small_share": 0.6797116496843701,
+  "big_share": 0.1473029759390363,
+  "top3": 0.652,
+  "best_small_views": 593342,
+  "best_small_subs": 58700,
+  "best_small_channel": "ICN.Digital",
+  "best_small_title": "ELECCIONES GENERALES HONDURAS 2025 | 30 DE NOVIEMBRE | EN VIVO 🔴",
+  "wiki_peak": 237151,
+  "wiki_spike": 87.9,
+  "top": [
+   [
+    "ICN.Digital",
+    593342,
+    58700
+   ],
+   [
+    "Bowery Newsroom - Guarimba Digital",
+    306724,
+    432000
+   ],
+   [
+    "EL PAÍS",
+    193025,
+    3370000
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Brazil election round 1 (Oct 4 2026)",
+  "domain": "politics",
+  "lang": "pt",
+  "country": "BR",
+  "query": "apuração eleições 2026 ao vivo",
+  "streams": 50,
+  "channels": 41,
+  "total_views": 129252016,
+  "small_views": 1163268,
+  "small_share": 0.009,
+  "big_share": 0.858,
+  "top3": 0.388,
+  "best_small_views": 1116871,
+  "best_small_subs": 17200,
+  "best_small_channel": "Jovem Pan União da Vitória - 98,3",
+  "best_small_title": "🔴 AO VIVO: ELEIÇÕES 2026 | Apuração dos Votos no Sul do Paraná e Norte de SC",
+  "wiki_peak": 58218,
+  "wiki_spike": 13.7,
+  "top": [
+   [
+    "Brasil Paralelo",
+    16170882,
+    5310000
+   ],
+   [
+    "SBT News",
+    13916568,
+    8250000
+   ],
+   [
+    "CNN Brasil",
+    10958656,
+    7080000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Total lunar eclipse Mar 3 2026",
+  "domain": "other",
+  "lang": "ja",
+  "country": "JP",
+  "query": "皆既月食 ライブ",
+  "streams": 46,
+  "channels": 46,
+  "total_views": 2078900,
+  "small_views": 826777,
+  "small_share": 0.3976992640338641,
+  "big_share": 0.4785011304055029,
+  "top3": 0.63,
+  "best_small_views": 304543,
+  "best_small_subs": 19000,
+  "best_small_channel": "MED Sky LiVE",
+  "best_small_title": "🔴4K皆既月食ライブ2026 宮崎県日向市 Live Total Lunar Eclipse Observation Mar. 3 2026 Hyuga-shi Miyazaki ",
+  "wiki_peak": 1074,
+  "wiki_spike": 16.8,
+  "top": [
+   [
+    "ウェザーニュース",
+    406723,
+    1680000
+   ],
+   [
+    "ウェザーニュース",
+    401711,
+    1680000
+   ],
+   [
+    "MED Sky LiVE",
+    304543,
+    19000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Hurricane Melissa",
+  "domain": "hazard",
+  "lang": "es",
+  "country": "CU",
+  "query": "huracán Melissa en vivo",
+  "streams": 47,
+  "channels": 35,
+  "total_views": 11979225,
+  "small_views": 814750,
+  "small_share": 0.06801358184690579,
+  "big_share": 0.765834016808266,
+  "top3": 0.5,
+  "best_small_views": 230347,
+  "best_small_subs": 81400,
+  "best_small_channel": "TwisterChasers",
+  "best_small_title": "Live Coverage Hurricane Melissa Sant Cruz Jamaica",
+  "wiki_peak": 7854,
+  "wiki_spike": 785.4,
+  "top": [
+   [
+    "Max Velocity - Severe Weather Center",
+    2835992,
+    2200000
+   ],
+   [
+    "Reuters",
+    2211020,
+    4360000
+   ],
+   [
+    "USA TODAY",
+    1030775,
+    7590000
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Winter Storm Fern",
+  "domain": "hazard",
+  "lang": "en",
+  "country": "US",
+  "query": "winter storm Fern live",
+  "streams": 50,
+  "channels": 35,
+  "total_views": 6204095,
+  "small_views": 812736,
+  "small_share": 0.131,
+  "big_share": 0.817,
+  "top3": 0.855,
+  "best_small_views": 459419,
+  "best_small_subs": 45200,
+  "best_small_channel": "PEACEFUL MIND",
+  "best_small_title": "Snow Storm in NEW YORK ❄️ Walking in Blizzard EXTREME Low Temperatures in Manhattan",
+  "wiki_peak": 29024,
+  "wiki_spike": 2902.4,
+  "top": [
+   [
+    "Max Velocity - Severe Weather Center",
+    2642472,
+    2200000
+   ],
+   [
+    "Ryan Hall, Y'all",
+    2199644,
+    3540000
+   ],
+   [
+    "PEACEFUL MIND",
+    459419,
+    45200
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Super Typhoon Uwan / Fung-wong",
+  "domain": "hazard",
+  "lang": "en",
+  "country": "PH",
+  "query": "Super Typhoon Uwan live",
+  "streams": 50,
+  "channels": 14,
+  "total_views": 16752993,
+  "small_views": 804144,
+  "small_share": 0.048,
+  "big_share": 0.942,
+  "top3": 0.826,
+  "best_small_views": 233334,
+  "best_small_subs": 65700,
+  "best_small_channel": "OYEMS TV",
+  "best_small_title": "Nov 9, 5PM Super Typhoon Uwan Update: Pinakamalakas na Bagyo ng 2025! |  Forecast",
+  "wiki_peak": 24242,
+  "wiki_spike": 2424.2,
+  "top": [
+   [
+    "DZMM Teleradyo",
+    1232641,
+    1590000
+   ],
+   [
+    "DZMM Teleradyo",
+    1049759,
+    1590000
+   ],
+   [
+    "ABS-CBN News",
+    992508,
+    19300000
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Artemis II crewed lunar flyby",
+  "domain": "other",
+  "lang": "en",
+  "country": "US",
+  "query": "Artemis II live",
+  "streams": 50,
+  "channels": 29,
+  "total_views": 117431161,
+  "small_views": 704587,
+  "small_share": 0.006,
+  "big_share": 0.87,
+  "top3": 0.73,
+  "best_small_views": 379657,
+  "best_small_subs": 27500,
+  "best_small_channel": "ZME Science",
+  "best_small_title": "🔴Live: Artemis 2 mission on its way to the moon",
+  "wiki_peak": 914538,
+  "wiki_spike": 75.2,
+  "top": [
+   [
+    "NASA",
+    28150580,
+    15100000
+   ],
+   [
+    "NASA",
+    27778762,
+    15100000
+   ],
+   [
+    "NASA",
+    19278207,
+    15100000
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "US strikes on Venezuela / Maduro captured",
+  "domain": "politics",
+  "lang": "en",
+  "country": "US",
+  "query": "Venezuela Maduro captured live",
+  "streams": 50,
+  "channels": 41,
+  "total_views": 15443046,
+  "small_views": 694937,
+  "small_share": 0.045,
+  "big_share": 0.798,
+  "top3": 0.452,
+  "best_small_views": 305174,
+  "best_small_subs": 10800,
+  "best_small_channel": "FREEDOM OF SPEECH CHANNEL W/ STOCKSNIPER ",
+  "best_small_title": "Trump, Venezuela Maduro captured live reaction",
+  "wiki_peak": 27916,
+  "wiki_spike": 2791.6,
+  "top": [
+   [
+    "NBC News",
+    3164969,
+    12200000
+   ],
+   [
+    "Fox News",
+    1467905,
+    15500000
+   ],
+   [
+    "Associated Press",
+    1304350,
+    4690000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Interstellar comet 3I/ATLAS",
+  "domain": "other",
+  "lang": "pt",
+  "country": "BR",
+  "query": "3I/ATLAS ao vivo",
+  "streams": 50,
+  "channels": 24,
+  "total_views": 11849683,
+  "small_views": 639778,
+  "small_share": 0.05399114896153762,
+  "big_share": 0.27801511652252636,
+  "top3": 0.467,
+  "best_small_views": 354868,
+  "best_small_subs": 5740,
+  "best_small_channel": "Universo Mistério",
+  "best_small_title": "Objeto 3I/ATLAS onde ele está agora ?",
+  "wiki_peak": 11547,
+  "wiki_spike": 2.7,
+  "top": [
+   [
+    "NASA",
+    819161,
+    15100000
+   ],
+   [
+    "Stefan Burns",
+    781536,
+    819000
+   ],
+   [
+    "Stefan Burns",
+    702159,
+    819000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "El Mencho killed + narco-blockades",
+  "domain": "conflict",
+  "lang": "en",
+  "country": "US",
+  "query": "El Mencho killed",
+  "streams": 44,
+  "channels": 43,
+  "total_views": 7665413,
+  "small_views": 603259,
+  "small_share": 0.07869882549055086,
+  "big_share": 0.5374327515034089,
+  "top3": 0.403,
+  "best_small_views": 208053,
+  "best_small_subs": 80500,
+  "best_small_channel": "BELLUMARTIS ACTUALIDAD MILITAR Y GEOPOLÍTICA",
+  "best_small_title": "LA CAÍDA DE \"EL MENCHO\" ⚠️ EL NARCO DECLARA LA GUERRA AL GOBIERNO DE MÉXICO | Especial Bel",
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "Noticias Telemundo",
+    1361334,
+    9350000
+   ],
+   [
+    "Agenda-Free TV",
+    862240,
+    957000
+   ],
+   [
+    "Canal Once",
+    663025,
+    2480000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "France protests / 17 October riots",
+  "domain": "conflict",
+  "lang": "fr",
+  "country": "FR",
+  "query": "manifestation émeutes en direct",
+  "streams": 22,
+  "channels": 26,
+  "total_views": 1519803,
+  "small_views": 572225,
+  "small_share": 0.37651261380586826,
+  "big_share": 0.6234873861941317,
+  "top3": 0.471,
+  "best_small_views": 105376,
+  "best_small_subs": 67800,
+  "best_small_channel": "Le Figaro Actualités",
+  "best_small_title": "17 octobre : la manifestation en direct",
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "Le Parisien",
+    828392,
+    2130000
+   ],
+   [
+    "Le Figaro Actualités",
+    105376,
+    67800
+   ],
+   [
+    "BG On The Scene",
+    102871,
+    48800
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Super Typhoon Uwan / Fung-wong",
+  "domain": "hazard",
+  "lang": "tl",
+  "country": "PH",
+  "query": "Bagyong Uwan",
+  "streams": 49,
+  "channels": 13,
+  "total_views": 16601258,
+  "small_views": 557713,
+  "small_share": 0.033594622768949194,
+  "big_share": 0.8822987992837651,
+  "top3": 0.663,
+  "best_small_views": 209174,
+  "best_small_subs": 54200,
+  "best_small_channel": "Weather Gazer Philippines",
+  "best_small_title": "NAPAKALAWAK AT MALAKAS NA BAGYONG UWAN, PAGHANDAAN!⚠️😱 | ULAT PANAHON NGAYON | WEATHER UPD",
+  "wiki_peak": 296,
+  "wiki_spike": 29.6,
+  "top": [
+   [
+    "DZMM Teleradyo",
+    1232643,
+    1590000
+   ],
+   [
+    "DZMM Teleradyo",
+    1049767,
+    1590000
+   ],
+   [
+    "GMA News",
+    811174,
+    18300000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Interstellar comet 3I/ATLAS",
+  "domain": "other",
+  "lang": "es",
+  "country": "MX",
+  "query": "3I/ATLAS en vivo",
+  "streams": 49,
+  "channels": 26,
+  "total_views": 5872431,
+  "small_views": 517858,
+  "small_share": 0.08818460361645798,
+  "big_share": 0.4675290352496266,
+  "top3": 0.389,
+  "best_small_views": 244896,
+  "best_small_subs": 5740,
+  "best_small_channel": "Universo Mistério",
+  "best_small_title": "Transmissão OFICIAL da NASA, OBJETO 3I/ATLAS, NOVAS IMAGENS",
+  "wiki_peak": 37946,
+  "wiki_spike": 7.0,
+  "top": [
+   [
+    "NASA",
+    819161,
+    15100000
+   ],
+   [
+    "Ray's Astrophotography",
+    642033,
+    263000
+   ],
+   [
+    "Negocios TV",
+    296216,
+    2830000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Iran war opening phase (2026)",
+  "domain": "conflict",
+  "lang": "en",
+  "country": "US",
+  "query": "Iran war live",
+  "streams": 50,
+  "channels": 26,
+  "total_views": 35521252,
+  "small_views": 511022,
+  "small_share": 0.014386373543364969,
+  "big_share": 0.8871738529936951,
+  "top3": 0.36,
+  "best_small_views": 511022,
+  "best_small_subs": 41300,
+  "best_small_channel": "SumanTV Online",
+  "best_small_title": "America Vs Iran : Israel-Iran War News LIVE Iran–Israel War |Ali Khamenei Passes Away | Su",
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "NDTV India",
+    4286944,
+    27000000
+   ],
+   [
+    "ABP NEWS",
+    3536656,
+    51400000
+   ],
+   [
+    "Agenda-Free TV",
+    1820647,
+    957000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Starship Flight 14 (first orbit)",
+  "domain": "other",
+  "lang": "en",
+  "country": "US",
+  "query": "Starship launch live",
+  "streams": 46,
+  "channels": 43,
+  "total_views": 8565806,
+  "small_views": 492450,
+  "small_share": 0.05749021166251022,
+  "big_share": 0.5254927557313346,
+  "top3": 0.424,
+  "best_small_views": 113022,
+  "best_small_subs": 63500,
+  "best_small_channel": "Mars Chroniken",
+  "best_small_title": "🔴 Live: Starship Orbitalstart (Flug 14)",
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "Everyday Astronaut",
+    1463304,
+    2000000
+   ],
+   [
+    "NASASpaceflight",
+    1444649,
+    1530000
+   ],
+   [
+    "Spaceflight Now",
+    751719,
+    489000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Typhoon Champi (calibration)",
+  "domain": "hazard",
+  "lang": "tl",
+  "country": "PH",
+  "query": "Bagyong Rosal",
+  "streams": 43,
+  "channels": 11,
+  "total_views": 1849746,
+  "small_views": 492121,
+  "small_share": 0.26604787900609056,
+  "big_share": 0.4526870175688987,
+  "top3": 0.762,
+  "best_small_views": 110209,
+  "best_small_subs": 54200,
+  "best_small_channel": "Weather Gazer Philippines",
+  "best_small_title": "SUPER TYPHOON \"ROSAL\", NAKAKAAPEKTO! TATAMA BA? 😱🌀 | WEATHER UPDATE TODAY | ULAT PANAHON T",
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "Weather Update ng Bayan",
+    151884,
+    679000
+   ],
+   [
+    "Weather Update ng Bayan",
+    135522,
+    679000
+   ],
+   [
+    "Weather Update ng Bayan",
+    123876,
+    679000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Kumamoto earthquake 2026",
+  "domain": "hazard",
+  "lang": "ja",
+  "country": "JP",
+  "query": "熊本 地震",
+  "streams": 47,
+  "channels": 15,
+  "total_views": 10631277,
+  "small_views": 475137,
+  "small_share": 0.044692373268046724,
+  "big_share": 0.8560511592351512,
+  "top3": 0.7,
+  "best_small_views": 243270,
+  "best_small_subs": 8580,
+  "best_small_channel": "たかき時事ネタ漫談",
+  "best_small_title": "熊本地震！イオンモール熊本のテナントの社員さん？なぜ？中に戻ったのか？",
+  "wiki_peak": 67150,
+  "wiki_spike": 6715.0,
+  "top": [
+   [
+    "ウェザーニュース",
+    1678482,
+    1680000
+   ],
+   [
+    "TBS NEWS DIG Powered by JNN",
+    1585899,
+    3410000
+   ],
+   [
+    "日テレNEWS",
+    909668,
+    3370000
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Hungary parliamentary election 2026",
+  "domain": "politics",
+  "lang": "hu",
+  "country": "HU",
+  "query": "választás 2026 élő",
+  "streams": 50,
+  "channels": 27,
+  "total_views": 16378762,
+  "small_views": 442227,
+  "small_share": 0.027,
+  "big_share": 0.0,
+  "top3": 0.733,
+  "best_small_views": 222626,
+  "best_small_subs": 47300,
+  "best_small_channel": "ÁRAD A TISZA 🌊 Közösség",
+  "best_small_title": "RENDSZERVÁLTÁS 2026 - A győzelem kapuja 🔴⚪🟢 ÉLŐ KÖZVETÍTÉS - #tiszapárt #magyarpeter",
+  "wiki_peak": 159775,
+  "wiki_spike": 35.4,
+  "top": [
+   [
+    "Partizán",
+    2875065,
+    709000
+   ],
+   [
+    "Telex․hu",
+    2360586,
+    466000
+   ],
+   [
+    "Telex․hu",
+    1493093,
+    466000
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Bangladesh general election 2026",
+  "domain": "politics",
+  "lang": "en",
+  "country": "BD",
+  "query": "Bangladesh election results live",
+  "streams": 50,
+  "channels": 22,
+  "total_views": 32266591,
+  "small_views": 419466,
+  "small_share": 0.013,
+  "big_share": 0.862,
+  "top3": 0.782,
+  "best_small_views": 294158,
+  "best_small_subs": 3000,
+  "best_small_channel": "Leisurely Exploring Rare Literary Tales",
+  "best_small_title": "Bangladesh Election Results 🇧🇩 | আজকের ভোট ফল / কারা জিতেছে? LIVE 13/02/2026",
+  "wiki_peak": 230524,
+  "wiki_spike": 30.9,
+  "top": [
+   [
+    "Channel 24 Bulletin",
+    15173921,
+    1760000
+   ],
+   [
+    "Channel 24 Bulletin",
+    4970854,
+    1760000
+   ],
+   [
+    "Barta24",
+    2080436,
+    978000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Iran war opening phase (2026)",
+  "domain": "conflict",
+  "lang": "ja",
+  "country": "JP",
+  "query": "イラン情勢 ライブ",
+  "streams": 47,
+  "channels": 11,
+  "total_views": 7637360,
+  "small_views": 389328,
+  "small_share": 0.050976777315721665,
+  "big_share": 0.8667153309520568,
+  "top3": 0.733,
+  "best_small_views": 92130,
+  "best_small_subs": 59800,
+  "best_small_channel": "FXマシーンくにお",
+  "best_small_title": "【FXライブ】決戦！米雇用統計！イラン情勢最新時ニュースにも注目！原油価格上昇はどこまで続く！？ドル円トレード配信",
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "テレ東BIZ ダイジェスト",
+    2226340,
+    2670000
+   ],
+   [
+    "ANNnewsCH",
+    477205,
+    5090000
+   ],
+   [
+    "ReHacQ−リハック−【公式】",
+    389945,
+    1990000
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Artemis II crewed lunar flyby",
+  "domain": "other",
+  "lang": "es",
+  "country": "MX",
+  "query": "Artemis II en vivo",
+  "streams": 50,
+  "channels": 27,
+  "total_views": 127873695,
+  "small_views": 383621,
+  "small_share": 0.003,
+  "big_share": 0.825,
+  "top3": 0.715,
+  "best_small_views": 379657,
+  "best_small_subs": 27500,
+  "best_small_channel": "ZME Science",
+  "best_small_title": "🔴Live: Artemis 2 mission on its way to the moon",
+  "wiki_peak": 61108,
+  "wiki_spike": 6110.8,
+  "top": [
+   [
+    "NASA",
+    28150580,
+    15100000
+   ],
+   [
+    "NASA",
+    27778762,
+    15100000
+   ],
+   [
+    "NASA",
+    19278207,
+    15100000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Interstellar comet 3I/ATLAS",
+  "domain": "other",
+  "lang": "en",
+  "country": "US",
+  "query": "3I/ATLAS live",
+  "streams": 49,
+  "channels": 29,
+  "total_views": 6555743,
+  "small_views": 379280,
+  "small_share": 0.05785461693663098,
+  "big_share": 0.2782111806396315,
+  "top3": 0.409,
+  "best_small_views": 185989,
+  "best_small_subs": 41700,
+  "best_small_channel": "The Endless Void with Kristin Fisher",
+  "best_small_title": "3I/ATLAS: Harvard's Avi Loeb Takes Your Questions",
+  "wiki_peak": 118931,
+  "wiki_spike": 2.9,
+  "top": [
+   [
+    "NASA",
+    819161,
+    15100000
+   ],
+   [
+    "Astronio",
+    668097,
+    363000
+   ],
+   [
+    "Ray's Astrophotography",
+    642033,
+    263000
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Typhoon Champi (calibration)",
+  "domain": "hazard",
+  "lang": "en",
+  "country": "US",
+  "query": "Typhoon Champi",
+  "streams": 50,
+  "channels": 29,
+  "total_views": 1759414,
+  "small_views": 358920,
+  "small_share": 0.204,
+  "big_share": 0.626,
+  "top3": 0.575,
+  "best_small_views": 70459,
+  "best_small_subs": 54100,
+  "best_small_channel": "Weather Gazer Philippines",
+  "best_small_title": "BAGYONG TATAWAGING \"ROSAL\", ASAHANG MAS LALAKAS PA! 😱🌀 | WEATHER UPDATE TODAY | ULAT PANAH",
+  "wiki_peak": 3353,
+  "wiki_spike": 9.8,
+  "top": [
+   [
+    "Estrategias Militares",
+    106688,
+    573000
+   ],
+   [
+    "DOST-PAGASA Weather Report",
+    104413,
+    1180000
+   ],
+   [
+    "DOST-PAGASA Weather Report",
+    83926,
+    1180000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Super Typhoon Uwan / Fung-wong",
+  "domain": "hazard",
+  "lang": "zh-Hant",
+  "country": "TW",
+  "query": "鳳凰颱風",
+  "streams": 41,
+  "channels": 15,
+  "total_views": 4211406,
+  "small_views": 351343,
+  "small_share": 0.08342653261167411,
+  "big_share": 0.6024277877744392,
+  "top3": 0.436,
+  "best_small_views": 96808,
+  "best_small_subs": 57200,
+  "best_small_channel": "台灣颱風論壇",
+  "best_small_title": "2025/11/10 鳳凰颱風 風雨實況 (Typhoon Fung-wong@Taiwan) - Live Part1.",
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "新聞龍捲風",
+    577625,
+    583000
+   ],
+   [
+    "東森新聞 CH51",
+    323240,
+    3200000
+   ],
+   [
+    "新聞龍捲風",
+    247174,
+    583000
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Peru runoff + weeks-long count",
+  "domain": "politics",
+  "lang": "es",
+  "country": "PE",
+  "query": "resultados ONPE segunda vuelta en vivo",
+  "streams": 50,
+  "channels": 21,
+  "total_views": 21852991,
+  "small_views": 349648,
+  "small_share": 0.016,
+  "big_share": 0.837,
+  "top3": 0.515,
+  "best_small_views": 197831,
+  "best_small_subs": 82100,
+  "best_small_channel": "Panamericana Noticias",
+  "best_small_title": "🔴 EN VIVO – ANÁLISIS DE LOS PRIMEROS RESULTADOS ELECTORALES - SIN RODEOS",
+  "wiki_peak": 181834,
+  "wiki_spike": 44.5,
+  "top": [
+   [
+    "América Noticias",
+    1719845,
+    2120000
+   ],
+   [
+    "América Noticias",
+    1410717,
+    2120000
+   ],
+   [
+    "Latina Noticias",
+    1381789,
+    3000000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Aomori M7.6 earthquake + megaquake advisory",
+  "domain": "hazard",
+  "lang": "ja",
+  "country": "JP",
+  "query": "青森 地震 津波",
+  "streams": 39,
+  "channels": 24,
+  "total_views": 9629275,
+  "small_views": 311048,
+  "small_share": 0.03230232805688902,
+  "big_share": 0.8921015341238048,
+  "top3": 0.725,
+  "best_small_views": 272969,
+  "best_small_subs": 37500,
+  "best_small_channel": "ATV青森テレビ 公式チャンネル",
+  "best_small_title": "青森県東方沖を震源とする最大震度６強の地震　「北海道・三陸沖後発地震注意情報」初の発表へ",
+  "wiki_peak": 13027,
+  "wiki_spike": 1302.7,
+  "top": [
+   [
+    "ウェザーニュース",
+    2071006,
+    1680000
+   ],
+   [
+    "日テレNEWS",
+    1623800,
+    3370000
+   ],
+   [
+    "ANNnewsCH",
+    1532645,
+    5090000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Cyclone Montha",
+  "domain": "hazard",
+  "lang": "te",
+  "country": "IN",
+  "query": "మొంథా తుఫాన్",
+  "streams": 50,
+  "channels": 25,
+  "total_views": 4554368,
+  "small_views": 296164,
+  "small_share": 0.06502856159186082,
+  "big_share": 0.6427069573648857,
+  "top3": 0.606,
+  "best_small_views": 134043,
+  "best_small_subs": 43000,
+  "best_small_channel": "SumanTV Prime Telugu",
+  "best_small_title": "Montha Cyclone LIVE🔴: తీవ్ర తుఫాన్ గా బలపడిన మొంథా.. | Heavy Rain in AP | @SumanTVPrimeTel",
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "SumanTV Kadapa",
+    421493,
+    106000
+   ],
+   [
+    "TV9 Telugu Live",
+    419116,
+    14600000
+   ],
+   [
+    "TV9 Telugu Live",
+    378898,
+    14600000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "H3 rocket Flight 8 failure",
+  "domain": "other",
+  "lang": "ja",
+  "country": "JP",
+  "query": "H3ロケット 打ち上げ",
+  "streams": 22,
+  "channels": 17,
+  "total_views": 1714243,
+  "small_views": 289421,
+  "small_share": 0.16883312342532536,
+  "big_share": 0.37593503371459003,
+  "top3": 0.587,
+  "best_small_views": 84677,
+  "best_small_subs": 43800,
+  "best_small_channel": "NVS",
+  "best_small_title": "H３ロケット8号機 「みちびき5号機」打上げ / H3 Rocket F8 QZS-5 Launch",
+  "wiki_peak": 18893,
+  "wiki_spike": 52.8,
+  "top": [
+   [
+    "JAXA | 宇宙航空研究開発機構",
+    468040,
+    446000
+   ],
+   [
+    "ウェザーニュース",
+    180634,
+    1680000
+   ],
+   [
+    "ANNnewsCH",
+    176695,
+    5090000
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Colombia presidential runoff 2026",
+  "domain": "politics",
+  "lang": "es",
+  "country": "CO",
+  "query": "resultados segunda vuelta Colombia en vivo",
+  "streams": 50,
+  "channels": 31,
+  "total_views": 16955321,
+  "small_views": 271285,
+  "small_share": 0.016,
+  "big_share": 0.712,
+  "top3": 0.283,
+  "best_small_views": 126503,
+  "best_small_subs": 42800,
+  "best_small_channel": "Armando Gamboa News",
+  "best_small_title": "EN VIVO: ¿Puede Cepeda revertir 250 mil votos de Abelardo?",
+  "wiki_peak": 168686,
+  "wiki_spike": 13.1,
+  "top": [
+   [
+    "Caracol Radio",
+    1707624,
+    1280000
+   ],
+   [
+    "Noticias RCN",
+    1185016,
+    1430000
+   ],
+   [
+    "Soy Fabian Dicosta",
+    1104284,
+    1740000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Italy justice referendum 2026",
+  "domain": "politics",
+  "lang": "it",
+  "country": "IT",
+  "query": "referendum giustizia risultati diretta",
+  "streams": 12,
+  "channels": 11,
+  "total_views": 493081,
+  "small_views": 271265,
+  "small_share": 0.5501428771337772,
+  "big_share": 0.20362171732433412,
+  "top3": 0.722,
+  "best_small_views": 163259,
+  "best_small_subs": 39200,
+  "best_small_channel": "Il Post",
+  "best_small_title": "Il Post Live – Il referendum sulla giustizia in diretta",
+  "wiki_peak": 22778,
+  "wiki_spike": 9.5,
+  "top": [
+   [
+    "Il Post",
+    163259,
+    39200
+   ],
+   [
+    "Fanpage.it",
+    100402,
+    3330000
+   ],
+   [
+    "Il Fatto Quotidiano",
+    73239,
+    911000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Total lunar eclipse Mar 3 2026",
+  "domain": "other",
+  "lang": "zh-Hant",
+  "country": "TW",
+  "query": "月全食 直播",
+  "streams": 18,
+  "channels": 17,
+  "total_views": 613509,
+  "small_views": 268892,
+  "small_share": 0.4382853389273833,
+  "big_share": 0.31202965237673774,
+  "top3": 0.579,
+  "best_small_views": 153947,
+  "best_small_subs": 12700,
+  "best_small_channel": "臺北天文館YT",
+  "best_small_title": "元宵紅月看天文館！2026/3/3月全食現場直播",
+  "wiki_peak": 5755,
+  "wiki_spike": 26.9,
+  "top": [
+   [
+    "臺北天文館YT",
+    153947,
+    12700
+   ],
+   [
+    "台視新聞 TTV NEWS",
+    133670,
+    1660000
+   ],
+   [
+    "新聞龍捲風",
+    67627,
+    583000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Winter Storm Fern",
+  "domain": "hazard",
+  "lang": "es",
+  "country": "MX",
+  "query": "tormenta invernal en vivo",
+  "streams": 24,
+  "channels": 34,
+  "total_views": 893760,
+  "small_views": 268892,
+  "small_share": 0.3008548156104547,
+  "big_share": 0.3492056032939492,
+  "top3": 0.294,
+  "best_small_views": 64517,
+  "best_small_subs": 805,
+  "best_small_channel": "Telemundo Nashville",
+  "best_small_title": "EN VIVO: Cobertura especial de la tormenta invernal en Nashville",
+  "wiki_peak": 1133,
+  "wiki_spike": 113.3,
+  "top": [
+   [
+    "UNIVISION DALLAS FORT WORTH",
+    163556,
+    133000
+   ],
+   [
+    "Noticias Telemundo",
+    96043,
+    9350000
+   ],
+   [
+    "Aristegui Noticias",
+    92450,
+    2200000
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Thailand general election 2026",
+  "domain": "politics",
+  "lang": "th",
+  "country": "TH",
+  "query": "ผลเลือกตั้ง 2569 สด",
+  "streams": 46,
+  "channels": 33,
+  "total_views": 11771679,
+  "small_views": 235434,
+  "small_share": 0.02,
+  "big_share": 0.894,
+  "top3": 0.649,
+  "best_small_views": 211521,
+  "best_small_subs": 61500,
+  "best_small_channel": "Ubon Connect",
+  "best_small_title": "รายงานผลการเลือกตั้งอุบลราชธานี 2569 (อย่างไม่เป็นทางการ)",
+  "wiki_peak": 33414,
+  "wiki_spike": 11.6,
+  "top": [
+   [
+    "THE STANDARD",
+    4516164,
+    4550000
+   ],
+   [
+    "Thairath News - ข่าวไทยรัฐ",
+    1485386,
+    20800000
+   ],
+   [
+    "TNN Originals",
+    885045,
+    330000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Typhoon Dolphin (台風13号)",
+  "domain": "hazard",
+  "lang": "ja",
+  "country": "JP",
+  "query": "台風13号",
+  "streams": 37,
+  "channels": 7,
+  "total_views": 1286518,
+  "small_views": 232204,
+  "small_share": 0.1804902846287421,
+  "big_share": 0.6805104942177257,
+  "top3": 0.878,
+  "best_small_views": 69878,
+  "best_small_subs": 25800,
+  "best_small_channel": "武c日記",
+  "best_small_title": "【沖縄LIVE】台風13号が最接近…暴風雨の沖縄をリアルタイム配信",
+  "wiki_peak": 1627,
+  "wiki_spike": 5.2,
+  "top": [
+   [
+    "Earth Uncut TV",
+    122660,
+    253000
+   ],
+   [
+    "武c日記",
+    69878,
+    25800
+   ],
+   [
+    "ウェザーニュース",
+    68081,
+    1680000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Houthi strikes on Saudi Arabia (Oct 2026)",
+  "domain": "conflict",
+  "lang": "en",
+  "country": "US",
+  "query": "Houthi attack Riyadh live",
+  "streams": 48,
+  "channels": 22,
+  "total_views": 13721524,
+  "small_views": 204399,
+  "small_share": 0.01489623164307405,
+  "big_share": 0.7384001951969766,
+  "top3": 0.512,
+  "best_small_views": 204399,
+  "best_small_subs": 41200,
+  "best_small_channel": "Inkhabar Bihar",
+  "best_small_title": "Saudia Airlines Plane Attack LIVE : Riyadh Airport Airbus A320 पर मिसाइल Attack!",
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "BBC News Hindi",
+    996122,
+    22000000
+   ],
+   [
+    "BBC News Hindi",
+    807188,
+    22000000
+   ],
+   [
+    "BBC News Hindi",
+    759128,
+    22000000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Total lunar eclipse Mar 3 2026",
+  "domain": "other",
+  "lang": "es",
+  "country": "MX",
+  "query": "eclipse lunar en vivo",
+  "streams": 40,
+  "channels": 39,
+  "total_views": 3440922,
+  "small_views": 193887,
+  "small_share": 0.056347397587042075,
+  "big_share": 0.4549417278275997,
+  "top3": 0.386,
+  "best_small_views": 39434,
+  "best_small_subs": 12300,
+  "best_small_channel": "iaunam",
+  "best_small_title": "Eclipse Total de Luna, 3 de marzo de 2026",
+  "wiki_peak": 17164,
+  "wiki_spike": 26.4,
+  "top": [
+   [
+    "Associated Press",
+    513373,
+    4690000
+   ],
+   [
+    "CNBC-TV18",
+    453101,
+    5260000
+   ],
+   [
+    "timeanddate",
+    394728,
+    130000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Portugal presidential election 2026",
+  "domain": "politics",
+  "lang": "pt",
+  "country": "PT",
+  "query": "presidenciais 2026 resultados em direto",
+  "streams": 25,
+  "channels": 16,
+  "total_views": 595163,
+  "small_views": 181541,
+  "small_share": 0.3050273622520217,
+  "big_share": 0.0,
+  "top3": 0.762,
+  "best_small_views": 34299,
+  "best_small_subs": 2680,
+  "best_small_channel": "Arte Muscular",
+  "best_small_title": "Eleições Presidenciais 2026 – Segunda Volta | Resultados Provisórios",
+  "wiki_peak": 58991,
+  "wiki_spike": 5.4,
+  "top": [
+   [
+    "Gonçalo Sousa",
+    215016,
+    228000
+   ],
+   [
+    "Gonçalo Sousa",
+    135789,
+    228000
+   ],
+   [
+    "Arte Muscular",
+    34299,
+    2680
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Artemis II crewed lunar flyby",
+  "domain": "other",
+  "lang": "ja",
+  "country": "JP",
+  "query": "アルテミス2 ライブ",
+  "streams": 50,
+  "channels": 34,
+  "total_views": 58831100,
+  "small_views": 176493,
+  "small_share": 0.003,
+  "big_share": 0.981,
+  "top3": 0.968,
+  "best_small_views": 51405,
+  "best_small_subs": 32000,
+  "best_small_channel": "REP AMERICA",
+  "best_small_title": "📱Artemis 2 LIVE: NASA Launches Crew Toward the Moon!",
+  "wiki_peak": 11384,
+  "wiki_spike": 106.4,
+  "top": [
+   [
+    "NASA",
+    28150580,
+    15100000
+   ],
+   [
+    "NASA",
+    27778762,
+    15100000
+   ],
+   [
+    "Tousi TV",
+    307220,
+    1680000
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "NYC mayoral election 2025",
+  "domain": "politics",
+  "lang": "en",
+  "country": "US",
+  "query": "NYC mayor election results live",
+  "streams": 50,
+  "channels": 38,
+  "total_views": 8285594,
+  "small_views": 173997,
+  "small_share": 0.021,
+  "big_share": 0.801,
+  "top3": 0.375,
+  "best_small_views": 112590,
+  "best_small_subs": 9950,
+  "best_small_channel": "Hip Hop Lobbyist ",
+  "best_small_title": "Election Night 2025 LIVESTREAM RECAP: Socialist Wins NYC, Democrats Sweep - Full Analysis",
+  "wiki_peak": 814008,
+  "wiki_spike": 13.5,
+  "top": [
+   [
+    "Associated Press",
+    1341756,
+    4690000
+   ],
+   [
+    "PBS NewsHour",
+    1083654,
+    5390000
+   ],
+   [
+    "ABC News",
+    678543,
+    19900000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Iran uprising (Jan 2026)",
+  "domain": "conflict",
+  "lang": "en",
+  "country": "US",
+  "query": "Iran protests live",
+  "streams": 49,
+  "channels": 24,
+  "total_views": 6302780,
+  "small_views": 173880,
+  "small_share": 0.027587826324256916,
+  "big_share": 0.730493052272172,
+  "top3": 0.76,
+  "best_small_views": 94562,
+  "best_small_subs": 32000,
+  "best_small_channel": "REP AMERICA",
+  "best_small_title": "LIVE - Iran Revolution - Biggest Protests in History",
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "Tousi TV",
+    1830512,
+    1680000
+   ],
+   [
+    "Firstpost",
+    521587,
+    9790000
+   ],
+   [
+    "Tousi TV",
+    354680,
+    1680000
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Brazil election round 1 (Oct 4 2026)",
+  "domain": "politics",
+  "lang": "en",
+  "country": "US",
+  "query": "Brazil election results live",
+  "streams": 50,
+  "channels": 37,
+  "total_views": 5369374,
+  "small_views": 166451,
+  "small_share": 0.031,
+  "big_share": 0.701,
+  "top3": 0.377,
+  "best_small_views": 42556,
+  "best_small_subs": 92900,
+  "best_small_channel": "Canal Monarquia Livre",
+  "best_small_title": "Apuração eleições 2026. Lula ou flavio Bolsonaro? Canal Monarquia Livre está ao vivo!",
+  "wiki_peak": 247828,
+  "wiki_spike": 25.2,
+  "top": [
+   [
+    "UOL",
+    675782,
+    5770000
+   ],
+   [
+    "Agustín Laje Arrigoni",
+    491523,
+    2720000
+   ],
+   [
+    "Opera Mundi",
+    415190,
+    559000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Typhoon Champi (calibration)",
+  "domain": "hazard",
+  "lang": "zh-Hant",
+  "country": "TW",
+  "query": "薔琵 颱風",
+  "streams": 50,
+  "channels": 19,
+  "total_views": 5558389,
+  "small_views": 143135,
+  "small_share": 0.02575116639011771,
+  "big_share": 0.4284723505317818,
+  "top3": 0.638,
+  "best_small_views": 58098,
+  "best_small_subs": 52000,
+  "best_small_channel": "東森新聞 EBC LIVE",
+  "best_small_title": "🔴強颱薔琵又西修「特大暴風圈恐罩全台」！氣象署最快11:30發陸上警報  ⁨@EBCLIVE",
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "新聞龍捲風",
+    996463,
+    583000
+   ],
+   [
+    "新聞龍捲風",
+    855147,
+    583000
+   ],
+   [
+    "新聞龍捲風",
+    704166,
+    583000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Typhoon Dolphin (台風13号)",
+  "domain": "hazard",
+  "lang": "zh-Hant",
+  "country": "TW",
+  "query": "白海豚颱風",
+  "streams": 47,
+  "channels": 15,
+  "total_views": 1158705,
+  "small_views": 133349,
+  "small_share": 0.11508451245140049,
+  "big_share": 0.5379937084935338,
+  "top3": 0.579,
+  "best_small_views": 57656,
+  "best_small_subs": 70700,
+  "best_small_channel": "早安中國",
+  "best_small_title": "太兇殘！3城管被抓；白海豚發威，上海降雨破154年紀錄！夏付剛後續，漯河的梨惹到誰了？85秒爆炸！長征7號二次發射失敗；川普終於舉起致勝大旗！ #早安中國 08.10.2026",
+  "wiki_peak": 6520,
+  "wiki_spike": 8.7,
+  "top": [
+   [
+    "新聞龍捲風",
+    135276,
+    583000
+   ],
+   [
+    "新聞龍捲風",
+    71146,
+    583000
+   ],
+   [
+    "新聞龍捲風",
+    68249,
+    583000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Starship Flight 14 (first orbit)",
+  "domain": "other",
+  "lang": "pt",
+  "country": "BR",
+  "query": "Starship ao vivo",
+  "streams": 43,
+  "channels": 42,
+  "total_views": 7311350,
+  "small_views": 133276,
+  "small_share": 0.01822864450477682,
+  "big_share": 0.5814920637091645,
+  "top3": 0.497,
+  "best_small_views": 37072,
+  "best_small_subs": 70900,
+  "best_small_channel": "SpaceXStorm",
+  "best_small_title": "DIRECTO: Lanzamiento Starship Flight 14 de SpaceX",
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "Everyday Astronaut",
+    1463304,
+    2000000
+   ],
+   [
+    "NASASpaceflight",
+    1444649,
+    1530000
+   ],
+   [
+    "Spaceflight Now",
+    751719,
+    489000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Starship Flight 14 (first orbit)",
+  "domain": "other",
+  "lang": "es",
+  "country": "MX",
+  "query": "Starship en vivo",
+  "streams": 42,
+  "channels": 42,
+  "total_views": 7304370,
+  "small_views": 133276,
+  "small_share": 0.018246063657782943,
+  "big_share": 0.5810921407321918,
+  "top3": 0.496,
+  "best_small_views": 37072,
+  "best_small_subs": 70900,
+  "best_small_channel": "SpaceXStorm",
+  "best_small_title": "DIRECTO: Lanzamiento Starship Flight 14 de SpaceX",
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "Everyday Astronaut",
+    1463304,
+    2000000
+   ],
+   [
+    "NASASpaceflight",
+    1444649,
+    1530000
+   ],
+   [
+    "Spaceflight Now",
+    751719,
+    489000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Gaza ceasefire + hostage release",
+  "domain": "conflict",
+  "lang": "en",
+  "country": "US",
+  "query": "hostage release live",
+  "streams": 49,
+  "channels": 28,
+  "total_views": 6256638,
+  "small_views": 130502,
+  "small_share": 0.02085816695803721,
+  "big_share": 0.7202277005637853,
+  "top3": 0.622,
+  "best_small_views": 130502,
+  "best_small_subs": 27100,
+  "best_small_channel": "Political Cow",
+  "best_small_title": "LIVE: Trump lands in Tel Aviv, Israel-Hamas ceasefire holds,  hostage release begins soon ",
+  "wiki_peak": 71571,
+  "wiki_spike": 7157.1,
+  "top": [
+   [
+    "Sky News",
+    2127173,
+    9380000
+   ],
+   [
+    "i24NEWS English",
+    847222,
+    679000
+   ],
+   [
+    "ILTV Israel News",
+    460814,
+    875000
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Typhoon Dolphin (台風13号)",
+  "domain": "hazard",
+  "lang": "en",
+  "country": "JP",
+  "query": "Typhoon Dolphin live",
+  "streams": 50,
+  "channels": 16,
+  "total_views": 2723317,
+  "small_views": 119826,
+  "small_share": 0.044,
+  "big_share": 0.837,
+  "top3": 0.614,
+  "best_small_views": 33484,
+  "best_small_subs": 17600,
+  "best_small_channel": "AUTONOMY 任運逍遙",
+  "best_small_title": "🚗 Typhoon Dolphin Drive 🌀 TAIPEI CHILL MUSIC 🎧 SUNDAY DRIVE 🎵",
+  "wiki_peak": 4120,
+  "wiki_spike": 8.0,
+  "top": [
+   [
+    "KBS News",
+    288235,
+    3720000
+   ],
+   [
+    "GMA News",
+    173827,
+    18300000
+   ],
+   [
+    "DOST-PAGASA Weather Report",
+    171000,
+    1180000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "G4 geomagnetic storm (Nov 2025)",
+  "domain": "hazard",
+  "lang": "en",
+  "country": "US",
+  "query": "northern lights live",
+  "streams": 47,
+  "channels": 38,
+  "total_views": 231453,
+  "small_views": 112616,
+  "small_share": 0.4865609864637745,
+  "big_share": 0.0,
+  "top3": 0.405,
+  "best_small_views": 26536,
+  "best_small_subs": 61500,
+  "best_small_channel": "John McKinney",
+  "best_small_title": "Northern Lights Nebraska - Live As It Happened ",
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "Chuck's Astrophotography",
+    39917,
+    695000
+   ],
+   [
+    "FOX 2 Detroit",
+    36268,
+    505000
+   ],
+   [
+    "John McKinney",
+    26536,
+    61500
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Starship Flight 14 (first orbit)",
+  "domain": "other",
+  "lang": "ja",
+  "country": "JP",
+  "query": "スターシップ 打ち上げ ライブ",
+  "streams": 8,
+  "channels": 23,
+  "total_views": 219590,
+  "small_views": 97211,
+  "small_share": 0.4426932009654356,
+  "big_share": 0.5573067990345644,
+  "top3": 0.76,
+  "best_small_views": 67130,
+  "best_small_subs": 93500,
+  "best_small_channel": "宇推くりあ -★Clear Usui Rocket ch.★-",
+  "best_small_title": "【#starship 】初の地球周回軌道投入！！SpaceXの再使用ロケット実験を実況解説！✨  #宇推くりあ",
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "ANNnewsCH",
+    122379,
+    5090000
+   ],
+   [
+    "宇推くりあ -★Clear Usui Rocket ch.★-",
+    67130,
+    93500
+   ],
+   [
+    "マックスむらいの宇宙株LIVE",
+    25741,
+    28100
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "UPS Flight 2976 crash (Louisville)",
+  "domain": "other",
+  "lang": "en",
+  "country": "US",
+  "query": "UPS plane crash Louisville live",
+  "streams": 50,
+  "channels": 35,
+  "total_views": 3649144,
+  "small_views": 91229,
+  "small_share": 0.025,
+  "big_share": 0.406,
+  "top3": 0.344,
+  "best_small_views": 36534,
+  "best_small_subs": 59800,
+  "best_small_channel": "Captains Speaking - The Mentour Pilot Podcast",
+  "best_small_title": "UPS Flight 2976 Crash - Pilots React LIVE",
+  "wiki_peak": 395362,
+  "wiki_spike": 39536.2,
+  "top": [
+   [
+    "WLKY News Louisville",
+    374589,
+    211000
+   ],
+   [
+    "Mentour Pilot",
+    326904,
+    2520000
+   ],
+   [
+    "Agenda-Free TV",
+    308808,
+    957000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Hormuz crisis / Iran renewed hostilities",
+  "domain": "conflict",
+  "lang": "ja",
+  "country": "JP",
+  "query": "ホルムズ海峡 最新",
+  "streams": 9,
+  "channels": 14,
+  "total_views": 848908,
+  "small_views": 86531,
+  "small_share": 0.10193212927667074,
+  "big_share": 0.43082878238866873,
+  "top3": 0.684,
+  "best_small_views": 86531,
+  "best_small_subs": 59800,
+  "best_small_channel": "FXマシーンくにお",
+  "best_small_title": "【FXライブ】ドル円急落！ホルムズ海峡早期解放か！？ ドル円トレード配信",
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "ひろゆき, hiroyuki",
+    335037,
+    1650000
+   ],
+   [
+    "天才おにや",
+    147694,
+    204000
+   ],
+   [
+    "長谷川幸洋のNEWSチャンネル",
+    89890,
+    318000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "US strikes on Venezuela / Maduro captured",
+  "domain": "conflict",
+  "lang": "pt",
+  "country": "BR",
+  "query": "Venezuela ataque ao vivo",
+  "streams": 45,
+  "channels": 38,
+  "total_views": 20017546,
+  "small_views": 82622,
+  "small_share": 0.004127478962706018,
+  "big_share": 0.514703051013346,
+  "top3": 0.399,
+  "best_small_views": 82622,
+  "best_small_subs": 35300,
+  "best_small_channel": "Esporte Agora Web Rádio",
+  "best_small_title": "URGENTE: PRONUNCIAMENTO TRUMP AO VIVO SOBRE VENEZUELA/INVASÃO VENEZUELA E CAPTURA DE MADUR",
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "Estrategias Militares",
+    2033593,
+    573000
+   ],
+   [
+    "Bowery Newsroom - Guarimba Digital",
+    1536442,
+    432000
+   ],
+   [
+    "Estrategias Militares",
+    1498177,
+    573000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Typhoon Champi (calibration)",
+  "domain": "hazard",
+  "lang": "ja",
+  "country": "JP",
+  "query": "台風30号",
+  "streams": 34,
+  "channels": 22,
+  "total_views": 324470,
+  "small_views": 71899,
+  "small_share": 0.22158905291706474,
+  "big_share": 0.7580978210620396,
+  "top3": 0.871,
+  "best_small_views": 17588,
+  "best_small_subs": 4310,
+  "best_small_channel": "Houston Hurricanes / Flight Simming",
+  "best_small_title": "【LIVE】猛烈な台風30号 先島諸島直撃のおそれ｜900hPa 最新進路・衛星画像｜Super Typhoon Champi Live",
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "ウェザーニュース",
+    70167,
+    1680000
+   ],
+   [
+    "ウェザーニュース",
+    58169,
+    1680000
+   ],
+   [
+    "ウェザーニュース",
+    48467,
+    1680000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Global Sumud Flotilla interception",
+  "domain": "conflict",
+  "lang": "es",
+  "country": "ES",
+  "query": "Flotilla Gaza en directo",
+  "streams": 47,
+  "channels": 24,
+  "total_views": 1772927,
+  "small_views": 66144,
+  "small_share": 0.037307796654910214,
+  "big_share": 0.4412116234904201,
+  "top3": 0.649,
+  "best_small_views": 48871,
+  "best_small_subs": 60300,
+  "best_small_channel": "LA LUPA ISRAEL",
+  "best_small_title": "REVELAN: LA FLOTILLA A GAZA, UN PROYECTO DE HAMÁ$ - Directo completo de hoy, 30/9/25",
+  "wiki_peak": 12891,
+  "wiki_spike": 11.7,
+  "top": [
+   [
+    "El Mundo",
+    368589,
+    1670000
+   ],
+   [
+    "Estrategias Militares",
+    330062,
+    573000
+   ],
+   [
+    "Estrategias Militares",
+    227429,
+    573000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Rio police mega-raid (Operação Contenção)",
+  "domain": "conflict",
+  "lang": "pt",
+  "country": "BR",
+  "query": "operação Complexo da Penha ao vivo",
+  "streams": 5,
+  "channels": 6,
+  "total_views": 918466,
+  "small_views": 50311,
+  "small_share": 0.05477720459984365,
+  "big_share": 0.8780412121951167,
+  "top3": 0.964,
+  "best_small_views": 49195,
+  "best_small_subs": 57900,
+  "best_small_channel": "Repórter Eudogio",
+  "best_small_title": "Imagens FACTUAL RJ - direto do Rio de Janeiro, operação no complexo do Alemão e da Penha -",
+  "wiki_peak": 4437,
+  "wiki_spike": 443.7,
+  "top": [
+   [
+    "Factual RJ",
+    803931,
+    1320000
+   ],
+   [
+    "OPRACINHA",
+    61704,
+    443000
+   ],
+   [
+    "Repórter Eudogio",
+    49195,
+    57900
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Artemis II crewed lunar flyby",
+  "domain": "other",
+  "lang": "zh-Hant",
+  "country": "TW",
+  "query": "阿提米絲2號 直播",
+  "streams": 39,
+  "channels": 22,
+  "total_views": 47413421,
+  "small_views": 47413,
+  "small_share": 0.001,
+  "big_share": 0.997,
+  "top3": 0.996,
+  "best_small_views": 12106,
+  "best_small_subs": 23700,
+  "best_small_channel": "Science Frontier (科學新知)",
+  "best_small_title": "軍工開物 2026-04-07 直播Artemis 2太空船抵月，見證人類與地球距離破紀錄的一刻。NASA太空科技質素與SpaceX比較，為何大眾不滿NASA直播？| 主持：陳博 ",
+  "wiki_peak": 11960,
+  "wiki_spike": 78.4,
+  "top": [
+   [
+    "NASA",
+    27778762,
+    15100000
+   ],
+   [
+    "NASA",
+    19278207,
+    15100000
+   ],
+   [
+    "新唐人電視台",
+    62603,
+    1370000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Crypto liquidation crash (Oct 2025)",
+  "domain": "other",
+  "lang": "en",
+  "country": "US",
+  "query": "bitcoin crash live",
+  "streams": 44,
+  "channels": 31,
+  "total_views": 124081,
+  "small_views": 45282,
+  "small_share": 0.3649390317615106,
+  "big_share": 0.05706756070631281,
+  "top3": 0.673,
+  "best_small_views": 16459,
+  "best_small_subs": 51900,
+  "best_small_channel": "Andre Greystone Channel",
+  "best_small_title": "Analisa Pagi LIVE - Bitcoin dan Cryptomarket Extrime Crash",
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "AllinCrypto",
+    32762,
+    167000
+   ],
+   [
+    "TraderTV Live",
+    25501,
+    592000
+   ],
+   [
+    "Andre Greystone Channel",
+    16459,
+    51900
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "G4 geomagnetic storm (Nov 2025)",
+  "domain": "hazard",
+  "lang": "it",
+  "country": "IT",
+  "query": "aurora boreale diretta",
+  "streams": 10,
+  "channels": 8,
+  "total_views": 59685,
+  "small_views": 41969,
+  "small_share": 0.7031750020943286,
+  "big_share": 0.0,
+  "top3": 0.965,
+  "best_small_views": 33968,
+  "best_small_subs": 7950,
+  "best_small_channel": "North Dakota Dual Aurora Cameras",
+  "best_small_title": "North Dakota Dual Aurora Camera (NoDDAC) Live Stream",
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "North Dakota Dual Aurora Cameras",
+    33968,
+    7950
+   ],
+   [
+    "Local Team",
+    15852,
+    558000
+   ],
+   [
+    "North Dakota Dual Aurora Cameras",
+    2858,
+    7950
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "G4 geomagnetic storm (Nov 2025)",
+  "domain": "hazard",
+  "lang": "es",
+  "country": "MX",
+  "query": "aurora boreal en vivo",
+  "streams": 3,
+  "channels": 4,
+  "total_views": 72272,
+  "small_views": 36004,
+  "small_share": 0.4981735665264556,
+  "big_share": 0.0,
+  "top3": 0.998,
+  "best_small_views": 33968,
+  "best_small_subs": 7950,
+  "best_small_channel": "North Dakota Dual Aurora Cameras",
+  "best_small_title": "North Dakota Dual Aurora Camera (NoDDAC) Live Stream",
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "FOX 2 Detroit",
+    36268,
+    505000
+   ],
+   [
+    "North Dakota Dual Aurora Cameras",
+    33968,
+    7950
+   ],
+   [
+    "NWW116",
+    2036,
+    34900
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Global Sumud Flotilla interception",
+  "domain": "conflict",
+  "lang": "it",
+  "country": "IT",
+  "query": "Flotilla diretta",
+  "streams": 49,
+  "channels": 19,
+  "total_views": 1940019,
+  "small_views": 29130,
+  "small_share": 0.015015316860298791,
+  "big_share": 0.6385561172339034,
+  "top3": 0.629,
+  "best_small_views": 18235,
+  "best_small_subs": 77500,
+  "best_small_channel": "Data Urgente",
+  "best_small_title": "LA FLOTILLA CERCA DE GAZA- ALERTA",
+  "wiki_peak": 58258,
+  "wiki_spike": 9.5,
+  "top": [
+   [
+    "Fanpage.it",
+    371445,
+    3330000
+   ],
+   [
+    "Local Team",
+    130424,
+    558000
+   ],
+   [
+    "CNBC-TV18",
+    115330,
+    5260000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "PLA Justice Mission-2025 drills around Taiwan",
+  "domain": "conflict",
+  "lang": "zh-Hant",
+  "country": "TW",
+  "query": "共軍 軍演 直播",
+  "streams": 44,
+  "channels": 30,
+  "total_views": 2117577,
+  "small_views": 28790,
+  "small_share": 0.013595727569764878,
+  "big_share": 0.6961276968913055,
+  "top3": 0.425,
+  "best_small_views": 28790,
+  "best_small_subs": 8930,
+  "best_small_channel": "張穎齊說政經",
+  "best_small_title": "「張穎齊說政經」12/30（二）20:00直播！圍台軍演打臉 #雙城論壇 ？ #張穎齊說政經 強勢回歸第一手大爆卦！ #賴清德 #習近平 #蔣萬安 #鄭麗文",
+  "wiki_peak": 8322,
+  "wiki_spike": 832.2,
+  "top": [
+   [
+    "頭條開講",
+    314360,
+    1370000
+   ],
+   [
+    "館長惡名昭彰",
+    222757,
+    1380000
+   ],
+   [
+    "頭條開講",
+    130248,
+    1370000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Iran war opening phase (2026)",
+  "domain": "conflict",
+  "lang": "tl",
+  "country": "PH",
+  "query": "giyera Iran Israel balita",
+  "streams": 4,
+  "channels": 4,
+  "total_views": 216729,
+  "small_views": 23033,
+  "small_share": 0.10627557917952835,
+  "big_share": 0.7786867470435429,
+  "top3": 0.996,
+  "best_small_views": 22010,
+  "best_small_subs": 6990,
+  "best_small_channel": "KaKI News Channel ",
+  "best_small_title": "PINAS POSIBLE RAW MADAMAY SA GIYERA NG ISRAEL, US AT IRAN?",
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "Firstpost",
+    168764,
+    9790000
+   ],
+   [
+    "Atty. Ranny Randolf B. Libayan (BATASnatin 'To)",
+    24932,
+    322000
+   ],
+   [
+    "KaKI News Channel ",
+    22010,
+    6990
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Fall of El Fasher (Sudan)",
+  "domain": "conflict",
+  "lang": "en",
+  "country": "GB",
+  "query": "El Fasher Sudan",
+  "streams": 35,
+  "channels": 33,
+  "total_views": 256059,
+  "small_views": 21258,
+  "small_share": 0.08301992900073811,
+  "big_share": 0.8340968292463846,
+  "top3": 0.6,
+  "best_small_views": 13537,
+  "best_small_subs": 55300,
+  "best_small_channel": "Zam Yahaya Official",
+  "best_small_title": "Perang Saudara Sudan - Apa Cerita Khartoum & El Fasher Dan  Apa Yang Boleh Kita Pelajari?",
+  "wiki_peak": 6229,
+  "wiki_spike": 622.9,
+  "top": [
+   [
+    "Firstpost",
+    47553,
+    9790000
+   ],
+   [
+    "CNN-News18",
+    37820,
+    10900000
+   ],
+   [
+    "Firstpost",
+    31040,
+    9790000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Zona da Mata floods (Minas Gerais)",
+  "domain": "hazard",
+  "lang": "pt",
+  "country": "BR",
+  "query": "chuva Juiz de Fora ao vivo",
+  "streams": 25,
+  "channels": 18,
+  "total_views": 99050,
+  "small_views": 19107,
+  "small_share": 0.19290257445734477,
+  "big_share": 0.29557799091368,
+  "top3": 0.746,
+  "best_small_views": 4590,
+  "best_small_subs": 31300,
+  "best_small_channel": "Tribuna de Minas",
+  "best_small_title": "DESASTRE CLIMÁTICO em Juiz de Fora: Cobertura Especial, Orientações e Próximos Passos - AO",
+  "wiki_peak": 874,
+  "wiki_spike": 87.4,
+  "top": [
+   [
+    "João notícias ",
+    36089,
+    113000
+   ],
+   [
+    "Poder360",
+    20663,
+    1730000
+   ],
+   [
+    "Padre Pierre Maurício",
+    7760,
+    103000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Fall of El Fasher (Sudan)",
+  "domain": "conflict",
+  "lang": "fr",
+  "country": "FR",
+  "query": "El Fasher Soudan",
+  "streams": 22,
+  "channels": 30,
+  "total_views": 211826,
+  "small_views": 17825,
+  "small_share": 0.0841492545768697,
+  "big_share": 0.904596225203705,
+  "top3": 0.613,
+  "best_small_views": 13537,
+  "best_small_subs": 55300,
+  "best_small_channel": "Zam Yahaya Official",
+  "best_small_title": "Perang Saudara Sudan - Apa Cerita Khartoum & El Fasher Dan  Apa Yang Boleh Kita Pelajari?",
+  "wiki_peak": 1109,
+  "wiki_spike": 110.9,
+  "top": [
+   [
+    "Firstpost",
+    47553,
+    9790000
+   ],
+   [
+    "CNN-News18",
+    37820,
+    10900000
+   ],
+   [
+    "Firstpost",
+    31040,
+    9790000
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Chile presidential runoff 2025",
+  "domain": "politics",
+  "lang": "es",
+  "country": "CL",
+  "query": "resultados segunda vuelta Chile en vivo",
+  "streams": 26,
+  "channels": 21,
+  "total_views": 2413398,
+  "small_views": 16894,
+  "small_share": 0.007,
+  "big_share": 0.918,
+  "top3": 0.717,
+  "best_small_views": 10215,
+  "best_small_subs": 3090,
+  "best_small_channel": "Latino Actual",
+  "best_small_title": "🔴Elecciones Chile 2025: RESULTADOS OFICIALES en vivo",
+  "wiki_peak": 68802,
+  "wiki_spike": 13.4,
+  "top": [
+   [
+    "MEGA Oficial",
+    1084693,
+    10400000
+   ],
+   [
+    "El 13",
+    346648,
+    6100000
+   ],
+   [
+    "CHV Noticias",
+    298667,
+    1090000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Ebola epidemic 2026 (DRC/Uganda)",
+  "domain": "other",
+  "lang": "fr",
+  "country": "FR",
+  "query": "Ebola RDC 2026",
+  "streams": 24,
+  "channels": 23,
+  "total_views": 329435,
+  "small_views": 16344,
+  "small_share": 0.049612214852702355,
+  "big_share": 0.6531091110537739,
+  "top3": 0.585,
+  "best_small_views": 9027,
+  "best_small_subs": 62300,
+  "best_small_channel": "Kerwin Mayizo",
+  "best_small_title": "Analyse du 30 mai 2026:Changement de la constitution ou l'ebola de la politique congolaise",
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "Olá, Ciência!",
+    49037,
+    2640000
+   ],
+   [
+    "BBC News Swahili",
+    28310,
+    1010000
+   ],
+   [
+    "BBC News Swahili",
+    27580,
+    1010000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Bondi Beach shooting",
+  "domain": "conflict",
+  "lang": "en",
+  "country": "AU",
+  "query": "Bondi shooting live",
+  "streams": 48,
+  "channels": 34,
+  "total_views": 3686800,
+  "small_views": 14448,
+  "small_share": 0.003918845611370294,
+  "big_share": 0.7906222198112184,
+  "top3": 0.496,
+  "best_small_views": 14448,
+  "best_small_subs": 24200,
+  "best_small_channel": "NSW Police Force",
+  "best_small_title": "PRESS CONFERENCE: Bondi Beach Shooting",
+  "wiki_peak": 18754,
+  "wiki_spike": 1875.4,
+  "top": [
+   [
+    "7NEWS Australia",
+    657476,
+    2260000
+   ],
+   [
+    "Agenda-Free TV",
+    336952,
+    957000
+   ],
+   [
+    "Agenda-Free TV",
+    332232,
+    957000
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Chile wildfires (Ñuble/Biobío)",
+  "domain": "hazard",
+  "lang": "en",
+  "country": "CL",
+  "query": "Chile wildfires live",
+  "streams": 33,
+  "channels": 22,
+  "total_views": 54875,
+  "small_views": 13938,
+  "small_share": 0.254,
+  "big_share": 0.715,
+  "top3": 0.551,
+  "best_small_views": 13899,
+  "best_small_subs": 76600,
+  "best_small_channel": "La Vereda TV",
+  "best_small_title": "Chile arde: 19 muertos, sospecha de intencionalidad y un gobierno desbordado",
+  "wiki_peak": 6127,
+  "wiki_spike": 612.7,
+  "top": [
+   [
+    "La Vereda TV",
+    13899,
+    76600
+   ],
+   [
+    "Firstpost",
+    6676,
+    9790000
+   ],
+   [
+    "The Sun",
+    4631,
+    6550000
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Cloudflare global outage",
+  "domain": "other",
+  "lang": "en",
+  "country": "US",
+  "query": "Cloudflare down",
+  "streams": 16,
+  "channels": 16,
+  "total_views": 13549,
+  "small_views": 12438,
+  "small_share": 0.918,
+  "big_share": 0.082,
+  "top3": 0.824,
+  "best_small_views": 7916,
+  "best_small_subs": 55800,
+  "best_small_channel": "Larry Ragland",
+  "best_small_title": "CLOUDFLARE down globally - Major Cyber Attack?",
+  "wiki_peak": 204903,
+  "wiki_spike": 196.6,
+  "top": [
+   [
+    "Larry Ragland",
+    7916,
+    55800
+   ],
+   [
+    "Arman Cungkring",
+    2128,
+    10500
+   ],
+   [
+    "NDTV",
+    1116,
+    16100000
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Crypto liquidation crash (Oct 2025)",
+  "domain": "other",
+  "lang": "es",
+  "country": "MX",
+  "query": "bitcoin caída en vivo",
+  "streams": 12,
+  "channels": 11,
+  "total_views": 35032,
+  "small_views": 10369,
+  "small_share": 0.296,
+  "big_share": 0.0,
+  "top3": 0.781,
+  "best_small_views": 2693,
+  "best_small_subs": 20400,
+  "best_small_channel": "Empire",
+  "best_small_title": "LIVE | Market Crash: What Happened and What’s Next",
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "CriptoBuzz",
+    13026,
+    125000
+   ],
+   [
+    "Chart Hackers",
+    11644,
+    219000
+   ],
+   [
+    "Empire",
+    2693,
+    20400
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "US-Russia-Ukraine peace talks (Abu Dhabi/Geneva)",
+  "domain": "conflict",
+  "lang": "en",
+  "country": "US",
+  "query": "Ukraine peace talks live",
+  "streams": 48,
+  "channels": 19,
+  "total_views": 741386,
+  "small_views": 7069,
+  "small_share": 0.009534844197219802,
+  "big_share": 0.7691351064088073,
+  "top3": 0.777,
+  "best_small_views": 7069,
+  "best_small_subs": 13200,
+  "best_small_channel": "Mornings With Ridge & Frost",
+  "best_small_title": "Mornings with Jones and Melbourne | Russia joining peace talks with Ukraine and US for fir",
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "ZDFheute Nachrichten",
+    266601,
+    1890000
+   ],
+   [
+    "George Galloway",
+    147283,
+    916000
+   ],
+   [
+    "ZDFheute Nachrichten",
+    107905,
+    1890000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "European heatwave (June 2026)",
+  "domain": "hazard",
+  "lang": "fr",
+  "country": "FR",
+  "query": "canicule en direct",
+  "streams": 10,
+  "channels": 12,
+  "total_views": 106371,
+  "small_views": 6692,
+  "small_share": 0.06291188387812467,
+  "big_share": 0.0,
+  "top3": 0.847,
+  "best_small_views": 3240,
+  "best_small_subs": 29900,
+  "best_small_channel": "Theme Park Travellers",
+  "best_small_title": "🔴[LIVE] Soldes et Canicule à Disneyland Paris !",
+  "wiki_peak": 6763,
+  "wiki_spike": 676.3,
+  "top": [
+   [
+    "Le Monde Moderne",
+    61192,
+    335000
+   ],
+   [
+    "CLPRESS / Agence de presse",
+    34505,
+    255000
+   ],
+   [
+    "Theme Park Travellers",
+    3240,
+    29900
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Hungary parliamentary election 2026",
+  "domain": "politics",
+  "lang": "en",
+  "country": "HU",
+  "query": "Hungary election results live",
+  "streams": 50,
+  "channels": 30,
+  "total_views": 1543592,
+  "small_views": 4631,
+  "small_share": 0.003,
+  "big_share": 0.232,
+  "top3": 0.457,
+  "best_small_views": 2459,
+  "best_small_subs": 1460,
+  "best_small_channel": "Forum Europaeum",
+  "best_small_title": "Hungarian Election Live: Will the Orban Era End? │ Forum Europaeum",
+  "wiki_peak": 1025494,
+  "wiki_spike": 41.8,
+  "top": [
+   [
+    "EU Made Simple",
+    224530,
+    296000
+   ],
+   [
+    "Allan Lichtman",
+    180693,
+    187000
+   ],
+   [
+    "DRM News",
+    171490,
+    973000
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "NYC mayoral election 2025",
+  "domain": "politics",
+  "lang": "es",
+  "country": "US",
+  "query": "elecciones alcalde Nueva York resultados en vivo",
+  "streams": 10,
+  "channels": 9,
+  "total_views": 355500,
+  "small_views": 3555,
+  "small_share": 0.01,
+  "big_share": 0.571,
+  "top3": 0.853,
+  "best_small_views": 3028,
+  "best_small_subs": 25600,
+  "best_small_channel": "The Political Chatter",
+  "best_small_title": "LIVE ELECTION NIGHT RESULTS: NYC MAYOR, VA & NJ GOVERNOR, CA PROP 50 AND MORE!",
+  "wiki_peak": 26417,
+  "wiki_spike": 27.5,
+  "top": [
+   [
+    "Professor Nez",
+    132079,
+    716000
+   ],
+   [
+    "Gestión Mundo",
+    85184,
+    1520000
+   ],
+   [
+    "N+ UNIVISION",
+    45061,
+    10400000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Hurricane Melissa",
+  "domain": "hazard",
+  "lang": "fr",
+  "country": "HT",
+  "query": "ouragan Melissa Haïti",
+  "streams": 36,
+  "channels": 26,
+  "total_views": 110850,
+  "small_views": 2991,
+  "small_share": 0.026982408660351828,
+  "big_share": 0.5167974740640505,
+  "top3": 0.669,
+  "best_small_views": 795,
+  "best_small_subs": 47000,
+  "best_small_channel": "LIFEINHAITI WITH MARIE",
+  "best_small_title": "First Sunny Day in Haiti After Hurricane Melissa",
+  "wiki_peak": 6816,
+  "wiki_spike": 681.6,
+  "top": [
+   [
+    "VISIONRDN",
+    35942,
+    316000
+   ],
+   [
+    "Times Of India",
+    18630,
+    6030000
+   ],
+   [
+    "Reuters",
+    18264,
+    4360000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Chile wildfires (Ñuble/Biobío)",
+  "domain": "hazard",
+  "lang": "es",
+  "country": "CL",
+  "query": "incendio forestal Penco en vivo",
+  "streams": 6,
+  "channels": 4,
+  "total_views": 130273,
+  "small_views": 2978,
+  "small_share": 0.02285968696506567,
+  "big_share": 0.6961304337813669,
+  "top3": 0.977,
+  "best_small_views": 2669,
+  "best_small_subs": 65800,
+  "best_small_channel": "Sala de Prensa",
+  "best_small_title": "🔴 EN VIVO | Catástrofe en Penco y Lirquén: Incendios Forestales afectan la Región del Biob",
+  "wiki_peak": 1719,
+  "wiki_spike": 171.9,
+  "top": [
+   [
+    "CNN Chile",
+    45292,
+    1100000
+   ],
+   [
+    "KL videos",
+    36608,
+    519000
+   ],
+   [
+    "24 Horas - TVN Chile",
+    30756,
+    2020000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Crypto liquidation crash (Oct 2025)",
+  "domain": "other",
+  "lang": "ja",
+  "country": "JP",
+  "query": "ビットコイン 暴落",
+  "streams": 5,
+  "channels": 14,
+  "total_views": 90951,
+  "small_views": 2944,
+  "small_share": 0.03236907785510879,
+  "big_share": 0.0,
+  "top3": 0.666,
+  "best_small_views": 2037,
+  "best_small_subs": 12700,
+  "best_small_channel": "ライオンじゅんさんの米国株FIREが最強",
+  "best_small_title": "【2025年10月13日速報LIVE】トランプ関税で世界が動く！米中貿易戦争再燃か？ゴールド史上最高値更新！米国株日本株ビットコイン大暴落！",
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "Sho's投資情報局",
+    54075,
+    237000
+   ],
+   [
+    "仮想通貨チャンネル - Joe Takayama",
+    33932,
+    157000
+   ],
+   [
+    "ライオンじゅんさんの米国株FIREが最強",
+    2037,
+    12700
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Gold/silver crash (Jan 30 2026)",
+  "domain": "other",
+  "lang": "ja",
+  "country": "JP",
+  "query": "金価格 暴落",
+  "streams": 3,
+  "channels": 3,
+  "total_views": 2578,
+  "small_views": 2578,
+  "small_share": 1.0,
+  "big_share": 0.0,
+  "top3": 1.0,
+  "best_small_views": 1594,
+  "best_small_subs": 48300,
+  "best_small_channel": "FXPesa",
+  "best_small_title": "Gold Meltdown! How to Trade XAUUSD After Extreme Volatility [2026 Guide] | 30th Jan",
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "FXPesa",
+    1594,
+    48300
+   ],
+   [
+    "グアムのサシ",
+    882,
+    4260
+   ],
+   [
+    "FundingRock",
+    102,
+    1420
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "AWS us-east-1 outage",
+  "domain": "other",
+  "lang": "ja",
+  "country": "JP",
+  "query": "AWS 障害",
+  "streams": 8,
+  "channels": 8,
+  "total_views": 57185,
+  "small_views": 2116,
+  "small_share": 0.037,
+  "big_share": 0.0,
+  "top3": 0.982,
+  "best_small_views": 1125,
+  "best_small_subs": 5320,
+  "best_small_channel": "The Roaming Prepper",
+  "best_small_title": "AWS Outage Wake-Up: Single Point of Failure Exposed – Prep for Internet Blackout Now! 🚨🌐",
+  "wiki_peak": 4629,
+  "wiki_spike": 18.1,
+  "top": [
+   [
+    "The Economic Ninja",
+    43160,
+    599000
+   ],
+   [
+    "CryptoWendyO",
+    11894,
+    272000
+   ],
+   [
+    "The Roaming Prepper",
+    1125,
+    5320
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Crypto liquidation crash (Oct 2025)",
+  "domain": "other",
+  "lang": "pt",
+  "country": "BR",
+  "query": "bitcoin despencando ao vivo",
+  "streams": 1,
+  "channels": 1,
+  "total_views": 1715,
+  "small_views": 1715,
+  "small_share": 1.0,
+  "big_share": 0.0,
+  "top3": 1.0,
+  "best_small_views": 1715,
+  "best_small_subs": 38200,
+  "best_small_channel": "Caio Garé",
+  "best_small_title": "Trump Anuncia 100% de Tarifa Contra China! Bitcoin Despenca e Agora?",
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "Caio Garé",
+    1715,
+    38200
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "AWS us-east-1 outage",
+  "domain": "other",
+  "lang": "en",
+  "country": "US",
+  "query": "AWS outage live",
+  "streams": 13,
+  "channels": 13,
+  "total_views": 19711,
+  "small_views": 1498,
+  "small_share": 0.076,
+  "big_share": 0.0,
+  "top3": 0.937,
+  "best_small_views": 250,
+  "best_small_subs": 14300,
+  "best_small_channel": "4th & 5",
+  "best_small_title": "THIS IS JUST A TEST",
+  "wiki_peak": 51983,
+  "wiki_spike": 36.8,
+  "top": [
+   [
+    "DAHBOO77",
+    16863,
+    525000
+   ],
+   [
+    "FOX 35 Orlando",
+    1358,
+    475000
+   ],
+   [
+    "4th & 5",
+    250,
+    14300
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "PLA Justice Mission-2025 drills around Taiwan",
+  "domain": "conflict",
+  "lang": "ja",
+  "country": "JP",
+  "query": "中国軍 台湾 演習",
+  "streams": 3,
+  "channels": 3,
+  "total_views": 95419,
+  "small_views": 726,
+  "small_share": 0.007608547563902368,
+  "big_share": 0.600750374663327,
+  "top3": 1.0,
+  "best_small_views": 726,
+  "best_small_subs": 1450,
+  "best_small_channel": "増渕賢一の無敵チャンネル",
+  "best_small_title": "【台湾有事】中国軍事演習が日本のEEZに接近！尖閣諸島と日本の安全保障が迎える危機【国際情勢】",
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "日テレNEWS",
+    57323,
+    3370000
+   ],
+   [
+    "文化人放送局LIVE",
+    37370,
+    781000
+   ],
+   [
+    "増渕賢一の無敵チャンネル",
+    726,
+    1450
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "European heatwave (June 2026)",
+  "domain": "hazard",
+  "lang": "es",
+  "country": "ES",
+  "query": "ola de calor en directo",
+  "streams": 7,
+  "channels": 37,
+  "total_views": 5199,
+  "small_views": 619,
+  "small_share": 0.11906135795345259,
+  "big_share": 0.3577611079053664,
+  "top3": 0.625,
+  "best_small_views": 374,
+  "best_small_subs": 2670,
+  "best_small_channel": "Sociedad Limitada",
+  "best_small_title": "📱 [MÓVIL] MODO OLA DE CALOR | SPACE MARINE 2 #14 | #Shorts #Live",
+  "wiki_peak": 133,
+  "wiki_spike": 13.3,
+  "top": [
+   [
+    "BlaBlaLogia",
+    2544,
+    315000
+   ],
+   [
+    "EL PAÍS",
+    1860,
+    3370000
+   ],
+   [
+    "Sociedad Limitada",
+    374,
+    2670
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "El Mencho killed + narco-blockades",
+  "domain": "conflict",
+  "lang": "es",
+  "country": "MX",
+  "query": "bloqueos Jalisco en vivo Mencho",
+  "streams": 7,
+  "channels": 7,
+  "total_views": 3487669,
+  "small_views": 235,
+  "small_share": 6.738024738012696e-05,
+  "big_share": 0.5634904000350951,
+  "top3": 0.978,
+  "best_small_views": 235,
+  "best_small_subs": 45800,
+  "best_small_channel": "Mora Informa",
+  "best_small_title": "¡MUERTE DEL MENCHO CONFIRMADA! Ejército lo Abatió en Jalisco🔥 Caos y Bloqueos - ¿Qué Pasar",
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "adn Noticias",
+    1953337,
+    2440000
+   ],
+   [
+    "Wicha Las noticias como son",
+    1249565,
+    665000
+   ],
+   [
+    "El Caporal",
+    268099,
+    469000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Iran war opening phase (2026)",
+  "domain": "conflict",
+  "lang": "hi",
+  "country": "IN",
+  "query": "ईरान इजराइल युद्ध लाइव",
+  "streams": 36,
+  "channels": 16,
+  "total_views": 18087796,
+  "small_views": 0,
+  "small_share": 0.0,
+  "big_share": 1.0,
+  "top3": 0.656,
+  "best_small_views": null,
+  "best_small_subs": null,
+  "best_small_channel": null,
+  "best_small_title": null,
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "NDTV India",
+    4286944,
+    27000000
+   ],
+   [
+    "NDTV India",
+    1543838,
+    27000000
+   ],
+   [
+    "Republic Bharat",
+    1067393,
+    32000000
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Cloudflare global outage",
+  "domain": "other",
+  "lang": "ja",
+  "country": "JP",
+  "query": "Cloudflare 障害",
+  "streams": 0,
+  "channels": 0,
+  "total_views": 0,
+  "small_views": 0,
+  "small_share": null,
+  "big_share": null,
+  "top3": null,
+  "best_small_views": null,
+  "best_small_subs": null,
+  "best_small_channel": null,
+  "best_small_title": null,
+  "wiki_peak": 51074,
+  "wiki_spike": 468.6,
+  "top": []
+ },
+ {
+  "filtered": false,
+  "event": "Cyclone Montha",
+  "domain": "hazard",
+  "lang": "hi",
+  "country": "IN",
+  "query": "चक्रवात मोंथा",
+  "streams": 50,
+  "channels": 18,
+  "total_views": 3671138,
+  "small_views": 0,
+  "small_share": 0.0,
+  "big_share": 0.996,
+  "top3": 0.758,
+  "best_small_views": null,
+  "best_small_subs": null,
+  "best_small_channel": null,
+  "best_small_title": null,
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "News18 MP Chhattisgarh",
+    600608,
+    10100000
+   ],
+   [
+    "Aaj Tak",
+    478022,
+    75700000
+   ],
+   [
+    "Aaj Tak",
+    418823,
+    75700000
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Venezuela earthquake doublet",
+  "domain": "hazard",
+  "lang": "en",
+  "country": "US",
+  "query": "Venezuela earthquake live",
+  "streams": 50,
+  "channels": 29,
+  "total_views": 17723401,
+  "small_views": 0,
+  "small_share": 0.0,
+  "big_share": 0.463,
+  "top3": 0.341,
+  "best_small_views": null,
+  "best_small_subs": null,
+  "best_small_channel": null,
+  "best_small_title": null,
+  "wiki_peak": 127322,
+  "wiki_spike": 12732.2,
+  "top": [
+   [
+    "Stefan Burns",
+    904160,
+    819000
+   ],
+   [
+    "Ani Cat",
+    898739,
+    16700000
+   ],
+   [
+    "Bowery Newsroom - Guarimba Digital",
+    809782,
+    432000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Afghanistan-Pakistan war 2026 (opening)",
+  "domain": "conflict",
+  "lang": "en",
+  "country": "PK",
+  "query": "Pakistan Afghanistan war",
+  "streams": 49,
+  "channels": 20,
+  "total_views": 8610372,
+  "small_views": 0,
+  "small_share": 0.0,
+  "big_share": 0.7626082821973313,
+  "top3": 0.459,
+  "best_small_views": null,
+  "best_small_subs": null,
+  "best_small_channel": null,
+  "best_small_title": null,
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "ARY News",
+    464449,
+    16400000
+   ],
+   [
+    "Republic Bharat",
+    423902,
+    32000000
+   ],
+   [
+    "Geo News",
+    337419,
+    21300000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Iran war opening phase (2026)",
+  "domain": "conflict",
+  "lang": "zh-Hant",
+  "country": "TW",
+  "query": "伊朗戰爭 直播",
+  "streams": 8,
+  "channels": 20,
+  "total_views": 1251732,
+  "small_views": 0,
+  "small_share": 0.0,
+  "big_share": 0.8255401315936638,
+  "top3": 0.65,
+  "best_small_views": null,
+  "best_small_subs": null,
+  "best_small_channel": null,
+  "best_small_title": null,
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "中天電視",
+    273805,
+    3780000
+   ],
+   [
+    "經緯點評 - 國際快訊",
+    218377,
+    236000
+   ],
+   [
+    "頭條開講",
+    217511,
+    1370000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "European heatwave (June 2026)",
+  "domain": "hazard",
+  "lang": "it",
+  "country": "IT",
+  "query": "caldo record diretta",
+  "streams": 0,
+  "channels": 4,
+  "total_views": 0,
+  "small_views": 0,
+  "small_share": 0,
+  "big_share": 0,
+  "top3": 0.972,
+  "best_small_views": null,
+  "best_small_subs": null,
+  "best_small_channel": null,
+  "best_small_title": null,
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": []
+ },
+ {
+  "filtered": true,
+  "event": "Lebanon war 2026",
+  "domain": "conflict",
+  "lang": "fr",
+  "country": "FR",
+  "query": "Liban guerre direct",
+  "streams": 1,
+  "channels": 3,
+  "total_views": 2721,
+  "small_views": 0,
+  "small_share": 0.0,
+  "big_share": 0.0,
+  "top3": 1.0,
+  "best_small_views": null,
+  "best_small_subs": null,
+  "best_small_channel": null,
+  "best_small_title": null,
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "Public Sénat",
+    2721,
+    808000
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Gold/silver crash (Jan 30 2026)",
+  "domain": "other",
+  "lang": "hi",
+  "country": "IN",
+  "query": "सोने का भाव गिरा",
+  "streams": 0,
+  "channels": 0,
+  "total_views": 0,
+  "small_views": 0,
+  "small_share": null,
+  "big_share": null,
+  "top3": null,
+  "best_small_views": null,
+  "best_small_subs": null,
+  "best_small_channel": null,
+  "best_small_title": null,
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": []
+ },
+ {
+  "filtered": false,
+  "event": "Airbus A320 emergency software fix",
+  "domain": "other",
+  "lang": "fr",
+  "country": "FR",
+  "query": "Airbus A320 rappel vols annulés",
+  "streams": 0,
+  "channels": 0,
+  "total_views": 0,
+  "small_views": 0,
+  "small_share": null,
+  "big_share": null,
+  "top3": null,
+  "best_small_views": null,
+  "best_small_subs": null,
+  "best_small_channel": null,
+  "best_small_title": null,
+  "wiki_peak": 6859,
+  "wiki_spike": 17.4,
+  "top": []
+ },
+ {
+  "filtered": true,
+  "event": "Hormuz crisis / Iran renewed hostilities",
+  "domain": "conflict",
+  "lang": "tl",
+  "country": "PH",
+  "query": "Strait of Hormuz balita ngayon",
+  "streams": 0,
+  "channels": 1,
+  "total_views": 0,
+  "small_views": 0,
+  "small_share": 0,
+  "big_share": 0,
+  "top3": 1.0,
+  "best_small_views": null,
+  "best_small_subs": null,
+  "best_small_channel": null,
+  "best_small_title": null,
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": []
+ },
+ {
+  "filtered": true,
+  "event": "Houthi strikes on Saudi Arabia (Oct 2026)",
+  "domain": "conflict",
+  "lang": "hi",
+  "country": "IN",
+  "query": "सऊदी अरब हूती हमला लाइव",
+  "streams": 41,
+  "channels": 14,
+  "total_views": 5660307,
+  "small_views": 0,
+  "small_share": 0.0,
+  "big_share": 0.95095478036792,
+  "top3": 0.596,
+  "best_small_views": null,
+  "best_small_subs": null,
+  "best_small_channel": null,
+  "best_small_title": null,
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "BBC News Hindi",
+    996122,
+    22000000
+   ],
+   [
+    "BBC News Hindi",
+    759128,
+    22000000
+   ],
+   [
+    "India News",
+    223049,
+    4130000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Houthi strikes on Saudi Arabia (Oct 2026)",
+  "domain": "conflict",
+  "lang": "tl",
+  "country": "PH",
+  "query": "Saudi Arabia missile attack OFW balita",
+  "streams": 0,
+  "channels": 0,
+  "total_views": 0,
+  "small_views": 0,
+  "small_share": 0,
+  "big_share": 0,
+  "top3": null,
+  "best_small_views": null,
+  "best_small_subs": null,
+  "best_small_channel": null,
+  "best_small_title": null,
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": []
+ },
+ {
+  "filtered": true,
+  "event": "Afghanistan-Pakistan war 2026 (opening)",
+  "domain": "conflict",
+  "lang": "hi",
+  "country": "IN",
+  "query": "पाकिस्तान अफगानिस्तान युद्ध लाइव",
+  "streams": 24,
+  "channels": 17,
+  "total_views": 4309212,
+  "small_views": 0,
+  "small_share": 0.0,
+  "big_share": 1.0,
+  "top3": 0.487,
+  "best_small_views": null,
+  "best_small_subs": null,
+  "best_small_channel": null,
+  "best_small_title": null,
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "Republic Bharat",
+    423902,
+    32000000
+   ],
+   [
+    "Republic Bharat",
+    349522,
+    32000000
+   ],
+   [
+    "Republic Bharat",
+    288059,
+    32000000
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Bihar assembly election results",
+  "domain": "politics",
+  "lang": "en",
+  "country": "IN",
+  "query": "Bihar election result live",
+  "streams": 50,
+  "channels": 24,
+  "total_views": 90745516,
+  "small_views": 0,
+  "small_share": 0.0,
+  "big_share": 0.971,
+  "top3": 0.287,
+  "best_small_views": null,
+  "best_small_subs": null,
+  "best_small_channel": null,
+  "best_small_title": null,
+  "wiki_peak": 823147,
+  "wiki_spike": 10.8,
+  "top": [
+   [
+    "News Pinch",
+    6229918,
+    2190000
+   ],
+   [
+    "DB Live",
+    5173478,
+    11000000
+   ],
+   [
+    "Ulta Chasma uc",
+    4961677,
+    8620000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "North Korea missile launches (Oct 2026)",
+  "domain": "conflict",
+  "lang": "ja",
+  "country": "JP",
+  "query": "北朝鮮 ミサイル 速報",
+  "streams": 1,
+  "channels": 1,
+  "total_views": 21759,
+  "small_views": 0,
+  "small_share": 0.0,
+  "big_share": 1.0,
+  "top3": 1.0,
+  "best_small_views": null,
+  "best_small_subs": null,
+  "best_small_channel": null,
+  "best_small_title": null,
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "日テレNEWS",
+    21759,
+    3370000
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Artemis II crewed lunar flyby",
+  "domain": "other",
+  "lang": "pt",
+  "country": "BR",
+  "query": "Artemis II ao vivo",
+  "streams": 50,
+  "channels": 28,
+  "total_views": 128891283,
+  "small_views": 0,
+  "small_share": 0.0,
+  "big_share": 0.854,
+  "top3": 0.698,
+  "best_small_views": null,
+  "best_small_subs": null,
+  "best_small_channel": null,
+  "best_small_title": null,
+  "wiki_peak": 13763,
+  "wiki_spike": 136.9,
+  "top": [
+   [
+    "NASA",
+    28150580,
+    15100000
+   ],
+   [
+    "NASA",
+    27778762,
+    15100000
+   ],
+   [
+    "NASA",
+    19278207,
+    15100000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Delhi Red Fort car blast",
+  "domain": "conflict",
+  "lang": "hi",
+  "country": "IN",
+  "query": "लाल किला ब्लास्ट लाइव",
+  "streams": 42,
+  "channels": 19,
+  "total_views": 12771711,
+  "small_views": 0,
+  "small_share": 0.0,
+  "big_share": 0.9871162133249022,
+  "top3": 0.522,
+  "best_small_views": null,
+  "best_small_subs": null,
+  "best_small_channel": null,
+  "best_small_title": null,
+  "wiki_peak": 1566,
+  "wiki_spike": 156.6,
+  "top": [
+   [
+    "Aaj Tak",
+    1105845,
+    75700000
+   ],
+   [
+    "TV9 Bharatvarsh",
+    907511,
+    27400000
+   ],
+   [
+    "Republic Bharat",
+    836832,
+    32000000
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "US strikes on Venezuela / Maduro captured",
+  "domain": "politics",
+  "lang": "es",
+  "country": "VE",
+  "query": "Maduro capturado en vivo",
+  "streams": 50,
+  "channels": 35,
+  "total_views": 28054967,
+  "small_views": 0,
+  "small_share": 0.0,
+  "big_share": 0.637,
+  "top3": 0.323,
+  "best_small_views": null,
+  "best_small_subs": null,
+  "best_small_channel": null,
+  "best_small_title": null,
+  "wiki_peak": 9979,
+  "wiki_spike": 997.9,
+  "top": [
+   [
+    "Estrategias Militares",
+    2033589,
+    573000
+   ],
+   [
+    "Soy Fabian Dicosta",
+    1927381,
+    1740000
+   ],
+   [
+    "CNN Brasil",
+    1917390,
+    7080000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Interstellar comet 3I/ATLAS",
+  "domain": "other",
+  "lang": "ja",
+  "country": "JP",
+  "query": "3I/ATLAS",
+  "streams": 1,
+  "channels": 27,
+  "total_views": 102267,
+  "small_views": 0,
+  "small_share": 0.0,
+  "big_share": 0.0,
+  "top3": 0.496,
+  "best_small_views": null,
+  "best_small_subs": null,
+  "best_small_channel": null,
+  "best_small_title": null,
+  "wiki_peak": 3262,
+  "wiki_spike": 1.8,
+  "top": [
+   [
+    "神社チャンネル",
+    102267,
+    443000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Artemis II crewed lunar flyby",
+  "domain": "other",
+  "lang": "hi",
+  "country": "IN",
+  "query": "Artemis 2 live hindi",
+  "streams": 10,
+  "channels": 11,
+  "total_views": 207347,
+  "small_views": 0,
+  "small_share": 0.0,
+  "big_share": 1.0,
+  "top3": 0.81,
+  "best_small_views": null,
+  "best_small_subs": null,
+  "best_small_channel": null,
+  "best_small_title": null,
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "Amar Ujala",
+    77208,
+    9960000
+   ],
+   [
+    "Aaj Tak",
+    50837,
+    75700000
+   ],
+   [
+    "BBC News Hindi",
+    35475,
+    22000000
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Airbus A320 emergency software fix",
+  "domain": "other",
+  "lang": "en",
+  "country": "US",
+  "query": "Airbus A320 recall flights cancelled",
+  "streams": 2,
+  "channels": 1,
+  "total_views": 5913,
+  "small_views": 0,
+  "small_share": 0.0,
+  "big_share": 1.0,
+  "top3": 1.0,
+  "best_small_views": null,
+  "best_small_subs": null,
+  "best_small_channel": null,
+  "best_small_title": null,
+  "wiki_peak": 21916,
+  "wiki_spike": 11.1,
+  "top": [
+   [
+    "CRUX",
+    3230,
+    3510000
+   ],
+   [
+    "CRUX",
+    2683,
+    3510000
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Bihar assembly election results",
+  "domain": "politics",
+  "lang": "hi",
+  "country": "IN",
+  "query": "बिहार चुनाव परिणाम लाइव",
+  "streams": 50,
+  "channels": 20,
+  "total_views": 66287739,
+  "small_views": 0,
+  "small_share": 0.0,
+  "big_share": 1.0,
+  "top3": 0.359,
+  "best_small_views": null,
+  "best_small_subs": null,
+  "best_small_channel": null,
+  "best_small_title": null,
+  "wiki_peak": 204949,
+  "wiki_spike": 13.7,
+  "top": [
+   [
+    "Ulta Chasma uc",
+    4961677,
+    8620000
+   ],
+   [
+    "Pragya Ka Panna",
+    4551404,
+    4790000
+   ],
+   [
+    "News 24",
+    3475645,
+    27600000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "Ebola epidemic 2026 (DRC/Uganda)",
+  "domain": "other",
+  "lang": "en",
+  "country": "US",
+  "query": "Ebola outbreak 2026",
+  "streams": 42,
+  "channels": 38,
+  "total_views": 1818429,
+  "small_views": 0,
+  "small_share": 0.0,
+  "big_share": 0.8777516196673062,
+  "top3": 0.367,
+  "best_small_views": null,
+  "best_small_subs": null,
+  "best_small_channel": null,
+  "best_small_title": null,
+  "wiki_peak": null,
+  "wiki_spike": null,
+  "top": [
+   [
+    "Inteligência Ltda",
+    281449,
+    5810000
+   ],
+   [
+    "India News",
+    156224,
+    4130000
+   ],
+   [
+    "Kanak News Digital",
+    113153,
+    1450000
+   ]
+  ]
+ },
+ {
+  "filtered": true,
+  "event": "PLA Justice Mission-2025 drills around Taiwan",
+  "domain": "conflict",
+  "lang": "en",
+  "country": "US",
+  "query": "China Taiwan military drills live",
+  "streams": 28,
+  "channels": 24,
+  "total_views": 609731,
+  "small_views": 0,
+  "small_share": 0.0,
+  "big_share": 0.7922592093890585,
+  "top3": 0.573,
+  "best_small_views": null,
+  "best_small_subs": null,
+  "best_small_channel": null,
+  "best_small_title": null,
+  "wiki_peak": 2,
+  "wiki_spike": 0.2,
+  "top": [
+   [
+    "Firstpost",
+    236112,
+    9790000
+   ],
+   [
+    "Agenda-Free TV",
+    126666,
+    957000
+   ],
+   [
+    "Firstpost",
+    57653,
+    9790000
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Yoon Suk Yeol insurrection verdict",
+  "domain": "politics",
+  "lang": "ko",
+  "country": "KR",
+  "query": "윤석열 선고 생중계",
+  "streams": 50,
+  "channels": 24,
+  "total_views": 4099474,
+  "small_views": 0,
+  "small_share": 0.0,
+  "big_share": 0.883,
+  "top3": 0.508,
+  "best_small_views": null,
+  "best_small_subs": null,
+  "best_small_channel": null,
+  "best_small_title": null,
+  "wiki_peak": 211,
+  "wiki_spike": 7.0,
+  "top": [
+   [
+    "MBCNEWS",
+    1113360,
+    6210000
+   ],
+   [
+    "JTBC News",
+    337315,
+    4900000
+   ],
+   [
+    "연합뉴스TV",
+    242430,
+    2310000
+   ]
+  ]
+ },
+ {
+  "filtered": false,
+  "event": "Aomori M7.6 earthquake + megaquake advisory",
+  "domain": "hazard",
+  "lang": "en",
+  "country": "JP",
+  "query": "Japan earthquake tsunami warning live",
+  "streams": 50,
+  "channels": 34,
+  "total_views": 1818125,
+  "small_views": 0,
+  "small_share": 0.0,
+  "big_share": 0.512,
+  "top3": 0.476,
+  "best_small_views": null,
+  "best_small_subs": null,
+  "best_small_channel": null,
+  "best_small_title": null,
+  "wiki_peak": 1169,
+  "wiki_spike": 116.9,
+  "top": [
+   [
+    "Stefan Burns",
+    464008,
+    819000
+   ],
+   [
+    "Agenda-Free TV",
+    291620,
+    957000
+   ],
+   [
+    "Sky News",
+    69619,
+    9380000
+   ]
+  ]
+ }
+]

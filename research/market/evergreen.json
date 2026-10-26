@@ -1,0 +1,164 @@
+[
+ {
+  "topic": "Japan earthquake monitors",
+  "lang": "ja",
+  "query": "地震 ライブ 24時間",
+  "must": [
+   "地震"
+  ]
+ },
+ {
+  "topic": "Japan quake early warning",
+  "lang": "ja",
+  "query": "緊急地震速報 ライブ",
+  "must": [
+   "地震",
+   "速報"
+  ]
+ },
+ {
+  "topic": "Taiwan earthquake",
+  "lang": "zh-Hant",
+  "query": "地震 直播",
+  "must": [
+   "地震"
+  ]
+ },
+ {
+  "topic": "Mexico quake alert",
+  "lang": "es",
+  "query": "sismo en vivo",
+  "must": [
+   "sismo",
+   "temblor"
+  ]
+ },
+ {
+  "topic": "Earthquake monitors",
+  "lang": "en",
+  "query": "earthquake live",
+  "must": [
+   "earthquake",
+   "quake"
+  ]
+ },
+ {
+  "topic": "Aurora cams",
+  "lang": "en",
+  "query": "northern lights live cam",
+  "must": [
+   "aurora",
+   "northern lights"
+  ]
+ },
+ {
+  "topic": "ISS / space",
+  "lang": "en",
+  "query": "ISS live",
+  "must": [
+   "iss",
+   "space station"
+  ]
+ },
+ {
+  "topic": "Air traffic control",
+  "lang": "en",
+  "query": "air traffic control live",
+  "must": [
+   "atc",
+   "air traffic"
+  ]
+ },
+ {
+  "topic": "Flight tracking",
+  "lang": "en",
+  "query": "flight radar live",
+  "must": [
+   "flight",
+   "radar",
+   "plane",
+   "airport"
+  ]
+ },
+ {
+  "topic": "Storm chasing",
+  "lang": "en",
+  "query": "storm chasing live",
+  "must": [
+   "storm",
+   "tornado",
+   "chas"
+  ]
+ },
+ {
+  "topic": "Volcano cams",
+  "lang": "en",
+  "query": "volcano live",
+  "must": [
+   "volcano",
+   "eruption",
+   "kilauea",
+   "etna"
+  ]
+ },
+ {
+  "topic": "Japan typhoon",
+  "lang": "ja",
+  "query": "台風 ライブ",
+  "must": [
+   "台風"
+  ]
+ },
+ {
+  "topic": "Philippines weather",
+  "lang": "tl",
+  "query": "bagyo live update",
+  "must": [
+   "bagyo",
+   "pagasa",
+   "typhoon",
+   "weather"
+  ]
+ },
+ {
+  "topic": "Japan weather",
+  "lang": "ja",
+  "query": "天気 ライブ",
+  "must": [
+   "天気"
+  ]
+ },
+ {
+  "topic": "US weather",
+  "lang": "en",
+  "query": "weather live",
+  "must": [
+   "weather"
+  ]
+ },
+ {
+  "topic": "Space weather",
+  "lang": "en",
+  "query": "solar flare live",
+  "must": [
+   "solar",
+   "sun",
+   "aurora",
+   "space weather"
+  ]
+ },
+ {
+  "topic": "Japan news (baseline)",
+  "lang": "ja",
+  "query": "ニュース ライブ",
+  "must": []
+ },
+ {
+  "topic": "Spanish news (baseline)",
+  "lang": "es",
+  "query": "noticias en vivo",
+  "must": [
+   "noticias"
+  ]
+ }
+]

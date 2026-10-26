@@ -1,0 +1,1119 @@
+[
+ {
+  "event": "Spain general election 2023",
+  "domain": "politics",
+  "start_utc": "2023-07-23",
+  "end_utc": "2023-07-24",
+  "markets": [
+   {
+    "lang": "es",
+    "country": "ES",
+    "youtube_query": "elecciones generales 23J resultados en directo",
+    "must": [
+     "23j",
+     "generales"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "US election 2024 (Spanish)",
+  "domain": "politics",
+  "start_utc": "2024-11-05",
+  "end_utc": "2024-11-07",
+  "markets": [
+   {
+    "lang": "es",
+    "country": "US",
+    "youtube_query": "elecciones Estados Unidos 2024 en vivo resultados",
+    "must": [
+     "estados unidos",
+     "eeuu",
+     "ee.uu",
+     "trump",
+     "harris"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Mexico judicial election 2025",
+  "domain": "politics",
+  "start_utc": "2025-06-01",
+  "end_utc": "2025-06-03",
+  "markets": [
+   {
+    "lang": "es",
+    "country": "MX",
+    "youtube_query": "elección judicial 2025 en vivo",
+    "must": [
+     "judicial"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Argentina legislative election 2025",
+  "domain": "politics",
+  "start_utc": "2025-10-26",
+  "end_utc": "2025-10-27",
+  "markets": [
+   {
+    "lang": "es",
+    "country": "AR",
+    "youtube_query": "elecciones legislativas 2025 Argentina en vivo",
+    "must": [
+     "argentina",
+     "legislativas"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Bolivia presidential runoff 2025",
+  "domain": "politics",
+  "start_utc": "2025-10-19",
+  "end_utc": "2025-10-20",
+  "markets": [
+   {
+    "lang": "es",
+    "country": "BO",
+    "youtube_query": "segunda vuelta Bolivia en vivo",
+    "must": [
+     "bolivia"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Ecuador referendum 2025",
+  "domain": "politics",
+  "start_utc": "2025-11-16",
+  "end_utc": "2025-11-17",
+  "markets": [
+   {
+    "lang": "es",
+    "country": "EC",
+    "youtube_query": "consulta popular Ecuador 2025 resultados",
+    "must": [
+     "ecuador",
+     "consulta"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Costa Rica general election 2026",
+  "domain": "politics",
+  "start_utc": "2026-02-01",
+  "end_utc": "2026-02-02",
+  "markets": [
+   {
+    "lang": "es",
+    "country": "CR",
+    "youtube_query": "elecciones Costa Rica 2026 en vivo",
+    "must": [
+     "costa rica"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Italy regional elections Nov 2025",
+  "domain": "politics",
+  "start_utc": "2025-11-23",
+  "end_utc": "2025-11-25",
+  "markets": [
+   {
+    "lang": "it",
+    "country": "IT",
+    "youtube_query": "elezioni regionali risultati diretta",
+    "must": [
+     "regionali"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "G4 geomagnetic storm (Jan 2026)",
+  "domain": "hazard",
+  "start_utc": "2026-01-19",
+  "end_utc": "2026-01-21",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "northern lights live",
+    "must": [
+     "aurora",
+     "northern lights"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Santa tracker 2025",
+  "domain": "other",
+  "start_utc": "2025-12-24",
+  "end_utc": "2025-12-25",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "Santa tracker live",
+    "must": [
+     "santa"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "es",
+    "country": "MX",
+    "youtube_query": "Santa Claus en vivo rastreador",
+    "must": [
+     "santa",
+     "papá noel",
+     "papa noel"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Papal conclave 2025",
+  "domain": "other",
+  "start_utc": "2025-05-07",
+  "end_utc": "2025-05-08",
+  "markets": [
+   {
+    "lang": "it",
+    "country": "IT",
+    "youtube_query": "conclave diretta fumata",
+    "must": [
+     "conclave",
+     "fumata"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Kamchatka M8.8 tsunami warning",
+  "domain": "hazard",
+  "start_utc": "2025-07-29",
+  "end_utc": "2025-07-31",
+  "markets": [
+   {
+    "lang": "ja",
+    "country": "JP",
+    "youtube_query": "津波警報 ライブ",
+    "must": [
+     "津波"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Typhoon Ragasa (Hong Kong)",
+  "domain": "hazard",
+  "start_utc": "2025-09-22",
+  "end_utc": "2025-09-25",
+  "markets": [
+   {
+    "lang": "zh-Hant",
+    "country": "HK",
+    "youtube_query": "樺加沙 颱風 直播",
+    "must": [
+     "樺加沙"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Papal conclave 2025 (other languages)",
+  "domain": "other",
+  "start_utc": "2025-05-07",
+  "end_utc": "2025-05-08",
+  "markets": [
+   {
+    "lang": "es",
+    "country": "MX",
+    "youtube_query": "cónclave en vivo humo",
+    "must": [
+     "cónclave",
+     "conclave",
+     "fumata"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "pt",
+    "country": "BR",
+    "youtube_query": "conclave ao vivo",
+    "must": [
+     "conclave"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "conclave live chimney",
+    "must": [
+     "conclave",
+     "pope",
+     "smoke"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "US election 2024 (other languages)",
+  "domain": "politics",
+  "start_utc": "2024-11-05",
+  "end_utc": "2024-11-07",
+  "markets": [
+   {
+    "lang": "ja",
+    "country": "JP",
+    "youtube_query": "アメリカ大統領選挙 開票 ライブ",
+    "must": [
+     "大統領選",
+     "開票"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "zh-Hant",
+    "country": "TW",
+    "youtube_query": "美國大選 開票 直播",
+    "must": [
+     "美國大選",
+     "美國總統",
+     "美國選舉"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "pt",
+    "country": "BR",
+    "youtube_query": "eleições EUA ao vivo",
+    "must": [
+     "eua",
+     "estados unidos",
+     "trump"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Japan upper house election 2025",
+  "domain": "politics",
+  "start_utc": "2025-07-20",
+  "end_utc": "2025-07-21",
+  "markets": [
+   {
+    "lang": "ja",
+    "country": "JP",
+    "youtube_query": "参院選 開票速報",
+    "must": [
+     "参院選",
+     "参議院"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "LDP leadership election 2025",
+  "domain": "politics",
+  "start_utc": "2025-10-04",
+  "end_utc": "2025-10-04",
+  "markets": [
+   {
+    "lang": "ja",
+    "country": "JP",
+    "youtube_query": "自民党総裁選 ライブ",
+    "must": [
+     "総裁選"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Philippine midterm election 2025",
+  "domain": "politics",
+  "start_utc": "2025-05-12",
+  "end_utc": "2025-05-14",
+  "markets": [
+   {
+    "lang": "tl",
+    "country": "PH",
+    "youtube_query": "eleksyon 2025 resulta live",
+    "must": [
+     "eleksyon",
+     "halalan",
+     "election"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "en",
+    "country": "PH",
+    "youtube_query": "Philippine election 2025 results live",
+    "must": [
+     "election",
+     "halalan"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Chile election first round 2025",
+  "domain": "politics",
+  "start_utc": "2025-11-16",
+  "end_utc": "2025-11-17",
+  "markets": [
+   {
+    "lang": "es",
+    "country": "CL",
+    "youtube_query": "elecciones Chile en vivo resultados",
+    "must": [
+     "chile"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Peru election first round 2026",
+  "domain": "politics",
+  "start_utc": "2026-04-12",
+  "end_utc": "2026-04-14",
+  "markets": [
+   {
+    "lang": "es",
+    "country": "PE",
+    "youtube_query": "elecciones Perú 2026 en vivo resultados ONPE",
+    "must": [
+     "perú",
+     "peru",
+     "onpe"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Extremadura regional election 2025",
+  "domain": "politics",
+  "start_utc": "2025-12-21",
+  "end_utc": "2025-12-22",
+  "markets": [
+   {
+    "lang": "es",
+    "country": "ES",
+    "youtube_query": "elecciones Extremadura en directo",
+    "must": [
+     "extremadura"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Italy referendum June 2025",
+  "domain": "politics",
+  "start_utc": "2025-06-08",
+  "end_utc": "2025-06-10",
+  "markets": [
+   {
+    "lang": "it",
+    "country": "IT",
+    "youtube_query": "referendum 8 9 giugno risultati diretta",
+    "must": [
+     "referendum"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Portugal legislative election 2025",
+  "domain": "politics",
+  "start_utc": "2025-05-18",
+  "end_utc": "2025-05-19",
+  "markets": [
+   {
+    "lang": "pt",
+    "country": "PT",
+    "youtube_query": "legislativas 2025 resultados em direto",
+    "must": [
+     "legislativas"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Portugal local elections 2025",
+  "domain": "politics",
+  "start_utc": "2025-10-12",
+  "end_utc": "2025-10-13",
+  "markets": [
+   {
+    "lang": "pt",
+    "country": "PT",
+    "youtube_query": "autárquicas 2025 resultados em direto",
+    "must": [
+     "autárquicas",
+     "autarquicas"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Kamchatka tsunami warning (English)",
+  "domain": "hazard",
+  "start_utc": "2025-07-29",
+  "end_utc": "2025-07-31",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "tsunami warning Hawaii live",
+    "must": [
+     "tsunami"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Los Angeles wildfires 2025",
+  "domain": "hazard",
+  "start_utc": "2025-01-07",
+  "end_utc": "2025-01-12",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "LA fires live",
+    "must": [
+     "fire"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "es",
+    "country": "US",
+    "youtube_query": "incendios Los Ángeles en vivo",
+    "must": [
+     "incendio"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Texas Hill Country floods 2025",
+  "domain": "hazard",
+  "start_utc": "2025-07-04",
+  "end_utc": "2025-07-08",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "Texas flooding live Kerr County",
+    "must": [
+     "flood"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "es",
+    "country": "US",
+    "youtube_query": "inundaciones Texas en vivo",
+    "must": [
+     "inundaci"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Typhoon Ragasa (other languages)",
+  "domain": "hazard",
+  "start_utc": "2025-09-20",
+  "end_utc": "2025-09-25",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "HK",
+    "youtube_query": "Typhoon Ragasa live",
+    "must": [
+     "ragasa"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "tl",
+    "country": "PH",
+    "youtube_query": "Bagyong Nando",
+    "must": [
+     "nando"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Hurricane Erin 2025",
+  "domain": "hazard",
+  "start_utc": "2025-08-15",
+  "end_utc": "2025-08-21",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "Hurricane Erin live",
+    "must": [
+     "erin"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "es",
+    "country": "PR",
+    "youtube_query": "huracán Erin en vivo",
+    "must": [
+     "erin"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Hurricane Polo (Mexico) 2026",
+  "domain": "hazard",
+  "start_utc": "2026-09-27",
+  "end_utc": "2026-09-30",
+  "markets": [
+   {
+    "lang": "es",
+    "country": "MX",
+    "youtube_query": "huracán Polo en vivo",
+    "must": [
+     "polo"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Hurricane Isaias (Florida) 2026",
+  "domain": "hazard",
+  "start_utc": "2026-10-07",
+  "end_utc": "2026-10-11",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "Hurricane Isaias live",
+    "must": [
+     "isaias"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "es",
+    "country": "US",
+    "youtube_query": "huracán Isaías en vivo",
+    "must": [
+     "isaías",
+     "isaias"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Kilauea lava fountains 2025",
+  "domain": "hazard",
+  "start_utc": "2025-01-01",
+  "end_utc": "2025-12-31",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "Kilauea eruption live",
+    "must": [
+     "kilauea",
+     "kīlauea"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "ja",
+    "country": "JP",
+    "youtube_query": "キラウエア 噴火 ライブ",
+    "must": [
+     "キラウエア"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "G5 geomagnetic storm (May 2024)",
+  "domain": "hazard",
+  "start_utc": "2024-05-10",
+  "end_utc": "2024-05-12",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "northern lights live",
+    "must": [
+     "aurora",
+     "northern lights"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "es",
+    "country": "MX",
+    "youtube_query": "aurora boreal en vivo",
+    "must": [
+     "aurora"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "ja",
+    "country": "JP",
+    "youtube_query": "オーロラ ライブ",
+    "must": [
+     "オーロラ"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Total lunar eclipse Sep 7 2025",
+  "domain": "other",
+  "start_utc": "2025-09-07",
+  "end_utc": "2025-09-08",
+  "markets": [
+   {
+    "lang": "ja",
+    "country": "JP",
+    "youtube_query": "皆既月食 ライブ",
+    "must": [
+     "月食"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "it",
+    "country": "IT",
+    "youtube_query": "eclissi lunare diretta",
+    "must": [
+     "eclissi"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "hi",
+    "country": "IN",
+    "youtube_query": "चंद्र ग्रहण लाइव",
+    "must": [
+     "ग्रहण"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "zh-Hant",
+    "country": "TW",
+    "youtube_query": "月全食 直播",
+    "must": [
+     "月全食",
+     "月食"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "en",
+    "country": "GB",
+    "youtube_query": "lunar eclipse live",
+    "must": [
+     "eclipse"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Perseid meteor shower 2025",
+  "domain": "other",
+  "start_utc": "2025-08-12",
+  "end_utc": "2025-08-13",
+  "markets": [
+   {
+    "lang": "ja",
+    "country": "JP",
+    "youtube_query": "ペルセウス座流星群 ライブ",
+    "must": [
+     "ペルセウス"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "Perseid meteor shower live",
+    "must": [
+     "perseid"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Comet Lemmon (Oct 2025)",
+  "domain": "other",
+  "start_utc": "2025-10-15",
+  "end_utc": "2025-10-31",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "comet Lemmon live",
+    "must": [
+     "lemmon"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "ja",
+    "country": "JP",
+    "youtube_query": "レモン彗星 ライブ",
+    "must": [
+     "レモン彗星"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "GTA VI trailer 2",
+  "domain": "other",
+  "start_utc": "2025-05-06",
+  "end_utc": "2025-05-07",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "GTA 6 trailer 2 live",
+    "must": [
+     "gta"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "es",
+    "country": "MX",
+    "youtube_query": "GTA 6 trailer 2 en vivo",
+    "must": [
+     "gta"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "pt",
+    "country": "BR",
+    "youtube_query": "GTA 6 trailer 2 ao vivo",
+    "must": [
+     "gta"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Santa tracker 2025 (other languages)",
+  "domain": "other",
+  "start_utc": "2025-12-24",
+  "end_utc": "2025-12-25",
+  "markets": [
+   {
+    "lang": "pt",
+    "country": "BR",
+    "youtube_query": "Papai Noel ao vivo rastreador",
+    "must": [
+     "papai noel",
+     "noel"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "ja",
+    "country": "JP",
+    "youtube_query": "サンタ 追跡 ライブ",
+    "must": [
+     "サンタ"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Myanmar earthquake 2025",
+  "domain": "hazard",
+  "start_utc": "2025-03-28",
+  "end_utc": "2025-03-31",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "Myanmar earthquake live",
+    "must": [
+     "myanmar",
+     "earthquake"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Cape Verde legislative election 2026",
+  "domain": "politics",
+  "start_utc": "2026-05-17",
+  "end_utc": "2026-05-18",
+  "markets": [
+   {
+    "lang": "pt",
+    "country": "CV",
+    "youtube_query": "eleições legislativas Cabo Verde 2026 resultados",
+    "must": [
+     "cabo verde"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Swiss federal vote Sep 2026",
+  "domain": "politics",
+  "start_utc": "2026-09-27",
+  "end_utc": "2026-09-28",
+  "markets": [
+   {
+    "lang": "it",
+    "country": "CH",
+    "youtube_query": "votazione federale risultati diretta",
+    "must": [
+     "votazion"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "fr",
+    "country": "CH",
+    "youtube_query": "votation fédérale résultats en direct",
+    "must": [
+     "votation"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Ecuador local elections 2023",
+  "domain": "politics",
+  "start_utc": "2023-02-05",
+  "end_utc": "2023-02-06",
+  "markets": [
+   {
+    "lang": "es",
+    "country": "EC",
+    "youtube_query": "elecciones seccionales Ecuador en vivo",
+    "must": [
+     "seccionales",
+     "ecuador"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Peru regional runoffs 2022",
+  "domain": "politics",
+  "start_utc": "2022-12-04",
+  "end_utc": "2022-12-05",
+  "markets": [
+   {
+    "lang": "es",
+    "country": "PE",
+    "youtube_query": "segunda vuelta regional en vivo",
+    "must": [
+     "regional"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Japan unified local elections 2023",
+  "domain": "politics",
+  "start_utc": "2023-04-09",
+  "end_utc": "2023-04-10",
+  "markets": [
+   {
+    "lang": "ja",
+    "country": "JP",
+    "youtube_query": "統一地方選 開票速報",
+    "must": [
+     "統一地方選"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "First sunrise 2026 (初日の出)",
+  "domain": "other",
+  "start_utc": "2026-01-01",
+  "end_utc": "2026-01-01",
+  "markets": [
+   {
+    "lang": "ja",
+    "country": "JP",
+    "youtube_query": "初日の出 ライブ",
+    "must": [
+     "初日の出"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Geminid meteor shower 2025",
+  "domain": "other",
+  "start_utc": "2025-12-13",
+  "end_utc": "2025-12-15",
+  "markets": [
+   {
+    "lang": "ja",
+    "country": "JP",
+    "youtube_query": "ふたご座流星群 ライブ",
+    "must": [
+     "ふたご座"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Hurricane Otis (Acapulco) 2023",
+  "domain": "hazard",
+  "start_utc": "2023-10-23",
+  "end_utc": "2023-10-27",
+  "markets": [
+   {
+    "lang": "es",
+    "country": "MX",
+    "youtube_query": "huracán Otis en vivo",
+    "must": [
+     "otis"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Hurricane Erick (Oaxaca) 2025",
+  "domain": "hazard",
+  "start_utc": "2025-06-17",
+  "end_utc": "2025-06-21",
+  "markets": [
+   {
+    "lang": "es",
+    "country": "MX",
+    "youtube_query": "huracán Erick en vivo",
+    "must": [
+     "erick"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Hurricane John (Guerrero) 2024",
+  "domain": "hazard",
+  "start_utc": "2024-09-22",
+  "end_utc": "2024-09-28",
+  "markets": [
+   {
+    "lang": "es",
+    "country": "MX",
+    "youtube_query": "huracán John en vivo",
+    "must": [
+     "john"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Hurricane Beryl (Yucatán) 2024",
+  "domain": "hazard",
+  "start_utc": "2024-07-03",
+  "end_utc": "2024-07-06",
+  "markets": [
+   {
+    "lang": "es",
+    "country": "MX",
+    "youtube_query": "huracán Beryl en vivo Quintana Roo",
+    "must": [
+     "beryl"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Hurricane Milton (Yucatán/Florida) 2024",
+  "domain": "hazard",
+  "start_utc": "2024-10-07",
+  "end_utc": "2024-10-11",
+  "markets": [
+   {
+    "lang": "es",
+    "country": "MX",
+    "youtube_query": "huracán Milton en vivo",
+    "must": [
+     "milton"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ }
+]
