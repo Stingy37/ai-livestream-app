@@ -37,7 +37,13 @@ class AudioGenerator:
         t0 = time.time()
         text = script.llm_output.strip() or f"No script is available for {scene.title} at this time."
         engine = (scene.tts_model or "kokoro").lower()
-        if engine.startswith("moss"):
+        if engine == "mms":
+            # Meta MMS-TTS (VITS) for Telugu and Tamil, in-process on the GPU; see models/tts_mms.py
+            from models import tts_mms
+
+            voice = f"mms-{scene.language}"
+            audio, rate = tts_mms.synthesize(text, scene.language, device=s.tts_device)
+        elif engine.startswith("moss"):
             # MOSS-TTS v1.5 (multilingual, e.g. Tagalog) runs as a shared server; see scripts/moss_tts_start.sh
             from models import tts_moss
 

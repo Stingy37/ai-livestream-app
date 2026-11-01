@@ -67,7 +67,50 @@ def metadata(cfg: dict, lang: str, thumb: dict) -> dict:
     tx = thumb.get("text", {})
     towns = [place_ja(t) for t in tx.get("towns", [])]
     stamp = tx.get("stamp", "")
-    if lang == "ja" and tx.get("l1"):     # the news-style thumbnail (THUMB_STYLE=tw, lang=ja): its lines are the title's hooks
+    if lang in ("te", "ta") and tx.get("l1"):   # India (Cyclone Arnab): IMD relay in Telugu / Tamil, news-style thumbnail
+        # research/market/thumbnails_india.md: "Cyclone <name>" in English lifts discovery; titles that START with LIVE do
+        # worse; the countdown stays out of the title (it would force an hourly title update)
+        cd = r"\s*(?:తీరం దాటడానికి)?\s*\d+\s*గంటలు|\s*(?:கரையை கடக்க)?\s*(?:இன்னும்)?\s*\d+\s*மணி நேரம்"
+        clean = lambda s: re.sub(r"\s*\bLIVE\b", "", re.sub(cd, "", re.sub(r"[{}\[\]]", "", s or ""))).strip()   # the title leads with LIVE already
+        day = datetime.now(timezone(timedelta(hours=5, minutes=30)))
+        te = lang == "te"
+        tail = "IMD తాజా అప్‌డేట్స్" if te else "IMD நேரலை அறிவிப்புகள்"
+        parts = [x for x in (clean(tx["l1"]), clean(tx.get("l2")), f"{tail} {day.day}/{day.month}") if x]
+        title = "Cyclone Arnab LIVE 🔴 " + " | ".join(parts)
+        while len(title.encode("utf-16-le")) // 2 > 100 and len(parts) > 1:   # YouTube's limit is 100 characters
+            parts.pop()                                                        # drop the tail, then the second hook
+            title = "Cyclone Arnab LIVE 🔴 " + " | ".join(parts)
+        lead = " ".join(clean(tx.get(k)) for k in ("l1", "l2", "l3") if clean(tx.get(k)))
+        desc = "\n".join([
+            lead,
+            ("అర్నాబ్ తుఫాను (Cyclone Arnab) లైవ్: భారత వాతావరణ శాఖ (IMD) అధికారిక బులెటిన్లు, తుఫాను మార్గం, తీరం దాటే సమయం, "
+             "జిల్లాల వారీ హెచ్చరికలు, విశాఖపట్నం - మచిలీపట్నం డాప్లర్ రాడార్ చిత్రాలు, ఉపగ్రహ చిత్రాలు నిరంతరం." if te else
+             "அர்னாப் புயல் (Cyclone Arnab) நேரலை: இந்திய வானிலை ஆய்வு மையத்தின் (IMD) அதிகாரப்பூர்வ அறிக்கைகள், புயலின் பாதை, "
+             "கரையைக் கடக்கும் நேரம், மாவட்ட வாரியான எச்சரிக்கைகள், டாப்ளர் ரேடார் மற்றும் செயற்கைக்கோள் படங்கள் தொடர்ந்து."),
+            "",
+            "■ " + ("గమనిక" if te else "குறிப்பு"),
+            ("・ఈ వ్యాఖ్యానం IMD బులెటిన్ల ఆధారంగా AI స్వరంతో చదువుతున్నది. ఇది అధికారిక హెచ్చరిక సేవ కాదు." if te else
+             "・இந்த விவரிப்பு IMD அறிக்கைகளின் அடிப்படையில் AI குரலில் வாசிக்கப்படுகிறது. இது அதிகாரப்பூர்வ எச்சரிக்கை சேவை அல்ல."),
+            ("・హెచ్చరికలు, ఖాళీ చేయించడం, సెలవుల కోసం IMD, APSDMA, జిల్లా యంత్రాంగం ప్రకటనలను పాటించండి." if te else
+             "・எச்சரிக்கைகள், வெளியேற்றம், விடுமுறை அறிவிப்புகளுக்கு IMD மற்றும் மாவட்ட நிர்வாகத்தின் அறிவிப்புகளைப் பின்பற்றவும்."),
+            ("・సమయాలు భారత కాలమానం (IST)." if te else "・நேரங்கள் இந்திய நேரம் (IST)."),
+            "",
+            "■ IMD: https://mausam.imd.gov.in  ·  RSMC New Delhi: https://rsmcnewdelhi.imd.gov.in",
+            "",
+            f"{name}. Student-run cyclone desk relaying IMD bulletins with a synthetic voice. Not an official warning service.",
+            "",
+            ("Cyclone Arnab Live | Arnab Toofan | అర్నబ్ తుఫాన్ | Heavy Rain Alerts | AP Weather Update | Telangana Rain | IMD Red Alert"
+             if te else "Cyclone Arnab Live | அர்னாப் புயல் நேரலை | Chennai Rain | Tamil Nadu Weather Update | IMD"),
+            ("#CycloneArnab #అర్నాబ్తుఫాను #HeavyRainAlert #APWeather #Telangana #Kakinada #Visakhapatnam #IMD" if te else
+             "#CycloneArnab #அர்னாப்புயல் #ChennaiRains #TamilNadu #IMD"),
+        ])
+        tags = (["Cyclone Arnab", "Cyclone Arnab live", "Arnab cyclone", "Arnab Toofan", "అర్నాబ్ తుఫాను", "అర్నబ్ తుఫాన్", "ఆర్నబ్ తుఫాన్", "తుఫాను",
+                 "Heavy Rain Alerts", "AP Weather Update", "AP weather", "Telangana rain", "Red Alert AP", "Andhra Pradesh cyclone",
+                 "Kakinada", "Visakhapatnam", "Vizag", "IMD", "cyclone live", "weather update",
+                 "Cyclone Arnab landfall", "Kakinada cyclone", "Yanam"] if te else
+                ["Cyclone Arnab", "Arnab Cyclone", "Cyclone Arnab live", "அர்னாப் புயல்", "அர்னாப் புயல் நேரலை", "புயல்",
+                 "Chennai rain", "Tamil Nadu rain", "TN weather", "Tamil Nadu weather update", "IMD", "cyclone live"])   # IMD: no heavy rain for TN
+    elif lang == "ja" and tx.get("l1"):     # the news-style thumbnail (THUMB_STYLE=tw, lang=ja): its lines are the title's hooks
         clean = lambda s: re.sub(r"\s*(?:最接近まで)?\s*あと\s*\d+\s*時間", " 最接近へ", re.sub(r"[{}\[\]]", "", s or "")).strip()
         day = datetime.now(timezone(timedelta(hours=9)))
         title = f"【LIVE】{clean(tx['l1'])} {clean(tx.get('l2'))}｜最新進路・暴風域・衛星画像（気象庁発表） {day.month}/{day.day}"
@@ -197,8 +240,17 @@ def metadata(cfg: dict, lang: str, thumb: dict) -> dict:
     tags = [t for t in dict.fromkeys(tags) if t]
     while sum(len(t) + 2 for t in tags) > 480:          # YouTube's tag budget is 500 characters
         tags.pop()
-    return {"title": os.environ.get("YOUTUBE_TITLE") or title, "description": os.environ.get("YOUTUBE_DESCRIPTION") or desc,
+    return {"title": os.environ.get("YOUTUBE_TITLE") or file_title() or title, "description": os.environ.get("YOUTUBE_DESCRIPTION") or desc,
             "tags": tags, "language": YT_LANGUAGE.get(lang, lang or "en"), "audio_language": YT_LANGUAGE.get(audio, audio)}
+
+
+def file_title() -> str:
+    """YOUTUBE_TITLE_FILE's first line: a title that can change while live (title experiments), "" when unset or empty."""
+    path = os.environ.get("YOUTUBE_TITLE_FILE", "")
+    try:
+        return Path(path).read_text(encoding="utf-8").strip().splitlines()[0][:100] if path else ""
+    except (OSError, IndexError):
+        return ""
 
 
 def place_ja(name: str) -> str:
@@ -295,6 +347,10 @@ def main() -> int:
     next_refresh = time.time() + a.refresh_min * 60
     health_every = float(os.environ.get("YOUTUBE_HEALTH_MIN", "10")) * 60    # 2 quota units per check: every minute = 2,880/day
     next_health = 0.0
+    try:                                                    # the thumbnail summary the description and tags come from
+        last_thumb = json.loads((REPO / "output" / "youtube" / f"thumb_{a.lang or 'en'}.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        last_thumb = {}
     try:
         while not stopping["flag"] and time.time() < deadline and not stop_file.exists():
             time.sleep(60)
@@ -309,10 +365,22 @@ def main() -> int:
                              youtube.broadcast_status(bc_id, yt))
                 except Exception as error:  # noqa: BLE001 - monitoring must never stop the stream
                     log.warning("health check failed: %s", error)
+            ft = file_title()
+            if ft and ft != state.get("title") and not os.environ.get("YOUTUBE_TITLE"):   # YOUTUBE_TITLE_FILE changed
+                try:
+                    meta = metadata(cfg, a.lang, last_thumb)
+                    yt = youtube.service()
+                    youtube.update_video(bc_id, meta["title"], meta["description"], meta["tags"], language=meta["language"],
+                                         audio_language=meta["audio_language"], yt=yt)
+                    state["title"] = meta["title"]
+                    log.info("title set from %s: %s", os.environ["YOUTUBE_TITLE_FILE"], meta["title"])
+                except Exception as error:  # noqa: BLE001
+                    log.warning("title update failed: %s", error)
             if a.refresh_min > 0 and time.time() >= next_refresh and not os.environ.get("YOUTUBE_TITLE"):
                 next_refresh = time.time() + a.refresh_min * 60
                 try:
                     thumb_path, thumb = youtube_thumbnail.render(a.lang)
+                    last_thumb = thumb
                     meta = metadata(cfg, a.lang, thumb)
                     # a fresh client: after an idle hour the old connection is gone, and uploads (POST) are not retried
                     yt = youtube.service()

@@ -61,11 +61,14 @@ def get_text(url: str, ttl: float | None = None, retries: int = 2) -> str:
             text = r.text
             if not text.strip():
                 raise FetchError(f"empty body from {url}")
-            if ttl > 0:
-                CACHE_DIR.mkdir(parents=True, exist_ok=True)
-                tmp = key.with_suffix(".tmp")
-                tmp.write_text(json.dumps({"url": url, "text": text}), encoding="utf-8")
-                tmp.replace(key)
+            if ttl > 0:                     # the cache is shared by every desk updater: a per-process temp name, and a
+                try:                        # failed cache write never fails the fetch
+                    CACHE_DIR.mkdir(parents=True, exist_ok=True)
+                    tmp = key.with_suffix(f".{os.getpid()}.tmp")
+                    tmp.write_text(json.dumps({"url": url, "text": text}), encoding="utf-8")
+                    tmp.replace(key)
+                except OSError:
+                    pass
             return text
         except FetchError:
             raise

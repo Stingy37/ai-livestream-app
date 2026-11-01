@@ -4,8 +4,9 @@ Serves html/ straight from disk (no caching, so a browser refresh shows your las
 forwards /live/* and /healthz to the EC2 server through the ssh tunnel, so the page plays the
 real published package. Nothing here changes what viewers of the EC2 site see.
 
-Streams: /s/<id>/ serves the same page for stream <id> (its relative live/ urls become /s/<id>/live/...,
-proxied to EC2 as they are); / is the default stream, as on EC2.
+Streams: /s/<id>/ serves the page for stream <id> (its relative live/ urls become /s/<id>/live/...,
+proxied to EC2 as they are); / is the default stream, as on EC2. Streams whose id starts with "india" get
+html/india-desk.html (North Indian Ocean, ?lang=te|ta), every other stream html/champi-desk.html.
 """
 
 import http.client
@@ -49,7 +50,8 @@ class Handler(SimpleHTTPRequestHandler):
             if rest != "/" and (WEB_DIR / rest.lstrip("/")).resolve().is_relative_to(WEB_DIR.resolve()) and (WEB_DIR / rest.lstrip("/")).is_file():
                 self.path = rest + query            # another file of the site (thumb-hero.html, thumb/...) for this stream
                 return super().do_GET()
-            self.path = "/champi-desk.html" + query
+            # India streams (india-te, india-ta) get their own page; every other stream the Western Pacific desk
+            self.path = ("/india-desk.html" if m.group(1).startswith("india") else "/champi-desk.html") + query
             return super().do_GET()
         if self.path.startswith(PROXIED):
             return self.proxy("GET")

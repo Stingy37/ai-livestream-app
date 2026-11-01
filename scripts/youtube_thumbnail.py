@@ -103,10 +103,10 @@ def hero_ready() -> bool:
 TW_TEXT = Path(os.environ.get("THUMB_TW_TEXT", REPO / "output" / "youtube" / "thumb_tw_text.json"))
 
 
-def tw_ready(desk: str | None = None) -> bool:
-    """Fetch the storm-and-Taiwan infrared frame for the tw style (scripts/thumb_sat.py --frame tw)."""
+def tw_ready(desk: str | None = None, frame: str = "tw") -> bool:
+    """Fetch the storm-and-land infrared frame for the tw style (scripts/thumb_sat.py --frame tw | india)."""
     desk = desk or os.environ.get("THUMB_DESK") or stream_page() + "live/desk.json"
-    r = subprocess.run([sys.executable, str(REPO / "scripts" / "thumb_sat.py"), "--frame", "tw", "--desk", desk],
+    r = subprocess.run([sys.executable, str(REPO / "scripts" / "thumb_sat.py"), "--frame", frame, "--desk", desk],
                        capture_output=True, text=True, timeout=300)
     if r.returncode != 0:
         print(f"Taiwan frame unavailable: {(r.stderr or r.stdout).strip()[-300:]}", file=sys.stderr)
@@ -126,6 +126,17 @@ def jma_point_time(place: str) -> str:
     return min(pts)[1] if pts else ""
 
 
+def desk_value(*keys: str):
+    src = os.environ.get("THUMB_DESK") or stream_page() + "live/desk.json"
+    try:
+        d = json.load(urllib.request.urlopen(src, timeout=15)) if src.startswith("http") else json.loads(Path(src).read_text(encoding="utf-8"))
+        for k in keys:
+            d = d[k]
+        return d
+    except (OSError, ValueError, KeyError, TypeError):
+        return None
+
+
 def tw_text(over: dict | None = None) -> dict:
     """The tw style's words (l1, l2, l3, chip, chipLab, stamp, arrow): THUMB_TW_TEXT's JSON file, then any overrides.
     The operator writes them from official sources; a refresh only changes the time stamp and the satellite frame."""
@@ -133,6 +144,8 @@ def tw_text(over: dict | None = None) -> dict:
     text.update({k: v for k, v in (over or {}).items() if v is not None})
     if text.get("cdJma"):
         text["cdTime"] = jma_point_time(text["cdJma"])
+    if text.get("cdLandfall"):                   # India: count down to IMD's landfall time (desk.json in.imd.landfall.timeUTC)
+        text["cdTime"] = desk_value("in", "imd", "landfall", "timeUTC") or ""
     if not text.get("l2"):
         raise RuntimeError(f"the tw thumbnail needs its words: write l1/l2 (and optionally l3, chip) to {TW_TEXT} or pass --l1/--l2")
     return text
@@ -146,9 +159,10 @@ def render(lang: str = "", out: Path | None = None, timeout: float = 120, style:
     style = style or os.environ.get("THUMB_STYLE", "hero")
     if style == "tw":
         words = tw_text(text)                       # fail before fetching anything when the words are missing
-        if not tw_ready():
+        if not tw_ready(frame="india" if words.get("frame") == "in" else "tw"):
             raise RuntimeError("Taiwan satellite frame unavailable")
-        url = stream_page() + "thumb-tw.html?" + urllib.parse.urlencode({k: str(v) for k, v in words.items() if v not in (None, "")})
+        page = "thumb-in.html" if words.get("tpl") == "in" else "thumb-tw.html"     # tpl=in: the Indian news-style template
+        url = stream_page() + page + "?" + urllib.parse.urlencode({k: str(v) for k, v in words.items() if v not in (None, "") and k != "tpl"})
     elif style == "hero" and hero_ready():
         url = stream_page() + "thumb-hero.html" + (f"?lang={lang}" if lang else "")
     else:

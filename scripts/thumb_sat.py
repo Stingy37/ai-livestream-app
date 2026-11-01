@@ -38,6 +38,10 @@ OUT_DIR = REPO / "html" / "thumb"
 IR_STOPS = [(0, (10, 14, 22)), (110, (128, 134, 144)), (125, (40, 80, 190)), (150, (40, 170, 230)), (170, (60, 200, 90)),
             (186, (240, 225, 60)), (198, (255, 140, 30)), (207, (230, 30, 40)), (214, (205, 30, 165)), (220, (255, 185, 240)),
             (226, (255, 255, 255)), (255, (255, 255, 255))]
+# the same infrared as Indian news thumbnails draw a cyclone: warm sea deep blue, cloud tops brightening to white (no rainbow)
+NEWS_STOPS = [(0, (2, 10, 34)), (80, (10, 45, 120)), (120, (30, 80, 170)), (160, (80, 125, 200)), (190, (150, 180, 228)),
+              (205, (200, 218, 245)), (215, (238, 244, 253)), (222, (255, 255, 255)), (255, (255, 255, 255))]   # the cold
+# range is stretched (most of a cyclone's overcast reads 200-225) so the eye and the spiral bands carry
 
 
 def get(url: str, timeout: float = 30) -> bytes:
@@ -177,8 +181,26 @@ def tw_box(lat: float, lon: float) -> tuple[float, float, float, float]:
     return lat0, lat1, lon0, lon1
 
 
-def region_values(ts: int, box: tuple[float, float, float, float], size: tuple[int, int]) -> np.ndarray:
-    """Band-13 data values resampled (bilinear) from the 2 km full disk onto a lat/lon grid of size (width, height)."""
+# --frame india: the Bay of Bengal with the Andhra Pradesh / Tamil Nadu coast and the storm (Indian thumbnails always show
+# the state). Himawari-9 still sees the bay (about 55 degrees from its sub-point, so the view is oblique but usable).
+IN_LON_W = 17.0
+
+
+def in_box(lat: float, lon: float) -> tuple[float, float, float, float]:
+    """(lat0, lat1, lon0, lon1): the coast from Chennai to Visakhapatnam on the left, the storm right of centre and in
+    the upper half (thumbnails put their text on the lower 40%)."""
+    lon1 = max(91.5, lon + 4.5)
+    lon0 = lon1 - IN_LON_W
+    lat1 = max(20.0, lat + 4.3)
+    mid = math.radians(lat1 - 4.5)
+    lat0 = lat1 - IN_LON_W * math.cos(mid) * TW_SIZE[1] / TW_SIZE[0]
+    return lat0, lat1, lon0, lon1
+
+
+def region_values(ts: int, box: tuple[float, float, float, float], size: tuple[int, int], product: str = "band_13",
+                  level: int = 3) -> np.ndarray:
+    """Full-disk pixels resampled (bilinear) onto a lat/lon grid of size (width, height): band-13 data values at level 3
+    (2 km) by default, or an RGB product such as geocolor (level 4 is 1 km), which comes back as (h, w, 3)."""
     lat0, lat1, lon0, lon1 = box
     w, h = size
     lon = lon0 + (np.arange(w) + 0.5) / w * (lon1 - lon0)
@@ -191,31 +213,43 @@ def region_values(ts: int, box: tuple[float, float, float, float], size: tuple[i
     r2 = -rl * np.cos(phi) * np.sin(dl)
     r3 = rl * np.sin(phi)
     rn = np.sqrt(r1 * r1 + r2 * r2 + r3 * r3)
-    scale = FD_TILE * 8 / 5500
+    scale = FD_TILE * 2 ** level / 5500
     px = (COFF + np.degrees(np.arctan(-r2 / r1)) * CFAC / 2 ** 16 - 1) * scale
     py = (COFF + np.degrees(np.arcsin(-r3 / rn)) * CFAC / 2 ** 16 - 1) * scale
     c0, c1 = int(px.min() // FD_TILE), int(px.max() // FD_TILE)
     r0, r1_ = int(py.min() // FD_TILE), int(py.max() // FD_TILE)
-    mosaic = np.zeros(((r1_ - r0 + 1) * FD_TILE, (c1 - c0 + 1) * FD_TILE))
+    rgb = product == "geocolor"
+    mosaic = np.zeros(((r1_ - r0 + 1) * FD_TILE, (c1 - c0 + 1) * FD_TILE) + ((3,) if rgb else ()))
     for row in range(r0, r1_ + 1):
         for col in range(c0, c1 + 1):
-            t = tile("full_disk", "band_13", ts, 3, row, col)
+            t = tile("full_disk", product, ts, level, row, col)
             if t is None:
                 raise RuntimeError(f"full-disk tile {row},{col} missing for {ts}")
-            mosaic[(row - r0) * FD_TILE:(row - r0 + 1) * FD_TILE, (col - c0) * FD_TILE:(col - c0 + 1) * FD_TILE] = np.asarray(t, dtype=np.float64)
+            mosaic[(row - r0) * FD_TILE:(row - r0 + 1) * FD_TILE, (col - c0) * FD_TILE:(col - c0 + 1) * FD_TILE] = np.asarray(t.convert("RGB") if rgb else t, dtype=np.float64)
     x, y = px - c0 * FD_TILE, py - r0 * FD_TILE
     x0, y0 = np.clip(np.floor(x).astype(int), 0, mosaic.shape[1] - 2), np.clip(np.floor(y).astype(int), 0, mosaic.shape[0] - 2)
     fx, fy = np.clip(x - x0, 0, 1), np.clip(y - y0, 0, 1)
+    if rgb:
+        fx, fy = fx[..., None], fy[..., None]
     return ((mosaic[y0, x0] * (1 - fx) + mosaic[y0, x0 + 1] * fx) * (1 - fy)
             + (mosaic[y0 + 1, x0] * (1 - fx) + mosaic[y0 + 1, x0 + 1] * fx) * fy)
 
 
-def tw_frame(desk: dict, out: Path) -> int:
-    """Write thumb/tw_ir.jpg + tw.json: the enhanced-IR full disk over a box holding Taiwan and the storm."""
+def tw_frame(desk: dict, out: Path, stem: str = "tw", box_fn=None, res: int = 1, geocolor: bool = False) -> int:
+    """Write thumb/<stem>_ir.jpg + <stem>.json: the enhanced-IR full disk over a box holding the land and the storm
+    (tw: Taiwan, in: the Indian coast). res=2 samples the image at twice the frame size (coordinates stay in frame
+    pixels) so a template can zoom into it without blocky colour edges. geocolor=True also writes <stem>_geo.jpg, CIRA's
+    GeoColor of the same box at 1 km (true colour by day; at night infrared clouds over a city-lights background)."""
     c = desk["center"]
     ts = max(times("full_disk", "band_13"))
-    box = tw_box(c["lat"], c["lon"])
-    g = region_values(ts, box, TW_SIZE)
+    if geocolor:                                             # the newest time both products have, so the two views match
+        try:
+            ts = max(set(times("full_disk", "geocolor")) & {ts, *times("full_disk", "band_13")})
+        except (OSError, ValueError) as e:                   # GeoColor is a bonus: the infrared frame still goes out
+            print(f"geocolor unavailable: {e}", file=sys.stderr)
+            geocolor = False
+    box = (box_fn or tw_box)(c["lat"], c["lon"])
+    g = region_values(ts, box, (TW_SIZE[0] * res, TW_SIZE[1] * res))
     xs = [x for x, _ in IR_STOPS]
     rgb = np.stack([np.interp(g, xs, [col[i] for _, col in IR_STOPS]) for i in range(3)], axis=-1)
     img = Image.fromarray(rgb.clip(0, 255).astype(np.uint8))
@@ -225,19 +259,35 @@ def tw_frame(desk: dict, out: Path) -> int:
         return {"x": round((lon - lon0) / (lon1 - lon0) * TW_SIZE[0], 1), "y": round((lat1 - lat) / (lat1 - lat0) * TW_SIZE[1], 1)}
 
     out.mkdir(parents=True, exist_ok=True)
-    img.save(out / ".tw_ir.jpg.tmp", format="JPEG", quality=92)
-    os.replace(out / ".tw_ir.jpg.tmp", out / "tw_ir.jpg")
+    img.save(out / f".{stem}_ir.jpg.{os.getpid()}.tmp", format="JPEG", quality=92)
+    os.replace(out / f".{stem}_ir.jpg.{os.getpid()}.tmp", out / f"{stem}_ir.jpg")
+    images = {"ir": f"{stem}_ir.jpg"}
+    xs = [x for x, _ in NEWS_STOPS]
+    news = Image.fromarray(np.stack([np.interp(g, xs, [col[i] for _, col in NEWS_STOPS]) for i in range(3)], axis=-1).clip(0, 255).astype(np.uint8))
+    news = news.filter(ImageFilter.UnsharpMask(radius=40 * res, percent=90, threshold=0))       # large-radius clarity
+    news = news.filter(ImageFilter.UnsharpMask(radius=2 * res, percent=60, threshold=2))
+    news.save(out / f".{stem}_irn.jpg.{os.getpid()}.tmp", format="JPEG", quality=92)
+    os.replace(out / f".{stem}_irn.jpg.{os.getpid()}.tmp", out / f"{stem}_irn.jpg")
+    images["irnews"] = f"{stem}_irn.jpg"
+    if geocolor:
+        try:
+            geo = Image.fromarray(region_values(ts, box, (TW_SIZE[0] * res, TW_SIZE[1] * res), "geocolor", 4).clip(0, 255).astype(np.uint8))
+            geo.save(out / f".{stem}_geo.jpg.{os.getpid()}.tmp", format="JPEG", quality=92)
+            os.replace(out / f".{stem}_geo.jpg.{os.getpid()}.tmp", out / f"{stem}_geo.jpg")
+            images["geocolor"] = f"{stem}_geo.jpg"
+        except (OSError, RuntimeError) as e:
+            print(f"geocolor unavailable: {e}", file=sys.stderr)
     mid = math.radians((lat0 + lat1) / 2)
     info = {
-        "image": "tw_ir.jpg", "product": "ir", "time": ts_time(ts).isoformat().replace("+00:00", "Z"),
+        "image": f"{stem}_ir.jpg", "images": images, "product": "ir", "time": ts_time(ts).isoformat().replace("+00:00", "Z"),
         "width": TW_SIZE[0], "height": TW_SIZE[1], "box": {"lat0": lat0, "lat1": lat1, "lon0": lon0, "lon1": lon1},
         "km_per_px": (lon1 - lon0) * 111.32 * math.cos(mid) / TW_SIZE[0],
         "center": {**xy(c["lat"], c["lon"]), "lat": c["lat"], "lon": c["lon"], "timeUTC": c.get("timeUTC")},
         "forecast": [{"timeUTC": p["timeUTC"], **xy(p["lat"], p["lon"])} for p in (desk.get("forecast") or {}).get("points") or []],
         "credit": "Himawari-9 (JMA) · CIRA RAMMB SLIDER",
     }
-    (out / ".tw.json.tmp").write_text(json.dumps(info, indent=2), encoding="utf-8")
-    os.replace(out / ".tw.json.tmp", out / "tw.json")
+    (out / f".{stem}.json.{os.getpid()}.tmp").write_text(json.dumps(info, indent=2), encoding="utf-8")
+    os.replace(out / f".{stem}.json.{os.getpid()}.tmp", out / f"{stem}.json")
     print(json.dumps({k: info[k] for k in ("image", "time", "box", "center")}))
     return 0
 
@@ -248,7 +298,7 @@ def main() -> int:
     ap.add_argument("--desk", default=str(REPO / "output" / "desk" / "desk.json"), help="desk.json path or URL (storm center, forecast)")
     ap.add_argument("--min-corr", type=float, default=0.6)
     ap.add_argument("--out", default=str(OUT_DIR))
-    ap.add_argument("--frame", default="sector", choices=["sector", "tw"],
+    ap.add_argument("--frame", default="sector", choices=["sector", "tw", "india"],
                     help="sector: the rapid-scan box on the storm (hero.json); tw: storm + Taiwan from the full disk, infrared (tw.json)")
     a = ap.parse_args()
 
@@ -256,6 +306,8 @@ def main() -> int:
     desk = json.loads(raw)
     if a.frame == "tw":
         return tw_frame(desk, Path(a.out))
+    if a.frame == "india":
+        return tw_frame(desk, Path(a.out), stem="in", box_fn=in_box, res=2, geocolor=True)
     c = desk["center"]
     # newest time both the sector and the full disk have: locate and draw from that one frame, so a sector that
     # JMA re-aimed a few minutes later can never be drawn with a stale offset
@@ -284,8 +336,8 @@ def main() -> int:
     out = Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
     name = f"hero_{product}.jpg"
-    img.save(out / f".{name}.tmp", format="JPEG", quality=92)       # renames: streams rendering at once never see a half file
-    os.replace(out / f".{name}.tmp", out / name)
+    img.save(out / f".{name}.{os.getpid()}.tmp", format="JPEG", quality=92)       # renames: streams rendering at once never see a half file
+    os.replace(out / f".{name}.{os.getpid()}.tmp", out / name)
     info = {
         "image": name, "product": product, "time": shot.isoformat().replace("+00:00", "Z"),
         "width": img.width, "height": img.height, "km_per_px": 2.0 / k,
@@ -293,8 +345,8 @@ def main() -> int:
         "forecast": pts, "match": round(r, 3), "sector_offset_2km": [ox, oy],
         "credit": "Himawari-9 (JMA) · CIRA RAMMB SLIDER",
     }
-    (out / ".hero.json.tmp").write_text(json.dumps(info, indent=2), encoding="utf-8")
-    os.replace(out / ".hero.json.tmp", out / "hero.json")
+    (out / f".hero.json.{os.getpid()}.tmp").write_text(json.dumps(info, indent=2), encoding="utf-8")
+    os.replace(out / f".hero.json.{os.getpid()}.tmp", out / "hero.json")
     print(json.dumps({k2: info[k2] for k2 in ("image", "product", "time", "center", "match")}))
     return 0
 

@@ -279,3 +279,338 @@ def build(template: str, desk: dict) -> str:
     if template not in TEMPLATES:
         raise ValueError(f"unknown desk template {template!r} (known: {', '.join(TEMPLATES)})")
     return TEMPLATES[template](desk)
+
+
+# ---- India (Cyclone Arnab): IMD's structured bulletin (desk.json in.imd) composed in Telugu and Tamil --------------
+# No translation model: fixed phrasing + tables. A name missing from the tables is left out (the voices cannot read
+# Latin script), never guessed.
+IN_CLASS = {"D": ("వాయుగుండం", "காற்றழுத்த தாழ்வு மண்டலம்"), "DD": ("తీవ్ర వాయుగుండం", "ஆழ்ந்த காற்றழுத்த தாழ்வு மண்டலம்"),
+            "CS": ("తుఫాను", "புயல்"), "SCS": ("తీవ్ర తుఫాను", "தீவிர புயல்"), "VSCS": ("అతి తీవ్ర తుఫాను", "மிகத் தீவிர புயல்"),
+            "ESCS": ("అత్యంత తీవ్ర తుఫాను", "அதி தீவிர புயல்"), "SuCS": ("సూపర్ తుఫాను", "சூப்பர் புயல்")}
+IN_DIR = {"N": ("ఉత్తర", "வடக்கு"), "NNE": ("ఉత్తర-ఈశాన్య", "வடக்கு-வடகிழக்கு"), "NE": ("ఈశాన్య", "வடகிழக்கு"),
+          "ENE": ("తూర్పు-ఈశాన్య", "கிழக்கு-வடகிழக்கு"), "E": ("తూర్పు", "கிழக்கு"), "ESE": ("తూర్పు-ఆగ్నేయ", "கிழக்கு-தென்கிழக்கு"),
+          "SE": ("ఆగ్నేయ", "தென்கிழக்கு"), "SSE": ("దక్షిణ-ఆగ్నేయ", "தெற்கு-தென்கிழக்கு"), "S": ("దక్షిణ", "தெற்கு"),
+          "SSW": ("దక్షిణ-నైరుతి", "தெற்கு-தென்மேற்கு"), "SW": ("నైరుతి", "தென்மேற்கு"), "WSW": ("పశ్చిమ-నైరుతి", "மேற்கு-தென்மேற்கு"),
+          "W": ("పశ్చిమ", "மேற்கு"), "WNW": ("పశ్చిమ-వాయవ్య", "மேற்கு-வடமேற்கு"), "NW": ("వాయవ్య", "வடமேற்கு"),
+          "NNW": ("ఉత్తర-వాయవ్య", "வடக்கு-வடமேற்கு")}
+# place: (Telugu, Tamil, Tamil "from <place>")
+IN_PLACE = {"Visakhapatnam": ("విశాఖపట్నం", "விசாகப்பட்டினம்", "விசாகப்பட்டினத்திலிருந்து"),
+            "Kakinada": ("కాకినాడ", "காக்கிநாடா", "காக்கிநாடாவிலிருந்து"), "Machilipatnam": ("మచిలీపట్నం", "மசிலிப்பட்டினம்", "மசிலிப்பட்டினத்திலிருந்து"),
+            "Bapatla": ("బాపట్ల", "பாபட்லா", "பாபட்லாவிலிருந்து"), "Yanam": ("యానాం", "ஏனாம்", "ஏனாமிலிருந்து"),
+            "Kalingapatnam": ("కళింగపట్నం", "கலிங்கப்பட்டினம்", "கலிங்கப்பட்டினத்திலிருந்து"), "Nellore": ("నెల్లూరు", "நெல்லூர்", "நெல்லூரிலிருந்து"),
+            "Chennai": ("చెన్నై", "சென்னை", "சென்னையிலிருந்து"), "Puducherry": ("పుదుచ్చేరి", "புதுச்சேரி", "புதுச்சேரியிலிருந்து"),
+            "Gopalpur": ("గోపాల్‌పూర్", "கோபால்பூர்", "கோபால்பூரிலிருந்து"), "Puri": ("పూరీ", "பூரி", "பூரியிலிருந்து"),
+            "Paradip": ("పారాదీప్", "பாரதீப்", "பாரதீப்பிலிருந்து"), "Ongole": ("ఒంగోలు", "ஓங்கோல்", "ஓங்கோலிலிருந்து"),
+            "Port Blair": ("పోర్ట్ బ్లెయిర్", "போர்ட் பிளேர்", "போர்ட் பிளேரிலிருந்து"),
+            "Coastal Andhra Pradesh": ("కోస్తా ఆంధ్ర", "கடலோர ஆந்திரா", ""), "Andhra Pradesh": ("ఆంధ్రప్రదేశ్", "ஆந்திரப் பிரதேசம்", ""),
+            "Rayalaseema": ("రాయలసీమ", "ராயலசீமா", ""), "Telangana": ("తెలంగాణ", "தெலங்கானா", ""), "Odisha": ("ఒడిశా", "ஒடிசா", ""),
+            "South Odisha": ("దక్షిణ ఒడిశా", "தெற்கு ஒடிசா", ""), "Tamil Nadu": ("తమిళనాడు", "தமிழ்நாடு", ""),
+            "North Coastal Tamil Nadu": ("ఉత్తర కోస్తా తమిళనాడు", "வட கடலோர தமிழ்நாடு", ""), "Karaikal": ("కారైక్కల్", "காரைக்கால்", ""),
+            "East Godavari": ("తూర్పు గోదావరి", "கிழக்கு கோதாவரி", ""), "West Godavari": ("పశ్చిమ గోదావరి", "மேற்கு கோதாவரி", ""),
+            "Konaseema": ("కోనసీమ", "கோனசீமா", ""), "Krishna": ("కృష్ణా", "கிருஷ்ணா", ""), "Guntur": ("గుంటూరు", "குண்டூர்", ""),
+            "Prakasam": ("ప్రకాశం", "பிரகாசம்", ""), "Anakapalli": ("అనకాపల్లి", "அனகாபள்ளி", ""), "Srikakulam": ("శ్రీకాకుళం", "ஸ்ரீகாகுளம்", ""),
+            "Vizianagaram": ("విజయనగరం", "விஜயநகரம்", ""), "Eluru": ("ఏలూరు", "ஏலூரு", ""), "Alluri Sitharama Raju": ("అల్లూరి సీతారామరాజు", "அல்லூரி சீதாராம ராஜு", ""),
+            "Tiruvallur": ("తిరువళ్లూరు", "திருவள்ளூர்", ""), "Chengalpattu": ("చెంగల్పట్టు", "செங்கல்பட்டு", ""), "Kancheepuram": ("కాంచీపురం", "காஞ்சிபுரம்", ""),
+            "Ranipet": ("రాణిపేట", "ராணிப்பேட்டை", ""), "Vellore": ("వెల్లూరు", "வேலூர்", ""), "Villupuram": ("విల్లుపురం", "விழுப்புரம்", "")}
+# district names (IMD's spelling) for each stream's own state: AP in Telugu, Tamil Nadu + Puducherry in Tamil
+TE_DISTRICT = {"Srikakulam": "శ్రీకాకుళం", "Vizianagaram": "విజయనగరం", "Parvathipuram Manyam": "పార్వతీపురం మన్యం",
+               "Alluri Sitharama Raju": "అల్లూరి సీతారామరాజు", "Visakhapatnam": "విశాఖపట్నం", "Anakapalli": "అనకాపల్లి", "Kakinada": "కాకినాడ",
+               "Konaseema": "కోనసీమ", "Dr. B.R. Ambedkar Konaseema": "కోనసీమ", "East Godavari": "తూర్పు గోదావరి", "West Godavari": "పశ్చిమ గోదావరి",
+               "Eluru": "ఏలూరు", "Krishna": "కృష్ణా", "NTR": "ఎన్టీఆర్", "Guntur": "గుంటూరు", "Palnadu": "పల్నాడు", "Bapatla": "బాపట్ల",
+               "Prakasam": "ప్రకాశం", "Nellore": "నెల్లూరు", "Sri Potti Sriramulu Nellore": "నెల్లూరు", "Kurnool": "కర్నూలు", "Nandyal": "నంద్యాల",
+               "Anantapur": "అనంతపురం", "Ananthapuramu": "అనంతపురం", "Sri Sathya Sai": "శ్రీ సత్యసాయి", "YSR Kadapa": "కడప", "Kadapa": "కడప",
+               "Annamayya": "అన్నమయ్య", "Chittoor": "చిత్తూరు", "Tirupati": "తిరుపతి",
+               # IMD's district-warning layer spells some names its own way
+               "Vishakhapatnam": "విశాఖపట్నం", "Tirupathi": "తిరుపతి", "Anantapuramu": "అనంతపురం", "SPSR Nellore": "నెల్లూరు",
+               "Parvathipurammanyam": "పార్వతీపురం మన్యం", "Srisathyasai": "శ్రీ సత్యసాయి"}
+TA_DISTRICT = {"Chennai": "சென்னை", "Tiruvallur": "திருவள்ளூர்", "Chengalpattu": "செங்கல்பட்டு", "Kancheepuram": "காஞ்சிபுரம்",
+               "Ranipet": "ராணிப்பேட்டை", "Vellore": "வேலூர்", "Tirupathur": "திருப்பத்தூர்", "Tiruvannamalai": "திருவண்ணாமலை",
+               "Villupuram": "விழுப்புரம்", "Kallakurichi": "கள்ளக்குறிச்சி", "Cuddalore": "கடலூர்", "Mayiladuthurai": "மயிலாடுதுறை",
+               "Nagapattinam": "நாகப்பட்டினம்", "Tiruvarur": "திருவாரூர்", "Thanjavur": "தஞ்சாவூர்", "Pudukkottai": "புதுக்கோட்டை",
+               "Ramanathapuram": "ராமநாதபுரம்", "Thoothukudi": "தூத்துக்குடி", "Tirunelveli": "திருநெல்வேலி", "Tenkasi": "தென்காசி",
+               "Kanyakumari": "கன்னியாகுமரி", "Virudhunagar": "விருதுநகர்", "Madurai": "மதுரை", "Sivaganga": "சிவகங்கை", "Theni": "தேனி",
+               "Dindigul": "திண்டுக்கல்", "Tiruchirappalli": "திருச்சிராப்பள்ளி", "Karur": "கரூர்", "Perambalur": "பெரம்பலூர்",
+               "Ariyalur": "அரியலூர்", "Namakkal": "நாமக்கல்", "Salem": "சேலம்", "Dharmapuri": "தர்மபுரி", "Krishnagiri": "கிருஷ்ணகிரி",
+               "Erode": "ஈரோடு", "Tiruppur": "திருப்பூர்", "Coimbatore": "கோயம்புத்தூர்", "The Nilgiris": "நீலகிரி", "Nilgiris": "நீலகிரி",
+               "Puducherry": "புதுச்சேரி", "Karaikal": "காரைக்கால்",
+               # IMD's district-warning layer spells some names its own way
+               "Kallakkurichi": "கள்ளக்குறிச்சி", "Ranippettai": "ராணிப்பேட்டை", "Sivagangai": "சிவகங்கை", "Thirunelveli": "திருநெல்வேலி",
+               "Thiruvarur": "திருவாரூர்", "Thiruchirapalli": "திருச்சிராப்பள்ளி", "Thiruppur": "திருப்பூர்", "Tiruppattar": "திருப்பத்தூர்",
+               "Thiruvallur": "திருவள்ளூர்", "Thiruvannamalai": "திருவண்ணாமலை", "Yanam": "ஏனாம்"}
+IN_COLOUR = {"red": ("రెడ్ అలర్ట్", "சிவப்பு எச்சரிக்கை"), "orange": ("ఆరెంజ్ అలర్ట్", "ஆரஞ்சு எச்சரிக்கை"), "yellow": ("ఎల్లో అలర్ట్", "மஞ்சள் எச்சரிக்கை")}
+IN_PART = {"early morning": ("తెల్లవారుజామున", "அதிகாலை"), "morning": ("ఉదయం", "காலை"), "forenoon": ("ఉదయం", "முற்பகல்"),
+           "noon": ("మధ్యాహ్నం", "நண்பகல்"), "afternoon": ("మధ్యాహ్నం", "மதியம்"), "evening": ("సాయంత్రం", "மாலை"), "night": ("రాత్రి", "இரவு"),
+           "midnight": ("అర్ధరాత్రి", "நள்ளிரவு")}
+IN_RAIN = {"heavy": ("భారీ", "கனமழை"), "very heavy": ("అతి భారీ", "மிக கனமழை"), "extremely heavy": ("అత్యంత భారీ", "அதி கனமழை"),
+           "heavy to very heavy": ("భారీ నుంచి అతి భారీ", "கனமழை முதல் மிக கனமழை"),
+           "very heavy to extremely heavy": ("అతి భారీ నుంచి అత్యంత భారీ", "மிக கனமழை முதல் அதி கனமழை")}
+IN_MONTH = {10: ("అక్టోబర్", "அக்டோபர்"), 11: ("నవంబర్", "நவம்பர்"), 12: ("డిసెంబర్", "டிசம்பர்")}
+
+
+def _i(lang: str) -> int:
+    return 0 if lang == "te" else 1
+
+
+IN_ALIAS = {"vishakhapatnam": "Visakhapatnam", "vizag": "Visakhapatnam", "costal andhra pradesh": "Coastal Andhra Pradesh",
+            "pondicherry": "Puducherry", "kakinada port": "Kakinada"}
+# IMD's area phrases ("north costal Andhra Pradesh", "eastern parts of Telangana", "districts of coastal Andhra Pradesh from
+# Krishna to Anakapalli") -> names: ordered rules, every match kept; sea areas are left to the marine warnings
+IN_AREA_RULES = [
+    (r"north\s+co?a?stal\s+andhra", ("ఉత్తర కోస్తా ఆంధ్ర", "வட கடலோர ஆந்திரா")), (r"south\s+co?a?stal\s+andhra", ("దక్షిణ కోస్తా ఆంధ్ర", "தெற்கு கடலோர ஆந்திரா")),
+    (r"(?<!north )(?<!south )co?a?stal\s+andhra", ("కోస్తా ఆంధ్ర", "கடலோர ஆந்திரா")), (r"rayalaseema", ("రాయలసీమ", "ராயலசீமா")),
+    (r"^(?!.*co?a?stal).*andhra pradesh", ("ఆంధ్రప్రదేశ్", "ஆந்திரப் பிரதேசம்")), (r"yanam", ("యానాం", "ஏனாம்")),
+    (r"eastern parts of telangana", ("తూర్పు తెలంగాణ", "கிழக்கு தெலங்கானா")), (r"^(?!.*eastern parts).*telangana", ("తెలంగాణ", "தெலங்கானா")),
+    (r"south(ern)?\s+odisha", ("దక్షిణ ఒడిశా", "தெற்கு ஒடிசா")), (r"interior.*odisha", ("అంతర్గత ఒడిశా", "உள் ஒடிசா")),
+    (r"^(?!.*(south|interior)).*odisha", ("ఒడిశా", "ஒடிசா")), (r"north\s+tamil\s+nadu", ("ఉత్తర తమిళనాడు", "வட தமிழ்நாடு")),
+    (r"^(?!.*north).*tamil\s+nadu", ("తమిళనాడు", "தமிழ்நாடு")), (r"puducherry", ("పుదుచ్చేరి", "புதுச்சேரி")), (r"karaikal", ("కారైక్కల్", "காரைக்கால்")),
+    (r"chhattisgarh", ("ఛత్తీస్‌గఢ్", "சத்தீஸ்கர்")), (r"jharkhand", ("జార్ఖండ్", "ஜார்கண்ட்")), (r"bihar", ("బిహార్", "பீகார்")),
+    (r"west bengal", ("పశ్చిమ బెంగాల్", "மேற்கு வங்கம்")), (r"vidarbha", ("విదర్భ", "விதர்பா")), (r"madhya pradesh", ("మధ్యప్రదేశ్", "மத்தியப் பிரதேசம்")),
+    (r"uttar pradesh", ("ఉత్తరప్రదేశ్", "உத்தரப் பிரதேசம்")), (r"andaman", ("అండమాన్", "அந்தமான்"))]
+
+
+def _place(name: str, lang: str, form: int = 0) -> str:
+    key = (name or "").strip()
+    key = IN_ALIAS.get(key.lower(), key)
+    row = IN_PLACE.get(key) or next((v for k, v in IN_PLACE.items() if k.lower() == key.lower()), None)
+    return (row[_i(lang)] if form == 0 else row[2]) if row else ""
+
+
+def _area_names(phrase: str, lang: str) -> list[str]:
+    """One IMD area phrase -> Telugu / Tamil names (empty for sea areas and anything unknown)."""
+    whole = _place(phrase, lang)
+    if whole:
+        return [whole]
+    # "Yanam (Puducherry)": the bracket names the territory Yanam belongs to, not Puducherry town
+    low = re.sub(r"\([^)]*\)", " ", (phrase or "").lower()).replace("costal", "coastal")
+    if "north tamil nadu coast" in low:          # the one coastal strip the Tamil stream must name
+        return ["ఉత్తర తమిళనాడు తీరం" if lang == "te" else "வட தமிழக கடலோரம்"]
+    if "bay of bengal" in low or "andaman sea" in low or " coast" in low and "district" not in low and "andhra" not in low:
+        return []
+    m = re.search(r"from\s+([a-z ]+?)\s+to\s+([a-z ]+?)(\s|$)", low)
+    if m and _place(m.group(1).title(), lang) and _place(m.group(2).title(), lang):
+        a, b = _place(m.group(1).title(), lang), _place(m.group(2).title(), lang)
+        return [f"{a} నుంచి {b} వరకు కోస్తా జిల్లాలు" if lang == "te" else f"{a} முதல் {b} வரையிலான கடலோர மாவட்டங்கள்"]
+    return [names[_i(lang)] for rx, names in IN_AREA_RULES if re.search(rx, low)]
+
+
+def _range(v, lang: str, unit: str) -> str:
+    """[100, 110] -> "100-110 km/h" (the voice reads it as 100 to 110), 120 -> "120 km/h"."""
+    if v is None or v == []:
+        return ""
+    s = f"{v[0]}-{v[1]}" if isinstance(v, (list, tuple)) and len(v) == 2 else str(v[0] if isinstance(v, (list, tuple)) else v)
+    return f"{s} {unit}"
+
+
+def _in_date(date: str, part: str, lang: str) -> str:
+    m = re.match(r"\d{4}-(\d{2})-(\d{2})", date or "")
+    if not m:
+        return ""
+    mon = IN_MONTH.get(int(m.group(1)), ("", ""))[_i(lang)]
+    p = IN_PART.get((part or "").lower(), ("", ""))[_i(lang)]
+    if not p:                                   # "on 27 October": Telugu 27న, Tamil 27 அன்று
+        return f"{mon} {int(m.group(2))}న" if lang == "te" else f"{mon} {int(m.group(2))} அன்று"
+    return f"{mon} {int(m.group(2))} {p}"
+
+
+def _in_areas(areas: list | None, lang: str) -> str:
+    names = list(dict.fromkeys(n for a in areas or [] for n in _area_names(a, lang)))
+    return (", ".join(names[:-1]) + (" మరియు " if lang == "te" else " மற்றும் ") + names[-1]) if len(names) > 1 else (names[0] if names else "")
+
+
+def _ta_as(noun: str) -> str:
+    """Tamil "as a <class>": புயல் -> புயலாக, மண்டலம் -> மண்டலமாக."""
+    return noun[:-2] + "லாக" if noun.endswith("ல்") else noun[:-2] + "மாக" if noun.endswith("ம்") else noun + "ஆக"
+
+
+def _in_imd(desk: dict) -> dict:
+    imd = (desk.get("in") or {}).get("imd") or {}
+    if not imd:
+        raise ValueError("desk.json has no in.imd (IMD bulletin)")
+    return imd
+
+
+def _ist(iso: str, lang: str) -> str:
+    from datetime import datetime as _dt, timedelta as _td, timezone as _tz
+
+    try:
+        t = _dt.fromisoformat(iso.replace("Z", "+00:00")).astimezone(_tz(_td(hours=5, minutes=30)))
+    except (AttributeError, ValueError):
+        return ""
+    mon = IN_MONTH.get(t.month, ("", ""))[_i(lang)]
+    return f"{mon} {t.day}, {t.hour}:{t.minute:02d}"
+
+
+def _in_now(desk: dict, lang: str) -> str:
+    imd = _in_imd(desk)
+    te = lang == "te"
+    name = "అర్నాబ్" if te else "அர்னாப்"
+    cls = IN_CLASS.get(imd.get("class_short") or "", ("తుఫాను", "புயல்"))[_i(lang)]
+    out = [(f"భారత వాతావరణ శాఖ, {_ist(imd.get('issuedUTC', ''), lang)} గంటలకు విడుదల చేసిన బులెటిన్ ప్రకారం." if te else
+            f"இந்திய வானிலை ஆய்வு மையம் {_ist(imd.get('issuedUTC', ''), lang)} மணிக்கு வெளியிட்ட அறிக்கையின்படி.")]
+    pos = []
+    home = ("Andhra Pradesh",) if te else ("Tamil Nadu", "Puducherry", "Andhra Pradesh")      # each stream's own coast first
+    ordered = sorted(imd.get("position") or [], key=lambda p: home.index(p.get("state")) if p.get("state") in home else len(home))
+    for p in ordered[:2]:
+        d = IN_DIR.get(p.get("dir", ""), ("", ""))[_i(lang)]
+        if not d:
+            continue
+        if te and _place(p.get("place"), lang):
+            pos.append(f"{_place(p['place'], lang)} నుంచి {d} దిశలో సుమారు {p['km']} km")
+        elif not te and _place(p.get("place"), lang, 2):
+            pos.append(f"{_place(p['place'], lang, 2)} {d} திசையில் சுமார் {p['km']} km")
+    if pos:
+        out.append((f"{name} {cls} ప్రస్తుతం " + ", ".join(pos) + " దూరంలో కేంద్రీకృతమై ఉంది.") if te else
+                   (f"{name} {cls} தற்போது " + ", ".join(pos) + " தொலைவில் மையம் கொண்டுள்ளது."))
+    mv = imd.get("movement") or {}
+    if IN_DIR.get(mv.get("dir", "")) and mv.get("kmh"):
+        d = IN_DIR[mv["dir"]][_i(lang)]
+        out.append(f"ఇది గంటకు {mv['kmh']} km వేగంతో {d} దిశగా కదులుతోంది." if te else f"இது மணிக்கு {mv['kmh']} km வேகத்தில் {d} நோக்கி நகர்கிறது.")
+    unit = "km" if te else "km/h"
+    w, g = _range(imd.get("wind_kmh"), lang, unit), _range(imd.get("gust_kmh"), lang, unit)
+    if w:
+        out.append((f"తుఫాను కేంద్రం వద్ద గాలుల వేగం గంటకు {w}" + (f", గరిష్ఠంగా {g}" if g else "") + ".") if te else
+                   (f"புயலின் மையப் பகுதியில் காற்றின் வேகம் {w}" + (f", அதிகபட்சமாக {g}" if g else "") + "."))
+    if imd.get("pressure_hpa"):
+        out.append(f"కేంద్రంలో వాయుపీడనం {imd['pressure_hpa']} hPa." if te else f"மையத்தில் காற்றழுத்தம் {imd['pressure_hpa']} hPa.")
+    return "\n".join(out)
+
+
+def _in_landfall(desk: dict, lang: str) -> str:
+    imd = _in_imd(desk)
+    lf = imd.get("landfall") or {}
+    te = lang == "te"
+    between = [n for n in (_place(x, lang) for x in lf.get("between") or []) if n]
+    if len(between) < 2 and not _place(lf.get("near"), lang):
+        raise ValueError("IMD gives no landfall place this bulletin")
+    when = _in_date(lf.get("date", ""), lf.get("part_of_day", ""), lang)
+    cls = IN_CLASS.get(lf.get("class_short") or "", ("", ""))[_i(lang)]
+    near = _place(lf.get("near"), lang)
+    out = []
+    if te:
+        s = "భారత వాతావరణ శాఖ అంచనా ప్రకారం, తుఫాను "
+        s += f"{between[0]}, {between[1]} మధ్య " if len(between) >= 2 else ""
+        s += f"{near} సమీపంలో " if near else ""
+        s += f"{when} " if when else ""
+        s += (f"{cls}గా " if cls else "") + "తీరం దాటే అవకాశం ఉంది."
+    else:
+        s = "இந்திய வானிலை ஆய்வு மையத்தின் கணிப்பின்படி, புயல் "
+        s += f"{between[0]} மற்றும் {between[1]} இடையே " if len(between) >= 2 else ""
+        s += f"{near} அருகே " if near else ""
+        s += f"{when} " if when else ""
+        s += (f"{_ta_as(cls)} " if cls else "") + "கரையைக் கடக்கக்கூடும்."
+    out.append(s)
+    unit = "km" if te else "km/h"
+    w, g = _range(lf.get("wind_kmh"), lang, unit), _range(lf.get("gust_kmh"), lang, unit)
+    if w:
+        out.append((f"తీరం దాటే సమయంలో గాలుల వేగం గంటకు {w}" + (f", గరిష్ఠంగా {g}" if g else "") + " ఉండవచ్చు.") if te else
+                   (f"கரையைக் கடக்கும்போது காற்றின் வேகம் {w}" + (f", அதிகபட்சமாக {g}" if g else "") + " இருக்கலாம்."))
+    sg = imd.get("surge") or {}
+    if sg.get("m"):
+        num = lambda x: f"{x:g}" if isinstance(x, float) else str(x)
+        m = sg["m"]
+        h = f"{num(m[0])}-{num(m[1])}" if isinstance(m, (list, tuple)) and len(m) == 2 else num(m)
+        areas = _in_areas((sg.get("peak_areas") or []) + (sg.get("peak_near") or []) or sg.get("areas"), lang)
+        out.append((f"{areas} " if areas else "") + (f"లోతట్టు ప్రాంతాల్లో సముద్రపు అలలు సుమారు {h} మీటర్ల ఎత్తు వరకు ఎగసిపడే ప్రమాదం ఉంది." if te else
+                   f"தாழ்வான பகுதிகளில் கடல் அலைகள் சுமார் {h} மீட்டர் உயரம் வரை எழும் அபாயம் உள்ளது."))
+    return "\n".join(out)
+
+
+def _in_today() -> str:
+    from datetime import datetime as _dt, timedelta as _td, timezone as _tz
+
+    return _dt.now(_tz(_td(hours=5, minutes=30))).strftime("%Y-%m-%d")
+
+
+def _in_warnings(desk: dict, lang: str) -> str:
+    """Rain and wind for the stream's own region (three and one items), district colours, fishermen: short enough to hear."""
+    imd = _in_imd(desk)
+    te = lang == "te"
+    today = _in_today()
+    home = ("andhra", "yanam", "telangana") if te else ("tamil", "puducherry", "chennai", "karaikal")   # Telugu: AP and Telangana
+    mine = lambda x: (any(k in re.sub(r"\([^)]*\)", " ", " ".join(x.get("areas") or []).lower()) for k in home)
+                      and (x.get("date") or today) >= today)
+    out = []
+    for r in sorted(filter(mine, imd.get("rain") or []), key=lambda r: r.get("date") or "")[:3]:
+        lvl = IN_RAIN.get((r.get("level") or "").lower(), ("", ""))[_i(lang)]
+        areas = _in_areas(r.get("areas"), lang)
+        when = _in_date(r.get("date", ""), "", lang)
+        if lvl and areas:
+            out.append(f"{when} {areas}లో {lvl} వర్షాలు కురిసే అవకాశం ఉంది." if te else f"{when} {areas} பகுதிகளில் {lvl} பெய்ய வாய்ப்புள்ளது.")
+    unit = "km" if te else "km/h"
+    for w in sorted(filter(mine, imd.get("wind_warnings") or []), key=lambda w: -max(w.get("kmh") or [0]))[:1]:
+        areas, k, g = _in_areas(w.get("areas"), lang), _range(w.get("kmh"), lang, unit), _range(w.get("gust_kmh"), lang, unit)
+        if areas and k:
+            out.append((f"{areas}లో గంటకు {k}" + (f", గరిష్ఠంగా {g}" if g else "") + " వేగంతో ఈదురుగాలులు వీచే అవకాశం ఉంది.") if te else
+                       (f"{areas} பகுதிகளில் {k}" + (f", அதிகபட்சமாக {g}" if g else "") + " வேகத்தில் பலத்த காற்று வீசக்கூடும்."))
+    out += _in_district_alerts(desk, lang)
+    if imd.get("fishermen"):
+        out.append("మత్స్యకారులు సముద్రంలోకి వేటకు వెళ్లవద్దని భారత వాతావరణ శాఖ సూచించింది." if te else
+                   "மீனவர்கள் கடலுக்குச் செல்ல வேண்டாம் என இந்திய வானிலை ஆய்வு மையம் அறிவுறுத்தியுள்ளது.")
+    if not out:
+        raise ValueError("IMD gives no rain / wind / district / fishermen warning for this region this bulletin")
+    out.append("అధికారిక హెచ్చరికలు, సహాయక చర్యల కోసం జిల్లా యంత్రాంగం ప్రకటనలను పాటించండి." if te else
+               "அதிகாரப்பூர்வ எச்சரிக்கைகள் மற்றும் நிவாரண நடவடிக்கைகளுக்கு மாவட்ட நிர்வாகத்தின் அறிவிப்புகளைப் பின்பற்றவும்.")
+    return "\n".join(out)
+
+
+def _in_district_alerts(desk: dict, lang: str) -> list[str]:
+    """IMD's district colours (desk.json in.districts_days) for the stream's own state, the next days, red and orange first."""
+    te = lang == "te"
+    days = (desk.get("in") or {}).get("districts_days") or {}
+    states, names = (("Andhra Pradesh",), TE_DISTRICT) if te else (("Tamil Nadu", "Puducherry"), TA_DISTRICT)
+    by_date: dict[str, dict[str, list[str]]] = {}
+    for st in states:
+        for district, entries in (days.get(st) or {}).items():
+            local = names.get(district)
+            for e in entries or []:
+                if local and e.get("colour") in IN_COLOUR:
+                    by_date.setdefault(e["date"], {}).setdefault(e["colour"], []).append(local)
+    out = []
+    today = _in_today()
+    for date in [d for d in sorted(by_date) if d >= today][:2]:
+        when = _in_date(date, "", lang)
+        top = next((c for c in ("red", "orange", "yellow") if by_date[date].get(c)), None)
+        if not top:
+            continue
+        ds = sorted(set(by_date[date][top]))
+        shown = ", ".join(ds[:8])
+        n = len(ds)
+        label = IN_COLOUR[top][_i(lang)]
+        if te:
+            whom = f"{shown} సహా {n} జిల్లాలకు" if n > 8 else (f"{shown} జిల్లాలకు" if n > 1 else f"{shown} జిల్లాకు")
+            line = f"{when} భారత వాతావరణ శాఖ {whom} {label} జారీ చేసింది."
+        else:
+            whom = f"{shown} உட்பட {n} மாவட்டங்களுக்கு" if n > 8 else (f"{shown} மாவட்டங்களுக்கு" if n > 1 else f"{shown} மாவட்டத்திற்கு")
+            line = f"{when} இந்திய வானிலை ஆய்வு மையம் {whom} {label} விடுத்துள்ளது."
+        nxt = next((c for c in ("orange", "yellow") if c != top and by_date[date].get(c) and ("red", "orange", "yellow").index(c) > ("red", "orange", "yellow").index(top)), None)
+        if nxt:
+            k = len(set(by_date[date][nxt]))
+            line += (f" మరో {k} జిల్లాలకు {IN_COLOUR[nxt][0]}." if te else f" மேலும் {k} மாவட்டங்களுக்கு {IN_COLOUR[nxt][1]}.")
+        out.append(line)
+    return out
+
+
+def in_te_open(desk: dict) -> str:
+    return "అర్నాబ్ తుఫాను లైవ్ అప్‌డేట్స్. భారత వాతావరణ శాఖ తాజా బులెటిన్లు, తుఫాను మార్గం, రాడార్ చిత్రాలను నిరంతరం అందిస్తున్నాం."
+
+
+def in_ta_open(desk: dict) -> str:
+    return "அர்னாப் புயல் நேரலை. இந்திய வானிலை ஆய்வு மையத்தின் சமீபத்திய அறிக்கைகள், புயலின் பாதை, ரேடார் படங்களை தொடர்ந்து வழங்குகிறோம்."
+
+
+def in_te_close(desk: dict) -> str:
+    return ("ఇవి భారత వాతావరణ శాఖ అధికారిక సమాచారం ఆధారంగా అందించిన తాజా వివరాలు. తుఫాను సమయంలో ఇంట్లోనే సురక్షితంగా ఉండండి, "
+            "అధికారుల సూచనలు పాటించండి.")
+
+
+def in_ta_close(desk: dict) -> str:
+    return ("இவை இந்திய வானிலை ஆய்வு மையத்தின் அதிகாரப்பூர்வ தகவல்களின் அடிப்படையிலான சமீபத்திய விவரங்கள். புயலின் போது பாதுகாப்பாக இருங்கள், "
+            "அதிகாரிகளின் அறிவுறுத்தல்களைப் பின்பற்றுங்கள்.")
+
+
+TEMPLATES.update({
+    "in_te_open": in_te_open, "in_ta_open": in_ta_open, "in_te_close": in_te_close, "in_ta_close": in_ta_close,
+    "in_te_now": lambda d: _in_now(d, "te"), "in_ta_now": lambda d: _in_now(d, "ta"),
+    "in_te_landfall": lambda d: _in_landfall(d, "te"), "in_ta_landfall": lambda d: _in_landfall(d, "ta"),
+    "in_te_warnings": lambda d: _in_warnings(d, "te"), "in_ta_warnings": lambda d: _in_warnings(d, "ta"),
+})

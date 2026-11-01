@@ -129,7 +129,11 @@ export DESK_INTERVAL_S="${DESK_INTERVAL_S:-600}" # seconds between updates
 export DESK_LLM="${DESK_LLM:-1}"                 # 1: warnings/impacts/headlines via Lumen (quote-checked); 0: numbers only
 export DESK_STORM="${DESK_STORM:-}"              # storm to follow; empty = config storm.name
 export DESK_JMA_TC="${DESK_JMA_TC:-TC2636}"      # fallback ids if storm discovery fails
-export DESK_JTWC_ID="${DESK_JTWC_ID:-wp2926}"
+if [[ "${DESK_REGION:-wp}" == nio ]]; then         # a Western Pacific id must never leak into the India desk
+  export DESK_JTWC_ID="${DESK_JTWC_ID:-io0226}"
+else
+  export DESK_JTWC_ID="${DESK_JTWC_ID:-wp2926}"
+fi
 export DESK_DIR="${DESK_DIR:-$REPO_ROOT/output/desk}"
 
 # ---- process environment -----------------------------------------------------------------------

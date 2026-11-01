@@ -9,6 +9,8 @@ main.py runs a ``DeskUpdater`` thread next to the broadcast loop (DESK_ENABLED=1
 Environment: DESK_INTERVAL_S (600), DESK_DIR (output/desk), DESK_STORM (default: config storm.name),
 DESK_JMA_TC / DESK_JTWC_ID (fallback ids when discovery fails), DESK_LLM (1: build the text sections
 with the Lumen pool), DESK_KEEP_HISTORY (48 local copies), CONFIG_PATH, RUN_ROOT.
+DESK_REGION: wp (default, desk.build: JMA / JTWC / PAGASA / CWA) or nio (desk.build_nio: IMD + JTWC, India streams).
+EC2_STREAM_IDS=a,b publishes the same desk to several streams (default: the publisher's EC2_STREAM_ID).
 """
 
 from __future__ import annotations
@@ -27,12 +29,14 @@ if str(REPO / "src") not in sys.path:
     sys.path.insert(0, str(REPO / "src"))
 
 from desk.build import SECTIONS, build_desk, validate  # noqa: E402
+from desk.build_nio import SECTIONS_NIO, build_desk_nio, fallback_jtwc_id, validate_nio  # noqa: E402
 
 log = logging.getLogger("desk")
 
 DESK_DIR = Path(os.environ.get("DESK_DIR", REPO / "output" / "desk"))
 INTERVAL_S = float(os.environ.get("DESK_INTERVAL_S", "600"))
 KEEP_HISTORY = int(os.environ.get("DESK_KEEP_HISTORY", "48"))
+REGION = os.environ.get("DESK_REGION", "wp").strip().lower() or "wp"
 
 
 def storm_hint() -> str:
@@ -80,7 +84,7 @@ def _write(doc: dict) -> Path:
 def summarize(doc: dict) -> dict:
     prov = doc.get("provenance") or {}
     out = {}
-    for s in SECTIONS:
+    for s in (SECTIONS_NIO if REGION == "nio" else SECTIONS):
         v = doc.get(s)
         n = (len(v.get("points", [])) if isinstance(v, dict) and "points" in v else
              len(v.get("items", [])) if isinstance(v, dict) and "items" in v else
@@ -96,10 +100,14 @@ def run_once(publish: bool = True, publisher=None) -> dict:
     prev = load_previous()
     run_root = Path(os.environ.get("RUN_ROOT", REPO / "output" / "runs"))
     t0 = time.time()
-    doc, report = build_desk(prev, storm_hint=storm_hint(), ask=_ask(), run_root=run_root,
-                             fallback_jma=os.environ.get("DESK_JMA_TC", "TC2636"),
-                             fallback_jtwc=os.environ.get("DESK_JTWC_ID", "wp2926"))
-    problems = validate(doc)
+    if REGION == "nio":
+        doc, report = build_desk_nio(prev, storm_hint=storm_hint(), fallback_jtwc=fallback_jtwc_id())
+        problems = validate_nio(doc)
+    else:
+        doc, report = build_desk(prev, storm_hint=storm_hint(), ask=_ask(), run_root=run_root,
+                                 fallback_jma=os.environ.get("DESK_JMA_TC", "TC2636"),
+                                 fallback_jtwc=os.environ.get("DESK_JTWC_ID", "wp2926"))
+        problems = validate(doc)
     result = {"ok": not problems, "published": False, "fresh": report["fresh"], "stale": report["stale"],
               "missing": report["missing"], "problems": problems, "llm_calls": report["llm_calls"],
               "dropped_text_items": len(report["dropped_text_items"]), "seconds": round(time.time() - t0, 1)}
@@ -114,14 +122,19 @@ def run_once(publish: bool = True, publisher=None) -> dict:
     (DESK_DIR / "last_report.json").write_text(json.dumps(report, ensure_ascii=False, indent=1, default=str), encoding="utf-8")
     result["path"] = str(_write(doc))
     if publish:
+        streams = [x.strip() for x in os.environ.get("EC2_STREAM_IDS", "").split(",") if x.strip()]
         try:
-            if publisher is None:
-                from broadcast.publisher import Publisher
+            from broadcast.publisher import Publisher
 
-                publisher = Publisher()
-            reply = publisher.push_desk(doc)
+            if streams:                         # one desk, several streams (e.g. india-te, india-ta)
+                replies = {sid: Publisher(stream=sid).push_desk(doc) for sid in streams}
+                result["reply"] = {sid: {k: r.get(k) for k in ("ok", "stream", "generated_at")} for sid, r in replies.items()}
+            else:
+                if publisher is None:
+                    publisher = Publisher()
+                reply = publisher.push_desk(doc)
+                result["reply"] = {k: reply.get(k) for k in ("ok", "generated_at", "bytes")}
             result["published"] = True
-            result["reply"] = {k: reply.get(k) for k in ("ok", "generated_at", "bytes")}
         except Exception as e:  # noqa: BLE001
             result["publish_error"] = str(e)[:300]
             log.error("desk.json publish failed: %s", e)
