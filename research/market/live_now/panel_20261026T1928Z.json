@@ -1,0 +1,172 @@
+{
+ "taken_at": "20261026T1928Z",
+ "results": [
+  {
+   "topic": "Cyclone Arnab",
+   "lang": "te",
+   "query": "Arnab తుఫాన్ live",
+   "must": [
+    "arnab",
+    "అర్నబ్",
+    "అర్నాబ్",
+    "ఆర్నబ్",
+    "తుఫాన్",
+    "తుఫాను",
+    "cyclone"
+   ],
+   "streams": 9,
+   "viewers": 638,
+   "small_share": 0.085,
+   "big_share": 0.138,
+   "rows": [
+    {
+     "id": "Urlw1bYMc-8",
+     "title": "🔴LIVE : దిశ మార్చుకున్న తుఫాన్.. | Arnab Cyclone Effect | AP & TS High Alert | Weather Upd",
+     "channel": "RTV Ananthapur",
+     "subs": 143000,
+     "viewers": 270,
+     "started": "2026-10-26T09:52:39Z"
+    },
+    {
+     "id": "obqFSB4duMg",
+     "title": "🔴Live : ముంచుకొస్తున్న భారీ తుఫాన్ !! Arnab Storm | Storm alert | AP Latest Updates",
+     "channel": "SumanTV MIX",
+     "subs": 166000,
+     "viewers": 108,
+     "started": "2026-10-26T12:06:38Z"
+    },
+    {
+     "id": "1-gq5ieDD9U",
+     "title": "🔴LIVE : వణుకుతున్న వైజాగ్‌.! Arnab Cyclone Effect In Vizag | AP Rains | Cyclone Alert | We",
+     "channel": "RTV Vizag",
+     "subs": 307000,
+     "viewers": 107,
+     "started": "2026-10-26T07:49:28Z"
+    },
+    {
+     "id": "mzJs-f1rEPQ",
+     "title": "🔴LIVE: దూసుకొస్తున్న అర్నబ్..!! | THE DEBATE on Cyclone Arnab | ABN Telugu",
+     "channel": "ABN Telugu ",
+     "subs": 7540000,
+     "viewers": 62,
+     "started": "2026-10-26T13:31:45Z"
+    },
+    {
+     "id": "LUuyr6UjBys",
+     "title": "LIVE:🔴ఎగిరిపోనున్న వాహనాలు | Arnab Toofan Threat Latest Updates | Live Analysis | SumanTV ",
+     "channel": "SumanTV Voice",
+     "subs": 40600,
+     "viewers": 54,
+     "started": "2026-10-26T08:34:38Z"
+    },
+    {
+     "id": "3N7WTWNYc_E",
+     "title": "LIVE: ఏపీకి అర్నబ్ తుఫాన్ గండం..విద్యాసంస్థలకు 2 రోజులు సెలవు | Cyclonic Storm Arnab | NTV",
+     "channel": "NTV Telugu",
+     "subs": 9950000,
+     "viewers": 22,
+     "started": "2026-10-26T11:10:45Z"
+    },
+    {
+     "id": "uGHdoa2pWHw",
+     "title": "LIVE🔴ఏపీని వణికించనున్న అర్నాబ్ తుఫాన్ | Cyclone Arnab | IMD Director Big Warning on Cyclo",
+     "channel": "SumanTV Mahabubabad",
+     "subs": 169000,
+     "viewers": 11,
+     "started": "2026-10-26T14:54:55Z"
+    },
+    {
+     "id": "RCukVHiOVXg",
+     "title": "Cyclone Arnab Alert For Telangana🔴LIVE : తెలంగాణకు తుఫాన్‌ | Big Alert to 10 Districts | T",
+     "channel": "RTV ",
+     "subs": 4550000,
+     "viewers": 4,
+     "started": "2026-10-26T13:41:22Z"
+    },
+    {
+     "id": "7GQUHykh8-U",
+     "title": "Live🔴:రాత్రికి తీవ్ర తుఫాన్ | Cyclone Arnab to Make Landfall by Midnight | Cyclone Arnab A",
+     "channel": "SumanTV Telugu Digital",
+     "subs": 1520,
+     "viewers": 0,
+     "started": "2026-10-26T08:19:10Z"
+    }
+   ]
+  },
+  {
+   "topic": "Cyclone Arnab",
+   "lang": "ta",
+   "query": "அர்னாப் புயல் live",
+   "must": [
+    "arnab",
+    "அர்னாப்",
+    "புயல்",
+    "cyclone",
+    "rain",
+    "மழை"
+   ],
+   "streams": 7,
+   "viewers": 293,
+   "small_share": 0.007,
+   "big_share": 0.573,
+   "rows": [
+    {
+     "id": "SW8LnbddWA8",
+     "title": "🔴LIVE: Arnab Cyclone | RainAlert | உருவானது அர்னாப் புயல் | Cyclone Alert",
+     "channel": "Polimer News",
+     "subs": 13600000,
+     "viewers": 168,
+     "started": "2026-10-26T15:23:15Z"
+    },
+    {
+     "id": "G3f074OYAzA",
+     "title": "🔴LIVE: Cyclonic Arnab | புயல் முன்னெச்சரிக்கை, தயார் நிலையில் மீட்புப் படை - ரயில்களின் சே",
+     "channel": " Zee Tamil News",
+     "subs": 830000,
+     "viewers": 83,
+     "started": "2026-10-26T13:45:52Z"
+    },
+    {
+     "id": "6K7UgHniSYk",
+     "title": "🔴LIVE: ஆந்திராவில் புயல் கரையை நெருங்கும் நிலையில், கொந்தளிக்கும் கடற்கரை! | cyclone | rai",
+     "channel": " Zee Tamil News",
+     "subs": 830000,
+     "viewers": 24,
+     "started": "2026-10-26T09:15:57Z"
+    },
+    {
+     "id": "3CJ9k-Ww2P8",
+     "title": "🔴LIVE:  நாளை பள்ளி, கல்லூரிகளுக்கு விடுமுறை வருமா?  அர்னாப் புயல் 28-ஆம் தேதி கரையைக் கடக்",
+     "channel": "maria nova news",
+     "subs": 166000,
+     "viewers": 16,
+     "started": "2026-10-26T14:54:49Z"
+    },
+    {
+     "id": "0U-zZRcvo3k",
+     "title": "🔴 LIVE: 150 கிமீ வேகத்தில் புயல் அர்னாப் இடமிருந்து தப்புமா ஆந்திரா? | Hemachandran Detail",
+     "channel": "SS News Digital",
+     "subs": 86900,
+     "viewers": 2,
+     "started": "2026-10-26T17:32:05Z"
+    },
+    {
+     "id": "GXWpyoYpmiw",
+     "title": "🔴LIVE | வங்கக்கடலில் வேகமெடுக்கும் அர்னாப் புயல்...! ஆந்திராவுக்கு பேராபத்தா? அக்.28 என்ன ",
+     "channel": "Tamil Janam",
+     "subs": 948000,
+     "viewers": 0,
+     "started": "2026-10-26T01:43:58Z"
+    },
+    {
+     "id": "Y501wqMkmAM",
+     "title": "🔴LIVE : உருவானது 'அர்னாப்' புயல்...தமிழகத்திற்கு காத்திருக்கும் ஆபத்து...! WEATHERMAN  PRA",
+     "channel": "Nambikkai Media",
+     "subs": 39500,
+     "viewers": 0,
+     "started": "2026-10-26T05:52:56Z"
+    }
+   ]
+  }
+ ]
+}

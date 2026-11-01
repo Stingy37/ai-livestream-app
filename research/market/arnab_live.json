@@ -1,0 +1,39 @@
+[
+ {
+  "topic": "Cyclone Arnab",
+  "lang": "en",
+  "query": "Cyclone Arnab live",
+  "must": [
+   "arnab"
+  ]
+ },
+ {
+  "topic": "Cyclone Arnab",
+  "lang": "te",
+  "query": "Arnab తుఫాన్ live",
+  "must": [
+   "arnab",
+   "అర్నబ్",
+   "అర్ణబ్"
+  ]
+ },
+ {
+  "topic": "Cyclone Arnab",
+  "lang": "hi",
+  "query": "Arnab cyclone live",
+  "must": [
+   "arnab",
+   "अर्नब",
+   "अरनब"
+  ]
+ },
+ {
+  "topic": "Cyclone Arnab",
+  "lang": "or",
+  "query": "Arnab cyclone Odisha live",
+  "must": [
+   "arnab",
+   "ଅର୍ଣ୍ଣବ"
+  ]
+ }
+]

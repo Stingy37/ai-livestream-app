@@ -1,0 +1,33 @@
+[
+ {
+  "event": "Cyclone Arnab 2026 so far (Andhra)",
+  "domain": "hazard",
+  "start_utc": "2026-10-23",
+  "end_utc": "2026-10-26",
+  "markets": [
+   {
+    "lang": "ta",
+    "country": "IN",
+    "youtube_query": "அர்னாப் புயல்",
+    "must": [
+     "arnab",
+     "அர்னாப்",
+     "அர்ணாப்"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "or",
+    "country": "IN",
+    "youtube_query": "Arnab ବାତ୍ୟା",
+    "must": [
+     "arnab",
+     "ଅର୍ଣ୍ଣବ",
+     "ଅର୍ନବ",
+     "ଅର୍ଣବ"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ }
+]

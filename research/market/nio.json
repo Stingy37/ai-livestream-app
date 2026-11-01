@@ -1,0 +1,233 @@
+[
+ {
+  "event": "Cyclone Michaung 2023 (Chennai/AP)",
+  "domain": "hazard",
+  "start_utc": "2023-12-01",
+  "end_utc": "2023-12-06",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "IN",
+    "youtube_query": "Cyclone Michaung live",
+    "must": [
+     "michaung"
+    ],
+    "wikipedia_title": "Cyclone Michaung"
+   },
+   {
+    "lang": "te",
+    "country": "IN",
+    "youtube_query": "మిచౌంగ్ తుఫాన్",
+    "must": [
+     "మిచౌంగ్",
+     "michaung"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "ta",
+    "country": "IN",
+    "youtube_query": "மிக்ஜாம் புயல்",
+    "must": [
+     "மிக்ஜாம்",
+     "michaung"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Cyclone Remal 2024 (Bangladesh/West Bengal)",
+  "domain": "hazard",
+  "start_utc": "2024-05-24",
+  "end_utc": "2024-05-28",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "IN",
+    "youtube_query": "Cyclone Remal live",
+    "must": [
+     "remal"
+    ],
+    "wikipedia_title": "Cyclone Remal"
+   },
+   {
+    "lang": "bn",
+    "country": "BD",
+    "youtube_query": "ঘূর্ণিঝড় রেমাল",
+    "must": [
+     "রেমাল",
+     "remal"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Cyclone Dana 2024 (Odisha)",
+  "domain": "hazard",
+  "start_utc": "2024-10-22",
+  "end_utc": "2024-10-26",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "IN",
+    "youtube_query": "Cyclone Dana live",
+    "must": [
+     "dana"
+    ],
+    "wikipedia_title": "Cyclone Dana"
+   },
+   {
+    "lang": "or",
+    "country": "IN",
+    "youtube_query": "ବାତ୍ୟା ଡାନା",
+    "must": [
+     "ଡାନା",
+     "dana"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "hi",
+    "country": "IN",
+    "youtube_query": "चक्रवात दाना",
+    "must": [
+     "दाना",
+     "dana"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Cyclone Fengal 2024 (Tamil Nadu)",
+  "domain": "hazard",
+  "start_utc": "2024-11-27",
+  "end_utc": "2024-12-02",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "IN",
+    "youtube_query": "Cyclone Fengal live",
+    "must": [
+     "fengal"
+    ],
+    "wikipedia_title": "Cyclone Fengal"
+   },
+   {
+    "lang": "ta",
+    "country": "IN",
+    "youtube_query": "ஃபெஞ்சல் புயல்",
+    "must": [
+     "ஃபெஞ்சல்",
+     "fengal"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Cyclone Biparjoy 2023 (Gujarat/Pakistan)",
+  "domain": "hazard",
+  "start_utc": "2023-06-10",
+  "end_utc": "2023-06-17",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "IN",
+    "youtube_query": "Cyclone Biparjoy live",
+    "must": [
+     "biparjoy"
+    ],
+    "wikipedia_title": "Cyclone Biparjoy"
+   },
+   {
+    "lang": "gu",
+    "country": "IN",
+    "youtube_query": "બિપરજોય વાવાઝોડું",
+    "must": [
+     "બિપરજોય",
+     "biparjoy"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "hi",
+    "country": "IN",
+    "youtube_query": "चक्रवात बिपरजॉय",
+    "must": [
+     "बिपरजॉय",
+     "biparjoy"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Cyclone Mocha 2023 (Myanmar/Bangladesh)",
+  "domain": "hazard",
+  "start_utc": "2023-05-11",
+  "end_utc": "2023-05-15",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "IN",
+    "youtube_query": "Cyclone Mocha live",
+    "must": [
+     "mocha"
+    ],
+    "wikipedia_title": "Cyclone Mocha"
+   },
+   {
+    "lang": "bn",
+    "country": "BD",
+    "youtube_query": "ঘূর্ণিঝড় মোখা",
+    "must": [
+     "মোখা",
+     "mocha"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Cyclone Arnab 2026 so far (Andhra)",
+  "domain": "hazard",
+  "start_utc": "2026-10-23",
+  "end_utc": "2026-10-26",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "IN",
+    "youtube_query": "Cyclone Arnab live",
+    "must": [
+     "arnab"
+    ],
+    "wikipedia_title": "Cyclone Arnab"
+   },
+   {
+    "lang": "te",
+    "country": "IN",
+    "youtube_query": "Arnab తుఫాన్",
+    "must": [
+     "arnab",
+     "అర్నబ్",
+     "అర్ణబ్"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "hi",
+    "country": "IN",
+    "youtube_query": "Arnab चक्रवात",
+    "must": [
+     "arnab",
+     "अर्नब",
+     "अरनब"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ }
+]
