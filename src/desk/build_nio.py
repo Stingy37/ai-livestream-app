@@ -107,6 +107,44 @@ def _districts_today(d: dict) -> tuple[dict, dict]:
     return flat, d["states"]
 
 
+_LANDFALL_KEYS = ("between", "near", "near_rel", "class", "class_short", "wind_kmh", "gust_kmh")
+
+
+def _last_landfall_path():
+    from pathlib import Path
+    return Path(os.environ.get("DESK_DIR") or Path(__file__).resolve().parents[2] / "output" / "desk") / "last_landfall.json"
+
+
+def _carry_landfall(imd: dict, prev: dict) -> None:
+    """Close to landfall IMD drops its "will cross the coast between X and Y, close to Z" sentence ("Landfall process
+    continues", 0300 IST 3 Nov). Keep the last bulletin's landfall place (marked ``carried_from``) so the landfall scene
+    and the thumbnail marker do not lose it; remember each new one in last_landfall.json (survives a restart)."""
+    import json
+    lf = imd.get("landfall") or {}
+    path = _last_landfall_path()
+    if lf.get("between") or lf.get("near"):
+        try:
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(json.dumps({"issued": imd.get("issued_ist_text"),
+                                        "landfall": {k: lf[k] for k in _LANDFALL_KEYS if k in lf}}))
+        except OSError:
+            pass
+        return
+    last = None
+    prev_imd = (prev.get("in") or {}).get("imd") or {}
+    plf = prev_imd.get("landfall") or {}
+    if plf.get("between") or plf.get("near"):
+        last = {"issued": plf.get("carried_from") or prev_imd.get("issued_ist_text"), "landfall": plf}
+    else:
+        try:
+            last = json.loads(path.read_text())
+        except (OSError, ValueError):
+            last = None
+    if last and (last["landfall"].get("between") or last["landfall"].get("near")):
+        imd["landfall"] = {**{k: last["landfall"][k] for k in _LANDFALL_KEYS if k in last["landfall"]},
+                           "carried_from": last.get("issued")}
+
+
 def build_desk_nio(prev: dict | None, *, storm_hint: str = "", raw: dict | None = None, fallback_jtwc: str = "io0226") -> tuple[dict, dict]:
     prev = prev or {}
     raw = raw if raw is not None else collect_nio(storm_hint, fallback_jtwc)
@@ -116,6 +154,8 @@ def build_desk_nio(prev: dict | None, *, storm_hint: str = "", raw: dict | None 
     stale: list[str] = []
     jt, imd_raw, dist = raw.get("jtwc"), raw.get("imd"), raw.get("districts")
     imd = _imd_clean(imd_raw) if ok(imd_raw) else None
+    if imd is not None:
+        _carry_landfall(imd, prev)
 
     def put(name: str, fn: Callable[[], Any], source: str, url: str = ""):
         try:

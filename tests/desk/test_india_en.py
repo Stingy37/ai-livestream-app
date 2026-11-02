@@ -209,3 +209,23 @@ def test_murasu_2200_surge_en_dash():
     doc["in"]["imd"]["surge"] = sg
     assert "A storm surge of about 1-1.5 m could flood low-lying areas of Bapatla, Krishna and Prakasam." in _say("in_en_landfall", doc)
     assert "1-1.5 మీటర్ల" in _say("in_te_landfall", doc)
+
+
+def test_landfall_carried_when_imd_drops_it(tmp_path, monkeypatch):
+    """IMD 0300 IST 3 Nov: "Landfall process continues" and no "cross the coast between ..." sentence. The landfall place
+    is carried from the last bulletin that had it (also after a restart, from last_landfall.json)."""
+    from desk import build_nio
+
+    monkeypatch.setenv("DESK_DIR", str(tmp_path))
+    with_lf = {"issued_ist_text": "0115 hrs IST of 3 November 2026",
+               "landfall": {"between": ["Nellore", "Narsapur"], "near": "Ongole", "class_short": "SCS", "gust_kmh": 120}}
+    build_nio._carry_landfall(with_lf, {})                      # remembered
+    without = {"issued_ist_text": "0300 hrs IST of 3 November 2026", "landfall": {}}
+    build_nio._carry_landfall(without, {})                      # a restart: no previous desk, read the file
+    assert without["landfall"]["near"] == "Ongole" and without["landfall"]["between"] == ["Nellore", "Narsapur"]
+    assert without["landfall"]["carried_from"] == "0115 hrs IST of 3 November 2026"
+    doc = _doc()
+    doc["storm"]["name"] = "MURASU"
+    doc["in"]["imd"]["landfall"] = without["landfall"]
+    assert "between Nellore and Narsapur, near Ongole" in _say("in_en_landfall", doc)
+    assert "ఒంగోలు సమీపంలో" in _say("in_te_landfall", doc)
