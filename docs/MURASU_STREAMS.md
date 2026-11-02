@@ -139,6 +139,9 @@ The after-landfall words say "at the coast", not "has crossed": the switch happe
 crossing is IMD's to announce. When IMD says it has crossed, edit `a_l1` in the two JSON files (the next refresh picks it up).
 Wording rules from `research/market/thumbnails_india.md`: only IMD's numbers, no "hits" before it has, no stock disaster art.
 
+Previews rendered from IMD's 0500 IST 2 Nov bulletin (the live ones show the current hours and satellite frame):
+`docs/murasu_thumbnails/final_te.jpg`, `final_en.jpg` (before landfall), `after_te.jpg`, `after_en.jpg` (from IMD's landfall time).
+
 To preview a thumbnail before going live: `THUMB_STYLE=tw THUMB_TW_TEXT=saved_configs/thumb_murasu_en.json EC2_STREAM_ID=india-murasu-en
 $PY scripts/youtube_thumbnail.py --lang en` (writes `output/youtube/thumb_en.jpg`).
 
