@@ -172,3 +172,21 @@ def test_english_youtube_metadata(tmp_path, monkeypatch):
     assert "between Nellore and Narsapur, near Ongole" in m["description"] and "Ongole cyclone" in m["tags"]
     text = m["title"] + m["description"] + " ".join(m["tags"])
     assert not re.search(r"Arnab|Kakinada|PAGASA|[Tt]yphoon", text)
+
+
+def test_murasu_1145_landfall_south_of_ongole():
+    """IMD 1145 IST 2 Nov: "between Nellore and Narsapur, to the south of Ongole" (no "close to"). The Telugu landfall
+    scene was dropped (Narsapur had no Telugu name and there was no "near" town) and the thumbnail lost its marker."""
+    from desk import sources_nio as N
+
+    t = (ROOT / "tests" / "desk" / "fixtures" / "imd_national_bulletin_murasu.txt").read_text(encoding="utf-8")
+    t = t.replace("between Nellore and Narsapur\nclose to Ongole", "between Nellore and Narsapur,\nto the south of Ongole")
+    assert "to the south of Ongole" in t
+    lf = N.parse_national(t)["landfall"]
+    assert (lf["between"], lf["near"], lf["near_rel"]) == (["Nellore", "Narsapur"], "Ongole", "south")
+    doc = _doc()
+    doc["storm"]["name"] = "MURASU"
+    doc["in"]["imd"]["landfall"] = lf
+    te = _say("in_te_landfall", doc)
+    assert "నెల్లూరు, నరసాపురం మధ్య ఒంగోలుకు దక్షిణంగా" in te
+    assert ", to the south of Ongole," in _say("in_en_landfall", doc)

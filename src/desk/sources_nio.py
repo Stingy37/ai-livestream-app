@@ -323,6 +323,10 @@ def parse_national(t: str) -> dict:
         nr = re.search(r"(?:close to|near) ([A-Z][A-Za-z]+(?: [A-Z][A-Za-z]+)?)", s)
         if nr:
             land["near"] = nr.group(1)
+        else:                                    # "to the south of Ongole" (IMD 1145 IST 2 Nov): the town and the side of it
+            rel = re.search(r"to the (north|south|east|west)(?:-?(?:east|west))? of ([A-Z][A-Za-z]+(?: [A-Z][A-Za-z]+)?)", s)
+            if rel:
+                land["near"], land["near_rel"] = rel.group(2), rel.group(1)
         cl = re.search(rf"as an? {_CLASS_RX}", s, re.I)
         if cl:
             land["class"] = cl.group(1).title()

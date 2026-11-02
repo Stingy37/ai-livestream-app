@@ -296,7 +296,7 @@ IN_DIR = {"N": ("ఉత్తర", "வடக்கு"), "NNE": ("ఉత్త�
 # place: (Telugu, Tamil, Tamil "from <place>")
 IN_PLACE = {"Visakhapatnam": ("విశాఖపట్నం", "விசாகப்பட்டினம்", "விசாகப்பட்டினத்திலிருந்து"),
             "Kakinada": ("కాకినాడ", "காக்கிநாடா", "காக்கிநாடாவிலிருந்து"), "Machilipatnam": ("మచిలీపట్నం", "மசிலிப்பட்டினம்", "மசிலிப்பட்டினத்திலிருந்து"),
-            "Bapatla": ("బాపట్ల", "பாபட்லா", "பாபட்லாவிலிருந்து"), "Yanam": ("యానాం", "ஏனாம்", "ஏனாமிலிருந்து"),
+            "Bapatla": ("బాపట్ల", "பாபட்லா", "பாபட்லாவிலிருந்து"), "Narsapur": ("నరసాపురం", "நரசாபூர்", "நரசாபூரிலிருந்து"), "Yanam": ("యానాం", "ஏனாம்", "ஏனாமிலிருந்து"),
             "Kalingapatnam": ("కళింగపట్నం", "கலிங்கப்பட்டினம்", "கலிங்கப்பட்டினத்திலிருந்து"), "Nellore": ("నెల్లూరు", "நெல்லூர்", "நெல்லூரிலிருந்து"),
             "Chennai": ("చెన్నై", "சென்னை", "சென்னையிலிருந்து"), "Puducherry": ("పుదుచ్చేరి", "புதுச்சேரி", "புதுச்சேரியிலிருந்து"),
             "Gopalpur": ("గోపాల్‌పూర్", "கோபால்பூர்", "கோபால்பூரிலிருந்து"), "Puri": ("పూరీ", "பூரி", "பூரியிலிருந்து"),
@@ -477,6 +477,9 @@ def _in_now(desk: dict, lang: str) -> str:
     return "\n".join(out)
 
 
+IN_REL_TE = {"north": "ఉత్తరంగా", "south": "దక్షిణంగా", "east": "తూర్పుగా", "west": "పశ్చిమంగా"}   # "to the south of Ongole"
+
+
 def _in_landfall(desk: dict, lang: str) -> str:
     imd = _in_imd(desk)
     lf = imd.get("landfall") or {}
@@ -491,7 +494,8 @@ def _in_landfall(desk: dict, lang: str) -> str:
     if te:
         s = "భారత వాతావరణ శాఖ అంచనా ప్రకారం, తుఫాను "
         s += f"{between[0]}, {between[1]} మధ్య " if len(between) >= 2 else ""
-        s += f"{near} సమీపంలో " if near else ""
+        rel = IN_REL_TE.get(lf.get("near_rel") or "")
+        s += (f"{near}కు {rel} " if rel else f"{near} సమీపంలో ") if near else ""
         s += f"{when} " if when else ""
         s += (f"{cls}గా " if cls else "") + "తీరం దాటే అవకాశం ఉంది."
     else:
@@ -736,7 +740,7 @@ def in_en_landfall(desk: dict) -> str:
         raise ValueError("IMD gives no landfall place this bulletin")
     s = f"The India Meteorological Department expects {_en_name(desk, imd.get('class_short', ''))} to cross the coast"
     s += f" between {between[0]} and {between[1]}" if len(between) >= 2 else ""
-    s += f", near {near}" if near else ""
+    s += (f", to the {lf['near_rel']} of {near}" if lf.get("near_rel") else f", near {near}") if near else ""
     when = _en_date(lf.get("date", ""), lf.get("part_of_day", ""))
     if lf.get("time_ist"):                       # IMD's own clock times: "between 11:30 pm on 2 November and 4 am on 3 November"
         until = lf.get("until") or {}
