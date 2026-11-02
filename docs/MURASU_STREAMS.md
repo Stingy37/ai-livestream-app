@@ -45,15 +45,21 @@ It applies on top of `typhoon_champi` (5f7a25c) and changes nothing else.
    (`DESK_REGION=nio`). IMD (0500 IST 2 Nov): landfall between Nellore and Narsapur, close to Ongole, 2330 IST 2 Nov to 0400
    IST 3 Nov, 100-110 km/h gusting 120. Check the page shows Ongole, not Kakinada.
 
+**Stream IDs: `india-murasu-te` and `india-murasu-en`.** Two rules from the code: the EC2 server accepts only `a-z`, `0-9`
+and `-` (an underscore is a "bad stream id"), and `scripts/web_preview.py` serves the India page (`html/india-desk.html`)
+only to IDs that start with `india`; any other ID gets the Western Pacific page. New IDs also leave Arnab's `india-te` alone.
+The pipelines run on Karthik's slice with `saved_configs/murasu_ksista2.env`; the encoder and YouTube run on Andy's slice
+from this branch with the same IDs.
+
 ## 2. Telugu stream
 
 Launch it the same way as the Arnab Telugu stream, with Murasu's desk variables from step 1.4. Following `ec2/README.md`:
 
 ```bash
-MAX_HOURS=30 DESK_REGION=nio DESK_STORM=MURASU DESK_JTWC_ID=io0426 EC2_STREAM_ID=india-te RUN_ID=murasu-te \
+MAX_HOURS=30 DESK_REGION=nio DESK_STORM=MURASU DESK_JTWC_ID=io0426 EC2_STREAM_ID=india-murasu-te RUN_ID=murasu-te \
   CONFIG_PATH=saved_configs/india_te.json bash scripts/run_livestream.sh
 THUMB_STYLE=tw THUMB_TW_TEXT=saved_configs/thumb_murasu_te.json \
-  $PY scripts/youtube_live.py --config saved_configs/india_te.json --lang te --stream india-te
+  $PY scripts/youtube_live.py --config saved_configs/india_te.json --lang te --stream india-murasu-te
 ```
 
 Check the YouTube title says "Cyclone Murasu LIVE 🔴 దూసుకొస్తున్న మురసు తుఫాన్.. | ...", and that the page shows మురసు తుఫాన్.
@@ -107,10 +113,10 @@ slice; on a 32 GB slice that leaves about 12 GB, and the voice needs about 4 GB 
 **3c. Run it**, with the new environment's Python:
 
 ```bash
-PY=$PY MAX_HOURS=30 DESK_REGION=nio DESK_STORM=MURASU DESK_JTWC_ID=io0426 EC2_STREAM_ID=india-en RUN_ID=murasu-en \
+PY=$PY MAX_HOURS=30 DESK_REGION=nio DESK_STORM=MURASU DESK_JTWC_ID=io0426 EC2_STREAM_ID=india-murasu-en RUN_ID=murasu-en \
   CONFIG_PATH=saved_configs/india_en.json bash scripts/run_livestream.sh
 THUMB_STYLE=tw THUMB_TW_TEXT=saved_configs/thumb_murasu_en.json THUMB_CDP_PORT=9334 \
-  $PY scripts/youtube_live.py --config saved_configs/india_en.json --lang en --stream india-en
+  $PY scripts/youtube_live.py --config saved_configs/india_en.json --lang en --stream india-murasu-en
 ```
 
 The title comes out as "Cyclone Murasu LIVE 🔴 Heads For Andhra | Winds Up To 120 km/h | Ongole Landfall | IMD Updates 2/11".
@@ -133,7 +139,7 @@ The after-landfall words say "at the coast", not "has crossed": the switch happe
 crossing is IMD's to announce. When IMD says it has crossed, edit `a_l1` in the two JSON files (the next refresh picks it up).
 Wording rules from `research/market/thumbnails_india.md`: only IMD's numbers, no "hits" before it has, no stock disaster art.
 
-To preview a thumbnail before going live: `THUMB_STYLE=tw THUMB_TW_TEXT=saved_configs/thumb_murasu_en.json EC2_STREAM_ID=india-en
+To preview a thumbnail before going live: `THUMB_STYLE=tw THUMB_TW_TEXT=saved_configs/thumb_murasu_en.json EC2_STREAM_ID=india-murasu-en
 $PY scripts/youtube_thumbnail.py --lang en` (writes `output/youtube/thumb_en.jpg`).
 
 **If the voice fails tonight:** in `saved_configs/india_en.json` set `"tts_model": "kokoro"`. The English narration stays,
@@ -147,7 +153,7 @@ read with Kokoro's default voice (American accent; the Thoma voice names fall ba
 - `youtube_live.py` restarts the encoder by itself. Avoid stopping it: Ctrl+C or its stop file ends the broadcast, and a new
   run is a new video at a new link. If it does stop, run the same command again.
 - `touch .run/STOP` stops **every** pipeline in that checkout. To stop one stream's pipeline, press Ctrl+C in its
-  terminal (run each in its own tmux window). For YouTube, `touch .run/STOP_YOUTUBE_india-en` ends that broadcast only.
+  terminal (run each in its own tmux window). For YouTube, `touch .run/STOP_YOUTUBE_india-murasu-en` ends that broadcast only.
 - Both streams fit on one 32 GB slice (vLLM about 20 GB if started, MMS under 1 GB, Indic Parler about 4-6 GB); both
   configs are desk-only, so `START_SERVICES=0` (no vLLM) may work too. Check with a `DRY_RUN=1` run first.
 
