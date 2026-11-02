@@ -32,8 +32,17 @@ reliable option. It takes about a minute with Docker.
 
 Stop it with `docker compose -f src/scraper/searxng/docker-compose.yml down`.
 
-## Without SearXNG
+## Search order: SearXNG, then Tavily, then ddgs
 
-If `SEARXNG_URL` is unset or the instance fails, the scraper logs a warning and
-searches with DuckDuckGo through the `ddgs` package instead. Scenes that list
-their own `sources` never search at all.
+Cheap first, paid only when needed. For each query the scraper tries:
+
+1. **SearXNG** (free) at `SEARXNG_URL`.
+2. **Tavily** (paid, 1 credit per search), only if `TAVILY_API_KEY` is set in
+   `.env`, and only for queries SearXNG failed or found nothing for. A wrong key
+   or a spent plan (HTTP 401/432/433) switches Tavily off for the rest of the run.
+3. **ddgs** (free, last resort), which scrapes public search engines and may be
+   rate-limited.
+
+Every switch is logged, and each run logs how many Tavily credits it used.
+Results are cached for an hour whichever step answered, so the same query is
+never paid for twice. Scenes that list their own `sources` never search at all.

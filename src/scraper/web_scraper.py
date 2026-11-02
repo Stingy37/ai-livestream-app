@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import logging
 import os
+from pathlib import Path
 
 from contracts import Scene, ScrapedDocument
 
@@ -58,6 +59,7 @@ class WebScraper:
         _load_dotenv()
         fetcher = None
         llm = None
+        searcher = None
         sources = [url.strip() for url in scene.sources if url and url.strip()]
         try:
             fetcher = Fetcher(max_threads=self.max_threads)
@@ -75,7 +77,8 @@ class WebScraper:
                 else:
                     log.warning("%s is not set; discovering sources without the LLM.", KEY_NAME)
                 log.info("%s: no sources given, discovering sites", scene.title)
-                documents = DiscoveryAgent(Searcher(), fetcher, llm).run(scene)
+                searcher = Searcher()
+                documents = DiscoveryAgent(searcher, fetcher, llm).run(scene)
         except Exception:  # an empty result is how we report failure; the caller decides it is fatal
             log.exception("%s: scraping failed", scene.title)
             documents = []
@@ -86,13 +89,16 @@ class WebScraper:
         log.info("%s: %d usable document(s)", scene.title, len(documents))
         if llm is not None:
             log.info("%s: LLM usage this run: %s", scene.title, llm.usage_summary())
+        if searcher is not None and searcher.tavily_calls:
+            log.info("%s: Tavily usage this run: %d search(es), ~%d credit(s)",
+                     scene.title, searcher.tavily_calls, searcher.tavily_calls)
         return documents
 
 
 def _load_dotenv() -> None:
-    """Fill in LUMEN_API_KEY / SEARXNG_URL from a local .env, never overriding real environment variables."""
+    """Fill in LUMEN_API_KEY / SEARXNG_URL / TAVILY_API_KEY from a local .env, never overriding real environment variables."""
     try:
         from dotenv import load_dotenv
     except ImportError:
         return
-    load_dotenv()
+    load_dotenv(Path(__file__).resolve().parents[2] / ".env")  # the repo root's .env, wherever we are run from

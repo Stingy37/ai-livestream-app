@@ -16,6 +16,7 @@ import logging
 import os
 import threading
 import time
+from pathlib import Path
 
 log = logging.getLogger(__name__)
 
@@ -78,7 +79,8 @@ class LumenClient:
             try:
                 from dotenv import load_dotenv
 
-                load_dotenv()  # fills in variables from .env without overriding real ones
+                # the repo root's .env, wherever we are run from; never overrides real environment variables
+                load_dotenv(Path(__file__).resolve().parents[2] / ".env")
             except ImportError:
                 pass
             if not os.environ.get(KEY_NAME):

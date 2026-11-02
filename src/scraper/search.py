@@ -1,13 +1,20 @@
-"""Web search for the scraper agent: SearXNG first, DuckDuckGo (ddgs) as a fallback.
+"""Web search for the scraper agent: cheap first, paid only when needed.
 
-SearXNG is read from the SEARXNG_URL environment variable and queried through
-its JSON API (``/search?q=...&format=json``). That API only answers if the
-instance lists ``json`` under ``search.formats`` in its settings.yml — many
-public instances do not, so see ``searxng/README.md`` for running one locally.
+Each query goes down this chain and stops at the first step that returns results:
 
-If SEARXNG_URL is unset or the instance fails, the search falls back to the
-``ddgs`` package and says so in the logs. If that fails too, the search returns
-no results rather than raising; the agent treats that as "nothing found".
+  1. SearXNG (free) — read from the SEARXNG_URL environment variable and queried
+     through its JSON API (``/search?q=...&format=json``). That API only answers
+     if the instance lists ``json`` under ``search.formats`` in its settings.yml —
+     many public instances do not, so see ``searxng/README.md`` for running one.
+  2. Tavily (paid, 1 credit per search) — only if TAVILY_API_KEY is set, and only
+     for queries SearXNG could not answer. A spent plan or bad key switches Tavily
+     off for the rest of the run instead of being retried.
+  3. ddgs (free, last resort) — scrapes public search engines, so it may be
+     rate-limited; used when neither of the above is configured or both failed.
+
+Every switch is logged. If all three fail the search returns no results rather
+than raising; the agent treats that as "nothing found". Results are cached for
+CACHE_TTL seconds whichever step produced them, so a query is never paid twice.
 """
 
 from __future__ import annotations
@@ -23,6 +30,8 @@ from pathlib import Path
 log = logging.getLogger(__name__)
 
 URL_NAME = "SEARXNG_URL"  # the SearXNG base URL is read from this environment variable only
+TAVILY_KEY_NAME = "TAVILY_API_KEY"  # the Tavily key is read from this environment variable only
+TAVILY_URL = "https://api.tavily.com/search"
 TIMEOUT = 15  # seconds
 # ddgs backends, tried in order until one returns results. Only names ddgs lists as available work
 # (an unknown name is silently replaced by "auto"); in live tests only yahoo answered when "auto" did not.
@@ -36,22 +45,31 @@ class SearchResult:
     url: str
     title: str
     snippet: str
-    engine: str  # "searxng" or "ddgs"
+    engine: str  # "searxng", "tavily" or "ddgs"
+
+
+class TavilyOff(Exception):
+    """Tavily cannot be used for the rest of this run (bad key or credits spent)."""
 
 
 class Searcher:
-    """Runs searches for one scene. Remembers if SearXNG is down so it is not retried every query."""
+    """Runs searches for one scene. Remembers which steps are down so they are not retried every query."""
 
-    def __init__(self, base_url=None, max_results=10, cache_dir=None):
+    def __init__(self, base_url=None, max_results=10, cache_dir=None, tavily_key=None):
         from scraper import fetch
 
         self.base_url = (base_url if base_url is not None else os.environ.get(URL_NAME, "")).rstrip("/")
+        self.tavily_key = tavily_key if tavily_key is not None else os.environ.get(TAVILY_KEY_NAME, "")
         self.max_results = max_results
         self.cache_dir = Path(cache_dir) if cache_dir is not None else fetch.CACHE_DIR / "search"
         self.last_search = 0.0
         self.searxng_ok = bool(self.base_url)
+        self.tavily_ok = bool(self.tavily_key)
+        self.tavily_calls = 0  # each is 1 Tavily credit
         if not self.searxng_ok:
-            log.warning("%s is not set; searching with DuckDuckGo (ddgs) instead of SearXNG.", URL_NAME)
+            log.warning("%s is not set; skipping SearXNG.", URL_NAME)
+        if not self.tavily_ok:
+            log.info("%s is not set; no paid Tavily fallback, ddgs is the last resort.", TAVILY_KEY_NAME)
 
     # Results for one query: from the cache if recent, otherwise from the network (throttled).
     def search(self, query):
@@ -77,17 +95,32 @@ class Searcher:
                 log.info("could not cache search results: %s", error)
         return results
 
+    # The chain: SearXNG (free) -> Tavily (paid) -> ddgs (free, last resort).
     def _search_network(self, query):
         if self.searxng_ok:
             try:
-                return self.searxng(query)
+                results = self.searxng(query)
+                if results:
+                    return results
+                log.info("SearXNG found nothing for %r; trying the next search step.", query)
             except Exception as error:
-                self.searxng_ok = False
-                log.warning("SearXNG search failed (%s); using DuckDuckGo (ddgs) for the rest of this run.", error)
+                self.searxng_ok = False  # an instance that errors once is likely down for the whole run
+                log.warning("SearXNG search failed (%s); skipping it for the rest of this run.", error)
+        if self.tavily_ok:
+            try:
+                results = self.tavily(query)
+                if results:
+                    return results
+                log.info("Tavily found nothing for %r; trying ddgs.", query)
+            except TavilyOff as error:
+                self.tavily_ok = False
+                log.warning("%s Skipping Tavily for the rest of this run.", error)
+            except Exception as error:  # rate limit, server error, network: skip for this query only
+                log.warning("Tavily search failed (%s); trying ddgs for %r.", error, query)
         try:
             return self.ddgs(query)
         except Exception as error:
-            log.warning("DuckDuckGo search failed too (%s); no results for %r.", error, query)
+            log.warning("ddgs search failed too (%s); no results for %r.", error, query)
             return []
 
     def searxng(self, query):
@@ -107,6 +140,28 @@ class Searcher:
             if isinstance(item, dict) and item.get("url"):
                 results.append(SearchResult(item["url"], item.get("title") or "", item.get("content") or "", "searxng"))
         return results[: self.max_results]
+
+    def tavily(self, query):
+        import httpx
+
+        self.tavily_calls += 1
+        response = httpx.post(
+            TAVILY_URL,
+            headers={"Authorization": f"Bearer {self.tavily_key}"},
+            # "basic" is 1 credit; set explicitly so it never becomes a 2-credit "advanced" search.
+            json={"query": query, "search_depth": "basic", "max_results": min(self.max_results, 20)},
+            timeout=TIMEOUT,
+        )
+        if response.status_code == 401:
+            raise TavilyOff(f"401 from Tavily: the key is missing or wrong. Check {TAVILY_KEY_NAME}.")
+        if response.status_code in (432, 433):
+            raise TavilyOff(f"{response.status_code} from Tavily: the plan or pay-as-you-go credit limit is spent.")
+        response.raise_for_status()
+        results = []
+        for item in response.json().get("results") or []:
+            if isinstance(item, dict) and item.get("url"):
+                results.append(SearchResult(item["url"], item.get("title") or "", item.get("content") or "", "tavily"))
+        return results
 
     def ddgs(self, query):
         from ddgs import DDGS

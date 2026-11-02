@@ -14,3 +14,4 @@ def isolated_scraper(monkeypatch, tmp_path):
 
     monkeypatch.setattr(fetch, "CACHE_DIR", tmp_path / "cache")
     monkeypatch.setattr(search, "MIN_INTERVAL", 0)
+    monkeypatch.delenv("TAVILY_API_KEY", raising=False)  # never spend a real Tavily credit in tests
