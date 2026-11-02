@@ -229,10 +229,10 @@ def _fishermen(sec: str, year: int) -> dict:
 def _surge(sec: str) -> dict:
     s = _flat(sec)
     out = {"text": s}
-    m = re.search(r"(\d+(?:\.\d+)?)\s*(?:to|-)\s*(\d+(?:\.\d+)?)\s*m(?:etre|eter)?s?\b", s)
+    m = re.search(r"(\d+(?:\.\d+)?)\s*(?:to|-|–|—)\s*(\d+(?:\.\d+)?)\s*m(?:etre|eter)?s?\b", s)   # "1.0 – 1.5 m" (IMD 2200 IST 2 Nov)
     if m:
         out["m"] = [float(m.group(1)), float(m.group(2))]
-    inund = re.search(r"inundate low[- ]lying areas of ([^.]+?)(?: during| at| around|\.)", s)
+    inund = re.search(r"inundate low[- ]lying areas of ([^.]+?)(?: during| at| around| from| with|\.)", s)
     out["areas"] = [a.strip() for a in re.split(r",| and ", inund.group(1)) if a.strip()] if inund else []
     peak = re.search(r"peak surge is expected (?:over|near|along) (.+?)\.", s)
     if peak:

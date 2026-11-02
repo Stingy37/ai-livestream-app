@@ -190,3 +190,22 @@ def test_murasu_1145_landfall_south_of_ongole():
     te = _say("in_te_landfall", doc)
     assert "నెల్లూరు, నరసాపురం మధ్య ఒంగోలుకు దక్షిణంగా" in te
     assert ", to the south of Ongole," in _say("in_en_landfall", doc)
+
+
+def test_murasu_2200_surge_en_dash():
+    """IMD 2200 IST 2 Nov: "peak surge of 1.0 – 1.5 m" (en dash with spaces) and "areas of South Andhra Pradesh coast
+    from evening of today": the surge sentence had dropped out of both landfall scenes."""
+    from desk import sources_nio as N
+
+    sec = ("The storm surge of height more than 0.5 m above astronomical tide is likely to inundate low lying areas of South "
+           "Andhra Pradesh coast from evening of today, the 2nd November till morning of tomorrow, the 3rd November with peak "
+           "surge of 1.0 – 1.5 m above astronomical tides during night of today. The maximum peak surge is expected over "
+           "Bapatla, Krishna and Prakasam districts.")
+    sg = N._surge(sec)
+    assert sg["m"] == [1.0, 1.5] and sg["areas"] == ["South Andhra Pradesh coast"]
+    assert sg["peak_areas"] == ["Bapatla", "Krishna", "Prakasam"]
+    doc = _doc()
+    doc["storm"]["name"] = "MURASU"
+    doc["in"]["imd"]["surge"] = sg
+    assert "A storm surge of about 1-1.5 m could flood low-lying areas of Bapatla, Krishna and Prakasam." in _say("in_en_landfall", doc)
+    assert "1-1.5 మీటర్ల" in _say("in_te_landfall", doc)
