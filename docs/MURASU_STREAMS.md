@@ -37,8 +37,8 @@ It applies on top of `typhoon_champi` (5f7a25c) and changes nothing else.
 
 ## 1. Before anything goes live
 
-1. Apply the patch on a fresh branch, never on the running checkout:
-   `git checkout -b murasu typhoon_champi && git apply indian_english_voice.patch`
+1. Check out this branch (it is `typhoon_champi` plus this work), in a checkout that is not running anything:
+   `git fetch origin && git checkout murasu-telugu-and-english-streams`
 2. Telugu spelling of Murasu: మురసు (checked by a Telugu speaker; Tamil முரசு). To change it, edit all three tables listed above.
 3. Run the tests: `PYTHONPATH=src $PY -m pytest -q tests/desk/test_india_en.py tests/desk/test_nio.py`
 4. Follow Murasu, not Arnab: `DESK_STORM=MURASU DESK_JTWC_ID=io0426` (JTWC 04B). Use the same desk setup as for Arnab
@@ -50,7 +50,7 @@ It applies on top of `typhoon_champi` (5f7a25c) and changes nothing else.
 Launch it the same way as the Arnab Telugu stream, with Murasu's desk variables from step 1.4. Following `ec2/README.md`:
 
 ```bash
-DESK_REGION=nio DESK_STORM=MURASU DESK_JTWC_ID=io0426 EC2_STREAM_ID=india-te RUN_ID=murasu-te \
+MAX_HOURS=30 DESK_REGION=nio DESK_STORM=MURASU DESK_JTWC_ID=io0426 EC2_STREAM_ID=india-te RUN_ID=murasu-te \
   CONFIG_PATH=saved_configs/india_te.json bash scripts/run_livestream.sh
 THUMB_STYLE=tw THUMB_TW_TEXT=saved_configs/thumb_murasu_te.json \
   $PY scripts/youtube_live.py --config saved_configs/india_te.json --lang te --stream india-te
@@ -72,11 +72,9 @@ The downloaded folder (Apache 2.0) can be copied to other machines; no one else 
 **If someone else downloads it for you** (no account or token on your side):
 - They run, on their own account (`uvx` is uv's runner; any Python with `huggingface_hub` works too):
   `HF_TOKEN=hf_... uvx --from huggingface_hub hf download ai4bharat/indic-parler-tts --local-dir ~/pre-models/indic-parler-tts`
-  then share the folder (about 3.5 GB): make it readable on this machine
-  (`chmod o+x ~ ~/pre-models && chmod -R o+rX ~/pre-models/indic-parler-tts`), or send it by rsync / shared drive.
-- You copy it into place and run the script below **without** `HF_TOKEN`: it sees the model, skips the gated download,
-  installs parler-tts and saves the public description tokenizer.
-  `cp -r /home/<them>/pre-models/indic-parler-tts /home/andyshi2/pre-models/`
+  then send you the folder (about 3.5 GB) by rsync / scp or a shared drive.
+- You put it at `~/pre-models/indic-parler-tts` (or set `PARLER_DIR`) and run the script below **without** `HF_TOKEN`:
+  it sees the model, skips the gated download, installs parler-tts and saves the public description tokenizer.
 
 **3a. Install the voice in a separate environment.** `parler-tts` pins its own `transformers` version, and installing it
 into `ai-livestream` could break vLLM and the MMS voice for the Telugu stream.
@@ -109,7 +107,7 @@ slice; on a 32 GB slice that leaves about 12 GB, and the voice needs about 4 GB 
 **3c. Run it**, with the new environment's Python:
 
 ```bash
-PY=$PY DESK_REGION=nio DESK_STORM=MURASU DESK_JTWC_ID=io0426 EC2_STREAM_ID=india-en RUN_ID=murasu-en \
+PY=$PY MAX_HOURS=30 DESK_REGION=nio DESK_STORM=MURASU DESK_JTWC_ID=io0426 EC2_STREAM_ID=india-en RUN_ID=murasu-en \
   CONFIG_PATH=saved_configs/india_en.json bash scripts/run_livestream.sh
 THUMB_STYLE=tw THUMB_TW_TEXT=saved_configs/thumb_murasu_en.json THUMB_CDP_PORT=9334 \
   $PY scripts/youtube_live.py --config saved_configs/india_en.json --lang en --stream india-en
@@ -140,6 +138,18 @@ $PY scripts/youtube_thumbnail.py --lang en` (writes `output/youtube/thumb_en.jpg
 
 **If the voice fails tonight:** in `saved_configs/india_en.json` set `"tts_model": "kokoro"`. The English narration stays,
 read with Kokoro's default voice (American accent; the Thoma voice names fall back to it automatically).
+
+## Keeping them running
+
+- `MAX_HOURS=30` (in the commands above): the default 6 would stop the pipeline hours before landfall.
+- The pipeline restarts itself after a crash (back-off 30 s to 10 min, up to 20 times), resuming the same `RUN_ID`. To restart
+  it by hand, run the same command with the same `RUN_ID`; the YouTube broadcast keeps going meanwhile.
+- `youtube_live.py` restarts the encoder by itself. Avoid stopping it: Ctrl+C or its stop file ends the broadcast, and a new
+  run is a new video at a new link. If it does stop, run the same command again.
+- `touch .run/STOP` stops **every** pipeline in that checkout. To stop one stream's pipeline, press Ctrl+C in its
+  terminal (run each in its own tmux window). For YouTube, `touch .run/STOP_YOUTUBE_india-en` ends that broadcast only.
+- Both streams fit on one 32 GB slice (vLLM about 20 GB if started, MMS under 1 GB, Indic Parler about 4-6 GB); both
+  configs are desk-only, so `START_SERVICES=0` (no vLLM) may work too. Check with a `DRY_RUN=1` run first.
 
 ## Not tested yet
 
