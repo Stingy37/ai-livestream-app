@@ -334,7 +334,7 @@ def parse_national(t: str) -> dict:
                        r"(?:the\s+)?(\d{1,2})(?:st|nd|rd|th)?\s+([A-Za-z]+)(?:,?\s*(\d{4}))?", s)
         # "during midnight (2330 Hrs IST) of 2nd to early hours (0400 Hrs IST) of 3rd November, 2026": IMD's own clock times
         clk = list(re.finditer(r"(?:(early morning|early hours|morning|forenoon|noon|afternoon|evening|night|midnight)\s*)?"
-                               r"\((\d{2})(\d{2})\s*hrs?\s*IST\)\s*of\s*(?:the\s+)?(\d{1,2})(?:st|nd|rd|th)?(?:\s+([A-Za-z]+))?", s, re.I))
+                               r"\((\d{2})(\d{2})\s*hrs?\s*IST\)\s*of\s*(?:(?:today|tomorrow|yesterday),?\s*)?(?:the\s+)?(\d{1,2})(?:st|nd|rd|th)?(?:\s+([A-Za-z]+))?", s, re.I))
         mon = next((x for x in re.findall(r"\b([A-Z][a-z]+)\b", s[clk[0].start():]) if x.lower()[:3] in MONTHS), None) if clk else None
         if clk and mon:
             yr = re.search(rf"{mon},?\s*(\d{{4}})", s)

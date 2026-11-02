@@ -132,6 +132,13 @@ def test_murasu_bulletin_wording():
     assert (lf["date"], lf["time_ist"], lf["timeUTC"], lf["until"]["timeUTC"]) == ("2026-11-02", "2330", "2026-11-02T18:00:00Z",
                                                                                   "2026-11-02T22:30:00Z")
     assert imd["surge"]["peak_areas"] == ["Bapatla", "Krishna", "Prakasam"]
+    # the 0900 IST bulletin: "(2330 Hrs IST) of today, the 02nd November to early hours (0400 Hrs IST) of tomorrow, the 3rd"
+    t = (ROOT / "tests" / "desk" / "fixtures" / "imd_national_bulletin_murasu.txt").read_text(encoding="utf-8")
+    t = t.replace("(2330 Hrs IST) of 2nd to early hours (0400 Hrs IST) of 3rd November,",
+                  "(2330 Hrs IST) of today, the 02nd November to early hours (0400 Hrs IST) of tomorrow, the 3rd November,")
+    assert "of today, the 02nd" in t
+    lf2 = N.parse_national(t)["landfall"]
+    assert (lf2["timeUTC"], lf2["until"]["timeUTC"]) == ("2026-11-02T18:00:00Z", "2026-11-02T22:30:00Z")
     doc = _doc()
     doc["storm"]["name"] = "MURASU"
     doc["in"]["imd"].update({k: imd[k] for k in ("class", "class_short", "landfall", "surge")})
