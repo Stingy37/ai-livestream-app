@@ -76,7 +76,9 @@ def _imd_clean(imd: dict) -> dict:
     out = {k: v for k, v in imd.items() if not k.startswith("_")}
     rs, tc = imd.get("_rsmc") or {}, imd.get("_tcac") or {}
     land = dict(out.get("landfall") or {})
-    if rs.get("landfall_timeUTC") and (not land.get("date") or rs["landfall_timeUTC"][:10] == land.get("date")):
+    if land.get("timeUTC"):                     # the bulletin gave its own clock time ("(2330 Hrs IST) of 2nd")
+        pass
+    elif rs.get("landfall_timeUTC") and (not land.get("date") or rs["landfall_timeUTC"][:10] == land.get("date")):
         land["timeUTC"] = rs["landfall_timeUTC"]
         land["time_basis"] = "IMD RSMC advisory (" + S.parse_iso(rs["landfall_timeUTC"]).strftime("%H%M UTC") + ")"
     elif land.get("date") and land.get("part_of_day") in N._PART_OF_DAY_IST:
@@ -234,11 +236,11 @@ def build_desk_nio(prev: dict | None, *, storm_hint: str = "", raw: dict | None 
             raise RuntimeError(f"IMD bulletin: {imd_raw}; districts: {dist}")
         return out
     put("in", india, "IMD National Bulletin + RSMC advisory + IMD district warnings (WFS) + JTWC", imd_url)
-    if doc.get("in", {}).get("imd"):     # the same Telugu / Tamil sentences the narration reads, for the page's ticker and lower third
+    if doc.get("in", {}).get("imd"):     # the same Telugu / Tamil / English sentences the narration reads, for the page's ticker and lower third
         from desk.bulletin import build as say
 
         text = {}
-        for lang in ("te", "ta"):
+        for lang in ("te", "ta", "en"):
             for part in ("now", "landfall", "warnings"):
                 try:
                     text.setdefault(lang, {})[part] = say(f"in_{lang}_{part}", doc).splitlines()

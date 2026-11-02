@@ -1,10 +1,10 @@
 {
   "config": {
-    "name": "Cyclone Arnab Live (Tamil) · அர்னாப் புயல்",
+    "name": "Cyclone Murasu Live (Tamil) · முரசு புயல்",
     "storm": {
       "title": "CYCLONIC STORM",
-      "name": "ARNAB",
-      "names": "Telugu: అర్నాబ్ తుఫాను · Tamil: அர்னாப் புயல்"
+      "name": "MURASU",
+      "names": "Telugu: మురసు తుఫాను · Tamil: முரசு புயல்"
     }
   },
   "defaults": {

@@ -43,6 +43,12 @@ class AudioGenerator:
 
             voice = f"mms-{scene.language}"
             audio, rate = tts_mms.synthesize(text, scene.language, device=s.tts_device)
+        elif engine in ("indic-parler", "parler"):
+            # AI4Bharat Indic Parler-TTS: Indian English (and Telugu) voices, in-process on the GPU; see models/tts_indicparler.py
+            from models import tts_indicparler
+
+            voice = scene.tts_voice or tts_indicparler.default_voice(scene.language)
+            audio, rate = tts_indicparler.synthesize(text, scene.language, voice=voice, device=s.tts_device)
         elif engine.startswith("moss"):
             # MOSS-TTS v1.5 (multilingual, e.g. Tagalog) runs as a shared server; see scripts/moss_tts_start.sh
             from models import tts_moss

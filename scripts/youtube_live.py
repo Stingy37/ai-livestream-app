@@ -49,6 +49,10 @@ LANGUAGE_NAMES_ZH = {"en": "英語", "ja": "日語", "tl": "他加祿語", "zh":
 YT_LANGUAGE = {"zh": "zh-TW", "zh-tw": "zh-TW"}   # YouTube language codes where ours differ
 
 
+# storm names in Telugu / Tamil script for the India titles (as src/desk/bulletin.py IN_STORM)
+INDIA_STORM = {"ARNAB": ("అర్నాబ్", "அர்னாப்"), "MURASU": ("మురసు", "முரசு")}
+
+
 def desk_storm() -> dict:
     try:
         return json.load(urllib.request.urlopen(youtube_thumbnail.stream_page() + "live/desk.json", timeout=15)).get("storm") or {}
@@ -110,6 +114,53 @@ def metadata(cfg: dict, lang: str, thumb: dict) -> dict:
                  "Cyclone Arnab landfall", "Kakinada cyclone", "Yanam"] if te else
                 ["Cyclone Arnab", "Arnab Cyclone", "Cyclone Arnab live", "அர்னாப் புயல்", "அர்னாப் புயல் நேரலை", "புயல்",
                  "Chennai rain", "Tamil Nadu rain", "TN weather", "Tamil Nadu weather update", "IMD", "cyclone live"])   # IMD: no heavy rain for TN
+        storm = (st.get("name") or "").strip()
+        if storm and storm.upper() != "ARNAB":       # the wording above was written for Arnab: put the desk's storm in
+            local = INDIA_STORM.get(storm.upper(), (storm.title(), storm.title()))
+            swap = lambda s: re.sub("అర్నాబ్|అర్నబ్|ఆర్నబ్", local[0], re.sub("அர்னாப்", local[1], s.replace("Arnab", storm.title())))
+            title, desc, tags = swap(title), swap(desc), list(dict.fromkeys(swap(t) for t in tags))
+            near = youtube_thumbnail.desk_value("in", "imd", "landfall", "near") or ""
+            if near and near != "Kakinada":          # the Arnab tags name its landfall (Kakinada, Yanam): use IMD's town
+                desc = desc.replace("#Kakinada", f"#{near.replace(' ', '')}")
+                tags = list(dict.fromkeys(t.replace("Kakinada", near) for t in tags if t != "Yanam"))
+            while len(title.encode("utf-16-le")) // 2 > 100 and " | " in title:   # a longer name can push it past 100
+                title = title.rsplit(" | ", 1)[0]
+    elif lang == "en" and tx.get("l1") and (st.get("name") or "").upper() in INDIA_STORM:   # India in English (Indian English voice)
+        # the te/ta pattern: "Cyclone <name> LIVE 🔴" + the thumbnail's lines; the countdown stays out of the title
+        storm = (st.get("name") or "").strip().title()
+        near = youtube_thumbnail.desk_value("in", "imd", "landfall", "near") or ""
+        between = youtube_thumbnail.desk_value("in", "imd", "landfall", "between") or []
+        case = lambda s: " ".join(w if w in ("IMD", "AP") else "km/h" if w == "KM/H" else w.capitalize() for w in s.split())
+        cd = r"(?:IMD:\s*)?LANDFALL IN \d+ (?:HOURS|HRS)"
+        clean = lambda s: case(re.sub(rf"^\s*CYCLONE {storm}\s*|\s*\bLIVE\b|{cd}", "", re.sub(r"[{}\[\]]", "", s or ""), flags=re.I).strip(" :|·-"))
+        day = datetime.now(timezone(timedelta(hours=5, minutes=30)))
+        parts = [x for x in (clean(tx["l1"]), clean(tx.get("l2")), f"{near} Landfall" if near else "", f"IMD Updates {day.day}/{day.month}") if x]
+        title = f"Cyclone {storm} LIVE 🔴 " + " | ".join(parts)
+        while len(title.encode("utf-16-le")) // 2 > 100 and len(parts) > 1:   # YouTube's limit is 100 characters
+            parts.pop(-2 if len(parts) > 2 else -1)                            # drop the landfall town, then the tail
+            title = f"Cyclone {storm} LIVE 🔴 " + " | ".join(parts)
+        where = (f" between {between[0]} and {between[1]}" if len(between) == 2 else "") + (f", near {near}" if near else "")
+        desc = "\n".join([
+            f"Cyclone {storm}: " + " · ".join(clean(tx.get(k)) for k in ("l1", "l2") if clean(tx.get(k))),
+            f"Cyclone {storm} live in English: the India Meteorological Department's (IMD) official bulletins, the storm's track and "
+            f"landfall on the Andhra Pradesh coast{where}, district-wise red and orange alerts, Doppler radar and satellite images, "
+            "updated through the day.",
+            "",
+            "■ Note",
+            "・The narration is read by an AI voice from IMD bulletins. It is not an official warning service.",
+            "・For warnings, evacuation and school holidays, follow IMD, APSDMA and your district administration.",
+            "・Times are Indian Standard Time (IST).",
+            "",
+            "■ IMD: https://mausam.imd.gov.in  ·  RSMC New Delhi: https://rsmcnewdelhi.imd.gov.in  ·  APSDMA: https://apsdma.ap.gov.in",
+            "",
+            f"{name}. Student-run cyclone desk relaying IMD bulletins with a synthetic voice. Not an official warning service.",
+            "",
+            " ".join(dict.fromkeys(f"#{x.replace(' ', '')}" for x in
+                                   [f"Cyclone{storm}", storm, "AndhraPradesh", *between, near, "APWeather", "IMD", "CycloneLive"] if x)),
+        ])
+        tags = [f"Cyclone {storm}", f"Cyclone {storm} live", f"{storm} cyclone", f"{storm} landfall", "Andhra Pradesh cyclone",
+                "AP weather update", "cyclone live", "IMD", "IMD red alert", "Bay of Bengal cyclone", *between, near,
+                f"{near} cyclone" if near else "", "cyclone landfall live", "weather update"]
     elif lang == "ja" and tx.get("l1"):     # the news-style thumbnail (THUMB_STYLE=tw, lang=ja): its lines are the title's hooks
         clean = lambda s: re.sub(r"\s*(?:最接近まで)?\s*あと\s*\d+\s*時間", " 最接近へ", re.sub(r"[{}\[\]]", "", s or "")).strip()
         day = datetime.now(timezone(timedelta(hours=9)))

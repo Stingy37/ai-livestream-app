@@ -112,8 +112,9 @@ def _date(day: int, month: str | int, year: int) -> str:
     return f"{year:04d}-{m:02d}-{day:02d}"
 
 
+# IMD's "midnight of 2nd" is the night of the 2nd into the 3rd (its own clock time is 2330 IST), so 23, not 0 of the 2nd
 _PART_OF_DAY_IST = {"early morning": 5, "morning": 8, "forenoon": 10, "noon": 12, "afternoon": 14, "evening": 18,
-                    "night": 21, "midnight": 0}
+                    "night": 21, "midnight": 23}
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -236,11 +237,11 @@ def _surge(sec: str) -> dict:
     peak = re.search(r"peak surge is expected (?:over|near|along) (.+?)\.", s)
     if peak:
         names, near = [], []
-        for part in re.split(r"\s+and\s+|,", peak.group(1)):
+        for part in re.split(r"\s+and\s+(?:also\s+)?|,", peak.group(1)):
             nm = re.search(r"\(near ([^)]+)\)", part)
             if nm:
                 near.append(nm.group(1).strip())
-            base = re.sub(r"\([^)]*\)|\bdistricts?\b", "", part).strip()
+            base = re.sub(r"\([^)]*\)|\bdistricts?\b|^(?:also )?(?:over|near|along) ", "", part.strip(), flags=re.I).strip()   # "and also over Krishna"
             if base:
                 names.append(base[0].upper() + base[1:])
         out["peak_areas"], out["peak_near"], out["peak_text"] = names, near, peak.group(1)
@@ -285,26 +286,29 @@ def parse_national(t: str) -> dict:
     main = re.search(rf"The {_CLASS_RX}\b(.+?)(?=\n\s*\n|\nIt is very likely|\nThereafter)", t, re.S | re.I)
     if main:
         para = _flat(main.group(0))
-        out["class"] = main.group(1).title()
-        out["class_short"] = CLASS_SHORT.get(main.group(1).lower(), "")
-        mv = re.search(r"moved ([a-z\-]+?) with a speed of (\d+) kmph during (?:the )?past (\d+) hours", para)
+        cls = re.search(rf"intensified into an? {_CLASS_RX}", para, re.I)      # "The Cyclonic Storm ... intensified into a severe cyclonic storm"
+        cls = (cls or main).group(1)
+        out["class"] = cls.title()
+        out["class_short"] = CLASS_SHORT.get(cls.lower(), "")
+        # "moved west-northwestwards with a speed of 13 kmph", also "moved nearly northwestwards with speed of 20 kmph"
+        mv = re.search(r"moved (?:(?:nearly|slowly|almost) )?([a-z\-]+?) with (?:a )?speed of (\d+) kmph during (?:the )?past (\d+) hours", para)
         if mv:
             out["movement_text"] = mv.group(0)
             out["movement"] = {"dir": compass(mv.group(1)), "kmh": int(mv.group(2)), "hours": int(mv.group(3))}
         elif re.search(r"remained (?:practically )?stationary", para):
             out["movement_text"] = "remained practically stationary"
             out["movement"] = {"dir": "", "kmh": 0}
-        at = re.search(r"cent(?:ere|re)d at (\d{2})(\d{2}) hrs IST of (?:today,? |yesterday,? )?(?:the )?(\d{1,2})(?:st|nd|rd|th)? ([A-Za-z]+),? (\d{4})", para)
+        at = re.search(r"cent(?:ere|re|er)d at (\d{2})(\d{2}) (?:hrs|hours) IST of (?:today,? |yesterday,? )?(?:the )?(\d{1,2})(?:st|nd|rd|th)? ([A-Za-z]+),? (\d{4})", para)
         if at:
             obs = datetime(int(at.group(5)), MONTHS[at.group(4).lower()[:3]], int(at.group(3)), int(at.group(1)), int(at.group(2)), tzinfo=IST)
             out["observedUTC"] = S.iso(obs.astimezone(timezone.utc))
-        ll = re.search(r"latitude\s*(\d+\.\d+)\s*°?\s*N\s*and longitude\s*(\d+\.\d+)\s*°?\s*E", para)
+        ll = re.search(r"latitude\s*(\d+\.\d+)\s*°?\s*N\s*and longitude\s*(\d+\.\d+)\s*°?\s*E", para, re.I)
         if ll:
             out["lat"], out["lon"] = float(ll.group(1)), float(ll.group(2))
             tail = para[ll.end():].strip(" ,")
             out["position_text"] = tail.rstrip(" ,.")
             out["position"] = [{"km": int(k), "dir": compass(d), "place": p.strip(), **({"state": s} if s else {})}
-                               for k, d, p, s in re.findall(r"(\d+)\s*km\s+([a-z\-]+)\s+of\s+([A-Z][A-Za-z .']+?)\s*(?:\(([^)]+)\))?(?=,|\s+and\b|$)", tail)]
+                               for k, d, p, s in re.findall(r"(\d+)\s*km\s+([a-z\-]+)\s+of\s+([A-Z][A-Za-z .']+?)\s*(?:\(([^)]+)\))?(?=,|\s+and\b|$)", out["position_text"])]
     after = t[main.end():] if main else t
     outlook = _flat(after.split("Forecast location")[0])
     out["outlook_text"] = [x.strip() for x in re.split(r"(?<=\.)\s+", outlook) if x.strip(" .")][:4]
@@ -323,12 +327,32 @@ def parse_national(t: str) -> dict:
         if cl:
             land["class"] = cl.group(1).title()
             land["class_short"] = CLASS_SHORT.get(cl.group(1).lower(), "")
-        w = re.search(r"(\d+)\s*-\s*(\d+)\s*kmph gusting to (\d+)\s*kmph", s)
+        w = re.search(r"(\d+)\s*(?:-|to)\s*(\d+)\s*kmph gusting (?:to )?(\d+)\s*kmph", s)
         if w:
             land["wind_kmh"], land["gust_kmh"] = [int(w.group(1)), int(w.group(2))], int(w.group(3))
         tm = re.search(r"(?:by|during|around|on|in the)\s+(?:the\s+)?(early morning|morning|forenoon|noon|afternoon|evening|night|midnight)\s+of\s+"
                        r"(?:the\s+)?(\d{1,2})(?:st|nd|rd|th)?\s+([A-Za-z]+)(?:,?\s*(\d{4}))?", s)
-        if tm:
+        # "during midnight (2330 Hrs IST) of 2nd to early hours (0400 Hrs IST) of 3rd November, 2026": IMD's own clock times
+        clk = list(re.finditer(r"(?:(early morning|early hours|morning|forenoon|noon|afternoon|evening|night|midnight)\s*)?"
+                               r"\((\d{2})(\d{2})\s*hrs?\s*IST\)\s*of\s*(?:the\s+)?(\d{1,2})(?:st|nd|rd|th)?(?:\s+([A-Za-z]+))?", s, re.I))
+        mon = next((x for x in re.findall(r"\b([A-Z][a-z]+)\b", s[clk[0].start():]) if x.lower()[:3] in MONTHS), None) if clk else None
+        if clk and mon:
+            yr = re.search(rf"{mon},?\s*(\d{{4}})", s)
+            yr = int(yr.group(1)) if yr else year
+            ends = []
+            for c in clk[:2]:
+                m_ = c.group(5) if c.group(5) and c.group(5).lower()[:3] in MONTHS else mon
+                d = _date(int(c.group(4)), m_, yr)
+                at_ = datetime.fromisoformat(d).replace(hour=int(c.group(2)), minute=int(c.group(3)), tzinfo=IST)
+                ends.append((d, f"{c.group(2)}{c.group(3)}", S.iso(at_.astimezone(timezone.utc)), (c.group(1) or "").lower()))
+            land["date"], land["time_ist"], land["timeUTC"] = ends[0][:3]
+            land["time_basis"] = f"IMD National Bulletin ({ends[0][1]} IST)"
+            if ends[0][3] in _PART_OF_DAY_IST:
+                land["part_of_day"] = ends[0][3]
+            if len(ends) > 1:
+                land["until"] = {"date": ends[1][0], "time_ist": ends[1][1], "timeUTC": ends[1][2]}
+            land["time_text"] = " to ".join(f"{e[1]} IST of {int(e[0][8:])} {mon}" for e in ends)
+        elif tm:
             land["part_of_day"] = tm.group(1)
             land["date"] = _date(int(tm.group(2)), tm.group(3), int(tm.group(4) or year))
             land["time_text"] = f"{tm.group(1)} of {int(tm.group(2))} {tm.group(3)}"

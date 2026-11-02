@@ -344,6 +344,8 @@ IN_PART = {"early morning": ("తెల్లవారుజామున", "அ�
 IN_RAIN = {"heavy": ("భారీ", "கனமழை"), "very heavy": ("అతి భారీ", "மிக கனமழை"), "extremely heavy": ("అత్యంత భారీ", "அதி கனமழை"),
            "heavy to very heavy": ("భారీ నుంచి అతి భారీ", "கனமழை முதல் மிக கனமழை"),
            "very heavy to extremely heavy": ("అతి భారీ నుంచి అత్యంత భారీ", "மிக கனமழை முதல் அதி கனமழை")}
+# storm names in Telugu and Tamil script (the MMS voices cannot read Latin); a storm missing here is called "the cyclone"
+IN_STORM = {"ARNAB": ("అర్నాబ్", "அர்னாப்"), "MURASU": ("మురసు", "முரசு")}
 IN_MONTH = {10: ("అక్టోబర్", "அக்டோபர்"), 11: ("నవంబర్", "நவம்பர்"), 12: ("డిసెంబర్", "டிசம்பர்")}
 
 
@@ -443,7 +445,7 @@ def _ist(iso: str, lang: str) -> str:
 def _in_now(desk: dict, lang: str) -> str:
     imd = _in_imd(desk)
     te = lang == "te"
-    name = "అర్నాబ్" if te else "அர்னாப்"
+    name = _in_storm(desk, lang)
     cls = IN_CLASS.get(imd.get("class_short") or "", ("తుఫాను", "புயல்"))[_i(lang)]
     out = [(f"భారత వాతావరణ శాఖ, {_ist(imd.get('issuedUTC', ''), lang)} గంటలకు విడుదల చేసిన బులెటిన్ ప్రకారం." if te else
             f"இந்திய வானிலை ஆய்வு மையம் {_ist(imd.get('issuedUTC', ''), lang)} மணிக்கு வெளியிட்ட அறிக்கையின்படி.")]
@@ -471,7 +473,7 @@ def _in_now(desk: dict, lang: str) -> str:
         out.append((f"తుఫాను కేంద్రం వద్ద గాలుల వేగం గంటకు {w}" + (f", గరిష్ఠంగా {g}" if g else "") + ".") if te else
                    (f"புயலின் மையப் பகுதியில் காற்றின் வேகம் {w}" + (f", அதிகபட்சமாக {g}" if g else "") + "."))
     if imd.get("pressure_hpa"):
-        out.append(f"కేంద్రంలో వాయుపీడనం {imd['pressure_hpa']} hPa." if te else f"மையத்தில் காற்றழுத்தம் {imd['pressure_hpa']} hPa.")
+        out.append(f"కేంద్రంలో వాయుపీడనం {imd['pressure_hpa']:g} hPa." if te else f"மையத்தில் காற்றழுத்தம் {imd['pressure_hpa']:g} hPa.")
     return "\n".join(out)
 
 
@@ -590,12 +592,18 @@ def _in_district_alerts(desk: dict, lang: str) -> list[str]:
     return out
 
 
+def _in_storm(desk: dict, lang: str) -> str:
+    """The desk storm's name in Telugu / Tamil script, or "" when IN_STORM does not have it."""
+    row = IN_STORM.get(((desk.get("storm") or {}).get("name") or "").strip().upper())
+    return row[_i(lang)] if row else ""
+
+
 def in_te_open(desk: dict) -> str:
-    return "అర్నాబ్ తుఫాను లైవ్ అప్‌డేట్స్. భారత వాతావరణ శాఖ తాజా బులెటిన్లు, తుఫాను మార్గం, రాడార్ చిత్రాలను నిరంతరం అందిస్తున్నాం."
+    return f"{(_in_storm(desk, 'te') + ' ') if _in_storm(desk, 'te') else ''}తుఫాను లైవ్ అప్‌డేట్స్. భారత వాతావరణ శాఖ తాజా బులెటిన్లు, తుఫాను మార్గం, రాడార్ చిత్రాలను నిరంతరం అందిస్తున్నాం."
 
 
 def in_ta_open(desk: dict) -> str:
-    return "அர்னாப் புயல் நேரலை. இந்திய வானிலை ஆய்வு மையத்தின் சமீபத்திய அறிக்கைகள், புயலின் பாதை, ரேடார் படங்களை தொடர்ந்து வழங்குகிறோம்."
+    return f"{(_in_storm(desk, 'ta') + ' ') if _in_storm(desk, 'ta') else ''}புயல் நேரலை. இந்திய வானிலை ஆய்வு மையத்தின் சமீபத்திய அறிக்கைகள், புயலின் பாதை, ரேடார் படங்களை தொடர்ந்து வழங்குகிறோம்."
 
 
 def in_te_close(desk: dict) -> str:
@@ -614,3 +622,204 @@ TEMPLATES.update({
     "in_te_landfall": lambda d: _in_landfall(d, "te"), "in_ta_landfall": lambda d: _in_landfall(d, "ta"),
     "in_te_warnings": lambda d: _in_warnings(d, "te"), "in_ta_warnings": lambda d: _in_warnings(d, "ta"),
 })
+
+
+# ---- India, English (Indian English voice, models/tts_indicparler.py): the same IMD fields with IMD's own English ----
+# names, for the Andhra Pradesh coast. The storm's name comes from desk.json storm.name, so the templates follow the desk's storm;
+# a depression is not called by a name IMD has not given it yet.
+EN_CLASS = {"D": "Depression", "DD": "Deep Depression", "CS": "Cyclonic Storm", "SCS": "Severe Cyclonic Storm",
+            "VSCS": "Very Severe Cyclonic Storm", "ESCS": "Extremely Severe Cyclonic Storm", "SuCS": "Super Cyclonic Storm"}
+EN_DIR = {"N": "north", "NNE": "north-northeast", "NE": "northeast", "ENE": "east-northeast", "E": "east", "ESE": "east-southeast",
+          "SE": "southeast", "SSE": "south-southeast", "S": "south", "SSW": "south-southwest", "SW": "southwest",
+          "WSW": "west-southwest", "W": "west", "WNW": "west-northwest", "NW": "northwest", "NNW": "north-northwest"}
+EN_MONTH = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+EN_COLOUR = {"red": "a red alert", "orange": "an orange alert", "yellow": "a yellow alert"}
+# the English stream follows the storm's coast, as the Telugu stream does: Andhra Pradesh, Yanam and Telangana
+EN_HOME = ("andhra", "yanam", "telangana")
+EN_HOME_STATES = ("Andhra Pradesh",)
+EN_RAIN = ["extremely heavy", "very heavy to extremely heavy", "very heavy", "heavy to very heavy", "heavy"]
+# IMD's district-warning layer spells some names its own way (the same quirks as TE_DISTRICT / TA_DISTRICT)
+EN_DISTRICT = {"Vishakhapatnam": "Visakhapatnam", "Tirupathi": "Tirupati", "Anantapuramu": "Anantapur", "Ananthapuramu": "Anantapur",
+               "SPSR Nellore": "Nellore", "Sri Potti Sriramulu Nellore": "Nellore", "Parvathipurammanyam": "Parvathipuram Manyam",
+               "Srisathyasai": "Sri Sathya Sai", "Dr. B.R. Ambedkar Konaseema": "Konaseema", "Kallakkurichi": "Kallakurichi",
+               "Ranippettai": "Ranipet", "Sivagangai": "Sivaganga", "Thirunelveli": "Tirunelveli", "Thiruvarur": "Tiruvarur",
+               "Thiruchirapalli": "Tiruchirappalli", "Thiruppur": "Tiruppur", "Tiruppattar": "Tirupathur", "Thiruvallur": "Tiruvallur",
+               "Thiruvannamalai": "Tiruvannamalai"}
+
+
+def _en_cap(s: str) -> str:
+    return s[:1].upper() + s[1:]
+
+
+def _en_and(names: list[str]) -> str:
+    return ", ".join(names[:-1]) + " and " + names[-1] if len(names) > 1 else (names[0] if names else "")
+
+
+def _en_name(desk: dict, class_short: str = "") -> str:
+    """'Cyclonic Storm Murasu'; 'the deep depression' before IMD names it."""
+    cls = EN_CLASS.get(class_short or "", "")
+    if class_short in ("D", "DD"):
+        return f"the {cls.lower()}"
+    name = ((desk.get("storm") or {}).get("name") or "").strip().title()
+    return " ".join(x for x in (cls, name) if x) or "the cyclone"
+
+
+def _en_place(name: str | None) -> str:
+    key = re.sub(r"\s+", " ", (name or "").strip())
+    return IN_ALIAS.get(key.lower(), key)
+
+
+def _en_areas(areas: list | None, limit: int = 4) -> str:
+    """IMD's land area phrases as IMD wrote them ("Yanam (Puducherry)" -> "Yanam in Puducherry"); sea areas left to the
+    marine warnings."""
+    out = []
+    for a in areas or []:
+        p = re.sub(r"\s*\(([^)]*)\)", r" in \1", _en_place(a)).replace("costal", "coastal").replace("Costal", "Coastal").replace("&", "and")
+        if p and not re.search(r"bay of bengal|andaman sea|arabian sea|gulf of|\bsea\b", p, re.I):
+            out.append(p)
+    return _en_and(list(dict.fromkeys(out))[:limit])
+
+
+def _en_date(date: str, part: str = "") -> str:
+    m = re.match(r"\d{4}-(\d{2})-(\d{2})", date or "")
+    if not m:
+        return ""
+    d = f"{int(m.group(2))} {EN_MONTH[int(m.group(1)) - 1]}"
+    part = (part or "").lower()
+    if part in ("noon", "midnight"):
+        return f"around {part} on {d}"
+    return f"on the {part} of {d}" if part in IN_PART else f"on {d}"
+
+
+def _en_clock(hhmm: str) -> str:
+    """IMD's "2330" -> "11:30 pm", "0400" -> "4 am"."""
+    h, m = int(hhmm[:2]), int(hhmm[2:])
+    return f"{h % 12 or 12}{f':{m:02d}' if m else ''} {'am' if h < 12 else 'pm'}"
+
+
+def _en_ist(iso: str) -> str:
+    from datetime import datetime as _dt, timedelta as _td, timezone as _tz
+
+    try:
+        t = _dt.fromisoformat(iso.replace("Z", "+00:00")).astimezone(_tz(_td(hours=5, minutes=30)))
+    except (AttributeError, ValueError):
+        return ""
+    return f"{t.hour % 12 or 12}:{t.minute:02d} {'am' if t.hour < 12 else 'pm'} IST on {t.day} {EN_MONTH[t.month - 1]}"
+
+
+def in_en_now(desk: dict) -> str:
+    imd = _in_imd(desk)
+    ist = _en_ist(imd.get("issuedUTC", ""))
+    out = [f"Here is the latest bulletin from the India Meteorological Department, issued at {ist}." if ist else
+           "Here is the latest bulletin from the India Meteorological Department."]
+    pos = [f"about {p['km']} km {EN_DIR[p['dir']]} of {_en_place(p['place'])}" for p in (imd.get("position") or [])[:2]
+           if EN_DIR.get(p.get("dir", "")) and p.get("km") and p.get("place")]
+    if pos:
+        out.append(f"{_en_cap(_en_name(desk, imd.get('class_short', '')))} is centred " + " and ".join(pos) + ".")
+    mv = imd.get("movement") or {}
+    if EN_DIR.get(mv.get("dir", "")) and mv.get("kmh"):
+        out.append(f"It is moving {EN_DIR[mv['dir']]}wards at about {mv['kmh']} km/h.")
+    w, g = _range(imd.get("wind_kmh"), "en", "km/h"), _range(imd.get("gust_kmh"), "en", "km/h")
+    if w:
+        out.append(f"Maximum sustained winds near the centre are {w}" + (f", gusting to {g}" if g else "") + ".")
+    if imd.get("pressure_hpa"):
+        out.append(f"The central pressure is {imd['pressure_hpa']:g} hPa.")
+    return "\n".join(out)
+
+
+def in_en_landfall(desk: dict) -> str:
+    imd = _in_imd(desk)
+    lf = imd.get("landfall") or {}
+    between = [p for p in (_en_place(x) for x in lf.get("between") or []) if p]
+    near = _en_place(lf.get("near"))
+    if len(between) < 2 and not near:
+        raise ValueError("IMD gives no landfall place this bulletin")
+    s = f"The India Meteorological Department expects {_en_name(desk, imd.get('class_short', ''))} to cross the coast"
+    s += f" between {between[0]} and {between[1]}" if len(between) >= 2 else ""
+    s += f", near {near}" if near else ""
+    when = _en_date(lf.get("date", ""), lf.get("part_of_day", ""))
+    if lf.get("time_ist"):                       # IMD's own clock times: "between 11:30 pm on 2 November and 4 am on 3 November"
+        until = lf.get("until") or {}
+        when = f"around {_en_clock(lf['time_ist'])} IST on {_en_date(lf['date'])[3:]}"
+        if until.get("time_ist"):
+            when = (f"between {_en_clock(lf['time_ist'])} on {_en_date(lf['date'])[3:]} and "
+                    f"{_en_clock(until['time_ist'])} IST on {_en_date(until.get('date', ''))[3:]}")
+    s += f", {when}" if when else ""
+    cls = EN_CLASS.get(lf.get("class_short") or "", "")
+    s += f", as a {cls.lower()}" if cls else ""
+    out = [s + "."]
+    w, g = _range(lf.get("wind_kmh"), "en", "km/h"), _range(lf.get("gust_kmh"), "en", "km/h")
+    if w:
+        out.append(f"Winds at landfall could reach {w}" + (f", gusting to {g}" if g else "") + ".")
+    sg = imd.get("surge") or {}
+    if sg.get("m"):
+        num = lambda x: f"{x:g}" if isinstance(x, float) else str(x)
+        m = sg["m"]
+        h = f"{num(m[0])}-{num(m[1])}" if isinstance(m, (list, tuple)) and len(m) == 2 else num(m)
+        areas = _en_areas((sg.get("peak_areas") or []) + (sg.get("peak_near") or []) or sg.get("areas"))
+        out.append(f"A storm surge of about {h} m could flood low-lying areas" + (f" of {areas}" if areas else "") + ".")
+    return "\n".join(out)
+
+
+def _en_district_alerts(desk: dict) -> list[str]:
+    """IMD's district colours (desk.json in.districts_days) for the home state, the next two days, the highest colour."""
+    days = (desk.get("in") or {}).get("districts_days") or {}
+    by_date: dict[str, dict[str, set]] = {}
+    for st in EN_HOME_STATES:
+        for district, entries in (days.get(st) or {}).items():
+            for e in entries or []:
+                if e.get("colour") in EN_COLOUR:
+                    by_date.setdefault(e["date"], {}).setdefault(e["colour"], set()).add((EN_DISTRICT.get(district, district), st))
+    out = []
+    for date in [d for d in sorted(by_date) if d >= _in_today()][:2]:
+        top = next((c for c in ("red", "orange", "yellow") if by_date[date].get(c)), None)
+        if not top:
+            continue
+        ds = sorted(by_date[date][top])
+        names, states = [d for d, _ in ds], sorted({s for _, s in ds})
+        whom = f"{len(names)} districts, including {_en_and(names[:6])}," if len(names) > 6 else _en_and(names)
+        out.append(f"{_en_cap(_en_date(date))}, the IMD has issued {EN_COLOUR[top]} for {whom} in {_en_and(states)}.")
+    return out
+
+
+def in_en_warnings(desk: dict) -> str:
+    """Rain (three items) and wind (one) for the home region, district colours, fishermen: short enough to hear."""
+    imd = _in_imd(desk)
+    today = _in_today()
+    rank = lambda lvl: EN_RAIN.index(lvl) if lvl in EN_RAIN else len(EN_RAIN)
+    home = lambda x: any(k in re.sub(r"\([^)]*\)", " ", " ".join(x.get("areas") or []).lower()) for k in EN_HOME)
+    out = []
+    rain = [r for r in imd.get("rain") or [] if home(r) and (r.get("date") or today) >= today and _en_areas(r.get("areas"))]
+    for r in sorted(rain, key=lambda r: (r.get("date") or "", rank((r.get("level") or "").lower())))[:3]:
+        lvl = (r.get("level") or "").lower()
+        if lvl in EN_RAIN:
+            when = _en_date(r.get("date", ""))
+            out.append((f"{_en_cap(when)}, " if when else "") + f"{lvl} rainfall is likely over {_en_areas(r.get('areas'))}.")
+    winds = [w for w in imd.get("wind_warnings") or [] if home(w) and (w.get("date") or today) >= today and _en_areas(w.get("areas"))]
+    for w in sorted(winds, key=lambda w: -max(w.get("kmh") or [0]))[:1]:
+        k, g = _range(w.get("kmh"), "en", "km/h"), _range(w.get("gust_kmh"), "en", "km/h")
+        if k:
+            out.append(f"Squally winds of {k}" + (f", gusting to {g}," if g else "") + f" are likely over {_en_areas(w.get('areas'))}.")
+    out += _en_district_alerts(desk)
+    if imd.get("fishermen"):
+        out.append("The IMD has advised fishermen not to venture into the sea.")
+    if not out:
+        raise ValueError("IMD gives no rain / wind / district / fishermen warning this bulletin")
+    out.append("For official warnings and relief, please follow the instructions of your district administration.")
+    return "\n".join(out)
+
+
+def in_en_open(desk: dict) -> str:
+    name = ((desk.get("storm") or {}).get("name") or "").strip().title()
+    return (f"Welcome to our live coverage of Cyclone {name}. " if name else "Welcome to our live cyclone coverage. ") + \
+        "We bring you the latest India Meteorological Department bulletins, the storm's track, satellite and radar, through the day."
+
+
+def in_en_close(desk: dict) -> str:
+    return ("These are the latest details, based on official information from the India Meteorological Department. "
+            "This stream is not an official warning service. Please stay safe, stay indoors during the storm, "
+            "and follow the instructions of your local authorities.")
+
+
+TEMPLATES.update({"in_en_open": in_en_open, "in_en_now": in_en_now, "in_en_landfall": in_en_landfall,
+                  "in_en_warnings": in_en_warnings, "in_en_close": in_en_close})

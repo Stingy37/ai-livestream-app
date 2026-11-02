@@ -243,7 +243,7 @@ body.live .live-badge { display: none; }
     <div class="brand"><b>USAL</b><small id="brandSub">తుఫాను సమాచారం</small></div>
     <span class="live-pill"><i></i>LIVE</span>
     <div class="storm">
-      <div class="nm"><b id="stormLocal"></b><em>CYCLONE <span id="stormEn">ARNAB</span> LIVE</em></div>
+      <div class="nm"><b id="stormLocal"></b><em>CYCLONE <span id="stormEn"></span> LIVE</em></div>
       <div class="cls" id="stormCls"></div>
     </div>
     <div class="clock"><b id="clk">--:--:--</b><span id="clkD"></span></div>
@@ -331,7 +331,7 @@ body.live .live-badge { display: none; }
   </main>
 
   <div class="lower">
-    <div class="bug"><b id="bugLocal"></b><span id="bugTitle">CYCLONE ARNAB</span></div>
+    <div class="bug"><b id="bugLocal"></b><span id="bugTitle">CYCLONE LIVE</span></div>
     <div class="head" id="headBox"><b id="headMain"></b><span id="headSub"></span><div class="tag" id="headTag">IMD</div></div>
   </div>
   <div class="caption" id="caption" hidden>
@@ -355,7 +355,8 @@ body.live .live-badge { display: none; }
 if (!/\/$|\.html?$/.test(location.pathname)) history.replaceState(null, "", location.pathname + "/" + location.search + location.hash);
 const $ = id => document.getElementById(id);
 const Q = new URLSearchParams(location.search);
-const LANG = (Q.get("lang") || "te").toLowerCase() === "ta" ? "ta" : "te";
+const LANG = (() => { const l = (Q.get("lang") || "te").toLowerCase(); return ["te", "ta", "en"].includes(l) ? l : "te"; })();
+const BASE = LANG === "ta" ? "ta" : "te";      // map, home states and radars: the English stream follows the Telugu (Andhra Pradesh) layout
 document.documentElement.lang = LANG;
 const RAD = Math.PI / 180;
 const TZ = "Asia/Kolkata";
@@ -366,7 +367,7 @@ const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&am
    in English, under local-language headings: they are the official wording and are never machine-translated on screen. */
 const I18N = {
   te: {
-    brand: "తుఫాను సమాచారం", storm: "అర్నాబ్ తుఫాన్", onAir: "ప్రసారం", ticker: "తాజా వార్తలు",
+    brand: "తుఫాను సమాచారం", storm: "తుఫాను", onAir: "ప్రసారం", ticker: "తాజా వార్తలు",
     mapTitle: "తుఫాను మార్గం", mapSub: "IMD అంచనా", bulTitle: "IMD తాజా బులెటిన్", distTitle: "జిల్లాల వారీ హెచ్చరికలు", radTitle: "వాతావరణ రాడార్",
     cdTitle: "తీరం దాటడానికి", cdSub: "IMD అంచనా సమయం వరకు", h: "గంటలు", m: "నిమిషాలు", s: "సెకన్లు",
     cdPast: "తీరం దాటే సమయం", between: (a, b) => `${a} – ${b} మధ్య`, near: n => `${n} సమీపంలో`,
@@ -385,7 +386,7 @@ const I18N = {
     generated: "తయారు", sources: "ఆధారం", pkg: "ప్యాకేజీ", fallback: "IMD బులెటిన్ ఆధారంగా",
   },
   ta: {
-    brand: "புயல் தகவல்", storm: "அர்னாப் புயல்", onAir: "நேரலை", ticker: "முக்கிய செய்திகள்",
+    brand: "புயல் தகவல்", storm: "புயல்", onAir: "நேரலை", ticker: "முக்கிய செய்திகள்",
     mapTitle: "புயலின் பாதை", mapSub: "IMD கணிப்பு", bulTitle: "IMD சமீபத்திய அறிக்கை", distTitle: "மாவட்ட வாரியான எச்சரிக்கை", radTitle: "வானிலை ரேடார்",
     cdTitle: "கரையை கடக்க இன்னும்", cdSub: "IMD கணித்த நேரம் வரை", h: "மணி", m: "நிமிடம்", s: "வினாடி",
     cdPast: "கரை கடக்கும் நேரம்", between: (a, b) => `${a} – ${b} இடையே`, near: n => `${n} அருகே`,
@@ -403,16 +404,38 @@ const I18N = {
     hlRed: (n, st) => `${st === "Andhra Pradesh" ? "ஆந்திராவில் " : st === "Tamil Nadu" ? "தமிழகத்தில் " : ""}${n} மாவட்டங்களுக்கு ரெட் அலர்ட்`, hlNow: "புயலின் தற்போதைய இடம்", tagLand: "கரை கடக்கும் நேரம்", tagWind: "காற்று", tagRed: "ரெட் அலர்ட்",
     generated: "தயாரிப்பு", sources: "ஆதாரம்", pkg: "தொகுப்பு", fallback: "IMD அறிக்கையின் அடிப்படையில்",
   },
+  en: {
+    brand: "Cyclone Desk", storm: "Cyclone Live Tracker", onAir: "ON AIR", ticker: "LATEST",
+    mapTitle: "Cyclone Track", mapSub: "IMD forecast", bulTitle: "Latest IMD Bulletin", distTitle: "District Alerts", radTitle: "Weather Radar",
+    cdTitle: "Landfall in", cdSub: "to IMD's expected time", h: "hours", m: "minutes", s: "seconds",
+    cdPast: "Landfall time", between: (a, b) => `between ${a} and ${b}`, near: n => `near ${n}`,
+    wind: "Wind speed", gust: "Gusts", kmh: "km/h", pressure: "Central pressure", move: "Movement", position: "Current position",
+    atLandfall: "At landfall", landfall: "Landfall area", surge: "Storm surge", fishermen: "Fishermen warning", rain: "Rain warning",
+    windWarn: "Wind warning", sea: "Sea condition", issued: "Issued", distance: "Distance",
+    keyPast: "Past track", keyImd: "IMD forecast track", keyJtwc: "JTWC (US)", sat: "Satellite · infrared",
+    red: "Red alert", orange: "Orange alert", yellow: "Yellow alert", green: "No warning", districts: "districts",
+    noDist: "IMD district warnings not yet published", radarErr: "Radar image unavailable",
+    km: "km", from: "away", closest: "Closest approach", lfMark: "Landfall area",
+    tkImd: "IMD", tkLand: "Landfall", tkSurge: "Surge", tkFish: "Fishermen", tkRed: "Red alert", tkOrange: "Orange alert", tkRain: "Rain",
+    tkSafe: "Safety", next: "Next bulletin", trackTitle: "IMD official track", cone: "Green area: IMD cone of uncertainty",
+    cpaTitle: "Closest approach of the centre", cpaBasis: "based on IMD's forecast track", safe: "Follow the instructions of IMD and your district administration. This stream is not an official warning service.",
+    hlLand: (h, m) => `Landfall in ${h} h ${m} min`, hlWind: (w, g) => `Winds ${w} km/h · gusts up to ${g} km/h`,
+    hlRed: (n, st) => `Red alert for ${n} districts${st ? " in " + st : ""}`, hlNow: "Current position", tagLand: "Landfall", tagWind: "Winds", tagRed: "Red alert",
+    generated: "Generated", sources: "Sources", pkg: "Package", fallback: "Based on the IMD bulletin",
+  },
 }[LANG];
 const t = k => I18N[k] || k;
+// the storm's name in the local script (desk.json storm.name), as src/desk/bulletin.py IN_STORM; unknown -> the plain word
+const STORM_LOCAL = { ARNAB: { te: "అర్నాబ్ తుఫాన్", ta: "அர்னாப் புயல்" }, MURASU: { te: "మురసు తుఫాన్", ta: "முரசு புயல்" } };
+const stormLabel = () => (STORM_LOCAL[String(((DATA && DATA.storm) || {}).name || "").toUpperCase()] || {})[LANG] || t("storm");
 const rng = v => Array.isArray(v) ? (v.length > 1 && v[0] !== v[1] ? `${v[0]}–${v[1]}` : `${v[0]}`) : (v == null ? "" : String(v));
 const lines = v => (Array.isArray(v) ? v : v ? [v] : []).map(x => typeof x === "string" ? x : "").filter(Boolean);
 // IMD's state-by-state rain lines, home states first (te: Andhra Pradesh, Telangana, Odisha; ta: Tamil Nadu, Puducherry, Andhra Pradesh)
-const HOME_STATES = LANG === "te" ? [/andhra/i, /telangana/i, /yanam/i, /odisha/i] : [/tamil/i, /puducherry|karaikal/i, /andhra/i];
+const HOME_STATES = BASE === "te" ? [/andhra/i, /telangana/i, /yanam/i, /odisha/i] : [/tamil/i, /puducherry|karaikal/i, /andhra/i];
 function homeRain(im) {
   const all = lines(im.rain_text).length ? lines(im.rain_text) : (im.rain || []).map(r => typeof r === "string" ? r : `${(r.areas || []).join(", ")}: ${r.level || ""} rainfall ${r.date || ""}`.trim());
   const scored = all.map(x => ({ x, k: HOME_STATES.findIndex(rx => rx.test(x.split(":")[0])) })).filter(o => o.k >= 0).sort((a, b) => a.k - b.k);
-  return (scored.length ? scored.map(o => o.x) : all).slice(0, LANG === "te" ? 1 : 2);
+  return (scored.length ? scored.map(o => o.x) : all).slice(0, BASE === "te" ? 1 : 2);
 }
 function windLines(im) {
   const tx = lines(im.wind_warnings_text); if (tx.length) return tx;
@@ -430,7 +453,7 @@ const CLASS = {
   "Extremely Severe Cyclonic Storm": { te: "అత్యంత తీవ్ర తుఫాను", ta: "அதி தீவிர புயல்" },
   "Super Cyclonic Storm": { te: "సూపర్ తుఫాను", ta: "சூப்பர் புயல்" },
 };
-const clsLocal = c => { const k = Object.keys(CLASS).find(k => k.toLowerCase() === String(c || "").trim().toLowerCase()); return k ? CLASS[k][LANG] : ""; };
+const clsLocal = c => { const k = Object.keys(CLASS).find(k => k.toLowerCase() === String(c || "").trim().toLowerCase()); return k ? (LANG === "en" ? k : CLASS[k][LANG]) : ""; };
 // places on the map (and the names IMD's sentences use), Andhra Pradesh / Tamil Nadu / Odisha coast first
 const CITIES = [
   { n: "Visakhapatnam", te: "విశాఖపట్నం", ta: "விசாகப்பட்டினம்", lat: 17.69, lon: 83.22, big: 1, alias: ["Vishakhapatnam", "Vizag"] },
@@ -452,7 +475,8 @@ const CITIES = [
   { n: "Kolkata", te: "కోల్‌కతా", ta: "கொல்கத்தா", lat: 22.57, lon: 88.36 },
 ];
 const cityOf = name => { const k = String(name || "").toLowerCase(); return CITIES.find(c => c.n.toLowerCase() === k || (c.alias || []).some(a => a.toLowerCase() === k)); };
-const placeLocal = name => { const c = cityOf(name); return c ? c[LANG] : name; };
+const cityLabel = c => LANG === "en" ? c.n : c[LANG];
+const placeLocal = name => { const c = cityOf(name); return c ? cityLabel(c) : name; };
 // district names: the outlines (india-maps-data) vs IMD's spellings, and the local names
 const D_TE = { "Alluri Sitharama Raju": "అల్లూరి సీతారామరాజు", "Anakapalli": "అనకాపల్లి", "Anantapuramu": "అనంతపురం", "Annamayya": "అన్నమయ్య", "Bapatla": "బాపట్ల",
   "Chittoor": "చిత్తూరు", "East Godavari": "తూర్పు గోదావరి", "Eluru": "ఏలూరు", "Guntur": "గుంటూరు", "Kakinada": "కాకినాడ", "Konaseema": "కోనసీమ", "Krishna": "కృష్ణా",
@@ -483,7 +507,7 @@ function dCanon(name, known) {
   const k = dKey(name); if (D_ALIAS[k]) return D_ALIAS[k];
   return known.find(n => dKey(n) === k) || known.find(n => dKey(n).startsWith(k) || k.startsWith(dKey(n))) || null;
 }
-const dLocal = n => (LANG === "te" ? D_TE[n] : D_TA[n]) || n;
+const dLocal = n => (LANG === "en" ? n : LANG === "te" ? D_TE[n] : D_TA[n]) || n;
 const LEVEL = { red: "var(--alert-red)", orange: "var(--alert-orange)", yellow: "var(--alert-yellow)", green: "var(--alert-green)" };
 const LEVEL_HEX = { red: "#e3141d", orange: "#ff7a00", yellow: "#ffd400", green: "#2f8f4e", none: "#2a3242" };
 const levelOf = v => { const s = String(v || "").toLowerCase(); return s.includes("red") ? "red" : s.includes("orange") || s.includes("amber") ? "orange" : s.includes("yellow") ? "yellow" : s.includes("green") ? "green" : null; };
@@ -522,14 +546,14 @@ const MAPS = { te: { lon0: 76.6, lon1: 95.0, latTop: 23.2, anchors: ["Visakhapat
 const MW = 1290, MH = 778;
 const merc = lat => Math.log(Math.tan(Math.PI / 4 + lat * RAD / 2));
 const imerc = m => (2 * Math.atan(Math.exp(m)) - Math.PI / 2) / RAD;
-let MAP = (() => { const m = MAPS[LANG]; return { lon0: m.lon0, K: MW / ((m.lon1 - m.lon0) * RAD), YT: merc(m.latTop) }; })();
+let MAP = (() => { const m = MAPS[BASE]; return { lon0: m.lon0, K: MW / ((m.lon1 - m.lon0) * RAD), YT: merc(m.latTop) }; })();
 function fitMap() {
   if (!DATA || !DATA.center) return false;
   const pts = [[DATA.center.lat, DATA.center.lon]];
   const fc = (IMD().forecast && IMD().forecast.length ? IMD().forecast : (DATA.forecast || {}).points) || [];
   fc.filter(p => Date.parse(p.timeUTC) - Date.now() < 84 * 3600e3).forEach(p => pts.push([p.lat, p.lon]));
   const lf = IMD().landfall || {};
-  [...(lf.between || []), lf.near, ...MAPS[LANG].anchors].forEach(n => { const c = cityOf(n); if (c) pts.push([c.lat, c.lon]); });
+  [...(lf.between || []), lf.near, ...MAPS[BASE].anchors].forEach(n => { const c = cityOf(n); if (c) pts.push([c.lat, c.lon]); });
   let la0 = Math.min(...pts.map(p => p[0])) - 1.3, la1 = Math.max(...pts.map(p => p[0])) + 1.3;
   let lo0 = Math.min(...pts.map(p => p[1])) - 1.6, lo1 = Math.max(...pts.map(p => p[1])) + 1.6;
   if (lo1 - lo0 < 8) { const c = (lo0 + lo1) / 2; lo0 = c - 4; lo1 = c + 4; }
@@ -545,7 +569,7 @@ const proj = (lat, lon) => [(lon - MAP.lon0) * RAD * MAP.K, (MAP.YT - merc(lat))
 const NS = "http://www.w3.org/2000/svg";
 function el(tag, attrs, parent) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
 function ringPath(flat, P) { let d = ""; for (let i = 0; i < flat.length; i += 2) { const [x, y] = P(flat[i + 1], flat[i]); d += (i ? "L" : "M") + x.toFixed(1) + "," + y.toFixed(1); } return d + "Z"; }
-const FOCUS = LANG === "te" ? ["Andhra Pradesh"] : ["Tamil Nadu", "Andhra Pradesh"];
+const FOCUS = BASE === "te" ? ["Andhra Pradesh"] : ["Tamil Nadu", "Andhra Pradesh"];
 function drawBase() {
   if (!GEO) return;
   const land = $("landG"); land.innerHTML = "";
@@ -571,12 +595,12 @@ function drawCities() {
     if (c.ta_only && LANG !== "ta") continue;
     const [x, y] = proj(c.lat, c.lon); if (x < 10 || x > MW - 10 || y < 10 || y > MH - 10) continue;
     el("circle", { cx: x, cy: y, r: c.big ? 6 : 4.5, fill: "#fff", stroke: "#06070b", "stroke-width": 2.5 }, cg);
-    const size = c.big ? 19 : 15, w = labelW(c[LANG], size);
+    const size = c.big ? 19 : 15, w = labelW(cityLabel(c), size);
     for (const side of [1, -1]) {
       const x0 = side > 0 ? x + 10 : x - 10 - w;
       if (fits(x0, y - size, x0 + w, y + 6)) {
         const tx = el("text", { x: side > 0 ? x + 10 : x - 10, y: y + 6, class: "city" + (c.big ? "" : " small"), "text-anchor": side > 0 ? "start" : "end" }, cg);
-        tx.textContent = c[LANG]; break;
+        tx.textContent = cityLabel(c); break;
       }
     }
   }
@@ -767,7 +791,7 @@ function drawBulletin() {
 }
 
 /* ---------- district board ---------- */
-const DIST_STATES = LANG === "te" ? ["Andhra Pradesh"] : ["Tamil Nadu", "Andhra Pradesh"];
+const DIST_STATES = BASE === "te" ? ["Andhra Pradesh"] : ["Tamil Nadu", "Andhra Pradesh"];
 // the day the board shows: the most severe of the coming days in IMD's district colours (red first), not just today's
 function distDate() {
   const days = (DATA && DATA.in && DATA.in.districts_days) || {}, today = new Date(Date.now() + 5.5 * 3600e3).toISOString().slice(0, 10);
@@ -823,13 +847,13 @@ function drawDistricts() {
     for (const r of rs) for (let i = 0; i < r.length; i += 2) { a = Math.min(a, r[i]); b = Math.max(b, r[i]); c = Math.min(c, r[i + 1]); d = Math.max(d, r[i + 1]); }
     const [x, y] = P(st === "Tamil Nadu" ? c + (d - c) * .62 : d + 0.15, st === "Tamil Nadu" ? a + (b - a) * .38 : (a + b) / 2);
     const tx = el("text", { x, y, class: "stl" }, svg);
-    tx.textContent = st === "Tamil Nadu" ? (LANG === "ta" ? "தமிழ்நாடு" : "తమిళనాడు") : (LANG === "ta" ? "ஆந்திரப் பிரதேசம்" : "ఆంధ్రప్రదేశ్");
+    tx.textContent = LANG === "en" ? st : st === "Tamil Nadu" ? (LANG === "ta" ? "தமிழ்நாடு" : "తమిళనాడు") : (LANG === "ta" ? "ஆந்திரப் பிரதேசம்" : "ఆంధ్రప్రదేశ్");
   });
   $("distLeg").innerHTML = ["red", "orange", "yellow"].map(lv => `<div><i style="background:${LEVEL_HEX[lv]}"></i>${t(lv)}</div>`).join("");
   const groups = { red: [], orange: [], yellow: [] };
   for (const st of DIST_STATES) for (const [n, lv] of Object.entries(L[st])) if (groups[lv]) groups[lv].push([st, dLocal(n)]);
   const any = Object.values(groups).some(g => g.length);
-  const stName = st => st === "Tamil Nadu" ? (LANG === "ta" ? "தமிழ்நாடு" : "తమిళనాడు") : (LANG === "ta" ? "ஆந்திரா" : "ఆంధ్రప్రదేశ్");
+  const stName = st => LANG === "en" ? st : st === "Tamil Nadu" ? (LANG === "ta" ? "தமிழ்நாடு" : "తమిళనాడు") : (LANG === "ta" ? "ஆந்திரா" : "ఆంధ్రప్రదేశ్");
   const body = (lv, g) => {
     // red and orange: every district; yellow (often most of a state): every district while short, else a count per state
     if (lv !== "yellow" || g.length <= 14) return g.map(x => esc(x[1])).join(" · ");
@@ -847,7 +871,7 @@ const RADARS = {
   mpt: { file: "caz_mpt.gif", W: 1119, H: 900, main: [0, 248, 652, 652], leg: [900, 0, 219, 640], te: "మచిలీపట్నం", ta: "மசூலிப்பட்டினம்", en: "Machilipatnam" },
   kkl: { file: "caz_kkl.gif", W: 880, H: 720, main: [0, 200, 520, 520], leg: [718, 104, 162, 530], te: "కారైక్కాల్", ta: "காரைக்கால்", en: "Karaikal" },
 };
-const RADAR_SET = LANG === "te" ? ["vsk", "mpt"] : ["kkl", "mpt"];
+const RADAR_SET = BASE === "te" ? ["vsk", "mpt"] : ["kkl", "mpt"];
 function drawRadar() {
   $("radTitle").textContent = t("radTitle");
   const box = $("radar"), stamp = Math.floor(Date.now() / 300e3);
@@ -938,7 +962,7 @@ function buildTicker() {
   tickerAnim = tr.animate([{ transform: "translateX(0)" }, { transform: `translateX(-${half}px)` }], { duration: half / 120 * 1000, iterations: Infinity });
 }
 function drawHeader() {
-  $("brandSub").textContent = t("brand"); $("stormLocal").textContent = t("storm"); $("bugLocal").textContent = t("storm");
+  $("brandSub").textContent = t("brand"); $("stormLocal").textContent = stormLabel(); $("bugLocal").textContent = stormLabel();
   $("onAir").textContent = t("onAir"); $("tkLabel").textContent = t("ticker");
   const st = (DATA && DATA.storm) || {}; if (st.name) { $("stormEn").textContent = st.name.toUpperCase(); $("bugTitle").textContent = "CYCLONE " + st.name.toUpperCase(); }
   const im = IMD(); const cls = clsLocal(im.class);
@@ -1011,7 +1035,7 @@ async function livePoll() {
 }
 function liveStart() { if (!LIVE.on || !LIVE.pkg || LIVE.started) return; LIVE.started = true; document.body.classList.add("live"); livePlay(LIVE.idx); }
 const SCENE_TITLE = { te: { "Show Open": "ప్రారంభం", "Current Position": "ప్రస్తుత స్థానం", "Track Forecast": "మార్గం అంచనా", "Landfall": "తీరం దాటే సమయం", "District Alerts": "జిల్లా హెచ్చరికలు", "Show Close": "ముగింపు" },
-                      ta: { "Show Open": "தொடக்கம்", "Current Position": "தற்போதைய இடம்", "Track Forecast": "பாதை கணிப்பு", "Landfall": "கரை கடக்கும் நேரம்", "District Alerts": "மாவட்ட எச்சரிக்கை", "Show Close": "நிறைவு" } }[LANG];
+                      ta: { "Show Open": "தொடக்கம்", "Current Position": "தற்போதைய இடம்", "Track Forecast": "பாதை கணிப்பு", "Landfall": "கரை கடக்கும் நேரம்", "District Alerts": "மாவட்ட எச்சரிக்கை", "Show Close": "நிறைவு" }, en: {} }[LANG];
 const sceneTitle = s => SCENE_TITLE[s] || s;
 function liveHeadline(s) {
   const h = s.headline || {};
