@@ -361,6 +361,23 @@ def parse_national(t: str) -> dict:
             land["date"] = _date(int(tm.group(2)), tm.group(3), int(tm.group(4) or year))
             land["time_text"] = f"{tm.group(1)} of {int(tm.group(2))} {tm.group(3)}"
         out["landfall"] = land
+    # after landfall IMD reports it in the main paragraph: "crossed south Andhra Pradesh coast between Nellore and
+    # Narasapur close to Ongole (near Latitude ...) during 0330 to 0530 hours IST with the wind speed of 100-110 kmph
+    # gusting to 120 kmph" (0730 IST 3 Nov). That replaces any forecast landfall.
+    _in_sentence = r"(?:(?!\.\s).)*?"      # within one sentence; decimals like 15.53 do not end it
+    crossed = re.search(r"crossed " + _in_sentence + r"coast between ([A-Z][a-z]+(?: [A-Z][a-z]+)?) and ([A-Z][a-z]+(?: [A-Z][a-z]+)?)"
+                        r"(?:,?\s+(?:close to|near) ([A-Z][A-Za-z]+))?" + _in_sentence +
+                        r"during (\d{4})\s*(?:to|-)\s*(\d{4})\s*(?:[Hh]rs|[Hh]ours)\s*IST", _flat(t))
+    if crossed:
+        s2 = _flat(t)[crossed.start():crossed.start() + 600]
+        land = {"crossed": True, "between": [crossed.group(1).strip(), crossed.group(2).strip()],
+                "crossed_ist": [crossed.group(4), crossed.group(5)], "crossed_text": _flat(crossed.group(0))}
+        if crossed.group(3):
+            land["near"] = crossed.group(3)
+        w = re.search(r"(\d+)\s*(?:-|to)\s*(\d+)\s*kmph gusting (?:to )?(\d+)\s*kmph", s2)
+        if w:
+            land["wind_kmh"], land["gust_kmh"] = [int(w.group(1)), int(w.group(2))], int(w.group(3))
+        out["landfall"] = land
     tz = IST if re.search(r"Date/Time\s*\(IST\)", t) else timezone.utc
     out["forecast"] = _table(t, tz)
     if out["forecast"]:

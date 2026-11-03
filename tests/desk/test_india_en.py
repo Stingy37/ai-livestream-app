@@ -229,3 +229,20 @@ def test_landfall_carried_when_imd_drops_it(tmp_path, monkeypatch):
     doc["in"]["imd"]["landfall"] = without["landfall"]
     assert "between Nellore and Narsapur, near Ongole" in _say("in_en_landfall", doc)
     assert "ఒంగోలు సమీపంలో" in _say("in_te_landfall", doc)
+
+
+def test_murasu_crossed_coast_0730():
+    """IMD 0730 IST 3 Nov: "crossed south Andhra Pradesh coast between Nellore and Narasapur close to Ongole (near
+    Latitude 15.53°N ...) during 0330 to 0530 hours IST": the landfall scene says it in the past tense."""
+    from desk import sources_nio as N
+
+    imd = N.parse_national((ROOT / "tests" / "desk" / "fixtures" / "imd_national_bulletin_murasu_0730.txt").read_text(encoding="utf-8"))
+    lf = imd["landfall"]
+    assert (lf["crossed"], lf["between"], lf["near"], lf["crossed_ist"]) == (True, ["Nellore", "Narasapur"], "Ongole", ["0330", "0530"])
+    doc = _doc()
+    doc["storm"]["name"] = "MURASU"
+    doc["in"]["imd"]["landfall"] = lf
+    en = _say("in_en_landfall", doc)
+    assert "crossed the coast between Nellore and Narasapur, close to Ongole, between 3:30 am and 5:30 am IST." in en
+    assert "expects" not in en
+    assert "తీరం దాటింది" in _say("in_te_landfall", doc)

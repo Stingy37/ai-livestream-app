@@ -296,7 +296,7 @@ IN_DIR = {"N": ("ఉత్తర", "வடக்கு"), "NNE": ("ఉత్త�
 # place: (Telugu, Tamil, Tamil "from <place>")
 IN_PLACE = {"Visakhapatnam": ("విశాఖపట్నం", "விசாகப்பட்டினம்", "விசாகப்பட்டினத்திலிருந்து"),
             "Kakinada": ("కాకినాడ", "காக்கிநாடா", "காக்கிநாடாவிலிருந்து"), "Machilipatnam": ("మచిలీపట్నం", "மசிலிப்பட்டினம்", "மசிலிப்பட்டினத்திலிருந்து"),
-            "Bapatla": ("బాపట్ల", "பாபட்லா", "பாபட்லாவிலிருந்து"), "Narsapur": ("నరసాపురం", "நரசாபூர்", "நரசாபூரிலிருந்து"), "Yanam": ("యానాం", "ஏனாம்", "ஏனாமிலிருந்து"),
+            "Bapatla": ("బాపట్ల", "பாபட்லா", "பாபட்லாவிலிருந்து"), "Narsapur": ("నరసాపురం", "நரசாபூர்", "நரசாபூரிலிருந்து"), "Narasapur": ("నరసాపురం", "நரசாபூர்", "நரசாபூரிலிருந்து"), "Yanam": ("యానాం", "ஏனாம்", "ஏனாமிலிருந்து"),
             "Kalingapatnam": ("కళింగపట్నం", "கலிங்கப்பட்டினம்", "கலிங்கப்பட்டினத்திலிருந்து"), "Nellore": ("నెల్లూరు", "நெல்லூர்", "நெல்லூரிலிருந்து"),
             "Chennai": ("చెన్నై", "சென்னை", "சென்னையிலிருந்து"), "Puducherry": ("పుదుచ్చేరి", "புதுச்சேரி", "புதுச்சேரியிலிருந்து"),
             "Gopalpur": ("గోపాల్‌పూర్", "கோபால்பூர்", "கோபால்பூரிலிருந்து"), "Puri": ("పూరీ", "பூரி", "பூரியிலிருந்து"),
@@ -491,6 +491,17 @@ def _in_landfall(desk: dict, lang: str) -> str:
     cls = IN_CLASS.get(lf.get("class_short") or "", ("", ""))[_i(lang)]
     near = _place(lf.get("near"), lang)
     out = []
+    if te and lf.get("crossed"):
+        s = "భారత వాతావరణ శాఖ ప్రకారం, తుఫాను "
+        s += f"{between[0]}, {between[1]} మధ్య " if len(between) >= 2 else ""
+        s += f"{near} సమీపంలో " if near else ""
+        t = lf.get("crossed_ist") or []
+        s += f"తెల్లవారుజామున {int(t[0][:2])}:{t[0][2:]} నుంచి {int(t[1][:2])}:{t[1][2:]} గంటల మధ్య " if len(t) == 2 else ""
+        out.append(s + "తీరం దాటింది.")
+        w, g = _range(lf.get("wind_kmh"), lang, "km"), _range(lf.get("gust_kmh"), lang, "km")
+        if w:
+            out.append(f"తీరం దాటే సమయంలో గాలుల వేగం గంటకు {w}" + (f", గరిష్ఠంగా {g}" if g else "") + ".")
+        return "\n".join(out)
     if te:
         s = "భారత వాతావరణ శాఖ అంచనా ప్రకారం, తుఫాను "
         s += f"{between[0]}, {between[1]} మధ్య " if len(between) >= 2 else ""
@@ -731,6 +742,21 @@ def in_en_now(desk: dict) -> str:
     return "\n".join(out)
 
 
+def _en_crossed(desk: dict, imd: dict, lf: dict, between: list, near: str) -> str:
+    """After landfall: what IMD says happened, in the past tense."""
+    s = f"The India Meteorological Department says {_en_name(desk, imd.get('class_short', ''))} crossed the coast"
+    s += f" between {between[0]} and {between[1]}" if len(between) >= 2 else ""
+    s += f", close to {near}" if near else ""
+    t = lf.get("crossed_ist") or []
+    if len(t) == 2:
+        s += f", between {_en_clock(t[0])} and {_en_clock(t[1])} IST"
+    out = [s + "."]
+    w, g = _range(lf.get("wind_kmh"), "en", "km/h"), _range(lf.get("gust_kmh"), "en", "km/h")
+    if w:
+        out.append(f"Winds at landfall were {w}" + (f", gusting to {g}" if g else "") + ".")
+    return "\n".join(out)
+
+
 def in_en_landfall(desk: dict) -> str:
     imd = _in_imd(desk)
     lf = imd.get("landfall") or {}
@@ -738,6 +764,8 @@ def in_en_landfall(desk: dict) -> str:
     near = _en_place(lf.get("near"))
     if len(between) < 2 and not near:
         raise ValueError("IMD gives no landfall place this bulletin")
+    if lf.get("crossed"):
+        return _en_crossed(desk, imd, lf, between, near)
     s = f"The India Meteorological Department expects {_en_name(desk, imd.get('class_short', ''))} to cross the coast"
     s += f" between {between[0]} and {between[1]}" if len(between) >= 2 else ""
     s += (f", to the {lf['near_rel']} of {near}" if lf.get("near_rel") else f", near {near}") if near else ""
