@@ -364,7 +364,8 @@ def main() -> int:
     start = datetime.fromisoformat(a.start) if a.start else datetime.now(timezone.utc) + timedelta(hours=1)
     state_path = STATE_DIR / f"{Path(a.config).stem}.json"
     state = json.loads(state_path.read_text(encoding="utf-8")) if state_path.is_file() and not a.new else None
-    if state and youtube.broadcast_status(state["broadcast_id"], yt) not in ("created", "ready", "testing", "testStarting"):
+    resumable = ("created", "ready", "testing", "testStarting") + (("live",) if os.environ.get("YOUTUBE_RESUME") == "1" else ())
+    if state and youtube.broadcast_status(state["broadcast_id"], yt) not in resumable:   # YOUTUBE_RESUME=1: reattach to a live broadcast after a crash
         log.info("prepared broadcast %s is no longer usable; creating a new one", state["broadcast_id"])
         state = None
     if state is None:
@@ -380,7 +381,8 @@ def main() -> int:
 
     bc_id = state["broadcast_id"]
     stream = next(s for s in yt.liveStreams().list(part="id,snippet,cdn,status", id=state["stream_id"]).execute()["items"])
-    youtube.bind(bc_id, stream["id"], yt)
+    if youtube.broadcast_status(bc_id, yt) != "live":     # a resumed live broadcast is already bound to its stream
+        youtube.bind(bc_id, stream["id"], yt)
     url, key = youtube.ingest(stream)
     env = dict(os.environ, OUT=f"{url}/{key}", STREAM_LANG=a.lang)
     enc_log = open(REPO / ".run" / "encoder" / "youtube_encoder.log", "a")

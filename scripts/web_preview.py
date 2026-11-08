@@ -34,6 +34,8 @@ PROXIED = ("/live/", "/healthz")
 FORWARD_HEADERS = ("Range", "Content-Type", "If-None-Match", "If-Modified-Since")
 
 
+ALIAS_FILE = Path(os.environ.get("STREAM_ALIAS_FILE", REPO / ".run" / "stream_alias.json"))
+
 # Election streams (ids starting with "election", e.g. election-ja): the page is html/election-desk.html and its
 # live/* comes from local disk, ELECTION_AIR_DIR/<stream>/ (docs/ELECTION.md "Page contract"), not from EC2.
 ELECTION_AIR = Path(os.environ.get("ELECTION_AIR_DIR", REPO / "output" / "election" / "air"))
@@ -45,6 +47,20 @@ MEDIA_TYPES = {".wav": "audio/wav", ".mp3": "audio/mpeg", ".ogg": "audio/ogg", "
 
 def is_election(sid: str) -> bool:
     return sid.startswith("election")
+
+
+def alias_path(path: str) -> tuple[str, str]:
+    """STREAM_ALIAS_FILE ({"page stream": "data stream"}, re-read on every request): /s/<page>/live/... is served from
+    /s/<data>/live/... on EC2, so a running encoder can switch to another publisher's stream at the next scene boundary
+    without a reload. Returns (upstream path, the aliased page stream or "")."""
+    try:
+        aliases = json.loads(ALIAS_FILE.read_text(encoding="utf-8")) if ALIAS_FILE.is_file() else {}
+    except (OSError, ValueError):
+        aliases = {}
+    m = re.match(r"^/s/([a-z0-9][a-z0-9-]{0,31})(/live/.*)$", path)
+    if m and aliases.get(m.group(1)) and re.fullmatch(r"[a-z0-9][a-z0-9-]{0,31}", aliases[m.group(1)]):
+        return f"/s/{aliases[m.group(1)]}{m.group(2)}", m.group(1)
+    return path, ""
 
 
 class Handler(SimpleHTTPRequestHandler):
@@ -182,10 +198,16 @@ class Handler(SimpleHTTPRequestHandler):
     def proxy(self, method):
         body = self.rfile.read(int(self.headers.get("Content-Length") or 0)) if method == "POST" else None
         headers = {h: self.headers[h] for h in FORWARD_HEADERS if self.headers.get(h)}
+        path, alias_from = alias_path(self.path)
         try:
             conn = http.client.HTTPSConnection("127.0.0.1", UPSTREAM_PORT, context=TLS, timeout=30)
-            conn.request(method, self.path, body=body, headers=headers)
+            conn.request(method, path, body=body, headers=headers)
             resp = conn.getresponse()
+            if resp.status == 404 and alias_from and method == "GET":   # a file of the package still playing from the old stream
+                resp.read(); conn.close()
+                conn = http.client.HTTPSConnection("127.0.0.1", UPSTREAM_PORT, context=TLS, timeout=30)
+                conn.request(method, self.path, body=body, headers=headers)
+                resp = conn.getresponse()
         except OSError as error:
             return self.send_error(502, f"EC2 not reachable through the tunnel ({error}); run scripts/ec2_tunnel.sh")
         self.send_response(resp.status)
