@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="zh-Hant" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1920">
+<title>Taiwan Thumbnail</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@800;900&family=Noto+Sans+TC:wght@700;900&family=Noto+Sans+JP:wght@700;900&family=Noto+Sans+Telugu:wght@700;900&family=Noto+Sans+Tamil:wght@700;900&display=swap">
+<!--
+YouTube thumbnail for the Taiwan (zh) stream, in the style of Taiwanese news thumbnails: the storm AND the island in frame
+(enhanced infrared over a fixed lat/lon box from scripts/thumb_sat.py --frame tw, which writes thumb/tw.json + tw_ir.jpg),
+Taiwan's coastline drawn on top, a LIVE badge with a Taiwan-time stamp, and two big lines of text (yellow, then white).
+The words are parameters, typed by the operator from official sources (CWA warnings, DGPA closures), never invented here:
+  ?l1=薔琵颱風 海陸警發布   yellow line; {..} marks a white accent
+  &l2=20縣市{停班停課}      white line, biggest; {..} marks a yellow accent
+  &l3=宜蘭・台北 今晚最接近  optional small boxed line
+  &chip=近中心最大風速 14級|瞬間陣風 16級   optional right-hand chip, rows split by |; &chipLab=中央氣象署 (its label)
+  &stamp=10/23(五) 05:00   default: now in Taiwan time
+  &arrow=300               km of the official forecast track drawn from the eye (0 = none)
+  [..] in any line          one word in red (the urgent word: 今晚, 14級 ...)
+  &r7=320&r10=140           CWA's storm-force radii (七級 / 十級風暴風半徑, km) drawn to scale around the eye
+  &cd=宜蘭                  countdown town: "#H" in any line becomes the hours until the forecast center's closest pass
+  &brand=USAL 颱風資訊台    a fixed corner tag, the same on every thumbnail of the series
+  &lang=ja                  Japanese: Noto Sans JP, JST stamp with a Japanese weekday, 暴風域 ring label, Japanese credit
+  &frame=in&lang=te|ta      India (Bay of Bengal, thumb/in.json from thumb_sat.py --frame india): Telugu / Tamil fonts, IST
+                            stamp, coast + state outlines from india-geo.json, &hl=Andhra Pradesh (states filled red)
+  &mark=90                  a plain red ring of that many pixels round the storm (a marker, not a wind radius)
+  &cdTime=<ISO>             countdown target time (the official landfall time; set by youtube_thumbnail.py)
+scripts/youtube_thumbnail.py --style tw screenshots it at 1920x1080 once body[data-thumb-ready] is set.
+-->
+<style>
+:root { --font: "Noto Sans TC", "Inter Tight", system-ui, sans-serif; --yellow: #ffd23a; --red: #e8213d; --ink: #05080f; }
+* { box-sizing: border-box; margin: 0; }
+html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--ink); }
+body { position: relative; font-family: var(--font); color: #fff; }
+#sat { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+#over { position: absolute; inset: 0; }
+.shade { position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(0deg, rgba(3,6,14,.94) 0, rgba(3,6,14,.80) 26%, rgba(3,6,14,.0) 47%),
+    linear-gradient(180deg, rgba(3,6,14,.45) 0, rgba(3,6,14,0) 16%); }
+.o { paint-order: stroke fill; -webkit-text-stroke: var(--sw, 14px) var(--ink); stroke-linejoin: round; }
+.top { position: absolute; left: 48px; top: 40px; display: flex; align-items: stretch; gap: 0; box-shadow: 0 10px 30px rgba(0,0,0,.55); border-radius: 14px; overflow: hidden; border: 5px solid #fff; }
+.live { display: inline-flex; align-items: center; gap: 14px; background: var(--red); color: #fff; font: 900 70px/1 "Inter Tight", var(--font);
+  padding: 12px 24px 14px 20px; letter-spacing: .02em; }
+.live i { width: 28px; height: 28px; border-radius: 50%; background: #fff; }
+.stamp { display: inline-flex; align-items: center; background: #fff; color: var(--ink); font: 900 64px/1 "Inter Tight", var(--font); padding: 12px 22px 14px; }
+.brand { position: absolute; right: 40px; top: 40px; display: flex; align-items: center; gap: 12px; background: rgba(5,8,15,.82); border: 4px solid #fff;
+  border-radius: 14px; padding: 10px 18px 12px; font: 900 40px/1 var(--font); box-shadow: 0 10px 30px rgba(0,0,0,.5); }
+.brand i { width: 18px; height: 40px; background: var(--red); border-radius: 4px; }
+.o strong, .l3 strong { font-weight: inherit; color: #ff3046; }
+.ring-l { font: 900 40px/1 var(--font); fill: #fff; paint-order: stroke fill; stroke: #8a0716; stroke-width: 12px; stroke-linejoin: round; }
+.chip { position: absolute; left: 48px; top: 210px; background: rgba(5,8,15,.84); border: 5px solid var(--yellow); border-radius: 18px;
+  padding: 18px 26px 20px; box-shadow: 0 10px 30px rgba(0,0,0,.5); text-align: left; }
+.chip .lab { display: inline-block; background: var(--red); color: #fff; font: 900 38px/1 var(--font); padding: 8px 16px 10px; border-radius: 10px; margin-bottom: 12px; }
+.chip .row { font: 900 58px/1.18 var(--font); white-space: nowrap; }
+.chip .row b { color: var(--yellow); }
+.band { position: absolute; left: 48px; right: 48px; bottom: 40px; }
+.l1 { font: 900 112px/1.08 var(--font); color: var(--yellow); --sw: 18px; white-space: nowrap; }
+.l1 em { font-style: normal; color: #fff; }
+.l2 { font: 900 184px/1.04 var(--font); letter-spacing: -.005em; --sw: 26px; white-space: nowrap; }
+.l2 em { font-style: normal; color: var(--yellow); }
+.l3 { display: inline-flex; align-items: center; margin-top: 16px; background: rgba(5,8,15,.86); border: 4px solid var(--yellow);
+  border-radius: 14px; padding: 8px 24px 12px; font: 900 60px/1 var(--font); color: #fff; white-space: nowrap; }
+.l3 em { font-style: normal; color: var(--yellow); }
+.town { font: 900 40px/1 var(--font); fill: #fff; paint-order: stroke fill; stroke: var(--ink); stroke-width: 10px; stroke-linejoin: round; }
+.credit { position: absolute; right: 22px; bottom: 12px; font: 800 22px/1 var(--font); color: rgba(255,255,255,.78); text-shadow: 0 2px 4px #000; }
+[hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<img id="sat" alt="">
+<svg id="over" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="7" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <marker id="ah" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="3.4" markerHeight="3.4" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#fff" stroke="#05080f" stroke-width="1.4" stroke-linejoin="round"/></marker>
+  </defs>
+  <g id="rings"></g>
+  <g id="land" fill="none" stroke="rgba(255,255,255,.72)" stroke-width="2.6" stroke-linejoin="round"></g>
+  <g id="twHalo" fill="rgba(255,210,58,.10)" stroke="rgba(5,8,15,.75)" stroke-width="15" stroke-linejoin="round"></g>
+  <g id="tw" fill="none" stroke="#ffd23a" stroke-width="6.5" stroke-linejoin="round" filter="url(#glow)"></g>
+  <g id="twSmall" fill="none" stroke="#ffd23a" stroke-width="3" stroke-linejoin="round"></g>
+  <path id="trackHalo" fill="none" stroke="#05080f" stroke-width="34" stroke-linecap="round" stroke-linejoin="round" opacity=".8"/>
+  <path id="track" fill="none" stroke="#fff" stroke-width="19" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+  <g id="towns"></g>
+</svg>
+<div class="shade"></div>
+<div class="top"><span class="live"><i></i>LIVE</span><span class="stamp" id="stamp"></span></div>
+<div class="brand" id="brand" hidden><i></i><span id="brandT"></span></div>
+<div class="chip" id="chip" hidden><div class="lab" id="chipLab"></div><div id="chipRows"></div></div>
+<div class="band">
+  <div class="l1 o" id="l1"></div>
+  <div class="l2 o" id="l2"></div>
+  <div class="l3" id="l3" hidden></div>
+</div>
+<div class="credit" id="credit"></div>
+<script>
+const $ = id => document.getElementById(id);
+const Q = new URLSearchParams(location.search);
+const JA = Q.get("lang") === "ja", LANGQ = Q.get("lang") || "", INDIA = Q.get("frame") === "in";
+const IN_FONT = { te: '"Noto Sans Telugu", "Inter Tight", system-ui, sans-serif', ta: '"Noto Sans Tamil", "Inter Tight", system-ui, sans-serif' }[LANGQ];
+if (IN_FONT) { document.documentElement.lang = LANGQ; document.documentElement.style.setProperty("--font", IN_FONT); }
+if (JA) { document.documentElement.lang = "ja"; document.documentElement.style.setProperty("--font", '"Noto Sans JP", "Inter Tight", system-ui, sans-serif'); }
+const TZ = INDIA ? "Asia/Kolkata" : JA ? "Asia/Tokyo" : "Asia/Taipei";
+// towns drawn on the map (only the ones the operator names in l1-l3 get a label, so the map never says more than the text)
+// [lat, lon, label side]: labels go where they cover neither the island's outline nor each other
+const TOWNS = { "台北": [25.03, 121.56, "ne"], "宜蘭": [24.75, 121.75, "e"], "花蓮": [23.98, 121.60, "e"], "台東": [22.76, 121.14, "e"],
+  "基隆": [25.13, 121.74, "e"], "与那国島": [24.47, 123.00, "e"],
+  "విశాఖపట్నం": [17.69, 83.22, "w"], "కాకినాడ": [16.99, 82.25, "w"], "మచిలీపట్నం": [16.17, 81.13, "w"], "చెన్నై": [13.08, 80.27, "w"], "యానాం": [16.73, 82.21, "w"],
+  "விசாகப்பட்டினம்": [17.69, 83.22, "w"], "காக்கிநாடா": [16.99, 82.25, "w"], "சென்னை": [13.08, 80.27, "w"], "புதுச்சேரி": [11.94, 79.83, "w"], "石垣島": [24.34, 124.16, "s"], "宮古島": [24.80, 125.28, "e"], "高雄": [22.63, 120.30, "w"], "蘭嶼": [22.04, 121.55, "e"], "與那國": [24.47, 123.00, "e"] };
+
+const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const accent = s => esc(s).replace(/\{([^}]*)\}/g, "<em>$1</em>").replace(/\[([^\]]*)\]/g, "<strong>$1</strong>");   // {..} accent, [..] red
+function twParts(d) {
+  const p = Object.fromEntries(new Intl.DateTimeFormat("en-US", { timeZone: TZ, month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit",
+    hourCycle: "h23", weekday: "short" }).formatToParts(d).map(x => [x.type, x.value]));
+  return { m: +p.month, d: +p.day, hh: p.hour, mm: p.minute, wd: (JA ? "日月火水木金土" : "日一二三四五六")["SunMonTueWedThuFriSat".indexOf(p.weekday) / 3] };
+}
+
+async function main() {
+  const hero = await fetch(INDIA ? "thumb/in.json" : "thumb/tw.json", { cache: "no-store" }).then(r => r.json());
+  const coast = INDIA ? { land: [], taiwan: [] } : await fetch("thumb-coast.json").then(r => r.json());
+  const b = hero.box;
+  const X = lon => (lon - b.lon0) / (b.lon1 - b.lon0) * 1920, Y = lat => (b.lat1 - lat) / (b.lat1 - b.lat0) * 1080;
+  const path = (line, close) => "M" + line.map(([lo, la]) => X(lo).toFixed(1) + "," + Y(la).toFixed(1)).join("L") + (close ? "Z" : "");
+  const ns = "http://www.w3.org/2000/svg";
+  const add = (g, tag, attrs) => { const e = document.createElementNS(ns, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); $(g).appendChild(e); return e; };
+  coast.land.forEach(l => add("land", "path", { d: path(l, false) }));
+  if (INDIA) {            // India's coast and states (flat [lon, lat, ...] rings); the target state(s) filled red with a glow
+    const geo = await fetch("india-geo.json").then(r => r.json());
+    const pairs = flat => { const out = []; for (let i = 0; i + 1 < flat.length; i += 2) out.push([flat[i], flat[i + 1]]); return out; };
+    const hl = (Q.get("hl") || "").split(",").map(x => x.trim()).filter(Boolean);
+    geo.land.forEach(r => add("land", "path", { d: path(pairs(r), true) }));
+    for (const [name, rings] of Object.entries(geo.states || {})) {
+      const on = hl.includes(name);
+      rings.forEach(r => add(on ? "tw" : "twSmall", "path", { d: path(pairs(r), true), ...(on ? { fill: "rgba(232,33,61,.38)", stroke: "#ff2a3d" } : { stroke: "rgba(255,255,255,.35)", "stroke-width": 1.5 }) }));
+      if (on) rings.forEach(r => add("twHalo", "path", { d: path(pairs(r), true) }));
+    }
+  }
+  // the main island glows; the small islands (Penghu, Kinmen, Matsu, Green Island, Orchid Island) get a plain thin line
+  const span = r => Math.max(...r.map(p => p[0])) - Math.min(...r.map(p => p[0])) + Math.max(...r.map(p => p[1])) - Math.min(...r.map(p => p[1]));
+  coast.taiwan.forEach(r => { if (span(r) > 1) { add("twHalo", "path", { d: path(r, true) }); add("tw", "path", { d: path(r, true) }); }
+                              else add("twSmall", "path", { d: path(r, true) }); });
+
+  // the official forecast track from just outside the eye, ARROW km long
+  const km = hero.km_per_px, from = 70 / km, len = (+(Q.get("arrow") ?? 300)) / km;
+  const pts = [[hero.center.x, hero.center.y], ...hero.forecast.filter(p => new Date(p.timeUTC) > new Date(hero.center.timeUTC)).map(p => [p.x, p.y])];
+  const seg = []; let run = 0;
+  for (let i = 1; i < pts.length && run < from + len && len > 0; i++) {
+    const [ax, ay] = pts[i - 1], [bx, by] = pts[i], d = Math.hypot(bx - ax, by - ay);
+    const at = t => [ax + (bx - ax) * (t - run) / d, ay + (by - ay) * (t - run) / d];
+    if (run + d > from) { if (!seg.length) seg.push(at(Math.max(from, run))); seg.push(run + d >= from + len ? at(from + len) : [bx, by]); }
+    run += d;
+  }
+  const dd = seg.length > 1 ? "M" + seg.map(p => p.map(v => v.toFixed(1)).join(",")).join("L") : "";
+  $("track").setAttribute("d", dd); $("trackHalo").setAttribute("d", dd);
+
+  if (+(Q.get("mark") || 0)) {      // a plain marker ring round the storm (not a wind radius)
+    const r = +Q.get("mark");
+    add("rings", "circle", { cx: hero.center.x, cy: hero.center.y, r, fill: "none", stroke: "rgba(5,8,15,.7)", "stroke-width": 18 });
+    add("rings", "circle", { cx: hero.center.x, cy: hero.center.y, r, fill: "rgba(232,33,61,.10)", stroke: "#ff2a3d", "stroke-width": 9 });
+  }
+  // storm-force rings (CWA radii, km) around the eye: the outer one is what Taiwanese news calls 暴風圈
+  for (const [key, fill, width, dash] of [["r7", "rgba(232,33,61,.15)", 7, ""], ["r10", "rgba(232,33,61,.22)", 5, "18 12"]]) {
+    const r = +(Q.get(key) || 0) / km; if (!r) continue;
+    add("rings", "circle", { cx: hero.center.x, cy: hero.center.y, r, fill: "none", stroke: "rgba(5,8,15,.7)", "stroke-width": width + 10 });
+    add("rings", "circle", { cx: hero.center.x, cy: hero.center.y, r, fill, stroke: "#ff3b52", "stroke-width": width, "stroke-dasharray": dash });
+  }
+  if (+(Q.get("r7") || 0)) {
+    const r = +Q.get("r7") / km, a = JA ? -0.12 : -0.72;   // on the ring's right side, clear of the track arrow (NW) and the island labels
+    const t = add("rings", "text", { x: hero.center.x + r * Math.cos(a), y: hero.center.y + r * Math.sin(a) - 14, class: "ring-l", "text-anchor": "middle" });
+    t.textContent = JA ? `暴風域 ${Q.get("r7")}km` : `暴風圈 ${Q.get("r7")}公里`;
+  }
+  // countdown: hours until the forecast center passes closest to the cd town (the track from thumb_sat.py, in pixels)
+  let hours = null;
+  const cd = Q.get("cd");
+  if (Q.has("cdTime")) {       // the countdown runs to a JMA forecast time (jma_point_time in youtube_thumbnail.py), not our own track
+    const ct = Date.parse(Q.get("cdTime") || "");
+    hours = ct > Date.now() ? Math.max(1, Math.round((ct - Date.now()) / 3600e3)) : null;
+  } else if (cd && TOWNS[cd]) {
+    const tx = X(TOWNS[cd][1]), ty = Y(TOWNS[cd][0]);
+    const tr = [{ x: hero.center.x, y: hero.center.y, t: Date.parse(hero.center.timeUTC) }, ...hero.forecast.map(p => ({ x: p.x, y: p.y, t: Date.parse(p.timeUTC) }))];
+    let best = null;
+    for (let i = 1; i < tr.length; i++) for (let f = 0; f <= 1; f += 0.02) {
+      const x = tr[i - 1].x + (tr[i].x - tr[i - 1].x) * f, y = tr[i - 1].y + (tr[i].y - tr[i - 1].y) * f, t = tr[i - 1].t + (tr[i].t - tr[i - 1].t) * f;
+      const d = Math.hypot(x - tx, y - ty); if (!best || d < best.d) best = { d, t };
+    }
+    if (best && best.t > Date.now()) hours = Math.max(1, Math.round((best.t - Date.now()) / 3600e3));
+  }
+  // once the pass is behind us (or the town is off the track) the countdown phrase is dropped, never shown as "?"
+  const fill = s => hours == null ? s.replace(/\s*倒數\s*\[?#H\s*小時\]?/g, "").replace(/#H/g, "") : s.replace(/#H/g, String(hours));
+  const l1 = fill(Q.get("l1") || ""), l2 = fill(Q.get("l2") || ""), l3 = fill(Q.get("l3") || "");
+  if (Q.get("brand")) { $("brand").hidden = false; $("brandT").textContent = Q.get("brand"); }
+  $("l1").innerHTML = accent(l1); $("l1").hidden = !l1;
+  $("l2").innerHTML = accent(l2); $("l2").hidden = !l2;
+  $("l3").innerHTML = accent(l3); $("l3").hidden = !l3;
+  const named = (l1 + l2 + l3).replace(/雙北|北北/g, "台北").replace(/先島諸島|先島/g, "与那国島石垣島宮古島");
+  for (const [name, [la, lo, side]] of Object.entries(TOWNS)) {
+    if (!named.includes(name.replace("台", "臺")) && !named.includes(name)) continue;
+    add("towns", "circle", { cx: X(lo), cy: Y(la), r: 11, fill: "#fff", stroke: "#05080f", "stroke-width": 5 });
+    const t = add("towns", "text", { x: X(lo) + (side === "w" ? -20 : side === "s" ? 0 : 20), y: Y(la) + (side === "ne" ? -8 : side === "s" ? 52 : 14), class: "town",
+                                     "text-anchor": side === "w" ? "end" : side === "s" ? "middle" : "start" });
+    t.textContent = name;
+  }
+  const now = twParts(new Date());
+  const MON = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+  $("stamp").textContent = Q.get("stamp") || (INDIA ? `${now.d} ${MON[now.m - 1]} · ${now.hh}:${now.mm} IST` : `${now.m}/${now.d}(${now.wd}) ${now.hh}:${now.mm}`);
+  const chip = (Q.get("chip") || "").split("|").map(s => s.trim()).filter(Boolean);
+  if (chip.length) {
+    $("chip").hidden = false; $("chipLab").textContent = Q.get("chipLab") || "中央氣象署";
+    $("chipRows").innerHTML = chip.map(r => `<div class="row">${esc(r).replace(/(\d+\s*級(?:以上)?)/g, "<b>$1</b>")}</div>`).join("");
+  }
+  const s = twParts(new Date(hero.time));
+  $("credit").textContent = INDIA ? `Himawari-9 ${s.d}/${s.m} ${s.hh}:${s.mm} IST · JMA / CIRA RAMMB · IMD` : JA ? `ひまわり9号 ${s.m}/${s.d} ${s.hh}:${s.mm} 赤外強調画像 · JMA / CIRA RAMMB` : `向日葵9號 ${s.m}/${s.d} ${s.hh}:${s.mm} 紅外線色調強化 · JMA / CIRA RAMMB`;
+
+  const img = $("sat");
+  await new Promise((ok, bad) => { img.onload = ok; img.onerror = () => bad(new Error("satellite image")); img.src = "thumb/" + hero.image + "?t=" + Date.now(); });
+  await document.fonts.ready;
+  // keep every line inside the frame
+  const max = 1920 - 96;
+  for (const [id, start, min] of [["l2", 184, INDIA ? 72 : 100], ["l1", 112, INDIA ? 56 : 70], ["l3", 60, INDIA ? 32 : 40]]) {   // Tamil runs long
+    const e = $(id);
+    for (let fs = start; e.scrollWidth > max && fs > min; fs -= 4) e.style.fontSize = fs + "px";
+  }
+  document.body.dataset.thumbReady = JSON.stringify({ sat: hero.time, product: hero.product, desk: hero.center.timeUTC,
+    text: { num: "", l1, l2, l3, chip, hours, live_time: $("stamp").textContent, kicker: "", head: l2.replace(/[{}]/g, ""), when: l3.replace(/[{}]/g, ""), stamp: "", towns: [] } });
+}
+main().catch(e => { document.body.dataset.thumbError = String(e); console.error(e); });
+</script>
+</body>
+</html>

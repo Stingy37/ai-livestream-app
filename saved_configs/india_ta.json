@@ -1,0 +1,189 @@
+{
+  "config": {
+    "name": "Cyclone Murasu Live (Tamil) · முரசு புயல்",
+    "storm": {
+      "title": "CYCLONIC STORM",
+      "name": "MURASU",
+      "names": "Telugu: మురసు తుఫాను · Tamil: முரசு புயல்"
+    }
+  },
+  "defaults": {
+    "language": "ta",
+    "script_model": "qwen3-8b",
+    "tts_model": "mms",
+    "tts_voice": "mms-ta"
+  },
+  "content_library": {
+    "topic_descriptions": {
+      "official_text": {
+        "label": "Official text",
+        "content": "IMD's bulletin (desk.json in.imd) composed in Telugu / Tamil by src/desk/bulletin.py from fixed phrasing and tables; no model writes or translates it."
+      }
+    },
+    "system_instructions": {
+      "station_ident": {
+        "label": "Station ident",
+        "content": "Short station identification."
+      }
+    },
+    "sources": {
+      "desk_open": {
+        "label": "IMD bulletin, open (desk:// template, composed without a model)",
+        "url": "desk://in_ta_open"
+      },
+      "desk_now": {
+        "label": "IMD bulletin, now (desk:// template, composed without a model)",
+        "url": "desk://in_ta_now"
+      },
+      "desk_landfall": {
+        "label": "IMD bulletin, landfall (desk:// template, composed without a model)",
+        "url": "desk://in_ta_landfall"
+      },
+      "desk_warnings": {
+        "label": "IMD bulletin, warnings (desk:// template, composed without a model)",
+        "url": "desk://in_ta_warnings"
+      },
+      "desk_close": {
+        "label": "IMD bulletin, close (desk:// template, composed without a model)",
+        "url": "desk://in_ta_close"
+      }
+    }
+  },
+  "graph": {
+    "nodes": [
+      {
+        "key": "start",
+        "type": "start"
+      },
+      {
+        "key": "open",
+        "type": "scene_card",
+        "scene": {
+          "title": "Show Open",
+          "topic_description": "official_text",
+          "final_script_system_instructions": "station_ident",
+          "do_web_search": false,
+          "sources": [
+            "desk_open"
+          ],
+          "language": "ta"
+        }
+      },
+      {
+        "key": "now",
+        "type": "scene_card",
+        "scene": {
+          "title": "Current Position",
+          "topic_description": "official_text",
+          "final_script_system_instructions": "station_ident",
+          "do_web_search": false,
+          "sources": [
+            "desk_now"
+          ],
+          "language": "ta"
+        }
+      },
+      {
+        "key": "landfall",
+        "type": "scene_card",
+        "scene": {
+          "title": "Landfall",
+          "topic_description": "official_text",
+          "final_script_system_instructions": "station_ident",
+          "do_web_search": false,
+          "sources": [
+            "desk_landfall"
+          ],
+          "language": "ta"
+        }
+      },
+      {
+        "key": "warnings",
+        "type": "scene_card",
+        "scene": {
+          "title": "Warnings",
+          "topic_description": "official_text",
+          "final_script_system_instructions": "station_ident",
+          "do_web_search": false,
+          "sources": [
+            "desk_warnings"
+          ],
+          "language": "ta"
+        }
+      },
+      {
+        "key": "close",
+        "type": "scene_card",
+        "scene": {
+          "title": "Show Close",
+          "topic_description": "official_text",
+          "final_script_system_instructions": "station_ident",
+          "do_web_search": false,
+          "sources": [
+            "desk_close"
+          ],
+          "language": "ta"
+        }
+      },
+      {
+        "key": "end",
+        "type": "termination"
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "source": "start",
+        "target": "open",
+        "type": "normal"
+      },
+      {
+        "id": "e2",
+        "source": "open",
+        "target": "now",
+        "type": "normal"
+      },
+      {
+        "id": "e3",
+        "source": "now",
+        "target": "landfall",
+        "type": "normal"
+      },
+      {
+        "id": "e4",
+        "source": "landfall",
+        "target": "warnings",
+        "type": "normal"
+      },
+      {
+        "id": "e5",
+        "source": "warnings",
+        "target": "now",
+        "type": "repeat_back"
+      },
+      {
+        "id": "e6",
+        "source": "warnings",
+        "target": "close",
+        "type": "continuation"
+      },
+      {
+        "id": "e7",
+        "source": "close",
+        "target": "end",
+        "type": "normal"
+      }
+    ],
+    "cycles": [
+      {
+        "id": "c1",
+        "start_node": "now",
+        "end_node": "warnings",
+        "repeat_back_edge": "e5",
+        "continuation_edge": "e6",
+        "repetitions": 12,
+        "repetitions_until_update": 2
+      }
+    ]
+  }
+}

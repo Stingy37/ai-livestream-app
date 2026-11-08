@@ -1,0 +1,19 @@
+# RAG team — local LLM serving (src/models/local_llm_api.py)
+#
+# Environment: conda env "ai-livestream" (Python 3.12)
+#   conda create -n ai-livestream python=3.12
+#   conda activate ai-livestream
+#
+# The cluster's NVIDIA driver supports CUDA 12.8, but the default PyPI wheels of
+# torch/vLLM are built for CUDA 13 and fail with "driver too old". Install the
+# CUDA 12.9 builds (12.x minor-version compatible with the 12.8 driver) FIRST:
+#
+#   pip install "torch==2.13.0+cu129" --index-url https://download.pytorch.org/whl/cu129 --extra-index-url https://pypi.org/simple
+#   pip install "https://github.com/vllm-project/vllm/releases/download/v0.30.0/vllm-0.30.0+cu129-cp38-abi3-manylinux_2_28_x86_64.whl"
+#   pip install -r requirements/rag.txt
+
+torch==2.13.0
+vllm==0.30.0
+transformers==5.18.0
+accelerate==1.15.0      # device_map="cuda" loading in the hf backend
+openai==3.24.0          # client for both backends' response types

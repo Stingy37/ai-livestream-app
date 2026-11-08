@@ -1,0 +1,30 @@
+{
+ "out": "title_lab/arnab_20261027",
+ "rotate_min": 60,
+ "sample_s": 300,
+ "panel_every_min": 180,
+ "panel_queries": "arnab_panel.json",
+ "streams": {
+  "india-te": {
+   "state": ".run/youtube/india_te.json",
+   "title_file": ".run/youtube/title_india-te.txt",
+   "panel_lang": "te",
+   "desk": "output/desk/india-te/desk.json",
+   "variants": {
+    "T1": "Cyclone Arnab LIVE 🔴: దూసుకొస్తున్న అర్నాబ్ తుఫాన్ | Heavy Rain Alerts | AP & Telangana Weather",
+    "T2": "Cyclone Arnab LIVE 🔴: ఏపీలో {RED} జిల్లాలకు రెడ్ అలర్ట్ | Heavy Rain Alerts | AP & Telangana Weather",
+    "T0": "Cyclone Arnab LIVE 🔴 కాకినాడ వైపు అర్నాబ్ తుఫాన్ | గంటకు 140 కి.మీ ఈదురుగాలులు"
+   }
+  },
+  "india-ta": {
+   "state": ".run/youtube/india_ta.json",
+   "title_file": ".run/youtube/title_india-ta.txt",
+   "panel_lang": "ta",
+   "variants": {
+    "M1": "🔴LIVE: Cyclone Arnab | அர்னாப் புயல்: தமிழகத்தில் என்ன நிலவரம்? | Chennai Rain | TN Weather Update",
+    "M2": "🔴LIVE: அர்னாப் புயல் கரையை கடப்பது எப்போது? | Cyclone Arnab | Chennai Rain | TN Weather Update",
+    "M0": "Cyclone Arnab LIVE 🔴 அர்னாப் புயல் | ஆந்திர கரையில் 140 கி.மீ சூறைக்காற்று"
+   }
+  }
+ }
+}

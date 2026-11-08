@@ -151,7 +151,9 @@ class QCPipeline:
 
     # The whole job for a list of documents.
     def run(self, documents, cross_source=True):
-        passages = {d.metadata["fake_id"]: self.clean_text(d.main_text, d.title) for d in documents}
+        # source id: the scraper-side "qc_id" (set by qc.quality_control), the fake files' "fake_id", else the url
+        passages = {(d.metadata.get("qc_id") or d.metadata.get("fake_id") or d.url): self.clean_text(d.main_text, d.title)
+                    for d in documents}
         records = self.ner.run(passages)
         longest = max([sum(1 for r in records if r["source_id"] == d) for d in passages] or [0])
         if longest <= SHORT_DOC_SENTENCES:

@@ -1,0 +1,558 @@
+[
+ {
+  "event": "US midterms 2022",
+  "domain": "politics",
+  "start_utc": "2022-11-08",
+  "end_utc": "2022-11-09",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "midterm election results live",
+    "must": [
+     "midterm"
+    ],
+    "wikipedia_title": "2022 United States elections"
+   },
+   {
+    "lang": "es",
+    "country": "US",
+    "youtube_query": "elecciones intermedias Estados Unidos en vivo",
+    "must": [
+     "intermedias",
+     "medio término",
+     "medio termino",
+     "midterm"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "es",
+    "country": "US",
+    "youtube_query": "elecciones de medio término resultados en vivo",
+    "must": [
+     "intermedias",
+     "medio término",
+     "medio termino",
+     "midterm"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "vi",
+    "country": "US",
+    "youtube_query": "bầu cử giữa kỳ Mỹ trực tiếp",
+    "must": [
+     "giữa kỳ",
+     "bầu cử"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "zh",
+    "country": "US",
+    "youtube_query": "美国中期选举 直播",
+    "must": [
+     "中期选举",
+     "中期選舉",
+     "期中選舉"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "zh-Hant",
+    "country": "TW",
+    "youtube_query": "美國期中選舉 開票 直播",
+    "must": [
+     "期中選舉",
+     "中期選舉",
+     "期中选举"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "ko",
+    "country": "KR",
+    "youtube_query": "미국 중간선거 개표 생중계",
+    "must": [
+     "중간선거"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "ja",
+    "country": "JP",
+    "youtube_query": "米中間選挙 開票 ライブ",
+    "must": [
+     "中間選挙"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "pt",
+    "country": "BR",
+    "youtube_query": "eleições americanas ao vivo midterms",
+    "must": [
+     "midterm",
+     "eleições americanas",
+     "eleições nos eua",
+     "eleições dos eua"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "ru",
+    "country": "RU",
+    "youtube_query": "промежуточные выборы в США прямой эфир",
+    "must": [
+     "выборы"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "uk",
+    "country": "UA",
+    "youtube_query": "проміжні вибори в США наживо",
+    "must": [
+     "вибори"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "ar",
+    "country": "US",
+    "youtube_query": "الانتخابات النصفية الأمريكية مباشر",
+    "must": [
+     "النصفية",
+     "الانتخابات"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "fa",
+    "country": "US",
+    "youtube_query": "انتخابات میاندوره‌ای آمریکا زنده",
+    "must": [
+     "انتخابات"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "hi",
+    "country": "IN",
+    "youtube_query": "अमेरिका मध्यावधि चुनाव लाइव",
+    "must": [
+     "चुनाव",
+     "midterm"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "fr",
+    "country": "FR",
+    "youtube_query": "élections de mi-mandat États-Unis en direct",
+    "must": [
+     "mi-mandat",
+     "midterms"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "de",
+    "country": "DE",
+    "youtube_query": "US Midterms live Wahl",
+    "must": [
+     "midterm",
+     "zwischenwahl"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "tl",
+    "country": "PH",
+    "youtube_query": "US midterm elections live Tagalog",
+    "must": [
+     "midterm",
+     "halalan"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "ko",
+    "country": "KR",
+    "youtube_query": "미국 중간선거 생중계",
+    "must": [
+     "중간선거"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "ko",
+    "country": "KR",
+    "youtube_query": "미 중간선거 개표 방송",
+    "must": [
+     "중간선거"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "ja",
+    "country": "JP",
+    "youtube_query": "中間選挙 開票速報",
+    "must": [
+     "中間選挙"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "vi",
+    "country": "VN",
+    "youtube_query": "bầu cử Mỹ 2022 trực tiếp",
+    "must": [
+     "bầu cử"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "zh",
+    "country": "US",
+    "youtube_query": "美国中期选举 开票 直播",
+    "must": [
+     "中期选举",
+     "中期選舉",
+     "期中選舉"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "US presidential election 2024",
+  "domain": "politics",
+  "start_utc": "2024-11-05",
+  "end_utc": "2024-11-06",
+  "markets": [
+   {
+    "lang": "es",
+    "country": "US",
+    "youtube_query": "elecciones Estados Unidos 2024 resultados en vivo",
+    "must": [
+     "elecciones",
+     "elección"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "vi",
+    "country": "US",
+    "youtube_query": "bầu cử Mỹ 2024 trực tiếp",
+    "must": [
+     "bầu cử"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "zh",
+    "country": "US",
+    "youtube_query": "美国大选 2024 开票 直播",
+    "must": [
+     "大选",
+     "大選",
+     "开票",
+     "開票"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "zh-Hant",
+    "country": "TW",
+    "youtube_query": "美國總統大選 開票 直播",
+    "must": [
+     "大選",
+     "大选",
+     "開票"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "ko",
+    "country": "KR",
+    "youtube_query": "미국 대선 개표 생중계",
+    "must": [
+     "대선"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "ja",
+    "country": "JP",
+    "youtube_query": "アメリカ大統領選挙 開票 ライブ",
+    "must": [
+     "大統領選"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "ar",
+    "country": "US",
+    "youtube_query": "الانتخابات الأمريكية 2024 مباشر",
+    "must": [
+     "الانتخابات"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "pt",
+    "country": "BR",
+    "youtube_query": "eleição americana 2024 ao vivo apuração",
+    "must": [
+     "eleição",
+     "eleições",
+     "eua"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "ko",
+    "country": "KR",
+    "youtube_query": "미국 대선 개표 방송",
+    "must": [
+     "대선"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "US midterms 2022 per state",
+  "domain": "politics",
+  "start_utc": "2022-11-08",
+  "end_utc": "2022-11-09",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "Georgia election results live",
+    "must": [
+     "georgia"
+    ],
+    "wikipedia_title": "2022 Georgia elections"
+   },
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "Arizona election results live",
+    "must": [
+     "arizona"
+    ],
+    "wikipedia_title": "2022 Arizona elections"
+   },
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "Pennsylvania election results live",
+    "must": [
+     "pennsylvania"
+    ],
+    "wikipedia_title": "2022 Pennsylvania elections"
+   },
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "Nevada election results live",
+    "must": [
+     "nevada"
+    ],
+    "wikipedia_title": "2022 Nevada elections"
+   },
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "Texas election results live",
+    "must": [
+     "texas"
+    ],
+    "wikipedia_title": "2022 Texas elections"
+   },
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "Florida election results live",
+    "must": [
+     "florida"
+    ],
+    "wikipedia_title": "2022 Florida elections"
+   },
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "Michigan election results live",
+    "must": [
+     "michigan"
+    ],
+    "wikipedia_title": "2022 Michigan elections"
+   },
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "Wisconsin election results live",
+    "must": [
+     "wisconsin"
+    ],
+    "wikipedia_title": "2022 Wisconsin elections"
+   },
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "Ohio election results live",
+    "must": [
+     "ohio"
+    ],
+    "wikipedia_title": "2022 Ohio elections"
+   },
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "North Carolina election results live",
+    "must": [
+     "north carolina"
+    ],
+    "wikipedia_title": "2022 North Carolina elections"
+   },
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "New York election results live",
+    "must": [
+     "new york"
+    ],
+    "wikipedia_title": "2022 New York elections"
+   },
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "California election results live",
+    "must": [
+     "california"
+    ],
+    "wikipedia_title": "2022 California elections"
+   },
+   {
+    "lang": "es",
+    "country": "US",
+    "youtube_query": "resultados elecciones Texas en vivo",
+    "must": [
+     "texas",
+     "texas"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "es",
+    "country": "US",
+    "youtube_query": "resultados elecciones Florida en vivo",
+    "must": [
+     "florida",
+     "florida"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "es",
+    "country": "US",
+    "youtube_query": "resultados elecciones Arizona en vivo",
+    "must": [
+     "arizona",
+     "arizona"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "es",
+    "country": "US",
+    "youtube_query": "resultados elecciones California en vivo",
+    "must": [
+     "california",
+     "california"
+    ],
+    "wikipedia_title": null
+   },
+   {
+    "lang": "es",
+    "country": "US",
+    "youtube_query": "resultados elecciones Nevada en vivo",
+    "must": [
+     "nevada",
+     "nevada"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Georgia Senate runoff 2022",
+  "domain": "politics",
+  "start_utc": "2022-12-06",
+  "end_utc": "2022-12-07",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "Georgia runoff results live",
+    "must": [
+     "georgia",
+     "runoff",
+     "warnock",
+     "walker"
+    ],
+    "wikipedia_title": "2022 United States Senate election in Georgia"
+   }
+  ]
+ },
+ {
+  "event": "US off-year elections 2025",
+  "domain": "politics",
+  "start_utc": "2025-11-04",
+  "end_utc": "2025-11-05",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "New Jersey governor election results live",
+    "must": [
+     "new jersey",
+     "nj"
+    ],
+    "wikipedia_title": "2025 New Jersey gubernatorial election"
+   },
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "Virginia governor election results live",
+    "must": [
+     "virginia"
+    ],
+    "wikipedia_title": "2025 Virginia gubernatorial election"
+   },
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "Prop 50 results live",
+    "must": [
+     "prop 50",
+     "proposition 50"
+    ],
+    "wikipedia_title": "2025 California Proposition 50"
+   },
+   {
+    "lang": "es",
+    "country": "US",
+    "youtube_query": "Proposición 50 resultados en vivo",
+    "must": [
+     "50"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ }
+]

@@ -1,0 +1,1132 @@
+<!doctype html>
+<html lang="te" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="google" content="notranslate">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cyclone Desk India</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@600;700;800;900&family=Noto+Sans+Telugu:wght@500;700;800;900&family=Noto+Sans+Tamil:wght@500;700;800;900&display=swap">
+<!--
+India cyclone desk (North Indian Ocean), the page the encoder streams for /s/india-te/ and /s/india-ta/.
+  ?lang=te  Telugu, Andhra Pradesh first          ?lang=ta  Tamil, Tamil Nadu first (rain), Andhra Pradesh landfall
+  ?live=0   no narration playback                  ?autoplay=1  start the narration without the click (encoder)
+  #map #bulletin #imdtrack #districts #radar   start on that scene
+Data: live/desk.json (spec: docs/INDIA_DESK.md; the "in" section is IMD's own bulletin, read by src/desk), live/current.json
+(the narration package, same contract as champi-desk.html). Every number on screen comes from those; anything missing is hidden.
+Imagery is real only: Himawari-9 infrared (JMA tiles), IMD Doppler radar images, map outlines (Natural Earth, india-maps-data).
+-->
+<style>
+:root {
+  --stage: #06070b;
+  --panel: #0f121a;
+  --panel-2: #161b26;
+  --line: #262d3c;
+  --ink: #ffffff;
+  --muted: #a6afc0;
+  --red: #e3141d;
+  --red-deep: #9e0b12;
+  --saffron: #ff8a00;
+  --yellow: #ffd400;
+  --alert-red: #e3141d;
+  --alert-orange: #ff7a00;
+  --alert-yellow: #ffd400;
+  --alert-green: #2f8f4e;
+  --alert-none: #2a3242;
+  --ocean-1: #0b2440;
+  --ocean-2: #04101f;
+  --land: #2b3b33;
+  --font-local: "Noto Sans Telugu", "Noto Sans Tamil", "Inter Tight", system-ui, sans-serif;
+  --font-num: "Inter Tight", "Noto Sans Telugu", "Noto Sans Tamil", system-ui, sans-serif;
+  --font-display: "Anton", "Inter Tight", Impact, sans-serif;
+  color-scheme: dark;
+}
+html[lang=ta] { --font-local: "Noto Sans Tamil", "Noto Sans Telugu", "Inter Tight", system-ui, sans-serif; --font-num: "Inter Tight", "Noto Sans Tamil", system-ui, sans-serif; }
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { margin: 0; height: 100%; background: #000; overflow: hidden; }
+body { font-family: var(--font-local); color: var(--ink); }
+body.idle { cursor: none; }
+#stage { position: absolute; left: 50%; top: 50%; width: 1920px; height: 1080px; transform-origin: 0 0; background: var(--stage); overflow: hidden; }
+
+/* ---------- header ---------- */
+.top { position: absolute; inset: 0 0 auto 0; height: 96px; display: flex; align-items: stretch; z-index: 5;
+  background: linear-gradient(180deg, #c80f17, #8f0a10); box-shadow: 0 6px 24px rgba(0,0,0,.55); }
+.brand { display: flex; flex-direction: column; justify-content: center; padding: 0 26px; background: #07080c; min-width: 220px; }
+.brand b { font: 900 30px/1 var(--font-num); letter-spacing: .04em; }
+.brand small { font: 700 15px/1.2 var(--font-local); color: var(--yellow); margin-top: 4px; }
+.live-pill { align-self: center; margin: 0 22px; display: inline-flex; align-items: center; gap: 10px; background: #fff; color: var(--red);
+  font: 900 30px/1 var(--font-num); letter-spacing: .06em; padding: 9px 16px 8px; border-radius: 6px; }
+.live-pill i { width: 14px; height: 14px; border-radius: 50%; background: var(--red); animation: blink 1.2s ease-in-out infinite; }
+@keyframes blink { 50% { opacity: .2; } }
+.storm { flex: 1; display: flex; flex-direction: column; justify-content: center; min-width: 0; }
+.storm .nm { display: flex; align-items: center; gap: 16px; white-space: nowrap; }
+.storm .nm b { font: 900 54px/1.05 var(--font-local); text-shadow: 0 3px 0 rgba(0,0,0,.35); }
+.storm .nm em { font: 400 34px/1 var(--font-display); font-style: normal; letter-spacing: .03em; color: #10131a; background: var(--yellow); padding: 6px 12px 4px; border-radius: 4px; }
+.storm .cls { font: 800 19px/1.2 var(--font-local); color: #ffe1a6; margin-top: 2px; white-space: nowrap; }
+.clock { display: flex; flex-direction: column; justify-content: center; align-items: flex-end; padding: 0 26px; background: rgba(0,0,0,.28); min-width: 260px; }
+.clock b { font: 900 46px/1 var(--font-num); font-variant-numeric: tabular-nums; }
+.clock span { font: 700 17px/1.2 var(--font-local); color: #ffe1a6; margin-top: 4px; }
+.strip { position: absolute; left: 0; right: 0; top: 96px; height: 46px; display: flex; align-items: center; background: var(--yellow); color: #10131a; z-index: 4; }
+.strip .tag { height: 100%; display: flex; align-items: center; padding: 0 20px; background: #10131a; color: var(--yellow); font: 400 26px/1 var(--font-display); letter-spacing: .06em; }
+.strip .txt { flex: 1; padding: 0 20px; font: 800 22px/1 var(--font-local); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.strip .src { padding: 0 20px; font: 800 17px/1 var(--font-num); white-space: nowrap; }
+
+/* ---------- body / scenes ---------- */
+.body { position: absolute; left: 0; right: 0; top: 142px; height: 778px; }
+.scene { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity .6s ease, visibility 0s linear .6s; }
+.scene.on { opacity: 1; visibility: visible; transition: opacity .6s ease; }
+.scene-tag { position: absolute; left: 22px; top: 18px; z-index: 3; display: flex; align-items: stretch; box-shadow: 0 8px 24px rgba(0,0,0,.5); }
+.scene-tag b { background: var(--red); font: 900 30px/1 var(--font-local); padding: 10px 18px 9px; }
+.scene-tag span { background: #fff; color: #10131a; font: 800 18px/1 var(--font-num); padding: 0 14px; display: flex; align-items: center; letter-spacing: .04em; }
+
+/* map scene */
+.map { position: absolute; left: 0; top: 0; width: 1290px; height: 778px; overflow: hidden; background: var(--ocean-2); }
+.map svg { width: 100%; height: 100%; display: block; }
+.map .key { position: absolute; left: 20px; bottom: 16px; display: flex; gap: 18px; align-items: center; background: rgba(4,8,16,.86); border: 1px solid var(--line);
+  border-radius: 6px; padding: 9px 14px; font: 700 16px/1 var(--font-local); }
+.map .key i { display: inline-block; width: 28px; height: 0; border-top: 4px solid #fff; margin-right: 8px; vertical-align: middle; }
+.map .key i.d { border-top-style: dashed; }
+.map .key i.j { border-top: 3px solid #49d3ff; }
+.map .sat { position: absolute; right: 16px; bottom: 16px; background: rgba(4,8,16,.86); border: 1px solid var(--line); border-radius: 6px; padding: 8px 12px;
+  font: 700 14px/1.25 var(--font-num); color: var(--muted); text-align: right; }
+.map .sat b { display: block; color: #fff; font: 800 18px/1.1 var(--font-local); }
+.city { font: 800 19px/1 var(--font-local); fill: #fff; paint-order: stroke; stroke: rgba(4,8,16,.92); stroke-width: 5px; stroke-linejoin: round; }
+.city.small { font-size: 15px; font-weight: 700; fill: #dfe5ee; }
+.fc-l { font: 800 15px/1 var(--font-num); fill: #fff; paint-order: stroke; stroke: rgba(4,8,16,.9); stroke-width: 4px; }
+.lf-l { font: 900 22px/1 var(--font-local); fill: #fff; paint-order: stroke; stroke: var(--red-deep); stroke-width: 6px; stroke-linejoin: round; }
+.rail { position: absolute; left: 1290px; right: 0; top: 0; bottom: 0; padding: 14px 16px; display: flex; flex-direction: column; gap: 12px;
+  background: linear-gradient(180deg, #0b0e15, #07090e); border-left: 3px solid var(--red); }
+.cd { border-radius: 8px; overflow: hidden; background: linear-gradient(160deg, #d1121b, #7a0a10); box-shadow: 0 10px 30px rgba(227,20,29,.25); }
+.cd .h { padding: 14px 18px 0; font: 900 34px/1.15 var(--font-local); }
+.cd .h small { display: block; font: 700 17px/1.2 var(--font-num); color: #ffd7d9; letter-spacing: .06em; margin-top: 2px; }
+.cd .t { display: flex; gap: 10px; padding: 8px 18px 4px; align-items: flex-end; }
+.cd .t div { text-align: center; }
+.cd .t b { display: block; font: 900 92px/.95 var(--font-num); font-variant-numeric: tabular-nums; text-shadow: 0 4px 0 rgba(0,0,0,.3); }
+.cd .t small { display: block; font: 800 16px/1.2 var(--font-local); color: #ffd7d9; }
+.cd .t .sep { font: 900 70px/1 var(--font-num); padding-bottom: 26px; opacity: .7; }
+.cd .w { margin: 8px 0 0; padding: 12px 18px 14px; background: rgba(0,0,0,.28); font: 800 20px/1.35 var(--font-local); }
+.cd .w em { font-style: normal; color: var(--yellow); }
+.cd.past .t { display: none; }
+.nums { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.num { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; }
+.num small { display: block; font: 800 16px/1.2 var(--font-local); color: var(--muted); }
+.num b { display: block; font: 900 48px/1.05 var(--font-num); margin-top: 4px; }
+.num b em { font: 800 18px/1 var(--font-local); font-style: normal; color: var(--muted); margin-left: 6px; }
+.num.hot b { color: var(--yellow); }
+.pos { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; flex: 1; min-height: 0; overflow: hidden; }
+.pos small { display: block; font: 800 16px/1.2 var(--font-local); color: var(--muted); }
+.pos p { margin: 6px 0 0; font: 700 19px/1.4 var(--font-num); display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden; }
+.pos .cpa { display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: baseline; padding: 9px 0; border-bottom: 1px solid var(--line); }
+.pos .cpa b { font: 900 26px/1.1 var(--font-local); }
+.pos .cpa span { font: 900 28px/1 var(--font-num); color: var(--yellow); }
+.pos .cpa em { font: 700 17px/1 var(--font-num); font-style: normal; color: var(--muted); }
+.pos .cls { display: inline-block; margin-top: 8px; background: var(--saffron); color: #10131a; font: 900 20px/1 var(--font-local); padding: 8px 12px 7px; border-radius: 5px; }
+
+/* bulletin scene */
+.bull { position: absolute; inset: 0; padding: 86px 26px 18px; display: grid; grid-template-columns: 1.05fr 1fr; gap: 18px; }
+.bull .big { display: grid; grid-template-rows: auto auto 1fr; gap: 14px; min-height: 0; }
+.bull .hd { background: linear-gradient(90deg, var(--red), #8f0a10); border-radius: 8px; padding: 16px 20px; }
+.bull .hd b { display: block; font: 900 50px/1.1 var(--font-local); }
+.bull .hd span { display: block; font: 800 20px/1.2 var(--font-num); color: #ffd7d9; margin-top: 6px; letter-spacing: .03em; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: 12px; }
+.tile { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; }
+.tile small { display: block; font: 800 18px/1.2 var(--font-local); color: var(--muted); }
+.tile b { display: block; font: 900 64px/1 var(--font-num); margin-top: 6px; white-space: nowrap; }
+html[lang=ta] .tile b em { font-size: 15px; margin-left: 4px; }        /* கி.மீ/மணி is long: keep it on the number's line */
+.num b { white-space: nowrap; }
+.num b em { white-space: nowrap; }
+html[lang=ta] .num b em { font-size: 15px; margin-left: 4px; }
+html[lang=ta] .num small { font-size: 16px; }
+.tile b em { font: 800 20px/1 var(--font-local); font-style: normal; color: var(--muted); margin-left: 6px; white-space: nowrap; }
+.tile.y b { color: var(--yellow); }
+.tile.r { background: linear-gradient(180deg, #5a0a10, #2a070a); border-color: #7a1018; }
+.blk { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px 18px; overflow: hidden; }
+.blk h4 { margin: 0 0 6px; font: 900 24px/1.2 var(--font-local); color: var(--yellow); display: flex; align-items: center; gap: 10px; }
+.blk h4 i { width: 10px; height: 24px; border-radius: 3px; background: var(--red); }
+.blk p { margin: 0 0 6px; font: 600 20px/1.4 var(--font-num); color: #e8ecf3; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4; overflow: hidden; }
+.bull .side { display: grid; grid-template-rows: auto auto 1fr; gap: 14px; min-height: 0; }
+.lfbox { background: linear-gradient(160deg, #ff8a00, #c24c00); border-radius: 8px; padding: 16px 20px; color: #10131a; }
+.lfbox small { display: block; font: 900 22px/1.2 var(--font-local); }
+.lfbox b { display: block; font: 900 40px/1.15 var(--font-local); margin-top: 4px; }
+.lfbox p { margin: 8px 0 0; font: 700 18px/1.4 var(--font-num); display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+
+/* districts scene */
+.dist { position: absolute; inset: 0; display: grid; grid-template-columns: 1100px 1fr; }
+.dist .dmap { position: relative; background: radial-gradient(120% 90% at 40% 40%, #0d2a4b, #04101f); border-right: 3px solid var(--red); }
+.dist .dmap svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.dist path.d { stroke: #06070b; stroke-width: 1.2; transition: fill .8s ease; }
+.dist path.ctx { fill: #1d2a33; stroke: #3a4b5c; stroke-width: 1; }
+.dist .dl { font: 800 15px/1 var(--font-local); fill: #fff; paint-order: stroke; stroke: rgba(4,8,16,.9); stroke-width: 4px; text-anchor: middle; dominant-baseline: middle; pointer-events: none; }
+.dist .stl { font: 900 26px/1 var(--font-local); fill: rgba(255,255,255,.55); text-anchor: middle; }
+.dist .leg { position: absolute; right: 16px; bottom: 16px; display: grid; gap: 6px; background: rgba(4,8,16,.88); border: 1px solid var(--line); border-radius: 6px; padding: 10px 14px; }
+.dist .leg div { display: flex; align-items: center; gap: 10px; font: 800 18px/1 var(--font-local); }
+.dist .leg i { width: 26px; height: 18px; border-radius: 3px; }
+.dist .list { padding: 86px 18px 16px; display: flex; flex-direction: column; gap: 12px; min-height: 0; background: linear-gradient(180deg, #0b0e15, #07090e); }
+.lv { border-radius: 8px; overflow: hidden; background: var(--panel); border: 1px solid var(--line); }
+.lv .lh { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; font: 900 26px/1 var(--font-local); color: #10131a; }
+.lv .lh span { font: 900 30px/1 var(--font-num); }
+.lv .lb { padding: 10px 14px 12px; font: 800 22px/1.45 var(--font-local); }
+.dist .note { margin-top: auto; font: 600 15px/1.35 var(--font-num); color: var(--muted); }
+
+/* IMD track graphic scene */
+.trk { position: absolute; inset: 0; padding: 86px 22px 16px; display: grid; grid-template-columns: 1000px 1fr; gap: 20px; }
+.trk-img { position: relative; overflow: hidden; border-radius: 8px; background: #fff; border: 3px solid var(--red); max-height: 676px; }
+.trk-img img { position: absolute; left: 0; top: 0; width: 100%; }
+.trk-side { display: flex; flex-direction: column; gap: 14px; min-height: 0; }
+.trk-side .k { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px 18px; }
+.trk-side .k small { display: block; font: 800 18px/1.2 var(--font-local); color: var(--muted); }
+.trk-side .k b { display: block; font: 900 34px/1.2 var(--font-local); margin-top: 4px; }
+.trk-side .k b em { font-style: normal; color: var(--yellow); }
+.trk-side .k p { margin: 6px 0 0; font: 700 18px/1.4 var(--font-num); color: #e8ecf3; }
+.trk-side .cpa2 { display: grid; grid-template-columns: 1fr auto auto; gap: 14px; align-items: baseline; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.trk-side .cpa2 b { font: 900 30px/1.1 var(--font-local); }
+.trk-side .cpa2 span { font: 900 30px/1 var(--font-num); color: var(--yellow); }
+.trk-side .cpa2 em { font: 700 18px/1 var(--font-num); font-style: normal; color: var(--muted); }
+.trk-side .cone { display: flex; gap: 12px; align-items: center; font: 800 20px/1.3 var(--font-local); }
+.trk-side .cone i { width: 40px; height: 26px; border-radius: 13px; background: #48b04a; flex: none; }
+
+/* radar scene */
+.radar { position: absolute; inset: 0; padding: 86px 20px 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.rad { position: relative; display: flex; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px; min-height: 0; }
+.rad .crop { position: relative; overflow: hidden; border-radius: 6px; background: #000; flex: none; }
+.rad .crop img { position: absolute; image-rendering: auto; }
+.rad .leg { position: relative; overflow: hidden; flex: none; border-radius: 6px; background: #fff; }
+.rad .leg img { position: absolute; }
+.rad .lab { position: absolute; left: 20px; top: 20px; display: flex; flex-direction: column; gap: 4px; }
+.rad .lab b { background: var(--red); font: 900 26px/1 var(--font-local); padding: 8px 12px 7px; border-radius: 4px; align-self: flex-start; }
+.rad .lab span { background: rgba(4,8,16,.88); font: 800 15px/1 var(--font-num); padding: 6px 10px; border-radius: 4px; align-self: flex-start; letter-spacing: .04em; }
+.rad .err { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font: 800 22px/1.3 var(--font-local); color: var(--muted); }
+
+/* ---------- lower third, captions, ticker ---------- */
+.lower { position: absolute; left: 0; right: 0; top: 924px; height: 88px; display: flex; gap: 0; z-index: 5; }
+.bug { width: 300px; background: var(--red); display: flex; flex-direction: column; justify-content: center; padding: 0 20px; }
+.bug b { font: 900 30px/1.05 var(--font-local); }
+.bug span { font: 400 20px/1 var(--font-display); letter-spacing: .06em; color: var(--yellow); margin-top: 4px; }
+.head { flex: 1; position: relative; background: #fff; color: #10131a; display: flex; flex-direction: column; justify-content: center; padding: 0 200px 0 24px; overflow: hidden; }
+.head b { font: 900 36px/1.1 var(--font-local); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.head span { font: 700 19px/1.25 var(--font-num); color: #3a4252; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 2px; }
+.head .tag { position: absolute; right: 18px; top: 50%; transform: translateY(-50%); background: var(--red); color: #fff; font: 900 20px/1 var(--font-local); padding: 10px 16px 9px; border-radius: 999px; }
+.head.swap { animation: rise .45s ease; }
+@keyframes rise { from { transform: translateY(10px); opacity: 0; } to { transform: none; opacity: 1; } }
+.caption { position: absolute; left: 0; right: 0; top: 924px; height: 88px; display: grid; grid-template-columns: 300px 1fr 260px; z-index: 6; background: #fff; color: #10131a; }
+.cap-l { background: #10131a; color: #fff; display: flex; flex-direction: column; justify-content: center; padding: 0 18px; }
+.cap-l b { display: inline-flex; align-items: center; gap: 8px; font: 900 22px/1 var(--font-local); color: var(--yellow); }
+.cap-l b i { width: 12px; height: 12px; border-radius: 50%; background: var(--red); animation: blink 1.2s ease-in-out infinite; }
+.cap-l span { font: 700 15px/1.3 var(--font-local); color: #c7cfdc; margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cap-text { display: flex; align-items: center; padding: 0 22px; font: 800 27px/1.3 var(--font-local); overflow: hidden; }
+.cap-text.swap { animation: rise .35s ease; }
+.cap-r { display: flex; flex-direction: column; justify-content: center; padding: 0 14px; font: 600 12.5px/1.35 var(--font-num); color: #4a5263; border-left: 1px solid #d9dee8; }
+.cap-r b { color: #10131a; }
+.cap-bar { position: absolute; left: 0; bottom: 0; height: 5px; width: 0; background: var(--red); }
+.ticker { position: absolute; left: 0; right: 0; top: 1018px; height: 56px; display: flex; z-index: 5; background: #10131a; border-top: 3px solid var(--yellow); }
+.tk-l { display: flex; align-items: center; gap: 10px; padding: 0 18px; background: var(--red); font: 900 22px/1 var(--font-local); white-space: nowrap; }
+.tk-l .t { font: 800 20px/1 var(--font-num); background: rgba(0,0,0,.3); padding: 6px 10px; border-radius: 4px; }
+.tk-run { flex: 1; overflow: hidden; display: flex; align-items: center; }
+.tk-track { display: flex; white-space: nowrap; will-change: transform; }
+.tk-track .item { display: inline-flex; align-items: center; gap: 12px; padding: 0 28px; font: 700 23px/1 var(--font-local); }
+.tk-track .item b { color: #10131a; background: var(--yellow); font: 900 18px/1 var(--font-local); padding: 6px 10px 5px; border-radius: 3px; }
+.tk-track .item::after { content: "◆"; color: var(--red); margin-left: 28px; font-size: 14px; }
+
+.live-badge { position: fixed; right: 12px; bottom: 12px; z-index: 50; font: 600 12px/1 var(--font-num); color: #c7cfdc; background: rgba(0,0,0,.6); padding: 6px 9px; border-radius: 4px; }
+.live-badge.off { color: #ffb3b6; }
+body.live .live-badge { display: none; }
+.start { position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,.7); text-align: center; color: #fff; font: 500 15px/1.4 var(--font-num); }
+.start button { font: 900 26px/1 var(--font-num); padding: 18px 28px; border-radius: 8px; border: 0; background: var(--red); color: #fff; cursor: pointer; }
+.start p { max-width: 520px; margin: 16px auto 0; color: #c7cfdc; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <header class="top">
+    <div class="brand"><b>USAL</b><small id="brandSub">తుఫాను సమాచారం</small></div>
+    <span class="live-pill"><i></i>LIVE</span>
+    <div class="storm">
+      <div class="nm"><b id="stormLocal"></b><em>CYCLONE <span id="stormEn"></span> LIVE</em></div>
+      <div class="cls" id="stormCls"></div>
+    </div>
+    <div class="clock"><b id="clk">--:--:--</b><span id="clkD"></span></div>
+  </header>
+  <div class="strip"><div class="tag">IMD</div><div class="txt" id="stripTxt"></div><div class="src" id="stripSrc">Source: IMD · JTWC</div></div>
+
+  <main class="body">
+    <!-- 1: track map + landfall countdown -->
+    <section class="scene" id="scene-map">
+      <div class="map">
+        <svg id="mapSvg" viewBox="0 0 1290 778" preserveAspectRatio="xMidYMid slice" aria-label="Track map">
+          <defs>
+            <radialGradient id="oceanG" cx="55%" cy="50%" r="80%"><stop offset="0" stop-color="#0d2a4b"/><stop offset="1" stop-color="#04101f"/></radialGradient>
+            <filter id="irEnh" color-interpolation-filters="sRGB"><feComponentTransfer>
+              <feFuncR type="table" tableValues="0.00 0.05 0.11 0.16 0.21 0.27 0.32 0.37 0.43 0.48 0.53 0.59 0.48 0.18 0.10 0.77 0.95 0.92 0.75 0.73 1.00"/>
+              <feFuncG type="table" tableValues="0.00 0.05 0.11 0.16 0.21 0.27 0.32 0.37 0.43 0.48 0.53 0.59 0.55 0.47 0.70 0.85 0.66 0.33 0.09 0.28 1.00"/>
+              <feFuncB type="table" tableValues="0.00 0.05 0.11 0.16 0.21 0.27 0.32 0.37 0.43 0.48 0.53 0.59 0.70 0.77 0.40 0.23 0.13 0.10 0.18 0.60 1.00"/>
+            </feComponentTransfer></filter>
+            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <rect width="1290" height="778" fill="url(#oceanG)"/>
+          <g id="sat" filter="url(#irEnh)"></g>
+          <g id="landG"></g>
+          <g id="stateG"></g>
+          <g id="focusG"></g>
+          <g id="coneG"></g>
+          <g id="trackG"></g>
+          <g id="cityG"></g>
+          <g id="lfG"></g>
+          <g id="stormG"></g>
+        </svg>
+        <div class="scene-tag"><b id="mapTitle"></b><span id="mapSub">IMD</span></div>
+        <div class="key" id="mapKey"></div>
+        <div class="sat" id="satChip" hidden><b id="satName"></b><span id="satTime"></span></div>
+      </div>
+      <aside class="rail">
+        <div class="cd" id="cdBox">
+          <div class="h"><span id="cdTitle"></span><small id="cdSub"></small></div>
+          <div class="t" id="cdT"></div>
+          <div class="w" id="cdW"></div>
+        </div>
+        <div class="nums" id="nums"></div>
+        <div class="pos" id="pos"></div>
+      </aside>
+    </section>
+
+    <!-- 2: IMD bulletin -->
+    <section class="scene" id="scene-bulletin">
+      <div class="scene-tag"><b id="bulTitle"></b><span>IMD · RSMC NEW DELHI</span></div>
+      <div class="bull">
+        <div class="big">
+          <div class="hd"><b id="bulCls"></b><span id="bulIssued"></span></div>
+          <div class="tiles" id="bulTiles"></div>
+          <div class="blk" id="bulPos"></div>
+        </div>
+        <div class="side">
+          <div class="lfbox" id="bulLf"></div>
+          <div class="blk" id="bulSurge"></div>
+          <div class="blk" id="bulMore"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3: district alerts -->
+    <section class="scene" id="scene-districts">
+      <div class="dist">
+        <div class="dmap"><svg id="distSvg" viewBox="0 0 1100 778" preserveAspectRatio="xMidYMid meet"></svg>
+          <div class="leg" id="distLeg"></div></div>
+        <div class="list" id="distList"></div>
+      </div>
+      <div class="scene-tag"><b id="distTitle"></b><span>IMD DISTRICT WARNINGS</span></div>
+    </section>
+
+    <!-- 3b: IMD's own track + cone graphic (track_image_url) -->
+    <section class="scene" id="scene-imdtrack">
+      <div class="scene-tag"><b id="trkTitle"></b><span>IMD · RSMC NEW DELHI</span></div>
+      <div class="trk"><div class="trk-img" id="trkImg"></div><div class="trk-side" id="trkSide"></div></div>
+    </section>
+
+    <!-- 4: IMD Doppler radar -->
+    <section class="scene" id="scene-radar">
+      <div class="scene-tag"><b id="radTitle"></b><span>IMD DOPPLER WEATHER RADAR</span></div>
+      <div class="radar" id="radar"></div>
+    </section>
+  </main>
+
+  <div class="lower">
+    <div class="bug"><b id="bugLocal"></b><span id="bugTitle">CYCLONE LIVE</span></div>
+    <div class="head" id="headBox"><b id="headMain"></b><span id="headSub"></span><div class="tag" id="headTag">IMD</div></div>
+  </div>
+  <div class="caption" id="caption" hidden>
+    <div class="cap-l"><b><i></i><span id="onAir">ప్రసారం</span></b><span id="capScene"></span></div>
+    <div class="cap-text" id="capText"></div>
+    <div class="cap-r" id="capMeta"></div>
+    <div class="cap-bar" id="capBar"></div>
+  </div>
+  <div class="ticker"><div class="tk-l"><span id="tkLabel">తాజా వార్తలు</span><span class="t" id="tkClock">--:--</span></div><div class="tk-run"><div class="tk-track" id="tkTrack"></div></div></div>
+</div>
+
+<div class="live-badge" id="liveBadge" hidden></div>
+<div class="start" id="liveStart" hidden>
+  <div><button id="liveStartBtn" type="button">&#9654; Start broadcast</button>
+  <p>Click once to allow audio. The desk then plays each generated scene in order and refreshes itself as new packages arrive.</p></div>
+</div>
+<audio id="liveAudio" preload="auto"></audio>
+<span id="liveState" hidden>on</span>
+
+<script>
+if (!/\/$|\.html?$/.test(location.pathname)) history.replaceState(null, "", location.pathname + "/" + location.search + location.hash);
+const $ = id => document.getElementById(id);
+const Q = new URLSearchParams(location.search);
+const LANG = (() => { const l = (Q.get("lang") || "te").toLowerCase(); return ["te", "ta", "en"].includes(l) ? l : "te"; })();
+const BASE = LANG === "ta" ? "ta" : "te";      // map, home states and radars: the English stream follows the Telugu (Andhra Pradesh) layout
+document.documentElement.lang = LANG;
+const RAD = Math.PI / 180;
+const TZ = "Asia/Kolkata";
+const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+/* ---------- words ----------
+   Fixed on-air text in Telugu / Tamil. IMD's own sentences (position, landfall, surge, rain) are shown as IMD wrote them,
+   in English, under local-language headings: they are the official wording and are never machine-translated on screen. */
+const I18N = {
+  te: {
+    brand: "తుఫాను సమాచారం", storm: "తుఫాను", onAir: "ప్రసారం", ticker: "తాజా వార్తలు",
+    mapTitle: "తుఫాను మార్గం", mapSub: "IMD అంచనా", bulTitle: "IMD తాజా బులెటిన్", distTitle: "జిల్లాల వారీ హెచ్చరికలు", radTitle: "వాతావరణ రాడార్",
+    cdTitle: "తీరం దాటడానికి", cdSub: "IMD అంచనా సమయం వరకు", h: "గంటలు", m: "నిమిషాలు", s: "సెకన్లు",
+    cdPast: "తీరం దాటే సమయం", between: (a, b) => `${a} – ${b} మధ్య`, near: n => `${n} సమీపంలో`,
+    wind: "గాలి వేగం", gust: "ఈదురు గాలులు", kmh: "కి.మీ/గం", pressure: "కేంద్ర పీడనం", move: "కదలిక", position: "ప్రస్తుత స్థానం",
+    atLandfall: "తీరం దాటేటప్పుడు", landfall: "తీరం దాటే ప్రాంతం", surge: "తుఫాను ఉప్పెన", fishermen: "మత్స్యకారులకు హెచ్చరిక", rain: "వర్ష హెచ్చరిక",
+    windWarn: "గాలుల హెచ్చరిక", sea: "సముద్ర పరిస్థితి", issued: "జారీ", distance: "దూరం",
+    keyPast: "గత మార్గం", keyImd: "IMD అంచనా మార్గం", keyJtwc: "JTWC (అమెరికా)", sat: "ఉపగ్రహ చిత్రం · ఇన్‌ఫ్రారెడ్",
+    red: "రెడ్ అలర్ట్", orange: "ఆరెంజ్ అలర్ట్", yellow: "ఎల్లో అలర్ట్", green: "హెచ్చరిక లేదు", districts: "జిల్లాలు",
+    noDist: "IMD జిల్లా హెచ్చరికలు ఇంకా ప్రచురించలేదు", radarErr: "రాడార్ చిత్రం అందుబాటులో లేదు",
+    km: "కి.మీ", from: "దూరంలో", closest: "అతి సమీపం", lfMark: "తీరం దాటే ప్రాంతం",
+    tkImd: "IMD", tkLand: "తీరం దాటే సమయం", tkSurge: "ఉప్పెన", tkFish: "మత్స్యకారులు", tkRed: "రెడ్ అలర్ట్", tkOrange: "ఆరెంజ్ అలర్ట్", tkRain: "వర్షం",
+    tkSafe: "భద్రత", next: "తదుపరి బులెటిన్", trackTitle: "IMD అధికారిక మార్గం", cone: "ఆకుపచ్చ ప్రాంతం: IMD అనిశ్చితి పరిధి (cone of uncertainty)",
+    cpaTitle: "తుఫాను కేంద్రం అతి సమీపంగా", cpaBasis: "IMD అంచనా మార్గం ఆధారంగా", safe: "IMD మరియు జిల్లా అధికారుల సూచనలు పాటించండి. ఈ ప్రసారం అధికారిక హెచ్చరిక సేవ కాదు.",
+    hlLand: (h, m) => `తీరం దాటడానికి ${h} గంటల ${m} నిమిషాలు`, hlWind: (w, g) => `గంటకు ${w} కి.మీ వేగంతో గాలులు · ${g} కి.మీ ఈదురు గాలులు`,
+    hlRed: (n, st) => `${n} జిల్లాలకు రెడ్ అలర్ట్`, hlNow: "తుఫాను ప్రస్తుత స్థానం", tagLand: "తీరం దాటే సమయం", tagWind: "గాలులు", tagRed: "రెడ్ అలర్ట్",
+    generated: "తయారు", sources: "ఆధారం", pkg: "ప్యాకేజీ", fallback: "IMD బులెటిన్ ఆధారంగా",
+  },
+  ta: {
+    brand: "புயல் தகவல்", storm: "புயல்", onAir: "நேரலை", ticker: "முக்கிய செய்திகள்",
+    mapTitle: "புயலின் பாதை", mapSub: "IMD கணிப்பு", bulTitle: "IMD சமீபத்திய அறிக்கை", distTitle: "மாவட்ட வாரியான எச்சரிக்கை", radTitle: "வானிலை ரேடார்",
+    cdTitle: "கரையை கடக்க இன்னும்", cdSub: "IMD கணித்த நேரம் வரை", h: "மணி", m: "நிமிடம்", s: "வினாடி",
+    cdPast: "கரை கடக்கும் நேரம்", between: (a, b) => `${a} – ${b} இடையே`, near: n => `${n} அருகே`,
+    wind: "காற்றின் வேகம்", gust: "சூறைக்காற்று", kmh: "கி.மீ/மணி", pressure: "மைய அழுத்தம்", move: "நகர்வு", position: "தற்போதைய இடம்",
+    atLandfall: "கரை கடக்கும்போது", landfall: "கரை கடக்கும் இடம்", surge: "கடல் அலை எழுச்சி", fishermen: "மீனவர்களுக்கு எச்சரிக்கை", rain: "மழை எச்சரிக்கை",
+    windWarn: "காற்று எச்சரிக்கை", sea: "கடல் நிலை", issued: "வெளியீடு", distance: "தூரம்",
+    keyPast: "கடந்த பாதை", keyImd: "IMD கணிப்பு பாதை", keyJtwc: "JTWC (அமெரிக்கா)", sat: "செயற்கைக்கோள் படம் · அகச்சிவப்பு",
+    red: "ரெட் அலர்ட்", orange: "ஆரஞ்சு அலர்ட்", yellow: "மஞ்சள் அலர்ட்", green: "எச்சரிக்கை இல்லை", districts: "மாவட்டங்கள்",
+    noDist: "IMD மாவட்ட எச்சரிக்கைகள் இன்னும் வெளியிடப்படவில்லை", radarErr: "ரேடார் படம் கிடைக்கவில்லை",
+    km: "கி.மீ", from: "தொலைவில்", closest: "மிக அருகில்", lfMark: "கரை கடக்கும் இடம்",
+    tkImd: "IMD", tkLand: "கரை கடக்கும் நேரம்", tkSurge: "அலை எழுச்சி", tkFish: "மீனவர்கள்", tkRed: "ரெட் அலர்ட்", tkOrange: "ஆரஞ்சு அலர்ட்", tkRain: "மழை",
+    tkSafe: "பாதுகாப்பு", next: "அடுத்த அறிக்கை", trackTitle: "IMD அதிகாரப்பூர்வ பாதை", cone: "பச்சை பகுதி: IMD நிச்சயமற்ற வரம்பு (cone of uncertainty)",
+    cpaTitle: "புயல் மையம் மிக அருகில்", cpaBasis: "IMD கணிப்பு பாதையின் அடிப்படையில்", safe: "IMD மற்றும் மாவட்ட நிர்வாகத்தின் அறிவுறுத்தல்களைப் பின்பற்றவும். இந்த நேரலை அதிகாரப்பூர்வ எச்சரிக்கை சேவை அல்ல.",
+    hlLand: (h, m) => `கரையை கடக்க இன்னும் ${h} மணி ${m} நிமிடம்`, hlWind: (w, g) => `மணிக்கு ${w} கி.மீ வேகத்தில் காற்று · ${g} கி.மீ வரை`,
+    hlRed: (n, st) => `${st === "Andhra Pradesh" ? "ஆந்திராவில் " : st === "Tamil Nadu" ? "தமிழகத்தில் " : ""}${n} மாவட்டங்களுக்கு ரெட் அலர்ட்`, hlNow: "புயலின் தற்போதைய இடம்", tagLand: "கரை கடக்கும் நேரம்", tagWind: "காற்று", tagRed: "ரெட் அலர்ட்",
+    generated: "தயாரிப்பு", sources: "ஆதாரம்", pkg: "தொகுப்பு", fallback: "IMD அறிக்கையின் அடிப்படையில்",
+  },
+  en: {
+    brand: "Cyclone Desk", storm: "Cyclone Live Tracker", onAir: "ON AIR", ticker: "LATEST",
+    mapTitle: "Cyclone Track", mapSub: "IMD forecast", bulTitle: "Latest IMD Bulletin", distTitle: "District Alerts", radTitle: "Weather Radar",
+    cdTitle: "Landfall in", cdSub: "to IMD's expected time", h: "hours", m: "minutes", s: "seconds",
+    cdPast: "Landfall time", between: (a, b) => `between ${a} and ${b}`, near: n => `near ${n}`,
+    wind: "Wind speed", gust: "Gusts", kmh: "km/h", pressure: "Central pressure", move: "Movement", position: "Current position",
+    atLandfall: "At landfall", landfall: "Landfall area", surge: "Storm surge", fishermen: "Fishermen warning", rain: "Rain warning",
+    windWarn: "Wind warning", sea: "Sea condition", issued: "Issued", distance: "Distance",
+    keyPast: "Past track", keyImd: "IMD forecast track", keyJtwc: "JTWC (US)", sat: "Satellite · infrared",
+    red: "Red alert", orange: "Orange alert", yellow: "Yellow alert", green: "No warning", districts: "districts",
+    noDist: "IMD district warnings not yet published", radarErr: "Radar image unavailable",
+    km: "km", from: "away", closest: "Closest approach", lfMark: "Landfall area",
+    tkImd: "IMD", tkLand: "Landfall", tkSurge: "Surge", tkFish: "Fishermen", tkRed: "Red alert", tkOrange: "Orange alert", tkRain: "Rain",
+    tkSafe: "Safety", next: "Next bulletin", trackTitle: "IMD official track", cone: "Green area: IMD cone of uncertainty",
+    cpaTitle: "Closest approach of the centre", cpaBasis: "based on IMD's forecast track", safe: "Follow the instructions of IMD and your district administration. This stream is not an official warning service.",
+    hlLand: (h, m) => `Landfall in ${h} h ${m} min`, hlWind: (w, g) => `Winds ${w} km/h · gusts up to ${g} km/h`,
+    hlRed: (n, st) => `Red alert for ${n} districts${st ? " in " + st : ""}`, hlNow: "Current position", tagLand: "Landfall", tagWind: "Winds", tagRed: "Red alert",
+    generated: "Generated", sources: "Sources", pkg: "Package", fallback: "Based on the IMD bulletin",
+  },
+}[LANG];
+const t = k => I18N[k] || k;
+// the storm's name in the local script (desk.json storm.name), as src/desk/bulletin.py IN_STORM; unknown -> the plain word
+const STORM_LOCAL = { ARNAB: { te: "అర్నాబ్ తుఫాన్", ta: "அர்னாப் புயல்" }, MURASU: { te: "మురసు తుఫాన్", ta: "முரசு புயல்" } };
+const stormLabel = () => (STORM_LOCAL[String(((DATA && DATA.storm) || {}).name || "").toUpperCase()] || {})[LANG] || t("storm");
+const rng = v => Array.isArray(v) ? (v.length > 1 && v[0] !== v[1] ? `${v[0]}–${v[1]}` : `${v[0]}`) : (v == null ? "" : String(v));
+const lines = v => (Array.isArray(v) ? v : v ? [v] : []).map(x => typeof x === "string" ? x : "").filter(Boolean);
+// IMD's state-by-state rain lines, home states first (te: Andhra Pradesh, Telangana, Odisha; ta: Tamil Nadu, Puducherry, Andhra Pradesh)
+const HOME_STATES = BASE === "te" ? [/andhra/i, /telangana/i, /yanam/i, /odisha/i] : [/tamil/i, /puducherry|karaikal/i, /andhra/i];
+function homeRain(im) {
+  const all = lines(im.rain_text).length ? lines(im.rain_text) : (im.rain || []).map(r => typeof r === "string" ? r : `${(r.areas || []).join(", ")}: ${r.level || ""} rainfall ${r.date || ""}`.trim());
+  const scored = all.map(x => ({ x, k: HOME_STATES.findIndex(rx => rx.test(x.split(":")[0])) })).filter(o => o.k >= 0).sort((a, b) => a.k - b.k);
+  return (scored.length ? scored.map(o => o.x) : all).slice(0, BASE === "te" ? 1 : 2);
+}
+function windLines(im) {
+  const tx = lines(im.wind_warnings_text); if (tx.length) return tx;
+  return (im.wind_warnings || []).map(w => typeof w === "string" ? w : `${rng(w.kmh)} kmph${w.gust_kmh ? " gusting to " + w.gust_kmh + " kmph" : ""}: ${(w.areas || []).join(", ")}${w.date ? " (" + w.date + ")" : ""}`);
+}
+// IMD classes (RSMC New Delhi), local names as Telugu / Tamil news and IMD's regional bulletins use them
+const CLASS = {
+  "Low Pressure Area": { te: "అల్పపీడనం", ta: "காற்றழுத்த தாழ்வு பகுதி" },
+  "Well Marked Low Pressure Area": { te: "బలమైన అల్పపీడనం", ta: "நன்கு குறிக்கப்பட்ட காற்றழுத்த தாழ்வு பகுதி" },
+  "Depression": { te: "వాయుగుండం", ta: "காற்றழுத்த தாழ்வு மண்டலம்" },
+  "Deep Depression": { te: "తీవ్ర వాయుగుండం", ta: "ஆழ்ந்த காற்றழுத்த தாழ்வு மண்டலம்" },
+  "Cyclonic Storm": { te: "తుఫాను", ta: "புயல்" },
+  "Severe Cyclonic Storm": { te: "తీవ్ర తుఫాను", ta: "தீவிர புயல்" },
+  "Very Severe Cyclonic Storm": { te: "అతి తీవ్ర తుఫాను", ta: "மிகத் தீவிர புயல்" },
+  "Extremely Severe Cyclonic Storm": { te: "అత్యంత తీవ్ర తుఫాను", ta: "அதி தீவிர புயல்" },
+  "Super Cyclonic Storm": { te: "సూపర్ తుఫాను", ta: "சூப்பர் புயல்" },
+};
+const clsLocal = c => { const k = Object.keys(CLASS).find(k => k.toLowerCase() === String(c || "").trim().toLowerCase()); return k ? (LANG === "en" ? k : CLASS[k][LANG]) : ""; };
+// places on the map (and the names IMD's sentences use), Andhra Pradesh / Tamil Nadu / Odisha coast first
+const CITIES = [
+  { n: "Visakhapatnam", te: "విశాఖపట్నం", ta: "விசாகப்பட்டினம்", lat: 17.69, lon: 83.22, big: 1, alias: ["Vishakhapatnam", "Vizag"] },
+  { n: "Kakinada", te: "కాకినాడ", ta: "காக்கிநாடா", lat: 16.96, lon: 82.24, big: 1 },
+  { n: "Yanam", te: "యానాం", ta: "ஏனாம்", lat: 16.73, lon: 82.21 },
+  { n: "Machilipatnam", te: "మచిలీపట్నం", ta: "மசூலிப்பட்டினம்", lat: 16.19, lon: 81.14, big: 1 },
+  { n: "Bapatla", te: "బాపట్ల", ta: "பாபட்லா", lat: 15.90, lon: 80.47 },
+  { n: "Ongole", te: "ఒంగోలు", ta: "ஓங்கோல்", lat: 15.50, lon: 80.05 },
+  { n: "Nellore", te: "నెల్లూరు", ta: "நெல்லூர்", lat: 14.44, lon: 79.99 },
+  { n: "Chennai", te: "చెన్నై", ta: "சென்னை", lat: 13.08, lon: 80.27, big: 1 },
+  { n: "Puducherry", te: "పుదుచ్చేరి", ta: "புதுச்சேரி", lat: 11.93, lon: 79.83 },
+  { n: "Cuddalore", te: "కడలూరు", ta: "கடலூர்", lat: 11.75, lon: 79.77, ta_only: 1 },
+  { n: "Srikakulam", te: "శ్రీకాకుళం", ta: "ஸ்ரீகாகுளம்", lat: 18.30, lon: 83.90 },
+  { n: "Vijayawada", te: "విజయవాడ", ta: "விஜயவாடா", lat: 16.51, lon: 80.65 },
+  { n: "Rajamahendravaram", te: "రాజమహేంద్రవరం", ta: "ராஜமுந்திரி", lat: 17.00, lon: 81.80, alias: ["Rajahmundry", "Rajamundry"] },
+  { n: "Hyderabad", te: "హైదరాబాద్", ta: "ஹைதராபாத்", lat: 17.39, lon: 78.49, big: 1 },
+  { n: "Bhubaneswar", te: "భువనేశ్వర్", ta: "புவனேஸ்வர்", lat: 20.30, lon: 85.82 },
+  { n: "Gopalpur", te: "గోపాల్‌పూర్", ta: "கோபால்பூர்", lat: 19.26, lon: 84.91 },
+  { n: "Kolkata", te: "కోల్‌కతా", ta: "கொல்கத்தா", lat: 22.57, lon: 88.36 },
+];
+const cityOf = name => { const k = String(name || "").toLowerCase(); return CITIES.find(c => c.n.toLowerCase() === k || (c.alias || []).some(a => a.toLowerCase() === k)); };
+const cityLabel = c => LANG === "en" ? c.n : c[LANG];
+const placeLocal = name => { const c = cityOf(name); return c ? cityLabel(c) : name; };
+// district names: the outlines (india-maps-data) vs IMD's spellings, and the local names
+const D_TE = { "Alluri Sitharama Raju": "అల్లూరి సీతారామరాజు", "Anakapalli": "అనకాపల్లి", "Anantapuramu": "అనంతపురం", "Annamayya": "అన్నమయ్య", "Bapatla": "బాపట్ల",
+  "Chittoor": "చిత్తూరు", "East Godavari": "తూర్పు గోదావరి", "Eluru": "ఏలూరు", "Guntur": "గుంటూరు", "Kakinada": "కాకినాడ", "Konaseema": "కోనసీమ", "Krishna": "కృష్ణా",
+  "Kurnool": "కర్నూలు", "NTR": "ఎన్టీఆర్", "Nandyal": "నంద్యాల", "Palnadu": "పల్నాడు", "Parvathipuram Manyam": "పార్వతీపురం మన్యం", "Prakasam": "ప్రకాశం",
+  "Sri Potti Sriramulu Nellore": "నెల్లూరు", "Sri Sathya Sai": "శ్రీ సత్యసాయి", "Srikakulam": "శ్రీకాకుళం", "Tirupati": "తిరుపతి", "Visakhapatnam": "విశాఖపట్నం",
+  "Vizianagaram": "విజయనగరం", "West Godavari": "పశ్చిమ గోదావరి", "YSR": "వైఎస్ఆర్ కడప" };
+const D_TA = { "Ariyalur": "அரியலூர்", "Chengalpattu": "செங்கல்பட்டு", "Chennai": "சென்னை", "Coimbatore": "கோயம்புத்தூர்", "Cuddalore": "கடலூர்", "Dharmapuri": "தர்மபுரி",
+  "Dindigul": "திண்டுக்கல்", "Erode": "ஈரோடு", "Kallakurichi": "கள்ளக்குறிச்சி", "Kancheepuram": "காஞ்சிபுரம்", "Kanyakumari": "கன்னியாகுமரி", "Karur": "கரூர்",
+  "Krishnagiri": "கிருஷ்ணகிரி", "Madurai": "மதுரை", "Nagapattinam": "நாகப்பட்டினம்", "Namakkal": "நாமக்கல்", "Nilgiris": "நீலகிரி", "Perambalur": "பெரம்பலூர்",
+  "Pudukkottai": "புதுக்கோட்டை", "Ramanathapuram": "ராமநாதபுரம்", "Ranipet": "ராணிப்பேட்டை", "Salem": "சேலம்", "Sivaganga": "சிவகங்கை", "Tenkasi": "தென்காசி",
+  "Thanjavur": "தஞ்சாவூர்", "Theni": "தேனி", "Thiruvallur": "திருவள்ளூர்", "Thiruvarur": "திருவாரூர்", "Thoothukkudi": "தூத்துக்குடி", "Tiruchirappalli": "திருச்சிராப்பள்ளி",
+  "Tirunelveli": "திருநெல்வேலி", "Tirupathur": "திருப்பத்தூர்", "Tiruppur": "திருப்பூர்", "Tiruvannamalai": "திருவண்ணாமலை", "Vellore": "வேலூர்", "Viluppuram": "விழுப்புரம்",
+  "Virudhunagar": "விருதுநகர்",
+  // Andhra Pradesh coast, for the Tamil page's landfall map
+  "Kakinada": "காக்கிநாடா", "Visakhapatnam": "விசாகப்பட்டினம்", "East Godavari": "கிழக்கு கோதாவரி", "West Godavari": "மேற்கு கோதாவரி", "Konaseema": "கோனசீமா",
+  "Krishna": "கிருஷ்ணா", "Bapatla": "பாபட்லா", "Guntur": "குண்டூர்", "Prakasam": "பிரகாசம்", "Sri Potti Sriramulu Nellore": "நெல்லூர்", "Srikakulam": "ஸ்ரீகாகுளம்",
+  "Anakapalli": "அனகாபள்ளி", "Eluru": "ஏலூரு", "Tirupati": "திருப்பதி", "Vizianagaram": "விஜயநகரம்", "NTR": "என்.டி.ஆர்",
+  "Alluri Sitharama Raju": "அல்லூரி சீதாராம ராஜு", "Palnadu": "பல்நாடு", "Parvathipuram Manyam": "பார்வதிபுரம் மன்யம்", "YSR": "கடப்பா",
+  "Chittoor": "சித்தூர்", "Anantapuramu": "அனந்தபூர்", "Annamayya": "அன்னமய்யா", "Kurnool": "கர்னூல்", "Nandyal": "நந்தியால்", "Sri Sathya Sai": "ஸ்ரீ சத்ய சாய்" };
+const D_ALIAS = { "drbrambedkarkonaseema": "Konaseema", "ambedkarkonaseema": "Konaseema", "konaseema": "Konaseema", "spsrnellore": "Sri Potti Sriramulu Nellore",
+  "nellore": "Sri Potti Sriramulu Nellore", "sripottisriramulunellore": "Sri Potti Sriramulu Nellore", "ysrkadapa": "YSR", "kadapa": "YSR", "ysr": "YSR", "cuddapah": "YSR",
+  "anantapur": "Anantapuramu", "tiruvallur": "Thiruvallur", "thiruvallur": "Thiruvallur", "kanchipuram": "Kancheepuram", "kancheepuram": "Kancheepuram",
+  "thoothukudi": "Thoothukkudi", "tuticorin": "Thoothukkudi", "tiruvarur": "Thiruvarur", "villupuram": "Viluppuram", "thenilgiris": "Nilgiris", "tirupattur": "Tirupathur",
+  "trichy": "Tiruchirappalli", "kanyakumari": "Kanyakumari", "alluriSitaramaraju": "Alluri Sitharama Raju", "allurisitaramaraju": "Alluri Sitharama Raju",
+  "allurisitharamaraju": "Alluri Sitharama Raju", "parvathipurammanyam": "Parvathipuram Manyam", "ntr": "NTR", "visakhapatanam": "Visakhapatnam", "vizag": "Visakhapatnam" };
+const dKey = s => String(s || "").toLowerCase().replace(/[^a-z]/g, "");
+function dCanon(name, known) {
+  const k = dKey(name); if (D_ALIAS[k]) return D_ALIAS[k];
+  return known.find(n => dKey(n) === k) || known.find(n => dKey(n).startsWith(k) || k.startsWith(dKey(n))) || null;
+}
+const dLocal = n => (LANG === "en" ? n : LANG === "te" ? D_TE[n] : D_TA[n]) || n;
+const LEVEL = { red: "var(--alert-red)", orange: "var(--alert-orange)", yellow: "var(--alert-yellow)", green: "var(--alert-green)" };
+const LEVEL_HEX = { red: "#e3141d", orange: "#ff7a00", yellow: "#ffd400", green: "#2f8f4e", none: "#2a3242" };
+const levelOf = v => { const s = String(v || "").toLowerCase(); return s.includes("red") ? "red" : s.includes("orange") || s.includes("amber") ? "orange" : s.includes("yellow") ? "yellow" : s.includes("green") ? "green" : null; };
+
+/* ---------- time ---------- */
+const fmt = (iso, opts) => new Intl.DateTimeFormat(LANG + "-IN", Object.assign({ timeZone: TZ }, opts)).format(new Date(iso));
+const fmtDT = iso => fmt(iso, { day: "numeric", month: "short", hour: "numeric", minute: "2-digit", hour12: true });
+const pad = n => String(n).padStart(2, "0");
+function tick() {
+  const now = new Date();
+  $("clk").textContent = new Intl.DateTimeFormat("en-GB", { timeZone: TZ, hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false }).format(now);
+  $("clkD").textContent = fmt(now, { weekday: "short", day: "numeric", month: "long" }) + " · IST";
+  $("tkClock").textContent = $("clk").textContent.slice(0, 5);
+  drawCountdown();
+}
+
+/* ---------- desk data ---------- */
+let DATA = null, GEO = null;
+const IMD = () => (DATA && DATA.in && DATA.in.imd) || {};
+async function deskPoll() {
+  try {
+    const r = await fetch("live/desk.json", { cache: "no-store" });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    const d = await r.json();
+    if (!DATA || d.generated_at !== DATA.generated_at) { DATA = d; try { localStorage.setItem("india-desk-" + LANG, JSON.stringify(d)); } catch (e) {} renderAll(); }
+  } catch (e) {
+    if (!DATA) { try { const c = JSON.parse(localStorage.getItem("india-desk-" + LANG) || "null"); if (c) { DATA = c; renderAll(); } } catch (e2) {} }
+  }
+}
+
+/* ---------- map: Mercator over the Bay of Bengal ---------- */
+// the frame follows the storm: the current center, IMD's forecast points and landfall area, and the home coast
+// (Andhra Pradesh for te; Tamil Nadu + Andhra Pradesh for ta), with margins; it widens or heightens to keep the aspect
+const MAPS = { te: { lon0: 76.6, lon1: 95.0, latTop: 23.2, anchors: ["Visakhapatnam", "Machilipatnam"] },
+               ta: { lon0: 75.6, lon1: 94.0, latTop: 21.4, anchors: ["Chennai", "Kakinada"] } };
+const MW = 1290, MH = 778;
+const merc = lat => Math.log(Math.tan(Math.PI / 4 + lat * RAD / 2));
+const imerc = m => (2 * Math.atan(Math.exp(m)) - Math.PI / 2) / RAD;
+let MAP = (() => { const m = MAPS[BASE]; return { lon0: m.lon0, K: MW / ((m.lon1 - m.lon0) * RAD), YT: merc(m.latTop) }; })();
+function fitMap() {
+  if (!DATA || !DATA.center) return false;
+  const pts = [[DATA.center.lat, DATA.center.lon]];
+  const fc = (IMD().forecast && IMD().forecast.length ? IMD().forecast : (DATA.forecast || {}).points) || [];
+  fc.filter(p => Date.parse(p.timeUTC) - Date.now() < 84 * 3600e3).forEach(p => pts.push([p.lat, p.lon]));
+  const lf = IMD().landfall || {};
+  [...(lf.between || []), lf.near, ...MAPS[BASE].anchors].forEach(n => { const c = cityOf(n); if (c) pts.push([c.lat, c.lon]); });
+  let la0 = Math.min(...pts.map(p => p[0])) - 1.3, la1 = Math.max(...pts.map(p => p[0])) + 1.3;
+  let lo0 = Math.min(...pts.map(p => p[1])) - 1.6, lo1 = Math.max(...pts.map(p => p[1])) + 1.6;
+  if (lo1 - lo0 < 8) { const c = (lo0 + lo1) / 2; lo0 = c - 4; lo1 = c + 4; }
+  const ratio = MW / MH;
+  let mx0 = merc(la0), mx1 = merc(la1);
+  if ((lo1 - lo0) * RAD / (mx1 - mx0) < ratio) { const need = (mx1 - mx0) * ratio / RAD, c = (lo0 + lo1) / 2; lo0 = c - need / 2; lo1 = c + need / 2; }
+  else { const need = (lo1 - lo0) * RAD / ratio, c = (mx0 + mx1) / 2; mx0 = c - need / 2; mx1 = c + need / 2; }
+  const next = { lon0: lo0, K: MW / ((lo1 - lo0) * RAD), YT: mx1 };
+  const changed = Math.abs(next.lon0 - MAP.lon0) > .05 || Math.abs(next.K - MAP.K) / MAP.K > .01 || Math.abs(next.YT - MAP.YT) > .001;
+  MAP = next; return changed;
+}
+const proj = (lat, lon) => [(lon - MAP.lon0) * RAD * MAP.K, (MAP.YT - merc(lat)) * MAP.K];
+const NS = "http://www.w3.org/2000/svg";
+function el(tag, attrs, parent) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
+function ringPath(flat, P) { let d = ""; for (let i = 0; i < flat.length; i += 2) { const [x, y] = P(flat[i + 1], flat[i]); d += (i ? "L" : "M") + x.toFixed(1) + "," + y.toFixed(1); } return d + "Z"; }
+const FOCUS = BASE === "te" ? ["Andhra Pradesh"] : ["Tamil Nadu", "Andhra Pradesh"];
+function drawBase() {
+  if (!GEO) return;
+  const land = $("landG"); land.innerHTML = "";
+  el("path", { d: GEO.land.map(r => ringPath(r, proj)).join(""), fill: "rgba(43,59,51,.32)", stroke: "rgba(255,255,255,.55)", "stroke-width": 1.4 }, land);
+  const st = $("stateG"); st.innerHTML = "";
+  for (const [name, rings] of Object.entries(GEO.states)) el("path", { d: rings.map(r => ringPath(r, proj)).join(""), fill: "none", stroke: "rgba(255,255,255,.28)", "stroke-width": 1 }, st);
+  const fg = $("focusG"); fg.innerHTML = "";
+  FOCUS.forEach((name, i) => {
+    const rings = GEO.states[name]; if (!rings) return;
+    const d = rings.map(r => ringPath(r, proj)).join("");
+    el("path", { d, fill: i === 0 ? "rgba(227,20,29,.10)" : "rgba(255,212,0,.06)", stroke: "rgba(4,8,16,.75)", "stroke-width": 9, "stroke-linejoin": "round" }, fg);
+    el("path", { d, fill: "none", stroke: i === 0 ? "#ffd400" : "#ff8a00", "stroke-width": i === 0 ? 4 : 3, "stroke-linejoin": "round", filter: "url(#glow)" }, fg);
+  });
+}
+// labels: placed in priority order (landfall, forecast times, big cities, small cities); a label that would overlap
+// one already placed is dropped (its dot stays)
+const BOXES = [];
+const fits = (x0, y0, x1, y1) => !BOXES.some(b => x0 < b[2] && x1 > b[0] && y0 < b[3] && y1 > b[1]) && (BOXES.push([x0, y0, x1, y1]), true);
+const labelW = (txt, size) => [...txt].length * size * 0.62;
+function drawCities() {
+  const cg = $("cityG"); cg.innerHTML = "";
+  for (const c of CITIES.slice().sort((a, b) => (b.big || 0) - (a.big || 0))) {
+    if (c.ta_only && LANG !== "ta") continue;
+    const [x, y] = proj(c.lat, c.lon); if (x < 10 || x > MW - 10 || y < 10 || y > MH - 10) continue;
+    el("circle", { cx: x, cy: y, r: c.big ? 6 : 4.5, fill: "#fff", stroke: "#06070b", "stroke-width": 2.5 }, cg);
+    const size = c.big ? 19 : 15, w = labelW(cityLabel(c), size);
+    for (const side of [1, -1]) {
+      const x0 = side > 0 ? x + 10 : x - 10 - w;
+      if (fits(x0, y - size, x0 + w, y + 6)) {
+        const tx = el("text", { x: side > 0 ? x + 10 : x - 10, y: y + 6, class: "city" + (c.big ? "" : " small"), "text-anchor": side > 0 ? "start" : "end" }, cg);
+        tx.textContent = cityLabel(c); break;
+      }
+    }
+  }
+}
+const CLASS_COLOR = c => { const s = String(c || "").toLowerCase(); return s.includes("super") || s.includes("extremely") ? "#ff2b5f" : s.includes("very severe") ? "#ff5a1f" : s.includes("severe") ? "#ff8a00" : s.includes("cyclonic") ? "#ffd400" : "#6cc4ff"; };
+function drawTrack() {
+  const tg = $("trackG"), sg = $("stormG"), cg = $("coneG"); tg.innerHTML = sg.innerHTML = cg.innerHTML = "";
+  if (!DATA) return;
+  // JTWC (labelled second opinion): thin cyan; IMD: white dashed with class-coloured dots
+  const past = ((DATA.past || {}).points || []).map(p => proj(p[1], p[2]));
+  if (past.length > 1) el("path", { d: "M" + past.map(p => p.map(v => v.toFixed(1)).join(",")).join("L"), fill: "none", stroke: "#fff", "stroke-width": 4, "stroke-linecap": "round", opacity: .9 }, tg);
+  const c = DATA.center;
+  const imdF = (IMD().forecast && IMD().forecast.length ? IMD().forecast : (DATA.forecast || {}).points) || [];
+  const jt = ((DATA.in && DATA.in.jtwc && DATA.in.jtwc.forecast) || []).filter(p => p.lat != null && Date.parse(p.timeUTC) - Date.now() < 96 * 3600e3);
+  if (jt && jt.length) { const pts = [c ? proj(c.lat, c.lon) : null, ...jt.map(p => proj(p.lat, p.lon))].filter(Boolean);
+    el("path", { d: "M" + pts.map(p => p.map(v => v.toFixed(1)).join(",")).join("L"), fill: "none", stroke: "#49d3ff", "stroke-width": 3, "stroke-dasharray": "2 7", "stroke-linecap": "round" }, tg); }
+  if (c && imdF.length) {
+    // a widening band along IMD's track (visual uncertainty only when IMD gives no cone): drawn from IMD's points, labelled as IMD's track
+    const pts = [{ lat: c.lat, lon: c.lon, timeUTC: c.timeUTC }, ...imdF.filter(p => Date.parse(p.timeUTC) > Date.parse(c.timeUTC || 0))];
+    const xy = pts.map(p => proj(p.lat, p.lon));
+    el("path", { d: "M" + xy.map(p => p.map(v => v.toFixed(1)).join(",")).join("L"), fill: "none", stroke: "rgba(4,8,16,.7)", "stroke-width": 10, "stroke-linecap": "round", "stroke-linejoin": "round" }, tg);
+    el("path", { d: "M" + xy.map(p => p.map(v => v.toFixed(1)).join(",")).join("L"), fill: "none", stroke: "#fff", "stroke-width": 4, "stroke-dasharray": "14 9", "stroke-linecap": "round" }, tg);
+    pts.slice(1).forEach((p, i) => {
+      const [x, y] = xy[i + 1];
+      el("circle", { cx: x, cy: y, r: 11, fill: CLASS_COLOR(p.class || p.label), stroke: "#06070b", "stroke-width": 3 }, tg);
+      const txt = fmt(p.timeUTC, { day: "numeric", month: "short", hour: "numeric", hour12: true }), w = labelW(txt, 15);
+      for (const [dx, dy] of [[14, -14], [14, 26], [-14 - w, -14], [-14 - w, 26]]) {
+        if (fits(x + dx, y + dy - 15, x + dx + w, y + dy + 3)) { const tx = el("text", { x: x + dx, y: y + dy, class: "fc-l" }, tg); tx.textContent = txt; break; }
+      }
+    });
+  }
+  if (c) {
+    const [x, y] = proj(c.lat, c.lon);
+    const g = el("g", { transform: `translate(${x.toFixed(1)},${y.toFixed(1)})` }, sg);
+    const ring = el("circle", { r: 26, fill: "none", stroke: "#ff2b2b", "stroke-width": 4 }, g);
+    ring.animate([{ r: 26, opacity: 1 }, { r: 70, opacity: 0 }], { duration: 2000, iterations: Infinity });
+    el("circle", { r: 15, fill: "#e3141d", stroke: "#fff", "stroke-width": 4 }, g);
+    const sym = el("text", { y: 9, "text-anchor": "middle", fill: "#fff", "font-size": 24, "font-weight": 900 }, g); sym.textContent = "@";
+    sym.setAttribute("font-family", "Inter Tight"); sym.style.display = "none";
+  }
+}
+
+function drawLandfall() {
+  const lg = $("lfG"); lg.innerHTML = "";
+  if (!DATA) return;
+  // IMD's landfall area: the place IMD names ("near") and the stretch it gives ("between"); placed before every other label
+  const lf = IMD().landfall || {};
+  const near = cityOf(lf.near);
+  const bt = (lf.between || []).map(cityOf).filter(Boolean);
+  if (bt.length === 2 && GEO) {
+    // the stretch of coast IMD names, along Andhra Pradesh's outline (the shorter way round between the two towns)
+    const ring = (GEO.states["Andhra Pradesh"] || []).slice().sort((a, b) => b.length - a.length)[0];
+    if (ring) {
+      const n = ring.length / 2, near_ = c => { let bi = 0, bd = 1e9; for (let i = 0; i < n; i++) { const d = (ring[2 * i] - c.lon) ** 2 + (ring[2 * i + 1] - c.lat) ** 2; if (d < bd) { bd = d; bi = i; } } return bi; };
+      let ia = near_(bt[0]), ib = near_(bt[1]); if (ia > ib) [ia, ib] = [ib, ia];
+      const fwd = []; for (let i = ia; i <= ib; i++) fwd.push(i);
+      const back = []; for (let i = ib; i !== ia; i = (i + 1) % n) back.push(i); back.push(ia);
+      const idx = fwd.length <= back.length ? fwd : back;
+      const d = "M" + idx.map(i => proj(ring[2 * i + 1], ring[2 * i]).map(v => v.toFixed(1)).join(",")).join("L");
+      el("path", { d, fill: "none", stroke: "rgba(4,8,16,.7)", "stroke-width": 20, "stroke-linecap": "round", "stroke-linejoin": "round" }, lg);
+      el("path", { d, fill: "none", stroke: "#ff2b2b", "stroke-width": 11, "stroke-linecap": "round", "stroke-linejoin": "round", opacity: .9 }, lg);
+    }
+  }
+  if (near) {
+    const [x, y] = proj(near.lat, near.lon);
+    const r = el("circle", { cx: x, cy: y, r: 18, fill: "none", stroke: "#ff2b2b", "stroke-width": 5 }, lg);
+    r.animate([{ r: 14, opacity: 1 }, { r: 46, opacity: 0 }], { duration: 1600, iterations: Infinity });
+    el("circle", { cx: x, cy: y, r: 9, fill: "#ff2b2b", stroke: "#fff", "stroke-width": 3 }, lg);
+    const txt = "⚠ " + t("lfMark"), w = labelW(txt, 22);
+    BOXES.push([x - 14, y - 14, x + 14, y + 14]);
+    for (const [ax, ay, anchor] of [[x - 22, y - 28, "end"], [x - 22, y + 46, "end"], [x + 22, y + 46, "start"]]) {
+      const x0 = anchor === "end" ? ax - w : ax;
+      if (fits(x0, ay - 22, x0 + w, ay + 6)) { const tx = el("text", { x: ax, y: ay, class: "lf-l", "text-anchor": anchor }, lg); tx.textContent = txt; break; }
+    }
+  }
+}
+function drawMapChrome() {
+  $("mapTitle").textContent = t("mapTitle");
+  $("mapSub").textContent = (DATA && DATA.forecast && DATA.forecast.issuedUTC ? `${t("mapSub")} · ${fmtDT(DATA.forecast.issuedUTC)}` : t("mapSub"));
+  $("mapKey").innerHTML = `<span><i></i>${esc(t("keyPast"))}</span><span><i class="d"></i>${esc(t("keyImd"))}</span>` + (DATA && DATA.in && DATA.in.jtwc && (DATA.in.jtwc.forecast || []).length ? `<span><i class="j"></i>${esc(t("keyJtwc"))}</span>` : "");
+}
+
+/* ---------- satellite: Himawari-9 infrared, JMA tiles (z5 covers the Bay of Bengal) ---------- */
+const SAT = { base: "https://www.jma.go.jp/bosai/himawari/data/satimg/", z: 5, frames: [], idx: 0, timer: null };
+function satRange() {
+  const n = 2 ** SAT.z, lonOf = X => MAP.lon0 + X / (RAD * MAP.K), mercOf = Y => MAP.YT - Y / MAP.K;
+  const tx = lon => Math.floor((lon + 180) / 360 * n), ty = m => Math.floor((1 - m / Math.PI) / 2 * n);
+  return { x0: tx(lonOf(-40)), x1: tx(lonOf(MW + 40)), y0: ty(mercOf(-40)), y1: ty(mercOf(MH + 40)) };
+}
+function satRect(x, y) { const n = 2 ** SAT.z, lon = x / n * 360 - 180, m = Math.PI * (1 - 2 * y / n), s = 2 * Math.PI / n * MAP.K; return { X: (lon - MAP.lon0) * RAD * MAP.K, Y: (MAP.YT - m) * MAP.K, S: s }; }
+async function satRefresh() {
+  try {
+    const r = await fetch(SAT.base + "targetTimes_fd.json", { cache: "no-store" }); if (!r.ok) throw 0;
+    const all = (await r.json()).filter(x => x && x.validtime).sort((a, b) => a.validtime < b.validtime ? -1 : 1);
+    const last = all.slice(-1)[0]; if (!last) throw 0;
+    const ms = s => Date.UTC(+s.slice(0, 4), +s.slice(4, 6) - 1, +s.slice(6, 8), +s.slice(8, 10), +s.slice(10, 12));
+    const pick = all.filter(x => ms(last.validtime) - ms(x.validtime) <= 3 * 3600e3 && +x.validtime.slice(10, 12) % 30 === 0).slice(-6);
+    if (!pick.includes(last)) pick.push(last);
+    const g = $("sat"); g.innerHTML = ""; SAT.frames = [];
+    const rg = satRange();
+    for (const fr of pick) {
+      const fg = el("g", { opacity: 0 }, g);
+      for (let x = rg.x0; x <= rg.x1; x++) for (let y = rg.y0; y <= rg.y1; y++) {
+        const q = satRect(x, y);
+        el("image", { x: q.X.toFixed(1), y: q.Y.toFixed(1), width: (q.S + .6).toFixed(1), height: (q.S + .6).toFixed(1), preserveAspectRatio: "none",
+                      href: `${SAT.base}${fr.basetime}/fd/${fr.validtime}/B13/TBB/${SAT.z}/${x}/${y}.jpg` }, fg);
+      }
+      SAT.frames.push({ g: fg, ms: ms(fr.validtime) });
+    }
+    SAT.idx = SAT.frames.length - 1; satShow();
+    $("satChip").hidden = false; $("satName").textContent = t("sat");
+    clearInterval(SAT.timer); SAT.timer = setInterval(satStep, 700);
+  } catch (e) { $("satChip").hidden = true; }
+}
+let satHold = 0;
+function satStep() { if (!SAT.frames.length) return; if (SAT.idx === SAT.frames.length - 1 && satHold++ < 4) return; satHold = 0; SAT.idx = (SAT.idx + 1) % SAT.frames.length; satShow(); }
+function satShow() { SAT.frames.forEach((f, i) => f.g.setAttribute("opacity", i === SAT.idx ? 1 : 0)); const f = SAT.frames[SAT.idx]; if (f) $("satTime").textContent = "HIMAWARI-9 · JMA · " + fmt(new Date(f.ms).toISOString(), { hour: "numeric", minute: "2-digit", hour12: true }) + " IST"; }
+
+/* ---------- landfall countdown (to IMD's landfall time) and the rail ---------- */
+function drawCountdown() {
+  const lf = IMD().landfall || {}, box = $("cdBox"); if (!box) return;
+  const target = Date.parse(lf.timeUTC || "");
+  if (!target) { box.hidden = true; return; }
+  box.hidden = false;
+  const left = target - Date.now();
+  $("cdTitle").textContent = left > 0 ? t("cdTitle") : t("cdPast");
+  $("cdSub").textContent = left > 0 ? t("cdSub") : "IMD";
+  box.classList.toggle("past", left <= 0);
+  if (left > 0) {
+    const h = Math.floor(left / 3600e3), m = Math.floor(left / 60e3) % 60, s = Math.floor(left / 1e3) % 60;
+    $("cdT").innerHTML = `<div><b>${pad(h)}</b><small>${t("h")}</small></div><span class="sep">:</span><div><b>${pad(m)}</b><small>${t("m")}</small></div><span class="sep">:</span><div><b>${pad(s)}</b><small>${t("s")}</small></div>`;
+  }
+  const bt = lf.between && lf.between.length === 2 ? I18N.between(placeLocal(lf.between[0]), placeLocal(lf.between[1])) : "";
+  $("cdW").innerHTML = [bt, lf.near ? I18N.near(placeLocal(lf.near)) : "", lf.time_text ? `<em>IMD: ${esc(lf.time_text)}</em>` : ""].filter(Boolean).map(x => x.startsWith("<em>") ? x : esc(x)).join(" · ");
+}
+function drawRail() {
+  const im = IMD(), lf = im.landfall || {};
+  const n = [];
+  if (im.wind_kmh) n.push(`<div class="num hot"><small>${t("wind")}</small><b>${esc(rng(im.wind_kmh))}<em>${t("kmh")}</em></b></div>`);
+  if (im.gust_kmh) n.push(`<div class="num"><small>${t("gust")}</small><b>${esc(rng(im.gust_kmh))}<em>${t("kmh")}</em></b></div>`);
+  if (lf.wind_kmh) n.push(`<div class="num hot"><small>${t("atLandfall")}</small><b>${esc(rng(lf.wind_kmh))}<em>${t("kmh")}</em></b></div>`);
+  if (im.pressure_hpa) n.push(`<div class="num"><small>${t("pressure")}</small><b>${esc(im.pressure_hpa)}<em>hPa</em></b></div>`);
+  $("nums").innerHTML = n.join("");
+  const cls = clsLocal(im.class);
+  const cpa = ((DATA.in || {}).cpa || []).filter(c => c.timeUTC && Date.parse(c.timeUTC) > Date.now() - 3 * 3600e3).slice(0, LANG === "ta" ? 2 : 3);
+  $("pos").innerHTML = cpa.length
+    ? `<small>${t("cpaTitle")} · ${t("cpaBasis")}</small>` + cpa.map(c => `<div class="cpa"><b>${esc(placeLocal(c.place))}</b><span>${esc(c.km)} ${t("km")}</span><em>${esc(fmtDT(c.timeUTC))}</em></div>`).join("")
+      + (cls ? `<span class="cls">${esc(cls)} · ${esc(im.class)}</span>` : "")
+    : im.position_text ? `<small>${t("position")} · IMD ${esc(im.issued_ist_text || "")}</small><p>${esc(im.position_text)}${im.movement_text ? ". " + esc(im.movement_text) : ""}.</p>`
+      + (cls ? `<span class="cls">${esc(cls)} · ${esc(im.class)}</span>` : "") : "";
+}
+
+/* ---------- bulletin scene ---------- */
+function drawBulletin() {
+  let im = IMD(); const lf = im.landfall || {};
+  $("bulTitle").textContent = t("bulTitle");
+  const cls = clsLocal(im.class);
+  $("bulCls").textContent = [cls || im.class || "", t("storm")].filter(Boolean).join(" · ");
+  $("bulIssued").textContent = [im.class, im.bulletin, im.issued_ist_text ? `${t("issued")} ${im.issued_ist_text}` : ""].filter(Boolean).join(" · ");
+  const tiles = [];
+  if (im.wind_kmh) tiles.push(`<div class="tile y"><small>${t("wind")}</small><b>${esc(rng(im.wind_kmh))}<em>${t("kmh")}</em></b></div>`);
+  if (im.gust_kmh) tiles.push(`<div class="tile"><small>${t("gust")}</small><b>${esc(rng(im.gust_kmh))}<em>${t("kmh")}</em></b></div>`);
+  if (im.pressure_hpa) tiles.push(`<div class="tile"><small>${t("pressure")}</small><b>${esc(im.pressure_hpa)}<em>hPa</em></b></div>`);
+  $("bulTiles").innerHTML = tiles.join("");
+  const posShort = String(im.position_text || "").split(/,\s*(?=\d)/).slice(0, 3).join(", ");
+  if (localText("now").length) {
+    const warn = localText("warnings").slice(0, -1);
+    $("bulPos").innerHTML = `<h4><i></i>${t("position")}</h4>` + localText("now").slice(1, 3).map(x => `<p>${esc(x)}</p>`).join("")
+      + (warn.length ? `<h4><i></i>${t("rain")}</h4>` + warn.filter(x => !/మత్స్యకారు|மீனவர்/.test(x)).slice(0, 2).map(x => `<p>${esc(x)}</p>`).join("") : "");
+  } else
+  $("bulPos").innerHTML = (im.position_text ? `<h4><i></i>${t("position")}</h4><p>${esc(posShort)}.</p>` : "") + (im.movement_text ? `<h4><i></i>${t("move")}</h4><p>${esc(im.movement_text)}.</p>` : "")
+    + (homeRain(im).length ? `<h4><i></i>${t("rain")}</h4>` + homeRain(im).map(r => `<p>${esc(r)}</p>`).join("") : "");
+  const bt = lf.between && lf.between.length === 2 ? I18N.between(placeLocal(lf.between[0]), placeLocal(lf.between[1])) : "";
+  $("bulLf").innerHTML = (lf.time_text || bt || im.landfall_text) ? `<small>${t("landfall")}</small><b>${esc([bt, lf.near ? I18N.near(placeLocal(lf.near)) : ""].filter(Boolean).join(" · "))}</b>`
+    + (lf.wind_kmh ? `<p><b style="display:inline;font-size:26px">${esc(rng(lf.wind_kmh))}${lf.gust_kmh ? " / " + esc(rng(lf.gust_kmh)) : ""} ${t("kmh")}</b> · ${esc([clsLocal(lf.class), lf.class].filter(Boolean).join(" · "))}</p>` : "")
+    + (localText("landfall")[0] ? `<p>${esc(localText("landfall")[0])}</p>` : im.landfall_text ? `<p>${esc(im.landfall_text)}.</p>` : "") : "";
+  $("bulLf").hidden = !$("bulLf").innerHTML;
+  const sm = (im.surge || {}).m;
+  const surgeLocal = localText("landfall").find(x => /మీటర్ల|மீட்டர்/.test(x)), fishLocal = localText("warnings").find(x => /మత్స్యకారు|மீனவர்/.test(x));
+  if (surgeLocal) im = Object.assign({}, im, { surge_text: surgeLocal.replace(/\.$/, "") });
+  if (fishLocal) im = Object.assign({}, im, { fishermen_text: fishLocal.replace(/\.$/, "") });
+  $("bulSurge").innerHTML = im.surge_text ? `<h4><i></i>${t("surge")}${sm ? ` <span style="color:#fff;font:900 30px/1 var(--font-num);margin-left:auto">${esc(rng(sm))} m</span>` : ""}</h4><p>${esc(im.surge_text)}</p>` : "";
+  $("bulSurge").hidden = !im.surge_text;
+  $("bulMore").innerHTML = (im.fishermen_text ? `<h4><i></i>${t("fishermen")}</h4><p>${esc(im.fishermen_text)}.</p>` : "")
+    + (localText("warnings").length ? "" :      // the local-language warnings column already carries the winds
+       windLines(im).length ? `<h4><i></i>${t("windWarn")}</h4><p>${esc(windLines(im)[0])}</p>` : (lines(im.sea_text).length ? `<h4><i></i>${t("sea")}</h4><p>${esc(lines(im.sea_text)[0])}</p>` : ""));
+  $("bulMore").hidden = !$("bulMore").innerHTML;
+}
+
+/* ---------- district board ---------- */
+const DIST_STATES = BASE === "te" ? ["Andhra Pradesh"] : ["Tamil Nadu", "Andhra Pradesh"];
+// the day the board shows: the most severe of the coming days in IMD's district colours (red first), not just today's
+function distDate() {
+  const days = (DATA && DATA.in && DATA.in.districts_days) || {}, today = new Date(Date.now() + 5.5 * 3600e3).toISOString().slice(0, 10);
+  const score = {};
+  for (const st of DIST_STATES) for (const entries of Object.values(days[st] || {})) for (const e of entries || [])
+    if (e.date >= today) score[e.date] = (score[e.date] || 0) + ({ red: 10000, orange: 100, yellow: 1 }[e.colour] || 0);
+  const best = Object.entries(score).sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1))[0];
+  return best ? best[0] : null;
+}
+function distLevels() {
+  const day = distDate(), days = (DATA && DATA.in && DATA.in.districts_days) || {};
+  const src = day ? Object.fromEntries(Object.entries(days).map(([st, ds]) => [st, Object.fromEntries(Object.entries(ds).map(([n, es]) =>
+    [n, ((es || []).find(e => e.date === day) || {}).colour || ""]))])) : ((DATA && DATA.in && DATA.in.districts) || {});
+  const out = {};
+  for (const st of DIST_STATES) {
+    const known = Object.keys((GEO && GEO.districts[st]) || {});
+    out[st] = {};
+    const imdSt = Object.keys(src).find(k => dKey(k) === dKey(st)); if (!imdSt) continue;
+    for (const [n, v] of Object.entries(src[imdSt] || {})) { const c = dCanon(n, known), lv = levelOf(v); if (c && lv) out[st][c] = lv; }
+  }
+  return out;
+}
+function hasDistricts() { const L = distLevels(); return Object.values(L).some(o => Object.keys(o).length); }
+function drawDistricts() {
+  const dd = distDate();
+  $("distTitle").textContent = t("distTitle") + (dd ? " · " + fmt(dd + "T06:00:00Z", { day: "numeric", month: "short" }) : "");
+  const svg = $("distSvg"); svg.innerHTML = ""; if (!GEO) return;
+  const L = distLevels();
+  // fit the board's states into the panel (equirectangular, cos-lat corrected)
+  const rings = DIST_STATES.flatMap(st => Object.values(GEO.districts[st] || {}).flat());
+  let x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9;
+  for (const r of rings) for (let i = 0; i < r.length; i += 2) { x0 = Math.min(x0, r[i]); x1 = Math.max(x1, r[i]); y0 = Math.min(y0, r[i + 1]); y1 = Math.max(y1, r[i + 1]); }
+  const cl = Math.cos(((y0 + y1) / 2) * RAD), pad_ = 40, W = 1100, H = 778;
+  const s = Math.min((W - 2 * pad_) / ((x1 - x0) * cl), (H - 2 * pad_ - 30) / (y1 - y0));
+  const ox = (W - (x1 - x0) * cl * s) / 2, oy = (H - (y1 - y0) * s) / 2 + 10;
+  const P = (lat, lon) => [ox + (lon - x0) * cl * s, oy + (y1 - lat) * s];
+  // neighbouring states as context
+  for (const [name, rs] of Object.entries(GEO.states)) if (!DIST_STATES.includes(name)) el("path", { d: rs.map(r => ringPath(r, P)).join(""), class: "ctx" }, svg);
+  const labels = [];
+  for (const st of DIST_STATES) for (const [name, rs] of Object.entries(GEO.districts[st] || {})) {
+    const lv = L[st][name] || "none";
+    el("path", { d: rs.map(r => ringPath(r, P)).join(""), class: "d", fill: LEVEL_HEX[lv] }, svg);
+    // label at the biggest ring's vertex centroid, for districts with an alert (others stay unlabelled to keep it readable)
+    if (lv !== "red" && lv !== "orange") continue;
+    if (LANG === "ta" && st !== "Tamil Nadu") continue;        // the Tamil board labels Tamil Nadu; Andhra districts are coloured and listed
+    const big = rs.slice().sort((a, b) => b.length - a.length)[0]; let cx = 0, cy = 0, n = 0;
+    for (let i = 0; i < big.length; i += 2) { cx += big[i]; cy += big[i + 1]; n++; }
+    labels.push([P(cy / n, cx / n), dLocal(name)]);
+  }
+  for (const [[x, y], txt] of labels) { const tx = el("text", { x, y, class: "dl" }, svg); tx.textContent = txt; }
+  if (DIST_STATES.length > 1) DIST_STATES.forEach(st => {
+    const rs = Object.values(GEO.districts[st] || {}).flat(); let a = 1e9, b = -1e9, c = 1e9, d = -1e9;
+    for (const r of rs) for (let i = 0; i < r.length; i += 2) { a = Math.min(a, r[i]); b = Math.max(b, r[i]); c = Math.min(c, r[i + 1]); d = Math.max(d, r[i + 1]); }
+    const [x, y] = P(st === "Tamil Nadu" ? c + (d - c) * .62 : d + 0.15, st === "Tamil Nadu" ? a + (b - a) * .38 : (a + b) / 2);
+    const tx = el("text", { x, y, class: "stl" }, svg);
+    tx.textContent = LANG === "en" ? st : st === "Tamil Nadu" ? (LANG === "ta" ? "தமிழ்நாடு" : "తమిళనాడు") : (LANG === "ta" ? "ஆந்திரப் பிரதேசம்" : "ఆంధ్రప్రదేశ్");
+  });
+  $("distLeg").innerHTML = ["red", "orange", "yellow"].map(lv => `<div><i style="background:${LEVEL_HEX[lv]}"></i>${t(lv)}</div>`).join("");
+  const groups = { red: [], orange: [], yellow: [] };
+  for (const st of DIST_STATES) for (const [n, lv] of Object.entries(L[st])) if (groups[lv]) groups[lv].push([st, dLocal(n)]);
+  const any = Object.values(groups).some(g => g.length);
+  const stName = st => LANG === "en" ? st : st === "Tamil Nadu" ? (LANG === "ta" ? "தமிழ்நாடு" : "తమిళనాడు") : (LANG === "ta" ? "ஆந்திரா" : "ఆంధ్రప్రదేశ్");
+  const body = (lv, g) => {
+    // red and orange: every district; yellow (often most of a state): every district while short, else a count per state
+    if (lv !== "yellow" || g.length <= 14) return g.map(x => esc(x[1])).join(" · ");
+    return DIST_STATES.map(st => { const n = g.filter(x => x[0] === st).length; return n ? `${esc(stName(st))}: ${n} ${t("districts")}` : ""; }).filter(Boolean).join(" · ");
+  };
+  $("distList").innerHTML = any ? ["red", "orange", "yellow"].filter(lv => groups[lv].length).map(lv =>
+      `<div class="lv"><div class="lh" style="background:${LEVEL_HEX[lv]};${lv === "red" ? "color:#fff" : ""}">${t(lv)}<span>${groups[lv].length}</span></div><div class="lb">${body(lv, groups[lv])}</div></div>`).join("")
+      + `<div class="note">IMD ${esc((DATA.in || {}).districts_issued || "")}${((DATA.in || {}).districts_dates || []).length ? " · " + esc(DATA.in.districts_dates.map(d => fmt(d + "T06:00:00Z", { day: "numeric", month: "short" })).join(", ")) : ""}</div>`
+    : `<div class="note" style="font-size:20px">${t("noDist")}</div>`;
+}
+
+/* ---------- IMD Doppler radar (images IMD refreshes about every 10 min; crops per radar layout) ---------- */
+const RADARS = {
+  vsk: { file: "caz_vsk.gif", W: 1006, H: 800, main: [0, 197, 600, 603], leg: [806, 0, 200, 600], te: "విశాఖపట్నం", ta: "விசாகப்பட்டினம்", en: "Visakhapatnam" },
+  mpt: { file: "caz_mpt.gif", W: 1119, H: 900, main: [0, 248, 652, 652], leg: [900, 0, 219, 640], te: "మచిలీపట్నం", ta: "மசூலிப்பட்டினம்", en: "Machilipatnam" },
+  kkl: { file: "caz_kkl.gif", W: 880, H: 720, main: [0, 200, 520, 520], leg: [718, 104, 162, 530], te: "కారైక్కాల్", ta: "காரைக்கால்", en: "Karaikal" },
+};
+const RADAR_SET = BASE === "te" ? ["vsk", "mpt"] : ["kkl", "mpt"];
+function drawRadar() {
+  $("radTitle").textContent = t("radTitle");
+  const box = $("radar"), stamp = Math.floor(Date.now() / 300e3);
+  box.innerHTML = RADAR_SET.map(k => {
+    const R = RADARS[k], ph = 630, sc = ph / R.main[3], pw = Math.round(R.main[2] * sc);
+    const lsc = Math.min(1, 610 / R.leg[3]) * 0.98, lw = Math.round(R.leg[2] * lsc), lh = Math.round(R.leg[3] * lsc);
+    const src = `https://mausam.imd.gov.in/Radar/${R.file}?t=${stamp}`;
+    return `<div class="rad"><div class="crop" style="width:${pw}px;height:${ph}px"><img alt="" src="${src}" style="width:${Math.round(R.W * sc)}px;height:${Math.round(R.H * sc)}px;left:${-Math.round(R.main[0] * sc)}px;top:${-Math.round(R.main[1] * sc)}px"
+        onerror="this.closest('.rad').insertAdjacentHTML('beforeend','<div class=err>${esc(t("radarErr"))}</div>')"></div>
+      <div class="leg" style="width:${lw}px;height:${lh}px"><img alt="" src="${src}" style="width:${Math.round(R.W * lsc)}px;height:${Math.round(R.H * lsc)}px;left:${-Math.round(R.leg[0] * lsc)}px;top:${-Math.round(R.leg[1] * lsc)}px"></div>
+      <div class="lab"><b>${esc(t("radTitle"))} · ${esc(R[LANG])}</b><span>IMD DOPPLER WEATHER RADAR · ${esc(R.en.toUpperCase())}</span></div></div>`;
+  }).join("");
+}
+
+/* ---------- IMD's official track graphic: the title and map part of IMD's image, with the key facts beside it ---------- */
+let trkUrl = "";
+function drawImdTrack() {
+  const im = IMD(), lf = im.landfall || {};
+  $("trkTitle").textContent = t("trackTitle");
+  if (im.track_image_url && im.track_image_url !== trkUrl) {
+    trkUrl = im.track_image_url;
+    // IMD's graphic is a tall page (title, map, legend, table); the box shows its title + map (the top ~64%)
+    $("trkImg").innerHTML = `<img alt="IMD track" src="${esc(trkUrl)}" onload="this.parentNode.style.height=Math.round(this.parentNode.clientWidth*this.naturalHeight/this.naturalWidth*.64)+'px'">`;
+  }
+  const bt = lf.between && lf.between.length === 2 ? I18N.between(placeLocal(lf.between[0]), placeLocal(lf.between[1])) : "";
+  const cpa = ((DATA.in || {}).cpa || []).slice(0, 4);
+  $("trkSide").innerHTML = (bt || lf.near ? `<div class="k"><small>${t("landfall")}</small><b>${esc([bt, lf.near ? I18N.near(placeLocal(lf.near)) : ""].filter(Boolean).join(" · "))}</b>`
+      + `<p>${esc([lf.time_text, rng(lf.wind_kmh) ? rng(lf.wind_kmh) + " kmph" : "", lf.class].filter(Boolean).join(" · "))}</p></div>` : "")
+    + (cpa.length ? `<div class="k"><small>${t("cpaTitle")} · ${t("cpaBasis")}</small>` + cpa.map(c => `<div class="cpa2"><b>${esc(placeLocal(c.place))}</b><span>${esc(c.km)} ${t("km")}</span><em>${esc(fmtDT(c.timeUTC))}</em></div>`).join("") + `</div>` : "")
+    + `<div class="k cone"><i></i>${esc(t("cone"))}</div>`;
+}
+function hasImdTrack() { return !!IMD().track_image_url; }
+
+/* ---------- lower third + ticker, in the local language, from IMD's data ---------- */
+function headlines() {
+  const im = IMD(), lf = im.landfall || {}, hs = [];
+  const target = Date.parse(lf.timeUTC || ""), left = target - Date.now();
+  if (target && left > 0) hs.push({ main: I18N.hlLand(Math.floor(left / 3600e3), Math.floor(left / 60e3) % 60),
+    sub: localText("landfall")[0] || im.landfall_text || [lf.between && lf.between.join(" – "), lf.near, lf.time_text].filter(Boolean).join(" · "), tag: t("tagLand") });
+  if (im.wind_kmh && im.gust_kmh) hs.push({ main: I18N.hlWind(rng(im.wind_kmh), rng(im.gust_kmh)), sub: [clsLocal(im.class), im.class, im.pressure_hpa ? im.pressure_hpa + " hPa" : ""].filter(Boolean).join(" · "), tag: t("tagWind") });
+  const L = hasDistricts() ? distLevels() : {}; const reds = Object.values(L).flatMap(o => Object.entries(o).filter(([, v]) => v === "red").map(([k]) => dLocal(k)));
+  for (const [st, o] of Object.entries(L)) {            // one headline per state, naming it
+    const r = Object.entries(o).filter(([, v]) => v === "red").map(([k]) => dLocal(k));
+    if (r.length) hs.push({ main: I18N.hlRed(r.length, st), sub: r.join(" · "), tag: t("tagRed") });
+  }
+  if (localText("now")[1]) hs.push({ main: t("hlNow"), sub: localText("now")[1], tag: "IMD" });
+  else if (im.position_text) hs.push({ main: t("hlNow"), sub: String(im.position_text).split(/,\s*(?=\d)/).slice(0, 2).join(", "), tag: "IMD" });
+  return hs;
+}
+let hlIdx = 0;
+function showHeadline() {
+  if (liveActive()) return;
+  const hs = headlines(); if (!hs.length) return;
+  const h = hs[hlIdx++ % hs.length];
+  const box = $("headBox"); box.classList.remove("swap"); void box.offsetWidth; box.classList.add("swap");
+  $("headMain").textContent = h.main; $("headSub").textContent = h.sub; $("headTag").textContent = h.tag;
+}
+let tickerAnim = null;
+function localText(part) { return ((((DATA && DATA.in) || {}).text || {})[LANG] || {})[part] || []; }
+function buildTicker() {
+  const im = IMD(), lf = im.landfall || {}, items = [];
+  if (localText("now").length) {
+    localText("now").slice(1).forEach(x => items.push([t("tkImd"), x]));
+    localText("landfall").forEach(x => items.push([t("tkLand"), x]));
+    localText("warnings").slice(0, -1).forEach(x => items.push([t("tkRed"), x]));
+    ((DATA.in || {}).cpa || []).slice(0, 3).forEach(c => items.push([t("closest"), `${placeLocal(c.place)} · ${c.km} ${t("km")} · ${fmtDT(c.timeUTC)} IST`]));
+    items.push([t("tkSafe"), t("safe")]);
+    const html = items.map(([k, v]) => `<span class="item"><b>${esc(k)}</b>${esc(v)}</span>`).join("");
+    const tr = $("tkTrack"); tr.innerHTML = html + html;
+    const half = tr.scrollWidth / 2; if (tickerAnim) tickerAnim.cancel();
+    tickerAnim = tr.animate([{ transform: "translateX(0)" }, { transform: `translateX(-${half}px)` }], { duration: half / 120 * 1000, iterations: Infinity });
+    return;
+  }
+  if (im.class || im.wind_text) items.push([t("tkImd"), [clsLocal(im.class), im.wind_text, im.pressure_hpa ? im.pressure_hpa + " hPa" : ""].filter(Boolean).join(" · ")]);
+  if (im.landfall_text) items.push([t("tkLand"), im.landfall_text]);
+  if (im.surge_text) items.push([t("tkSurge"), im.surge_text]);
+  const L = hasDistricts() ? distLevels() : {};
+  const lv = k => Object.values(L).flatMap(o => Object.entries(o).filter(([, v]) => v === k).map(([n]) => dLocal(n)));
+  if (lv("red").length) items.push([t("tkRed"), lv("red").join(", ")]);
+  if (lv("orange").length) items.push([t("tkOrange"), lv("orange").join(", ")]);
+  homeRain(im).forEach(r => items.push([t("tkRain"), r]));
+  ((DATA.in || {}).cpa || []).slice(0, 3).forEach(c => items.push([t("closest"), `${placeLocal(c.place)} · ${c.km} ${t("km")} · ${fmtDT(c.timeUTC)} IST`]));
+  if (im.fishermen_text) items.push([t("tkFish"), im.fishermen_text]);
+  items.push([t("tkSafe"), t("safe")]);
+  const html = items.map(([k, v]) => `<span class="item"><b>${esc(k)}</b>${esc(v)}</span>`).join("");
+  const tr = $("tkTrack"); tr.innerHTML = html + html;
+  const half = tr.scrollWidth / 2; if (tickerAnim) tickerAnim.cancel();
+  tickerAnim = tr.animate([{ transform: "translateX(0)" }, { transform: `translateX(-${half}px)` }], { duration: half / 120 * 1000, iterations: Infinity });
+}
+function drawHeader() {
+  $("brandSub").textContent = t("brand"); $("stormLocal").textContent = stormLabel(); $("bugLocal").textContent = stormLabel();
+  $("onAir").textContent = t("onAir"); $("tkLabel").textContent = t("ticker");
+  const st = (DATA && DATA.storm) || {}; if (st.name) { $("stormEn").textContent = st.name.toUpperCase(); $("bugTitle").textContent = "CYCLONE " + st.name.toUpperCase(); }
+  const im = IMD(); const cls = clsLocal(im.class);
+  $("stormCls").textContent = [cls ? `${cls} · ${im.class}` : "", im.wind_kmh ? `${rng(im.wind_kmh)} ${t("kmh")}` : ""].filter(Boolean).join("   ·   ");
+  const nb = im.next_bulletin && im.next_bulletin.timeUTC ? `${t("next")}: ${fmtDT(im.next_bulletin.timeUTC)} IST` : "";
+  $("stripTxt").textContent = [im.bulletin, im.issued_ist_text ? `${t("issued")}: ${im.issued_ist_text}` : "", nb].filter(Boolean).join(" · ");
+}
+function renderAll() {
+  if (!DATA) return;
+  const moved = fitMap();
+  BOXES.length = 0;
+  drawHeader(); drawBase(); drawLandfall(); drawTrack(); drawCities(); drawMapChrome(); drawRail(); drawCountdown(); drawBulletin(); drawDistricts(); drawImdTrack(); buildTicker();
+  if (moved && SAT.frames.length) satRefresh();
+}
+function stormHeader() { drawHeader(); }
+
+/* ---------- scenes ---------- */
+const SCENE_SECONDS = { map: 55, bulletin: 40, imdtrack: 35, districts: 40, radar: 45 };
+const ALL_SCENES = ["map", "bulletin", "imdtrack", "districts", "radar"];
+let cur = -1, sceneTimer = 0, auto = true;
+function activeScenes() { return ALL_SCENES.filter(s => (s !== "districts" || hasDistricts()) && (s !== "imdtrack" || hasImdTrack())); }
+function show(name) {
+  const list = activeScenes(); if (!list.includes(name)) name = list[0];
+  cur = list.indexOf(name);
+  ALL_SCENES.forEach(s => $("scene-" + s).classList.toggle("on", s === name));
+  if (name === "radar") drawRadar();
+  clearTimeout(sceneTimer);
+  if (auto) sceneTimer = setTimeout(() => { const l = activeScenes(); show(l[(l.indexOf(name) + 1) % l.length]); }, (SCENE_SECONDS[name] || 45) * 1000);
+}
+addEventListener("keydown", e => {
+  if (e.key >= "1" && e.key <= "5") show(ALL_SCENES[+e.key - 1]);
+  else if (e.key === "a" || e.key === "A") { auto = !auto; show(activeScenes()[cur] || "map"); }
+  else if (e.key === "l" || e.key === "L") liveToggle();
+});
+
+/* ---------- stage scale ---------- */
+function fit() { const s = Math.min(innerWidth / 1920, innerHeight / 1080); const st = $("stage"); st.style.transform = `translate(-50%,-50%) scale(${s})`; st.style.transformOrigin = "50% 50%"; st.style.left = "50%"; st.style.top = "50%"; }
+addEventListener("resize", fit); fit();
+
+/* =====================================================================
+   LIVE BROADCAST LAYER (same contract as champi-desk.html)
+     GET  live/current.json          manifest (src/broadcast/package.py), 204 while none
+     GET  live/<package_id>/<file>   the scene wavs
+     POST live/playback              heartbeat {package_id, scene_id, playlist_index}
+   ===================================================================== */
+var LIVE = { on: true, started: false, playing: false, pkg: null, next: null, playlist: [], idx: 0,
+             offlineSince: null, failures: 0, pages: [], pageIdx: -1, pollMs: 5000, lastOk: null };
+const textW = (s, k) => [...String(s)].length * (k || 1);
+function liveActive() { return !!(LIVE && LIVE.on && LIVE.playing); }
+function liveBadge(text, off) { const b = $("liveBadge"); if (!b) return; b.hidden = !text; b.textContent = text || ""; b.classList.toggle("off", !!off); }
+function liveScenes() { return Object.fromEntries((LIVE.pkg.scenes || []).map(s => [s.scene_id, s])); }
+function livePlaylist(m) { const ids = (m.scenes || []).map(s => s.scene_id); const pl = (m.playlist && m.playlist.length) ? m.playlist.filter(id => ids.includes(id)) : ids; return pl.length ? pl : ids; }
+function liveAudioUrl(m, s) { const a = s.audio || {}; const name = a.path || String(a.key || "").split("/").pop(); return `live/${encodeURIComponent(m.package_id)}/${encodeURIComponent(name)}`; }
+function liveApplyStorm(m) { try { buildTicker(); } catch (e) { console.warn("ticker", e); } }   // never blocks playback
+async function livePoll() {
+  try {
+    const r = await fetch("live/current.json", { cache: "no-store" });
+    if (r.status === 204) { if (!LIVE.pkg) liveBadge("LIVE FEED · waiting for the first package"); LIVE.offlineSince = null; return; }
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    const m = await r.json();
+    if (!m || !m.package_id || !Array.isArray(m.scenes) || !m.scenes.length) throw new Error("bad manifest");
+    LIVE.offlineSince = null; LIVE.lastOk = Date.now();
+    if (!LIVE.pkg) { LIVE.pkg = m; LIVE.playlist = livePlaylist(m); LIVE.idx = 0; liveApplyStorm(m); liveStart(); }
+    else if (m.package_id !== LIVE.pkg.package_id && (!LIVE.next || LIVE.next.package_id !== m.package_id)) { LIVE.next = m; if (!LIVE.playing) liveAdvance(); }
+  } catch (e) {
+    if (!LIVE.offlineSince) LIVE.offlineSince = Date.now();
+    const tm = new Date(LIVE.offlineSince).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
+    liveBadge((LIVE.pkg ? "LIVE FEED offline since " + tm + " · replaying " + LIVE.pkg.package_id : "LIVE FEED offline since " + tm), true);
+  }
+}
+function liveStart() { if (!LIVE.on || !LIVE.pkg || LIVE.started) return; LIVE.started = true; document.body.classList.add("live"); livePlay(LIVE.idx); }
+const SCENE_TITLE = { te: { "Show Open": "ప్రారంభం", "Current Position": "ప్రస్తుత స్థానం", "Track Forecast": "మార్గం అంచనా", "Landfall": "తీరం దాటే సమయం", "District Alerts": "జిల్లా హెచ్చరికలు", "Show Close": "ముగింపు" },
+                      ta: { "Show Open": "தொடக்கம்", "Current Position": "தற்போதைய இடம்", "Track Forecast": "பாதை கணிப்பு", "Landfall": "கரை கடக்கும் நேரம்", "District Alerts": "மாவட்ட எச்சரிக்கை", "Show Close": "நிறைவு" }, en: {} }[LANG];
+const sceneTitle = s => SCENE_TITLE[s] || s;
+function liveHeadline(s) {
+  const h = s.headline || {};
+  const box = $("headBox"); box.classList.remove("swap"); void box.offsetWidth; box.classList.add("swap");
+  $("headMain").textContent = h.main || sceneTitle(s.title) || s.display_text || "";
+  $("headSub").textContent = h.sub || liveFirstSentence(s) || "";
+  $("headTag").textContent = sceneTitle(h.tag || s.title || "LIVE");
+}
+function liveFirstSentence(s) { const x = ((s.script && s.script.llm_output) || "").trim(); const m = x.match(/^(.{20,160}?[.!?।])(\s|$)/); return m ? m[1] : x.slice(0, 140); }
+function livePages(text) {
+  const sents = (text || "").replace(/\s+/g, " ").trim().split(/(?<=[.!?।]["')\]]?)\s+/);
+  const pages = []; let curp = "";
+  for (const s of sents) { const x = s.trim(); if (!x) continue; if (curp && textW(curp + x) > 120) { pages.push(curp); curp = x; } else curp = curp ? curp + " " + x : x; }
+  if (curp) pages.push(curp);
+  const total = pages.reduce((a, p) => a + p.length, 0) || 1; let acc = 0;
+  return pages.map(p => { const start = acc / total; acc += p.length; return { text: p, start, end: acc / total }; });
+}
+function liveCaption(s) {
+  $("caption").hidden = false;
+  $("capScene").textContent = `${LIVE.idx + 1}/${LIVE.playlist.length} · ${sceneTitle(s.title || s.display_text || s.scene_id)}`;
+  const when = s.generated_at ? fmt(s.generated_at, { hour: "numeric", minute: "2-digit", hour12: true }) + " IST" : "";
+  $("capMeta").innerHTML = `<b>${esc(t("generated"))} ${esc(when)}</b>${esc(t("fallback"))}<br>${esc(t("pkg"))} ${esc(String(LIVE.pkg.package_id).slice(-13))}`;
+  LIVE.pages = livePages(s.script && s.script.llm_output); LIVE.pageIdx = -1; liveShowPage(0);
+}
+function liveShowPage(i) {
+  if (!LIVE.pages.length || i === LIVE.pageIdx) return;
+  LIVE.pageIdx = Math.max(0, Math.min(i, LIVE.pages.length - 1));
+  const e = $("capText"); e.classList.remove("swap"); void e.offsetWidth; e.classList.add("swap"); e.textContent = LIVE.pages[LIVE.pageIdx].text;
+}
+function liveHeartbeat(s) {
+  try { fetch("live/playback", { method: "POST", headers: { "Content-Type": "application/json" }, keepalive: true,
+    body: JSON.stringify({ package_id: LIVE.pkg.package_id, scene_id: s.scene_id, playlist_index: LIVE.idx }) }).catch(() => {}); } catch (e) {}
+}
+function livePlay(i) {
+  const scenes = liveScenes(); if (!LIVE.playlist.length) return;
+  LIVE.idx = ((i % LIVE.playlist.length) + LIVE.playlist.length) % LIVE.playlist.length;
+  const s = scenes[LIVE.playlist[LIVE.idx]]; if (!s) { liveAdvance(); return; }
+  const a = $("liveAudio"); a.src = liveAudioUrl(LIVE.pkg, s); a.currentTime = 0;
+  LIVE.playing = true; liveHeadline(s); liveCaption(s); liveHeartbeat(s);
+  liveBadge(`LIVE FEED · ${LIVE.pkg.package_id} · scene ${LIVE.idx + 1}/${LIVE.playlist.length} ${LIVE.next ? "· new package queued" : ""}`);
+  $("capBar").style.width = "0%";
+  const p = a.play();
+  if (p && p.catch) p.catch(err => {
+    if (err && err.name === "NotAllowedError") { $("liveStart").hidden = false; }
+    else { console.warn("live audio", err); LIVE.failures++; setTimeout(() => { if (LIVE.playing) liveAdvance(); }, 2500); }
+  });
+}
+function liveAdvance() {
+  if (!LIVE.on) return;
+  if (LIVE.next) {
+    const same = JSON.stringify(livePlaylist(LIVE.next)) === JSON.stringify(LIVE.playlist);
+    const nextIdx = same ? LIVE.idx + 1 : 0;
+    LIVE.pkg = LIVE.next; LIVE.next = null; LIVE.playlist = livePlaylist(LIVE.pkg); liveApplyStorm(LIVE.pkg);
+    LIVE.started = true; document.body.classList.add("live"); livePlay(nextIdx);
+  } else livePlay(LIVE.idx + 1);
+}
+function liveToggle() {
+  LIVE.on = !LIVE.on; $("liveState").textContent = LIVE.on ? "on" : "off";
+  const a = $("liveAudio");
+  if (!LIVE.on) { a.pause(); LIVE.playing = false; LIVE.started = false; $("caption").hidden = true; document.body.classList.remove("live"); liveBadge("LIVE FEED paused (press L)", true); showHeadline(); }
+  else { LIVE.started = false; liveStart(); }
+}
+(function liveInit() {
+  const a = $("liveAudio");
+  a.addEventListener("ended", () => { LIVE.failures = 0; LIVE.playing = false; $("caption").hidden = true; liveAdvance(); });
+  a.addEventListener("error", () => { if (!LIVE.playing) return; LIVE.failures++; liveBadge(`LIVE FEED · audio failed for scene ${LIVE.idx + 1} (${LIVE.failures})`, true); if (LIVE.failures <= LIVE.playlist.length) setTimeout(liveAdvance, 2500); });
+  a.addEventListener("timeupdate", () => {
+    if (!LIVE.pages.length || !a.duration) return;
+    const f = a.currentTime / a.duration; $("capBar").style.width = (100 * f).toFixed(1) + "%";
+    const i = LIVE.pages.findIndex(p => f >= p.start && f < p.end); liveShowPage(i < 0 ? LIVE.pages.length - 1 : i);
+  });
+  if (Q.get("live") === "0") { LIVE.on = false; $("liveState").textContent = "off"; }
+  const autoplay = Q.get("autoplay") === "1";
+  $("liveStartBtn").onclick = () => { $("liveStart").hidden = true; const p = $("liveAudio").play(); if (p && p.catch) p.catch(() => {}); if (!LIVE.started) liveStart(); };
+  if (!autoplay && LIVE.on && location.protocol !== "file:") $("liveStart").hidden = false;
+  if (LIVE.on) { livePoll(); setInterval(livePoll, LIVE.pollMs); }
+})();
+let idleT; addEventListener("mousemove", () => { document.body.classList.remove("idle"); clearTimeout(idleT); idleT = setTimeout(() => document.body.classList.add("idle"), 2500); });
+
+/* ---------- boot ---------- */
+(async function boot() {
+  try { GEO = await (await fetch("india-geo.json")).json(); } catch (e) { GEO = null; }
+  drawHeader();
+  await deskPoll(); setInterval(deskPoll, 60e3);
+  satRefresh(); setInterval(satRefresh, 10 * 60e3);
+  setInterval(() => { if (document.querySelector("#scene-radar.on")) drawRadar(); }, 5 * 60e3);
+  tick(); setInterval(tick, 1000);
+  showHeadline(); setInterval(showHeadline, 12000);
+  setInterval(buildTicker, 10 * 60e3);
+  show((location.hash || "#map").slice(1));
+})();
+</script>
+</body>
+</html>

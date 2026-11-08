@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="te" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1920">
+<title>India Thumbnail</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@800;900&family=Noto+Sans+Telugu:wght@800;900&family=Noto+Sans+Tamil:wght@800;900&display=swap">
+<!--
+YouTube thumbnail for the India (Telugu / Tamil) cyclone streams, built for click-through in the Indian news idiom
+(research/market/thumbnails_india.md): the storm close up with a thick arrow onto the home coast, the home state glowing
+red, two big local-script lines on solid colour bars, a giant landfall countdown and an IMD RED ALERT stamp. Every number
+is filled from the stream's live/desk.json (IMD), never typed:
+  #H hours to IMD's landfall time, #RED red-alert districts in the home state on its worst coming day,
+  #GUST IMD's gust at landfall (km/h), #WIND its sustained-wind range.
+Words: ?lang=te|ta|en &l1= (yellow bar) &l2= (red bar) &l3= (optional white strip, [..] red) &cdTop= &cdUnit= &cdBot= (countdown)
+       &stamp2= (under the stamp's header) &stamp1=IMD RED ALERT (the header, e.g. IMD WARNING where there is no red alert)
+       &q= (a question box) &hl=Andhra Pradesh (red states, the first is home) &target=Kakinada,Yanam (landfall label; default IMD's "near" town from desk.json)
+       &places=Visakhapatnam:e (dot + label, :e / :w side; none for no places) &view=coast|wide (wide also keeps Chennai in frame)
+       &sat=geo|ir (CIRA GeoColor, the default when the frame has it, or enhanced infrared) &zw=1700 (view width in frame px)
+       &stampAt=top|coast (the stamp under the LIVE badge, or on the home state below the landfall label)
+       &look=news (white &head= box top left, LIVE top right, outlined lines without bars, red arrow, sat=irnews: blue-white IR)
+       &a_head= &a_l1= &a_l2= &a_l3= (used instead once IMD's landfall time has passed, when #H no longer exists)
+Rendered by scripts/youtube_thumbnail.py --style tw with tpl=in (screenshots once body[data-thumb-ready] is set).
+-->
+<style>
+:root { --red: #e8131f; --red2: #b5000c; --yellow: #ffd400; --ink: #07090f; --white: #fff;
+  --local: "Noto Sans Telugu", "Noto Sans Tamil", "Inter Tight", sans-serif; --num: "Anton", "Inter Tight", sans-serif; }
+* { box-sizing: border-box; margin: 0; }
+html, body { width: 1920px; height: 1080px; overflow: hidden; background: #000; }
+body { position: relative; font-family: var(--local); color: #fff; }
+svg#map { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+.fade { position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(0deg, rgba(5,6,10,.9) 0, rgba(5,6,10,.5) 26%, rgba(5,6,10,0) 42%); }
+/* top left: LIVE + IST time */
+.live { position: absolute; left: 34px; top: 30px; display: flex; border: 5px solid #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,.6); }
+.live b { background: var(--red); font: 900 62px/1 "Inter Tight"; padding: 10px 20px 12px 18px; display: flex; align-items: center; gap: 12px; }
+.live b i { width: 24px; height: 24px; border-radius: 50%; background: #fff; }
+.live span { background: #fff; color: var(--ink); font: 900 50px/1 "Inter Tight"; padding: 16px 18px 0; }
+/* the red-alert stamp, set on the home state */
+.stamp { position: absolute; transform: rotate(-4deg); background: var(--red); border: 6px solid #fff; border-radius: 10px;
+  padding: 8px 22px 12px; box-shadow: 0 12px 36px rgba(0,0,0,.6); text-align: center; }
+.stamp b { display: block; font: 400 76px/1 var(--num); letter-spacing: .02em; }
+.stamp > span { display: block; font: 900 42px/1.15 var(--local); color: var(--yellow); margin-top: 4px; white-space: nowrap; }
+.stamp span .n { font: 400 50px/1 var(--num); }
+/* a question box (Tamil hook: "what does it mean for Chennai?"), set just above the text bars */
+.q { position: absolute; left: 34px; background: #fff; color: var(--red2); border: 6px solid var(--red); border-radius: 12px;
+  font: 900 56px/1.25 var(--local); padding: 4px 24px 12px; box-shadow: 0 12px 36px rgba(0,0,0,.6); white-space: nowrap; transform: rotate(-2deg); }
+/* giant countdown box */
+.cd { position: absolute; right: 34px; top: 30px; background: var(--yellow); color: var(--ink); border: 7px solid #fff; border-radius: 18px;
+  padding: 8px 26px 14px; text-align: center; box-shadow: 0 14px 40px rgba(0,0,0,.65); }
+.cd small { display: block; font: 900 38px/1.2 var(--local); }
+.cd b { display: block; font: 400 210px/.95 var(--num); color: var(--red2); white-space: nowrap; }
+.cd b em { font: 900 64px/1 var(--local); font-style: normal; color: var(--ink); margin-left: 8px; }
+.cd span { display: block; font: 900 34px/1.2 var(--local); }
+/* the two big lines on solid bars + an optional strip */
+.band { position: absolute; left: 0; right: 0; bottom: 30px; display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding: 0 34px; }
+.bar { display: inline-block; padding: 4px 28px 16px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,.55); white-space: nowrap; }
+.bar.y { background: var(--yellow); color: var(--red2); font: 900 104px/1.2 var(--local); }
+.bar.r { background: var(--red); color: #fff; font: 900 132px/1.15 var(--local); border: 6px solid #fff; }
+.bar .n { font-family: var(--num); font-weight: 400; color: var(--yellow); }
+.bar.y .n { color: var(--ink); }
+.strip { display: inline-block; background: #fff; color: var(--ink); font: 900 50px/1.3 var(--local); padding: 2px 20px 8px; border-radius: 8px; white-space: nowrap; }
+.strip b { color: var(--red); }
+/* look=news, the Telugu news idiom: one big real image, a white header box, two huge outlined lines with no colour bars */
+.head { position: absolute; left: 34px; top: 30px; background: #fff; color: var(--ink); font: 900 64px/1.25 var(--local); white-space: nowrap;
+  padding: 2px 26px 12px 22px; border-left: 16px solid var(--red); border-radius: 6px; box-shadow: 0 12px 36px rgba(0,0,0,.6); }
+.head .n { font: 400 76px/1 var(--num); color: var(--red2); }
+body.news .live { left: auto; right: 34px; }
+body.news .band { align-items: center; gap: 0; bottom: 22px; }
+body.news .bar { background: none; box-shadow: none; border: 0; border-radius: 0; padding: 0 12px; line-height: 1.22; }
+body.news .bar.y { color: var(--yellow); font-size: 150px; }
+body.news .bar.y .n { color: #fff; }
+body.news .bar.r { color: #fff; font-size: 132px; }
+body.news .bar.r .n { color: var(--yellow); }
+.credit { position: absolute; right: 16px; bottom: 6px; font: 800 20px/1 "Inter Tight"; color: rgba(255,255,255,.8); text-shadow: 0 2px 4px #000; }
+.place { font-family: var(--local); font-weight: 900; fill: #fff; paint-order: stroke fill; stroke: #000; stroke-linejoin: round; }
+[hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<svg id="map" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="10" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <!-- GeoColor reads a little flat at phone size: lift the clouds' contrast (tone only) -->
+    <filter id="pop"><feComponentTransfer><feFuncR type="linear" slope="1.3" intercept="-0.06"/><feFuncG type="linear" slope="1.3" intercept="-0.06"/>
+      <feFuncB type="linear" slope="1.22" intercept="-0.03"/></feComponentTransfer></filter>
+  </defs>
+  <image id="sat" x="0" y="0" width="1920" height="1080" preserveAspectRatio="none"/>
+  <g id="states" fill="none" stroke="rgba(255,255,255,.4)"></g>
+  <g id="home"></g><g id="track"></g><g id="marks"></g>
+</svg>
+<div class="fade"></div>
+<div class="live"><b><i></i>LIVE</b><span id="time"></span></div>
+<div class="stamp" id="stamp" hidden><b id="stamp1">IMD RED ALERT</b><span id="stamp2"></span></div>
+<div class="q" id="q" hidden></div>
+<div class="head" id="head" hidden></div>
+<div class="cd" id="cd" hidden><small id="cdTop"></small><b id="cdN"></b><span id="cdBot"></span></div>
+<div class="band" id="band"><div class="bar y" id="l1"></div><div class="bar r" id="l2"></div><div class="strip" id="l3" hidden></div></div>
+<div class="credit" id="credit"></div>
+<script>
+const $ = id => document.getElementById(id);
+const Q = new URLSearchParams(location.search);
+const LANG = Q.get("lang") || "te";
+const NEWS = Q.get("look") === "news";
+const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+// big digits in the display face: "140 కి.మీ" -> <span class="n">140</span> కి.మీ
+const rich = s => esc(s).replace(/(\d[\d\-–]*)/g, '<span class="n">$1</span>');
+const PLACES = { te: { Kakinada: "కాకినాడ", Visakhapatnam: "విశాఖపట్నం", Yanam: "యానాం", Machilipatnam: "మచిలీపట్నం", Chennai: "చెన్నై", Vijayawada: "విజయవాడ",
+                      Ongole: "ఒంగోలు", Nellore: "నెల్లూరు", Narsapur: "నరసాపురం", Bapatla: "బాపట్ల", Kavali: "కావలి" },
+                 ta: { Kakinada: "காக்கிநாடா", Visakhapatnam: "விசாகப்பட்டினம்", Yanam: "ஏனாம்", Machilipatnam: "மசூலிப்பட்டினம்", Chennai: "சென்னை", Vijayawada: "விஜயவாடா",
+                      Ongole: "ஓங்கோல்", Nellore: "நெல்லூர்", Narsapur: "நரசாபூர்", Bapatla: "பாபட்லா", Kavali: "காவலி" } }[LANG]
+               || new Proxy({}, { get: (_, n) => typeof n === "string" ? n : undefined });   // en: the English names as they are
+const COORD = { Kakinada: [16.99, 82.25], Visakhapatnam: [17.69, 83.22], Yanam: [16.73, 82.21], Machilipatnam: [16.17, 81.13], Chennai: [13.08, 80.27],
+                Vijayawada: [16.51, 80.65], Ongole: [15.50, 80.05], Nellore: [14.44, 79.99], Narsapur: [16.43, 81.70], Bapatla: [15.90, 80.47],
+                Kavali: [14.91, 79.99] };
+if (LANG === "en") { document.documentElement.lang = "en"; document.documentElement.style.setProperty("--local", '"Inter Tight", sans-serif'); }
+
+const fillNumbers = (s, v) => s.replace(/#H/g, v.H ?? "?").replace(/#RED/g, v.RED ?? "?").replace(/#GUST/g, v.GUST ?? "?").replace(/#WIND/g, v.WIND ?? "?");
+function istNow() {
+  const p = Object.fromEntries(new Intl.DateTimeFormat("en-GB", { timeZone: "Asia/Kolkata", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", hourCycle: "h23" })
+    .formatToParts(new Date()).map(x => [x.type, x.value]));
+  return `${p.day} ${p.month.toUpperCase()} · ${p.hour}:${p.minute} IST`;
+}
+// the storm's position on the official track at time t (linear between forecast points), in frame pixels
+function onTrack(points, t) {
+  const pts = points.map(p => ({ t: Date.parse(p.timeUTC), x: p.x, y: p.y })).sort((a, b) => a.t - b.t);
+  for (let i = 0; i + 1 < pts.length; i++) {
+    const a = pts[i], b = pts[i + 1];
+    if (t >= a.t && t <= b.t) { const f = (t - a.t) / (b.t - a.t || 1); return { x: a.x + (b.x - a.x) * f, y: a.y + (b.y - a.y) * f }; }
+  }
+  return null;
+}
+
+async function main() {
+  const [frame, desk, geo] = await Promise.all([fetch("thumb/in.json", { cache: "no-store" }).then(r => r.json()),
+    fetch("live/desk.json", { cache: "no-store" }).then(r => r.json()), fetch("india-geo.json").then(r => r.json())]);
+  const imd = (desk.in || {}).imd || {}, lf = imd.landfall || {};
+  // the numbers, all IMD's
+  const v = {};
+  const t = Date.parse(lf.timeUTC || "");
+  if (t > Date.now()) v.H = Math.max(1, Math.round((t - Date.now()) / 3600e3));
+  if (lf.gust_kmh) v.GUST = Array.isArray(lf.gust_kmh) ? lf.gust_kmh[1] : lf.gust_kmh;
+  if (lf.wind_kmh) v.WIND = Array.isArray(lf.wind_kmh) ? lf.wind_kmh.join("-") : lf.wind_kmh;
+  const hl = (Q.get("hl") || "Andhra Pradesh").split(",").map(x => x.trim()), home = hl[0];
+  const days = (desk.in || {}).districts_days || {}, today = new Date(Date.now() + 5.5 * 3600e3).toISOString().slice(0, 10);
+  const reds = {};
+  for (const entries of Object.values(days[home] || {})) for (const e of entries || []) if (e.date >= today && e.colour === "red") reds[e.date] = (reds[e.date] || 0) + 1;
+  const maxRed = Math.max(0, ...Object.values(reds));
+  if (maxRed) v.RED = maxRed;
+
+  // the view: the landfall coast on the left third, the storm (on IMD's track at the satellite's time) to the right
+  const b = frame.box, W = 1920, H = 1080;
+  const X = lon => (lon - b.lon0) / (b.lon1 - b.lon0) * W, Y = lat => (b.lat1 - lat) / (b.lat1 - b.lat0) * H;
+  const land = COORD[lf.near] || COORD.Yanam, lx = X(land[1]), ly = Y(land[0]);
+  const storm = onTrack(frame.forecast || [], Date.parse(frame.time)) || frame.center;
+  const wide = Q.get("view") === "wide";
+  const zw = Math.min(W, Math.max(+(Q.get("zw") || (wide ? 1500 : NEWS ? 1400 : 1700)), (storm.x - lx) / 0.42)), zh = zw * H / W;
+  const zx = Math.min(Math.max(lx - (wide ? 0.36 : 0.32) * zw, 0), W - zw), zy = Math.min(Math.max(ly - (wide ? 0.26 : 0.34) * zh, 0), H - zh);
+  $("map").setAttribute("viewBox", `${zx.toFixed(1)} ${zy.toFixed(1)} ${zw.toFixed(1)} ${zh.toFixed(1)}`);
+  const k = zw / W;                                        // keeps strokes and labels a constant size on screen
+  const ns = "http://www.w3.org/2000/svg", add = (g, tag, a) => { const e = document.createElementNS(ns, tag); for (const n in a) e.setAttribute(n, a[n]); $(g).appendChild(e); return e; };
+  const ring = flat => { let d = ""; for (let i = 0; i + 1 < flat.length; i += 2) d += (i ? "L" : "M") + X(flat[i]).toFixed(1) + "," + Y(flat[i + 1]).toFixed(1); return d + "Z"; };
+  for (const [name, rings] of Object.entries(geo.states || {}))
+    for (const r of rings)
+      if (hl.includes(name)) {                           // the home state: red, glowing, with a white coastline
+        add("home", "path", { d: ring(r), fill: "rgba(232,19,31,.36)", stroke: "#ff1e2b", "stroke-width": 14 * k, filter: "url(#glow)", "stroke-linejoin": "round" });
+        add("home", "path", { d: ring(r), fill: "none", stroke: "#fff", "stroke-width": 5 * k, "stroke-linejoin": "round" });
+      } else add("states", "path", { d: ring(r), "stroke-width": 2.4 * k });
+
+  // a thick arrow along the official track, from the storm to the edge of the landfall target. It starts a little
+  // coastward of the track point so it leaves from the visible core (Himawari sees the bay obliquely: cloud tops
+  // appear shifted north-west of the low-level centre)
+  const R = 58 * k, d0 = Math.hypot(lx - storm.x, ly - storm.y) || 1, lead = NEWS ? Math.max(0.5 * d0, 90 * k) : Math.min(80, 0.15 * d0);   // news: keep the eye clear
+  let pts = [[storm.x + (lx - storm.x) / d0 * lead, storm.y + (ly - storm.y) / d0 * lead], ...(frame.forecast || []).filter(p => Date.parse(p.timeUTC) > Date.parse(frame.time) && (!t || Date.parse(p.timeUTC) < t)).map(p => [p.x, p.y]), [lx, ly]];
+  const toLand = p => Math.hypot(lx - p[0], ly - p[1]), d1 = toLand(pts[0]);    // only track points ahead of the arrow's start
+  pts = NEWS ? [pts[0], pts[pts.length - 1]] : pts.filter((p, i) => i === 0 || i === pts.length - 1 || toLand(p) < d1);   // news: one straight arrow
+  pts = pts.filter((p, i) => i === 0 || Math.hypot(p[0] - pts[i - 1][0], p[1] - pts[i - 1][1]) > 4 * k);
+  const head = 96 * k, gap = R + 14 * k;
+  const [ax, ay] = pts[pts.length - 2], [bx, by] = pts[pts.length - 1];
+  const L = Math.hypot(bx - ax, by - ay) || 1, ux = (bx - ax) / L, uy = (by - ay) / L;
+  const tipX = bx - ux * gap, tipY = by - uy * gap, baseX = tipX - ux * head, baseY = tipY - uy * head;
+  pts[pts.length - 1] = [baseX, baseY];
+  const shaft = "M" + pts.map(p => p.map(n => n.toFixed(1)).join(",")).join("L");
+  const wing = 62 * k, arrowHead = `M${tipX},${tipY}L${baseX - uy * wing},${baseY + ux * wing}L${baseX + uy * wing},${baseY - ux * wing}Z`;
+  const [edge, body] = NEWS ? ["#fff", "#e8131f"] : ["#000", "#ffd400"];
+  if (!NEWS || Math.hypot(tipX - pts[0][0], tipY - pts[0][1]) > 60 * k) {   // news: no stub of an arrow once the storm is at the coast
+  add("track", "path", { d: shaft, fill: "none", stroke: edge, "stroke-width": 50 * k, "stroke-linecap": "round", "stroke-linejoin": "round" });
+  add("track", "path", { d: arrowHead, fill: edge, stroke: edge, "stroke-width": 20 * k, "stroke-linejoin": "round" });
+  add("track", "path", { d: shaft, fill: "none", stroke: body, "stroke-width": 32 * k, "stroke-linecap": "round", "stroke-linejoin": "round" });
+  add("track", "path", { d: arrowHead, fill: body });
+  }
+  // the landfall target
+  for (const [r, o] of [[R * 1.9, .4], [R * 1.45, .65]]) add("marks", "circle", { cx: lx, cy: ly, r, fill: "none", stroke: "#ff1e2b", "stroke-width": 7 * k, opacity: o });
+  add("marks", "circle", { cx: lx, cy: ly, r: R, fill: "rgba(232,19,31,.35)", stroke: "#fff", "stroke-width": 9 * k });
+  add("marks", "circle", { cx: lx, cy: ly, r: 16 * k, fill: "#ff1e2b", stroke: "#fff", "stroke-width": 6 * k });
+  const label = (x, y, text, anchor, size) => { const e = add("marks", "text", { x, y, class: "place", "text-anchor": anchor, style: `font-size:${size * k}px;stroke-width:${13 * k}px` }); e.textContent = text; return e; };
+  const target = (Q.get("target") || (COORD[lf.near] ? lf.near : "Kakinada,Yanam")).split(",").map(n => PLACES[n.trim()]).filter(Boolean).join("-");
+  if (target) label(lx - R * 2.0, ly + 20 * k, target, "end", 64);
+  for (const spec of (Q.get("places") || "Visakhapatnam:e").split(",").map(x => x.trim()).filter(x => x && x !== "none")) {
+    const [name, side] = spec.split(":");
+    if (!COORD[name] || !PLACES[name]) continue;
+    const [la, lo] = COORD[name], px = X(lo), py = Y(la);
+    add("marks", "circle", { cx: px, cy: py, r: 13 * k, fill: "#fff", stroke: "#000", "stroke-width": 6 * k });
+    label(side === "w" ? px - 26 * k : px + 26 * k, py + 19 * k, PLACES[name], side === "w" ? "end" : "start", 58);
+  }
+
+  // the words
+  $("time").textContent = istNow();
+  const word = key => fillNumbers((!v.H && Q.has("a_" + key) ? Q.get("a_" + key) : Q.get(key)) || "", v);   // a_*: after IMD's landfall time
+  const l1 = word("l1"), l2 = word("l2"), l3 = word("l3"), hd = word("head");
+  $("l1").innerHTML = rich(l1); $("l1").hidden = !l1;
+  $("l2").innerHTML = rich(l2); $("l2").hidden = !l2;
+  $("l3").innerHTML = esc(l3).replace(/\[([^\]]+)\]/g, "<b>$1</b>"); $("l3").hidden = !l3;
+  $("head").innerHTML = rich(hd); $("head").hidden = !hd;
+  if (NEWS) {                                              // a thick black outline (text-shadow ring) instead of the bars
+    document.body.classList.add("news");
+    const ring = Array.from({ length: 24 }, (_, i) => `${(9 * Math.cos(i * Math.PI / 12)).toFixed(1)}px ${(9 * Math.sin(i * Math.PI / 12)).toFixed(1)}px 0 #000`);
+    for (const id of ["l1", "l2"]) $(id).style.textShadow = [...ring, "0 12px 30px rgba(0,0,0,.85)"].join(",");
+  }
+  if (v.H && Q.get("cdTop")) { $("cd").hidden = false; $("cdTop").textContent = Q.get("cdTop"); $("cdN").innerHTML = `${v.H}<em>${esc(Q.get("cdUnit") || "")}</em>`; $("cdBot").textContent = Q.get("cdBot") || ""; }
+  const stamp2 = fillNumbers(Q.get("stamp2") || "", v);
+  if (stamp2) {
+    if (Q.get("stamp1")) $("stamp1").textContent = Q.get("stamp1");
+    $("stamp").hidden = false; $("stamp2").innerHTML = rich(stamp2);
+    if (Q.get("stampAt") === "coast") Object.assign($("stamp").style, { left: Math.max(34, Math.min(560, (lx - zx) / k - 540)) + "px", top: ((ly - zy) / k + 80) + "px" });
+    else Object.assign($("stamp").style, { left: "34px", top: "150px" });
+  }
+  if (Q.get("q")) { $("q").hidden = false; $("q").textContent = Q.get("q"); }
+  const img = $("sat"), images = frame.images || {};
+  const want = Q.get("sat") === "geo" ? "geocolor" : Q.get("sat") || (NEWS ? "irnews" : "geocolor");
+  const sat = images[want] ? want : images.geocolor ? "geocolor" : "ir";
+  $("credit").textContent = `Himawari-9 ${sat === "geocolor" ? "GeoColor" : "infrared"} ${new Date(frame.time).toISOString().slice(11, 16)} UTC · JMA/CIRA RAMMB · IMD`;
+  if (sat === "geocolor") img.setAttribute("filter", "url(#pop)");
+  await new Promise((ok, bad) => { img.onload = ok; img.onerror = () => bad(new Error("satellite image")); img.setAttribute("href", "thumb/" + (images[sat] || frame.image) + "?t=" + Date.now()); });
+  await document.fonts.ready;
+  const liveLeft = document.querySelector(".live").getBoundingClientRect().left;
+  for (const [id, start, min, right] of [["l2", 132, 70, 1886], ["l1", NEWS ? 150 : 104, 56, 1886], ["l3", 50, 30, 1886],
+                                         ["head", 64, 36, NEWS ? liveLeft - 28 : 1886]]) {       // keep every line inside the frame
+    const e = $(id), out = () => { const r = e.getBoundingClientRect(); return r.right > right || r.left < 34; };
+    for (let fs = start; out() && fs > min; fs -= 4) e.style.fontSize = fs + "px";
+  }
+  const bandTop = $("band").querySelector(":scope > :not([hidden])").getBoundingClientRect().top;
+  if (!$("q").hidden) $("q").style.top = (bandTop - $("q").getBoundingClientRect().height - 22) + "px";
+  // map labels shrink until they sit inside the frame (Tamil names run long)
+  for (const e of document.querySelectorAll("#marks text")) {
+    for (let fs = parseFloat(e.style.fontSize); fs > 30 * k; fs -= 2 * k) {
+      const r = e.getBoundingClientRect();
+      if (r.left >= 16 && r.right <= 1904) break;
+      e.style.fontSize = (fs - 2 * k) + "px";
+    }
+  }
+  if (!$("stamp").hidden) {                                // the stamp must not run into the bars
+    const st = $("stamp").getBoundingClientRect(), top = $("band").querySelector(":scope > :not([hidden])").getBoundingClientRect().top;
+    if (st.bottom > top - 14) $("stamp").style.top = (parseFloat($("stamp").style.top) - (st.bottom - top + 14)) + "px";
+  }
+  if (/\?/.test(l1 + l2 + l3 + stamp2 + hd)) throw new Error("a number is missing from desk.json: " + JSON.stringify(v));
+  document.body.dataset.thumbReady = JSON.stringify({ sat: frame.time, desk: desk.generated_at, values: v,
+    text: { num: "", l1, l2, l3, kicker: "", head: l2, when: l3, stamp: stamp2, towns: [] } });
+}
+main().catch(e => { document.body.dataset.thumbError = String(e); console.error(e); });
+</script>
+</body>
+</html>

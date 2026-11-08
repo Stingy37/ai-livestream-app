@@ -1,0 +1,5 @@
+[{"event": "Typhoon Champi (calibration)", "domain": "hazard", "start_utc": "2026-10-18", "end_utc": "2026-10-21",
+  "markets": [{"lang": "ja", "country": "JP", "youtube_query": "台風30号", "wikipedia_title": null},
+              {"lang": "zh-Hant", "country": "TW", "youtube_query": "薔琵 颱風", "wikipedia_title": null},
+              {"lang": "tl", "country": "PH", "youtube_query": "Bagyong Rosal", "wikipedia_title": null},
+              {"lang": "en", "country": "US", "youtube_query": "Typhoon Champi", "wikipedia_title": "Typhoon Champi (2026)"}]}]

@@ -1,0 +1,28 @@
+{
+ "out": "title_lab/arnab_20261027b",
+ "rotate_min": 30,
+ "sample_s": 150,
+ "panel_every_min": 90,
+ "panel_queries": "arnab_panel.json",
+ "streams": {
+  "india-te": {
+   "state": ".run/youtube/india_te.json",
+   "title_file": ".run/youtube/title_india-te.txt",
+   "panel_lang": "te",
+   "desk": "output/desk/india-te/desk.json",
+   "variants": {
+    "TN": "🔴LIVE: దూసుకొస్తున్న అర్నాబ్ తుఫాన్.. {RED} జిల్లాలకు రెడ్ అలర్ట్ | Cyclone Arnab | AP & TS Weather",
+    "TE": "Cyclone Arnab LIVE 🔴: దూసుకొస్తున్న అర్నాబ్ తుఫాన్.. {RED} జిల్లాలకు రెడ్ అలర్ట్ | AP & TS Weather"
+   }
+  },
+  "india-ta": {
+   "state": ".run/youtube/india_ta.json",
+   "title_file": ".run/youtube/title_india-ta.txt",
+   "panel_lang": "ta",
+   "variants": {
+    "MN": "🔴LIVE: அர்னாப் புயல் கரையை கடப்பது எப்போது? | வட தமிழக கடலோரம் பலத்த காற்று | Cyclone Arnab",
+    "ME": "Cyclone Arnab LIVE 🔴: அர்னாப் புயல் கரையை கடப்பது எப்போது? | வட தமிழக கடலோரம் பலத்த காற்று"
+   }
+  }
+ }
+}

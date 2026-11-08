@@ -1,0 +1,61 @@
+# SearXNG settings for the typhoon scraper (local only, JSON API on).
+# Loaded by scripts/searxng_start.sh through SEARXNG_SETTINGS_PATH. Everything not listed here
+# comes from SearXNG's own searx/settings.yml (use_default_settings).
+use_default_settings:
+  engines:
+    # Only general web engines that answer plain GET requests from a datacenter IP; the rest are noise.
+    keep_only:
+      - duckduckgo
+      - bing
+      - brave
+      - startpage
+      - google
+      - wikipedia
+      - qwant
+      - mojeek
+      - yahoo
+
+general:
+  debug: false
+  instance_name: "typhoon-desk-searx"
+  enable_metrics: false
+
+search:
+  safe_search: 0
+  autocomplete: ""
+  default_lang: "en"
+  ban_time_on_fail: 5
+  max_ban_time_on_fail: 60
+  formats:
+    - html
+    - json
+
+server:
+  port: 8890
+  bind_address: "127.0.0.1"
+  limiter: false
+  public_instance: false
+  secret_key: "set-by-searxng_start.sh"   # overridden by SEARXNG_SECRET (a fresh random key per start)
+  image_proxy: false
+  method: "GET"
+
+outgoing:
+  request_timeout: 6.0
+  max_request_timeout: 12.0
+  useragent_suffix: ""
+  pool_connections: 50
+  pool_maxsize: 20
+  enable_http2: true
+
+# Engines disabled by default in SearXNG that we want on (the merge keeps our overrides).
+engines:
+  - name: bing
+    disabled: false
+  - name: google
+    disabled: false
+  - name: qwant
+    disabled: false
+  - name: mojeek
+    disabled: false
+  - name: yahoo
+    disabled: false

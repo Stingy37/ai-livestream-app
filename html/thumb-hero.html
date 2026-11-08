@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1920">
+<title>Typhoon Thumbnail</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@800;900&family=Noto+Sans+JP:wght@800;900&family=Noto+Sans+TC:wght@800;900&display=swap">
+<!--
+YouTube thumbnail, "hero" style: Himawari-9's rapid-scan image of the storm fills the frame (scripts/thumb_sat.py writes
+thumb/hero.json + the image), with the forecast motion arrow and a headline built from the live desk (live/desk.json).
+Nothing is typed in: the intensity word is the home agency's own class from its own wind, the place and the time are the
+home country's closest pass of the official forecast center, the big number is the home agency's pressure (or wind).
+scripts/youtube_thumbnail.py screenshots it at 1920x1080 once body[data-thumb-ready] is set.
+  ?lang=ja  Japan (JMA)     ?lang=zh  Taiwan (CWA, Traditional Chinese)     ?lang=tl  Philippines (PAGASA)     default English
+-->
+<style>
+:root {
+  --font: "Inter Tight", "Noto Sans TC", system-ui, sans-serif;
+  --yellow: #ffd23a; --red: #e8213d; --ink: #05080f;
+}
+html[lang="ja"] { --font: "Inter Tight", "Noto Sans JP", system-ui, sans-serif; }
+html[lang="zh"] { --font: "Inter Tight", "Noto Sans TC", system-ui, sans-serif; }
+* { box-sizing: border-box; margin: 0; }
+html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--ink); }
+body { position: relative; font-family: var(--font); color: #fff; }
+#sat { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+#over { position: absolute; inset: 0; }
+/* left and bottom shade for the headline; a light edge vignette pulls the eye to the storm */
+.shade { position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(0deg, rgba(3,6,14,.92) 0, rgba(3,6,14,.72) 24%, rgba(3,6,14,0) 50%),
+    linear-gradient(90deg, rgba(3,6,14,.55) 0, rgba(3,6,14,0) 42%),
+    radial-gradient(120% 110% at 60% 48%, rgba(0,0,0,0) 55%, rgba(0,0,0,.45) 100%); }
+/* thick outlined text: the stroke is painted under the fill */
+.o { paint-order: stroke fill; -webkit-text-stroke: var(--sw, 14px) var(--ink); stroke-linejoin: round; }
+.top { position: absolute; left: 52px; top: 46px; display: flex; align-items: center; gap: 22px; }
+.live { display: inline-flex; align-items: center; gap: 16px; background: var(--red); color: #fff; font: 900 64px/1 var(--font);
+  padding: 16px 34px 18px 26px; border-radius: 999px; border: 5px solid #fff; box-shadow: 0 10px 30px rgba(0,0,0,.5); }
+.live i { width: 30px; height: 30px; border-radius: 50%; background: #fff; }
+.num { background: var(--yellow); color: var(--ink); font: 900 100px/1 var(--font); padding: 12px 32px 18px; border-radius: 22px;
+  border: 6px solid var(--ink); box-shadow: 0 10px 30px rgba(0,0,0,.5); }
+/* the big number, top right */
+.stamp { position: absolute; right: 52px; top: 46px; text-align: right; }
+.stamp .lab { display: inline-block; background: var(--red); color: #fff; font: 900 46px/1 var(--font); padding: 10px 22px 12px; border-radius: 14px;
+  border: 4px solid #fff; }
+.stamp .val { font: 900 236px/0.9 var(--font); letter-spacing: -.02em; --sw: 22px; margin-top: 6px; }
+.stamp .val small { font-size: 96px; margin-left: 6px; letter-spacing: 0; }
+.stamp .sub { font: 900 58px/1.1 var(--font); color: var(--yellow); --sw: 14px; margin-top: 6px; }
+/* headline, bottom left */
+.band { position: absolute; left: 52px; bottom: 44px; right: 52px; }
+.kicker { font: 900 104px/1.05 var(--font); color: var(--yellow); --sw: 18px; }
+.head { font: 900 170px/1.04 var(--font); letter-spacing: -.01em; --sw: 24px; white-space: nowrap; }
+.when { display: inline-flex; align-items: center; gap: 18px; margin-top: 18px; background: rgba(5,8,15,.82); border: 4px solid var(--yellow);
+  border-radius: 16px; padding: 10px 26px 14px; font: 900 62px/1 var(--font); color: #fff; }
+.when b { color: var(--yellow); }
+.credit { position: absolute; right: 24px; bottom: 14px; font: 800 22px/1 var(--font); color: rgba(255,255,255,.78); text-shadow: 0 2px 4px #000; }
+[hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<img id="sat" alt="">
+<svg id="over" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs><marker id="ah" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="3.6" markerHeight="3.6" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#fff" stroke="#05080f" stroke-width="1.4" stroke-linejoin="round"/></marker></defs>
+  <path id="trackHalo" fill="none" stroke="#05080f" stroke-width="38" stroke-linecap="round" stroke-linejoin="round" opacity=".8"/>
+  <path id="track" fill="none" stroke="#fff" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+</svg>
+<div class="shade"></div>
+<div class="top"><span class="live"><i></i><span id="liveWord">LIVE</span></span><span class="num" id="num"></span></div>
+<div class="stamp"><div class="lab" id="stampLab"></div><div class="val o" id="stampVal"></div><div class="sub o" id="stampSub"></div></div>
+<div class="band">
+  <div class="kicker o" id="kicker"></div>
+  <div class="head o" id="head"></div>
+  <div class="when" id="when"></div>
+</div>
+<div class="credit" id="credit"></div>
+<script>
+const $ = id => document.getElementById(id);
+const Q = new URLSearchParams(location.search);
+const LANG = (Q.get("lang") || "en").toLowerCase();
+document.documentElement.lang = LANG;
+const EYE_X = 0.6, EYE_Y = 0.5;           // where the eye sits in the frame
+const VIEW_KM = +(Q.get("km") || 980);    // frame width in km
+
+const HOME = {
+  ja: { cc: "JP", agency: "JMA", tz: "Asia/Tokyo" },
+  zh: { cc: "TW", agency: "CWA", tz: "Asia/Taipei" },
+  tl: { cc: "PH", agency: "PAGASA", tz: "Asia/Manila" },
+  en: { cc: "PH", agency: "PAGASA", tz: "Asia/Manila" }
+}[LANG] || { cc: "PH", agency: "PAGASA", tz: "Asia/Manila" };
+
+const PLACE = {
+  ja: { Yonaguni: "与那国島", Ishigaki: "石垣島", Miyakojima: "宮古島", Naha: "那覇", Taipei: "台北" },
+  zh: { Taipei: "台北", Yilan: "宜蘭", Hualien: "花蓮", Taitung: "台東" }
+};
+const SAKISHIMA = new Set(["Yonaguni", "Ishigaki", "Miyakojima"]);
+const TW_NORTH = new Set(["Taipei", "Yilan", "Keelung", "Taoyuan", "Hsinchu"]);
+const TW_EAST = new Set(["Hualien", "Taitung"]);
+
+// wall-clock parts of a UTC time in the home time zone
+function parts(iso) {
+  const p = Object.fromEntries(new Intl.DateTimeFormat("en-US", { timeZone: HOME.tz, month: "numeric", day: "numeric", hour: "numeric",
+    hourCycle: "h23", weekday: "short" }).formatToParts(new Date(iso)).map(x => [x.type, x.value]));
+  return { m: +p.month, d: +p.day, h: +p.hour, wd: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(p.weekday) };
+}
+// JMA's own time-of-day terms (気象庁 予報用語)
+const jaWhen = h => h < 3 ? "未明" : h < 6 ? "明け方" : h < 9 ? "朝" : h < 12 ? "昼前" : h < 15 ? "昼過ぎ" : h < 18 ? "夕方" : h < 21 ? "夜のはじめ頃" : "夜遅く";
+const zhWhen = h => h < 5 ? "凌晨" : h < 8 ? "清晨" : h < 11 ? "上午" : h < 13 ? "中午" : h < 17 ? "下午" : h < 19 ? "傍晚" : "晚上";
+const tlWhen = h => h < 6 ? "madaling-araw" : h < 12 ? "umaga" : h < 13 ? "tanghali" : h < 18 ? "hapon" : "gabi";
+const enWhen = h => h < 6 ? "early morning" : h < 12 ? "morning" : h < 18 ? "afternoon" : "night";
+// CWA gusts on the Beaufort scale (蒲福風級), as CWA's bulletins give them
+function beaufort(ms) {
+  const top = [0.2, 1.5, 3.3, 5.4, 7.9, 10.7, 13.8, 17.1, 20.7, 24.4, 28.4, 32.6, 36.9, 41.4, 46.1, 50.9, 56.0, 61.2];
+  const b = top.findIndex(v => ms <= v);
+  return b < 0 ? "17級以上" : `${b}級`;
+}
+
+function headline(desk, hero) {
+  const st = desk.storm || {}, ag = (desk.agencies || []).find(a => a.agency === HOME.agency) || {};
+  const jma = (desk.agencies || []).find(a => a.agency === "JMA") || {};
+  // closest passes of the forecast center: 300 km is JMA's 接近; the Philippine towns on our list sit farther off this track
+  const cpa = (desk.cpa || []).filter(c => c.cc === HOME.cc && c.km <= (HOME.cc === "PH" ? 400 : 300)).sort((a, b) => a.km - b.km);
+  const near = cpa[0], towns = cpa.map(c => c.city);
+  const names = Object.fromEntries((st.names || "").split("·").map(s => s.split(":").map(x => x.trim())).filter(x => x.length === 2));
+  const ms = (ag.winds_kmh || jma.winds_kmh || 0) / 3.6;
+  const gms = (ag.gusts_kmh || jma.gusts_kmh || 0) / 3.6;
+  const sat = new Date(hero.time);
+  if (LANG === "ja") {
+    const jp = /(台風\d+号)/.exec(names.Japan || "");
+    const word = ms >= 54 ? "猛烈な" : ms >= 44 ? "非常に強い" : ms >= 33 ? "強い" : "";
+    const place = !near ? "" : towns.every(n => SAKISHIMA.has(n)) ? "先島諸島" : towns.includes("Naha") ? "沖縄" : PLACE.ja[near.city] || near.city;
+    const p = near && parts(near.timeUTC), s = parts(sat.toISOString());
+    return {
+      live: "LIVE", num: jp ? jp[1] : `台風 ${st.name}`,
+      kicker: word ? `${word}勢力で` : "", head: !near ? "最新の進路と予報円" : near.km <= 100 ? `${place}直撃のおそれ` : `${place}に接近へ`,
+      when: near ? `<b>${PLACE.ja[near.city] || near.city}</b> 最接近 ${p.d}日(${"日月火水木金土"[p.wd]})${jaWhen(p.h)}` : "",
+      stampLab: "中心気圧", stamp: jma.pressure_hpa ? `${Math.round(jma.pressure_hpa)}<small>hPa</small>` : `${Math.round(ms)}<small>m/s</small>`,
+      sub: jma.gusts_kmh ? `最大瞬間風速 ${Math.round(jma.gusts_kmh / 3.6)}m/s` : "",
+      credit: `ひまわり9号 ${s.m}/${s.d} ${String(s.h).padStart(2, "0")}:${String(sat.getUTCMinutes()).padStart(2, "0")} · JMA / CIRA RAMMB`,
+      towns
+    };
+  }
+  if (LANG === "zh") {
+    const word = ms >= 51 ? "強烈颱風" : ms >= 32.7 ? "中度颱風" : ms >= 17.2 ? "輕度颱風" : "熱帶性低氣壓";
+    const region = !near ? "台灣" : TW_NORTH.has(near.city) ? "北台灣" : TW_EAST.has(near.city) ? "東台灣" : "台灣";
+    const p = near && parts(near.timeUTC), s = parts(sat.toISOString());
+    return {
+      live: "直播", num: `${names.Taiwan || st.name}颱風`,
+      kicker: word, head: !near ? "最新路徑" : near.km <= 100 ? `恐直撲${region}` : `逼近${region}`,
+      when: near ? `<b>${PLACE.zh[near.city] || near.city}</b>最接近 ${p.m}/${p.d}(${"日一二三四五六"[p.wd]})${zhWhen(p.h)}` : "",
+      stampLab: "中心氣壓", stamp: ag.pressure_hpa ? `${Math.round(ag.pressure_hpa)}<small>百帕</small>` : `${Math.round(ms)}<small>m/s</small>`,
+      sub: gms ? `陣風 ${beaufort(gms)}` : "",
+      credit: `向日葵9號 ${s.m}/${s.d} ${String(s.h).padStart(2, "0")}:${String(sat.getUTCMinutes()).padStart(2, "0")} · JMA / CIRA RAMMB`,
+      towns
+    };
+  }
+  // Philippines (Tagalog / English): PAGASA's name, its wind signal if one is up, its own winds
+  const ph = (desk.impact || {}).PH || {}, raised = ((ph.signals || {}).raised || [])[0];
+  const local = names.Philippines || st.name, tl = LANG === "tl";
+  const s = new Date(hero.time), p = near && parts(near.timeUTC);
+  const days = tl ? ["Linggo", "Lunes", "Martes", "Miyerkules", "Huwebes", "Biyernes", "Sabado"] : ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return {
+    live: "LIVE", num: tl ? `BAGYONG ${local.toUpperCase()}` : `TYPHOON ${local.toUpperCase()}`,
+    kicker: (st.title || "TYPHOON").toUpperCase(),
+    head: raised ? `SIGNAL NO. ${raised.level}${raised.areas && raised.areas.length <= 10 ? ": " + raised.areas.toUpperCase() : ""}` : (tl ? "PINAKABAGONG LANDAS" : "LATEST TRACK"),
+    when: near ? (tl ? `Pinakamalapit sa <b>${near.city}</b>: ${days[p.wd]} ng ${tlWhen(p.h)}` : `Closest to <b>${near.city}</b>: ${days[p.wd]} ${enWhen(p.h)}`) : "",
+    stampLab: tl ? "LAKAS NG HANGIN" : "SUSTAINED WINDS", stamp: `${Math.round(ag.winds_kmh || 0)}<small>km/h</small>`,
+    sub: ag.gusts_kmh ? (tl ? `Bugso ${Math.round(ag.gusts_kmh)} km/h` : `Gusts ${Math.round(ag.gusts_kmh)} km/h`) : "",
+    credit: `Himawari-9 · ${s.toISOString().slice(5, 16).replace("T", " ")} UTC · JMA / CIRA RAMMB`,
+    towns
+  };
+}
+
+function place(hero) {
+  // scale and offset so the eye sits at (EYE_X, EYE_Y) and the image (minus SLIDER's 1-2% dark edge) still covers the frame
+  const s = 1920 / (VIEW_KM / hero.km_per_px);
+  const W = hero.width * 0.985 * s, H = hero.height * 0.985 * s;
+  let x = 1920 * EYE_X - hero.center.x * s, y = 1080 * EYE_Y - hero.center.y * s;
+  x = Math.min(0, Math.max(1920 - W, x)); y = Math.min(0, Math.max(1080 - H, y));
+  $("sat").style.transform = `translate(${x}px, ${y}px) scale(${s})`;
+  // forecast motion: from just outside the eyewall along the official track, about 150 km
+  const pts = [[hero.center.x, hero.center.y], ...hero.forecast.map(p => [p.x, p.y])].map(([a, b]) => [x + a * s, y + b * s]);
+  const pxKm = s / hero.km_per_px, from = 75 * pxKm, len = 150 * pxKm;
+  const path = []; let run = 0;
+  for (let i = 1; i < pts.length && run < from + len; i++) {
+    const [ax, ay] = pts[i - 1], [bx, by] = pts[i], seg = Math.hypot(bx - ax, by - ay);
+    const at = d => [ax + (bx - ax) * (d - run) / seg, ay + (by - ay) * (d - run) / seg];
+    if (run + seg > from) {
+      if (!path.length) path.push(at(Math.max(from, run)));
+      path.push(run + seg >= from + len ? at(from + len) : [bx, by]);
+    }
+    run += seg;
+  }
+  const d = path.length > 1 ? "M" + path.map(p => p.map(v => v.toFixed(1)).join(",")).join("L") : "";
+  $("track").setAttribute("d", d); $("trackHalo").setAttribute("d", d);
+}
+
+async function main() {
+  const [desk, hero] = await Promise.all([
+    fetch(Q.get("desk") || "live/desk.json", { cache: "no-store" }).then(r => r.json()),
+    fetch("thumb/hero.json", { cache: "no-store" }).then(r => r.json())
+  ]);
+  const tx = headline(desk, hero);
+  $("liveWord").textContent = tx.live; $("num").textContent = tx.num;
+  $("kicker").textContent = tx.kicker; $("kicker").hidden = !tx.kicker;
+  $("head").textContent = tx.head;
+  $("when").innerHTML = tx.when; $("when").hidden = !tx.when;
+  $("stampLab").textContent = tx.stampLab; $("stampVal").innerHTML = tx.stamp;
+  $("stampSub").textContent = tx.sub; $("stampSub").hidden = !tx.sub;
+  $("credit").textContent = tx.credit;
+  const img = $("sat");
+  await new Promise((ok, bad) => { img.onload = ok; img.onerror = () => bad(new Error("hero image")); img.src = "thumb/" + hero.image + "?t=" + Date.now(); });
+  place(hero);
+  // keep the headline inside the frame, and the name badge clear of the big number
+  const head = $("head"), max = 1920 - 104;
+  for (let fs = 170; head.scrollWidth > max && fs > 90; fs -= 6) head.style.fontSize = fs + "px";
+  const num = $("num"), stampLeft = () => Math.min(...[...document.querySelectorAll(".stamp > *")].map(e => e.getBoundingClientRect().left));
+  for (let fs = 100; num.getBoundingClientRect().right > stampLeft() - 28 && fs > 50; fs -= 4) num.style.fontSize = fs + "px";
+  await document.fonts.ready;
+  const text = { num: tx.num, kicker: tx.kicker, head: tx.head, when: tx.when.replace(/<[^>]+>/g, ""), stamp: tx.stamp.replace(/<[^>]+>/g, ""), towns: tx.towns };
+  document.body.dataset.thumbReady = JSON.stringify({ sat: hero.time, product: hero.product, desk: desk.generated_at, text });
+}
+main().catch(e => { document.body.dataset.thumbError = String(e); console.error(e); });
+</script>
+</body>
+</html>

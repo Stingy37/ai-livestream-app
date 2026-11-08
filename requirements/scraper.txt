@@ -1,0 +1,13 @@
+# Web Scraper team — agentic scraping (src/scraper/, src/models/llm_api.py)
+#
+# Environment: conda env "ai-livestream" (Python 3.12), same as requirements/rag.txt.
+# SearXNG itself is NOT a pip package: it runs from a git checkout (~/searxng) in its own venv
+# (~/searxng-venv, `pip install -r ~/searxng/requirements.txt`); see scripts/searxng_start.sh.
+
+langgraph>=1.2
+langchain-core>=1.6
+trafilatura>=2.3      # main-text extraction (+ htmldate, courlan)
+requests>=2.32
+nltk>=3.9             # sentence counts in reports (punkt_tab in ~/nltk_data)
+openai>=1.0           # Lumen client lives in src/models/lumen.py
+pytest

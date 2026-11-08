@@ -1,0 +1,355 @@
+"""Fetch the thumbnail's hero image: Himawari-9's rapid-scan target sector (2.5-minute, ~1000 km box that JMA points
+at the typhoon) from CIRA RAMMB SLIDER, located on the full disk so the storm center and forecast track can be drawn on it.
+
+    /home/andyshi2/.conda/envs/ai-livestream/bin/python scripts/thumb_sat.py [--product auto|geocolor|ir] [--desk output/desk/desk.json]
+
+Writes html/thumb/hero.jpg + hero.json (time, product, the JMA center and forecast points in image pixels, credit),
+which html/thumb-hero.html draws. auto = GeoColor while the sun is up over the storm, enhanced infrared after dark.
+Exits non-zero (and writes nothing) when the sector is not on the storm, so the caller can fall back to the map thumbnail.
+
+Locating the sector: SLIDER serves the sector and the full disk on the same fixed Himawari grid, so the sector's
+infrared at 2 km is matched against the full-disk infrared around the storm (FFT cross-correlation) to find its offset.
+"""
+
+from __future__ import annotations
+
+import argparse
+import io
+import json
+import math
+import os
+import sys
+import urllib.request
+from datetime import datetime, timezone
+from pathlib import Path
+
+import numpy as np
+from PIL import Image, ImageEnhance, ImageFilter
+
+REPO = Path(__file__).resolve().parents[1]
+SLIDER = "https://slider.cira.colostate.edu/data"
+SECTOR = "mesoscale_01"
+FD_TILE, SEC_TILE = 688, 500
+SUB_LON = 140.7                       # Himawari-9 sub-satellite longitude
+CFAC, COFF = 20466275, 2750.5         # 2 km fixed grid (5500 x 5500), JMA HSD navigation
+OUT_DIR = REPO / "html" / "thumb"
+# enhanced infrared on SLIDER's band 13 data values (the PNG palette indices: higher = colder; clear sea ~75, the eyewall's
+# coldest tops ~220): gray below the cloud tops, then the usual typhoon ramp blue > green > yellow > red > magenta > white
+IR_STOPS = [(0, (10, 14, 22)), (110, (128, 134, 144)), (125, (40, 80, 190)), (150, (40, 170, 230)), (170, (60, 200, 90)),
+            (186, (240, 225, 60)), (198, (255, 140, 30)), (207, (230, 30, 40)), (214, (205, 30, 165)), (220, (255, 185, 240)),
+            (226, (255, 255, 255)), (255, (255, 255, 255))]
+# the same infrared as Indian news thumbnails draw a cyclone: warm sea deep blue, cloud tops brightening to white (no rainbow)
+NEWS_STOPS = [(0, (2, 10, 34)), (80, (10, 45, 120)), (120, (30, 80, 170)), (160, (80, 125, 200)), (190, (150, 180, 228)),
+              (205, (200, 218, 245)), (215, (238, 244, 253)), (222, (255, 255, 255)), (255, (255, 255, 255))]   # the cold
+# range is stretched (most of a cyclone's overcast reads 200-225) so the eye and the spiral bands carry
+
+
+def get(url: str, timeout: float = 30) -> bytes:
+    req = urllib.request.Request(url, headers={"User-Agent": "typhoon-desk-thumbnail/1.0"})
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        return r.read()
+
+
+def times(sector: str, product: str) -> list[int]:
+    return json.loads(get(f"{SLIDER}/json/himawari/{sector}/{product}/latest_times.json"))["timestamps_int"]
+
+
+def tile(sector: str, product: str, ts: int, level: int, row: int, col: int) -> Image.Image | None:
+    s = str(ts)
+    url = f"{SLIDER}/imagery/{s[:4]}/{s[4:6]}/{s[6:8]}/himawari---{sector}/{product}/{s}/{level:02d}/{row:03d}_{col:03d}.png"
+    try:
+        return Image.open(io.BytesIO(get(url)))
+    except OSError:
+        return None
+
+
+def sector_image(product: str, ts: int, level: int) -> Image.Image:
+    """The sector at one zoom level: RGB for imagery products, raw data values (mode L) for single bands."""
+    n, mode = 2 ** level, "RGB" if product == "geocolor" else "L"
+    im = None
+    for r in range(n):
+        for c in range(n):
+            t = tile(SECTOR, product, ts, level, r, c)
+            if t is None:
+                continue
+            if im is None:
+                im = Image.new(mode, (SEC_TILE * n, SEC_TILE * n))
+            im.paste(t.convert("RGB") if mode == "RGB" else Image.fromarray(np.asarray(t)), (c * SEC_TILE, r * SEC_TILE))
+    if im is None:
+        raise RuntimeError(f"no {product} tiles for {ts} level {level}")
+    return im
+
+
+def geos(lat: float, lon: float) -> tuple[float, float]:
+    """(column, line) on the 2 km full-disk grid, 0-based pixel centers (JMA HSD navigation)."""
+    phi = math.atan(0.993305616 * math.tan(math.radians(lat)))
+    rl = 6356.7523 / math.sqrt(1 - 0.00669438444 * math.cos(phi) ** 2)
+    dl = math.radians(lon - SUB_LON)
+    r1 = 42164 - rl * math.cos(phi) * math.cos(dl)
+    r2 = -rl * math.cos(phi) * math.sin(dl)
+    r3 = rl * math.sin(phi)
+    rn = math.sqrt(r1 * r1 + r2 * r2 + r3 * r3)
+    x, y = math.degrees(math.atan(-r2 / r1)), math.degrees(math.asin(-r3 / rn))
+    return COFF + x * CFAC / 2 ** 16 - 1, COFF + y * CFAC / 2 ** 16 - 1
+
+
+def sun_elev(lat: float, lon: float, when: datetime) -> float:
+    t = when.timestamp() / 86400 + 2440587.5 - 2451545.0
+    g = math.radians(357.529 + 0.98560028 * t)
+    q = 280.459 + 0.98564736 * t
+    L = math.radians(q + 1.915 * math.sin(g) + 0.020 * math.sin(2 * g))
+    e = math.radians(23.439 - 0.00000036 * t)
+    ra = math.atan2(math.cos(e) * math.sin(L), math.cos(L))
+    dec = math.asin(math.sin(e) * math.sin(L))
+    gmst = (18.697374558 + 24.06570982441908 * t) % 24
+    ha = math.radians(gmst * 15 + lon) - ra
+    la = math.radians(lat)
+    return math.degrees(math.asin(math.sin(la) * math.sin(dec) + math.cos(la) * math.cos(dec) * math.cos(ha)))
+
+
+def ts_time(ts: int) -> datetime:
+    return datetime.strptime(str(ts), "%Y%m%d%H%M%S").replace(tzinfo=timezone.utc)
+
+
+def locate(ts: int, lat: float, lon: float) -> tuple[int, int, float]:
+    """Offset (column, line) of the sector's top-left on the 2 km grid, and the match correlation (0..1).
+    ts must be a time both the sector and the full disk have (clouds change in minutes)."""
+    sec = np.asarray(sector_image("band_13", ts, 0), dtype=np.float64)
+    c, l = geos(lat, lon)
+    scale = FD_TILE * 8 / 5500                               # level 3 is 5504 px for the 5500 px grid
+    half = 800
+    x0, y0 = int(c * scale) - half, int(l * scale) - half
+    region = np.zeros((2 * half, 2 * half))
+    for row in range(max(0, y0 // FD_TILE), min(7, (y0 + 2 * half) // FD_TILE) + 1):
+        for col in range(max(0, x0 // FD_TILE), min(7, (x0 + 2 * half) // FD_TILE) + 1):
+            t = tile("full_disk", "band_13", ts, 3, row, col)
+            if t is None:
+                continue
+            a = np.asarray(t, dtype=np.float64)          # data values (palette indices)
+            ty, tx = row * FD_TILE - y0, col * FD_TILE - x0
+            ys, xs = slice(max(0, ty), min(2 * half, ty + FD_TILE)), slice(max(0, tx), min(2 * half, tx + FD_TILE))
+            region[ys, xs] = a[ys.start - ty:ys.stop - ty, xs.start - tx:xs.stop - tx]
+    h, w = sec.shape
+    s = (sec - sec.mean()) / (sec.std() or 1)
+    pad = np.zeros_like(region)
+    pad[:h, :w] = s
+    corr = np.real(np.fft.ifft2(np.fft.fft2(region - region.mean()) * np.conj(np.fft.fft2(pad))))
+    corr[2 * half - h + 1:, :] = -np.inf                    # only placements fully inside the region
+    corr[:, 2 * half - w + 1:] = -np.inf
+    dy, dx = np.unravel_index(np.argmax(corr), corr.shape)
+    win = region[dy:dy + h, dx:dx + w]
+    r = float(np.corrcoef(win.ravel(), sec.ravel())[0, 1])
+    return round((x0 + dx) / scale), round((y0 + dy) / scale), r
+
+
+def ir_color(im: Image.Image, size: int) -> Image.Image:
+    """Enhanced infrared (IR_STOPS), upsampled to size x size before coloring so the color edges stay smooth."""
+    g = np.asarray(Image.fromarray(np.asarray(im, dtype=np.float32)).resize((size, size), Image.LANCZOS), dtype=np.float64)
+    xs = [x for x, _ in IR_STOPS]
+    rgb = np.stack([np.interp(g, xs, [c[i] for _, c in IR_STOPS]) for i in range(3)], axis=-1)
+    return Image.fromarray(rgb.clip(0, 255).astype(np.uint8))
+
+
+def treat_geocolor(im: Image.Image) -> Image.Image:
+    """Daylight GeoColor straight from the satellite reads flat white at thumbnail size: pull the midtones down and add
+    local contrast so the eye wall, the overshooting tops and the spiral bands carry. Tone only, nothing added or moved."""
+    a = np.asarray(im, dtype=np.float64) / 255.0
+    a = a ** 2.1                                             # deepen midtones (bright cloud tops stay bright)
+    a = a * a * (3 - 2 * a) * 0.55 + a * 0.45                # gentle S-curve for punch
+    a = a * np.array([0.92, 0.98, 1.08])                     # cool shadows: sea and cloud gaps read deep blue
+    out = Image.fromarray((a * 255).clip(0, 255).astype(np.uint8))
+    out = out.filter(ImageFilter.UnsharpMask(radius=90, percent=120, threshold=0))  # large-radius "clarity"
+    out = out.filter(ImageFilter.UnsharpMask(radius=3, percent=70, threshold=2))
+    return ImageEnhance.Color(out).enhance(1.35)
+
+
+# --frame tw: a wider, fixed-scale view in which the storm and Taiwan are both in frame (Taiwanese news thumbnails always show
+# the island). Plate carree with square pixels at the box's middle latitude, so html/thumb-tw.html can draw coastlines and
+# towns from lat/lon with a linear map. Source: the full disk at 2 km (band 13; the rapid-scan sector is too small).
+TW_LON_W, TW_TOP = 14.0, 26.0          # box width in degrees; top latitude (Taiwan's north tip, 25.3N, sits near the top)
+TW_SIZE = (1920, 1080)
+
+
+def tw_box(lat: float, lon: float) -> tuple[float, float, float, float]:
+    """(lat0, lat1, lon0, lon1): Taiwan just right of the middle (clear of the LIVE badge) and the storm to its right,
+    kept off the right edge."""
+    lon1 = max(129.0, lon + 4.6)
+    lon0 = lon1 - TW_LON_W
+    lat1 = max(TW_TOP, lat + 4.0)
+    mid = math.radians(lat1 - 3.6)
+    lat0 = lat1 - TW_LON_W * math.cos(mid) * TW_SIZE[1] / TW_SIZE[0]
+    return lat0, lat1, lon0, lon1
+
+
+# --frame india: the Bay of Bengal with the Andhra Pradesh / Tamil Nadu coast and the storm (Indian thumbnails always show
+# the state). Himawari-9 still sees the bay (about 55 degrees from its sub-point, so the view is oblique but usable).
+IN_LON_W = 17.0
+
+
+def in_box(lat: float, lon: float) -> tuple[float, float, float, float]:
+    """(lat0, lat1, lon0, lon1): the coast from Chennai to Visakhapatnam on the left, the storm right of centre and in
+    the upper half (thumbnails put their text on the lower 40%)."""
+    lon1 = max(91.5, lon + 4.5)
+    lon0 = lon1 - IN_LON_W
+    lat1 = max(20.0, lat + 4.3)
+    mid = math.radians(lat1 - 4.5)
+    lat0 = lat1 - IN_LON_W * math.cos(mid) * TW_SIZE[1] / TW_SIZE[0]
+    return lat0, lat1, lon0, lon1
+
+
+def region_values(ts: int, box: tuple[float, float, float, float], size: tuple[int, int], product: str = "band_13",
+                  level: int = 3) -> np.ndarray:
+    """Full-disk pixels resampled (bilinear) onto a lat/lon grid of size (width, height): band-13 data values at level 3
+    (2 km) by default, or an RGB product such as geocolor (level 4 is 1 km), which comes back as (h, w, 3)."""
+    lat0, lat1, lon0, lon1 = box
+    w, h = size
+    lon = lon0 + (np.arange(w) + 0.5) / w * (lon1 - lon0)
+    lat = lat1 - (np.arange(h) + 0.5) / h * (lat1 - lat0)
+    lo, la = np.meshgrid(lon, lat)
+    phi = np.arctan(0.993305616 * np.tan(np.radians(la)))
+    rl = 6356.7523 / np.sqrt(1 - 0.00669438444 * np.cos(phi) ** 2)
+    dl = np.radians(lo - SUB_LON)
+    r1 = 42164 - rl * np.cos(phi) * np.cos(dl)
+    r2 = -rl * np.cos(phi) * np.sin(dl)
+    r3 = rl * np.sin(phi)
+    rn = np.sqrt(r1 * r1 + r2 * r2 + r3 * r3)
+    scale = FD_TILE * 2 ** level / 5500
+    px = (COFF + np.degrees(np.arctan(-r2 / r1)) * CFAC / 2 ** 16 - 1) * scale
+    py = (COFF + np.degrees(np.arcsin(-r3 / rn)) * CFAC / 2 ** 16 - 1) * scale
+    c0, c1 = int(px.min() // FD_TILE), int(px.max() // FD_TILE)
+    r0, r1_ = int(py.min() // FD_TILE), int(py.max() // FD_TILE)
+    rgb = product == "geocolor"
+    mosaic = np.zeros(((r1_ - r0 + 1) * FD_TILE, (c1 - c0 + 1) * FD_TILE) + ((3,) if rgb else ()))
+    for row in range(r0, r1_ + 1):
+        for col in range(c0, c1 + 1):
+            t = tile("full_disk", product, ts, level, row, col)
+            if t is None:
+                raise RuntimeError(f"full-disk tile {row},{col} missing for {ts}")
+            mosaic[(row - r0) * FD_TILE:(row - r0 + 1) * FD_TILE, (col - c0) * FD_TILE:(col - c0 + 1) * FD_TILE] = np.asarray(t.convert("RGB") if rgb else t, dtype=np.float64)
+    x, y = px - c0 * FD_TILE, py - r0 * FD_TILE
+    x0, y0 = np.clip(np.floor(x).astype(int), 0, mosaic.shape[1] - 2), np.clip(np.floor(y).astype(int), 0, mosaic.shape[0] - 2)
+    fx, fy = np.clip(x - x0, 0, 1), np.clip(y - y0, 0, 1)
+    if rgb:
+        fx, fy = fx[..., None], fy[..., None]
+    return ((mosaic[y0, x0] * (1 - fx) + mosaic[y0, x0 + 1] * fx) * (1 - fy)
+            + (mosaic[y0 + 1, x0] * (1 - fx) + mosaic[y0 + 1, x0 + 1] * fx) * fy)
+
+
+def tw_frame(desk: dict, out: Path, stem: str = "tw", box_fn=None, res: int = 1, geocolor: bool = False) -> int:
+    """Write thumb/<stem>_ir.jpg + <stem>.json: the enhanced-IR full disk over a box holding the land and the storm
+    (tw: Taiwan, in: the Indian coast). res=2 samples the image at twice the frame size (coordinates stay in frame
+    pixels) so a template can zoom into it without blocky colour edges. geocolor=True also writes <stem>_geo.jpg, CIRA's
+    GeoColor of the same box at 1 km (true colour by day; at night infrared clouds over a city-lights background)."""
+    c = desk["center"]
+    ts = max(times("full_disk", "band_13"))
+    if geocolor:                                             # the newest time both products have, so the two views match
+        try:
+            ts = max(set(times("full_disk", "geocolor")) & {ts, *times("full_disk", "band_13")})
+        except (OSError, ValueError) as e:                   # GeoColor is a bonus: the infrared frame still goes out
+            print(f"geocolor unavailable: {e}", file=sys.stderr)
+            geocolor = False
+    box = (box_fn or tw_box)(c["lat"], c["lon"])
+    g = region_values(ts, box, (TW_SIZE[0] * res, TW_SIZE[1] * res))
+    xs = [x for x, _ in IR_STOPS]
+    rgb = np.stack([np.interp(g, xs, [col[i] for _, col in IR_STOPS]) for i in range(3)], axis=-1)
+    img = Image.fromarray(rgb.clip(0, 255).astype(np.uint8))
+    lat0, lat1, lon0, lon1 = box
+
+    def xy(lat: float, lon: float) -> dict:
+        return {"x": round((lon - lon0) / (lon1 - lon0) * TW_SIZE[0], 1), "y": round((lat1 - lat) / (lat1 - lat0) * TW_SIZE[1], 1)}
+
+    out.mkdir(parents=True, exist_ok=True)
+    img.save(out / f".{stem}_ir.jpg.{os.getpid()}.tmp", format="JPEG", quality=92)
+    os.replace(out / f".{stem}_ir.jpg.{os.getpid()}.tmp", out / f"{stem}_ir.jpg")
+    images = {"ir": f"{stem}_ir.jpg"}
+    xs = [x for x, _ in NEWS_STOPS]
+    news = Image.fromarray(np.stack([np.interp(g, xs, [col[i] for _, col in NEWS_STOPS]) for i in range(3)], axis=-1).clip(0, 255).astype(np.uint8))
+    news = news.filter(ImageFilter.UnsharpMask(radius=40 * res, percent=90, threshold=0))       # large-radius clarity
+    news = news.filter(ImageFilter.UnsharpMask(radius=2 * res, percent=60, threshold=2))
+    news.save(out / f".{stem}_irn.jpg.{os.getpid()}.tmp", format="JPEG", quality=92)
+    os.replace(out / f".{stem}_irn.jpg.{os.getpid()}.tmp", out / f"{stem}_irn.jpg")
+    images["irnews"] = f"{stem}_irn.jpg"
+    if geocolor:
+        try:
+            geo = Image.fromarray(region_values(ts, box, (TW_SIZE[0] * res, TW_SIZE[1] * res), "geocolor", 4).clip(0, 255).astype(np.uint8))
+            geo.save(out / f".{stem}_geo.jpg.{os.getpid()}.tmp", format="JPEG", quality=92)
+            os.replace(out / f".{stem}_geo.jpg.{os.getpid()}.tmp", out / f"{stem}_geo.jpg")
+            images["geocolor"] = f"{stem}_geo.jpg"
+        except (OSError, RuntimeError) as e:
+            print(f"geocolor unavailable: {e}", file=sys.stderr)
+    mid = math.radians((lat0 + lat1) / 2)
+    info = {
+        "image": f"{stem}_ir.jpg", "images": images, "product": "ir", "time": ts_time(ts).isoformat().replace("+00:00", "Z"),
+        "width": TW_SIZE[0], "height": TW_SIZE[1], "box": {"lat0": lat0, "lat1": lat1, "lon0": lon0, "lon1": lon1},
+        "km_per_px": (lon1 - lon0) * 111.32 * math.cos(mid) / TW_SIZE[0],
+        "center": {**xy(c["lat"], c["lon"]), "lat": c["lat"], "lon": c["lon"], "timeUTC": c.get("timeUTC")},
+        "forecast": [{"timeUTC": p["timeUTC"], **xy(p["lat"], p["lon"])} for p in (desk.get("forecast") or {}).get("points") or []],
+        "credit": "Himawari-9 (JMA) · CIRA RAMMB SLIDER",
+    }
+    (out / f".{stem}.json.{os.getpid()}.tmp").write_text(json.dumps(info, indent=2), encoding="utf-8")
+    os.replace(out / f".{stem}.json.{os.getpid()}.tmp", out / f"{stem}.json")
+    print(json.dumps({k: info[k] for k in ("image", "time", "box", "center")}))
+    return 0
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--product", default="auto", choices=["auto", "geocolor", "ir"])
+    ap.add_argument("--desk", default=str(REPO / "output" / "desk" / "desk.json"), help="desk.json path or URL (storm center, forecast)")
+    ap.add_argument("--min-corr", type=float, default=0.6)
+    ap.add_argument("--out", default=str(OUT_DIR))
+    ap.add_argument("--frame", default="sector", choices=["sector", "tw", "india"],
+                    help="sector: the rapid-scan box on the storm (hero.json); tw: storm + Taiwan from the full disk, infrared (tw.json)")
+    a = ap.parse_args()
+
+    raw = get(a.desk) if a.desk.startswith("http") else Path(a.desk).read_bytes()
+    desk = json.loads(raw)
+    if a.frame == "tw":
+        return tw_frame(desk, Path(a.out))
+    if a.frame == "india":
+        return tw_frame(desk, Path(a.out), stem="in", box_fn=in_box, res=2, geocolor=True)
+    c = desk["center"]
+    # newest time both the sector and the full disk have: locate and draw from that one frame, so a sector that
+    # JMA re-aimed a few minutes later can never be drawn with a stale offset
+    fd = set(times("full_disk", "band_13"))
+    ts = next(t for t in times(SECTOR, "band_13") if t in fd)
+    when = ts_time(ts)
+    product = a.product if a.product != "auto" else ("geocolor" if sun_elev(c["lat"], c["lon"], when) > 12 else "ir")
+
+    ox, oy, r = locate(ts, c["lat"], c["lon"])
+    cx, cy = geos(c["lat"], c["lon"])
+    ex, ey = cx - ox, cy - oy                               # storm center in sector pixels at 2 km
+    if r < a.min_corr or not (40 <= ex <= 460 and 40 <= ey <= 460):
+        print(f"rapid-scan sector is not on the storm (match r={r:.2f}, center at {ex:.0f},{ey:.0f} of 500)", file=sys.stderr)
+        return 2
+
+    if product == "geocolor":
+        img, k = treat_geocolor(sector_image("geocolor", ts, 2)), 4.0          # level 2: 2000 px, 0.5 km
+    else:
+        img, k = ir_color(sector_image("band_13", ts, 0), 1500), 3.0           # 2 km is the finest; drawn at 1500 px
+    shot = when
+
+    pts = []
+    for p in (desk.get("forecast") or {}).get("points") or []:
+        fx, fy = geos(p["lat"], p["lon"])
+        pts.append({"timeUTC": p["timeUTC"], "x": round((fx - ox) * k, 1), "y": round((fy - oy) * k, 1)})
+    out = Path(a.out)
+    out.mkdir(parents=True, exist_ok=True)
+    name = f"hero_{product}.jpg"
+    img.save(out / f".{name}.{os.getpid()}.tmp", format="JPEG", quality=92)       # renames: streams rendering at once never see a half file
+    os.replace(out / f".{name}.{os.getpid()}.tmp", out / name)
+    info = {
+        "image": name, "product": product, "time": shot.isoformat().replace("+00:00", "Z"),
+        "width": img.width, "height": img.height, "km_per_px": 2.0 / k,
+        "center": {"x": round(ex * k, 1), "y": round(ey * k, 1), "lat": c["lat"], "lon": c["lon"], "timeUTC": c.get("timeUTC")},
+        "forecast": pts, "match": round(r, 3), "sector_offset_2km": [ox, oy],
+        "credit": "Himawari-9 (JMA) · CIRA RAMMB SLIDER",
+    }
+    (out / f".hero.json.{os.getpid()}.tmp").write_text(json.dumps(info, indent=2), encoding="utf-8")
+    os.replace(out / f".hero.json.{os.getpid()}.tmp", out / "hero.json")
+    print(json.dumps({k2: info[k2] for k2 in ("image", "product", "time", "center", "match")}))
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

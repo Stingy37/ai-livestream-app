@@ -1,0 +1,104 @@
+[
+ {
+  "event": "Hurricane Polo (Mexico) 2026",
+  "domain": "hazard",
+  "start_utc": "2026-09-27",
+  "end_utc": "2026-09-30",
+  "markets": [
+   {
+    "lang": "es",
+    "country": "MX",
+    "youtube_query": "huracán Polo en vivo",
+    "must": [
+     "polo"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Hurricane Otis (Acapulco) 2023",
+  "domain": "hazard",
+  "start_utc": "2023-10-23",
+  "end_utc": "2023-10-27",
+  "markets": [
+   {
+    "lang": "es",
+    "country": "MX",
+    "youtube_query": "huracán Otis en vivo",
+    "must": [
+     "otis"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Hurricane Erick (Oaxaca) 2025",
+  "domain": "hazard",
+  "start_utc": "2025-06-17",
+  "end_utc": "2025-06-21",
+  "markets": [
+   {
+    "lang": "es",
+    "country": "MX",
+    "youtube_query": "huracán Erick en vivo",
+    "must": [
+     "erick"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Hurricane John (Guerrero) 2024",
+  "domain": "hazard",
+  "start_utc": "2024-09-22",
+  "end_utc": "2024-09-28",
+  "markets": [
+   {
+    "lang": "es",
+    "country": "MX",
+    "youtube_query": "huracán John en vivo",
+    "must": [
+     "john"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Hurricane Beryl (Yucatán) 2024",
+  "domain": "hazard",
+  "start_utc": "2024-07-03",
+  "end_utc": "2024-07-06",
+  "markets": [
+   {
+    "lang": "es",
+    "country": "MX",
+    "youtube_query": "huracán Beryl en vivo Quintana Roo",
+    "must": [
+     "beryl"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ },
+ {
+  "event": "Hurricane Milton (Yucatán/Florida) 2024",
+  "domain": "hazard",
+  "start_utc": "2024-10-07",
+  "end_utc": "2024-10-11",
+  "markets": [
+   {
+    "lang": "es",
+    "country": "MX",
+    "youtube_query": "huracán Milton en vivo",
+    "must": [
+     "milton"
+    ],
+    "wikipedia_title": null
+   }
+  ]
+ }
+]

@@ -1,0 +1,249 @@
+{
+  "config": {
+    "name": "Typhoon Champi Taiwan Desk (薔琵颱風 台灣颱風資訊台)",
+    "storm": {
+      "title": "TYPHOON",
+      "name": "CHAMPI",
+      "names": "Philippines: Rosal · Taiwan: 薔琵 · Japan: 台風30号 チャンパー"
+    }
+  },
+  "defaults": {
+    "language": "zh-tw",
+    "script_model": "qwen3-8b",
+    "tts_model": "kokoro",
+    "tts_voice": "zm_yunyang"
+  },
+  "content_library": {
+    "topic_descriptions": {
+      "show_open": {
+        "label": "Show open",
+        "content": "A short cold open for a Taiwan live desk on Typhoon Champi (薔琵). It tells viewers in Taiwan what the stream shows, refreshed throughout the day: the Central Weather Administration typhoon warning, county-by-county work and school closures, CWA wind and heavy-rain advisories, CWA's forecast track, and live cameras around northern and eastern Taiwan. No figures."
+      },
+      "tw_bulletin": {
+        "label": "Official bulletin (官方快報)",
+        "content": "Read word for word from CWA's typhoon warning and advisories and the DGPA's work and school closure list (desk.json); not written by a model."
+      },
+      "storm_position": {
+        "label": "Where it is now",
+        "content": "Where Typhoon Champi (薔琵) is right now relative to Taiwan, as Taiwan's Central Weather Administration (CWA) describes it: the latest CWA typhoon warning and its report number; the center position as CWA states it (distance and direction from a Taiwanese landmark such as Eluanbi, Yilan or Hualien); CWA's intensity class; maximum sustained winds and gusts in meters per second and Beaufort levels; central pressure; movement; CWA's storm-force radii (level-7 and level-10 winds); and whether CWA says the storm circle has reached Taiwan's coastal waters or land. JMA and JTWC figures only as a short comparison."
+      },
+      "track_forecast": {
+        "label": "Forecast for Taiwan",
+        "content": "CWA's forecast for Typhoon Champi (薔琵) over the next 24 to 48 hours as it passes Taiwan: where CWA forecasts the center, relative to Yilan, Keelung, Taipei or Hualien, and when; when CWA expects wind and rain in northern and northeastern Taiwan to be strongest and when they should ease; the turn northward toward Japan; and where the JMA and JTWC tracks differ from CWA's. Do not compute distances or times yourself."
+      },
+      "local_impacts": {
+        "label": "Impacts in Taiwan",
+        "content": "What Typhoon Champi (薔琵) is doing to daily life in Taiwan: CWA observed and forecast rainfall (which counties and mountain areas, how much), observed strong gusts, landslide and debris-flow alerts, flooding, power outages reported by Taipower, road closures and highway wind controls (Suhua Highway, mountain roads), Taiwan Railway, High Speed Rail, flight and ferry changes, and travel over the Retrocession Day long weekend, each attributed to the agency or company that reported it. Work and school closures are read separately from the DGPA list; do not restate them."
+      },
+      "show_close": {
+        "label": "Show close",
+        "content": "A brief sign-off for viewers in Taiwan: the desk keeps refreshing; follow the Central Weather Administration for warnings and your city or county government for closures; stay away from mountains, rivers and the coast while the typhoon passes."
+      },
+      "official_text": {
+        "label": "Official text (read verbatim)",
+        "content": "Read word for word from desk.json (CWA's typhoon warning and advisories, DGPA's closure list) by src/desk/bulletin.py; not written by a model."
+      }
+    },
+    "system_instructions": {
+      "anchor_neutral": {
+        "label": "Taiwan weather desk",
+        "content": "You are writing copy for a single newsreader on a Taiwanese typhoon live stream. Write plain spoken English; it will be translated into Taiwanese Mandarin, so write the way a Taiwanese TV weather desk speaks to viewers in Taiwan. Rules: (1) Lead with the most recent, most decision-relevant fact for people in Taiwan. (2) Taiwan's Central Weather Administration (CWA) is the primary source: give CWA's figures and wording first; mention JMA or JTWC only as a short, labeled comparison. (3) Write every time exactly as the source gives it, including the words UTC when the source uses UTC; times are converted to Taiwan time automatically, so never convert them yourself. (4) Give winds the way CWA does: meters per second and the Beaufort level, for example 43 meters per second, level 14. (5) Give distances and directions only as a source states them relative to a place in Taiwan, for example about 350 km east of Eluanbi; never convert units or compute a distance yourself. (6) Use CWA's intensity class, for example moderate typhoon, not super typhoon or JTWC categories. (7) Do not say the storm will make landfall, or describe what happens after landfall, unless CWA says it will. (8) Do not mention work or school closures or the DGPA: closures are read separately, word for word, from the DGPA list. (9) Name Taiwanese counties and cities specifically (Yilan, Keelung, New Taipei, Taipei, Taoyuan, Hualien, Taitung) whenever a source names them. (10) Attribute every claim to the agency or company that reported it. Never invent numbers, times or place names; if something has not been reported, say so. Write in complete sentences, with no headings, bullet points, stage directions or markdown. Target roughly 150 to 180 seconds of spoken delivery. Use the time to explain what the figures mean for Taiwan, not to repeat yourself."
+      },
+      "anchor_urgent": {
+        "label": "Taiwan public-safety desk",
+        "content": "You are writing an urgent public-safety segment for a single newsreader on a Taiwanese typhoon live stream. Write plain spoken English in short, direct sentences; it will be translated into Taiwanese Mandarin. Lead with what people in the affected counties should do, and where. Rules: (1) Lead with the most recent, most decision-relevant fact for people in Taiwan. (2) Taiwan's Central Weather Administration (CWA) is the primary source: give CWA's figures and wording first; mention JMA or JTWC only as a short, labeled comparison. (3) Write every time exactly as the source gives it, including the words UTC when the source uses UTC; times are converted to Taiwan time automatically, so never convert them yourself. (4) Give winds the way CWA does: meters per second and the Beaufort level, for example 43 meters per second, level 14. (5) Give distances and directions only as a source states them relative to a place in Taiwan, for example about 350 km east of Eluanbi; never convert units or compute a distance yourself. (6) Use CWA's intensity class, for example moderate typhoon, not super typhoon or JTWC categories. (7) Do not say the storm will make landfall, or describe what happens after landfall, unless CWA says it will. (8) Do not mention work or school closures or the DGPA: closures are read separately, word for word, from the DGPA list. (9) Name Taiwanese counties and cities specifically (Yilan, Keelung, New Taipei, Taipei, Taoyuan, Hualien, Taitung) whenever a source names them. (10) Attribute every claim to the agency or company that reported it. Never invent numbers, times or place names; if something has not been reported, say so. Write in complete sentences, with no headings, bullet points, stage directions or markdown. Never invent an evacuation order, a shelter, a road or rail closure, a flight cancellation, an outage figure or a casualty figure. Target roughly 150 to 180 seconds of spoken delivery."
+      },
+      "station_ident": {
+        "label": "Station ident",
+        "content": "You are writing a short station identification for a Taiwanese typhoon live stream, read by a single newsreader. Write plain spoken English; it will be translated into Taiwanese Mandarin. Two to three sentences. Say that the stream follows Typhoon Champi (薔琵) for viewers in Taiwan and refreshes throughout the day. Do not cite figures, times, forecasts or closures. Target roughly 15 to 20 seconds of spoken delivery."
+      }
+    },
+    "sources": {
+      "jtwc_warnings": {
+        "label": "JTWC warning 29W (Champi)",
+        "url": "https://www.metoc.navy.mil/jtwc/products/wp2926web.txt"
+      },
+      "jma_tropical": {
+        "label": "JMA tropical cyclone information (TC2636 Champi)",
+        "url": "https://www.jma.go.jp/bosai/typhoon/data/TC2636/specifications.json"
+      },
+      "jma_forecast": {
+        "label": "JMA typhoon forecast (TC2636 Champi)",
+        "url": "https://www.jma.go.jp/bosai/typhoon/data/TC2636/forecast.json"
+      },
+      "cwa_ty_news": {
+        "label": "CWA typhoon news (English)",
+        "url": "https://www.cwa.gov.tw/V8/E/P/Typhoon/TY_NEWS.html"
+      },
+      "cwa_ty_warn": {
+        "label": "CWA typhoon warnings (English)",
+        "url": "https://www.cwa.gov.tw/V8/E/P/Typhoon/TY_WARN.html"
+      },
+      "cwa_ty_data": {
+        "label": "CWA typhoon data feed",
+        "url": "https://www.cwa.gov.tw/Data/js/typhoon/TY_NEWS-Data.js"
+      },
+      "tw_desk_bulletin": {
+        "label": "CWA warning + advisories, DGPA closures (desk.json, read verbatim)",
+        "url": "desk://tw_bulletin"
+      },
+      "desk_tw_open": {
+        "label": "fixed station open (desk.json, read verbatim)",
+        "url": "desk://tw_open"
+      },
+      "desk_tw_storm": {
+        "label": "CWA typhoon warning + centre + forecast (desk.json, read verbatim)",
+        "url": "desk://tw_storm"
+      },
+      "desk_tw_closures": {
+        "label": "DGPA closures (desk.json, read verbatim)",
+        "url": "desk://tw_closures"
+      },
+      "desk_tw_advisories": {
+        "label": "CWA wind + heavy-rain advisories (desk.json, read verbatim)",
+        "url": "desk://tw_advisories"
+      },
+      "desk_tw_close": {
+        "label": "fixed station close (desk.json, read verbatim)",
+        "url": "desk://tw_close"
+      }
+    }
+  },
+  "graph": {
+    "nodes": [
+      {
+        "key": "start",
+        "type": "start"
+      },
+      {
+        "key": "open",
+        "type": "scene_card",
+        "scene": {
+          "title": "Show Open",
+          "topic_description": "official_text",
+          "final_script_system_instructions": "station_ident",
+          "do_web_search": false,
+          "sources": [
+            "desk_tw_open"
+          ],
+          "language": "zh-tw"
+        }
+      },
+      {
+        "key": "storm",
+        "type": "scene_card",
+        "scene": {
+          "title": "Typhoon Warning",
+          "topic_description": "official_text",
+          "final_script_system_instructions": "station_ident",
+          "do_web_search": false,
+          "sources": [
+            "desk_tw_storm"
+          ],
+          "language": "zh-tw"
+        }
+      },
+      {
+        "key": "closures",
+        "type": "scene_card",
+        "scene": {
+          "title": "Closures",
+          "topic_description": "official_text",
+          "final_script_system_instructions": "station_ident",
+          "do_web_search": false,
+          "sources": [
+            "desk_tw_closures"
+          ],
+          "language": "zh-tw"
+        }
+      },
+      {
+        "key": "advisories",
+        "type": "scene_card",
+        "scene": {
+          "title": "Wind & Rain Advisories",
+          "topic_description": "official_text",
+          "final_script_system_instructions": "station_ident",
+          "do_web_search": false,
+          "sources": [
+            "desk_tw_advisories"
+          ],
+          "language": "zh-tw"
+        }
+      },
+      {
+        "key": "close",
+        "type": "scene_card",
+        "scene": {
+          "title": "Show Close",
+          "topic_description": "official_text",
+          "final_script_system_instructions": "station_ident",
+          "do_web_search": false,
+          "sources": [
+            "desk_tw_close"
+          ],
+          "language": "zh-tw"
+        }
+      },
+      {
+        "key": "end",
+        "type": "termination"
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "source": "start",
+        "target": "open",
+        "type": "normal"
+      },
+      {
+        "id": "e2",
+        "source": "open",
+        "target": "storm",
+        "type": "normal"
+      },
+      {
+        "id": "e3",
+        "source": "storm",
+        "target": "closures",
+        "type": "normal"
+      },
+      {
+        "id": "e4",
+        "source": "closures",
+        "target": "advisories",
+        "type": "normal"
+      },
+      {
+        "id": "e5",
+        "source": "advisories",
+        "target": "storm",
+        "type": "repeat_back"
+      },
+      {
+        "id": "e6",
+        "source": "advisories",
+        "target": "close",
+        "type": "continuation"
+      },
+      {
+        "id": "e7",
+        "source": "close",
+        "target": "end",
+        "type": "normal"
+      }
+    ],
+    "cycles": [
+      {
+        "id": "c1",
+        "start_node": "storm",
+        "end_node": "advisories",
+        "repeat_back_edge": "e5",
+        "continuation_edge": "e6",
+        "repetitions": 12,
+        "repetitions_until_update": 2
+      }
+    ]
+  }
+}

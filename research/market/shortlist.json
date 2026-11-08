@@ -1,0 +1,533 @@
+[
+ {
+  "event": "Hurricane Melissa",
+  "domain": "hazard",
+  "start_utc": "2025-10-21",
+  "end_utc": "2025-11-01",
+  "markets": [
+   {
+    "lang": "es",
+    "country": "CU",
+    "youtube_query": "huracán Melissa en vivo",
+    "wikipedia_title": "Huracán Melissa",
+    "must": [
+     "melissa"
+    ]
+   },
+   {
+    "lang": "fr",
+    "country": "HT",
+    "youtube_query": "ouragan Melissa Haïti",
+    "wikipedia_title": "Ouragan Melissa",
+    "must": [
+     "melissa"
+    ]
+   }
+  ]
+ },
+ {
+  "event": "Super Typhoon Uwan / Fung-wong",
+  "domain": "hazard",
+  "start_utc": "2025-11-04",
+  "end_utc": "2025-11-13",
+  "markets": [
+   {
+    "lang": "tl",
+    "country": "PH",
+    "youtube_query": "Bagyong Uwan",
+    "wikipedia_title": "Bagyong Uwan",
+    "must": [
+     "uwan"
+    ]
+   },
+   {
+    "lang": "zh-Hant",
+    "country": "TW",
+    "youtube_query": "鳳凰颱風",
+    "wikipedia_title": "颱風鳳凰 (2025年)",
+    "must": [
+     "鳳凰"
+    ]
+   }
+  ]
+ },
+ {
+  "event": "Cyclone Montha",
+  "domain": "hazard",
+  "start_utc": "2025-10-25",
+  "end_utc": "2025-10-31",
+  "markets": [
+   {
+    "lang": "te",
+    "country": "IN",
+    "youtube_query": "మొంథా తుఫాన్",
+    "wikipedia_title": null,
+    "must": [
+     "మొంథా",
+     "montha"
+    ]
+   },
+   {
+    "lang": "en",
+    "country": "IN",
+    "youtube_query": "Cyclone Montha live",
+    "wikipedia_title": "Cyclone Montha",
+    "must": [
+     "montha"
+    ]
+   }
+  ]
+ },
+ {
+  "event": "Aomori M7.6 earthquake + megaquake advisory",
+  "domain": "hazard",
+  "start_utc": "2025-12-08",
+  "end_utc": "2025-12-16",
+  "markets": [
+   {
+    "lang": "ja",
+    "country": "JP",
+    "youtube_query": "青森 地震 津波",
+    "wikipedia_title": "青森県東方沖地震 (2025年)",
+    "must": [
+     "青森",
+     "後発地震"
+    ]
+   }
+  ]
+ },
+ {
+  "event": "G4 geomagnetic storm (Nov 2025)",
+  "domain": "hazard",
+  "start_utc": "2025-11-11",
+  "end_utc": "2025-11-13",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "northern lights live",
+    "wikipedia_title": null,
+    "must": [
+     "aurora",
+     "northern lights"
+    ]
+   },
+   {
+    "lang": "es",
+    "country": "MX",
+    "youtube_query": "aurora boreal en vivo",
+    "wikipedia_title": null,
+    "must": [
+     "aurora"
+    ]
+   },
+   {
+    "lang": "it",
+    "country": "IT",
+    "youtube_query": "aurora boreale diretta",
+    "wikipedia_title": null,
+    "must": [
+     "aurora"
+    ]
+   }
+  ]
+ },
+ {
+  "event": "Winter Storm Fern",
+  "domain": "hazard",
+  "start_utc": "2026-01-23",
+  "end_utc": "2026-01-27",
+  "markets": [
+   {
+    "lang": "es",
+    "country": "MX",
+    "youtube_query": "tormenta invernal en vivo",
+    "wikipedia_title": "Tormenta invernal de Norteamérica de enero de 2026",
+    "must": [
+     "tormenta",
+     "nevada",
+     "fern",
+     "invernal"
+    ]
+   }
+  ]
+ },
+ {
+  "event": "Chile wildfires (Ñuble/Biobío)",
+  "domain": "hazard",
+  "start_utc": "2026-01-16",
+  "end_utc": "2026-01-22",
+  "markets": [
+   {
+    "lang": "es",
+    "country": "CL",
+    "youtube_query": "incendio forestal Penco en vivo",
+    "wikipedia_title": "Incendios forestales en Ñuble y Biobío de 2026",
+    "must": [
+     "incendio"
+    ]
+   }
+  ]
+ },
+ {
+  "event": "Zona da Mata floods (Minas Gerais)",
+  "domain": "hazard",
+  "start_utc": "2026-02-22",
+  "end_utc": "2026-02-27",
+  "markets": [
+   {
+    "lang": "pt",
+    "country": "BR",
+    "youtube_query": "chuva Juiz de Fora ao vivo",
+    "wikipedia_title": "Enchentes e deslizamentos na Zona da Mata Mineira em 2026",
+    "must": [
+     "juiz de fora",
+     "chuva",
+     "enchente",
+     "zona da mata"
+    ]
+   }
+  ]
+ },
+ {
+  "event": "Venezuela earthquake doublet",
+  "domain": "hazard",
+  "start_utc": "2026-06-24",
+  "end_utc": "2026-07-05",
+  "markets": [
+   {
+    "lang": "es",
+    "country": "VE",
+    "youtube_query": "terremoto Venezuela en vivo",
+    "wikipedia_title": "Terremotos de Venezuela de 2026",
+    "must": [
+     "venezuela"
+    ]
+   }
+  ]
+ },
+ {
+  "event": "European heatwave (June 2026)",
+  "domain": "hazard",
+  "start_utc": "2026-06-20",
+  "end_utc": "2026-07-05",
+  "markets": [
+   {
+    "lang": "fr",
+    "country": "FR",
+    "youtube_query": "canicule en direct",
+    "wikipedia_title": "Canicules de 2026 en Europe",
+    "must": [
+     "canicule"
+    ]
+   },
+   {
+    "lang": "es",
+    "country": "ES",
+    "youtube_query": "ola de calor en directo",
+    "wikipedia_title": "Ola de calor en Europa de junio de 2026",
+    "must": [
+     "calor"
+    ]
+   },
+   {
+    "lang": "it",
+    "country": "IT",
+    "youtube_query": "caldo record diretta",
+    "wikipedia_title": null,
+    "must": [
+     "caldo"
+    ]
+   }
+  ]
+ },
+ {
+  "event": "Kumamoto earthquake 2026",
+  "domain": "hazard",
+  "start_utc": "2026-07-28",
+  "end_utc": "2026-08-04",
+  "markets": [
+   {
+    "lang": "ja",
+    "country": "JP",
+    "youtube_query": "熊本 地震",
+    "wikipedia_title": "熊本地震 (2026年)",
+    "must": [
+     "熊本"
+    ]
+   }
+  ]
+ },
+ {
+  "event": "Typhoon Dolphin (台風13号)",
+  "domain": "hazard",
+  "start_utc": "2026-08-03",
+  "end_utc": "2026-08-11",
+  "markets": [
+   {
+    "lang": "ja",
+    "country": "JP",
+    "youtube_query": "台風13号",
+    "wikipedia_title": "2026年の台風",
+    "must": [
+     "台風13号"
+    ]
+   },
+   {
+    "lang": "zh-Hant",
+    "country": "TW",
+    "youtube_query": "白海豚颱風",
+    "wikipedia_title": "颱風白海豚 (2026年)",
+    "must": [
+     "白海豚"
+    ]
+   }
+  ]
+ },
+ {
+  "event": "Honduras election + disputed count",
+  "domain": "politics",
+  "start_utc": "2025-11-30",
+  "end_utc": "2025-12-24",
+  "markets": [
+   {
+    "lang": "es",
+    "country": "HN",
+    "youtube_query": "resultados elecciones Honduras en vivo",
+    "wikipedia_title": "Elecciones generales de Honduras de 2025",
+    "must": [
+     "honduras"
+    ]
+   }
+  ]
+ },
+ {
+  "event": "Portugal presidential election 2026",
+  "domain": "politics",
+  "start_utc": "2026-01-18",
+  "end_utc": "2026-02-08",
+  "markets": [
+   {
+    "lang": "pt",
+    "country": "PT",
+    "youtube_query": "presidenciais 2026 resultados em direto",
+    "wikipedia_title": "Eleições presidenciais portuguesas de 2026",
+    "must": [
+     "presidenciais",
+     "presidencial"
+    ]
+   }
+  ]
+ },
+ {
+  "event": "Italy justice referendum 2026",
+  "domain": "politics",
+  "start_utc": "2026-03-22",
+  "end_utc": "2026-03-23",
+  "markets": [
+   {
+    "lang": "it",
+    "country": "IT",
+    "youtube_query": "referendum giustizia risultati diretta",
+    "wikipedia_title": "Referendum costituzionale in Italia del 2026",
+    "must": [
+     "referendum"
+    ]
+   }
+  ]
+ },
+ {
+  "event": "Crypto liquidation crash (Oct 2025)",
+  "domain": "other",
+  "start_utc": "2025-10-10",
+  "end_utc": "2025-10-11",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "bitcoin crash live",
+    "wikipedia_title": null,
+    "must": [
+     "bitcoin",
+     "btc",
+     "crypto"
+    ]
+   },
+   {
+    "lang": "ja",
+    "country": "JP",
+    "youtube_query": "ビットコイン 暴落",
+    "wikipedia_title": null,
+    "must": [
+     "ビットコイン",
+     "bitcoin",
+     "btc",
+     "仮想通貨"
+    ]
+   }
+  ]
+ },
+ {
+  "event": "Interstellar comet 3I/ATLAS",
+  "domain": "other",
+  "start_utc": "2025-10-29",
+  "end_utc": "2025-12-19",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "3I/ATLAS live",
+    "wikipedia_title": "3I/ATLAS",
+    "must": [
+     "3i",
+     "atlas"
+    ]
+   },
+   {
+    "lang": "es",
+    "country": "MX",
+    "youtube_query": "3I/ATLAS en vivo",
+    "wikipedia_title": "3I/ATLAS",
+    "must": [
+     "3i",
+     "atlas"
+    ]
+   },
+   {
+    "lang": "pt",
+    "country": "BR",
+    "youtube_query": "3I/ATLAS ao vivo",
+    "wikipedia_title": "3I/ATLAS",
+    "must": [
+     "3i",
+     "atlas"
+    ]
+   },
+   {
+    "lang": "ja",
+    "country": "JP",
+    "youtube_query": "3I/ATLAS",
+    "wikipedia_title": "3I/ATLAS",
+    "must": [
+     "3i",
+     "atlas"
+    ]
+   }
+  ]
+ },
+ {
+  "event": "H3 rocket Flight 8 failure",
+  "domain": "other",
+  "start_utc": "2025-12-22",
+  "end_utc": "2025-12-22",
+  "markets": [
+   {
+    "lang": "ja",
+    "country": "JP",
+    "youtube_query": "H3ロケット 打ち上げ",
+    "wikipedia_title": "H3ロケット",
+    "must": [
+     "h3"
+    ]
+   }
+  ]
+ },
+ {
+  "event": "Gold/silver crash (Jan 30 2026)",
+  "domain": "other",
+  "start_utc": "2026-01-30",
+  "end_utc": "2026-01-31",
+  "markets": [
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "silver crash live",
+    "wikipedia_title": null,
+    "must": [
+     "silver",
+     "gold"
+    ]
+   }
+  ]
+ },
+ {
+  "event": "Total lunar eclipse Mar 3 2026",
+  "domain": "other",
+  "start_utc": "2026-03-03",
+  "end_utc": "2026-03-03",
+  "markets": [
+   {
+    "lang": "ja",
+    "country": "JP",
+    "youtube_query": "皆既月食 ライブ",
+    "wikipedia_title": "2026年3月3日の月食",
+    "must": [
+     "月食"
+    ]
+   },
+   {
+    "lang": "zh-Hant",
+    "country": "TW",
+    "youtube_query": "月全食 直播",
+    "wikipedia_title": "2026年3月3日月食",
+    "must": [
+     "月食",
+     "月全食"
+    ]
+   },
+   {
+    "lang": "en",
+    "country": "US",
+    "youtube_query": "lunar eclipse live",
+    "wikipedia_title": "March 2026 lunar eclipse",
+    "must": [
+     "eclipse"
+    ]
+   },
+   {
+    "lang": "es",
+    "country": "MX",
+    "youtube_query": "eclipse lunar en vivo",
+    "wikipedia_title": "Eclipse lunar de marzo de 2026",
+    "must": [
+     "eclipse"
+    ]
+   }
+  ]
+ },
+ {
+  "event": "Typhoon Champi (calibration)",
+  "domain": "hazard",
+  "start_utc": "2026-10-18",
+  "end_utc": "2026-10-21",
+  "markets": [
+   {
+    "lang": "ja",
+    "country": "JP",
+    "youtube_query": "台風30号",
+    "wikipedia_title": null,
+    "must": [
+     "台風30号"
+    ]
+   },
+   {
+    "lang": "zh-Hant",
+    "country": "TW",
+    "youtube_query": "薔琵 颱風",
+    "wikipedia_title": null,
+    "must": [
+     "薔琵"
+    ]
+   },
+   {
+    "lang": "tl",
+    "country": "PH",
+    "youtube_query": "Bagyong Rosal",
+    "wikipedia_title": null,
+    "must": [
+     "rosal"
+    ]
+   }
+  ]
+ }
+]
