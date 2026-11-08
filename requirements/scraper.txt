@@ -11,3 +11,6 @@ requests>=2.32
 nltk>=3.9             # sentence counts in reports (punkt_tab in ~/nltk_data)
 openai>=1.0           # Lumen client lives in src/models/lumen.py
 pytest
+
+# Search fallbacks (src/scraper/searx.py): Tavily needs only TAVILY_API_KEY (plain HTTPS through requests).
+# ddgs is optional and off unless SCRAPE_DDGS_FALLBACK=1:   pip install 'ddgs>=9.0'

@@ -72,7 +72,8 @@ class WebScraper:
         if searx.available():
             self._searx = searx
         else:
-            log.warning("SearXNG at %s is not reachable; web search is off for this process", searx.base_url)
+            log.warning("SearXNG at %s is not reachable and no fallback is set (TAVILY_API_KEY, SCRAPE_DDGS_FALLBACK=1); "
+                        "web search is off for this process", searx.base_url)
             self._searx = None
         pool = lumen.get_pool()
 

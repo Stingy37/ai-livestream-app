@@ -13,8 +13,13 @@ touch .run/STOP                                      # stop cleanly after the cu
 
 Services it starts (idempotent): `scripts/vllm_start.sh` (Qwen3-8B fp8 + the dynamic-RAG LoRA
 `model_weights/dynrag_lora_v5_step60`, served as `qwen3-8b` and `dynrag` on :8000) and
-`scripts/searxng_start.sh` (SearXNG on :8888). The EC2 side is deployed once with
+`scripts/searxng_start.sh` (SearXNG on :8890; 8888 is JupyterHub). The EC2 side is deployed once with
 `bash ec2/deploy.sh` (see `ec2/README.md`).
+
+Web search falls back when SearXNG errors or finds nothing (`src/scraper/searx.py`): Tavily if `TAVILY_API_KEY` is set
+(1 credit per search, at most `SCRAPE_TAVILY_MAX_CREDITS`, default 20, per scene process), then ddgs only with
+`SCRAPE_DDGS_FALLBACK=1`. After `SCRAPE_SEARX_FAIL_LIMIT` (2) errors in a row SearXNG is skipped for
+`SCRAPE_SEARX_COOLDOWN_S` (120) seconds. Counts per step are in each scene's `scrape_report.json` (`search_stats`).
 
 ## Stages (one process per scene per stage, `src/main.py`)
 
