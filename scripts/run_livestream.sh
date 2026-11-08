@@ -112,10 +112,10 @@ export GPU_TIMESHARE="${GPU_TIMESHARE:-1}"     # sleep vLLM and load MOSS for MO
 export VLLM_SLEEP_MODE="${VLLM_SLEEP_MODE:-1}" # start vLLM with sleep mode so it can be put to sleep
 
 # ---- EC2 / S3 ----------------------------------------------------------------------------------
-export EC2_API_URL="${EC2_API_URL:-https://54.221.147.143:8443}"
+export EC2_API_URL="${EC2_API_URL:-https://184.194.177.117:8443}"
 export EC2_API_TOKEN_FILE="${EC2_API_TOKEN_FILE:-$REPO_ROOT/secrets/ec2_api_token}"
 export EC2_CA_CERT="${EC2_CA_CERT:-$REPO_ROOT/secrets/ec2_server.crt}"
-export EC2_SSH_HOST="${EC2_SSH_HOST:-ubuntu@54.221.147.143}"
+export EC2_SSH_HOST="${EC2_SSH_HOST:-ubuntu@184.194.177.117}"
 export EC2_SSH_KEY="${EC2_SSH_KEY:-$HOME/.ssh/weather-dev}"
 export EC2_TUNNEL_PORT="${EC2_TUNNEL_PORT:-18443}"
 # EC2 stream this run publishes to (packages + desk.json): e.g. EC2_STREAM_ID=japan -> page /s/japan/ on EC2.

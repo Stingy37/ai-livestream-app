@@ -9,7 +9,7 @@
 # The publisher (src/broadcast/publisher.py) runs the same command itself when the direct url is
 # unreachable; this script is for humans who want to look at the site from ICRN or a laptop.
 set -euo pipefail
-EC2_SSH_HOST="${EC2_SSH_HOST:-ubuntu@54.221.147.143}"
+EC2_SSH_HOST="${EC2_SSH_HOST:-ubuntu@184.194.177.117}"
 EC2_SSH_KEY="${EC2_SSH_KEY:-$HOME/.ssh/weather-dev}"
 EC2_PORT="${EC2_PORT:-8443}"
 LOCAL_PORT="${LOCAL_PORT:-${EC2_TUNNEL_PORT:-18443}}"

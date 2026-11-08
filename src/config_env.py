@@ -120,10 +120,10 @@ class Settings:
     tts_sample_rate: int = 24000
 
     # ---- EC2 / S3 publishing -----------------------------------------------------------
-    ec2_api_url: str = "https://54.221.147.143:8443"
+    ec2_api_url: str = "https://184.194.177.117:8443"
     ec2_api_token_file: Path = REPO_ROOT / "secrets" / "ec2_api_token"
     ec2_ca_cert: Path = REPO_ROOT / "secrets" / "ec2_server.crt"   # pinned self-signed cert
-    ec2_ssh_host: str = "ubuntu@54.221.147.143"
+    ec2_ssh_host: str = "ubuntu@184.194.177.117"
     ec2_ssh_key: Path = HOME / ".ssh" / "weather-dev"
     ec2_tunnel_port: int = 18443          # local port of the ssh fallback tunnel
     ec2_upload_timeout: float = 600.0

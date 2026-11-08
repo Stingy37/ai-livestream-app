@@ -5,7 +5,7 @@
     publisher.status()                       # what is on air, what was retired
     publisher.retire([package_id, ...])      # explicit retire (normally the server prunes itself)
 
-Transport: the direct url (EC2_API_URL, https://54.221.147.143:8443) is tried first; when it is
+Transport: the direct url (EC2_API_URL, https://184.194.177.117:8443) is tried first; when it is
 unreachable (the security group only opens port 22 today) an SSH local port forward is started
 (or reused) and https://127.0.0.1:<EC2_TUNNEL_PORT> is used instead. TLS is verified against the
 pinned self-signed certificate deploy.sh copied to secrets/ec2_server.crt; the certificate carries
@@ -63,11 +63,11 @@ class Publisher:
         self.stream = (env("EC2_STREAM_ID", "") if stream is None else stream).strip() or "default"
         if not STREAM_ID_RE.match(self.stream):
             raise PublishError(f"bad stream id {self.stream!r}: use lowercase letters, digits and '-' (max 32)")
-        self.api_url = (api_url or env("EC2_API_URL", "https://54.221.147.143:8443")).rstrip("/")
+        self.api_url = (api_url or env("EC2_API_URL", "https://184.194.177.117:8443")).rstrip("/")
         self.token_file = Path(token_file or env("EC2_API_TOKEN_FILE", REPO_ROOT / "secrets" / "ec2_api_token")).expanduser()
         self._token = token
         self.ca_cert = Path(ca_cert or env("EC2_CA_CERT", REPO_ROOT / "secrets" / "ec2_server.crt")).expanduser()
-        self.ssh_host = ssh_host or env("EC2_SSH_HOST", "ubuntu@54.221.147.143")
+        self.ssh_host = ssh_host or env("EC2_SSH_HOST", "ubuntu@184.194.177.117")
         self.ssh_key = Path(ssh_key or env("EC2_SSH_KEY", "~/.ssh/weather-dev")).expanduser()
         self.tunnel_port = int(tunnel_port or env("EC2_TUNNEL_PORT", "18443"))
         self.remote_port = int(remote_port or env("EC2_PORT", "8443"))

@@ -9,16 +9,16 @@
 # the certificate back to secrets/ (so src/broadcast/publisher.py can authenticate and pin TLS).
 #
 # Settings (environment variables, defaults shown):
-#   EC2_SSH_HOST=ubuntu@54.221.147.143   EC2_SSH_KEY=~/.ssh/weather-dev
-#   EC2_PUBLIC_IP=54.221.147.143         EC2_PUBLIC_DNS=ec2-54-221-147-143.compute-1.amazonaws.com
+#   EC2_SSH_HOST=ubuntu@184.194.177.117   EC2_SSH_KEY=~/.ssh/weather-dev
+#   EC2_PUBLIC_IP=184.194.177.117         EC2_PUBLIC_DNS=ec2-184-194-177-117.compute-1.amazonaws.com
 #   EC2_PORT=8443                        S3_BUCKET=weather-livestream-716747745410-dev   AWS_REGION=us-east-1
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-EC2_SSH_HOST="${EC2_SSH_HOST:-ubuntu@54.221.147.143}"
+EC2_SSH_HOST="${EC2_SSH_HOST:-ubuntu@184.194.177.117}"
 EC2_SSH_KEY="${EC2_SSH_KEY:-$HOME/.ssh/weather-dev}"
-EC2_PUBLIC_IP="${EC2_PUBLIC_IP:-54.221.147.143}"
-EC2_PUBLIC_DNS="${EC2_PUBLIC_DNS:-ec2-54-221-147-143.compute-1.amazonaws.com}"
+EC2_PUBLIC_IP="${EC2_PUBLIC_IP:-184.194.177.117}"
+EC2_PUBLIC_DNS="${EC2_PUBLIC_DNS:-ec2-184-194-177-117.compute-1.amazonaws.com}"
 EC2_PORT="${EC2_PORT:-8443}"
 S3_BUCKET="${S3_BUCKET:-weather-livestream-716747745410-dev}"
 AWS_REGION="${AWS_REGION:-us-east-1}"

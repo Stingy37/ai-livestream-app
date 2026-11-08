@@ -1,7 +1,7 @@
 # EC2 broadcast server
 
 One HTTPS server (`server.py`, Python 3.14 stdlib + boto3) on the dev instance
-`ubuntu@54.221.147.143` (t3.micro, Ubuntu 26.04) does three jobs:
+`ubuntu@184.194.177.117` (t3.micro, Ubuntu 26.04) does three jobs:
 
 1. **Upload endpoint for ICRN** (`/api/v1/*`, bearer token): hands out short-lived presigned
    S3 PUT urls, then on `complete` downloads the package from S3, verifies it (sizes, sha256,
@@ -32,7 +32,7 @@ nicer url is wanted; the unit binds 8443):
 
     bash scripts/ec2_tunnel.sh                 # local https://127.0.0.1:18443/ -> EC2 :8443
     # or from a laptop:
-    ssh -o IdentitiesOnly=yes -i ~/.ssh/weather-dev -L 8443:127.0.0.1:8443 ubuntu@54.221.147.143
+    ssh -o IdentitiesOnly=yes -i ~/.ssh/weather-dev -L 8443:127.0.0.1:8443 ubuntu@184.194.177.117
     # then open https://localhost:8443/  (accept the self-signed certificate once)
     #   ?autoplay=1 for an OBS browser source, ?live=0 to disable the live layer, key L toggles it
 
