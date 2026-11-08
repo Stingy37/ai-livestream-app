@@ -19,3 +19,8 @@ html/thumb/
 # market research caches (research/market/measure.py)
 research/market/cache*/
 research/market/*.log
+
+# election reference frames and clips (copyrighted broadcast material, local reference only)
+research/election/frames/
+research/election/clips/
+research/election/refs/
