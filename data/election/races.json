@@ -1,0 +1,4399 @@
+{
+ "meta": {
+  "election_date": "2026-11-03",
+  "compiled": "2026-11-02",
+  "times": "All poll_close times are ISO 8601 in US Eastern Standard Time (UTC-05:00). poll_close_et = last polls in the state; poll_close_et_main = when most of the state closes.",
+  "party_codes": "DEM, REP, IND, LIB, GRN, OTH. DFL (Minnesota) is coded DEM. Alaska labels are voter registration, not party nomination.",
+  "keys": "Candidate key = lowercase surname without spaces/hyphens/accents; unique within a race (Alaska: sullivan = incumbent Dan S. Sullivan, sullivan_j = Daniel J. Sullivan Jr.).",
+  "nominees_rule": "nominees = major-party nominees plus independent/third-party candidates on the printed ballot running a serious campaign (criteria and evidence in research/election/candidates.md); all other printed names are in other_candidates. Declared write-ins are listed only for the featured states. Do not display inclusion evidence on screen.",
+  "localisation": "name_zh follows Taiwan's Central News Agency (CNA), which usually writes only the surname; name_zh_full is filled only where a full form is needed (Alaska). name_zh_hans follows mainland/Hong Kong media and is usually the full name. Any rendering not seen in media is listed in _constructed_fields.",
+  "in_office_since": "Date first sworn in (or appointed) to the current seat run, as given by official bios / congress-legislators data.",
+  "research_notes": "research/election/candidates.md",
+  "card_edits_2026_11_03": "Family facts removed from AK sullivan/peltola, KS hamilton, OH brown cards (legal rule 32), replaced with career facts."
+ },
+ "senate_before_election": {
+  "as_of": "2026-11-02",
+  "total": {
+   "REP": 53,
+   "DEM": 45,
+   "IND": 2
+  },
+  "independents_caucus_with": "DEM",
+  "independents": [
+   "Angus King (ME)",
+   "Bernie Sanders (VT)"
+  ],
+  "seats_up": {
+   "total": 35,
+   "REP": 22,
+   "DEM": 13,
+   "IND": 0
+  },
+  "seats_not_up": {
+   "total": 65,
+   "REP": 31,
+   "DEM": 32,
+   "IND": 2
+  },
+  "open_seats": {
+   "total": 13,
+   "REP": 9,
+   "DEM": 4
+  },
+  "majority_rule": "51 seats, or 50 plus the vice president's tie-breaking vote (Vice President JD Vance, Republican).",
+  "note": "Appointed senators counted with their party: Ashley Moody (FL), Jon Husted (OH), Alan Armstrong (OK, appointed 2026-03-24), Darline Graham (SC, appointed July 2026).",
+  "sources": [
+   "https://www.senate.gov/about/parties-leadership/party-division.htm",
+   "https://www.senate.gov/senators/Class_II.htm",
+   "https://www.senate.gov/senators/Class_III.htm",
+   "https://www.senate.gov/senators/Class_I.htm"
+  ]
+ },
+ "parties": {
+  "REP": {
+   "en": "Republican",
+   "es": "Republicano",
+   "es_full": "Partido Republicano",
+   "ja": "共和党",
+   "zh": "共和黨",
+   "zh_hans": "共和党",
+   "_constructed_fields": []
+  },
+  "DEM": {
+   "en": "Democratic",
+   "es": "Demócrata",
+   "es_full": "Partido Demócrata",
+   "ja": "民主党",
+   "zh": "民主黨",
+   "zh_hans": "民主党",
+   "_constructed_fields": []
+  },
+  "IND": {
+   "en": "Independent",
+   "es": "Independiente",
+   "es_full": "Independiente",
+   "ja": "無所属",
+   "zh": "無黨籍",
+   "zh_hans": "无党派",
+   "_constructed_fields": []
+  },
+  "LIB": {
+   "en": "Libertarian",
+   "es": "Libertario",
+   "es_full": "Partido Libertario",
+   "ja": "リバタリアン党",
+   "zh": "自由意志黨",
+   "zh_hans": "自由意志党",
+   "_constructed_fields": [
+    "ja",
+    "zh",
+    "zh_hans"
+   ]
+  },
+  "GRN": {
+   "en": "Green",
+   "es": "Verde",
+   "es_full": "Partido Verde",
+   "ja": "緑の党",
+   "zh": "綠黨",
+   "zh_hans": "绿党",
+   "_constructed_fields": [
+    "ja",
+    "zh",
+    "zh_hans"
+   ]
+  },
+  "OTH": {
+   "en": "Other party",
+   "es": "Otro partido",
+   "es_full": "Otro partido",
+   "ja": "その他",
+   "zh": "其他政黨",
+   "zh_hans": "其他政党",
+   "_constructed_fields": [
+    "es",
+    "es_full",
+    "ja",
+    "zh",
+    "zh_hans"
+   ],
+   "note": "Use the race's party_label / ballot_label for the actual party name."
+  }
+ },
+ "party_name_sources": {
+  "es": "https://content.govdelivery.com/attachments/TXSOS/2026/08/28/file_attachments/3762824/2026%20Sample%20Ballot-final.pdf (Texas SOS bilingual sample ballot: Partido Republicano, Partido Demócrata, Partido Libertario, Partido Verde, Independiente)",
+  "ja": "https://www.nikkei.com/article/DGXZQOGN23BZW0T21C26A0000000/ (共和党, 民主党, 無所属); https://www.afpbb.com/articles/-/3636895 (共和党, 民主党)",
+  "zh": "https://www.cna.com.tw/news/aopl/202610190013.aspx (共和黨占53席，民主黨45席，2席無黨籍屬民主黨團); https://www.cna.com.tw/news/aopl/202511100129.aspx (緬因州無黨籍聯邦參議員金恩)",
+  "zh_hans": "https://www.news.cn/world/20251111/36ac3166b5e24687af31951ef6740211/c.html (共和党, 民主党; 缅因州无党派独立参议员安格斯·金)",
+  "constructed": "LIB/GRN/OTH renderings in ja, zh and zh_hans were not checked against media usage this session and are marked constructed."
+ },
+ "senate_races": [
+  {
+   "state": "AL",
+   "state_name": "Alabama",
+   "class": 2,
+   "special": false,
+   "term": "2027-01-03 to 2033-01-03",
+   "featured": false,
+   "incumbent": {
+    "name": "Tommy Tuberville",
+    "party": "REP",
+    "running": false,
+    "note": "Not seeking re-election; Republican nominee for governor in 2026."
+   },
+   "open_seat": true,
+   "nominees": [
+    {
+     "key": "moore",
+     "name": "Barry Moore",
+     "party": "REP",
+     "incumbent": false
+    },
+    {
+     "key": "wess",
+     "name": "Everett Wess",
+     "party": "DEM",
+     "incumbent": false
+    }
+   ],
+   "other_candidates": [],
+   "cross_endorsement": null,
+   "nominee_note": null,
+   "poll_close_et": "2026-11-03T20:00:00-05:00",
+   "poll_close_et_main": "2026-11-03T20:00:00-05:00",
+   "poll_close_note": "Polls close 7 p.m. CT (8 p.m. ET). Polling places in the Eastern time zone may run 7 a.m.-7 p.m. ET (The Green Papers), i.e. close earlier.",
+   "rcv": false,
+   "runoff": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Alabama",
+    "https://www.thegreenpapers.com/G26/AL",
+    "https://www.senate.gov/senators/Class_II.htm",
+    "https://www.thegreenpapers.com/G26/PollingHours.phtml"
+   ]
+  },
+  {
+   "state": "AK",
+   "state_name": "Alaska",
+   "class": 2,
+   "special": false,
+   "term": "2027-01-03 to 2033-01-03",
+   "featured": true,
+   "incumbent": {
+    "name": "Dan Sullivan",
+    "party": "REP",
+    "running": true,
+    "note": null
+   },
+   "open_seat": false,
+   "nominees": [
+    {
+     "key": "sullivan",
+     "name": "Dan Sullivan",
+     "party": "REP",
+     "incumbent": true,
+     "ballot_name": "Sullivan, Dan S."
+    },
+    {
+     "key": "peltola",
+     "name": "Mary Peltola",
+     "party": "DEM",
+     "incumbent": false
+    }
+   ],
+   "other_candidates": [
+    {
+     "key": "sullivan_j",
+     "name": "Daniel J. Sullivan Jr.",
+     "party": "IND",
+     "ballot_label": "Sullivan, Daniel J. Jr. (no affiliation printed; registered Undeclared)"
+    },
+    {
+     "key": "heikes",
+     "name": "Gerald L. Heikes",
+     "party": "REP",
+     "ballot_label": "Heikes, Gerald L. (Registered Republican)"
+    }
+   ],
+   "cross_endorsement": null,
+   "nominee_note": "Alaska has no party nominations: top-four primary (2026-08-18) finalists; party labels show voter registration. The two carded candidates are the two leading primary finishers.",
+   "poll_close_et": "2026-11-04T01:00:00-05:00",
+   "poll_close_et_main": "2026-11-04T00:00:00-05:00",
+   "poll_close_note": "8 p.m. AKST = midnight ET (Nov 4); Aleutians west of Umnak Island 8 p.m. HAST = 1 a.m. ET (Nov 4).",
+   "rcv": true,
+   "runoff": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Alaska",
+    "https://www.thegreenpapers.com/G26/AK",
+    "https://www.senate.gov/senators/Class_II.htm",
+    "https://www.thegreenpapers.com/G26/PollingHours.phtml",
+    "https://www.elections.alaska.gov/candidates/?election=26genr"
+   ]
+  },
+  {
+   "state": "AR",
+   "state_name": "Arkansas",
+   "class": 2,
+   "special": false,
+   "term": "2027-01-03 to 2033-01-03",
+   "featured": false,
+   "incumbent": {
+    "name": "Tom Cotton",
+    "party": "REP",
+    "running": true,
+    "note": null
+   },
+   "open_seat": false,
+   "nominees": [
+    {
+     "key": "cotton",
+     "name": "Tom Cotton",
+     "party": "REP",
+     "incumbent": true
+    },
+    {
+     "key": "shoffner",
+     "name": "Hallie Shoffner",
+     "party": "DEM",
+     "incumbent": false
+    }
+   ],
+   "other_candidates": [
+    {
+     "key": "wadlin",
+     "name": "Jeff Wadlin",
+     "party": "LIB",
+     "ballot_label": "Libertarian"
+    }
+   ],
+   "cross_endorsement": null,
+   "nominee_note": null,
+   "poll_close_et": "2026-11-03T20:30:00-05:00",
+   "poll_close_et_main": "2026-11-03T20:30:00-05:00",
+   "poll_close_note": "Polls close 7:30 p.m. CT (8:30 p.m. ET).",
+   "rcv": false,
+   "runoff": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Arkansas",
+    "https://www.thegreenpapers.com/G26/AR",
+    "https://www.senate.gov/senators/Class_II.htm",
+    "https://www.thegreenpapers.com/G26/PollingHours.phtml"
+   ]
+  },
+  {
+   "state": "CO",
+   "state_name": "Colorado",
+   "class": 2,
+   "special": false,
+   "term": "2027-01-03 to 2033-01-03",
+   "featured": false,
+   "incumbent": {
+    "name": "John Hickenlooper",
+    "party": "DEM",
+    "running": true,
+    "note": null
+   },
+   "open_seat": false,
+   "nominees": [
+    {
+     "key": "hickenlooper",
+     "name": "John Hickenlooper",
+     "party": "DEM",
+     "incumbent": true
+    },
+    {
+     "key": "baisley",
+     "name": "Mark Baisley",
+     "party": "REP",
+     "incumbent": false
+    },
+    {
+     "key": "chew",
+     "name": "Bob Chew",
+     "party": "OTH",
+     "incumbent": false,
+     "party_label": "Forward Party"
+    }
+   ],
+   "other_candidates": [
+    {
+     "key": "baum",
+     "name": "Christopher Baum",
+     "party": "OTH",
+     "ballot_label": "Approval Voting Party"
+    },
+    {
+     "key": "huber",
+     "name": "Blake Huber",
+     "party": "LIB",
+     "ballot_label": "Libertarian Party"
+    },
+    {
+     "key": "withrow",
+     "name": "Adam Withrow",
+     "party": "OTH",
+     "ballot_label": "Unity Party"
+    }
+   ],
+   "cross_endorsement": null,
+   "nominee_note": "Bob Chew (Forward Party) is included under the serious-campaign criterion (evidence in research/election/candidates.md).",
+   "poll_close_et": "2026-11-03T21:00:00-05:00",
+   "poll_close_et_main": "2026-11-03T21:00:00-05:00",
+   "poll_close_note": "Mostly mail ballots; in-person voting and drop-off end 7 p.m. MT (9 p.m. ET).",
+   "rcv": false,
+   "runoff": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Colorado",
+    "https://www.thegreenpapers.com/G26/CO",
+    "https://www.senate.gov/senators/Class_II.htm",
+    "https://www.thegreenpapers.com/G26/PollingHours.phtml",
+    "https://www.coloradosos.gov/pubs/elections/vote/generalCandidates.html",
+    "https://api.open.fec.gov/v1/candidates/totals/?election_year=2026&office=S&state=CO"
+   ]
+  },
+  {
+   "state": "DE",
+   "state_name": "Delaware",
+   "class": 2,
+   "special": false,
+   "term": "2027-01-03 to 2033-01-03",
+   "featured": false,
+   "incumbent": {
+    "name": "Chris Coons",
+    "party": "DEM",
+    "running": true,
+    "note": null
+   },
+   "open_seat": false,
+   "nominees": [
+    {
+     "key": "coons",
+     "name": "Chris Coons",
+     "party": "DEM",
+     "incumbent": true
+    },
+    {
+     "key": "katz",
+     "name": "Michael Katz",
+     "party": "REP",
+     "incumbent": false,
+     "ballot_name": "Michael \"Dr. Mike\" Katz"
+    }
+   ],
+   "other_candidates": [],
+   "cross_endorsement": null,
+   "nominee_note": null,
+   "poll_close_et": "2026-11-03T20:00:00-05:00",
+   "poll_close_et_main": "2026-11-03T20:00:00-05:00",
+   "poll_close_note": "Polls close 8 p.m. ET.",
+   "rcv": false,
+   "runoff": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Delaware",
+    "https://www.thegreenpapers.com/G26/DE",
+    "https://www.senate.gov/senators/Class_II.htm",
+    "https://www.thegreenpapers.com/G26/PollingHours.phtml",
+    "https://elections.delaware.gov/candidates/candidatelist/genl_fcddt_2026.html"
+   ]
+  },
+  {
+   "state": "FL",
+   "state_name": "Florida",
+   "class": 3,
+   "special": true,
+   "term": "Unexpired term ending 2029-01-03",
+   "featured": false,
+   "incumbent": {
+    "name": "Ashley Moody",
+    "party": "REP",
+    "running": true,
+    "note": "Appointed by Gov. Ron DeSantis after Marco Rubio resigned (2025-01-20); sworn in 2025-01-21."
+   },
+   "open_seat": false,
+   "nominees": [
+    {
+     "key": "moody",
+     "name": "Ashley Moody",
+     "party": "REP",
+     "incumbent": true
+    },
+    {
+     "key": "nixon",
+     "name": "Angie Nixon",
+     "party": "DEM",
+     "incumbent": false
+    }
+   ],
+   "other_candidates": [
+    {
+     "key": "gillespie",
+     "name": "Neil Gillespie",
+     "party": "IND",
+     "ballot_label": "No Party Affiliation (spelling differs between sources: Gillespie / Gilespie)"
+    }
+   ],
+   "cross_endorsement": null,
+   "nominee_note": null,
+   "poll_close_et": "2026-11-03T20:00:00-05:00",
+   "poll_close_et_main": "2026-11-03T19:00:00-05:00",
+   "poll_close_note": "Most of Florida closes 7 p.m. ET; the western Panhandle (Central time) closes 7 p.m. CT = 8 p.m. ET.",
+   "rcv": false,
+   "runoff": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/2026_United_States_Senate_special_election_in_Florida",
+    "https://www.thegreenpapers.com/G26/FL",
+    "https://www.senate.gov/senators/Class_III.htm",
+    "https://www.thegreenpapers.com/G26/PollingHours.phtml"
+   ]
+  },
+  {
+   "state": "GA",
+   "state_name": "Georgia",
+   "class": 2,
+   "special": false,
+   "term": "2027-01-03 to 2033-01-03",
+   "featured": false,
+   "incumbent": {
+    "name": "Jon Ossoff",
+    "party": "DEM",
+    "running": true,
+    "note": null
+   },
+   "open_seat": false,
+   "nominees": [
+    {
+     "key": "ossoff",
+     "name": "Jon Ossoff",
+     "party": "DEM",
+     "incumbent": true
+    },
+    {
+     "key": "collins",
+     "name": "Mike Collins",
+     "party": "REP",
+     "incumbent": false
+    }
+   ],
+   "other_candidates": [],
+   "cross_endorsement": null,
+   "nominee_note": null,
+   "poll_close_et": "2026-11-03T19:00:00-05:00",
+   "poll_close_et_main": "2026-11-03T19:00:00-05:00",
+   "poll_close_note": "Polls close 7 p.m. ET.",
+   "rcv": false,
+   "runoff": "Georgia requires a majority; if no candidate gets more than 50%, a runoff is scheduled for 2026-12-01. Only two names are printed (Libertarians did not qualify); three declared write-ins are certified.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Georgia",
+    "https://www.thegreenpapers.com/G26/GA",
+    "https://www.senate.gov/senators/Class_II.htm",
+    "https://www.thegreenpapers.com/G26/PollingHours.phtml",
+    "https://www.ajc.com/politics/2026/07/libertarians-wont-be-on-the-ballot-in-georgia-meaning-likely-no-runoffs/"
+   ]
+  },
+  {
+   "state": "ID",
+   "state_name": "Idaho",
+   "class": 2,
+   "special": false,
+   "term": "2027-01-03 to 2033-01-03",
+   "featured": false,
+   "incumbent": {
+    "name": "Jim Risch",
+    "party": "REP",
+    "running": true,
+    "note": null
+   },
+   "open_seat": false,
+   "nominees": [
+    {
+     "key": "risch",
+     "name": "Jim Risch",
+     "party": "REP",
+     "incumbent": true
+    },
+    {
+     "key": "achilles",
+     "name": "Todd Achilles",
+     "party": "IND",
+     "incumbent": false
+    }
+   ],
+   "other_candidates": [
+    {
+     "key": "loesby",
+     "name": "Matt Loesby",
+     "party": "LIB",
+     "ballot_label": "Libertarian"
+    },
+    {
+     "key": "fleming",
+     "name": "Natalie Fleming",
+     "party": "IND",
+     "ballot_label": "Independent"
+    }
+   ],
+   "cross_endorsement": "No Democratic nominee on the ballot: primary winner David Roth withdrew in late July 2026 after former Democratic state representative Todd Achilles entered the race as an independent (Wikipedia, citing Idaho Capital Sun 2026-07-28; The Green Papers lists Achilles as 'Independent; (Democratic)').",
+   "nominee_note": null,
+   "poll_close_et": "2026-11-03T23:00:00-05:00",
+   "poll_close_et_main": "2026-11-03T22:00:00-05:00",
+   "poll_close_note": "Southern Idaho (Mountain time) closes 8 p.m. MT = 10 p.m. ET; the northern Panhandle (Pacific time) closes 8 p.m. PT = 11 p.m. ET.",
+   "rcv": false,
+   "runoff": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Idaho",
+    "https://www.thegreenpapers.com/G26/ID",
+    "https://www.senate.gov/senators/Class_II.htm",
+    "https://www.thegreenpapers.com/G26/PollingHours.phtml"
+   ]
+  },
+  {
+   "state": "IL",
+   "state_name": "Illinois",
+   "class": 2,
+   "special": false,
+   "term": "2027-01-03 to 2033-01-03",
+   "featured": false,
+   "incumbent": {
+    "name": "Dick Durbin",
+    "party": "DEM",
+    "running": false,
+    "note": "Not seeking re-election."
+   },
+   "open_seat": true,
+   "nominees": [
+    {
+     "key": "stratton",
+     "name": "Juliana Stratton",
+     "party": "DEM",
+     "incumbent": false
+    },
+    {
+     "key": "tracy",
+     "name": "Don Tracy",
+     "party": "REP",
+     "incumbent": false
+    }
+   ],
+   "other_candidates": [
+    {
+     "key": "harrington",
+     "name": "Whitfield Harrington Jr.",
+     "party": "OTH",
+     "ballot_label": "American Center (per The Green Papers; Wikipedia lists him as independent)"
+    }
+   ],
+   "cross_endorsement": null,
+   "nominee_note": null,
+   "poll_close_et": "2026-11-03T20:00:00-05:00",
+   "poll_close_et_main": "2026-11-03T20:00:00-05:00",
+   "poll_close_note": "Polls close 7 p.m. CT (8 p.m. ET).",
+   "rcv": false,
+   "runoff": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Illinois",
+    "https://www.thegreenpapers.com/G26/IL",
+    "https://www.senate.gov/senators/Class_II.htm",
+    "https://www.thegreenpapers.com/G26/PollingHours.phtml"
+   ]
+  },
+  {
+   "state": "IA",
+   "state_name": "Iowa",
+   "class": 2,
+   "special": false,
+   "term": "2027-01-03 to 2033-01-03",
+   "featured": false,
+   "incumbent": {
+    "name": "Joni Ernst",
+    "party": "REP",
+    "running": false,
+    "note": "Not seeking re-election."
+   },
+   "open_seat": true,
+   "nominees": [
+    {
+     "key": "hinson",
+     "name": "Ashley Hinson",
+     "party": "REP",
+     "incumbent": false
+    },
+    {
+     "key": "turek",
+     "name": "Josh Turek",
+     "party": "DEM",
+     "incumbent": false
+    }
+   ],
+   "other_candidates": [
+    {
+     "key": "laehn",
+     "name": "Thomas Laehn",
+     "party": "LIB",
+     "ballot_label": "Libertarian"
+    }
+   ],
+   "cross_endorsement": null,
+   "nominee_note": null,
+   "poll_close_et": "2026-11-03T21:00:00-05:00",
+   "poll_close_et_main": "2026-11-03T21:00:00-05:00",
+   "poll_close_note": "Polls close 8 p.m. CT (9 p.m. ET).",
+   "rcv": false,
+   "runoff": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Iowa",
+    "https://www.thegreenpapers.com/G26/IA",
+    "https://www.senate.gov/senators/Class_II.htm",
+    "https://www.thegreenpapers.com/G26/PollingHours.phtml"
+   ]
+  },
+  {
+   "state": "KS",
+   "state_name": "Kansas",
+   "class": 2,
+   "special": false,
+   "term": "2027-01-03 to 2033-01-03",
+   "featured": true,
+   "incumbent": {
+    "name": "Roger Marshall",
+    "party": "REP",
+    "running": true,
+    "note": null
+   },
+   "open_seat": false,
+   "nominees": [
+    {
+     "key": "marshall",
+     "name": "Roger Marshall",
+     "party": "REP",
+     "incumbent": true
+    },
+    {
+     "key": "hamilton",
+     "name": "Adam Hamilton",
+     "party": "DEM",
+     "incumbent": false
+    }
+   ],
+   "other_candidates": [
+    {
+     "key": "graham",
+     "name": "David C. Graham",
+     "party": "LIB",
+     "ballot_label": "Libertarian"
+    }
+   ],
+   "cross_endorsement": null,
+   "nominee_note": null,
+   "poll_close_et": "2026-11-03T21:00:00-05:00",
+   "poll_close_et_main": "2026-11-03T20:00:00-05:00",
+   "poll_close_note": "7 p.m. local: Central-time counties 8 p.m. ET; Greeley, Hamilton, Sherman and Wallace counties (Mountain time) 9 p.m. ET.",
+   "rcv": false,
+   "runoff": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Kansas",
+    "https://www.thegreenpapers.com/G26/KS",
+    "https://www.senate.gov/senators/Class_II.htm",
+    "https://www.thegreenpapers.com/G26/PollingHours.phtml",
+    "https://sos.ks.gov/elections/elections_upcoming_candidate.aspx"
+   ]
+  },
+  {
+   "state": "KY",
+   "state_name": "Kentucky",
+   "class": 2,
+   "special": false,
+   "term": "2027-01-03 to 2033-01-03",
+   "featured": false,
+   "incumbent": {
+    "name": "Mitch McConnell",
+    "party": "REP",
+    "running": false,
+    "note": "Not seeking re-election."
+   },
+   "open_seat": true,
+   "nominees": [
+    {
+     "key": "barr",
+     "name": "Andy Barr",
+     "party": "REP",
+     "incumbent": false
+    },
+    {
+     "key": "booker",
+     "name": "Charles Booker",
+     "party": "DEM",
+     "incumbent": false
+    }
+   ],
+   "other_candidates": [
+    {
+     "key": "campbell",
+     "name": "Christopher Campbell",
+     "party": "OTH",
+     "ballot_label": "Kentucky Party per The Green Papers; Wikipedia lists him as independent"
+    }
+   ],
+   "cross_endorsement": null,
+   "nominee_note": null,
+   "poll_close_et": "2026-11-03T19:00:00-05:00",
+   "poll_close_et_main": "2026-11-03T18:00:00-05:00",
+   "poll_close_note": "6 p.m. local: Eastern-time part 6 p.m. ET; western (Central-time) part 6 p.m. CT = 7 p.m. ET.",
+   "rcv": false,
+   "runoff": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Kentucky",
+    "https://www.thegreenpapers.com/G26/KY",
+    "https://www.senate.gov/senators/Class_II.htm",
+    "https://www.thegreenpapers.com/G26/PollingHours.phtml"
+   ]
+  },
+  {
+   "state": "LA",
+   "state_name": "Louisiana",
+   "class": 2,
+   "special": false,
+   "term": "2027-01-03 to 2033-01-03",
+   "featured": false,
+   "incumbent": {
+    "name": "Bill Cassidy",
+    "party": "REP",
+    "running": false,
+    "note": "Lost the Republican closed primary on 2026-05-16 (finished third)."
+   },
+   "open_seat": true,
+   "nominees": [
+    {
+     "key": "letlow",
+     "name": "Julia Letlow",
+     "party": "REP",
+     "incumbent": false
+    },
+    {
+     "key": "davis",
+     "name": "Jamie Davis",
+     "party": "DEM",
+     "incumbent": false
+    }
+   ],
+   "other_candidates": [],
+   "cross_endorsement": null,
+   "nominee_note": null,
+   "poll_close_et": "2026-11-03T21:00:00-05:00",
+   "poll_close_et_main": "2026-11-03T21:00:00-05:00",
+   "poll_close_note": "Polls close 8 p.m. CT (9 p.m. ET).",
+   "rcv": false,
+   "runoff": "First Senate race under Louisiana's new closed party primaries (Act/HB 17 of 2024); the November general election is decided by plurality.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Louisiana",
+    "https://www.thegreenpapers.com/G26/LA",
+    "https://www.senate.gov/senators/Class_II.htm",
+    "https://www.thegreenpapers.com/G26/PollingHours.phtml"
+   ]
+  },
+  {
+   "state": "ME",
+   "state_name": "Maine",
+   "class": 2,
+   "special": false,
+   "term": "2027-01-03 to 2033-01-03",
+   "featured": true,
+   "incumbent": {
+    "name": "Susan Collins",
+    "party": "REP",
+    "running": true,
+    "note": null
+   },
+   "open_seat": false,
+   "nominees": [
+    {
+     "key": "collins",
+     "name": "Susan Collins",
+     "party": "REP",
+     "incumbent": true
+    },
+    {
+     "key": "jackson",
+     "name": "Troy Jackson",
+     "party": "DEM",
+     "incumbent": false
+    }
+   ],
+   "other_candidates": [],
+   "cross_endorsement": null,
+   "nominee_note": "Troy Jackson is the replacement Democratic nominee chosen by state convention on 2026-07-25 after primary winner Graham Platner withdrew (filed 2026-07-10). Six declared write-in candidates are certified.",
+   "poll_close_et": "2026-11-03T20:00:00-05:00",
+   "poll_close_et_main": "2026-11-03T20:00:00-05:00",
+   "poll_close_note": "Polls close 8 p.m. ET statewide.",
+   "rcv": true,
+   "runoff": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Maine",
+    "https://www.thegreenpapers.com/G26/ME",
+    "https://www.senate.gov/senators/Class_II.htm",
+    "https://www.thegreenpapers.com/G26/PollingHours.phtml",
+    "https://www.maine.gov/sos/sites/maine.gov.sos/files/inline-files/2026%20General%20Candidate%20List%20-%20FINAL.xlsx",
+    "https://www.maine.gov/sos/sites/maine.gov.sos/files/inline-files/2026%20Post%20Primary%20Withdrawals%20%26%20Replacement%20Candidates%20-%20Updated%209.22.26_0.pdf"
+   ]
+  },
+  {
+   "state": "MA",
+   "state_name": "Massachusetts",
+   "class": 2,
+   "special": false,
+   "term": "2027-01-03 to 2033-01-03",
+   "featured": false,
+   "incumbent": {
+    "name": "Ed Markey",
+    "party": "DEM",
+    "running": true,
+    "note": null
+   },
+   "open_seat": false,
+   "nominees": [
+    {
+     "key": "markey",
+     "name": "Ed Markey",
+     "party": "DEM",
+     "incumbent": true
+    },
+    {
+     "key": "deaton",
+     "name": "John Deaton",
+     "party": "REP",
+     "incumbent": false
+    }
+   ],
+   "other_candidates": [
+    {
+     "key": "ayyadurai",
+     "name": "Shiva Ayyadurai",
+     "party": "IND",
+     "ballot_label": "Independent"
+    },
+    {
+     "key": "tache",
+     "name": "Joe Tache",
+     "party": "OTH",
+     "ballot_label": "Party for Socialism and Liberation"
+    }
+   ],
+   "cross_endorsement": null,
+   "nominee_note": null,
+   "poll_close_et": "2026-11-03T20:00:00-05:00",
+   "poll_close_et_main": "2026-11-03T20:00:00-05:00",
+   "poll_close_note": "Polls close 8 p.m. ET.",
+   "rcv": false,
+   "runoff": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Massachusetts",
+    "https://www.thegreenpapers.com/G26/MA",
+    "https://www.senate.gov/senators/Class_II.htm",
+    "https://www.thegreenpapers.com/G26/PollingHours.phtml"
+   ]
+  },
+  {
+   "state": "MI",
+   "state_name": "Michigan",
+   "class": 2,
+   "special": false,
+   "term": "2027-01-03 to 2033-01-03",
+   "featured": true,
+   "incumbent": {
+    "name": "Gary Peters",
+    "party": "DEM",
+    "running": false,
+    "note": "Not seeking re-election (announced 2025-01-28)."
+   },
+   "open_seat": true,
+   "nominees": [
+    {
+     "key": "elsayed",
+     "name": "Abdul El-Sayed",
+     "party": "DEM",
+     "incumbent": false
+    },
+    {
+     "key": "rogers",
+     "name": "Mike Rogers",
+     "party": "REP",
+     "incumbent": false
+    }
+   ],
+   "other_candidates": [
+    {
+     "key": "christensen",
+     "name": "Lydia Christensen",
+     "party": "LIB",
+     "ballot_label": "Libertarian Party"
+    },
+    {
+     "key": "long",
+     "name": "Tim Long",
+     "party": "OTH",
+     "ballot_label": "U.S. Taxpayers Party"
+    },
+    {
+     "key": "marsh",
+     "name": "Douglas P. Marsh",
+     "party": "GRN",
+     "ballot_label": "Green Party"
+    },
+    {
+     "key": "kristy",
+     "name": "Walter P. Kristy",
+     "party": "OTH",
+     "ballot_label": "Natural Law Party"
+    }
+   ],
+   "cross_endorsement": null,
+   "nominee_note": null,
+   "poll_close_et": "2026-11-03T21:00:00-05:00",
+   "poll_close_et_main": "2026-11-03T20:00:00-05:00",
+   "poll_close_note": "8 p.m. local: Eastern-time Michigan 8 p.m. ET; Dickinson, Gogebic, Iron and Menominee counties (Central time) 9 p.m. ET.",
+   "rcv": false,
+   "runoff": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Michigan",
+    "https://www.thegreenpapers.com/G26/MI",
+    "https://www.senate.gov/senators/Class_II.htm",
+    "https://www.thegreenpapers.com/G26/PollingHours.phtml",
+    "https://mi-boe.entellitrak.com/etk-mi-boe-prod/page.request.do?page=page.miboePublicReport&electionType=GEN&electionYear=2026"
+   ]
+  },
+  {
+   "state": "MN",
+   "state_name": "Minnesota",
+   "class": 2,
+   "special": false,
+   "term": "2027-01-03 to 2033-01-03",
+   "featured": false,
+   "incumbent": {
+    "name": "Tina Smith",
+    "party": "DEM",
+    "running": false,
+    "note": "Not seeking re-election (DFL)."
+   },
+   "open_seat": true,
+   "nominees": [
+    {
+     "key": "flanagan",
+     "name": "Peggy Flanagan",
+     "party": "DEM",
+     "incumbent": false,
+     "party_label": "Democratic-Farmer-Labor (DFL)"
+    },
+    {
+     "key": "tafoya",
+     "name": "Michele Tafoya",
+     "party": "REP",
+     "incumbent": false
+    }
+   ],
+   "other_candidates": [
+    {
+     "key": "whiting",
+     "name": "Rebecca Whiting",
+     "party": "LIB",
+     "ballot_label": "Libertarian"
+    },
+    {
+     "key": "simonetti",
+     "name": "Marisa Simonetti",
+     "party": "IND",
+     "ballot_label": "Independent"
+    }
+   ],
+   "cross_endorsement": null,
+   "nominee_note": null,
+   "poll_close_et": "2026-11-03T21:00:00-05:00",
+   "poll_close_et_main": "2026-11-03T21:00:00-05:00",
+   "poll_close_note": "Polls close 8 p.m. CT (9 p.m. ET).",
+   "rcv": false,
+   "runoff": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Minnesota",
+    "https://www.thegreenpapers.com/G26/MN",
+    "https://www.senate.gov/senators/Class_II.htm",
+    "https://www.thegreenpapers.com/G26/PollingHours.phtml"
+   ]
+  },
+  {
+   "state": "MS",
+   "state_name": "Mississippi",
+   "class": 2,
+   "special": false,
+   "term": "2027-01-03 to 2033-01-03",
+   "featured": false,
+   "incumbent": {
+    "name": "Cindy Hyde-Smith",
+    "party": "REP",
+    "running": true,
+    "note": null
+   },
+   "open_seat": false,
+   "nominees": [
+    {
+     "key": "hydesmith",
+     "name": "Cindy Hyde-Smith",
+     "party": "REP",
+     "incumbent": true
+    },
+    {
+     "key": "colom",
+     "name": "Scott Colom",
+     "party": "DEM",
+     "incumbent": false
+    }
+   ],
+   "other_candidates": [
+    {
+     "key": "pinkins",
+     "name": "Ty Pinkins",
+     "party": "IND",
+     "ballot_label": "Independent"
+    }
+   ],
+   "cross_endorsement": null,
+   "nominee_note": null,
+   "poll_close_et": "2026-11-03T20:00:00-05:00",
+   "poll_close_et_main": "2026-11-03T20:00:00-05:00",
+   "poll_close_note": "Polls close 7 p.m. CT (8 p.m. ET).",
+   "rcv": false,
+   "runoff": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Mississippi",
+    "https://www.thegreenpapers.com/G26/MS",
+    "https://www.senate.gov/senators/Class_II.htm",
+    "https://www.thegreenpapers.com/G26/PollingHours.phtml"
+   ]
+  },
+  {
+   "state": "MT",
+   "state_name": "Montana",
+   "class": 2,
+   "special": false,
+   "term": "2027-01-03 to 2033-01-03",
+   "featured": false,
+   "incumbent": {
+    "name": "Steve Daines",
+    "party": "REP",
+    "running": false,
+    "note": "Withdrew his re-election filing on the 2026-03-04 filing deadline."
+   },
+   "open_seat": true,
+   "nominees": [
+    {
+     "key": "alme",
+     "name": "Kurt Alme",
+     "party": "REP",
+     "incumbent": false
+    },
+    {
+     "key": "bankhead",
+     "name": "Alani Bankhead",
+     "party": "DEM",
+     "incumbent": false
+    },
+    {
+     "key": "bodnar",
+     "name": "Seth Bodnar",
+     "party": "IND",
+     "incumbent": false
+    }
+   ],
+   "other_candidates": [
+    {
+     "key": "austin",
+     "name": "Kyle Austin",
+     "party": "LIB",
+     "ballot_label": "Libertarian"
+    },
+    {
+     "key": "woodman",
+     "name": "Jami Dee Woodman",
+     "party": "OTH",
+     "ballot_label": "Nonpartisan (listed by The Green Papers only; not on Wikipedia's list - unverified)"
+    }
+   ],
+   "cross_endorsement": null,
+   "nominee_note": "Seth Bodnar (independent) is included under the serious-campaign criterion alongside the Democratic nominee (evidence in research/election/candidates.md).",
+   "poll_close_et": "2026-11-03T22:00:00-05:00",
+   "poll_close_et_main": "2026-11-03T22:00:00-05:00",
+   "poll_close_note": "Polls close 8 p.m. MT (10 p.m. ET).",
+   "rcv": false,
+   "runoff": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Montana",
+    "https://www.thegreenpapers.com/G26/MT",
+    "https://www.senate.gov/senators/Class_II.htm",
+    "https://www.thegreenpapers.com/G26/PollingHours.phtml",
+    "https://candidatefiling.mt.gov/candidatefiling/CandidateList.aspx?e=450002928"
+   ]
+  },
+  {
+   "state": "NE",
+   "state_name": "Nebraska",
+   "class": 2,
+   "special": false,
+   "term": "2027-01-03 to 2033-01-03",
+   "featured": false,
+   "incumbent": {
+    "name": "Pete Ricketts",
+    "party": "REP",
+    "running": true,
+    "note": null
+   },
+   "open_seat": false,
+   "nominees": [
+    {
+     "key": "ricketts",
+     "name": "Pete Ricketts",
+     "party": "REP",
+     "incumbent": true
+    },
+    {
+     "key": "osborn",
+     "name": "Dan Osborn",
+     "party": "IND",
+     "incumbent": false,
+     "party_label": "Independent (nominated by petition)"
+    }
+   ],
+   "other_candidates": [
+    {
+     "key": "conboy",
+     "name": "Chuck Conboy",
+     "party": "OTH",
+     "ballot_label": "America First Party"
+    },
+    {
+     "key": "marvin",
+     "name": "Mike Marvin",
+     "party": "OTH",
+     "ballot_label": "Legal Marijuana Now Party"
+    },
+    {
+     "key": "richards",
+     "name": "Robin Richards",
+     "party": "OTH",
+     "ballot_label": "Nebraska Working People Party"
+    }
+   ],
+   "cross_endorsement": "No Democrat on the ballot. The Nebraska Democratic Party backed independent Dan Osborn (announced July 2025); Democratic primary winner Cindy Burbank declined the nomination and was removed from the ballot (confirmed 2026-07-21); a suit to force a Democratic replacement was dismissed (2026-08-26, per Wikipedia). Legal Marijuana Now nominee Mike Marvin remains on the ballot but said on 2026-08-21 that he urges his supporters to back Osborn (The Green Papers).",
+   "nominee_note": null,
+   "poll_close_et": "2026-11-03T21:00:00-05:00",
+   "poll_close_et_main": "2026-11-03T21:00:00-05:00",
+   "poll_close_note": "Polls close 8 p.m. CT / 7 p.m. MT - both 9 p.m. ET.",
+   "rcv": false,
+   "runoff": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Nebraska",
+    "https://www.thegreenpapers.com/G26/NE",
+    "https://www.senate.gov/senators/Class_II.htm",
+    "https://www.thegreenpapers.com/G26/PollingHours.phtml",
+    "https://www.1011now.com/2026/07/21/nebraska-democrats-must-find-new-senate-candidate-after-burbank-declines-nomination/",
+    "https://nebraska.tv/news/local/dan-osborn-endorsed-by-ne-democratic-party-for-2026-senate-race"
+   ]
+  },
+  {
+   "state": "NH",
+   "state_name": "New Hampshire",
+   "class": 2,
+   "special": false,
+   "term": "2027-01-03 to 2033-01-03",
+   "featured": false,
+   "incumbent": {
+    "name": "Jeanne Shaheen",
+    "party": "DEM",
+    "running": false,
+    "note": "Not seeking re-election."
+   },
+   "open_seat": true,
+   "nominees": [
+    {
+     "key": "pappas",
+     "name": "Chris Pappas",
+     "party": "DEM",
+     "incumbent": false
+    },
+    {
+     "key": "sununu",
+     "name": "John E. Sununu",
+     "party": "REP",
+     "incumbent": false
+    }
+   ],
+   "other_candidates": [
+    {
+     "key": "laplante",
+     "name": "Ed LaPlante",
+     "party": "OTH",
+     "ballot_label": "Constitution Party"
+    }
+   ],
+   "cross_endorsement": null,
+   "nominee_note": null,
+   "poll_close_et": "2026-11-03T20:00:00-05:00",
+   "poll_close_et_main": "2026-11-03T20:00:00-05:00",
+   "poll_close_note": "Most towns close by 7 p.m. ET; cities and some towns stay open to 8 p.m. ET; a few small towns vote at midnight.",
+   "rcv": false,
+   "runoff": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_New_Hampshire",
+    "https://www.thegreenpapers.com/G26/NH",
+    "https://www.senate.gov/senators/Class_II.htm",
+    "https://www.thegreenpapers.com/G26/PollingHours.phtml"
+   ]
+  },
+  {
+   "state": "NJ",
+   "state_name": "New Jersey",
+   "class": 2,
+   "special": false,
+   "term": "2027-01-03 to 2033-01-03",
+   "featured": false,
+   "incumbent": {
+    "name": "Cory Booker",
+    "party": "DEM",
+    "running": true,
+    "note": null
+   },
+   "open_seat": false,
+   "nominees": [
+    {
+     "key": "booker",
+     "name": "Cory Booker",
+     "party": "DEM",
+     "incumbent": true
+    },
+    {
+     "key": "murphy",
+     "name": "Justin Murphy",
+     "party": "REP",
+     "incumbent": false
+    }
+   ],
+   "other_candidates": [
+    {
+     "key": "fernandez",
+     "name": "Veronica Fernandez",
+     "party": "IND",
+     "ballot_label": "END THE CORRUPTION! (independent slogan)"
+    },
+    {
+     "key": "kuniansky",
+     "name": "Joanne Kuniansky",
+     "party": "OTH",
+     "ballot_label": "Socialist Workers Party"
+    }
+   ],
+   "cross_endorsement": null,
+   "nominee_note": null,
+   "poll_close_et": "2026-11-03T20:00:00-05:00",
+   "poll_close_et_main": "2026-11-03T20:00:00-05:00",
+   "poll_close_note": "Polls close 8 p.m. ET.",
+   "rcv": false,
+   "runoff": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_New_Jersey",
+    "https://www.thegreenpapers.com/G26/NJ",
+    "https://www.senate.gov/senators/Class_II.htm",
+    "https://www.thegreenpapers.com/G26/PollingHours.phtml"
+   ]
+  },
+  {
+   "state": "NM",
+   "state_name": "New Mexico",
+   "class": 2,
+   "special": false,
+   "term": "2027-01-03 to 2033-01-03",
+   "featured": false,
+   "incumbent": {
+    "name": "Ben Ray Luján",
+    "party": "DEM",
+    "running": true,
+    "note": null
+   },
+   "open_seat": false,
+   "nominees": [
+    {
+     "key": "lujan",
+     "name": "Ben Ray Luján",
+     "party": "DEM",
+     "incumbent": true
+    },
+    {
+     "key": "marker",
+     "name": "Larry Marker",
+     "party": "REP",
+     "incumbent": false,
+     "note": "Won the Republican primary as a write-in candidate."
+    }
+   ],
+   "other_candidates": [],
+   "cross_endorsement": null,
+   "nominee_note": null,
+   "poll_close_et": "2026-11-03T21:00:00-05:00",
+   "poll_close_et_main": "2026-11-03T21:00:00-05:00",
+   "poll_close_note": "Polls close 7 p.m. MT (9 p.m. ET).",
+   "rcv": false,
+   "runoff": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_New_Mexico",
+    "https://www.thegreenpapers.com/G26/NM",
+    "https://www.senate.gov/senators/Class_II.htm",
+    "https://www.thegreenpapers.com/G26/PollingHours.phtml",
+    "https://candidateportal.servis.sos.state.nm.us/CandidateList.aspx?eid=2911&cty=99"
+   ]
+  },
+  {
+   "state": "NC",
+   "state_name": "North Carolina",
+   "class": 2,
+   "special": false,
+   "term": "2027-01-03 to 2033-01-03",
+   "featured": false,
+   "incumbent": {
+    "name": "Thom Tillis",
+    "party": "REP",
+    "running": false,
+    "note": "Not seeking re-election (announced 2025-06-29)."
+   },
+   "open_seat": true,
+   "nominees": [
+    {
+     "key": "cooper",
+     "name": "Roy Cooper",
+     "party": "DEM",
+     "incumbent": false
+    },
+    {
+     "key": "whatley",
+     "name": "Michael Whatley",
+     "party": "REP",
+     "incumbent": false
+    }
+   ],
+   "other_candidates": [
+    {
+     "key": "bray",
+     "name": "Shannon Bray",
+     "party": "LIB",
+     "ballot_label": "Libertarian"
+    },
+    {
+     "key": "dublin",
+     "name": "Michael Dublin",
+     "party": "GRN",
+     "ballot_label": "Green"
+    }
+   ],
+   "cross_endorsement": null,
+   "nominee_note": null,
+   "poll_close_et": "2026-11-03T19:30:00-05:00",
+   "poll_close_et_main": "2026-11-03T19:30:00-05:00",
+   "poll_close_note": "Polls close 7:30 p.m. ET (a county board may extend to 8:30 p.m. in extraordinary circumstances).",
+   "rcv": false,
+   "runoff": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_North_Carolina",
+    "https://www.thegreenpapers.com/G26/NC",
+    "https://www.senate.gov/senators/Class_II.htm",
+    "https://www.thegreenpapers.com/G26/PollingHours.phtml"
+   ]
+  },
+  {
+   "state": "OH",
+   "state_name": "Ohio",
+   "class": 3,
+   "special": true,
+   "term": "Unexpired term ending 2029-01-03",
+   "featured": true,
+   "incumbent": {
+    "name": "Jon Husted",
+    "party": "REP",
+    "running": true,
+    "note": "Appointed by Gov. Mike DeWine after JD Vance resigned to become vice president; sworn in 2025-01-21."
+   },
+   "open_seat": false,
+   "nominees": [
+    {
+     "key": "husted",
+     "name": "Jon Husted",
+     "party": "REP",
+     "incumbent": true
+    },
+    {
+     "key": "brown",
+     "name": "Sherrod Brown",
+     "party": "DEM",
+     "incumbent": false
+    }
+   ],
+   "other_candidates": [
+    {
+     "key": "levy",
+     "name": "Greg Levy",
+     "party": "IND",
+     "ballot_label": "Other-party candidate (independent by petition)"
+    },
+    {
+     "key": "redpath",
+     "name": "William B. Redpath",
+     "party": "LIB",
+     "ballot_label": "Libertarian"
+    }
+   ],
+   "cross_endorsement": null,
+   "nominee_note": null,
+   "poll_close_et": "2026-11-03T19:30:00-05:00",
+   "poll_close_et_main": "2026-11-03T19:30:00-05:00",
+   "poll_close_note": "Polls close 7:30 p.m. ET statewide.",
+   "rcv": false,
+   "runoff": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/2026_United_States_Senate_special_election_in_Ohio",
+    "https://www.thegreenpapers.com/G26/OH",
+    "https://www.senate.gov/senators/Class_III.htm",
+    "https://www.thegreenpapers.com/G26/PollingHours.phtml",
+    "https://vote.franklincountyohio.gov/getmedia/e0a4ca45-6893-45c1-8190-87696f8804b4/2026-General-Candidate-List-5"
+   ]
+  },
+  {
+   "state": "OK",
+   "state_name": "Oklahoma",
+   "class": 2,
+   "special": false,
+   "term": "2027-01-03 to 2033-01-03",
+   "featured": false,
+   "incumbent": {
+    "name": "Alan Armstrong",
+    "party": "REP",
+    "running": false,
+    "note": "Appointed 2026-03-24 after Markwayne Mullin resigned to become Secretary of Homeland Security; Oklahoma law bars the appointee from running."
+   },
+   "open_seat": true,
+   "nominees": [
+    {
+     "key": "hern",
+     "name": "Kevin Hern",
+     "party": "REP",
+     "incumbent": false
+    },
+    {
+     "key": "thomas",
+     "name": "N'Kiyla Jasmine Thomas",
+     "party": "DEM",
+     "incumbent": false
+    }
+   ],
+   "other_candidates": [
+    {
+     "key": "white",
+     "name": "Sevier White",
+     "party": "LIB",
+     "ballot_label": "Libertarian"
+    },
+    {
+     "key": "meinhardt",
+     "name": "Ron Meinhardt",
+     "party": "IND",
+     "ballot_label": "Independent"
+    },
+    {
+     "key": "stinnett",
+     "name": "Curtis Stinnett",
+     "party": "IND",
+     "ballot_label": "Independent"
+    }
+   ],
+   "cross_endorsement": null,
+   "nominee_note": null,
+   "poll_close_et": "2026-11-03T20:00:00-05:00",
+   "poll_close_et_main": "2026-11-03T20:00:00-05:00",
+   "poll_close_note": "Polls close 7 p.m. CT (8 p.m. ET).",
+   "rcv": false,
+   "runoff": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Oklahoma",
+    "https://www.thegreenpapers.com/G26/OK",
+    "https://www.senate.gov/senators/Class_II.htm",
+    "https://www.thegreenpapers.com/G26/PollingHours.phtml"
+   ]
+  },
+  {
+   "state": "OR",
+   "state_name": "Oregon",
+   "class": 2,
+   "special": false,
+   "term": "2027-01-03 to 2033-01-03",
+   "featured": false,
+   "incumbent": {
+    "name": "Jeff Merkley",
+    "party": "DEM",
+    "running": true,
+    "note": null
+   },
+   "open_seat": false,
+   "nominees": [
+    {
+     "key": "merkley",
+     "name": "Jeff Merkley",
+     "party": "DEM",
+     "incumbent": true,
+     "party_label": "Democratic; also nominated by the Working Families Party"
+    },
+    {
+     "key": "smith",
+     "name": "David Brock Smith",
+     "party": "REP",
+     "incumbent": false
+    }
+   ],
+   "other_candidates": [
+    {
+     "key": "dye",
+     "name": "Gary Lyndon Dye",
+     "party": "LIB",
+     "ballot_label": "Libertarian"
+    },
+    {
+     "key": "henry",
+     "name": "Chris Henry",
+     "party": "OTH",
+     "ballot_label": "Progressive; Pacific Green"
+    }
+   ],
+   "cross_endorsement": "Oregon allows fusion: Merkley appears as Democrat and Working Families; Chris Henry as Progressive and Pacific Green (The Green Papers).",
+   "nominee_note": null,
+   "poll_close_et": "2026-11-03T23:00:00-05:00",
+   "poll_close_et_main": "2026-11-03T23:00:00-05:00",
+   "poll_close_note": "Vote by mail; ballots due at drop sites by 8 p.m. local: most of the state (Pacific) 11 p.m. ET; most of Malheur County (Mountain) 10 p.m. ET.",
+   "rcv": false,
+   "runoff": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Oregon",
+    "https://www.thegreenpapers.com/G26/OR",
+    "https://www.senate.gov/senators/Class_II.htm",
+    "https://www.thegreenpapers.com/G26/PollingHours.phtml"
+   ]
+  },
+  {
+   "state": "RI",
+   "state_name": "Rhode Island",
+   "class": 2,
+   "special": false,
+   "term": "2027-01-03 to 2033-01-03",
+   "featured": false,
+   "incumbent": {
+    "name": "Jack Reed",
+    "party": "DEM",
+    "running": true,
+    "note": null
+   },
+   "open_seat": false,
+   "nominees": [
+    {
+     "key": "reed",
+     "name": "Jack Reed",
+     "party": "DEM",
+     "incumbent": true
+    },
+    {
+     "key": "mckay",
+     "name": "Raymond McKay",
+     "party": "REP",
+     "incumbent": false
+    }
+   ],
+   "other_candidates": [
+    {
+     "key": "bahry",
+     "name": "Michael Bahry",
+     "party": "IND",
+     "ballot_label": "Independent"
+    }
+   ],
+   "cross_endorsement": null,
+   "nominee_note": null,
+   "poll_close_et": "2026-11-03T20:00:00-05:00",
+   "poll_close_et_main": "2026-11-03T20:00:00-05:00",
+   "poll_close_note": "Polls close 8 p.m. ET.",
+   "rcv": false,
+   "runoff": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Rhode_Island",
+    "https://www.thegreenpapers.com/G26/RI",
+    "https://www.senate.gov/senators/Class_II.htm",
+    "https://www.thegreenpapers.com/G26/PollingHours.phtml"
+   ]
+  },
+  {
+   "state": "SC",
+   "state_name": "South Carolina",
+   "class": 2,
+   "special": false,
+   "term": "2027-01-03 to 2033-01-03",
+   "featured": false,
+   "incumbent": {
+    "name": "Darline Graham",
+    "party": "REP",
+    "running": true,
+    "note": "Appointed by Gov. Henry McMaster (named 2026-07-13) after Sen. Lindsey Graham, her brother, died on 2026-07-11; won the 2026-08-25 special Republican runoff."
+   },
+   "open_seat": false,
+   "nominees": [
+    {
+     "key": "graham",
+     "name": "Darline Graham",
+     "party": "REP",
+     "incumbent": true
+    },
+    {
+     "key": "andrews",
+     "name": "Annie Andrews",
+     "party": "DEM",
+     "incumbent": false
+    }
+   ],
+   "other_candidates": [
+    {
+     "key": "hackett",
+     "name": "Mark Hackett",
+     "party": "OTH",
+     "ballot_label": "Constitution Party"
+    },
+    {
+     "key": "whitener",
+     "name": "Kasie Whitener",
+     "party": "LIB",
+     "ballot_label": "Libertarian"
+    }
+   ],
+   "cross_endorsement": null,
+   "nominee_note": null,
+   "poll_close_et": "2026-11-03T19:00:00-05:00",
+   "poll_close_et_main": "2026-11-03T19:00:00-05:00",
+   "poll_close_note": "Polls close 7 p.m. ET.",
+   "rcv": false,
+   "runoff": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_South_Carolina",
+    "https://www.thegreenpapers.com/G26/SC",
+    "https://www.senate.gov/senators/Class_II.htm",
+    "https://www.thegreenpapers.com/G26/PollingHours.phtml",
+    "https://www.nbcnews.com/politics/politics-news/sen-lindsey-graham-dies-71-brief-sudden-illness-rcna552722"
+   ]
+  },
+  {
+   "state": "SD",
+   "state_name": "South Dakota",
+   "class": 2,
+   "special": false,
+   "term": "2027-01-03 to 2033-01-03",
+   "featured": false,
+   "incumbent": {
+    "name": "Mike Rounds",
+    "party": "REP",
+    "running": true,
+    "note": null
+   },
+   "open_seat": false,
+   "nominees": [
+    {
+     "key": "rounds",
+     "name": "Mike Rounds",
+     "party": "REP",
+     "incumbent": true
+    },
+    {
+     "key": "bengs",
+     "name": "Brian Bengs",
+     "party": "IND",
+     "incumbent": false
+    }
+   ],
+   "other_candidates": [],
+   "cross_endorsement": "No Democratic nominee on the ballot: Julian Beaudion withdrew on 2026-08-04 (Wikipedia, citing The Washington Post); Brian Bengs, the 2022 Democratic nominee, runs as an independent.",
+   "nominee_note": null,
+   "poll_close_et": "2026-11-03T21:00:00-05:00",
+   "poll_close_et_main": "2026-11-03T20:00:00-05:00",
+   "poll_close_note": "7 p.m. local: eastern (Central-time) part 8 p.m. ET; western (Mountain-time) part 9 p.m. ET.",
+   "rcv": false,
+   "runoff": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_South_Dakota",
+    "https://www.thegreenpapers.com/G26/SD",
+    "https://www.senate.gov/senators/Class_II.htm",
+    "https://www.thegreenpapers.com/G26/PollingHours.phtml",
+    "https://api.open.fec.gov/v1/candidates/totals/?election_year=2026&office=S&state=SD"
+   ]
+  },
+  {
+   "state": "TN",
+   "state_name": "Tennessee",
+   "class": 2,
+   "special": false,
+   "term": "2027-01-03 to 2033-01-03",
+   "featured": false,
+   "incumbent": {
+    "name": "Bill Hagerty",
+    "party": "REP",
+    "running": true,
+    "note": null
+   },
+   "open_seat": false,
+   "nominees": [
+    {
+     "key": "hagerty",
+     "name": "Bill Hagerty",
+     "party": "REP",
+     "incumbent": true
+    },
+    {
+     "key": "bradshaw",
+     "name": "Marquita Bradshaw",
+     "party": "DEM",
+     "incumbent": false
+    }
+   ],
+   "other_candidates": [
+    {
+     "key": "chandler",
+     "name": "Tharon Chandler",
+     "party": "IND",
+     "ballot_label": "Independent"
+    },
+    {
+     "key": "gerena",
+     "name": "Andrew Gerena",
+     "party": "IND",
+     "ballot_label": "Independent"
+    },
+    {
+     "key": "hearn",
+     "name": "Jeremy Hearn",
+     "party": "IND",
+     "ballot_label": "Independent"
+    },
+    {
+     "key": "jones",
+     "name": "Robert Jones",
+     "party": "IND",
+     "ballot_label": "Independent"
+    },
+    {
+     "key": "macon",
+     "name": "James Macon III",
+     "party": "IND",
+     "ballot_label": "Independent"
+    },
+    {
+     "key": "matthews",
+     "name": "Yoshi Matthews",
+     "party": "IND",
+     "ballot_label": "Independent"
+    },
+    {
+     "key": "sutman",
+     "name": "David Sutman Jr.",
+     "party": "IND",
+     "ballot_label": "Independent"
+    },
+    {
+     "key": "whitson",
+     "name": "Catherine Whitson",
+     "party": "IND",
+     "ballot_label": "Independent"
+    }
+   ],
+   "cross_endorsement": null,
+   "nominee_note": null,
+   "poll_close_et": "2026-11-03T20:00:00-05:00",
+   "poll_close_et_main": "2026-11-03T20:00:00-05:00",
+   "poll_close_note": "Polls close simultaneously: 8 p.m. ET / 7 p.m. CT.",
+   "rcv": false,
+   "runoff": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Tennessee",
+    "https://www.thegreenpapers.com/G26/TN",
+    "https://www.senate.gov/senators/Class_II.htm",
+    "https://www.thegreenpapers.com/G26/PollingHours.phtml"
+   ]
+  },
+  {
+   "state": "TX",
+   "state_name": "Texas",
+   "class": 2,
+   "special": false,
+   "term": "2027-01-03 to 2033-01-03",
+   "featured": true,
+   "incumbent": {
+    "name": "John Cornyn",
+    "party": "REP",
+    "running": false,
+    "note": "Lost the Republican primary runoff to Ken Paxton on 2026-05-26."
+   },
+   "open_seat": true,
+   "nominees": [
+    {
+     "key": "paxton",
+     "name": "Ken Paxton",
+     "party": "REP",
+     "incumbent": false
+    },
+    {
+     "key": "talarico",
+     "name": "James Talarico",
+     "party": "DEM",
+     "incumbent": false
+    }
+   ],
+   "other_candidates": [
+    {
+     "key": "brown",
+     "name": "Ted Brown",
+     "party": "LIB",
+     "ballot_label": "Libertarian"
+    }
+   ],
+   "cross_endorsement": null,
+   "nominee_note": null,
+   "poll_close_et": "2026-11-03T21:00:00-05:00",
+   "poll_close_et_main": "2026-11-03T20:00:00-05:00",
+   "poll_close_note": "7 p.m. local: Central-time Texas 8 p.m. ET; El Paso and Hudspeth counties (Mountain time) 9 p.m. ET.",
+   "rcv": false,
+   "runoff": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Texas",
+    "https://www.thegreenpapers.com/G26/TX",
+    "https://www.senate.gov/senators/Class_II.htm",
+    "https://www.thegreenpapers.com/G26/PollingHours.phtml",
+    "https://www.sos.state.tx.us/elections/laws/advisory2026-22.shtml",
+    "https://content.govdelivery.com/attachments/TXSOS/2026/08/28/file_attachments/3762824/2026%20Sample%20Ballot-final.pdf"
+   ]
+  },
+  {
+   "state": "VA",
+   "state_name": "Virginia",
+   "class": 2,
+   "special": false,
+   "term": "2027-01-03 to 2033-01-03",
+   "featured": false,
+   "incumbent": {
+    "name": "Mark Warner",
+    "party": "DEM",
+    "running": true,
+    "note": null
+   },
+   "open_seat": false,
+   "nominees": [
+    {
+     "key": "warner",
+     "name": "Mark Warner",
+     "party": "DEM",
+     "incumbent": true
+    },
+    {
+     "key": "mizusawa",
+     "name": "Bert Mizusawa",
+     "party": "REP",
+     "incumbent": false
+    }
+   ],
+   "other_candidates": [],
+   "cross_endorsement": null,
+   "nominee_note": null,
+   "poll_close_et": "2026-11-03T19:00:00-05:00",
+   "poll_close_et_main": "2026-11-03T19:00:00-05:00",
+   "poll_close_note": "Polls close 7 p.m. ET.",
+   "rcv": false,
+   "runoff": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Virginia",
+    "https://www.thegreenpapers.com/G26/VA",
+    "https://www.senate.gov/senators/Class_II.htm",
+    "https://www.thegreenpapers.com/G26/PollingHours.phtml"
+   ]
+  },
+  {
+   "state": "WV",
+   "state_name": "West Virginia",
+   "class": 2,
+   "special": false,
+   "term": "2027-01-03 to 2033-01-03",
+   "featured": false,
+   "incumbent": {
+    "name": "Shelley Moore Capito",
+    "party": "REP",
+    "running": true,
+    "note": null
+   },
+   "open_seat": false,
+   "nominees": [
+    {
+     "key": "capito",
+     "name": "Shelley Moore Capito",
+     "party": "REP",
+     "incumbent": true
+    },
+    {
+     "key": "fettyanderson",
+     "name": "Rachel Fetty Anderson",
+     "party": "DEM",
+     "incumbent": false
+    }
+   ],
+   "other_candidates": [
+    {
+     "key": "wilson",
+     "name": "S. Marshall Wilson",
+     "party": "OTH",
+     "ballot_label": "Constitution Party"
+    }
+   ],
+   "cross_endorsement": null,
+   "nominee_note": null,
+   "poll_close_et": "2026-11-03T19:30:00-05:00",
+   "poll_close_et_main": "2026-11-03T19:30:00-05:00",
+   "poll_close_note": "Polls close 7:30 p.m. ET.",
+   "rcv": false,
+   "runoff": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_West_Virginia",
+    "https://www.thegreenpapers.com/G26/WV",
+    "https://www.senate.gov/senators/Class_II.htm",
+    "https://www.thegreenpapers.com/G26/PollingHours.phtml"
+   ]
+  },
+  {
+   "state": "WY",
+   "state_name": "Wyoming",
+   "class": 2,
+   "special": false,
+   "term": "2027-01-03 to 2033-01-03",
+   "featured": false,
+   "incumbent": {
+    "name": "Cynthia Lummis",
+    "party": "REP",
+    "running": false,
+    "note": "Not seeking re-election (announced 2025-12-19)."
+   },
+   "open_seat": true,
+   "nominees": [
+    {
+     "key": "hageman",
+     "name": "Harriet Hageman",
+     "party": "REP",
+     "incumbent": false
+    },
+    {
+     "key": "byrd",
+     "name": "James W. Byrd",
+     "party": "DEM",
+     "incumbent": false
+    }
+   ],
+   "other_candidates": [],
+   "cross_endorsement": null,
+   "nominee_note": null,
+   "poll_close_et": "2026-11-03T21:00:00-05:00",
+   "poll_close_et_main": "2026-11-03T21:00:00-05:00",
+   "poll_close_note": "Polls close 7 p.m. MT (9 p.m. ET).",
+   "rcv": false,
+   "runoff": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_Wyoming",
+    "https://www.thegreenpapers.com/G26/WY",
+    "https://www.senate.gov/senators/Class_II.htm",
+    "https://www.thegreenpapers.com/G26/PollingHours.phtml"
+   ]
+  }
+ ],
+ "holdovers": [
+  {
+   "state": "AK",
+   "name": "Lisa Murkowski",
+   "party": "REP",
+   "caucus": "REP",
+   "class": 3,
+   "next_election_year": 2028
+  },
+  {
+   "state": "AL",
+   "name": "Katie Boyd Britt",
+   "party": "REP",
+   "caucus": "REP",
+   "class": 3,
+   "next_election_year": 2028
+  },
+  {
+   "state": "AR",
+   "name": "John Boozman",
+   "party": "REP",
+   "caucus": "REP",
+   "class": 3,
+   "next_election_year": 2028
+  },
+  {
+   "state": "AZ",
+   "name": "Ruben Gallego",
+   "party": "DEM",
+   "caucus": "DEM",
+   "class": 1,
+   "next_election_year": 2030
+  },
+  {
+   "state": "AZ",
+   "name": "Mark Kelly",
+   "party": "DEM",
+   "caucus": "DEM",
+   "class": 3,
+   "next_election_year": 2028
+  },
+  {
+   "state": "CA",
+   "name": "Adam B. Schiff",
+   "party": "DEM",
+   "caucus": "DEM",
+   "class": 1,
+   "next_election_year": 2030
+  },
+  {
+   "state": "CA",
+   "name": "Alex Padilla",
+   "party": "DEM",
+   "caucus": "DEM",
+   "class": 3,
+   "next_election_year": 2028
+  },
+  {
+   "state": "CO",
+   "name": "Michael F. Bennet",
+   "party": "DEM",
+   "caucus": "DEM",
+   "class": 3,
+   "next_election_year": 2028
+  },
+  {
+   "state": "CT",
+   "name": "Christopher Murphy",
+   "party": "DEM",
+   "caucus": "DEM",
+   "class": 1,
+   "next_election_year": 2030
+  },
+  {
+   "state": "CT",
+   "name": "Richard Blumenthal",
+   "party": "DEM",
+   "caucus": "DEM",
+   "class": 3,
+   "next_election_year": 2028
+  },
+  {
+   "state": "DE",
+   "name": "Lisa Blunt Rochester",
+   "party": "DEM",
+   "caucus": "DEM",
+   "class": 1,
+   "next_election_year": 2030
+  },
+  {
+   "state": "FL",
+   "name": "Rick Scott",
+   "party": "REP",
+   "caucus": "REP",
+   "class": 1,
+   "next_election_year": 2030
+  },
+  {
+   "state": "GA",
+   "name": "Raphael G. Warnock",
+   "party": "DEM",
+   "caucus": "DEM",
+   "class": 3,
+   "next_election_year": 2028
+  },
+  {
+   "state": "HI",
+   "name": "Mazie K. Hirono",
+   "party": "DEM",
+   "caucus": "DEM",
+   "class": 1,
+   "next_election_year": 2030
+  },
+  {
+   "state": "HI",
+   "name": "Brian Schatz",
+   "party": "DEM",
+   "caucus": "DEM",
+   "class": 3,
+   "next_election_year": 2028
+  },
+  {
+   "state": "IA",
+   "name": "Chuck Grassley",
+   "party": "REP",
+   "caucus": "REP",
+   "class": 3,
+   "next_election_year": 2028
+  },
+  {
+   "state": "ID",
+   "name": "Mike Crapo",
+   "party": "REP",
+   "caucus": "REP",
+   "class": 3,
+   "next_election_year": 2028
+  },
+  {
+   "state": "IL",
+   "name": "Tammy Duckworth",
+   "party": "DEM",
+   "caucus": "DEM",
+   "class": 3,
+   "next_election_year": 2028
+  },
+  {
+   "state": "IN",
+   "name": "Jim Banks",
+   "party": "REP",
+   "caucus": "REP",
+   "class": 1,
+   "next_election_year": 2030
+  },
+  {
+   "state": "IN",
+   "name": "Todd Young",
+   "party": "REP",
+   "caucus": "REP",
+   "class": 3,
+   "next_election_year": 2028
+  },
+  {
+   "state": "KS",
+   "name": "Jerry Moran",
+   "party": "REP",
+   "caucus": "REP",
+   "class": 3,
+   "next_election_year": 2028
+  },
+  {
+   "state": "KY",
+   "name": "Rand Paul",
+   "party": "REP",
+   "caucus": "REP",
+   "class": 3,
+   "next_election_year": 2028
+  },
+  {
+   "state": "LA",
+   "name": "John Kennedy",
+   "party": "REP",
+   "caucus": "REP",
+   "class": 3,
+   "next_election_year": 2028
+  },
+  {
+   "state": "MA",
+   "name": "Elizabeth Warren",
+   "party": "DEM",
+   "caucus": "DEM",
+   "class": 1,
+   "next_election_year": 2030
+  },
+  {
+   "state": "MD",
+   "name": "Angela D. Alsobrooks",
+   "party": "DEM",
+   "caucus": "DEM",
+   "class": 1,
+   "next_election_year": 2030
+  },
+  {
+   "state": "MD",
+   "name": "Chris Van Hollen",
+   "party": "DEM",
+   "caucus": "DEM",
+   "class": 3,
+   "next_election_year": 2028
+  },
+  {
+   "state": "ME",
+   "name": "Angus S. King Jr.",
+   "party": "IND",
+   "caucus": "DEM",
+   "class": 1,
+   "next_election_year": 2030
+  },
+  {
+   "state": "MI",
+   "name": "Elissa Slotkin",
+   "party": "DEM",
+   "caucus": "DEM",
+   "class": 1,
+   "next_election_year": 2030
+  },
+  {
+   "state": "MN",
+   "name": "Amy Klobuchar",
+   "party": "DEM",
+   "caucus": "DEM",
+   "class": 1,
+   "next_election_year": 2030
+  },
+  {
+   "state": "MO",
+   "name": "Josh Hawley",
+   "party": "REP",
+   "caucus": "REP",
+   "class": 1,
+   "next_election_year": 2030
+  },
+  {
+   "state": "MO",
+   "name": "Eric Schmitt",
+   "party": "REP",
+   "caucus": "REP",
+   "class": 3,
+   "next_election_year": 2028
+  },
+  {
+   "state": "MS",
+   "name": "Roger F. Wicker",
+   "party": "REP",
+   "caucus": "REP",
+   "class": 1,
+   "next_election_year": 2030
+  },
+  {
+   "state": "MT",
+   "name": "Tim Sheehy",
+   "party": "REP",
+   "caucus": "REP",
+   "class": 1,
+   "next_election_year": 2030
+  },
+  {
+   "state": "NC",
+   "name": "Ted Budd",
+   "party": "REP",
+   "caucus": "REP",
+   "class": 3,
+   "next_election_year": 2028
+  },
+  {
+   "state": "ND",
+   "name": "Kevin Cramer",
+   "party": "REP",
+   "caucus": "REP",
+   "class": 1,
+   "next_election_year": 2030
+  },
+  {
+   "state": "ND",
+   "name": "John Hoeven",
+   "party": "REP",
+   "caucus": "REP",
+   "class": 3,
+   "next_election_year": 2028
+  },
+  {
+   "state": "NE",
+   "name": "Deb Fischer",
+   "party": "REP",
+   "caucus": "REP",
+   "class": 1,
+   "next_election_year": 2030
+  },
+  {
+   "state": "NH",
+   "name": "Margaret Wood Hassan",
+   "party": "DEM",
+   "caucus": "DEM",
+   "class": 3,
+   "next_election_year": 2028
+  },
+  {
+   "state": "NJ",
+   "name": "Andy Kim",
+   "party": "DEM",
+   "caucus": "DEM",
+   "class": 1,
+   "next_election_year": 2030
+  },
+  {
+   "state": "NM",
+   "name": "Martin Heinrich",
+   "party": "DEM",
+   "caucus": "DEM",
+   "class": 1,
+   "next_election_year": 2030
+  },
+  {
+   "state": "NV",
+   "name": "Jacky Rosen",
+   "party": "DEM",
+   "caucus": "DEM",
+   "class": 1,
+   "next_election_year": 2030
+  },
+  {
+   "state": "NV",
+   "name": "Catherine Cortez Masto",
+   "party": "DEM",
+   "caucus": "DEM",
+   "class": 3,
+   "next_election_year": 2028
+  },
+  {
+   "state": "NY",
+   "name": "Kirsten E. Gillibrand",
+   "party": "DEM",
+   "caucus": "DEM",
+   "class": 1,
+   "next_election_year": 2030
+  },
+  {
+   "state": "NY",
+   "name": "Charles E. Schumer",
+   "party": "DEM",
+   "caucus": "DEM",
+   "class": 3,
+   "next_election_year": 2028
+  },
+  {
+   "state": "OH",
+   "name": "Bernie Moreno",
+   "party": "REP",
+   "caucus": "REP",
+   "class": 1,
+   "next_election_year": 2030
+  },
+  {
+   "state": "OK",
+   "name": "James Lankford",
+   "party": "REP",
+   "caucus": "REP",
+   "class": 3,
+   "next_election_year": 2028
+  },
+  {
+   "state": "OR",
+   "name": "Ron Wyden",
+   "party": "DEM",
+   "caucus": "DEM",
+   "class": 3,
+   "next_election_year": 2028
+  },
+  {
+   "state": "PA",
+   "name": "David McCormick",
+   "party": "REP",
+   "caucus": "REP",
+   "class": 1,
+   "next_election_year": 2030
+  },
+  {
+   "state": "PA",
+   "name": "John Fetterman",
+   "party": "DEM",
+   "caucus": "DEM",
+   "class": 3,
+   "next_election_year": 2028
+  },
+  {
+   "state": "RI",
+   "name": "Sheldon Whitehouse",
+   "party": "DEM",
+   "caucus": "DEM",
+   "class": 1,
+   "next_election_year": 2030
+  },
+  {
+   "state": "SC",
+   "name": "Tim Scott",
+   "party": "REP",
+   "caucus": "REP",
+   "class": 3,
+   "next_election_year": 2028
+  },
+  {
+   "state": "SD",
+   "name": "John Thune",
+   "party": "REP",
+   "caucus": "REP",
+   "class": 3,
+   "next_election_year": 2028
+  },
+  {
+   "state": "TN",
+   "name": "Marsha Blackburn",
+   "party": "REP",
+   "caucus": "REP",
+   "class": 1,
+   "next_election_year": 2030
+  },
+  {
+   "state": "TX",
+   "name": "Ted Cruz",
+   "party": "REP",
+   "caucus": "REP",
+   "class": 1,
+   "next_election_year": 2030
+  },
+  {
+   "state": "UT",
+   "name": "John R. Curtis",
+   "party": "REP",
+   "caucus": "REP",
+   "class": 1,
+   "next_election_year": 2030
+  },
+  {
+   "state": "UT",
+   "name": "Mike Lee",
+   "party": "REP",
+   "caucus": "REP",
+   "class": 3,
+   "next_election_year": 2028
+  },
+  {
+   "state": "VA",
+   "name": "Tim Kaine",
+   "party": "DEM",
+   "caucus": "DEM",
+   "class": 1,
+   "next_election_year": 2030
+  },
+  {
+   "state": "VT",
+   "name": "Bernard Sanders",
+   "party": "IND",
+   "caucus": "DEM",
+   "class": 1,
+   "next_election_year": 2030
+  },
+  {
+   "state": "VT",
+   "name": "Peter Welch",
+   "party": "DEM",
+   "caucus": "DEM",
+   "class": 3,
+   "next_election_year": 2028
+  },
+  {
+   "state": "WA",
+   "name": "Maria Cantwell",
+   "party": "DEM",
+   "caucus": "DEM",
+   "class": 1,
+   "next_election_year": 2030
+  },
+  {
+   "state": "WA",
+   "name": "Patty Murray",
+   "party": "DEM",
+   "caucus": "DEM",
+   "class": 3,
+   "next_election_year": 2028
+  },
+  {
+   "state": "WI",
+   "name": "Tammy Baldwin",
+   "party": "DEM",
+   "caucus": "DEM",
+   "class": 1,
+   "next_election_year": 2030
+  },
+  {
+   "state": "WI",
+   "name": "Ron Johnson",
+   "party": "REP",
+   "caucus": "REP",
+   "class": 3,
+   "next_election_year": 2028
+  },
+  {
+   "state": "WV",
+   "name": "James C. Justice",
+   "party": "REP",
+   "caucus": "REP",
+   "class": 1,
+   "next_election_year": 2030
+  },
+  {
+   "state": "WY",
+   "name": "John Barrasso",
+   "party": "REP",
+   "caucus": "REP",
+   "class": 1,
+   "next_election_year": 2030
+  }
+ ],
+ "featured_order": [
+  "TX",
+  "AK",
+  "KS",
+  "ME",
+  "OH",
+  "MI"
+ ],
+ "featured": {
+  "TX": {
+   "state": "TX",
+   "state_name": {
+    "en": "Texas",
+    "es": "Texas",
+    "ja": "テキサス州",
+    "zh": "德州",
+    "zh_hans": "得州"
+   },
+   "race": {
+    "class": 2,
+    "special": false,
+    "term": "2027-01-03 to 2033-01-03",
+    "note": "Regular election for the Class 2 seat held by John Cornyn (R), who lost the Republican primary runoff on 2026-05-26 and is not on the November ballot. Ballot (Texas SOS sample ballot, 2026-08-28): Ken Paxton (Republican), James Talarico (Democratic), Ted Brown (Libertarian); no Green or independent candidate for U.S. Senator. Four certified declared write-in candidates for U.S. Senator: Avery Ayers, Bradford \"Brad\" Hall, Zul Mohamed, Jade Simmons (not printed on the ballot)."
+   },
+   "senators": [
+    {
+     "name": "John Cornyn",
+     "name_es": "John Cornyn",
+     "name_ja": "ジョン・コーニン",
+     "name_zh": "柯寧",
+     "name_zh_hans": "科宁",
+     "_constructed": false,
+     "_constructed_fields": [],
+     "name_sources": {
+      "name_ja": "https://www.afpbb.com/articles/-/3636895",
+      "name_zh": "https://www.cna.com.tw/news/aopl/202605270097.aspx",
+      "name_zh_hans": "https://global.hk01.com/%E5%8D%B3%E6%97%B6%E5%9B%BD%E9%99%85/60353891/"
+     },
+     "party": "REP",
+     "class": 2,
+     "in_office_since": "2002-12-02",
+     "next_election_year": 2026,
+     "seat_up_2026": true,
+     "running_2026": false,
+     "note": "Lost the Republican primary runoff to Ken Paxton on 2026-05-26; his term ends 2027-01-03.",
+     "sources": [
+      "https://www.senate.gov/states/TX/senators.htm",
+      "https://www.senate.gov/senators/Class_II.htm",
+      "https://abc13.com/post/texas-attorney-general-ken-paxton-wins-gop-runoff-us-senate-ousting-longtime-sen-john-cornyn-ap-projects/19177494/"
+     ],
+     "name_zh_full": null,
+     "caucus": "REP"
+    },
+    {
+     "name": "Ted Cruz",
+     "name_es": "Ted Cruz",
+     "name_ja": "テッド・クルーズ",
+     "name_zh": "克魯茲",
+     "name_zh_hans": "克鲁兹",
+     "_constructed": true,
+     "_constructed_fields": [
+      "name_zh_hans"
+     ],
+     "name_sources": {
+      "name_ja": "https://cnn.co.jp/usa/35253358.html",
+      "name_zh": "https://www.cna.com.tw/news/aopl/202411070025.aspx",
+      "name_zh_hans": null
+     },
+     "party": "REP",
+     "class": 1,
+     "in_office_since": "2013-01-03",
+     "next_election_year": 2030,
+     "seat_up_2026": false,
+     "running_2026": null,
+     "note": null,
+     "sources": [
+      "https://www.senate.gov/states/TX/senators.htm",
+      "https://www.senate.gov/senators/Class_I.htm"
+     ],
+     "name_zh_full": null,
+     "caucus": "REP"
+    }
+   ],
+   "candidates": [
+    {
+     "key": "paxton",
+     "name": "Ken Paxton",
+     "ballot_name": "Ken Paxton",
+     "party": "REP",
+     "incumbent": false,
+     "name_es": "Ken Paxton",
+     "name_ja": "ケン・パクストン",
+     "name_zh": "派克斯頓",
+     "name_zh_hans": "帕克斯顿",
+     "_constructed": false,
+     "_constructed_fields": [],
+     "name_sources": {
+      "name_ja": "https://www.afpbb.com/articles/-/3636895",
+      "name_zh": "https://www.cna.com.tw/news/aopl/202605270097.aspx",
+      "name_zh_hans": "https://global.hk01.com/%E5%8D%B3%E6%97%B6%E5%9B%BD%E9%99%85/60353891/"
+     },
+     "birth_date": "1962-12-23",
+     "birth_year": 1962,
+     "age": 63,
+     "hometown": "McKinney, Texas (born in Minot, North Dakota)",
+     "current_office": "Attorney General of Texas (since 2015)",
+     "prior_offices": [
+      "Texas House of Representatives, District 70 (2003-2013)",
+      "Texas Senate, District 8 (2013-2015)"
+     ],
+     "education": [
+      "B.A., psychology, Baylor University (1985)",
+      "M.B.A., Baylor University (1986)",
+      "J.D., University of Virginia School of Law (1991)"
+     ],
+     "military_service": null,
+     "background": [
+      {
+       "text": "Born in Minot, North Dakota, where his father was stationed with the U.S. Air Force.",
+       "source": "https://www.naag.org/attorney-general/ken-paxton/"
+      },
+      {
+       "text": "Served as student body president at Baylor University.",
+       "source": "https://kenpaxton.com/about"
+      },
+      {
+       "text": "Ran his own law firm in McKinney, Texas, for 14 years before entering public office.",
+       "source": "https://kenpaxton.com/about"
+      }
+     ],
+     "positions": [
+      {
+       "topic": "border_immigration",
+       "text": "Says he will help complete the border wall, secure the border and deport people who are in the country illegally.",
+       "source": "https://kenpaxton.com/issues"
+      },
+      {
+       "topic": "taxes_spending",
+       "text": "Supports cutting taxes and federal spending, citing the national debt, and removing regulations on energy companies.",
+       "source": "https://kenpaxton.com/issues"
+      },
+      {
+       "topic": "health",
+       "text": "Says he will take on large pharmaceutical and food companies and seek more transparency in the food and health care systems.",
+       "source": "https://kenpaxton.com/issues"
+      },
+      {
+       "topic": "guns_abortion",
+       "text": "Says he will protect gun rights and \"defend the unborn\".",
+       "source": "https://kenpaxton.com/issues"
+      }
+     ],
+     "facts_sources": {
+      "birth_date": [
+       "https://www.naag.org/attorney-general/ken-paxton/",
+       "https://www.cna.com.tw/news/aopl/202605270097.aspx"
+      ],
+      "hometown": [
+       "https://lrl.texas.gov/legeLeaders/members/memberDisplay.cfm?memberID=5556",
+       "https://www.naag.org/attorney-general/ken-paxton/"
+      ],
+      "current_office": [
+       "https://www.naag.org/attorney-general/ken-paxton/",
+       "https://www.fox7austin.com/news/texas-2026-senate-race-what-know-about-james-talarico-vs-ken-paxton"
+      ],
+      "prior_offices": [
+       "https://lrl.texas.gov/legeLeaders/members/memberDisplay.cfm?memberID=5556"
+      ],
+      "education": [
+       "https://www.naag.org/attorney-general/ken-paxton/"
+      ],
+      "military_service": [
+       "https://www.naag.org/attorney-general/ken-paxton/"
+      ]
+     },
+     "name_zh_full": null
+    },
+    {
+     "key": "talarico",
+     "name": "James Talarico",
+     "ballot_name": "James Talarico",
+     "party": "DEM",
+     "incumbent": false,
+     "name_es": "James Talarico",
+     "name_ja": "ジェームズ・タラリコ",
+     "name_zh": "塔拉里格",
+     "name_zh_hans": "塔拉里科",
+     "_constructed": false,
+     "_constructed_fields": [],
+     "name_sources": {
+      "name_ja": "https://www.afpbb.com/articles/-/3636895",
+      "name_zh": "https://www.cna.com.tw/news/aopl/202610190013.aspx",
+      "name_zh_hans": "https://global.hk01.com/%E5%8D%B3%E6%97%B6%E5%9B%BD%E9%99%85/60353891/"
+     },
+     "birth_date": "1989-05-17",
+     "birth_year": 1989,
+     "age": 37,
+     "hometown": "Austin, Texas (born in Round Rock, Texas)",
+     "current_office": "Member, Texas House of Representatives, District 50 (in the House since 2018)",
+     "prior_offices": [
+      "Texas House of Representatives, District 52 (2018-2023)"
+     ],
+     "education": [
+      "Bachelor's degree, University of Texas at Austin",
+      "Master's degree, Harvard University",
+      "Master's degree in theological studies, Austin Presbyterian Theological Seminary"
+     ],
+     "military_service": null,
+     "background": [
+      {
+       "text": "Taught sixth-grade language arts at Rhodes Middle School on the West Side of San Antonio.",
+       "source": "https://jamestalarico.com/meet-james-talarico/"
+      },
+      {
+       "text": "Worked as a nonprofit director before serving in the Texas House.",
+       "source": "https://www.kut.org/politics/2025-09-05/austin-rep-james-talarico-launches-democratic-primary-bid-for-u-s-senate"
+      },
+      {
+       "text": "Describes himself as a Presbyterian seminarian.",
+       "source": "https://jamestalarico.com/meet-james-talarico/"
+      }
+     ],
+     "positions": [
+      {
+       "topic": "border_immigration",
+       "text": "Supports comprehensive immigration reform, more Border Patrol agents and a path to citizenship for long-term residents, spouses and DREAMers.",
+       "source": "https://jamestalarico.com/issue/immigration-border-security/"
+      },
+      {
+       "topic": "taxes_cost_of_living",
+       "text": "Says he will cut taxes for working people, cap credit card interest rates and have billionaires and large corporations pay more.",
+       "source": "https://jamestalarico.com/issue/taxes-cost-of-living/"
+      },
+      {
+       "topic": "health",
+       "text": "Supports letting Americans of any age join Medicare and capping out-of-pocket prescription drug costs.",
+       "source": "https://jamestalarico.com/issue/health-care/"
+      },
+      {
+       "topic": "campaign_finance",
+       "text": "Supports banning super PACs and corporate PACs and banning stock trading by members of Congress.",
+       "source": "https://jamestalarico.com/issue/corruption-democracy/"
+      }
+     ],
+     "facts_sources": {
+      "birth_date": [
+       "https://lex.dk/James_Talarico",
+       "https://www.cna.com.tw/news/aopl/202609060066.aspx"
+      ],
+      "hometown": [
+       "https://lrl.texas.gov/legeLeaders/members/memberDisplay.cfm?memberID=5831",
+       "https://house.texas.gov/members/3685/biography"
+      ],
+      "current_office": [
+       "https://house.texas.gov/members/3685/biography",
+       "https://lrl.texas.gov/legeLeaders/members/memberDisplay.cfm?memberID=5831"
+      ],
+      "prior_offices": [
+       "https://lrl.texas.gov/legeLeaders/members/memberDisplay.cfm?memberID=5831"
+      ],
+      "education": [
+       "https://house.texas.gov/members/3685/biography",
+       "https://www.kut.org/politics/2025-09-05/austin-rep-james-talarico-launches-democratic-primary-bid-for-u-s-senate"
+      ],
+      "military_service": [
+       "https://house.texas.gov/members/3685/biography"
+      ]
+     },
+     "name_zh_full": null
+    }
+   ],
+   "also_on_ballot": [
+    {
+     "name": "Ted Brown",
+     "party": "LIB",
+     "ballot_label": "Libertarian Party (Partido Libertario)",
+     "source": "https://content.govdelivery.com/attachments/TXSOS/2026/08/28/file_attachments/3762824/2026%20Sample%20Ballot-final.pdf"
+    }
+   ],
+   "card_inclusion_note": "Cards: Ken Paxton (Republican nominee) and James Talarico (Democratic nominee). Ted Brown (Libertarian) is on the printed ballot and listed in also_on_ballot; declared write-ins are in declared_write_ins. Inclusion criteria and evidence: research/election/candidates.md.",
+   "rcv": {
+    "used": false,
+    "notes": "Texas does not use ranked-choice voting. The general election is decided by plurality (Texas Election Code Sec. 2.001: a candidate must receive more votes than any other candidate); there is no general-election runoff for U.S. Senate. Majority-vote runoffs apply to party primaries, as in the 2026-05-26 Republican runoff.",
+    "sources": [
+     "https://texas.public.law/statutes/tex._election_code_section_2.001"
+    ]
+   },
+   "poll_close": {
+    "main_et": "2026-11-03T20:00:00-05:00",
+    "last_et": "2026-11-03T21:00:00-05:00",
+    "notes": "Polls are open 7:00 a.m. to 7:00 p.m. local time. Most of Texas is on Central Time: polls close 7:00 p.m. CST = 8:00 p.m. ET. El Paso and Hudspeth counties are on Mountain Time: polls close 7:00 p.m. MST = 9:00 p.m. ET.",
+    "sources": [
+     "https://www.sos.state.tx.us/elections/laws/advisory2026-22.shtml",
+     "https://www.270towin.com/content/local-poll-closing-times-november-2026-general-election",
+     "https://www.thegreenpapers.com/G26/PollingHours.phtml?format=g"
+    ]
+   },
+   "results_reporting": {
+    "unit_type": "county",
+    "unit_count": 254,
+    "notes": "The Texas Secretary of State election-night results site (results.texas-election.com) publishes statewide and county-level returns for statewide races. The site's data endpoints sit behind a Cloudflare browser challenge, so whether it publishes precincts or polling locations reporting could not be verified from here; treat precincts as null until checked live.",
+    "sources": [
+     "https://results.texas-election.com/",
+     "https://county.org/resources/resource-library/texas-counties-101"
+    ]
+   },
+   "declared_write_ins": {
+    "list": [
+     {
+      "name": "Avery Ayers"
+     },
+     {
+      "name": "Bradford \"Brad\" Hall"
+     },
+     {
+      "name": "Zul Mohamed"
+     },
+     {
+      "name": "Jade Simmons"
+     }
+    ],
+    "source": "https://content.govdelivery.com/attachments/TXSOS/2026/08/28/file_attachments/3762079/2026%20Write-In%20Ballot%20Certification-final.pdf"
+   }
+  },
+  "AK": {
+   "state": "AK",
+   "state_name": {
+    "en": "Alaska",
+    "es": "Alaska",
+    "ja": "アラスカ州",
+    "zh": "阿拉斯加州",
+    "zh_hans": "阿拉斯加州"
+   },
+   "race": {
+    "class": 2,
+    "special": false,
+    "term": "2027-01-03 to 2033-01-03",
+    "note": "Top-four general election conducted by ranked-choice voting; there are no party nominations in Alaska. Four names are printed on the ballot (order as on the HD1 sample ballot): 'Heikes, Gerald L. (Registered Republican)', 'Peltola, Mary (Registered Democrat)', 'Sullivan, Daniel J. Jr.' (no affiliation printed), and 'Sullivan, Dan S. (Registered Republican) Incumbent', plus a write-in line. Certified write-in candidates (not printed): Sidney 'Sid' Hill (Undeclared) and Heather McElwain (Registered Libertarian). Party labels on the Alaska ballot show voter registration, not party nomination. Two candidates named Dan Sullivan are on the ballot; keys 'sullivan' (incumbent Dan S. Sullivan) and 'sullivan_j' (Daniel J. Sullivan Jr.) keep them apart.",
+    "sources": [
+     "https://www.elections.alaska.gov/candidates/?election=26genr",
+     "https://www.elections.alaska.gov/election/2026/General/SampleBallots/HD1-JD1.pdf",
+     "https://www.elections.alaska.gov/election-information/"
+    ]
+   },
+   "senators": [
+    {
+     "name": "Dan Sullivan",
+     "name_es": "Dan Sullivan",
+     "name_ja": "ダン・サリバン",
+     "name_zh": "蘇利文",
+     "name_zh_hans": "丹·沙利文",
+     "_constructed": false,
+     "_constructed_fields": [],
+     "name_sources": {
+      "name_ja": "https://www.nikkei.com/article/DGXZQOGN23BZW0T21C26A0000000/",
+      "name_zh": "https://www.cna.com.tw/news/aopl/202610290202.aspx",
+      "name_zh_hans": "https://news.qq.com/rain/a/20260111A010LD00"
+     },
+     "party": "REP",
+     "class": 2,
+     "in_office_since": "2015-01-06",
+     "next_election_year": 2026,
+     "seat_up_2026": true,
+     "running_2026": true,
+     "note": "Holds the seat on the 2026 ballot; seeking a third term. Sworn in Jan. 6, 2015; reelected 2020.",
+     "sources": [
+      "https://www.sullivan.senate.gov/about/bio/",
+      "https://www.elections.alaska.gov/candidates/?election=26genr"
+     ],
+     "name_zh_full": "丹恩．蘇利文",
+     "caucus": "REP"
+    },
+    {
+     "name": "Lisa Murkowski",
+     "name_es": "Lisa Murkowski",
+     "name_ja": "リサ・マカウスキ",
+     "name_zh": "穆考斯基",
+     "name_zh_hans": "丽莎·穆尔科斯基",
+     "_constructed": true,
+     "_constructed_fields": [
+      "name_zh_full"
+     ],
+     "name_sources": {
+      "name_ja": "https://www.afpbb.com/articles/-/3286794",
+      "name_zh": "https://www.cna.com.tw/news/aopl/202504180316.aspx",
+      "name_zh_hans": "https://news.qq.com/rain/a/20260111A010LD00"
+     },
+     "party": "REP",
+     "class": 3,
+     "in_office_since": "2002-12-20",
+     "next_election_year": 2028,
+     "seat_up_2026": false,
+     "running_2026": null,
+     "note": "Appointed Dec. 20, 2002; elected 2004, 2010, 2016 and 2022. Seat not up in 2026.",
+     "sources": [
+      "https://history.house.gov/People/Listing/M/MURKOWSKI,-Lisa-(M001153)/",
+      "https://www.govinfo.gov/content/pkg/CDIR-2020-07-22/html/CDIR-2020-07-22-AK-S-1.htm"
+     ],
+     "name_zh_full": "莉莎．穆考斯基",
+     "caucus": "REP"
+    }
+   ],
+   "candidates": [
+    {
+     "key": "sullivan",
+     "name": "Dan Sullivan",
+     "ballot_name": "Sullivan, Dan S. (Registered Republican) Incumbent",
+     "party": "REP",
+     "incumbent": true,
+     "name_es": "Dan S. Sullivan",
+     "name_ja": "ダン・S・サリバン",
+     "name_zh": "蘇利文",
+     "name_zh_hans": "丹·S·沙利文",
+     "_constructed": true,
+     "_constructed_fields": [
+      "name_ja",
+      "name_zh_full"
+     ],
+     "name_sources": {
+      "name_ja": "https://www.nikkei.com/article/DGXZQOGN23BZW0T21C26A0000000/",
+      "name_zh": "https://www.cna.com.tw/news/aopl/202610290202.aspx",
+      "name_zh_hans": "https://original.ifeng.com/c/8xfgwnuDjez"
+     },
+     "birth_date": "1964-11-13",
+     "birth_year": 1964,
+     "age": 61,
+     "hometown": "Anchorage, Alaska (born in Fairview Park, Ohio)",
+     "current_office": "U.S. Senator from Alaska (since 2015)",
+     "prior_offices": [
+      "Alaska Attorney General",
+      "Commissioner, Alaska Department of Natural Resources",
+      "U.S. Assistant Secretary of State for Economic, Energy and Business Affairs",
+      "Director, International Economics Directorate, White House National Security Council staff"
+     ],
+     "education": [
+      "Harvard University, B.A. in economics (1987)",
+      "Georgetown University, joint law degree and Master of Science in Foreign Service (1993)"
+     ],
+     "military_service": "U.S. Marine Corps, active duty and reserve, 30 years; retired Feb. 1, 2024 as a colonel in the Marine Corps Reserve",
+     "background": [
+      {
+       "text": "Born in Fairview Park, Ohio; has lived in Alaska for 29 years, in Fairbanks and Anchorage.",
+       "source": "https://elections.alaska.gov/doc/oep/2026/SULLIVAN,%20DAN%20S_US%20Sen_Eng_v2.pdf"
+      },
+      {
+       "text": "Was sworn in as Alaska's eighth U.S. senator on Jan. 6, 2015, and was reelected in 2020.",
+       "source": "https://www.sullivan.senate.gov/about/bio/"
+      },
+      {
+       "text": "Served as Alaska attorney general (2009-2010) and as commissioner of the Alaska Department of Natural Resources (2010-2013).",
+       "source": "https://www.sullivan.senate.gov/about/bio/"
+      }
+     ],
+     "positions": [
+      {
+       "topic": "energy",
+       "text": "Says he has expanded Alaska energy production from the NPR-A and ANWR to lower costs and create jobs.",
+       "source": "https://elections.alaska.gov/doc/oep/2026/SULLIVAN,%20DAN%20S_US%20Sen_Eng_v2.pdf"
+      },
+      {
+       "topic": "fisheries",
+       "text": "Says he passed laws to reduce bycatch, clean up oceans and ban imports of Russian and Chinese trawl-caught fish.",
+       "source": "https://elections.alaska.gov/doc/oep/2026/SULLIVAN,%20DAN%20S_US%20Sen_Eng_v2.pdf"
+      },
+      {
+       "topic": "taxes",
+       "text": "Supports the 2025 tax and spending law he voted for, which he says ends taxes on tips and raises the child tax credit to $2,200.",
+       "source": "https://www.sullivan.senate.gov/newsroom/press-releases/sullivan-shapes-one-big-beautiful-bill-to-unleash-alaskas-economy-create-good-paying-jobs-provide-historic-tax-cuts-for-working-families-and-strengthen-health-care"
+      },
+      {
+       "topic": "military",
+       "text": "Says he has delivered a military and Coast Guard buildup in Alaska, including a $7 billion recapitalization of Joint Base Elmendorf-Richardson and four icebreakers.",
+       "source": "https://elections.alaska.gov/doc/oep/2026/SULLIVAN,%20DAN%20S_US%20Sen_Eng_v2.pdf"
+      }
+     ],
+     "facts_sources": {
+      "birth_date": "https://bioguide.congress.gov/search/bio/S001198",
+      "hometown": "https://elections.alaska.gov/doc/oep/2026/SULLIVAN,%20DAN%20S_US%20Sen_Eng_v2.pdf",
+      "current_office": "https://www.sullivan.senate.gov/about/bio/",
+      "prior_offices": "https://www.sullivan.senate.gov/about/bio/",
+      "education": "https://www.sullivan.senate.gov/about/bio/",
+      "military_service": "https://www.sullivan.senate.gov/about/bio/"
+     },
+     "name_zh_full": "丹恩．S．蘇利文"
+    },
+    {
+     "key": "peltola",
+     "name": "Mary Peltola",
+     "ballot_name": "Peltola, Mary (Registered Democrat)",
+     "party": "DEM",
+     "incumbent": false,
+     "name_es": "Mary Peltola",
+     "name_ja": "メアリー・ペルトラ",
+     "name_zh": "佩爾托拉",
+     "name_zh_hans": "玛丽·佩尔托拉",
+     "_constructed": true,
+     "_constructed_fields": [
+      "name_zh_full"
+     ],
+     "name_sources": {
+      "name_ja": "https://www.nikkei.com/article/DGXZQOGN23BZW0T21C26A0000000/",
+      "name_zh": "https://www.cna.com.tw/news/aopl/202611020005.aspx",
+      "name_zh_hans": "https://news.qq.com/rain/a/20260111A010LD00"
+     },
+     "birth_date": "1973-08-31",
+     "birth_year": 1973,
+     "age": 53,
+     "hometown": "Anchorage, Alaska (grew up in Bethel and other Kuskokwim River communities)",
+     "current_office": "Former U.S. Representative for Alaska's at-large district (2022-2025)",
+     "prior_offices": [
+      "Alaska House of Representatives (1999-2009)",
+      "Bethel City Council (2011-2013)",
+      "U.S. House of Representatives, Alaska at-large district (2022-2025)"
+     ],
+     "education": [
+      "Attended the University of Northern Colorado, University of Alaska Fairbanks, University of Alaska Southeast and University of Alaska Anchorage"
+     ],
+     "military_service": null,
+     "background": [
+      {
+       "text": "Born in Anchorage; grew up in Kwethluk, Tuntutuliak, Platinum and Bethel along the Kuskokwim River, and has lived in Anchorage since 2025.",
+       "source": "https://elections.alaska.gov/doc/oep/2026/PELTOLA,MARY_US%20Sen_Eng_v1.pdf"
+      },
+      {
+       "text": "Became the first Alaska Native sworn into Congress in September 2022, succeeding the late Rep. Don Young.",
+       "source": "https://alaskapublic.org/news/2022-09-13/mary-peltola-makes-history-as-first-alaska-native-person-sworn-into-congress"
+      },
+      {
+       "text": "Served in the Alaska House of Representatives from 1999 to 2009.",
+       "source": "https://www.congress.gov/member/mary-peltola/P000619"
+      }
+     ],
+     "positions": [
+      {
+       "topic": "energy",
+       "text": "Supports federal permitting reform for Alaska energy projects and backs the Alaska LNG pipeline.",
+       "source": "https://marypeltola.com/priorities/energy/"
+      },
+      {
+       "topic": "fisheries",
+       "text": "Supports banning factory trawling and reducing bycatch to restore Alaska fisheries.",
+       "source": "https://marypeltola.com/priorities/fisheries/"
+      },
+      {
+       "topic": "taxes",
+       "text": "Supports ending federal income tax for Alaskans earning under $92,000 a year, paid for by higher taxes on millionaires and billionaires.",
+       "source": "https://marypeltola.com/priorities/affordability/"
+      },
+      {
+       "topic": "congress",
+       "text": "Supports 12-year term limits for members of Congress and a ban on congressional stock trading.",
+       "source": "https://marypeltola.com/priorities/fixing-the-rigged-system/"
+      }
+     ],
+     "facts_sources": {
+      "birth_date": "https://bioguide.congress.gov/search/bio/P000619",
+      "hometown": "https://elections.alaska.gov/doc/oep/2026/PELTOLA,MARY_US%20Sen_Eng_v1.pdf",
+      "current_office": "https://elections.alaska.gov/doc/oep/2026/PELTOLA,MARY_US%20Sen_Eng_v1.pdf",
+      "prior_offices": "https://elections.alaska.gov/doc/oep/2026/PELTOLA,MARY_US%20Sen_Eng_v1.pdf",
+      "education": "https://elections.alaska.gov/doc/oep/2026/PELTOLA,MARY_US%20Sen_Eng_v1.pdf",
+      "military_service": "https://elections.alaska.gov/doc/oep/2026/PELTOLA,MARY_US%20Sen_Eng_v1.pdf"
+     },
+     "name_zh_full": "瑪麗．佩爾托拉"
+    }
+   ],
+   "also_on_ballot": [
+    {
+     "key": "sullivan_j",
+     "name": "Daniel J. Sullivan Jr.",
+     "party": "IND",
+     "ballot_label": "Sullivan, Daniel J. Jr. (no affiliation printed)",
+     "registration": "Undeclared (Division candidate list); filed as a Republican",
+     "name_es": "Daniel J. Sullivan Jr.",
+     "name_ja": "ダン・J・サリバン・ジュニア",
+     "name_zh": "小蘇利文",
+     "name_zh_hans": "小丹·J·沙利文",
+     "_constructed": true,
+     "_constructed_fields": [
+      "name_ja",
+      "name_zh_full"
+     ],
+     "name_sources": {
+      "name_ja": "https://news.yahoo.co.jp/articles/1f6cd5777cfed3244122b162d9cf80908569bd76",
+      "name_zh": "https://news.ltn.com.tw/news/world/paper/1775824",
+      "name_zh_hans": "https://original.ifeng.com/c/8xfgwnuDjez"
+     },
+     "source": "https://www.elections.alaska.gov/candidates/?election=26genr",
+     "name_zh_full": "丹恩．J．小蘇利文"
+    },
+    {
+     "key": "heikes",
+     "name": "Gerald L. Heikes",
+     "party": "REP",
+     "ballot_label": "Heikes, Gerald L. (Registered Republican)",
+     "registration": "Registered Republican",
+     "name_es": "Gerald L. Heikes",
+     "name_ja": "ジェラルド・ハイクス",
+     "name_zh": "海克斯",
+     "name_zh_hans": "杰拉德·海克斯",
+     "_constructed": true,
+     "_constructed_fields": [
+      "name_zh_hans",
+      "name_zh",
+      "name_zh_full"
+     ],
+     "name_sources": {
+      "name_ja": "https://news.yahoo.co.jp/articles/bb54e19ca96fb3ac7923ce001e186a540a505dd1",
+      "name_zh": null,
+      "name_zh_hans": null
+     },
+     "source": "https://www.elections.alaska.gov/candidates/?election=26genr",
+     "name_zh_full": "傑拉德．海克斯"
+    }
+   ],
+   "card_inclusion_note": "Cards: Dan S. Sullivan (Registered Republican, incumbent) and Mary Peltola (Registered Democrat), the two leading finishers of the 2026-08-18 top-four primary. Daniel J. Sullivan Jr. and Gerald L. Heikes are on the printed ballot and listed in also_on_ballot; declared write-ins are in declared_write_ins. Inclusion criteria and evidence: research/election/candidates.md.",
+   "rcv": {
+    "used": true,
+    "notes": "Alaska elects U.S. senators by ranked-choice voting (instant runoff) in the general election, after a nonpartisan top-four primary (Ballot Measure 2, approved 2020; first used in 2022). Voters may rank up to five choices (four candidates plus a write-in). If no candidate has a majority of first choices, the last-place candidate is eliminated each round and those ballots move to their next choice; Alaska law continues tabulation until two candidates remain unless someone wins a first-round majority. Write-ins are tabulated individually only if all write-ins combined lead or are within 0.5% of the leader in round one (6 AAC 25.071). Ballot Measure No. 2 (24ESEG) on this Nov. 3 ballot would repeal the open primary and ranked-choice general elections and restore party primaries; the Nov. 3, 2026 Senate race itself is conducted under ranked-choice voting.",
+    "primary": "Nonpartisan top-four primary held Aug. 18, 2026; top four advanced regardless of party. Fourth-place David Leslie withdrew by the Aug. 31 withdrawal deadline and fifth-place Gerald Heikes took his place.",
+    "tabulation": "Election-night reports show first-choice (round 1) results only. Ranked-choice tabulation rounds begin after the last count of ballots on the 15th day after election day, i.e. Wed. Nov. 18, 2026, at the Director's Office in Juneau. Domestic mail ballots must arrive by Nov. 13 and overseas mail ballots by Nov. 18 (postmarked by Nov. 3). Target certification date: Nov. 25, 2026.",
+    "sources": [
+     "https://www.elections.alaska.gov/election-information/",
+     "https://www.elections.alaska.gov/calendar/",
+     "https://www.elections.alaska.gov/election-results/",
+     "https://www.elections.alaska.gov/election/2026/General/SampleBallots/HD1-JD1.pdf",
+     "https://www.adn.com/politics/2026/09/01/alaskas-4th-place-us-senate-finisher-drops-out-elevating-gop-candidate-to-ballot/",
+     "https://www.elections.alaska.gov/enr26/results/ElectionSummaryReportRPT.pdf"
+    ]
+   },
+   "poll_close": {
+    "main_et": "2026-11-04T00:00:00-05:00",
+    "last_et": "2026-11-04T01:00:00-05:00",
+    "notes": "Polls are open 7 a.m. to 8 p.m. local time. Alaska Time zone (AKST, UTC-9; most of the state): 8 p.m. AKST = 05:00 UTC = 12:00 midnight ET (Nov. 4). Hawaii-Aleutian zone (HAST, UTC-10; Aleutian Islands west of Umnak Island): 8 p.m. HAST = 06:00 UTC = 1:00 a.m. ET (Nov. 4). Some media guides list 7 p.m. HAST for the western Aleutians; the Division's calendar gives only 7 a.m.-8 p.m. The Division says results are posted on the web after 9 p.m. (Alaska time, = 1 a.m. ET).",
+    "sources": [
+     "https://www.elections.alaska.gov/calendar/",
+     "https://www.thegreenpapers.com/G26/PollingHours.phtml"
+    ]
+   },
+   "results_reporting": {
+    "unit_type": "house_district",
+    "unit_count": 40,
+    "notes": "Official results are published by state house district (HD01-HD40), with precincts inside each district; the Division posts a statewide summary (first choices only) and a Statement of Votes Cast per house district. In its district reports, absentee, early voting and questioned ballots appear as separate per-district rows ('District N - Absentee', 'District N - Early Voting', 'District N - Question'; format checked on the 2024 primary HD1 report). Absentee and questioned ballots keep being counted until Nov. 18. The Division also publishes the cast vote record (JSON). There are no counties; Alaska's boroughs are not reporting units.",
+    "sources": [
+     "https://www.elections.alaska.gov/election-results/",
+     "https://www.elections.alaska.gov/results/24PRIM/HD1.pdf"
+    ]
+   },
+   "declared_write_ins": {
+    "list": [
+     {
+      "name": "Sidney \"Sid\" Hill",
+      "designation": "Undeclared"
+     },
+     {
+      "name": "Heather McElwain",
+      "designation": "Registered Libertarian"
+     }
+    ],
+    "source": "https://www.elections.alaska.gov/candidates/?election=26genr"
+   },
+   "display_note": "Two candidates named Sullivan are on the ballot. On screen always use the disambiguated forms (name_es / name_ja / name_zh_full / name_zh_hans with middle initials); never show a bare 'Sullivan'."
+  },
+  "KS": {
+   "state": "KS",
+   "state_name": {
+    "en": "Kansas",
+    "es": "Kansas",
+    "ja": "カンザス州",
+    "zh": "堪薩斯州",
+    "zh_hans": "堪萨斯州"
+   },
+   "race": {
+    "class": 2,
+    "special": false,
+    "term": "2027-01-03 to 2033-01-03",
+    "note": "Regular election for the Class 2 seat held by Roger Marshall (R) since 2021-01-03. Plurality winner. Republican primary (2026-08-04): Marshall 79.9%, Arch Naramore 20.1%. Democratic primary (2026-08-04): Adam Hamilton 34.6% in an 11-candidate field. Primary results certified by the State Board of Canvassers on 2026-09-01."
+   },
+   "senators": [
+    {
+     "name": "Roger Marshall",
+     "name_es": "Roger Marshall",
+     "name_ja": "ロジャー・マーシャル",
+     "name_zh": "馬歇爾",
+     "name_zh_hans": "马歇尔",
+     "_constructed": false,
+     "_constructed_fields": [],
+     "name_sources": {
+      "name_ja": "https://www.cnn.co.jp/usa/35254231.html",
+      "name_zh": "https://www.cna.com.tw/news/aopl/202610310007.aspx",
+      "name_zh_hans": "https://www.news.cn/world/20261101/f07c3ca31ca34639b7f1c9424d397b05/c.html"
+     },
+     "party": "REP",
+     "class": 2,
+     "in_office_since": "2021-01-03",
+     "next_election_year": 2026,
+     "seat_up_2026": true,
+     "running_2026": true,
+     "note": "Seat up in 2026; Marshall is the Republican nominee.",
+     "sources": [
+      "https://www.senate.gov/senators/Class_II.htm",
+      "https://kansansformarshall.com/about",
+      "https://sos.ks.gov/elections/elections_upcoming_candidate.aspx"
+     ],
+     "name_zh_full": null,
+     "caucus": "REP"
+    },
+    {
+     "name": "Jerry Moran",
+     "name_es": "Jerry Moran",
+     "name_ja": "ジェリー・モラン",
+     "name_zh": "莫蘭",
+     "name_zh_hans": "莫兰",
+     "_constructed": true,
+     "_constructed_fields": [
+      "name_zh",
+      "name_zh_hans"
+     ],
+     "name_sources": {
+      "name_ja": "https://www.mofa.go.jp/mofaj/press/release/pressit_000001_01306.html",
+      "name_zh": null,
+      "name_zh_hans": null
+     },
+     "party": "REP",
+     "class": 3,
+     "in_office_since": "2011-01-05",
+     "next_election_year": 2028,
+     "seat_up_2026": false,
+     "running_2026": null,
+     "note": "Class 3 seat; term runs to 2029-01-03. First elected to the Senate in 2010 (term began 2011-01-03; sworn in 2011-01-05).",
+     "sources": [
+      "https://www.senate.gov/senators/Class_III.htm",
+      "https://www.moran.senate.gov/public/index.cfm/biography",
+      "https://github.com/unitedstates/congress-legislators/blob/main/legislators-current.yaml"
+     ],
+     "name_zh_full": null,
+     "caucus": "REP"
+    }
+   ],
+   "candidates": [
+    {
+     "key": "marshall",
+     "name": "Roger Marshall",
+     "ballot_name": "Roger Marshall",
+     "party": "REP",
+     "incumbent": true,
+     "name_es": "Roger Marshall",
+     "name_ja": "ロジャー・マーシャル",
+     "name_zh": "馬歇爾",
+     "name_zh_hans": "马歇尔",
+     "_constructed": false,
+     "_constructed_fields": [],
+     "name_sources": {
+      "name_ja": "https://www.cnn.co.jp/usa/35254231.html",
+      "name_zh": "https://www.cna.com.tw/news/aopl/202610310007.aspx",
+      "name_zh_hans": "https://www.news.cn/world/20261101/f07c3ca31ca34639b7f1c9424d397b05/c.html"
+     },
+     "birth_date": "1960-08-09",
+     "birth_year": 1960,
+     "age": 66,
+     "hometown": "El Dorado, Kansas (born and raised in Butler County)",
+     "current_office": "U.S. Senator from Kansas (since 2021)",
+     "prior_offices": [
+      "U.S. Representative, Kansas's 1st congressional district (2017-2021)"
+     ],
+     "education": [
+      "Butler County Community College (attended)",
+      "Kansas State University, B.S. in biochemistry (1982)",
+      "University of Kansas School of Medicine, M.D. (1987)"
+     ],
+     "military_service": "U.S. Army Reserve, medical officer, 1984-1991; rank of captain",
+     "background": [
+      {
+       "text": "Practiced as an OB-GYN in Great Bend for 25 years; his campaign says he delivered more than 5,000 babies.",
+       "source": "https://kansansformarshall.com/about"
+      },
+      {
+       "text": "Served as chairman of the board of Great Bend Regional Hospital for 14 years.",
+       "source": "https://kansansformarshall.com/about"
+      },
+      {
+       "text": "Grew up in a fifth-generation Kansas farm family and was the first in his family to attend college.",
+       "source": "https://www.marshall.senate.gov/about/"
+      }
+     ],
+     "positions": [
+      {
+       "topic": "agriculture",
+       "text": "Supports removing countervailing duties on imported phosphate fertilizer to lower farm input costs; lead sponsor of S. 4418, the Lowering Input Costs for American Farmers Act.",
+       "source": "https://kansansformarshall.com/record/agriculture"
+      },
+      {
+       "topic": "health care",
+       "text": "Supports 24- and 72-hour decision deadlines for Medicare Advantage prior-authorization requests; lead sponsor of S. 1816, the Improving Seniors' Timely Access to Care Act.",
+       "source": "https://kansansformarshall.com/record/rural-healthcare"
+      },
+      {
+       "topic": "border security",
+       "text": "Supports building a southern border wall; cosponsor of S. 42, the Build the Wall Act, and of the Laken Riley Act (S. 5), signed into law in January 2025.",
+       "source": "https://kansansformarshall.com/record/border-security"
+      },
+      {
+       "topic": "energy",
+       "text": "Supports year-round sales of E15 fuel; cosponsor of S. 593, the Nationwide Consumer and Fuel Retailer Choice Act.",
+       "source": "https://kansansformarshall.com/record/energy"
+      }
+     ],
+     "facts_sources": {
+      "birth_date": "https://github.com/unitedstates/congress-legislators/blob/main/legislators-current.yaml",
+      "hometown": "https://www.marshall.senate.gov/about/",
+      "current_office": "https://www.senate.gov/senators/Class_II.htm",
+      "prior_offices": "https://kansansformarshall.com/about",
+      "education": "https://kansansformarshall.com/about",
+      "military_service": "https://kansansformarshall.com/about"
+     },
+     "name_zh_full": null
+    },
+    {
+     "key": "hamilton",
+     "name": "Adam Hamilton",
+     "ballot_name": "Adam Hamilton",
+     "party": "DEM",
+     "incumbent": false,
+     "name_es": "Adam Hamilton",
+     "name_ja": "アダム・ハミルトン",
+     "name_zh": "韓密爾頓",
+     "name_zh_hans": "汉密尔顿",
+     "_constructed": true,
+     "_constructed_fields": [
+      "name_zh_hans"
+     ],
+     "name_sources": {
+      "name_ja": "https://www.nikkei.com/article/DGXZQOGN2808K0Y6A021C2000000/",
+      "name_zh": "https://www.cna.com.tw/news/aopl/202610310007.aspx",
+      "name_zh_hans": null
+     },
+     "birth_date": "1964-07-12",
+     "birth_year": 1964,
+     "age": 62,
+     "hometown": "Prairie Village, Kansas",
+     "current_office": "Senior pastor, United Methodist Church of the Resurrection, Leawood, Kansas (founding pastor, since 1990)",
+     "prior_offices": [
+      "Member, President's Advisory Council on Faith-Based and Neighborhood Partnerships (appointed 2016); has not held elected office"
+     ],
+     "education": [
+      "Oral Roberts University, B.A. in pastoral ministry (1985)",
+      "Southern Methodist University, Perkins School of Theology, Master of Divinity (1988)"
+     ],
+     "military_service": null,
+     "background": [
+      {
+       "text": "Started the Church of the Resurrection in the Kansas City area in 1990, beginning with four people.",
+       "source": "https://hamiltonforkansas.com/"
+      },
+      {
+       "text": "Has written more than 30 books.",
+       "source": "https://adamhamilton.com/about"
+      },
+      {
+       "text": "Is a fifth-generation Kansan whose family settled in Dickinson County, according to his campaign.",
+       "source": "https://hamiltonforkansas.com/"
+      }
+     ],
+     "positions": [
+      {
+       "topic": "tariffs and prices",
+       "text": "Supports requiring congressional approval before new tariffs take effect.",
+       "source": "https://hamiltonforkansas.com/issues"
+      },
+      {
+       "topic": "health care",
+       "text": "Supports expanding Medicare drug-price negotiation and restoring the Affordable Care Act premium subsidies.",
+       "source": "https://hamiltonforkansas.com/issues"
+      },
+      {
+       "topic": "congressional ethics",
+       "text": "Supports prohibiting members of Congress and their households from buying or selling individual stocks while in office.",
+       "source": "https://hamiltonforkansas.com/issues"
+      },
+      {
+       "topic": "agriculture",
+       "text": "Supports passing a full farm bill and year-round sales of E15 fuel.",
+       "source": "https://hamiltonforkansas.com/issues"
+      }
+     ],
+     "facts_sources": {
+      "birth_date": "https://resurrection.church/enote/weekly-update-from-pastor-adam-july-12-2024/",
+      "hometown": "https://hamiltonforkansas.com/",
+      "current_office": "https://kansasreflector.com/2026/04/30/kansas-pastor-enters-u-s-senate-race-as-democrat-wants-to-give-roger-marshall-an-early-retirement/",
+      "prior_offices": "https://obamawhitehouse.archives.gov/the-press-office/2016/01/29/president-obama-announces-more-key-administration-posts",
+      "education": "https://oru.edu/news/oru_news/20130118_oru_graduate_adam_hamilton.php",
+      "military_service": null
+     },
+     "name_zh_full": null
+    }
+   ],
+   "also_on_ballot": [
+    {
+     "name": "David C. Graham",
+     "party": "LIB",
+     "ballot_label": "Libertarian",
+     "source": "https://sos.ks.gov/elections/elections_upcoming_candidate.aspx"
+    }
+   ],
+   "card_inclusion_note": "Cards: Roger Marshall (Republican nominee, incumbent) and Adam Hamilton (Democratic nominee). David C. Graham (Libertarian) is on the printed ballot and listed in also_on_ballot. Inclusion criteria and evidence: research/election/candidates.md.",
+   "rcv": {
+    "used": false,
+    "notes": "Kansas does not use ranked-choice voting. Under K.S.A. 25-702 the candidate with the highest number of votes is elected (plurality); there is no general-election runoff. A 2025 bill (SB 6) proposed an explicit ban on ranked-choice voting; its final status was not verified and it does not change the plurality rule.",
+    "sources": [
+     "https://www.ksrevisor.gov/statutes/chapters/ch25/025_007_0002.html",
+     "https://www.kslegislature.gov/li/b2025_26/measures/sb6/"
+    ]
+   },
+   "poll_close": {
+    "main_et": "2026-11-03T20:00:00-05:00",
+    "last_et": "2026-11-03T21:00:00-05:00",
+    "notes": "Polls close at 7 p.m. local time. Most of Kansas (101 counties, Central time) closes at 7 p.m. CST = 8 p.m. ET. Four western counties on Mountain time (Greeley 20071, Hamilton 20075, Sherman 20181, Wallace 20199) close at 7 p.m. MST = 9 p.m. ET. By statute (K.S.A. 25-106) Central-time counties default to 7 a.m.-7 p.m. and may set other hours ending no later than 8 p.m. CST; Mountain-time counties default to 6 a.m.-6 p.m. MST and may run to 7 p.m. MST. Any voter in line at closing may vote. Note: Hamilton County shares its name with candidate Adam Hamilton; use the FIPS id, not the name, for county focus.",
+    "sources": [
+     "https://www.ksrevisor.gov/statutes/chapters/ch25/025_001_0006.html",
+     "https://www.lanacion.com.ar/usa/ap-decision-notes-what-to-expect-in-kansas-on-election-day-nid30102026/",
+     "https://digital-release.ksn.com/news/your-local-election-hq/what-to-expect-in-kansas-on-election-day",
+     "https://www.ecfr.gov/current/title-49/subtitle-A/part-71/section-71.7"
+    ]
+   },
+   "results_reporting": {
+    "unit_type": "county",
+    "unit_count": 105,
+    "notes": "Counties tabulate and report; the Secretary of State publishes statewide unofficial results on its election-night page (linked from votekansas.gov / sos.ks.gov elections page: https://ent.sos.ks.gov/kssos_ent.html). In 2024 the page went live at 5 p.m. CT and first results (mostly advance votes) appeared after polls closed; AP's first 2024 update came at 8:10 p.m. ET, the halfway point at 9:48 p.m. ET and the last election-night update at 3:45 a.m. ET (about 97% counted). Provisional ballots are counted at the county canvass after Election Day; official results follow certification by the State Board of Canvassers. Change from 2024: the Legislature did not authorize a mail-ballot grace period for 2026 (per the Secretary of State, June 29, 2026), so mail ballots arriving after polls close are not counted. More than 1 million votes were cast in the 2022 Senate race. Whether the election-night page reports precincts counted is unverified (the page returned a JavaScript challenge to our fetcher); precincts may be null.",
+    "sources": [
+     "https://sos.ks.gov/elections/county-election-offices.html",
+     "https://sos.ks.gov/media/press-releases/2024/11-05-24-schwab-reminds-kansans-of-election-night-reporting-webpage.html",
+     "https://www.sos.ks.gov/media/press-releases/2026/06-29-26-schwab-issues-statement-on-scotus-ruling.html",
+     "https://www.lanacion.com.ar/usa/ap-decision-notes-what-to-expect-in-kansas-on-election-day-nid30102026/",
+     "https://ent.sos.ks.gov/kssos_ent.html"
+    ]
+   },
+   "declared_write_ins": {
+    "list": null,
+    "source": null,
+    "note": "Declared write-in candidates were not checked."
+   },
+   "display_note": "Hamilton County (FIPS 20075) shares its name with candidate Adam Hamilton: focus counties by FIPS, not by name."
+  },
+  "ME": {
+   "state": "ME",
+   "state_name": {
+    "en": "Maine",
+    "es": "Maine",
+    "ja": "メーン州",
+    "zh": "緬因州",
+    "zh_hans": "缅因州"
+   },
+   "race": {
+    "class": 2,
+    "special": false,
+    "term": "2027-01-03 to 2033-01-03",
+    "note": "Regular election for the Class 2 seat held by Susan Collins (Republican), who is seeking a sixth term. Two candidates are printed on the ballot (Collins, Jackson) plus one write-in line; six declared write-in candidates qualified. The Democratic nominee is a replacement: primary winner Graham Platner withdrew on 2026-07-10 (announced 2026-07-08) and the Maine Democratic Party named Troy Jackson at a state convention in Bangor on 2026-07-25; the replacement nomination was received by the Secretary of State on 2026-07-27. Platner's name is not on the general-election ballot and he is not a declared write-in."
+   },
+   "senators": [
+    {
+     "name": "Susan Collins",
+     "name_es": "Susan Collins",
+     "name_ja": "スーザン・コリンズ",
+     "name_zh": "柯林斯",
+     "name_zh_hans": "苏珊·柯林斯",
+     "_constructed": false,
+     "_constructed_fields": [],
+     "name_sources": {
+      "name_ja": "https://www.sakigake.jp/news/article/20260726CO0047/",
+      "name_zh": "https://www.cna.com.tw/news/aopl/202610240046.aspx",
+      "name_zh_hans": "https://www.news.cn/world/20261024/df8148ce75724400aa0c63c0a7ab2ed9/c.html"
+     },
+     "party": "REP",
+     "caucus": "REP",
+     "class": 2,
+     "in_office_since": "1997-01-07",
+     "next_election_year": 2026,
+     "seat_up_2026": true,
+     "running_2026": true,
+     "note": "Seat up in 2026; seeking a sixth term. Chair of the Senate Appropriations Committee.",
+     "sources": [
+      "https://www.senate.gov/senators/Class_II.htm",
+      "https://www.collins.senate.gov/about/susan-collins",
+      "https://susancollins.com/faq/"
+     ],
+     "name_zh_full": null
+    },
+    {
+     "name": "Angus King",
+     "name_es": "Angus King",
+     "name_ja": "アンガス・キング",
+     "name_zh": "金恩",
+     "name_zh_hans": "安格斯·金",
+     "_constructed": false,
+     "_constructed_fields": [],
+     "name_sources": {
+      "name_ja": "https://www.cnn.co.jp/usa/35240264.html",
+      "name_zh": "https://www.cna.com.tw/news/aopl/202511100129.aspx",
+      "name_zh_hans": "http://www.news.cn/world/20251111/36ac3166b5e24687af31951ef6740211/c.html"
+     },
+     "party": "IND",
+     "caucus": "DEM",
+     "class": 1,
+     "in_office_since": "2013-01-03",
+     "next_election_year": 2030,
+     "seat_up_2026": false,
+     "running_2026": null,
+     "note": "Independent; caucuses with Senate Democrats. Former Governor of Maine (two terms). Seat not up in 2026.",
+     "sources": [
+      "https://www.senate.gov/senators/Class_I.htm",
+      "https://www.king.senate.gov/about",
+      "https://www.democrats.senate.gov/about-senate-dems/our-caucus",
+      "https://www.wabi.tv/2024/11/07/independent-angus-king-wins-reelection-us-senate-maine"
+     ],
+     "name_zh_full": null
+    }
+   ],
+   "candidates": [
+    {
+     "key": "collins",
+     "name": "Susan Collins",
+     "ballot_name": "Collins, Susan M.",
+     "party": "REP",
+     "incumbent": true,
+     "name_es": "Susan Collins",
+     "name_ja": "スーザン・コリンズ",
+     "name_zh": "柯林斯",
+     "name_zh_hans": "苏珊·柯林斯",
+     "_constructed": false,
+     "_constructed_fields": [],
+     "name_sources": {
+      "name_ja": "https://www.sakigake.jp/news/article/20260726CO0047/",
+      "name_zh": "https://www.cna.com.tw/news/aopl/202610240046.aspx",
+      "name_zh_hans": "https://www.news.cn/world/20261024/df8148ce75724400aa0c63c0a7ab2ed9/c.html"
+     },
+     "birth_date": "1952-12-07",
+     "birth_year": 1952,
+     "age": 73,
+     "hometown": "Caribou, Maine (current residence: Bangor)",
+     "current_office": "U.S. Senator from Maine (since 1997); Chair, Senate Appropriations Committee",
+     "prior_offices": [
+      "Staff member for U.S. Rep. and then U.S. Sen. William Cohen, from 1975; staff director, Senate Subcommittee on Oversight of Government Management",
+      "Commissioner, Maine Department of Professional and Financial Regulation (appointed 1987)",
+      "Director, U.S. Small Business Administration regional office (appointed 1992)",
+      "Founding Executive Director, Center for Family Business, Husson College (1994)"
+     ],
+     "education": [
+      "St. Lawrence University (graduated 1975)"
+     ],
+     "military_service": null,
+     "background": [
+      {
+       "text": "Grew up in Caribou, where her family runs a lumber business founded in 1844; both of her parents served as mayor of Caribou.",
+       "source": "https://www.collins.senate.gov/about/susan-collins"
+      },
+      {
+       "text": "Began her career on the staff of Maine Rep. and later Sen. William Cohen after graduating from college in 1975.",
+       "source": "https://www.collins.senate.gov/about/susan-collins"
+      },
+      {
+       "text": "Was first elected to the Senate in 1996 and re-elected in 2002, 2008, 2014 and 2020; is seeking a sixth term in 2026.",
+       "source": "https://susancollins.com/faq/"
+      }
+     ],
+     "positions": [
+      {
+       "topic": "Social Security",
+       "text": "Says she authored the Social Security Fairness Act, signed into law in 2025, and that it restored earned benefits for more than 25,000 Mainers.",
+       "source": "https://susancollins.com/track-record/"
+      },
+      {
+       "topic": "Health care",
+       "text": "Supports making Medicare telehealth flexibilities permanent and says she has worked to increase federal funding for Alzheimer's and diabetes research.",
+       "source": "https://susancollins.com/track-record/"
+      },
+      {
+       "topic": "Jobs and workforce",
+       "text": "Supports expanding access to workforce training and says she authored the Paycheck Protection Program for small businesses during the pandemic.",
+       "source": "https://susancollins.com/track-record/"
+      },
+      {
+       "topic": "Federal funding for Maine",
+       "text": "Says she has used her role as Appropriations Committee chair to direct federal funding to projects in all 16 Maine counties.",
+       "source": "https://susancollins.com/faq/"
+      }
+     ],
+     "facts_sources": {
+      "birth_date": "https://www.collins.senate.gov/about/susan-collins",
+      "hometown": "https://susancollins.com/about/",
+      "current_office": "https://susancollins.com/faq/",
+      "prior_offices": "https://www.collins.senate.gov/about/susan-collins",
+      "education": "https://www.collins.senate.gov/about/susan-collins",
+      "military_service": "https://www.collins.senate.gov/about/susan-collins"
+     },
+     "name_zh_full": null
+    },
+    {
+     "key": "jackson",
+     "name": "Troy Jackson",
+     "ballot_name": "Jackson, Troy D.",
+     "party": "DEM",
+     "incumbent": false,
+     "name_es": "Troy Jackson",
+     "name_ja": "トロイ・ジャクソン",
+     "name_zh": "傑克森",
+     "name_zh_hans": "特洛伊·杰克逊",
+     "_constructed": false,
+     "_constructed_fields": [],
+     "name_sources": {
+      "name_ja": "https://www.sakigake.jp/news/article/20260726CO0047/",
+      "name_zh": "https://www.cna.com.tw/news/aopl/202610240046.aspx",
+      "name_zh_hans": "https://www.thepaper.cn/newsDetail_forward_33729768"
+     },
+     "birth_date": "1968-06-26",
+     "birth_year": 1968,
+     "age": 58,
+     "hometown": "Allagash, Maine (current residence: Allagash)",
+     "current_office": "Former President of the Maine Senate (2018-2024)",
+     "prior_offices": [
+      "Member, Maine House of Representatives (2002-2008)",
+      "Member, Maine Senate (2008-2014 and 2016-2024)",
+      "President of the Maine Senate (2018-2024)"
+     ],
+     "education": [
+      "University of Maine at Fort Kent, associate degree (2000)"
+     ],
+     "military_service": null,
+     "background": [
+      {
+       "text": "Grew up in Allagash and worked as a logger, the fifth generation of his family to work in the woods.",
+       "source": "https://www.jacksonformaine.com/troy-at-a-glance"
+      },
+      {
+       "text": "Says he entered politics after helping lead a 1998 loggers' blockade at the Maine-Canada border over the hiring of Canadian workers.",
+       "source": "https://www.jacksonformaine.com/troy-at-a-glance"
+      },
+      {
+       "text": "Was nominated by a Maine Democratic Party convention in Bangor on July 25, 2026, replacing the June primary winner, who withdrew on July 10.",
+       "source": "https://www.wabi.tv/2026/07/25/maine-democrats-nominate-troy-jackson-us-senate-candidate/"
+      }
+     ],
+     "positions": [
+      {
+       "topic": "Health care",
+       "text": "Supports Medicare for All and federal negotiation of prescription drug prices; says he would cosponsor the Medicare for All Act.",
+       "source": "https://www.jacksonformaine.com/priorities"
+      },
+      {
+       "topic": "Taxes",
+       "text": "Supports higher taxes on billionaires and large corporations, lifting the Social Security payroll-tax cap, and expanding the Child Tax Credit and Earned Income Tax Credit.",
+       "source": "https://www.jacksonformaine.com/priorities"
+      },
+      {
+       "topic": "Immigration",
+       "text": "Supports abolishing U.S. Immigration and Customs Enforcement (ICE) and an immigration system focused on due process and public-safety threats.",
+       "source": "https://www.jacksonformaine.com/priorities"
+      },
+      {
+       "topic": "Abortion",
+       "text": "Supports passing a federal law establishing a right to abortion.",
+       "source": "https://www.jacksonformaine.com/priorities"
+      }
+     ],
+     "facts_sources": {
+      "birth_date": "https://www.jacksonformaine.com/troy-at-a-glance",
+      "hometown": "https://www.jacksonformaine.com/troy-at-a-glance",
+      "current_office": "https://www.jacksonformaine.com/troy-at-a-glance",
+      "prior_offices": "https://www.jacksonformaine.com/troy-at-a-glance",
+      "education": "https://www.jacksonformaine.com/about",
+      "military_service": "https://www.jacksonformaine.com/about"
+     },
+     "name_zh_full": null
+    }
+   ],
+   "also_on_ballot": [],
+   "card_inclusion_note": "Cards: Susan Collins (Republican nominee, incumbent) and Troy Jackson (Democratic nominee), the only two names printed on the ballot. Six declared write-in candidates are listed in declared_write_ins. Inclusion criteria and evidence: research/election/candidates.md.",
+   "rcv": {
+    "used": true,
+    "notes": "Maine uses ranked-choice voting in general elections only for federal offices (U.S. Senate, U.S. House, President) and in state primaries; not for governor or the legislature in general elections. The Senate ballot prints Collins and Jackson and has one write-in line; voters may rank the two printed candidates and one write-in. Only the six declared write-in candidates can receive counted write-in votes; a write-in for anyone else (including Graham Platner) is treated as a blank ranking, and the voter's next ranking can still count. Outright-win rule (21-A MRSA sec. 723-A(2), as amended by PL 2025 c. 363): a candidate wins without an RCV count if ranked first on more than 50% of ALL ballots cast for the office, including ballots whose first ranking is blank, overvoted or for an excluded candidate. Otherwise the count proceeds in rounds: each continuing ballot counts for its highest-ranked continuing candidate; when two or fewer continuing candidates remain, the candidate with the most votes wins; otherwise the last-place candidate is eliminated and a new round begins. Because blanks and declared write-ins count in the first-round denominator, an RCV tabulation can be triggered even though only two names are printed (as happened in the 2024 2nd Congressional District race with one declared write-in). Election-night numbers are first-choice counts only.",
+    "tabulation": "If no candidate clears the outright-win threshold, the Secretary of State conducts a central RCV tabulation: ballots and tabulator memory devices from each municipality are securely transported to a central tabulation site in Augusta, processed and verified, and the RCV rounds are then run (the computation itself takes minutes). In the 2024 2nd District race the RCV tally was run 10 days after the election; the June 2026 primary RCV counts took more than a week. The Secretary of State must tabulate returns and submit a certified tabulation to the Governor within 20 days of the election (21-A MRSA sec. 722); the complete cast vote record is posted when certified results are reported (sec. 723-A(5-C)). Write-in candidates with under 5% are reported as 'others' in the official tabulation (sec. 722(1-A)).",
+    "sources": [
+     "https://legislature.maine.gov/statutes/21-A/title21-Asec723-A.html",
+     "https://legislature.maine.gov/statutes/21-A/title21-Asec722.html",
+     "https://www.maine.gov/sos/elections-voting/ranked-choice-voting-frequently-asked-questions",
+     "https://www.maine.gov/sos/elections-voting/upcoming-elections",
+     "https://spectrumlocalnews.com/me/maine/politics/2026/08/26/maine-s-u-s--senate-race-to-include-6-write-in-candidates--triggering-ranked-choice-voting",
+     "https://fairvote.org/which-maine-elections-will-use-ranked-choice-voting-this-november/"
+    ]
+   },
+   "poll_close": {
+    "main_et": "2026-11-03T20:00:00-05:00",
+    "last_et": "2026-11-03T20:00:00-05:00",
+    "notes": "All of Maine is in the Eastern time zone. Polls must close at 8 p.m. statewide (21-A MRSA sec. 626(2)); voters present at closing time may vote. Opening times vary by municipality (between 6 and 8 a.m.; municipalities under 500 population may open as late as 10 a.m.). Municipalities with population under 100 may close the polls once all registered voters have voted, so a few tiny towns may report before 8 p.m.",
+    "sources": [
+     "https://legislature.maine.gov/statutes/21-A/title21-Asec626.html"
+    ]
+   },
+   "results_reporting": {
+    "unit_type": "municipality (aggregated to county)",
+    "unit_count": null,
+    "notes": "Results are counted and reported by municipality (cities, towns, plantations), not by county; the stream aggregates municipal returns to Maine's 16 counties. On election night, municipal clerks report first-choice results after polls close at 8 p.m. (the Bangor Daily News compiles them from clerks and calls races with Decision Desk HQ); election officials post a paper copy of first-choice results at each voting place (21-A MRSA sec. 700). The Secretary of State's official tabulation is due within 20 days (sec. 722). The exact number of reporting municipalities/units for 2026 was not verified (null).",
+    "sources": [
+     "https://bangordailynews.com/elections-central/",
+     "https://legislature.maine.gov/statutes/21-A/title21-Asec700.html",
+     "https://legislature.maine.gov/statutes/21-A/title21-Asec722.html"
+    ]
+   },
+   "declared_write_ins": {
+    "list": [
+     {
+      "name": "Brent Andrews",
+      "designation": "Unaffiliated",
+      "party": "IND"
+     },
+     {
+      "name": "Sigrid Ann Olson",
+      "designation": "Democrat",
+      "party": "DEM"
+     },
+     {
+      "name": "Gina Oswald",
+      "designation": "Independent",
+      "party": "IND"
+     },
+     {
+      "name": "Joseph Steinberger",
+      "designation": "Faith in Humanity",
+      "party": "OTH"
+     },
+     {
+      "name": "Michael Turcotte",
+      "designation": "Un-enrolled",
+      "party": "IND"
+     },
+     {
+      "name": "Ashley J. Webb",
+      "designation": "Democratic",
+      "party": "DEM"
+     }
+    ],
+    "source": "https://www.maine.gov/sos/sites/maine.gov.sos/files/inline-files/Nov26%20Declared%20Write%20in%20List.pdf",
+    "note": "Not printed on the ballot; votes for them are counted and can be ranked under RCV. List dated 2026-08-25; an updated SOS version (Oct 15-16) could not be retrieved."
+   }
+  },
+  "OH": {
+   "state": "OH",
+   "state_name": {
+    "en": "Ohio",
+    "es": "Ohio",
+    "ja": "オハイオ州",
+    "zh": "俄亥俄州",
+    "zh_hans": "俄亥俄州"
+   },
+   "race": {
+    "class": 3,
+    "special": true,
+    "term": "until 2029-01-03",
+    "note": "Special election to complete the term JD Vance won in 2022. Vance resigned on 2025-01-10 to become vice president; Gov. Mike DeWine appointed Lt. Gov. Jon Husted (appointment 2025-01-17, sworn in 2025-01-21). The winner serves until 2029-01-03; the seat is next up for a full term in 2028. Ballot heading: 'U.S. Senator, Unexpired Term Ending 1-3-2029'."
+   },
+   "senators": [
+    {
+     "name": "Bernie Moreno",
+     "name_es": "Bernie Moreno",
+     "name_ja": "バーニー・モレノ",
+     "name_zh": "莫雷諾",
+     "name_zh_hans": "伯尼·莫雷诺",
+     "_constructed": false,
+     "_constructed_fields": [],
+     "name_sources": {
+      "name_ja": "https://news.yahoo.co.jp/articles/5a53f57d0efc6bded97553955514325088a18f73",
+      "name_zh": "https://www.cna.com.tw/news/aopl/202604300012.aspx",
+      "name_zh_hans": "https://www.ftchinese.com/interactive/293925"
+     },
+     "party": "REP",
+     "class": 1,
+     "in_office_since": "2025-01-03",
+     "next_election_year": 2030,
+     "seat_up_2026": false,
+     "running_2026": null,
+     "note": "Elected in 2024; term ends 2031-01-03.",
+     "sources": [
+      "https://www.govinfo.gov/app/details/CDIR-2026-02-20",
+      "https://www.moreno.senate.gov",
+      "https://raw.githubusercontent.com/unitedstates/congress-legislators/main/legislators-current.yaml"
+     ],
+     "name_zh_full": null,
+     "caucus": "REP"
+    },
+    {
+     "name": "Jon Husted",
+     "name_es": "Jon Husted",
+     "name_ja": "ジョン・ヒューステッド",
+     "name_zh": "休斯泰德",
+     "name_zh_hans": "乔恩·赫斯特德",
+     "_constructed": false,
+     "_constructed_fields": [],
+     "name_sources": {
+      "name_ja": "https://www.asahi.com/articles/ASVBF1GX1VBFUHBI013M.html",
+      "name_zh": "https://www.cna.com.tw/news/aopl/202610190013.aspx",
+      "name_zh_hans": "https://www.ftchinese.com/interactive/298671"
+     },
+     "party": "REP",
+     "class": 3,
+     "in_office_since": "2025-01-21",
+     "next_election_year": 2026,
+     "seat_up_2026": true,
+     "running_2026": true,
+     "note": "Appointed by Gov. Mike DeWine to the seat JD Vance vacated; the 2026 special election decides who holds it until 2029-01-03.",
+     "sources": [
+      "https://www.govinfo.gov/app/details/CDIR-2026-02-20",
+      "https://www.husted.senate.gov/about/",
+      "https://raw.githubusercontent.com/unitedstates/congress-legislators/main/legislators-current.yaml"
+     ],
+     "name_zh_full": null,
+     "caucus": "REP"
+    }
+   ],
+   "candidates": [
+    {
+     "key": "husted",
+     "name": "Jon Husted",
+     "ballot_name": "Jon Husted",
+     "party": "REP",
+     "incumbent": true,
+     "name_es": "Jon Husted",
+     "name_ja": "ジョン・ヒューステッド",
+     "name_zh": "休斯泰德",
+     "name_zh_hans": "乔恩·赫斯特德",
+     "_constructed": false,
+     "_constructed_fields": [],
+     "name_sources": {
+      "name_ja": "https://www.asahi.com/articles/ASVBF1GX1VBFUHBI013M.html",
+      "name_zh": "https://www.cna.com.tw/news/aopl/202610190013.aspx",
+      "name_zh_hans": "https://www.ftchinese.com/interactive/298671"
+     },
+     "birth_date": "1967-08-25",
+     "birth_year": 1967,
+     "age": 59,
+     "hometown": "Raised in Montpelier, Williams County, Ohio; lives in Columbus",
+     "current_office": "U.S. senator from Ohio (appointed; in office since January 2025)",
+     "prior_offices": [
+      "Lieutenant governor of Ohio (2019-2025)",
+      "Ohio secretary of state (2011-2019)",
+      "Ohio Senate (2009-2011)",
+      "Ohio House of Representatives (2001-2009; speaker 2005-2009)"
+     ],
+     "education": [
+      "University of Dayton, B.A. in education (1989)",
+      "University of Dayton, M.A. in communications (1992)"
+     ],
+     "military_service": null,
+     "background": [
+      {
+       "text": "Spent his first months in foster care before being adopted by Jim and Judy Husted.",
+       "source": "https://www.husted.senate.gov/about/"
+      },
+      {
+       "text": "Played defensive back on the University of Dayton team that won the 1989 NCAA Division III football national championship.",
+       "source": "https://www.husted.senate.gov/about/"
+      },
+      {
+       "text": "As lieutenant governor, directed the Governor's Office of Workforce Transformation and led the InnovateOhio initiative.",
+       "source": "https://www.husted.senate.gov/about/"
+      }
+     ],
+     "positions": [
+      {
+       "topic": "data centers and electricity costs",
+       "text": "Supports pressing state utility regulators to require data centers to pay their own utility costs; sponsored the Senate Ratepayer Protection Act (S.5028).",
+       "source": "https://www.statenews.org/government-politics/2026-10-29/2026-race-for-u-s-senate-in-ohio-the-candidates-thoughts-on-data-centers-war-in-iran-immigr"
+      },
+      {
+       "topic": "public assistance",
+       "text": "Supports letting states align eligibility rules across public-assistance programs so that earning more does not cut benefits abruptly (his Upward Mobility Act).",
+       "source": "https://www.husted.senate.gov/upward-mobility-act/"
+      },
+      {
+       "topic": "voting rules",
+       "text": "Supports requiring voters to show photo identification in federal elections; sponsored S.5271 to amend the Help America Vote Act.",
+       "source": "https://www.congress.gov/bill/119th-congress/senate-bill/5271"
+      },
+      {
+       "topic": "border and fentanyl",
+       "text": "Says he has worked in the Senate to secure the border and to give law enforcement more tools against fentanyl trafficking.",
+       "source": "https://www.husted.senate.gov/about/"
+      }
+     ],
+     "facts_sources": {
+      "birth_date": "https://www.govinfo.gov/app/details/CDIR-2026-02-20",
+      "hometown": "https://www.husted.senate.gov/about/",
+      "current_office": "https://www.husted.senate.gov/about/",
+      "prior_offices": "https://www.govinfo.gov/app/details/CDIR-2026-02-20",
+      "education": "https://www.govinfo.gov/app/details/CDIR-2026-02-20",
+      "military_service": "https://www.govinfo.gov/app/details/CDIR-2026-02-20"
+     },
+     "name_zh_full": null
+    },
+    {
+     "key": "brown",
+     "name": "Sherrod Brown",
+     "ballot_name": "Sherrod Brown",
+     "party": "DEM",
+     "incumbent": false,
+     "name_es": "Sherrod Brown",
+     "name_ja": "シェロッド・ブラウン",
+     "name_zh": "布朗",
+     "name_zh_hans": "谢罗德·布朗",
+     "_constructed": false,
+     "_constructed_fields": [],
+     "name_sources": {
+      "name_ja": "https://www.yomiuri.co.jp/world/20261028-GYT1T00062/",
+      "name_zh": "https://www.cna.com.tw/news/aopl/202610190013.aspx",
+      "name_zh_hans": "https://www.ftchinese.com/interactive/298671"
+     },
+     "birth_date": "1952-11-09",
+     "birth_year": 1952,
+     "age": 73,
+     "hometown": "Raised in Mansfield, Ohio; lives in Columbus",
+     "current_office": "Former U.S. senator from Ohio (2007-2025); most recent office",
+     "prior_offices": [
+      "U.S. Senate, Ohio (2007-2025)",
+      "U.S. House of Representatives, Ohio's 13th district (1993-2007)",
+      "Ohio secretary of state (1983-1991)",
+      "Ohio House of Representatives (1975-1982)"
+     ],
+     "education": [
+      "Yale University, B.A. (1974)",
+      "Ohio State University, M.A. in education (1979)",
+      "Ohio State University, M.A. in public administration (1981)"
+     ],
+     "military_service": null,
+     "background": [
+      {
+       "text": "Chaired the Senate Committee on Banking, Housing, and Urban Affairs from 2021 to 2025.",
+       "source": "https://www.govinfo.gov/app/details/CDIR-2024-04-25"
+      },
+      {
+       "text": "Founded the Dignity of Work Institute, a nonprofit think tank focused on workers, in March 2025.",
+       "source": "https://www.wvxu.org/2025-03-24/former-u-s-sen-brown-sets-up-dignity-of-work-institute-but-doesnt-say-hes-running-for-office"
+      },
+      {
+       "text": "Served in the U.S. House of Representatives from 1993 to 2007 before his election to the Senate.",
+       "source": "https://bioguide.congress.gov/search/bio/B000944"
+      }
+     ],
+     "positions": [
+      {
+       "topic": "trade",
+       "text": "Opposes trade deals that he says hurt Ohio workers.",
+       "source": "https://www.sherrodbrown.com/"
+      },
+      {
+       "topic": "prescription drugs",
+       "text": "Supports capping the cost of insulin and lowering prescription drug prices for seniors.",
+       "source": "https://www.sherrodbrown.com/"
+      },
+      {
+       "topic": "taxes",
+       "text": "Opposes tax breaks for corporations and billionaires that he says come at the expense of Ohio workers.",
+       "source": "https://www.sherrodbrown.com/"
+      },
+      {
+       "topic": "pensions and Social Security",
+       "text": "Supports protecting workers' pensions and Social Security benefits, citing his work restoring full Social Security payments to public-sector retirees.",
+       "source": "https://www.sherrodbrown.com/"
+      }
+     ],
+     "facts_sources": {
+      "birth_date": "https://www.govinfo.gov/app/details/CDIR-2024-04-25",
+      "hometown": "https://www.sherrodbrown.com/",
+      "current_office": "https://www.govinfo.gov/app/details/CDIR-2024-04-25",
+      "prior_offices": "https://www.govinfo.gov/app/details/CDIR-2024-04-25",
+      "education": "https://www.govinfo.gov/app/details/CDIR-2024-04-25",
+      "military_service": "https://www.govinfo.gov/app/details/CDIR-2024-04-25"
+     },
+     "name_zh_full": null
+    }
+   ],
+   "also_on_ballot": [
+    {
+     "name": "Greg Levy",
+     "party": "IND",
+     "ballot_label": "Other-Party Candidate",
+     "source": "https://vote.franklincountyohio.gov/getmedia/e0a4ca45-6893-45c1-8190-87696f8804b4/2026-General-Candidate-List-5"
+    },
+    {
+     "name": "William B. Redpath",
+     "party": "LIB",
+     "ballot_label": "Libertarian",
+     "source": "https://vote.franklincountyohio.gov/getmedia/e0a4ca45-6893-45c1-8190-87696f8804b4/2026-General-Candidate-List-5"
+    }
+   ],
+   "card_inclusion_note": "Cards: Jon Husted (Republican nominee, appointed incumbent) and Sherrod Brown (Democratic nominee). Greg Levy (independent) and William B. Redpath (Libertarian) are on the printed ballot and listed in also_on_ballot; declared write-ins are in declared_write_ins. Inclusion criteria and evidence: research/election/candidates.md.",
+   "rcv": {
+    "used": false,
+    "notes": "Plurality winner; no ranked-choice voting and no general-election runoff. Ohio law (Ohio Rev. Code 3505.011, enacted 2026 per NCSL) prohibits ranked-choice voting except where home-rule provisions may allow it.",
+    "sources": [
+     "https://www.ncsl.org/elections-and-campaigns/ranked-choice-voting"
+    ]
+   },
+   "poll_close": {
+    "main_et": "2026-11-03T19:30:00-05:00",
+    "last_et": "2026-11-03T19:30:00-05:00",
+    "notes": "Polls open 6:30 a.m. to 7:30 p.m. statewide; all of Ohio is in the Eastern time zone. Voters in line at 7:30 p.m. may still vote (R.C. 3501.32). Under a recent law change, absentee ballots must be received by 7:30 p.m. on Election Day to be counted (Franklin County BOE notice); outstanding UOCAVA (military/overseas) and provisional ballots are handled in the official canvass.",
+    "sources": [
+     "https://codes.ohio.gov/ohio-revised-code/section-3501.32",
+     "https://vote.franklincountyohio.gov/home"
+    ]
+   },
+   "results_reporting": {
+    "unit_type": "county",
+    "unit_count": 88,
+    "notes": "The Ohio Secretary of State publishes unofficial election-night results at 'Ohio Decides' (liveresults.ohiosos.gov), with county-level results and an Election Results XML feed in NIST SP 1500-100 format that updates every three minutes on election night; the page also lists outstanding UOCAVA absentee and provisional ballot counts by county ('Ballots Cast' tab). Precincts-reporting figures have been shown on the SOS site in past elections (cited in 2024 primary coverage) but were not confirmed on the 2026 page; check the XML feed. Results are unofficial until the official canvass about three weeks after the election. County boards of elections also post their own results.",
+    "sources": [
+     "https://liveresults.ohiosos.gov/",
+     "https://news.yahoo.com/ohio-primary-election-look-live-102025869.html"
+    ]
+   },
+   "declared_write_ins": {
+    "list": [
+     {
+      "name": "Stephen Faris"
+     },
+     {
+      "name": "Anthony Holliman"
+     },
+     {
+      "name": "Timothy Telymonde"
+     }
+    ],
+    "source": "https://vote.franklincountyohio.gov/getmedia/e0a4ca45-6893-45c1-8190-87696f8804b4/2026-General-Candidate-List-5"
+   }
+  },
+  "MI": {
+   "state": "MI",
+   "state_name": {
+    "en": "Michigan",
+    "es": "Míchigan",
+    "ja": "ミシガン州",
+    "zh": "密西根州",
+    "zh_hans": "密歇根州"
+   },
+   "race": {
+    "class": 2,
+    "special": false,
+    "term": "2027-01-03 to 2033-01-03",
+    "note": "Regular election for the Class 2 seat held by Gary Peters (D), who is not seeking reelection; open seat. Winner decided by plurality (no runoff, no ranked-choice voting). Six candidates on the certified ballot."
+   },
+   "senators": [
+    {
+     "name": "Gary Peters",
+     "name_es": "Gary Peters",
+     "name_ja": "ゲイリー・ピーターズ",
+     "name_zh": "皮特斯",
+     "name_zh_hans": "加里·彼得斯",
+     "_constructed": false,
+     "_constructed_fields": [],
+     "name_sources": {
+      "name_ja": "https://www.nikkei.com/article/DGXZQOGN3001Q0Q5A430C2000000/",
+      "name_zh": "https://www.cna.com.tw/news/aopl/202607220102.aspx",
+      "name_zh_hans": "https://www.news.cn/world/20260812/ec4b6a25d78c4c61bbb47d61a3255aa6/c.html"
+     },
+     "party": "DEM",
+     "class": 2,
+     "in_office_since": "2015-01-06",
+     "next_election_year": 2026,
+     "seat_up_2026": true,
+     "running_2026": false,
+     "note": "Announced on 2025-01-28 that he would not seek a third term; his term ends 2027-01-03. Term began 2015-01-03; sworn in 2015-01-06.",
+     "sources": [
+      "https://www.senate.gov/senators/Class_II.htm",
+      "https://www.peters.senate.gov/about",
+      "https://unitedstates.github.io/congress-legislators/legislators-current.json",
+      "https://news.wttw.com/2025/01/28/democratic-sen-gary-peters-michigan-will-not-run-reelection-opening-key-senate-seat-2026"
+     ],
+     "name_zh_full": null,
+     "caucus": "DEM"
+    },
+    {
+     "name": "Elissa Slotkin",
+     "name_es": "Elissa Slotkin",
+     "name_ja": "エリッサ・スロットキン",
+     "name_zh": "絲拉金",
+     "name_zh_hans": "埃莉萨·斯洛特金",
+     "_constructed": false,
+     "_constructed_fields": [],
+     "name_sources": {
+      "name_ja": "https://www.nikkei.com/search?keyword=%E3%82%B9%E3%83%AD%E3%83%83%E3%83%88%E3%82%AD%E3%83%B3",
+      "name_zh": "https://www.cna.com.tw/news/aopl/202604300012.aspx",
+      "name_zh_hans": "https://www.chinanews.com.cn/cj/2026/06-25/10647068.shtml"
+     },
+     "party": "DEM",
+     "class": 1,
+     "in_office_since": "2025-01-03",
+     "next_election_year": 2030,
+     "seat_up_2026": false,
+     "running_2026": null,
+     "note": "Not up in 2026; term ends 2031-01-03.",
+     "sources": [
+      "https://www.senate.gov/senators/Class_I.htm",
+      "https://www.slotkin.senate.gov/about/",
+      "https://unitedstates.github.io/congress-legislators/legislators-current.json"
+     ],
+     "name_zh_full": null,
+     "caucus": "DEM"
+    }
+   ],
+   "candidates": [
+    {
+     "key": "elsayed",
+     "name": "Abdul El-Sayed",
+     "ballot_name": "Abdul El-Sayed",
+     "party": "DEM",
+     "incumbent": false,
+     "name_es": "Abdul El-Sayed",
+     "name_ja": "アブドゥル・エルサイド",
+     "name_zh": "塞德",
+     "name_zh_hans": "阿卜杜勒·赛义德",
+     "_constructed": false,
+     "_constructed_fields": [],
+     "name_sources": {
+      "name_ja": "https://kumanichi.com/articles/2022393",
+      "name_zh": "https://www.cna.com.tw/news/aopl/202608060005.aspx",
+      "name_zh_hans": "https://www.news.cn/world/20260812/ec4b6a25d78c4c61bbb47d61a3255aa6/c.html"
+     },
+     "birth_date": null,
+     "birth_year": null,
+     "age": null,
+     "hometown": "Southeast Michigan (Andover High School, Bloomfield Hills)",
+     "current_office": "Former director, Wayne County Department of Health, Human and Veterans Services (most recent office, 2023-2025)",
+     "prior_offices": [
+      "Executive director and health officer, Detroit Health Department (2015-2017)",
+      "Director, Wayne County Department of Health, Human and Veterans Services (2023-2025)"
+     ],
+     "education": [
+      "B.S. in biology and political science, University of Michigan (2007)",
+      "D.Phil. in public health, University of Oxford, as a Rhodes Scholar (2011)",
+      "M.D., Columbia University College of Physicians and Surgeons (2014)"
+     ],
+     "military_service": null,
+     "background": [
+      {
+       "text": "Was hired in 2015 to lead Detroit's Health Department after the city's bankruptcy and held the post until 2017.",
+       "source": "https://ballotpedia.org/Abdul_El-Sayed"
+      },
+      {
+       "text": "Was a Rhodes Scholar at the University of Oxford and later taught public health at Columbia University.",
+       "source": "https://ballotpedia.org/Abdul_El-Sayed"
+      },
+      {
+       "text": "Was a candidate in Michigan's 2018 Democratic primary for governor.",
+       "source": "https://www.fox2detroit.com/news/michigans-2026-senate-race-what-know-about-abdul-el-sayed-vs-mike-rogers"
+      }
+     ],
+     "positions": [
+      {
+       "topic": "health_care",
+       "text": "Supports Medicare for All, covering every American with no premiums, copays or deductibles, including vision, dental and hearing care.",
+       "source": "https://abdulforsenate.com/priority/medicare-for-all-the-path-to-a-healthier-america/"
+      },
+      {
+       "topic": "housing",
+       "text": "Supports banning large corporations that speculate on the housing market from owning homes.",
+       "source": "https://abdulforsenate.com/priority/money-in-your-pocket/"
+      },
+      {
+       "topic": "campaign_finance",
+       "text": "Supports overturning the Citizens United decision and banning outside spending by super PACs and corporate 501(c)(4) groups.",
+       "source": "https://abdulforsenate.com/priority/money-out-of-politics/"
+      },
+      {
+       "topic": "taxes",
+       "text": "Supports a tax on wealth over $1 billion and a higher marginal tax rate on earnings over $1 million.",
+       "source": "https://abdulforsenate.com/priority/money-in-your-pocket/"
+      }
+     ],
+     "facts_sources": {
+      "birth_date": [
+       "https://en.wikipedia.org/wiki/Abdul_El-Sayed",
+       "https://www.fox2detroit.com/news/michigans-2026-senate-race-what-know-about-abdul-el-sayed-vs-mike-rogers"
+      ],
+      "hometown": [
+       "https://abdulforsenate.com/about/",
+       "https://ballotpedia.org/Abdul_El-Sayed"
+      ],
+      "current_office": [
+       "https://www.fox2detroit.com/news/michigans-2026-senate-race-what-know-about-abdul-el-sayed-vs-mike-rogers",
+       "https://en.wikipedia.org/wiki/Abdul_El-Sayed"
+      ],
+      "prior_offices": [
+       "https://ballotpedia.org/Abdul_El-Sayed",
+       "https://www.fox2detroit.com/news/michigans-2026-senate-race-what-know-about-abdul-el-sayed-vs-mike-rogers",
+       "https://en.wikipedia.org/wiki/Abdul_El-Sayed"
+      ],
+      "education": [
+       "https://ballotpedia.org/Abdul_El-Sayed",
+       "https://abdulforsenate.com/about/"
+      ],
+      "military_service": [
+       "https://abdulforsenate.com/about/",
+       "https://ballotpedia.org/Abdul_El-Sayed"
+      ]
+     },
+     "name_zh_full": null
+    },
+    {
+     "key": "rogers",
+     "name": "Mike Rogers",
+     "ballot_name": "Mike Rogers",
+     "party": "REP",
+     "incumbent": false,
+     "name_es": "Mike Rogers",
+     "name_ja": "マイク・ロジャース",
+     "name_zh": "羅傑斯",
+     "name_zh_hans": "迈克·罗杰斯",
+     "_constructed": false,
+     "_constructed_fields": [],
+     "name_sources": {
+      "name_ja": "https://kumanichi.com/articles/2050539",
+      "name_zh": "https://www.cna.com.tw/news/aopl/202608060005.aspx",
+      "name_zh_hans": "https://www.news.cn/world/20260812/ec4b6a25d78c4c61bbb47d61a3255aa6/c.html"
+     },
+     "birth_date": "1963-06-02",
+     "birth_year": 1963,
+     "age": 63,
+     "hometown": "Livingston County, Michigan (Howell High School)",
+     "current_office": "Former U.S. Representative for Michigan's 8th District (most recent office, 2001-2015); business owner working in cybersecurity since 2015",
+     "prior_offices": [
+      "Michigan State Senate, 26th District (1995-2000)",
+      "U.S. House of Representatives, Michigan's 8th District (2001-2015)",
+      "Chair, House Permanent Select Committee on Intelligence (2011-2015)"
+     ],
+     "education": [
+      "B.S., Adrian College (1985)"
+     ],
+     "military_service": "U.S. Army, 1985-1989 (lieutenant)",
+     "background": [
+      {
+       "text": "Worked as an FBI special agent in Chicago on organized crime and public corruption cases before entering politics.",
+       "source": "https://rogersforsenate.com/meet-mike"
+      },
+      {
+       "text": "Chaired the House Intelligence Committee and served on the House Energy and Commerce Committee during his time in Congress.",
+       "source": "https://rogersforsenate.com/meet-mike"
+      },
+      {
+       "text": "Was the Republican nominee for U.S. Senate in Michigan in 2024.",
+       "source": "https://www.click2houston.com/news/politics/2025/04/14/after-loss-to-slotkin-michigan-republican-mike-rogers-launches-another-senate-bid/"
+      }
+     ],
+     "positions": [
+      {
+       "topic": "health_care",
+       "text": "Supports fining hospitals and insurers that do not publicly post real prices, and penalties for insurers with excessive claim denials or delays.",
+       "source": "https://rogersforsenate.com/healthplan"
+      },
+      {
+       "topic": "housing",
+       "text": "Supports expanding 529 savings plans to cover first-time home down payments and making new home construction tax-free in designated residential zones.",
+       "source": "https://rogersforsenate.com/housingplan"
+      },
+      {
+       "topic": "manufacturing",
+       "text": "Says he will work to bring manufacturing jobs back to the United States.",
+       "source": "https://rogersforsenate.com/"
+      },
+      {
+       "topic": "seniors",
+       "text": "Says he will protect Social Security and Medicare for seniors.",
+       "source": "https://rogersforsenate.com/"
+      }
+     ],
+     "facts_sources": {
+      "birth_date": [
+       "https://bioguide.congress.gov/search/bio/R000572",
+       "https://unitedstates.github.io/congress-legislators/legislators-historical.json",
+       "https://www.fox2detroit.com/news/michigans-2026-senate-race-what-know-about-abdul-el-sayed-vs-mike-rogers"
+      ],
+      "hometown": [
+       "https://rogersforsenate.com/meet-mike",
+       "https://ballotpedia.org/Mike_Rogers_(Michigan)"
+      ],
+      "current_office": [
+       "https://ballotpedia.org/Mike_Rogers_(Michigan)",
+       "https://rogersforsenate.com/meet-mike"
+      ],
+      "prior_offices": [
+       "https://ballotpedia.org/Mike_Rogers_(Michigan)",
+       "https://www.click2houston.com/news/politics/2025/04/14/after-loss-to-slotkin-michigan-republican-mike-rogers-launches-another-senate-bid/",
+       "https://rogersforsenate.com/meet-mike"
+      ],
+      "education": [
+       "https://ballotpedia.org/Mike_Rogers_(Michigan)",
+       "https://rogersforsenate.com/meet-mike"
+      ],
+      "military_service": [
+       "https://ballotpedia.org/Mike_Rogers_(Michigan)",
+       "https://rogersforsenate.com/meet-mike"
+      ]
+     },
+     "name_zh_full": null
+    }
+   ],
+   "also_on_ballot": [
+    {
+     "name": "Lydia Christensen",
+     "party": "LIB",
+     "ballot_label": "Libertarian Party",
+     "source": "https://mi-boe.entellitrak.com/etk-mi-boe-prod/page.request.do?page=page.miboePublicReport&electionType=GEN&electionYear=2026"
+    },
+    {
+     "name": "Tim Long",
+     "party": "OTH",
+     "ballot_label": "U.S. Taxpayers Party",
+     "source": "https://mi-boe.entellitrak.com/etk-mi-boe-prod/page.request.do?page=page.miboePublicReport&electionType=GEN&electionYear=2026"
+    },
+    {
+     "name": "Douglas P. Marsh",
+     "party": "GRN",
+     "ballot_label": "Green Party",
+     "source": "https://mi-boe.entellitrak.com/etk-mi-boe-prod/page.request.do?page=page.miboePublicReport&electionType=GEN&electionYear=2026"
+    },
+    {
+     "name": "Walter P. Kristy",
+     "party": "OTH",
+     "ballot_label": "Natural Law Party",
+     "source": "https://mi-boe.entellitrak.com/etk-mi-boe-prod/page.request.do?page=page.miboePublicReport&electionType=GEN&electionYear=2026"
+    }
+   ],
+   "card_inclusion_note": "Cards: Abdul El-Sayed (Democratic nominee) and Mike Rogers (Republican nominee). Lydia Christensen (Libertarian), Tim Long (U.S. Taxpayers), Douglas P. Marsh (Green) and Walter P. Kristy (Natural Law) are on the printed ballot and listed in also_on_ballot. Inclusion criteria and evidence: research/election/candidates.md.",
+   "rcv": {
+    "used": false,
+    "notes": "Michigan elects U.S. senators by plurality in a single general election; there is no runoff and no ranked-choice voting. State law currently prevents ranked-choice voting (several cities passed RCV ordinances that cannot be implemented). No RCV proposal is on the 2026-11-03 statewide ballot (Wikipedia lists only Proposal 1, constitutional convention, and Proposal 2, utility political contributions; not cross-checked with the Secretary of State).",
+    "sources": [
+     "https://bridgemi.com/michigan-government/ranked-choice-voting-what-know-about-michigan-ballot-initiative/",
+     "https://en.wikipedia.org/wiki/2026_Michigan_elections",
+     "https://mi-boe.entellitrak.com/etk-mi-boe-prod/page.request.do?page=page.miboePublicReport&electionType=GEN&electionYear=2026"
+    ]
+   },
+   "poll_close": {
+    "main_et": "2026-11-03T20:00:00-05:00",
+    "last_et": "2026-11-03T21:00:00-05:00",
+    "notes": "Polls are open 7 a.m. to 8 p.m. local time. Most of Michigan is in the Eastern time zone (close 20:00 ET = 01:00 UTC Nov 4). Four Upper Peninsula counties on Central time - Dickinson, Gogebic, Iron and Menominee - close at 8 p.m. CT = 21:00 ET (02:00 UTC Nov 4). Voters in line at closing may still vote.",
+    "sources": [
+     "https://www.votebeat.org/michigan/2026/08/04/when-to-expect-election-results-2026-primary-timing/",
+     "https://www.libertytownshipwexfordmi.gov/events/michigan-november-election/"
+    ]
+   },
+   "results_reporting": {
+    "unit_type": "county",
+    "unit_count": 83,
+    "notes": "About 1,600 city and township clerks count ballots and report to their county clerk; county clerk websites post unofficial results through the night (some show precinct-level progress). The Secretary of State's statewide page receives a county's results only after all of that county's precincts are fully reported, so it lags the county sites. In the 2026-08-04 primary the Secretary of State said unofficial results were expected to be fully reported about 24 hours after polls closed; statewide unofficial results are linked from mi.gov/vote. A statewide precincts-reporting count is not consistently published, so precincts may need to be null at the state level.",
+    "sources": [
+     "https://www.votebeat.org/michigan/2026/08/04/when-to-expect-election-results-2026-primary-timing/",
+     "https://www.michigan.gov/sos/resources/news/2026/08/04/deputy-secretary-reports-safe-secure-election-day-after-polls-close-across-michigan",
+     "https://www.michigan.gov/sos/elections/Election-results-and-data/candidate-listings-and-election-results-by-county"
+    ]
+   },
+   "declared_write_ins": {
+    "list": [],
+    "source": "https://www.thegreenpapers.com/G26/MI",
+    "note": "No declared write-in candidates for U.S. Senate listed (write-in filing deadline 2026-10-23)."
+   },
+   "display_note": "Abdul El-Sayed's birth date is not confirmed by an allowed source (age 41 or 42 on election day). To keep equal treatment, do not show age for either Michigan candidate unless it is verified."
+  }
+ }
+}

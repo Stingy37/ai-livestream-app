@@ -1,0 +1,15 @@
+{
+  "tpl": "election",
+  "lang": "es",
+  "tag": "ELECCIONES DE MEDIO TÉRMINO 2026",
+  "big": "EN VIVO",
+  "bigDot": "1",
+  "ctrl": "¿QUIÉN GANA EL SENADO?",
+  "tlab": "NOCHE ELECTORAL",
+  "time": "CONTEO AHORA",
+  "maj": "MAYORÍA: 51",
+  "dem": "DEMÓCRATAS",
+  "rep": "REPUBLICANOS",
+  "names": "TX:TEXAS,AK:ALASKA,KS:KANSAS,ME:MAINE,OH:OHIO,MI:MÍCHIGAN",
+  "hot": "1"
+}

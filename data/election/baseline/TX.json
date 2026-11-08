@@ -1,0 +1,4377 @@
+{
+ "state": "TX",
+ "name": "Texas",
+ "fips": "48",
+ "unit_type": "county",
+ "statewide": {
+  "pres2024": {
+   "dem": 4835250,
+   "rep": 6393597,
+   "other": 159827,
+   "total": 11388674,
+   "dem_name": "Kamala Harris",
+   "rep_name": "Donald Trump"
+  },
+  "sen_prev": {
+   "year": 2020,
+   "dem": 4888764,
+   "rep": 5962983,
+   "other": 292293,
+   "total": 11144040,
+   "dem_name": "MJ Hegar",
+   "rep_name": "John Cornyn",
+   "winner": "REP"
+  },
+  "turnout2022": 8102908
+ },
+ "units": [
+  {
+   "id": "48001",
+   "name": "Anderson",
+   "pres2024": {
+    "dem": 3635,
+    "rep": 15597,
+    "other": 126,
+    "total": 19358
+   },
+   "sen_prev": {
+    "dem": 3792,
+    "rep": 14943,
+    "other": 337,
+    "total": 19072
+   },
+   "turnout2022": 14445
+  },
+  {
+   "id": "48003",
+   "name": "Andrews",
+   "pres2024": {
+    "dem": 806,
+    "rep": 5205,
+    "other": 49,
+    "total": 6060
+   },
+   "sen_prev": {
+    "dem": 779,
+    "rep": 4894,
+    "other": 127,
+    "total": 5800
+   },
+   "turnout2022": 3829
+  },
+  {
+   "id": "48005",
+   "name": "Angelina",
+   "pres2024": {
+    "dem": 8146,
+    "rep": 26049,
+    "other": 227,
+    "total": 34422
+   },
+   "sen_prev": {
+    "dem": 8771,
+    "rep": 24962,
+    "other": 622,
+    "total": 34355
+   },
+   "turnout2022": 24595
+  },
+  {
+   "id": "48007",
+   "name": "Aransas",
+   "pres2024": {
+    "dem": 2831,
+    "rep": 10090,
+    "other": 110,
+    "total": 13031
+   },
+   "sen_prev": {
+    "dem": 2729,
+    "rep": 9189,
+    "other": 246,
+    "total": 12164
+   },
+   "turnout2022": 9641
+  },
+  {
+   "id": "48009",
+   "name": "Archer",
+   "pres2024": {
+    "dem": 520,
+    "rep": 4592,
+    "other": 20,
+    "total": 5132
+   },
+   "sen_prev": {
+    "dem": 467,
+    "rep": 4178,
+    "other": 79,
+    "total": 4724
+   },
+   "turnout2022": 3848
+  },
+  {
+   "id": "48011",
+   "name": "Armstrong",
+   "pres2024": {
+    "dem": 77,
+    "rep": 1029,
+    "other": 3,
+    "total": 1109
+   },
+   "sen_prev": {
+    "dem": 64,
+    "rep": 1025,
+    "other": 10,
+    "total": 1099
+   },
+   "turnout2022": 903
+  },
+  {
+   "id": "48013",
+   "name": "Atascosa",
+   "pres2024": {
+    "dem": 5153,
+    "rep": 13142,
+    "other": 149,
+    "total": 18444
+   },
+   "sen_prev": {
+    "dem": 5588,
+    "rep": 11906,
+    "other": 402,
+    "total": 17896
+   },
+   "turnout2022": 12699
+  },
+  {
+   "id": "48015",
+   "name": "Austin",
+   "pres2024": {
+    "dem": 2816,
+    "rep": 12457,
+    "other": 110,
+    "total": 15383
+   },
+   "sen_prev": {
+    "dem": 2752,
+    "rep": 11454,
+    "other": 275,
+    "total": 14481
+   },
+   "turnout2022": 11205
+  },
+  {
+   "id": "48017",
+   "name": "Bailey",
+   "pres2024": {
+    "dem": 332,
+    "rep": 1395,
+    "other": 14,
+    "total": 1741
+   },
+   "sen_prev": {
+    "dem": 383,
+    "rep": 1400,
+    "other": 39,
+    "total": 1822
+   },
+   "turnout2022": 1333
+  },
+  {
+   "id": "48019",
+   "name": "Bandera",
+   "pres2024": {
+    "dem": 2532,
+    "rep": 10939,
+    "other": 129,
+    "total": 13600
+   },
+   "sen_prev": {
+    "dem": 2291,
+    "rep": 9957,
+    "other": 289,
+    "total": 12537
+   },
+   "turnout2022": 10480
+  },
+  {
+   "id": "48021",
+   "name": "Bastrop",
+   "pres2024": {
+    "dem": 15989,
+    "rep": 23301,
+    "other": 516,
+    "total": 39806
+   },
+   "sen_prev": {
+    "dem": 15071,
+    "rep": 20468,
+    "other": 967,
+    "total": 36506
+   },
+   "turnout2022": 29232
+  },
+  {
+   "id": "48023",
+   "name": "Baylor",
+   "pres2024": {
+    "dem": 184,
+    "rep": 1471,
+    "other": 20,
+    "total": 1675
+   },
+   "sen_prev": {
+    "dem": 177,
+    "rep": 1462,
+    "other": 39,
+    "total": 1678
+   },
+   "turnout2022": 1307
+  },
+  {
+   "id": "48025",
+   "name": "Bee",
+   "pres2024": {
+    "dem": 2606,
+    "rep": 6111,
+    "other": 73,
+    "total": 8790
+   },
+   "sen_prev": {
+    "dem": 3103,
+    "rep": 5713,
+    "other": 239,
+    "total": 9055
+   },
+   "turnout2022": 6408
+  },
+  {
+   "id": "48027",
+   "name": "Bell",
+   "pres2024": {
+    "dem": 53973,
+    "rep": 75161,
+    "other": 1528,
+    "total": 130662
+   },
+   "sen_prev": {
+    "dem": 54413,
+    "rep": 68934,
+    "other": 3457,
+    "total": 126804
+   },
+   "turnout2022": 87936
+  },
+  {
+   "id": "48029",
+   "name": "Bexar",
+   "pres2024": {
+    "dem": 411389,
+    "rep": 337545,
+    "other": 9389,
+    "total": 758323
+   },
+   "sen_prev": {
+    "dem": 411328,
+    "rep": 320095,
+    "other": 21564,
+    "total": 752987
+   },
+   "turnout2022": 540768
+  },
+  {
+   "id": "48031",
+   "name": "Blanco",
+   "pres2024": {
+    "dem": 1973,
+    "rep": 6447,
+    "other": 103,
+    "total": 8523
+   },
+   "sen_prev": {
+    "dem": 1816,
+    "rep": 5457,
+    "other": 135,
+    "total": 7408
+   },
+   "turnout2022": 6774
+  },
+  {
+   "id": "48033",
+   "name": "Borden",
+   "pres2024": {
+    "dem": 16,
+    "rep": 370,
+    "other": 1,
+    "total": 387
+   },
+   "sen_prev": {
+    "dem": 18,
+    "rep": 390,
+    "other": 3,
+    "total": 411
+   },
+   "turnout2022": 317
+  },
+  {
+   "id": "48035",
+   "name": "Bosque",
+   "pres2024": {
+    "dem": 1524,
+    "rep": 7969,
+    "other": 83,
+    "total": 9576
+   },
+   "sen_prev": {
+    "dem": 1490,
+    "rep": 7367,
+    "other": 182,
+    "total": 9039
+   },
+   "turnout2022": 7468
+  },
+  {
+   "id": "48037",
+   "name": "Bowie",
+   "pres2024": {
+    "dem": 9282,
+    "rep": 27122,
+    "other": 240,
+    "total": 36644
+   },
+   "sen_prev": {
+    "dem": 10406,
+    "rep": 26908,
+    "other": 617,
+    "total": 37931
+   },
+   "turnout2022": 26576
+  },
+  {
+   "id": "48039",
+   "name": "Brazoria",
+   "pres2024": {
+    "dem": 63976,
+    "rep": 95867,
+    "other": 2203,
+    "total": 162046
+   },
+   "sen_prev": {
+    "dem": 58759,
+    "rep": 90705,
+    "other": 3903,
+    "total": 153367
+   },
+   "turnout2022": 109936
+  },
+  {
+   "id": "48041",
+   "name": "Brazos",
+   "pres2024": {
+    "dem": 33844,
+    "rep": 56671,
+    "other": 1446,
+    "total": 91961
+   },
+   "sen_prev": {
+    "dem": 32098,
+    "rep": 49346,
+    "other": 2717,
+    "total": 84161
+   },
+   "turnout2022": 59954
+  },
+  {
+   "id": "48043",
+   "name": "Brewster",
+   "pres2024": {
+    "dem": 1969,
+    "rep": 2545,
+    "other": 64,
+    "total": 4578
+   },
+   "sen_prev": {
+    "dem": 2167,
+    "rep": 2453,
+    "other": 152,
+    "total": 4772
+   },
+   "turnout2022": 3763
+  },
+  {
+   "id": "48045",
+   "name": "Briscoe",
+   "pres2024": {
+    "dem": 72,
+    "rep": 666,
+    "other": 7,
+    "total": 745
+   },
+   "sen_prev": {
+    "dem": 79,
+    "rep": 625,
+    "other": 11,
+    "total": 715
+   },
+   "turnout2022": 592
+  },
+  {
+   "id": "48047",
+   "name": "Brooks",
+   "pres2024": {
+    "dem": 1308,
+    "rep": 1077,
+    "other": 17,
+    "total": 2402
+   },
+   "sen_prev": {
+    "dem": 1425,
+    "rep": 859,
+    "other": 72,
+    "total": 2356
+   },
+   "turnout2022": 2008
+  },
+  {
+   "id": "48049",
+   "name": "Brown",
+   "pres2024": {
+    "dem": 2132,
+    "rep": 14593,
+    "other": 128,
+    "total": 16853
+   },
+   "sen_prev": {
+    "dem": 1965,
+    "rep": 13482,
+    "other": 308,
+    "total": 15755
+   },
+   "turnout2022": 12285
+  },
+  {
+   "id": "48051",
+   "name": "Burleson",
+   "pres2024": {
+    "dem": 1705,
+    "rep": 7590,
+    "other": 74,
+    "total": 9369
+   },
+   "sen_prev": {
+    "dem": 1709,
+    "rep": 6596,
+    "other": 184,
+    "total": 8489
+   },
+   "turnout2022": 6712
+  },
+  {
+   "id": "48053",
+   "name": "Burnet",
+   "pres2024": {
+    "dem": 6114,
+    "rep": 21795,
+    "other": 244,
+    "total": 28153
+   },
+   "sen_prev": {
+    "dem": 5323,
+    "rep": 18687,
+    "other": 530,
+    "total": 24540
+   },
+   "turnout2022": 21111
+  },
+  {
+   "id": "48055",
+   "name": "Caldwell",
+   "pres2024": {
+    "dem": 6618,
+    "rep": 8880,
+    "other": 195,
+    "total": 15693
+   },
+   "sen_prev": {
+    "dem": 6449,
+    "rep": 8044,
+    "other": 387,
+    "total": 14880
+   },
+   "turnout2022": 11358
+  },
+  {
+   "id": "48057",
+   "name": "Calhoun",
+   "pres2024": {
+    "dem": 1853,
+    "rep": 5939,
+    "other": 40,
+    "total": 7832
+   },
+   "sen_prev": {
+    "dem": 2092,
+    "rep": 5531,
+    "other": 122,
+    "total": 7745
+   },
+   "turnout2022": 5592
+  },
+  {
+   "id": "48059",
+   "name": "Callahan",
+   "pres2024": {
+    "dem": 761,
+    "rep": 6180,
+    "other": 47,
+    "total": 6988
+   },
+   "sen_prev": {
+    "dem": 680,
+    "rep": 5892,
+    "other": 147,
+    "total": 6719
+   },
+   "turnout2022": 5266
+  },
+  {
+   "id": "48061",
+   "name": "Cameron",
+   "pres2024": {
+    "dem": 54258,
+    "rep": 60991,
+    "other": 904,
+    "total": 116153
+   },
+   "sen_prev": {
+    "dem": 61508,
+    "rep": 46482,
+    "other": 3233,
+    "total": 111223
+   },
+   "turnout2022": 77095
+  },
+  {
+   "id": "48063",
+   "name": "Camp",
+   "pres2024": {
+    "dem": 1201,
+    "rep": 4011,
+    "other": 30,
+    "total": 5242
+   },
+   "sen_prev": {
+    "dem": 1359,
+    "rep": 3597,
+    "other": 80,
+    "total": 5036
+   },
+   "turnout2022": 3983
+  },
+  {
+   "id": "48065",
+   "name": "Carson",
+   "pres2024": {
+    "dem": 290,
+    "rep": 2866,
+    "other": 21,
+    "total": 3177
+   },
+   "sen_prev": {
+    "dem": 286,
+    "rep": 2756,
+    "other": 71,
+    "total": 3113
+   },
+   "turnout2022": 2394
+  },
+  {
+   "id": "48067",
+   "name": "Cass",
+   "pres2024": {
+    "dem": 2406,
+    "rep": 11693,
+    "other": 44,
+    "total": 14143
+   },
+   "sen_prev": {
+    "dem": 2672,
+    "rep": 10796,
+    "other": 345,
+    "total": 13813
+   },
+   "turnout2022": 9969
+  },
+  {
+   "id": "48069",
+   "name": "Castro",
+   "pres2024": {
+    "dem": 418,
+    "rep": 1594,
+    "other": 11,
+    "total": 2023
+   },
+   "sen_prev": {
+    "dem": 432,
+    "rep": 1572,
+    "other": 37,
+    "total": 2041
+   },
+   "turnout2022": 1493
+  },
+  {
+   "id": "48071",
+   "name": "Chambers",
+   "pres2024": {
+    "dem": 4192,
+    "rep": 20567,
+    "other": 214,
+    "total": 24973
+   },
+   "sen_prev": {
+    "dem": 3786,
+    "rep": 17037,
+    "other": 530,
+    "total": 21353
+   },
+   "turnout2022": 15736
+  },
+  {
+   "id": "48073",
+   "name": "Cherokee",
+   "pres2024": {
+    "dem": 3744,
+    "rep": 16593,
+    "other": 170,
+    "total": 20507
+   },
+   "sen_prev": {
+    "dem": 4058,
+    "rep": 14945,
+    "other": 328,
+    "total": 19331
+   },
+   "turnout2022": 14483
+  },
+  {
+   "id": "48075",
+   "name": "Childress",
+   "pres2024": {
+    "dem": 263,
+    "rep": 1991,
+    "other": 18,
+    "total": 2272
+   },
+   "sen_prev": {
+    "dem": 283,
+    "rep": 1936,
+    "other": 40,
+    "total": 2259
+   },
+   "turnout2022": 1751
+  },
+  {
+   "id": "48077",
+   "name": "Clay",
+   "pres2024": {
+    "dem": 584,
+    "rep": 5288,
+    "other": 36,
+    "total": 5908
+   },
+   "sen_prev": {
+    "dem": 632,
+    "rep": 4958,
+    "other": 108,
+    "total": 5698
+   },
+   "turnout2022": 4487
+  },
+  {
+   "id": "48079",
+   "name": "Cochran",
+   "pres2024": {
+    "dem": 148,
+    "rep": 735,
+    "other": 10,
+    "total": 893
+   },
+   "sen_prev": {
+    "dem": 183,
+    "rep": 765,
+    "other": 30,
+    "total": 978
+   },
+   "turnout2022": 616
+  },
+  {
+   "id": "48081",
+   "name": "Coke",
+   "pres2024": {
+    "dem": 179,
+    "rep": 1623,
+    "other": 12,
+    "total": 1814
+   },
+   "sen_prev": {
+    "dem": 171,
+    "rep": 1557,
+    "other": 26,
+    "total": 1754
+   },
+   "turnout2022": 1389
+  },
+  {
+   "id": "48083",
+   "name": "Coleman",
+   "pres2024": {
+    "dem": 428,
+    "rep": 3712,
+    "other": 16,
+    "total": 4156
+   },
+   "sen_prev": {
+    "dem": 426,
+    "rep": 3586,
+    "other": 53,
+    "total": 4065
+   },
+   "turnout2022": 3239
+  },
+  {
+   "id": "48085",
+   "name": "Collin",
+   "pres2024": {
+    "dem": 222115,
+    "rep": 279534,
+    "other": 13936,
+    "total": 515585
+   },
+   "sen_prev": {
+    "dem": 207005,
+    "rep": 263074,
+    "other": 11227,
+    "total": 481306
+   },
+   "turnout2022": 364779
+  },
+  {
+   "id": "48087",
+   "name": "Collingsworth",
+   "pres2024": {
+    "dem": 135,
+    "rep": 1066,
+    "other": 0,
+    "total": 1201
+   },
+   "sen_prev": {
+    "dem": 145,
+    "rep": 1032,
+    "other": 15,
+    "total": 1192
+   },
+   "turnout2022": 925
+  },
+  {
+   "id": "48089",
+   "name": "Colorado",
+   "pres2024": {
+    "dem": 2108,
+    "rep": 7824,
+    "other": 62,
+    "total": 9994
+   },
+   "sen_prev": {
+    "dem": 2362,
+    "rep": 7367,
+    "other": 161,
+    "total": 9890
+   },
+   "turnout2022": 7546
+  },
+  {
+   "id": "48091",
+   "name": "Comal",
+   "pres2024": {
+    "dem": 27680,
+    "rep": 74756,
+    "other": 1055,
+    "total": 103491
+   },
+   "sen_prev": {
+    "dem": 22552,
+    "rep": 63545,
+    "other": 2173,
+    "total": 88270
+   },
+   "turnout2022": 74763
+  },
+  {
+   "id": "48093",
+   "name": "Comanche",
+   "pres2024": {
+    "dem": 834,
+    "rep": 5679,
+    "other": 31,
+    "total": 6544
+   },
+   "sen_prev": {
+    "dem": 831,
+    "rep": 5053,
+    "other": 120,
+    "total": 6004
+   },
+   "turnout2022": 4826
+  },
+  {
+   "id": "48095",
+   "name": "Concho",
+   "pres2024": {
+    "dem": 153,
+    "rep": 1038,
+    "other": 7,
+    "total": 1198
+   },
+   "sen_prev": {
+    "dem": 193,
+    "rep": 1029,
+    "other": 25,
+    "total": 1247
+   },
+   "turnout2022": 943
+  },
+  {
+   "id": "48097",
+   "name": "Cooke",
+   "pres2024": {
+    "dem": 3310,
+    "rep": 16975,
+    "other": 162,
+    "total": 20447
+   },
+   "sen_prev": {
+    "dem": 2999,
+    "rep": 15516,
+    "other": 362,
+    "total": 18877
+   },
+   "turnout2022": 15325
+  },
+  {
+   "id": "48099",
+   "name": "Coryell",
+   "pres2024": {
+    "dem": 6959,
+    "rep": 16688,
+    "other": 279,
+    "total": 23926
+   },
+   "sen_prev": {
+    "dem": 7118,
+    "rep": 15372,
+    "other": 759,
+    "total": 23249
+   },
+   "turnout2022": 16368
+  },
+  {
+   "id": "48101",
+   "name": "Cottle",
+   "pres2024": {
+    "dem": 89,
+    "rep": 565,
+    "other": 3,
+    "total": 657
+   },
+   "sen_prev": {
+    "dem": 110,
+    "rep": 534,
+    "other": 12,
+    "total": 656
+   },
+   "turnout2022": 514
+  },
+  {
+   "id": "48103",
+   "name": "Crane",
+   "pres2024": {
+    "dem": 186,
+    "rep": 1195,
+    "other": 8,
+    "total": 1389
+   },
+   "sen_prev": {
+    "dem": 229,
+    "rep": 1213,
+    "other": 37,
+    "total": 1479
+   },
+   "turnout2022": 1147
+  },
+  {
+   "id": "48105",
+   "name": "Crockett",
+   "pres2024": {
+    "dem": 323,
+    "rep": 1087,
+    "other": 7,
+    "total": 1417
+   },
+   "sen_prev": {
+    "dem": 314,
+    "rep": 1146,
+    "other": 33,
+    "total": 1493
+   },
+   "turnout2022": 1273
+  },
+  {
+   "id": "48107",
+   "name": "Crosby",
+   "pres2024": {
+    "dem": 451,
+    "rep": 1416,
+    "other": 13,
+    "total": 1880
+   },
+   "sen_prev": {
+    "dem": 486,
+    "rep": 1356,
+    "other": 39,
+    "total": 1881
+   },
+   "turnout2022": 1254
+  },
+  {
+   "id": "48109",
+   "name": "Culberson",
+   "pres2024": {
+    "dem": 319,
+    "rep": 451,
+    "other": 11,
+    "total": 781
+   },
+   "sen_prev": {
+    "dem": 385,
+    "rep": 367,
+    "other": 26,
+    "total": 778
+   },
+   "turnout2022": 736
+  },
+  {
+   "id": "48111",
+   "name": "Dallam",
+   "pres2024": {
+    "dem": 152,
+    "rep": 1285,
+    "other": 10,
+    "total": 1447
+   },
+   "sen_prev": {
+    "dem": 200,
+    "rep": 1369,
+    "other": 26,
+    "total": 1595
+   },
+   "turnout2022": 1050
+  },
+  {
+   "id": "48113",
+   "name": "Dallas",
+   "pres2024": {
+    "dem": 511118,
+    "rep": 322569,
+    "other": 16185,
+    "total": 849872
+   },
+   "sen_prev": {
+    "dem": 560603,
+    "rep": 330851,
+    "other": 24207,
+    "total": 915661
+   },
+   "turnout2022": 625391
+  },
+  {
+   "id": "48115",
+   "name": "Dawson",
+   "pres2024": {
+    "dem": 667,
+    "rep": 2810,
+    "other": 36,
+    "total": 3513
+   },
+   "sen_prev": {
+    "dem": 738,
+    "rep": 2827,
+    "other": 76,
+    "total": 3641
+   },
+   "turnout2022": 2516
+  },
+  {
+   "id": "48117",
+   "name": "Deaf Smith",
+   "pres2024": {
+    "dem": 1019,
+    "rep": 3233,
+    "other": 34,
+    "total": 4286
+   },
+   "sen_prev": {
+    "dem": 1151,
+    "rep": 3273,
+    "other": 109,
+    "total": 4533
+   },
+   "turnout2022": 2947
+  },
+  {
+   "id": "48119",
+   "name": "Delta",
+   "pres2024": {
+    "dem": 397,
+    "rep": 2250,
+    "other": 11,
+    "total": 2658
+   },
+   "sen_prev": {
+    "dem": 370,
+    "rep": 2111,
+    "other": 53,
+    "total": 2534
+   },
+   "turnout2022": 2027
+  },
+  {
+   "id": "48121",
+   "name": "Denton",
+   "pres2024": {
+    "dem": 191503,
+    "rep": 250521,
+    "other": 7164,
+    "total": 449188
+   },
+   "sen_prev": {
+    "dem": 170984,
+    "rep": 231025,
+    "other": 11202,
+    "total": 413211
+   },
+   "turnout2022": 317781
+  },
+  {
+   "id": "48123",
+   "name": "DeWitt",
+   "pres2024": {
+    "dem": 1270,
+    "rep": 6515,
+    "other": 40,
+    "total": 7825
+   },
+   "sen_prev": {
+    "dem": 1384,
+    "rep": 6399,
+    "other": 104,
+    "total": 7887
+   },
+   "turnout2022": 6061
+  },
+  {
+   "id": "48125",
+   "name": "Dickens",
+   "pres2024": {
+    "dem": 146,
+    "rep": 844,
+    "other": 3,
+    "total": 993
+   },
+   "sen_prev": {
+    "dem": 133,
+    "rep": 808,
+    "other": 17,
+    "total": 958
+   },
+   "turnout2022": 791
+  },
+  {
+   "id": "48127",
+   "name": "Dimmit",
+   "pres2024": {
+    "dem": 1765,
+    "rep": 1653,
+    "other": 9,
+    "total": 3427
+   },
+   "sen_prev": {
+    "dem": 2122,
+    "rep": 1274,
+    "other": 72,
+    "total": 3468
+   },
+   "turnout2022": 2876
+  },
+  {
+   "id": "48129",
+   "name": "Donley",
+   "pres2024": {
+    "dem": 174,
+    "rep": 1512,
+    "other": 26,
+    "total": 1712
+   },
+   "sen_prev": {
+    "dem": 181,
+    "rep": 1418,
+    "other": 26,
+    "total": 1625
+   },
+   "turnout2022": 1192
+  },
+  {
+   "id": "48131",
+   "name": "Duval",
+   "pres2024": {
+    "dem": 2003,
+    "rep": 2439,
+    "other": 19,
+    "total": 4461
+   },
+   "sen_prev": {
+    "dem": 2458,
+    "rep": 1787,
+    "other": 174,
+    "total": 4419
+   },
+   "turnout2022": 3676
+  },
+  {
+   "id": "48133",
+   "name": "Eastland",
+   "pres2024": {
+    "dem": 918,
+    "rep": 7397,
+    "other": 49,
+    "total": 8364
+   },
+   "sen_prev": {
+    "dem": 910,
+    "rep": 7015,
+    "other": 164,
+    "total": 8089
+   },
+   "turnout2022": 6150
+  },
+  {
+   "id": "48135",
+   "name": "Ector",
+   "pres2024": {
+    "dem": 9881,
+    "rep": 32429,
+    "other": 305,
+    "total": 42615
+   },
+   "sen_prev": {
+    "dem": 10682,
+    "rep": 31711,
+    "other": 1179,
+    "total": 43572
+   },
+   "turnout2022": 25449
+  },
+  {
+   "id": "48137",
+   "name": "Edwards",
+   "pres2024": {
+    "dem": 133,
+    "rep": 869,
+    "other": 3,
+    "total": 1005
+   },
+   "sen_prev": {
+    "dem": 144,
+    "rep": 824,
+    "other": 18,
+    "total": 986
+   },
+   "turnout2022": 814
+  },
+  {
+   "id": "48139",
+   "name": "Ellis",
+   "pres2024": {
+    "dem": 33850,
+    "rep": 64763,
+    "other": 944,
+    "total": 99557
+   },
+   "sen_prev": {
+    "dem": 25780,
+    "rep": 57078,
+    "other": 2181,
+    "total": 85039
+   },
+   "turnout2022": 67770
+  },
+  {
+   "id": "48141",
+   "name": "El Paso",
+   "pres2024": {
+    "dem": 143156,
+    "rep": 105124,
+    "other": 3289,
+    "total": 251569
+   },
+   "sen_prev": {
+    "dem": 164931,
+    "rep": 80021,
+    "other": 14298,
+    "total": 259250
+   },
+   "turnout2022": 165446
+  },
+  {
+   "id": "48143",
+   "name": "Erath",
+   "pres2024": {
+    "dem": 2871,
+    "rep": 15349,
+    "other": 131,
+    "total": 18351
+   },
+   "sen_prev": {
+    "dem": 2707,
+    "rep": 13564,
+    "other": 437,
+    "total": 16708
+   },
+   "turnout2022": 13115
+  },
+  {
+   "id": "48145",
+   "name": "Falls",
+   "pres2024": {
+    "dem": 1713,
+    "rep": 4520,
+    "other": 44,
+    "total": 6277
+   },
+   "sen_prev": {
+    "dem": 1787,
+    "rep": 4157,
+    "other": 95,
+    "total": 6039
+   },
+   "turnout2022": 4703
+  },
+  {
+   "id": "48147",
+   "name": "Fannin",
+   "pres2024": {
+    "dem": 2607,
+    "rep": 13648,
+    "other": 140,
+    "total": 16395
+   },
+   "sen_prev": {
+    "dem": 2559,
+    "rep": 11836,
+    "other": 354,
+    "total": 14749
+   },
+   "turnout2022": 11665
+  },
+  {
+   "id": "48149",
+   "name": "Fayette",
+   "pres2024": {
+    "dem": 2515,
+    "rep": 10699,
+    "other": 117,
+    "total": 13331
+   },
+   "sen_prev": {
+    "dem": 2634,
+    "rep": 10056,
+    "other": 174,
+    "total": 12864
+   },
+   "turnout2022": 10500
+  },
+  {
+   "id": "48151",
+   "name": "Fisher",
+   "pres2024": {
+    "dem": 330,
+    "rep": 1487,
+    "other": 13,
+    "total": 1830
+   },
+   "sen_prev": {
+    "dem": 351,
+    "rep": 1418,
+    "other": 35,
+    "total": 1804
+   },
+   "turnout2022": 1401
+  },
+  {
+   "id": "48153",
+   "name": "Floyd",
+   "pres2024": {
+    "dem": 358,
+    "rep": 1715,
+    "other": 17,
+    "total": 2090
+   },
+   "sen_prev": {
+    "dem": 397,
+    "rep": 1554,
+    "other": 39,
+    "total": 1990
+   },
+   "turnout2022": 1467
+  },
+  {
+   "id": "48155",
+   "name": "Foard",
+   "pres2024": {
+    "dem": 92,
+    "rep": 448,
+    "other": 5,
+    "total": 545
+   },
+   "sen_prev": {
+    "dem": 107,
+    "rep": 404,
+    "other": 8,
+    "total": 519
+   },
+   "turnout2022": 529
+  },
+  {
+   "id": "48157",
+   "name": "Fort Bend",
+   "pres2024": {
+    "dem": 179310,
+    "rep": 173592,
+    "other": 9622,
+    "total": 362524
+   },
+   "sen_prev": {
+    "dem": 178984,
+    "rep": 160977,
+    "other": 7478,
+    "total": 347439
+   },
+   "turnout2022": 250066
+  },
+  {
+   "id": "48159",
+   "name": "Franklin",
+   "pres2024": {
+    "dem": 813,
+    "rep": 4473,
+    "other": 25,
+    "total": 5311
+   },
+   "sen_prev": {
+    "dem": 753,
+    "rep": 4114,
+    "other": 75,
+    "total": 4942
+   },
+   "turnout2022": 3917
+  },
+  {
+   "id": "48161",
+   "name": "Freestone",
+   "pres2024": {
+    "dem": 1499,
+    "rep": 7500,
+    "other": 46,
+    "total": 9045
+   },
+   "sen_prev": {
+    "dem": 1553,
+    "rep": 6838,
+    "other": 166,
+    "total": 8557
+   },
+   "turnout2022": 6661
+  },
+  {
+   "id": "48163",
+   "name": "Frio",
+   "pres2024": {
+    "dem": 1848,
+    "rep": 3060,
+    "other": 37,
+    "total": 4945
+   },
+   "sen_prev": {
+    "dem": 2283,
+    "rep": 2489,
+    "other": 149,
+    "total": 4921
+   },
+   "turnout2022": 3728
+  },
+  {
+   "id": "48165",
+   "name": "Gaines",
+   "pres2024": {
+    "dem": 538,
+    "rep": 5840,
+    "other": 38,
+    "total": 6416
+   },
+   "sen_prev": {
+    "dem": 548,
+    "rep": 5118,
+    "other": 94,
+    "total": 5760
+   },
+   "turnout2022": 4113
+  },
+  {
+   "id": "48167",
+   "name": "Galveston",
+   "pres2024": {
+    "dem": 56732,
+    "rep": 100295,
+    "other": 1969,
+    "total": 158996
+   },
+   "sen_prev": {
+    "dem": 55094,
+    "rep": 94317,
+    "other": 3975,
+    "total": 153386
+   },
+   "turnout2022": 110734
+  },
+  {
+   "id": "48169",
+   "name": "Garza",
+   "pres2024": {
+    "dem": 213,
+    "rep": 1374,
+    "other": 12,
+    "total": 1599
+   },
+   "sen_prev": {
+    "dem": 225,
+    "rep": 1374,
+    "other": 18,
+    "total": 1617
+   },
+   "turnout2022": 1200
+  },
+  {
+   "id": "48171",
+   "name": "Gillespie",
+   "pres2024": {
+    "dem": 3160,
+    "rep": 13202,
+    "other": 130,
+    "total": 16492
+   },
+   "sen_prev": {
+    "dem": 2996,
+    "rep": 12543,
+    "other": 240,
+    "total": 15779
+   },
+   "turnout2022": 13389
+  },
+  {
+   "id": "48173",
+   "name": "Glasscock",
+   "pres2024": {
+    "dem": 38,
+    "rep": 623,
+    "other": 2,
+    "total": 663
+   },
+   "sen_prev": {
+    "dem": 35,
+    "rep": 603,
+    "other": 8,
+    "total": 646
+   },
+   "turnout2022": 572
+  },
+  {
+   "id": "48175",
+   "name": "Goliad",
+   "pres2024": {
+    "dem": 778,
+    "rep": 3178,
+    "other": 31,
+    "total": 3987
+   },
+   "sen_prev": {
+    "dem": 840,
+    "rep": 3000,
+    "other": 69,
+    "total": 3909
+   },
+   "turnout2022": 3366
+  },
+  {
+   "id": "48177",
+   "name": "Gonzales",
+   "pres2024": {
+    "dem": 1729,
+    "rep": 5981,
+    "other": 45,
+    "total": 7755
+   },
+   "sen_prev": {
+    "dem": 1782,
+    "rep": 5617,
+    "other": 132,
+    "total": 7531
+   },
+   "turnout2022": 5566
+  },
+  {
+   "id": "48179",
+   "name": "Gray",
+   "pres2024": {
+    "dem": 845,
+    "rep": 6691,
+    "other": 44,
+    "total": 7580
+   },
+   "sen_prev": {
+    "dem": 774,
+    "rep": 6705,
+    "other": 209,
+    "total": 7688
+   },
+   "turnout2022": 5558
+  },
+  {
+   "id": "48181",
+   "name": "Grayson",
+   "pres2024": {
+    "dem": 14800,
+    "rep": 50556,
+    "other": 559,
+    "total": 65915
+   },
+   "sen_prev": {
+    "dem": 13938,
+    "rep": 43735,
+    "other": 1301,
+    "total": 58974
+   },
+   "turnout2022": 44991
+  },
+  {
+   "id": "48183",
+   "name": "Gregg",
+   "pres2024": {
+    "dem": 13294,
+    "rep": 33026,
+    "other": 418,
+    "total": 46738
+   },
+   "sen_prev": {
+    "dem": 14025,
+    "rep": 32467,
+    "other": 992,
+    "total": 47484
+   },
+   "turnout2022": 33215
+  },
+  {
+   "id": "48185",
+   "name": "Grimes",
+   "pres2024": {
+    "dem": 2734,
+    "rep": 11197,
+    "other": 120,
+    "total": 14051
+   },
+   "sen_prev": {
+    "dem": 2678,
+    "rep": 9338,
+    "other": 259,
+    "total": 12275
+   },
+   "turnout2022": 9432
+  },
+  {
+   "id": "48187",
+   "name": "Guadalupe",
+   "pres2024": {
+    "dem": 29573,
+    "rep": 54691,
+    "other": 872,
+    "total": 85136
+   },
+   "sen_prev": {
+    "dem": 26697,
+    "rep": 48308,
+    "other": 1976,
+    "total": 76981
+   },
+   "turnout2022": 57202
+  },
+  {
+   "id": "48189",
+   "name": "Hale",
+   "pres2024": {
+    "dem": 1903,
+    "rep": 7283,
+    "other": 99,
+    "total": 9285
+   },
+   "sen_prev": {
+    "dem": 2155,
+    "rep": 6999,
+    "other": 222,
+    "total": 9376
+   },
+   "turnout2022": 6329
+  },
+  {
+   "id": "48191",
+   "name": "Hall",
+   "pres2024": {
+    "dem": 149,
+    "rep": 992,
+    "other": 8,
+    "total": 1149
+   },
+   "sen_prev": {
+    "dem": 156,
+    "rep": 967,
+    "other": 17,
+    "total": 1140
+   },
+   "turnout2022": 877
+  },
+  {
+   "id": "48193",
+   "name": "Hamilton",
+   "pres2024": {
+    "dem": 625,
+    "rep": 3809,
+    "other": 31,
+    "total": 4465
+   },
+   "sen_prev": {
+    "dem": 594,
+    "rep": 3574,
+    "other": 126,
+    "total": 4294
+   },
+   "turnout2022": 3476
+  },
+  {
+   "id": "48195",
+   "name": "Hansford",
+   "pres2024": {
+    "dem": 146,
+    "rep": 1842,
+    "other": 11,
+    "total": 1999
+   },
+   "sen_prev": {
+    "dem": 158,
+    "rep": 1844,
+    "other": 26,
+    "total": 2028
+   },
+   "turnout2022": 1522
+  },
+  {
+   "id": "48197",
+   "name": "Hardeman",
+   "pres2024": {
+    "dem": 188,
+    "rep": 1210,
+    "other": 7,
+    "total": 1405
+   },
+   "sen_prev": {
+    "dem": 232,
+    "rep": 1313,
+    "other": 10,
+    "total": 1555
+   },
+   "turnout2022": 985
+  },
+  {
+   "id": "48199",
+   "name": "Hardin",
+   "pres2024": {
+    "dem": 3347,
+    "rep": 24691,
+    "other": 119,
+    "total": 28157
+   },
+   "sen_prev": {
+    "dem": 3388,
+    "rep": 23516,
+    "other": 480,
+    "total": 27384
+   },
+   "turnout2022": 19629
+  },
+  {
+   "id": "48201",
+   "name": "Harris",
+   "pres2024": {
+    "dem": 808771,
+    "rep": 722695,
+    "other": 26018,
+    "total": 1557484
+   },
+   "sen_prev": {
+    "dem": 854158,
+    "rep": 718228,
+    "other": 42139,
+    "total": 1614525
+   },
+   "turnout2022": 1102418
+  },
+  {
+   "id": "48203",
+   "name": "Harrison",
+   "pres2024": {
+    "dem": 7369,
+    "rep": 22658,
+    "other": 216,
+    "total": 30243
+   },
+   "sen_prev": {
+    "dem": 7612,
+    "rep": 21231,
+    "other": 541,
+    "total": 29384
+   },
+   "turnout2022": 21356
+  },
+  {
+   "id": "48205",
+   "name": "Hartley",
+   "pres2024": {
+    "dem": 163,
+    "rep": 1843,
+    "other": 10,
+    "total": 2016
+   },
+   "sen_prev": {
+    "dem": 176,
+    "rep": 1859,
+    "other": 37,
+    "total": 2072
+   },
+   "turnout2022": 1574
+  },
+  {
+   "id": "48207",
+   "name": "Haskell",
+   "pres2024": {
+    "dem": 313,
+    "rep": 1918,
+    "other": 16,
+    "total": 2247
+   },
+   "sen_prev": {
+    "dem": 347,
+    "rep": 1808,
+    "other": 28,
+    "total": 2183
+   },
+   "turnout2022": 1670
+  },
+  {
+   "id": "48209",
+   "name": "Hays",
+   "pres2024": {
+    "dem": 65528,
+    "rep": 58438,
+    "other": 1861,
+    "total": 125827
+   },
+   "sen_prev": {
+    "dem": 55597,
+    "rep": 49539,
+    "other": 3410,
+    "total": 108546
+   },
+   "turnout2022": 89683
+  },
+  {
+   "id": "48211",
+   "name": "Hemphill",
+   "pres2024": {
+    "dem": 190,
+    "rep": 1412,
+    "other": 10,
+    "total": 1612
+   },
+   "sen_prev": {
+    "dem": 197,
+    "rep": 1465,
+    "other": 31,
+    "total": 1693
+   },
+   "turnout2022": 1361
+  },
+  {
+   "id": "48213",
+   "name": "Henderson",
+   "pres2024": {
+    "dem": 6919,
+    "rep": 31379,
+    "other": 242,
+    "total": 38540
+   },
+   "sen_prev": {
+    "dem": 6672,
+    "rep": 28717,
+    "other": 707,
+    "total": 36096
+   },
+   "turnout2022": 28002
+  },
+  {
+   "id": "48215",
+   "name": "Hidalgo",
+   "pres2024": {
+    "dem": 104517,
+    "rep": 110760,
+    "other": 1988,
+    "total": 217265
+   },
+   "sen_prev": {
+    "dem": 116962,
+    "rep": 84284,
+    "other": 8237,
+    "total": 209483
+   },
+   "turnout2022": 141196
+  },
+  {
+   "id": "48217",
+   "name": "Hill",
+   "pres2024": {
+    "dem": 2919,
+    "rep": 13669,
+    "other": 118,
+    "total": 16706
+   },
+   "sen_prev": {
+    "dem": 2688,
+    "rep": 11845,
+    "other": 294,
+    "total": 14827
+   },
+   "turnout2022": 11385
+  },
+  {
+   "id": "48219",
+   "name": "Hockley",
+   "pres2024": {
+    "dem": 1323,
+    "rep": 6616,
+    "other": 49,
+    "total": 7988
+   },
+   "sen_prev": {
+    "dem": 1384,
+    "rep": 6449,
+    "other": 155,
+    "total": 7988
+   },
+   "turnout2022": 5531
+  },
+  {
+   "id": "48221",
+   "name": "Hood",
+   "pres2024": {
+    "dem": 6070,
+    "rep": 30174,
+    "other": 309,
+    "total": 36553
+   },
+   "sen_prev": {
+    "dem": 5228,
+    "rep": 26253,
+    "other": 700,
+    "total": 32181
+   },
+   "turnout2022": 27228
+  },
+  {
+   "id": "48223",
+   "name": "Hopkins",
+   "pres2024": {
+    "dem": 2917,
+    "rep": 13754,
+    "other": 107,
+    "total": 16778
+   },
+   "sen_prev": {
+    "dem": 2833,
+    "rep": 12497,
+    "other": 317,
+    "total": 15647
+   },
+   "turnout2022": 12351
+  },
+  {
+   "id": "48225",
+   "name": "Houston",
+   "pres2024": {
+    "dem": 2065,
+    "rep": 7247,
+    "other": 53,
+    "total": 9365
+   },
+   "sen_prev": {
+    "dem": 2230,
+    "rep": 6984,
+    "other": 120,
+    "total": 9334
+   },
+   "turnout2022": 7184
+  },
+  {
+   "id": "48227",
+   "name": "Howard",
+   "pres2024": {
+    "dem": 1759,
+    "rep": 7817,
+    "other": 65,
+    "total": 9641
+   },
+   "sen_prev": {
+    "dem": 1959,
+    "rep": 7854,
+    "other": 238,
+    "total": 10051
+   },
+   "turnout2022": 6568
+  },
+  {
+   "id": "48229",
+   "name": "Hudspeth",
+   "pres2024": {
+    "dem": 275,
+    "rep": 759,
+    "other": 4,
+    "total": 1038
+   },
+   "sen_prev": {
+    "dem": 383,
+    "rep": 680,
+    "other": 38,
+    "total": 1101
+   },
+   "turnout2022": 906
+  },
+  {
+   "id": "48231",
+   "name": "Hunt",
+   "pres2024": {
+    "dem": 10212,
+    "rep": 36137,
+    "other": 384,
+    "total": 46733
+   },
+   "sen_prev": {
+    "dem": 8319,
+    "rep": 28888,
+    "other": 851,
+    "total": 38058
+   },
+   "turnout2022": 30540
+  },
+  {
+   "id": "48233",
+   "name": "Hutchinson",
+   "pres2024": {
+    "dem": 913,
+    "rep": 7273,
+    "other": 58,
+    "total": 8244
+   },
+   "sen_prev": {
+    "dem": 900,
+    "rep": 7575,
+    "other": 218,
+    "total": 8693
+   },
+   "turnout2022": 6062
+  },
+  {
+   "id": "48235",
+   "name": "Irion",
+   "pres2024": {
+    "dem": 105,
+    "rep": 761,
+    "other": 2,
+    "total": 868
+   },
+   "sen_prev": {
+    "dem": 111,
+    "rep": 760,
+    "other": 9,
+    "total": 880
+   },
+   "turnout2022": 695
+  },
+  {
+   "id": "48237",
+   "name": "Jack",
+   "pres2024": {
+    "dem": 363,
+    "rep": 3819,
+    "other": 19,
+    "total": 4201
+   },
+   "sen_prev": {
+    "dem": 319,
+    "rep": 3322,
+    "other": 59,
+    "total": 3700
+   },
+   "turnout2022": 2993
+  },
+  {
+   "id": "48239",
+   "name": "Jackson",
+   "pres2024": {
+    "dem": 907,
+    "rep": 5386,
+    "other": 36,
+    "total": 6329
+   },
+   "sen_prev": {
+    "dem": 1021,
+    "rep": 5167,
+    "other": 121,
+    "total": 6309
+   },
+   "turnout2022": 4597
+  },
+  {
+   "id": "48241",
+   "name": "Jasper",
+   "pres2024": {
+    "dem": 2615,
+    "rep": 13162,
+    "other": 64,
+    "total": 15841
+   },
+   "sen_prev": {
+    "dem": 2851,
+    "rep": 12312,
+    "other": 226,
+    "total": 15389
+   },
+   "turnout2022": 11379
+  },
+  {
+   "id": "48243",
+   "name": "Jeff Davis",
+   "pres2024": {
+    "dem": 450,
+    "rep": 699,
+    "other": 20,
+    "total": 1169
+   },
+   "sen_prev": {
+    "dem": 483,
+    "rep": 767,
+    "other": 36,
+    "total": 1286
+   },
+   "turnout2022": 1050
+  },
+  {
+   "id": "48245",
+   "name": "Jefferson",
+   "pres2024": {
+    "dem": 38936,
+    "rep": 46596,
+    "other": 782,
+    "total": 86314
+   },
+   "sen_prev": {
+    "dem": 44112,
+    "rep": 46928,
+    "other": 1886,
+    "total": 92926
+   },
+   "turnout2022": 62451
+  },
+  {
+   "id": "48247",
+   "name": "Jim Hogg",
+   "pres2024": {
+    "dem": 856,
+    "rep": 725,
+    "other": 4,
+    "total": 1585
+   },
+   "sen_prev": {
+    "dem": 1136,
+    "rep": 652,
+    "other": 56,
+    "total": 1844
+   },
+   "turnout2022": 1542
+  },
+  {
+   "id": "48249",
+   "name": "Jim Wells",
+   "pres2024": {
+    "dem": 5577,
+    "rep": 7636,
+    "other": 55,
+    "total": 13268
+   },
+   "sen_prev": {
+    "dem": 6025,
+    "rep": 6957,
+    "other": 278,
+    "total": 13260
+   },
+   "turnout2022": 9543
+  },
+  {
+   "id": "48251",
+   "name": "Johnson",
+   "pres2024": {
+    "dem": 19247,
+    "rep": 60752,
+    "other": 722,
+    "total": 80721
+   },
+   "sen_prev": {
+    "dem": 15474,
+    "rep": 54403,
+    "other": 1586,
+    "total": 71463
+   },
+   "turnout2022": 55864
+  },
+  {
+   "id": "48253",
+   "name": "Jones",
+   "pres2024": {
+    "dem": 907,
+    "rep": 5988,
+    "other": 52,
+    "total": 6947
+   },
+   "sen_prev": {
+    "dem": 967,
+    "rep": 5546,
+    "other": 108,
+    "total": 6621
+   },
+   "turnout2022": 4992
+  },
+  {
+   "id": "48255",
+   "name": "Karnes",
+   "pres2024": {
+    "dem": 1051,
+    "rep": 4001,
+    "other": 23,
+    "total": 5075
+   },
+   "sen_prev": {
+    "dem": 1178,
+    "rep": 3833,
+    "other": 78,
+    "total": 5089
+   },
+   "turnout2022": 3818
+  },
+  {
+   "id": "48257",
+   "name": "Kaufman",
+   "pres2024": {
+    "dem": 24726,
+    "rep": 44063,
+    "other": 617,
+    "total": 69406
+   },
+   "sen_prev": {
+    "dem": 17507,
+    "rep": 37649,
+    "other": 1315,
+    "total": 56471
+   },
+   "turnout2022": 42831
+  },
+  {
+   "id": "48259",
+   "name": "Kendall",
+   "pres2024": {
+    "dem": 6355,
+    "rep": 22668,
+    "other": 292,
+    "total": 29315
+   },
+   "sen_prev": {
+    "dem": 5335,
+    "rep": 20584,
+    "other": 473,
+    "total": 26392
+   },
+   "turnout2022": 22557
+  },
+  {
+   "id": "48261",
+   "name": "Kenedy",
+   "pres2024": {
+    "dem": 41,
+    "rep": 115,
+    "other": 2,
+    "total": 158
+   },
+   "sen_prev": {
+    "dem": 57,
+    "rep": 107,
+    "other": 5,
+    "total": 169
+   },
+   "turnout2022": 153
+  },
+  {
+   "id": "48263",
+   "name": "Kent",
+   "pres2024": {
+    "dem": 50,
+    "rep": 390,
+    "other": 5,
+    "total": 445
+   },
+   "sen_prev": {
+    "dem": 53,
+    "rep": 386,
+    "other": 6,
+    "total": 445
+   },
+   "turnout2022": 350
+  },
+  {
+   "id": "48265",
+   "name": "Kerr",
+   "pres2024": {
+    "dem": 6315,
+    "rep": 21615,
+    "other": 240,
+    "total": 28170
+   },
+   "sen_prev": {
+    "dem": 5946,
+    "rep": 21022,
+    "other": 575,
+    "total": 27543
+   },
+   "turnout2022": 22480
+  },
+  {
+   "id": "48267",
+   "name": "Kimble",
+   "pres2024": {
+    "dem": 261,
+    "rep": 2126,
+    "other": 17,
+    "total": 2404
+   },
+   "sen_prev": {
+    "dem": 254,
+    "rep": 1962,
+    "other": 37,
+    "total": 2253
+   },
+   "turnout2022": 1876
+  },
+  {
+   "id": "48269",
+   "name": "King",
+   "pres2024": {
+    "dem": 6,
+    "rep": 129,
+    "other": 0,
+    "total": 135
+   },
+   "sen_prev": {
+    "dem": 5,
+    "rep": 149,
+    "other": 0,
+    "total": 154
+   },
+   "turnout2022": 103
+  },
+  {
+   "id": "48271",
+   "name": "Kinney",
+   "pres2024": {
+    "dem": 346,
+    "rep": 1063,
+    "other": 10,
+    "total": 1419
+   },
+   "sen_prev": {
+    "dem": 395,
+    "rep": 1070,
+    "other": 43,
+    "total": 1508
+   },
+   "turnout2022": 1194
+  },
+  {
+   "id": "48273",
+   "name": "Kleberg",
+   "pres2024": {
+    "dem": 4338,
+    "rep": 5612,
+    "other": 64,
+    "total": 10014
+   },
+   "sen_prev": {
+    "dem": 5067,
+    "rep": 5374,
+    "other": 267,
+    "total": 10708
+   },
+   "turnout2022": 7629
+  },
+  {
+   "id": "48275",
+   "name": "Knox",
+   "pres2024": {
+    "dem": 214,
+    "rep": 1156,
+    "other": 6,
+    "total": 1376
+   },
+   "sen_prev": {
+    "dem": 263,
+    "rep": 1147,
+    "other": 21,
+    "total": 1431
+   },
+   "turnout2022": 1040
+  },
+  {
+   "id": "48277",
+   "name": "Lamar",
+   "pres2024": {
+    "dem": 4079,
+    "rep": 17044,
+    "other": 162,
+    "total": 21285
+   },
+   "sen_prev": {
+    "dem": 4295,
+    "rep": 16476,
+    "other": 394,
+    "total": 21165
+   },
+   "turnout2022": 15342
+  },
+  {
+   "id": "48279",
+   "name": "Lamb",
+   "pres2024": {
+    "dem": 729,
+    "rep": 3398,
+    "other": 24,
+    "total": 4151
+   },
+   "sen_prev": {
+    "dem": 802,
+    "rep": 3469,
+    "other": 99,
+    "total": 4370
+   },
+   "turnout2022": 3080
+  },
+  {
+   "id": "48281",
+   "name": "Lampasas",
+   "pres2024": {
+    "dem": 2232,
+    "rep": 8961,
+    "other": 108,
+    "total": 11301
+   },
+   "sen_prev": {
+    "dem": 1978,
+    "rep": 8102,
+    "other": 250,
+    "total": 10330
+   },
+   "turnout2022": 8251
+  },
+  {
+   "id": "48283",
+   "name": "La Salle",
+   "pres2024": {
+    "dem": 933,
+    "rep": 1417,
+    "other": 10,
+    "total": 2360
+   },
+   "sen_prev": {
+    "dem": 1005,
+    "rep": 1082,
+    "other": 60,
+    "total": 2147
+   },
+   "turnout2022": 1437
+  },
+  {
+   "id": "48285",
+   "name": "Lavaca",
+   "pres2024": {
+    "dem": 1235,
+    "rep": 9215,
+    "other": 41,
+    "total": 10491
+   },
+   "sen_prev": {
+    "dem": 1305,
+    "rep": 8599,
+    "other": 134,
+    "total": 10038
+   },
+   "turnout2022": 8209
+  },
+  {
+   "id": "48287",
+   "name": "Lee",
+   "pres2024": {
+    "dem": 1640,
+    "rep": 6724,
+    "other": 51,
+    "total": 8415
+   },
+   "sen_prev": {
+    "dem": 1689,
+    "rep": 6211,
+    "other": 132,
+    "total": 8032
+   },
+   "turnout2022": 6282
+  },
+  {
+   "id": "48289",
+   "name": "Leon",
+   "pres2024": {
+    "dem": 1033,
+    "rep": 7982,
+    "other": 49,
+    "total": 9064
+   },
+   "sen_prev": {
+    "dem": 1028,
+    "rep": 7421,
+    "other": 143,
+    "total": 8592
+   },
+   "turnout2022": 6863
+  },
+  {
+   "id": "48291",
+   "name": "Liberty",
+   "pres2024": {
+    "dem": 5952,
+    "rep": 25241,
+    "other": 130,
+    "total": 31323
+   },
+   "sen_prev": {
+    "dem": 5662,
+    "rep": 22743,
+    "other": 604,
+    "total": 29009
+   },
+   "turnout2022": 19791
+  },
+  {
+   "id": "48293",
+   "name": "Limestone",
+   "pres2024": {
+    "dem": 1921,
+    "rep": 7081,
+    "other": 73,
+    "total": 9075
+   },
+   "sen_prev": {
+    "dem": 2112,
+    "rep": 6656,
+    "other": 199,
+    "total": 8967
+   },
+   "turnout2022": 6851
+  },
+  {
+   "id": "48295",
+   "name": "Lipscomb",
+   "pres2024": {
+    "dem": 123,
+    "rep": 1125,
+    "other": 11,
+    "total": 1259
+   },
+   "sen_prev": {
+    "dem": 117,
+    "rep": 1181,
+    "other": 26,
+    "total": 1324
+   },
+   "turnout2022": 977
+  },
+  {
+   "id": "48297",
+   "name": "Live Oak",
+   "pres2024": {
+    "dem": 761,
+    "rep": 4307,
+    "other": 25,
+    "total": 5093
+   },
+   "sen_prev": {
+    "dem": 790,
+    "rep": 4122,
+    "other": 69,
+    "total": 4981
+   },
+   "turnout2022": 4000
+  },
+  {
+   "id": "48299",
+   "name": "Llano",
+   "pres2024": {
+    "dem": 2613,
+    "rep": 10902,
+    "other": 114,
+    "total": 13629
+   },
+   "sen_prev": {
+    "dem": 2331,
+    "rep": 10047,
+    "other": 218,
+    "total": 12596
+   },
+   "turnout2022": 11029
+  },
+  {
+   "id": "48301",
+   "name": "Loving",
+   "pres2024": {
+    "dem": 10,
+    "rep": 86,
+    "other": 1,
+    "total": 97
+   },
+   "sen_prev": {
+    "dem": 5,
+    "rep": 58,
+    "other": 2,
+    "total": 65
+   },
+   "turnout2022": 79
+  },
+  {
+   "id": "48303",
+   "name": "Lubbock",
+   "pres2024": {
+    "dem": 37148,
+    "rep": 86547,
+    "other": 1343,
+    "total": 125038
+   },
+   "sen_prev": {
+    "dem": 36319,
+    "rep": 79459,
+    "other": 3726,
+    "total": 119504
+   },
+   "turnout2022": 83768
+  },
+  {
+   "id": "48305",
+   "name": "Lynn",
+   "pres2024": {
+    "dem": 371,
+    "rep": 2175,
+    "other": 21,
+    "total": 2567
+   },
+   "sen_prev": {
+    "dem": 411,
+    "rep": 1817,
+    "other": 35,
+    "total": 2263
+   },
+   "turnout2022": 1727
+  },
+  {
+   "id": "48307",
+   "name": "McCulloch",
+   "pres2024": {
+    "dem": 455,
+    "rep": 3033,
+    "other": 25,
+    "total": 3513
+   },
+   "sen_prev": {
+    "dem": 460,
+    "rep": 2843,
+    "other": 82,
+    "total": 3385
+   },
+   "turnout2022": 2563
+  },
+  {
+   "id": "48309",
+   "name": "McLennan",
+   "pres2024": {
+    "dem": 33863,
+    "rep": 64606,
+    "other": 1203,
+    "total": 99672
+   },
+   "sen_prev": {
+    "dem": 33439,
+    "rep": 60036,
+    "other": 2654,
+    "total": 96129
+   },
+   "turnout2022": 72590
+  },
+  {
+   "id": "48311",
+   "name": "McMullen",
+   "pres2024": {
+    "dem": 37,
+    "rep": 448,
+    "other": 2,
+    "total": 487
+   },
+   "sen_prev": {
+    "dem": 43,
+    "rep": 454,
+    "other": 3,
+    "total": 500
+   },
+   "turnout2022": 372
+  },
+  {
+   "id": "48313",
+   "name": "Madison",
+   "pres2024": {
+    "dem": 964,
+    "rep": 4498,
+    "other": 27,
+    "total": 5489
+   },
+   "sen_prev": {
+    "dem": 1030,
+    "rep": 4118,
+    "other": 75,
+    "total": 5223
+   },
+   "turnout2022": 3907
+  },
+  {
+   "id": "48315",
+   "name": "Marion",
+   "pres2024": {
+    "dem": 1101,
+    "rep": 3577,
+    "other": 36,
+    "total": 4714
+   },
+   "sen_prev": {
+    "dem": 1276,
+    "rep": 3380,
+    "other": 102,
+    "total": 4758
+   },
+   "turnout2022": 3302
+  },
+  {
+   "id": "48317",
+   "name": "Martin",
+   "pres2024": {
+    "dem": 247,
+    "rep": 1825,
+    "other": 11,
+    "total": 2083
+   },
+   "sen_prev": {
+    "dem": 263,
+    "rep": 1811,
+    "other": 38,
+    "total": 2112
+   },
+   "turnout2022": 1508
+  },
+  {
+   "id": "48319",
+   "name": "Mason",
+   "pres2024": {
+    "dem": 434,
+    "rep": 2076,
+    "other": 17,
+    "total": 2527
+   },
+   "sen_prev": {
+    "dem": 443,
+    "rep": 1980,
+    "other": 32,
+    "total": 2455
+   },
+   "turnout2022": 1991
+  },
+  {
+   "id": "48321",
+   "name": "Matagorda",
+   "pres2024": {
+    "dem": 3231,
+    "rep": 9957,
+    "other": 124,
+    "total": 13312
+   },
+   "sen_prev": {
+    "dem": 3551,
+    "rep": 9647,
+    "other": 284,
+    "total": 13482
+   },
+   "turnout2022": 9721
+  },
+  {
+   "id": "48323",
+   "name": "Maverick",
+   "pres2024": {
+    "dem": 6373,
+    "rep": 9285,
+    "other": 87,
+    "total": 15745
+   },
+   "sen_prev": {
+    "dem": 7956,
+    "rep": 5708,
+    "other": 625,
+    "total": 14289
+   },
+   "turnout2022": 9583
+  },
+  {
+   "id": "48325",
+   "name": "Medina",
+   "pres2024": {
+    "dem": 6950,
+    "rep": 17464,
+    "other": 203,
+    "total": 24617
+   },
+   "sen_prev": {
+    "dem": 6207,
+    "rep": 15594,
+    "other": 411,
+    "total": 22212
+   },
+   "turnout2022": 17366
+  },
+  {
+   "id": "48327",
+   "name": "Menard",
+   "pres2024": {
+    "dem": 170,
+    "rep": 861,
+    "other": 9,
+    "total": 1040
+   },
+   "sen_prev": {
+    "dem": 189,
+    "rep": 797,
+    "other": 14,
+    "total": 1000
+   },
+   "turnout2022": 775
+  },
+  {
+   "id": "48329",
+   "name": "Midland",
+   "pres2024": {
+    "dem": 11351,
+    "rep": 46944,
+    "other": 513,
+    "total": 58808
+   },
+   "sen_prev": {
+    "dem": 11417,
+    "rep": 45733,
+    "other": 1378,
+    "total": 58528
+   },
+   "turnout2022": 40053
+  },
+  {
+   "id": "48331",
+   "name": "Milam",
+   "pres2024": {
+    "dem": 2331,
+    "rep": 8691,
+    "other": 76,
+    "total": 11098
+   },
+   "sen_prev": {
+    "dem": 2382,
+    "rep": 7759,
+    "other": 190,
+    "total": 10331
+   },
+   "turnout2022": 8358
+  },
+  {
+   "id": "48333",
+   "name": "Mills",
+   "pres2024": {
+    "dem": 310,
+    "rep": 2418,
+    "other": 14,
+    "total": 2742
+   },
+   "sen_prev": {
+    "dem": 252,
+    "rep": 2196,
+    "other": 39,
+    "total": 2487
+   },
+   "turnout2022": 2121
+  },
+  {
+   "id": "48335",
+   "name": "Mitchell",
+   "pres2024": {
+    "dem": 352,
+    "rep": 2144,
+    "other": 17,
+    "total": 2513
+   },
+   "sen_prev": {
+    "dem": 359,
+    "rep": 2129,
+    "other": 52,
+    "total": 2540
+   },
+   "turnout2022": 1781
+  },
+  {
+   "id": "48337",
+   "name": "Montague",
+   "pres2024": {
+    "dem": 1208,
+    "rep": 9825,
+    "other": 68,
+    "total": 11101
+   },
+   "sen_prev": {
+    "dem": 1051,
+    "rep": 8526,
+    "other": 182,
+    "total": 9759
+   },
+   "turnout2022": 7852
+  },
+  {
+   "id": "48339",
+   "name": "Montgomery",
+   "pres2024": {
+    "dem": 82277,
+    "rep": 221964,
+    "other": 3017,
+    "total": 307258
+   },
+   "sen_prev": {
+    "dem": 68254,
+    "rep": 194528,
+    "other": 6056,
+    "total": 268838
+   },
+   "turnout2022": 208055
+  },
+  {
+   "id": "48341",
+   "name": "Moore",
+   "pres2024": {
+    "dem": 860,
+    "rep": 4458,
+    "other": 44,
+    "total": 5362
+   },
+   "sen_prev": {
+    "dem": 999,
+    "rep": 4314,
+    "other": 134,
+    "total": 5447
+   },
+   "turnout2022": 3603
+  },
+  {
+   "id": "48343",
+   "name": "Morris",
+   "pres2024": {
+    "dem": 1312,
+    "rep": 4092,
+    "other": 30,
+    "total": 5434
+   },
+   "sen_prev": {
+    "dem": 1639,
+    "rep": 3753,
+    "other": 89,
+    "total": 5481
+   },
+   "turnout2022": 3996
+  },
+  {
+   "id": "48345",
+   "name": "Motley",
+   "pres2024": {
+    "dem": 35,
+    "rep": 612,
+    "other": 3,
+    "total": 650
+   },
+   "sen_prev": {
+    "dem": 44,
+    "rep": 591,
+    "other": 3,
+    "total": 638
+   },
+   "turnout2022": 504
+  },
+  {
+   "id": "48347",
+   "name": "Nacogdoches",
+   "pres2024": {
+    "dem": 7690,
+    "rep": 17575,
+    "other": 221,
+    "total": 25486
+   },
+   "sen_prev": {
+    "dem": 8487,
+    "rep": 17370,
+    "other": 642,
+    "total": 26499
+   },
+   "turnout2022": 18950
+  },
+  {
+   "id": "48349",
+   "name": "Navarro",
+   "pres2024": {
+    "dem": 4708,
+    "rep": 14983,
+    "other": 140,
+    "total": 19831
+   },
+   "sen_prev": {
+    "dem": 4821,
+    "rep": 13701,
+    "other": 440,
+    "total": 18962
+   },
+   "turnout2022": 14133
+  },
+  {
+   "id": "48351",
+   "name": "Newton",
+   "pres2024": {
+    "dem": 952,
+    "rep": 4781,
+    "other": 16,
+    "total": 5749
+   },
+   "sen_prev": {
+    "dem": 1163,
+    "rep": 4784,
+    "other": 70,
+    "total": 6017
+   },
+   "turnout2022": 4373
+  },
+  {
+   "id": "48353",
+   "name": "Nolan",
+   "pres2024": {
+    "dem": 1020,
+    "rep": 4048,
+    "other": 47,
+    "total": 5115
+   },
+   "sen_prev": {
+    "dem": 1077,
+    "rep": 4102,
+    "other": 102,
+    "total": 5281
+   },
+   "turnout2022": 3803
+  },
+  {
+   "id": "48355",
+   "name": "Nueces",
+   "pres2024": {
+    "dem": 53248,
+    "rep": 67201,
+    "other": 1229,
+    "total": 121678
+   },
+   "sen_prev": {
+    "dem": 57180,
+    "rep": 64558,
+    "other": 3576,
+    "total": 125314
+   },
+   "turnout2022": 89301
+  },
+  {
+   "id": "48357",
+   "name": "Ochiltree",
+   "pres2024": {
+    "dem": 269,
+    "rep": 2723,
+    "other": 18,
+    "total": 3010
+   },
+   "sen_prev": {
+    "dem": 278,
+    "rep": 2783,
+    "other": 45,
+    "total": 3106
+   },
+   "turnout2022": 2126
+  },
+  {
+   "id": "48359",
+   "name": "Oldham",
+   "pres2024": {
+    "dem": 74,
+    "rep": 895,
+    "other": 5,
+    "total": 974
+   },
+   "sen_prev": {
+    "dem": 74,
+    "rep": 908,
+    "other": 14,
+    "total": 996
+   },
+   "turnout2022": 770
+  },
+  {
+   "id": "48361",
+   "name": "Orange",
+   "pres2024": {
+    "dem": 5945,
+    "rep": 30191,
+    "other": 202,
+    "total": 36338
+   },
+   "sen_prev": {
+    "dem": 6249,
+    "rep": 28720,
+    "other": 724,
+    "total": 35693
+   },
+   "turnout2022": 25099
+  },
+  {
+   "id": "48363",
+   "name": "Palo Pinto",
+   "pres2024": {
+    "dem": 2143,
+    "rep": 11093,
+    "other": 100,
+    "total": 13336
+   },
+   "sen_prev": {
+    "dem": 2028,
+    "rep": 9999,
+    "other": 301,
+    "total": 12328
+   },
+   "turnout2022": 9489
+  },
+  {
+   "id": "48365",
+   "name": "Panola",
+   "pres2024": {
+    "dem": 1905,
+    "rep": 9500,
+    "other": 34,
+    "total": 11439
+   },
+   "sen_prev": {
+    "dem": 2015,
+    "rep": 9145,
+    "other": 143,
+    "total": 11303
+   },
+   "turnout2022": 8313
+  },
+  {
+   "id": "48367",
+   "name": "Parker",
+   "pres2024": {
+    "dem": 14872,
+    "rep": 75168,
+    "other": 800,
+    "total": 90840
+   },
+   "sen_prev": {
+    "dem": 11919,
+    "rep": 61705,
+    "other": 1896,
+    "total": 75520
+   },
+   "turnout2022": 63437
+  },
+  {
+   "id": "48369",
+   "name": "Parmer",
+   "pres2024": {
+    "dem": 368,
+    "rep": 2123,
+    "other": 13,
+    "total": 2504
+   },
+   "sen_prev": {
+    "dem": 454,
+    "rep": 2132,
+    "other": 41,
+    "total": 2627
+   },
+   "turnout2022": 1768
+  },
+  {
+   "id": "48371",
+   "name": "Pecos",
+   "pres2024": {
+    "dem": 1144,
+    "rep": 3042,
+    "other": 47,
+    "total": 4233
+   },
+   "sen_prev": {
+    "dem": 1376,
+    "rep": 3081,
+    "other": 112,
+    "total": 4569
+   },
+   "turnout2022": 3682
+  },
+  {
+   "id": "48373",
+   "name": "Polk",
+   "pres2024": {
+    "dem": 4910,
+    "rep": 19216,
+    "other": 166,
+    "total": 24292
+   },
+   "sen_prev": {
+    "dem": 5237,
+    "rep": 17735,
+    "other": 559,
+    "total": 23531
+   },
+   "turnout2022": 16776
+  },
+  {
+   "id": "48375",
+   "name": "Potter",
+   "pres2024": {
+    "dem": 8748,
+    "rep": 23007,
+    "other": 366,
+    "total": 32121
+   },
+   "sen_prev": {
+    "dem": 9168,
+    "rep": 22683,
+    "other": 985,
+    "total": 32836
+   },
+   "turnout2022": 21806
+  },
+  {
+   "id": "48377",
+   "name": "Presidio",
+   "pres2024": {
+    "dem": 1289,
+    "rep": 686,
+    "other": 19,
+    "total": 1994
+   },
+   "sen_prev": {
+    "dem": 1374,
+    "rep": 651,
+    "other": 66,
+    "total": 2091
+   },
+   "turnout2022": 1724
+  },
+  {
+   "id": "48379",
+   "name": "Rains",
+   "pres2024": {
+    "dem": 869,
+    "rep": 5649,
+    "other": 38,
+    "total": 6556
+   },
+   "sen_prev": {
+    "dem": 789,
+    "rep": 5060,
+    "other": 107,
+    "total": 5956
+   },
+   "turnout2022": 4987
+  },
+  {
+   "id": "48381",
+   "name": "Randall",
+   "pres2024": {
+    "dem": 12935,
+    "rep": 53314,
+    "other": 652,
+    "total": 66901
+   },
+   "sen_prev": {
+    "dem": 11618,
+    "rep": 51116,
+    "other": 1588,
+    "total": 64322
+   },
+   "turnout2022": 48019
+  },
+  {
+   "id": "48383",
+   "name": "Reagan",
+   "pres2024": {
+    "dem": 141,
+    "rep": 800,
+    "other": 8,
+    "total": 949
+   },
+   "sen_prev": {
+    "dem": 154,
+    "rep": 893,
+    "other": 22,
+    "total": 1069
+   },
+   "turnout2022": 716
+  },
+  {
+   "id": "48385",
+   "name": "Real",
+   "pres2024": {
+    "dem": 315,
+    "rep": 1625,
+    "other": 18,
+    "total": 1958
+   },
+   "sen_prev": {
+    "dem": 286,
+    "rep": 1626,
+    "other": 27,
+    "total": 1939
+   },
+   "turnout2022": 1569
+  },
+  {
+   "id": "48387",
+   "name": "Red River",
+   "pres2024": {
+    "dem": 1103,
+    "rep": 4682,
+    "other": 11,
+    "total": 5796
+   },
+   "sen_prev": {
+    "dem": 1191,
+    "rep": 4452,
+    "other": 89,
+    "total": 5732
+   },
+   "turnout2022": 4274
+  },
+  {
+   "id": "48389",
+   "name": "Reeves",
+   "pres2024": {
+    "dem": 1070,
+    "rep": 2340,
+    "other": 29,
+    "total": 3439
+   },
+   "sen_prev": {
+    "dem": 1337,
+    "rep": 1983,
+    "other": 116,
+    "total": 3436
+   },
+   "turnout2022": 2177
+  },
+  {
+   "id": "48391",
+   "name": "Refugio",
+   "pres2024": {
+    "dem": 919,
+    "rep": 2134,
+    "other": 22,
+    "total": 3075
+   },
+   "sen_prev": {
+    "dem": 1023,
+    "rep": 2073,
+    "other": 77,
+    "total": 3173
+   },
+   "turnout2022": 2316
+  },
+  {
+   "id": "48393",
+   "name": "Roberts",
+   "pres2024": {
+    "dem": 20,
+    "rep": 547,
+    "other": 5,
+    "total": 572
+   },
+   "sen_prev": {
+    "dem": 15,
+    "rep": 526,
+    "other": 4,
+    "total": 545
+   },
+   "turnout2022": 444
+  },
+  {
+   "id": "48395",
+   "name": "Robertson",
+   "pres2024": {
+    "dem": 1926,
+    "rep": 6177,
+    "other": 55,
+    "total": 8158
+   },
+   "sen_prev": {
+    "dem": 2244,
+    "rep": 5590,
+    "other": 155,
+    "total": 7989
+   },
+   "turnout2022": 6017
+  },
+  {
+   "id": "48397",
+   "name": "Rockwall",
+   "pres2024": {
+    "dem": 18092,
+    "rep": 43542,
+    "other": 635,
+    "total": 62269
+   },
+   "sen_prev": {
+    "dem": 15009,
+    "rep": 37584,
+    "other": 1189,
+    "total": 53782
+   },
+   "turnout2022": 42871
+  },
+  {
+   "id": "48399",
+   "name": "Runnels",
+   "pres2024": {
+    "dem": 452,
+    "rep": 3580,
+    "other": 24,
+    "total": 4056
+   },
+   "sen_prev": {
+    "dem": 515,
+    "rep": 3722,
+    "other": 91,
+    "total": 4328
+   },
+   "turnout2022": 3234
+  },
+  {
+   "id": "48401",
+   "name": "Rusk",
+   "pres2024": {
+    "dem": 4337,
+    "rep": 17234,
+    "other": 135,
+    "total": 21706
+   },
+   "sen_prev": {
+    "dem": 4455,
+    "rep": 16367,
+    "other": 357,
+    "total": 21179
+   },
+   "turnout2022": 15628
+  },
+  {
+   "id": "48403",
+   "name": "Sabine",
+   "pres2024": {
+    "dem": 590,
+    "rep": 4972,
+    "other": 19,
+    "total": 5581
+   },
+   "sen_prev": {
+    "dem": 688,
+    "rep": 4678,
+    "other": 71,
+    "total": 5437
+   },
+   "turnout2022": 4165
+  },
+  {
+   "id": "48405",
+   "name": "San Augustine",
+   "pres2024": {
+    "dem": 809,
+    "rep": 2917,
+    "other": 21,
+    "total": 3747
+   },
+   "sen_prev": {
+    "dem": 928,
+    "rep": 2898,
+    "other": 51,
+    "total": 3877
+   },
+   "turnout2022": 2865
+  },
+  {
+   "id": "48407",
+   "name": "San Jacinto",
+   "pres2024": {
+    "dem": 2175,
+    "rep": 10524,
+    "other": 90,
+    "total": 12789
+   },
+   "sen_prev": {
+    "dem": 2268,
+    "rep": 9808,
+    "other": 287,
+    "total": 12363
+   },
+   "turnout2022": 9549
+  },
+  {
+   "id": "48409",
+   "name": "San Patricio",
+   "pres2024": {
+    "dem": 8025,
+    "rep": 17337,
+    "other": 217,
+    "total": 25579
+   },
+   "sen_prev": {
+    "dem": 8494,
+    "rep": 16174,
+    "other": 648,
+    "total": 25316
+   },
+   "turnout2022": 17898
+  },
+  {
+   "id": "48411",
+   "name": "San Saba",
+   "pres2024": {
+    "dem": 276,
+    "rep": 2412,
+    "other": 21,
+    "total": 2709
+   },
+   "sen_prev": {
+    "dem": 270,
+    "rep": 2218,
+    "other": 12,
+    "total": 2500
+   },
+   "turnout2022": 2165
+  },
+  {
+   "id": "48413",
+   "name": "Schleicher",
+   "pres2024": {
+    "dem": 192,
+    "rep": 906,
+    "other": 10,
+    "total": 1108
+   },
+   "sen_prev": {
+    "dem": 191,
+    "rep": 927,
+    "other": 14,
+    "total": 1132
+   },
+   "turnout2022": 1008
+  },
+  {
+   "id": "48415",
+   "name": "Scurry",
+   "pres2024": {
+    "dem": 734,
+    "rep": 4945,
+    "other": 42,
+    "total": 5721
+   },
+   "sen_prev": {
+    "dem": 805,
+    "rep": 4870,
+    "other": 122,
+    "total": 5797
+   },
+   "turnout2022": 4128
+  },
+  {
+   "id": "48417",
+   "name": "Shackelford",
+   "pres2024": {
+    "dem": 146,
+    "rep": 1565,
+    "other": 17,
+    "total": 1728
+   },
+   "sen_prev": {
+    "dem": 115,
+    "rep": 1475,
+    "other": 17,
+    "total": 1607
+   },
+   "turnout2022": 1239
+  },
+  {
+   "id": "48419",
+   "name": "Shelby",
+   "pres2024": {
+    "dem": 1741,
+    "rep": 8164,
+    "other": 43,
+    "total": 9948
+   },
+   "sen_prev": {
+    "dem": 2022,
+    "rep": 7868,
+    "other": 102,
+    "total": 9992
+   },
+   "turnout2022": 6932
+  },
+  {
+   "id": "48421",
+   "name": "Sherman",
+   "pres2024": {
+    "dem": 48,
+    "rep": 817,
+    "other": 8,
+    "total": 873
+   },
+   "sen_prev": {
+    "dem": 88,
+    "rep": 889,
+    "other": 10,
+    "total": 987
+   },
+   "turnout2022": 708
+  },
+  {
+   "id": "48423",
+   "name": "Smith",
+   "pres2024": {
+    "dem": 28041,
+    "rep": 74862,
+    "other": 976,
+    "total": 103879
+   },
+   "sen_prev": {
+    "dem": 28385,
+    "rep": 69574,
+    "other": 1928,
+    "total": 99887
+   },
+   "turnout2022": 76220
+  },
+  {
+   "id": "48425",
+   "name": "Somervell",
+   "pres2024": {
+    "dem": 751,
+    "rep": 4493,
+    "other": 50,
+    "total": 5294
+   },
+   "sen_prev": {
+    "dem": 712,
+    "rep": 4103,
+    "other": 106,
+    "total": 4921
+   },
+   "turnout2022": 4040
+  },
+  {
+   "id": "48427",
+   "name": "Starr",
+   "pres2024": {
+    "dem": 6862,
+    "rep": 9487,
+    "other": 72,
+    "total": 16421
+   },
+   "sen_prev": {
+    "dem": 8161,
+    "rep": 5845,
+    "other": 745,
+    "total": 14751
+   },
+   "turnout2022": 11117
+  },
+  {
+   "id": "48429",
+   "name": "Stephens",
+   "pres2024": {
+    "dem": 384,
+    "rep": 3368,
+    "other": 9,
+    "total": 3761
+   },
+   "sen_prev": {
+    "dem": 374,
+    "rep": 3312,
+    "other": 49,
+    "total": 3735
+   },
+   "turnout2022": 2745
+  },
+  {
+   "id": "48431",
+   "name": "Sterling",
+   "pres2024": {
+    "dem": 43,
+    "rep": 583,
+    "other": 3,
+    "total": 629
+   },
+   "sen_prev": {
+    "dem": 47,
+    "rep": 567,
+    "other": 7,
+    "total": 621
+   },
+   "turnout2022": 448
+  },
+  {
+   "id": "48433",
+   "name": "Stonewall",
+   "pres2024": {
+    "dem": 110,
+    "rep": 604,
+    "other": 2,
+    "total": 716
+   },
+   "sen_prev": {
+    "dem": 122,
+    "rep": 586,
+    "other": 6,
+    "total": 714
+   },
+   "turnout2022": 565
+  },
+  {
+   "id": "48435",
+   "name": "Sutton",
+   "pres2024": {
+    "dem": 228,
+    "rep": 1167,
+    "other": 5,
+    "total": 1400
+   },
+   "sen_prev": {
+    "dem": 305,
+    "rep": 1204,
+    "other": 20,
+    "total": 1529
+   },
+   "turnout2022": 1162
+  },
+  {
+   "id": "48437",
+   "name": "Swisher",
+   "pres2024": {
+    "dem": 403,
+    "rep": 1840,
+    "other": 22,
+    "total": 2265
+   },
+   "sen_prev": {
+    "dem": 464,
+    "rep": 1795,
+    "other": 60,
+    "total": 2319
+   },
+   "turnout2022": 1666
+  },
+  {
+   "id": "48439",
+   "name": "Tarrant",
+   "pres2024": {
+    "dem": 384501,
+    "rep": 426626,
+    "other": 12185,
+    "total": 823312
+   },
+   "sen_prev": {
+    "dem": 382408,
+    "rep": 423117,
+    "other": 22591,
+    "total": 828116
+   },
+   "turnout2022": 591368
+  },
+  {
+   "id": "48441",
+   "name": "Taylor",
+   "pres2024": {
+    "dem": 13624,
+    "rep": 41198,
+    "other": 595,
+    "total": 55417
+   },
+   "sen_prev": {
+    "dem": 13074,
+    "rep": 39887,
+    "other": 1522,
+    "total": 54483
+   },
+   "turnout2022": 39453
+  },
+  {
+   "id": "48443",
+   "name": "Terrell",
+   "pres2024": {
+    "dem": 91,
+    "rep": 314,
+    "other": 0,
+    "total": 405
+   },
+   "sen_prev": {
+    "dem": 116,
+    "rep": 324,
+    "other": 10,
+    "total": 450
+   },
+   "turnout2022": 426
+  },
+  {
+   "id": "48445",
+   "name": "Terry",
+   "pres2024": {
+    "dem": 587,
+    "rep": 2815,
+    "other": 18,
+    "total": 3420
+   },
+   "sen_prev": {
+    "dem": 714,
+    "rep": 2731,
+    "other": 79,
+    "total": 3524
+   },
+   "turnout2022": 2590
+  },
+  {
+   "id": "48447",
+   "name": "Throckmorton",
+   "pres2024": {
+    "dem": 73,
+    "rep": 823,
+    "other": 4,
+    "total": 900
+   },
+   "sen_prev": {
+    "dem": 76,
+    "rep": 788,
+    "other": 10,
+    "total": 874
+   },
+   "turnout2022": 667
+  },
+  {
+   "id": "48449",
+   "name": "Titus",
+   "pres2024": {
+    "dem": 2275,
+    "rep": 7861,
+    "other": 78,
+    "total": 10214
+   },
+   "sen_prev": {
+    "dem": 2748,
+    "rep": 7426,
+    "other": 202,
+    "total": 10376
+   },
+   "turnout2022": 7322
+  },
+  {
+   "id": "48451",
+   "name": "Tom Green",
+   "pres2024": {
+    "dem": 11585,
+    "rep": 33399,
+    "other": 476,
+    "total": 45460
+   },
+   "sen_prev": {
+    "dem": 11371,
+    "rep": 32340,
+    "other": 1112,
+    "total": 44823
+   },
+   "turnout2022": 31847
+  },
+  {
+   "id": "48453",
+   "name": "Travis",
+   "pres2024": {
+    "dem": 398981,
+    "rep": 170787,
+    "other": 11508,
+    "total": 581276
+   },
+   "sen_prev": {
+    "dem": 408528,
+    "rep": 175860,
+    "other": 16221,
+    "total": 600609
+   },
+   "turnout2022": 460899
+  },
+  {
+   "id": "48455",
+   "name": "Trinity",
+   "pres2024": {
+    "dem": 1195,
+    "rep": 6136,
+    "other": 43,
+    "total": 7374
+   },
+   "sen_prev": {
+    "dem": 1258,
+    "rep": 5445,
+    "other": 109,
+    "total": 6812
+   },
+   "turnout2022": 5341
+  },
+  {
+   "id": "48457",
+   "name": "Tyler",
+   "pres2024": {
+    "dem": 1249,
+    "rep": 8286,
+    "other": 43,
+    "total": 9578
+   },
+   "sen_prev": {
+    "dem": 1400,
+    "rep": 7916,
+    "other": 207,
+    "total": 9523
+   },
+   "turnout2022": 7246
+  },
+  {
+   "id": "48459",
+   "name": "Upshur",
+   "pres2024": {
+    "dem": 2820,
+    "rep": 16939,
+    "other": 128,
+    "total": 19887
+   },
+   "sen_prev": {
+    "dem": 2804,
+    "rep": 15470,
+    "other": 379,
+    "total": 18653
+   },
+   "turnout2022": 14268
+  },
+  {
+   "id": "48461",
+   "name": "Upton",
+   "pres2024": {
+    "dem": 146,
+    "rep": 1149,
+    "other": 8,
+    "total": 1303
+   },
+   "sen_prev": {
+    "dem": 160,
+    "rep": 1147,
+    "other": 29,
+    "total": 1336
+   },
+   "turnout2022": 1058
+  },
+  {
+   "id": "48463",
+   "name": "Uvalde",
+   "pres2024": {
+    "dem": 3218,
+    "rep": 6482,
+    "other": 72,
+    "total": 9772
+   },
+   "sen_prev": {
+    "dem": 3821,
+    "rep": 5968,
+    "other": 293,
+    "total": 10082
+   },
+   "turnout2022": 7946
+  },
+  {
+   "id": "48465",
+   "name": "Val Verde",
+   "pres2024": {
+    "dem": 5282,
+    "rep": 9162,
+    "other": 144,
+    "total": 14588
+   },
+   "sen_prev": {
+    "dem": 6430,
+    "rep": 8103,
+    "other": 435,
+    "total": 14968
+   },
+   "turnout2022": 9509
+  },
+  {
+   "id": "48467",
+   "name": "Van Zandt",
+   "pres2024": {
+    "dem": 3450,
+    "rep": 24351,
+    "other": 149,
+    "total": 27950
+   },
+   "sen_prev": {
+    "dem": 3374,
+    "rep": 22010,
+    "other": 398,
+    "total": 25782
+   },
+   "turnout2022": 20379
+  },
+  {
+   "id": "48469",
+   "name": "Victoria",
+   "pres2024": {
+    "dem": 9998,
+    "rep": 25010,
+    "other": 307,
+    "total": 35315
+   },
+   "sen_prev": {
+    "dem": 9834,
+    "rep": 23144,
+    "other": 714,
+    "total": 33692
+   },
+   "turnout2022": 25288
+  },
+  {
+   "id": "48471",
+   "name": "Walker",
+   "pres2024": {
+    "dem": 7461,
+    "rep": 17515,
+    "other": 199,
+    "total": 25175
+   },
+   "sen_prev": {
+    "dem": 7414,
+    "rep": 15480,
+    "other": 583,
+    "total": 23477
+   },
+   "turnout2022": 17390
+  },
+  {
+   "id": "48473",
+   "name": "Waller",
+   "pres2024": {
+    "dem": 10183,
+    "rep": 17077,
+    "other": 301,
+    "total": 27561
+   },
+   "sen_prev": {
+    "dem": 7725,
+    "rep": 14219,
+    "other": 514,
+    "total": 22458
+   },
+   "turnout2022": 16704
+  },
+  {
+   "id": "48475",
+   "name": "Ward",
+   "pres2024": {
+    "dem": 627,
+    "rep": 3115,
+    "other": 23,
+    "total": 3765
+   },
+   "sen_prev": {
+    "dem": 725,
+    "rep": 3138,
+    "other": 78,
+    "total": 3941
+   },
+   "turnout2022": 2518
+  },
+  {
+   "id": "48477",
+   "name": "Washington",
+   "pres2024": {
+    "dem": 4058,
+    "rep": 14020,
+    "other": 139,
+    "total": 18217
+   },
+   "sen_prev": {
+    "dem": 4017,
+    "rep": 12988,
+    "other": 275,
+    "total": 17280
+   },
+   "turnout2022": 13972
+  },
+  {
+   "id": "48479",
+   "name": "Webb",
+   "pres2024": {
+    "dem": 31952,
+    "rep": 33384,
+    "other": 529,
+    "total": 65865
+   },
+   "sen_prev": {
+    "dem": 40822,
+    "rep": 23153,
+    "other": 2418,
+    "total": 66393
+   },
+   "turnout2022": 44716
+  },
+  {
+   "id": "48481",
+   "name": "Wharton",
+   "pres2024": {
+    "dem": 3910,
+    "rep": 12439,
+    "other": 104,
+    "total": 16453
+   },
+   "sen_prev": {
+    "dem": 4513,
+    "rep": 11832,
+    "other": 276,
+    "total": 16621
+   },
+   "turnout2022": 12154
+  },
+  {
+   "id": "48483",
+   "name": "Wheeler",
+   "pres2024": {
+    "dem": 169,
+    "rep": 2093,
+    "other": 12,
+    "total": 2274
+   },
+   "sen_prev": {
+    "dem": 165,
+    "rep": 2079,
+    "other": 37,
+    "total": 2281
+   },
+   "turnout2022": 1686
+  },
+  {
+   "id": "48485",
+   "name": "Wichita",
+   "pres2024": {
+    "dem": 12237,
+    "rep": 31818,
+    "other": 475,
+    "total": 44530
+   },
+   "sen_prev": {
+    "dem": 12399,
+    "rep": 31626,
+    "other": 1256,
+    "total": 45281
+   },
+   "turnout2022": 31631
+  },
+  {
+   "id": "48487",
+   "name": "Wilbarger",
+   "pres2024": {
+    "dem": 860,
+    "rep": 3566,
+    "other": 41,
+    "total": 4467
+   },
+   "sen_prev": {
+    "dem": 874,
+    "rep": 3473,
+    "other": 72,
+    "total": 4419
+   },
+   "turnout2022": 3152
+  },
+  {
+   "id": "48489",
+   "name": "Willacy",
+   "pres2024": {
+    "dem": 2673,
+    "rep": 2856,
+    "other": 34,
+    "total": 5563
+   },
+   "sen_prev": {
+    "dem": 2968,
+    "rep": 2183,
+    "other": 138,
+    "total": 5289
+   },
+   "turnout2022": 3840
+  },
+  {
+   "id": "48491",
+   "name": "Williamson",
+   "pres2024": {
+    "dem": 147766,
+    "rep": 155310,
+    "other": 5393,
+    "total": 308469
+   },
+   "sen_prev": {
+    "dem": 133783,
+    "rep": 142391,
+    "other": 7633,
+    "total": 283807
+   },
+   "turnout2022": 225553
+  },
+  {
+   "id": "48493",
+   "name": "Wilson",
+   "pres2024": {
+    "dem": 6247,
+    "rep": 20894,
+    "other": 134,
+    "total": 27275
+   },
+   "sen_prev": {
+    "dem": 5943,
+    "rep": 18327,
+    "other": 427,
+    "total": 24697
+   },
+   "turnout2022": 19466
+  },
+  {
+   "id": "48495",
+   "name": "Winkler",
+   "pres2024": {
+    "dem": 283,
+    "rep": 1646,
+    "other": 4,
+    "total": 1933
+   },
+   "sen_prev": {
+    "dem": 338,
+    "rep": 1714,
+    "other": 44,
+    "total": 2096
+   },
+   "turnout2022": 1321
+  },
+  {
+   "id": "48497",
+   "name": "Wise",
+   "pres2024": {
+    "dem": 5605,
+    "rep": 32385,
+    "other": 253,
+    "total": 38243
+   },
+   "sen_prev": {
+    "dem": 4644,
+    "rep": 26630,
+    "other": 725,
+    "total": 31999
+   },
+   "turnout2022": 25821
+  },
+  {
+   "id": "48499",
+   "name": "Wood",
+   "pres2024": {
+    "dem": 3618,
+    "rep": 20621,
+    "other": 147,
+    "total": 24386
+   },
+   "sen_prev": {
+    "dem": 3318,
+    "rep": 18757,
+    "other": 395,
+    "total": 22470
+   },
+   "turnout2022": 18173
+  },
+  {
+   "id": "48501",
+   "name": "Yoakum",
+   "pres2024": {
+    "dem": 342,
+    "rep": 2039,
+    "other": 12,
+    "total": 2393
+   },
+   "sen_prev": {
+    "dem": 387,
+    "rep": 2153,
+    "other": 59,
+    "total": 2599
+   },
+   "turnout2022": 1636
+  },
+  {
+   "id": "48503",
+   "name": "Young",
+   "pres2024": {
+    "dem": 962,
+    "rep": 7298,
+    "other": 54,
+    "total": 8314
+   },
+   "sen_prev": {
+    "dem": 967,
+    "rep": 6996,
+    "other": 146,
+    "total": 8109
+   },
+   "turnout2022": 6194
+  },
+  {
+   "id": "48505",
+   "name": "Zapata",
+   "pres2024": {
+    "dem": 1877,
+    "rep": 2970,
+    "other": 24,
+    "total": 4871
+   },
+   "sen_prev": {
+    "dem": 1821,
+    "rep": 1454,
+    "other": 102,
+    "total": 3377
+   },
+   "turnout2022": 3443
+  },
+  {
+   "id": "48507",
+   "name": "Zavala",
+   "pres2024": {
+    "dem": 1984,
+    "rep": 1482,
+    "other": 26,
+    "total": 3492
+   },
+   "sen_prev": {
+    "dem": 2633,
+    "rep": 1232,
+    "other": 129,
+    "total": 3994
+   },
+   "turnout2022": 2450
+  }
+ ],
+ "notes": [
+  "Per-county sums equal the SOS certified statewide totals exactly for pres2024 (11,388,674), sen_prev (11,144,040) and turnout2022 (8,102,908); Texas has no separate statewide-only (UOCAVA) bucket - overseas ballots are counted in the voter's county.",
+  "turnout2022 is governor total votes, not ballots cast (see sources)."
+ ],
+ "sources": [
+  {
+   "what": "pres2024",
+   "publisher": "Texas Secretary of State",
+   "url": "https://results.texas-election.com/static/data/Reports/49664/CountybyCountyCanvassReport.xlsx",
+   "note": "2024 November 5th General Election, County-by-County Canvass Report (official); statewide from https://results.texas-election.com/static/data/Reports/49664/OfficialCanvassReport.xlsx. other = Oliver (LIB) 68,557 + Stein (GRE) 82,701 + certified write-ins 8,569."
+  },
+  {
+   "what": "sen_prev",
+   "publisher": "Texas Secretary of State",
+   "url": "https://results.texas-election.com/static/data/Reports/44144/CountybyCountyCanvassReport.xlsx",
+   "note": "2020 November 3rd General Election, U.S. Senator, County-by-County Canvass Report (official); statewide from https://results.texas-election.com/static/data/Reports/44144/OfficialCanvassReport.xlsx. other = McKennon (LIB) 209,722 + Collins (GRE) 81,893 + write-in 678."
+  },
+  {
+   "what": "turnout2022",
+   "publisher": "Texas Secretary of State",
+   "url": "https://results.texas-election.com/static/data/Reports/47009/CountybyCountyCanvassReport.xlsx",
+   "note": "Total votes for Governor, 2022 November 8th General Election (official county canvass). The SOS does not publish total ballots cast per county; its published 2022 turnout (8,102,908, https://www.sos.state.tx.us/elections/historical/70-92.shtml) and its results-site county 'votes cast' are this same governor total."
+  },
+  {
+   "what": "turnout2022 (cross-check only, not used)",
+   "publisher": "Texas Legislative Council",
+   "url": "https://ted.capitol.texas.gov/api/Offices/497/1428/vtd",
+   "note": "TLC Capitol Data Portal 2022 General 'Voter Data' VTD-level Turnout (ballots cast) sums to 8,143,047 statewide, 40,139 (+0.50%) above the governor total; compiled from county precinct returns, not the state canvass."
+  }
+ ]
+}

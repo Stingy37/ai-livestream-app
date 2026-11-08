@@ -1,0 +1,349 @@
+{
+ "state": "ME",
+ "name": "Maine",
+ "fips": "23",
+ "unit_type": "county",
+ "statewide": {
+  "pres2024": {
+   "dem": 435652,
+   "rep": 377977,
+   "other": 17746,
+   "total": 831375,
+   "dem_name": "Kamala Harris",
+   "rep_name": "Donald Trump"
+  },
+  "sen_prev": {
+   "dem": 347223,
+   "rep": 417645,
+   "other": 54315,
+   "total": 819183,
+   "year": 2020,
+   "dem_name": "Sara Gideon",
+   "rep_name": "Susan Collins",
+   "winner": "REP",
+   "note": "First-round (municipal) tally. Collins won a majority (50.98%) in round 1, so no ranked-choice tabulation was run. other = Lisa Savage (I) 40,579 + Max Linn (I) 13,508 + scattered write-ins 228."
+  },
+  "turnout2022": 680909
+ },
+ "units": [
+  {
+   "id": "23001",
+   "name": "Androscoggin",
+   "pres2024": {
+    "dem": 27019,
+    "rep": 30605,
+    "other": 1223,
+    "total": 58847
+   },
+   "sen_prev": {
+    "dem": 22181,
+    "rep": 32979,
+    "other": 3530,
+    "total": 58690
+   },
+   "turnout2022": 47281
+  },
+  {
+   "id": "23003",
+   "name": "Aroostook",
+   "pres2024": {
+    "dem": 12900,
+    "rep": 22246,
+    "other": 507,
+    "total": 35653
+   },
+   "sen_prev": {
+    "dem": 9750,
+    "rep": 24033,
+    "other": 1818,
+    "total": 35601
+   },
+   "turnout2022": 28844
+  },
+  {
+   "id": "23005",
+   "name": "Cumberland",
+   "pres2024": {
+    "dem": 127971,
+    "rep": 59964,
+    "other": 4721,
+    "total": 192656
+   },
+   "sen_prev": {
+    "dem": 105308,
+    "rep": 74592,
+    "other": 14084,
+    "total": 193984
+   },
+   "turnout2022": 162969
+  },
+  {
+   "id": "23007",
+   "name": "Franklin",
+   "pres2024": {
+    "dem": 7990,
+    "rep": 9459,
+    "other": 387,
+    "total": 17836
+   },
+   "sen_prev": {
+    "dem": 6276,
+    "rep": 9817,
+    "other": 1291,
+    "total": 17384
+   },
+   "turnout2022": 15001
+  },
+  {
+   "id": "23009",
+   "name": "Hancock",
+   "pres2024": {
+    "dem": 19817,
+    "rep": 15551,
+    "other": 885,
+    "total": 36253
+   },
+   "sen_prev": {
+    "dem": 15379,
+    "rep": 17371,
+    "other": 2565,
+    "total": 35315
+   },
+   "turnout2022": 30749
+  },
+  {
+   "id": "23011",
+   "name": "Kennebec",
+   "pres2024": {
+    "dem": 34585,
+    "rep": 36589,
+    "other": 1712,
+    "total": 72886
+   },
+   "sen_prev": {
+    "dem": 27664,
+    "rep": 39481,
+    "other": 4741,
+    "total": 71886
+   },
+   "turnout2022": 60685
+  },
+  {
+   "id": "23013",
+   "name": "Knox",
+   "pres2024": {
+    "dem": 15076,
+    "rep": 10262,
+    "other": 555,
+    "total": 25893
+   },
+   "sen_prev": {
+    "dem": 12190,
+    "rep": 11705,
+    "other": 1863,
+    "total": 25758
+   },
+   "turnout2022": 22397
+  },
+  {
+   "id": "23015",
+   "name": "Lincoln",
+   "pres2024": {
+    "dem": 13110,
+    "rep": 10409,
+    "other": 484,
+    "total": 24003
+   },
+   "sen_prev": {
+    "dem": 10102,
+    "rep": 12075,
+    "other": 1463,
+    "total": 23640
+   },
+   "turnout2022": 21051
+  },
+  {
+   "id": "23017",
+   "name": "Oxford",
+   "pres2024": {
+    "dem": 14765,
+    "rep": 19228,
+    "other": 597,
+    "total": 34590
+   },
+   "sen_prev": {
+    "dem": 11705,
+    "rep": 19567,
+    "other": 2150,
+    "total": 33422
+   },
+   "turnout2022": 27897
+  },
+  {
+   "id": "23019",
+   "name": "Penobscot",
+   "pres2024": {
+    "dem": 37945,
+    "rep": 47438,
+    "other": 1690,
+    "total": 87073
+   },
+   "sen_prev": {
+    "dem": 28958,
+    "rep": 51088,
+    "other": 5161,
+    "total": 85207
+   },
+   "turnout2022": 68983
+  },
+  {
+   "id": "23021",
+   "name": "Piscataquis",
+   "pres2024": {
+    "dem": 3510,
+    "rep": 6487,
+    "other": 208,
+    "total": 10205
+   },
+   "sen_prev": {
+    "dem": 2655,
+    "rep": 6603,
+    "other": 604,
+    "total": 9862
+   },
+   "turnout2022": 8266
+  },
+  {
+   "id": "23023",
+   "name": "Sagadahoc",
+   "pres2024": {
+    "dem": 13982,
+    "rep": 9917,
+    "other": 557,
+    "total": 24456
+   },
+   "sen_prev": {
+    "dem": 10787,
+    "rep": 11558,
+    "other": 1694,
+    "total": 24039
+   },
+   "turnout2022": 20948
+  },
+  {
+   "id": "23025",
+   "name": "Somerset",
+   "pres2024": {
+    "dem": 10134,
+    "rep": 17826,
+    "other": 481,
+    "total": 28441
+   },
+   "sen_prev": {
+    "dem": 7355,
+    "rep": 17861,
+    "other": 2298,
+    "total": 27514
+   },
+   "turnout2022": 22945
+  },
+  {
+   "id": "23027",
+   "name": "Waldo",
+   "pres2024": {
+    "dem": 12661,
+    "rep": 11815,
+    "other": 654,
+    "total": 25130
+   },
+   "sen_prev": {
+    "dem": 9768,
+    "rep": 12538,
+    "other": 2007,
+    "total": 24313
+   },
+   "turnout2022": 21146
+  },
+  {
+   "id": "23029",
+   "name": "Washington",
+   "pres2024": {
+    "dem": 6763,
+    "rep": 11001,
+    "other": 282,
+    "total": 18046
+   },
+   "sen_prev": {
+    "dem": 5251,
+    "rep": 11196,
+    "other": 895,
+    "total": 17342
+   },
+   "turnout2022": 14892
+  },
+  {
+   "id": "23031",
+   "name": "York",
+   "pres2024": {
+    "dem": 72114,
+    "rep": 58194,
+    "other": 2530,
+    "total": 132838
+   },
+   "sen_prev": {
+    "dem": 57826,
+    "rep": 64092,
+    "other": 7660,
+    "total": 129578
+   },
+   "turnout2022": 105010
+  }
+ ],
+ "not_in_units": {
+  "note": "STATE UOCAVA (statewide-only overseas/military ballots; county sums + this = statewide)",
+  "pres2024": {
+   "dem": 5310,
+   "rep": 986,
+   "other": 273,
+   "total": 6569
+  },
+  "sen_prev": {
+   "dem": 4068,
+   "rep": 1089,
+   "other": 491,
+   "total": 5648
+  },
+  "turnout2022": 1845
+ },
+ "notes": [
+  "Maine reports municipal results plus a statewide-only 'STATE UOCAVA' line (overseas/military ballots cast with the state, not assignable to a municipality or county). County sums therefore fall short of the statewide totals by exactly that line: pres2024 dem 5310, rep 986, other 273, total 6569 (ballots 6589); sen_prev dem 4068, rep 1089, other 491, total 5648 (ballots 5771); turnout2022 ballots 1845.",
+  "2022 Governor tabulation lists 'T3 ND Twp' (4 ballots) with county code PEN although it is a Hancock County township (coded HAN in the 2020 and 2024 files) and the SOS Hancock subtotal includes it; it is counted in Hancock (23009) here, matching the SOS county subtotals.",
+  "The 2024 municipal file first posted (also archived at lldc.mainelegislature.org .../2024/20241105/elec_20241105a.xlsx) had Harris 435,351 and Trump 377,837 (total 830,989); the Secretary of State corrected it on 2024-12-05 to the certified figures used here (Harris 435,652, Trump 377,977, total 831,375)."
+ ],
+ "sources": [
+  {
+   "what": "pres2024",
+   "publisher": "Maine Secretary of State, Bureau of Corporations, Elections & Commissions",
+   "url": "https://www.maine.gov/sos/sites/maine.gov.sos/files/inline-files/President%20and%20Vice%20President%20FINAL-Corrected%2020241205.xlsx",
+   "note": "Tabulation of votes by municipality, FINAL-Corrected 2024-12-05 (matches the FEC compilation of certified results). maine.gov returns HTTP 403 to automated clients, so the file was retrieved from the Internet Archive capture https://web.archive.org/web/20260707230104/https://www.maine.gov/sos/sites/maine.gov.sos/files/inline-files/President%20and%20Vice%20President%20FINAL-Corrected%2020241205.xlsx. Municipalities aggregated to counties by the CTY code. other = Oliver 5,286 + Stein 8,967 + West 2,912 + others/write-ins 581; total excludes 11,072 blanks."
+  },
+  {
+   "what": "sen_prev",
+   "publisher": "Maine Secretary of State, Bureau of Corporations, Elections & Commissions (archived by the Maine State Law and Legislative Reference Library)",
+   "url": "https://lldc.mainelegislature.org/Open/Elections/Returns/2020/20201103/elec_20201103ad.xlsx",
+   "note": "2020-11-03 US Senator tabulation by municipality (first round). Statewide totals match the FEC Federal Elections 2020 report (Collins 417,645, Gideon 347,223, total 819,183). Municipalities aggregated to counties by CTY code; total excludes 9,122 blanks."
+  },
+  {
+   "what": "turnout2022",
+   "publisher": "Maine Secretary of State, Bureau of Corporations, Elections & Commissions (archived by the Maine State Law and Legislative Reference Library)",
+   "url": "https://lldc.mainelegislature.org/Open/Elections/Returns/2022/20221108/elec_20221108f.xlsx",
+   "note": "Total ballots cast (TBC column) by municipality from the 2022-11-08 Governor tabulation (every ballot carried the governor race; TBC = votes + blanks). No separate per-municipality turnout file was found. Aggregated to counties by CTY code."
+  },
+  {
+   "what": "pres2024 statewide cross-check",
+   "publisher": "Federal Election Commission",
+   "url": "https://www.fec.gov/resources/cms-content/documents/2024presgeresults.pdf",
+   "note": "Official 2024 Presidential General Election Results: ME Harris 435,652, Trump 377,977, total 831,375."
+  }
+ ]
+}

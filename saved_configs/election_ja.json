@@ -1,0 +1,36 @@
+{
+  "_comment": "YouTube side of the election stream election-ja (scripts/election_youtube.py prepares the broadcast; scripts/youtube_live.py --config this file goes live; the stem names the ingest stream / stream key). The youtube texts are DRAFTS: review against research/election/legal.md rules 18, 23, 43-46 before --create.",
+  "config": {
+    "name": "US Senate Results Desk 2026 (Japanese)"
+  },
+  "defaults": {
+    "language": "ja"
+  },
+  "youtube": {
+    "stream_id": "election-ja",
+    "title": "【LIVE】米中間選挙2026 開票速報｜上院の過半数どっちに！？テキサス・オハイオ・ミシガンなど6州 最新結果",
+    "description": "2026年アメリカ中間選挙の開票をライブでお伝えします。上院（改選35議席）の勢力図と、テキサス・アラスカ・カンザス・メーン・オハイオ（補欠選挙）・ミシガンの6州の上院選を詳しく。各州選挙当局の公式集計、郡別の結果、2022年・2024年との比較、候補者本人の発信に基づく紹介。\n\n■ ご注意\n原稿はAIが作成し、合成音声で読み上げています。数字は各州選挙当局の非公式開票結果です。報道機関・陣営・政府とは無関係です。\n・結果は認定まで非公式です。\n・当配信は当選を判定しません。当選確実はAP通信の発表を報道から引用する場合のみ、出典を明示してお伝えし、取り消された場合は直ちに撤回します。\n・出口調査は使用しません。\n・時刻は日本時間（JST）と米東部時間（ET）です。\n\n■ 公式情報源\nテキサス州務長官 · アラスカ州選挙管理局 · カンザス州務長官 · メーン州務長官 · オハイオ州務長官 · ミシガン州務長官。過去の結果：各州選挙当局。地図：米国勢調査局。\n\n■ 訂正\n誤りがあった場合は、次のシーン放送時に訂正し、ここに記載します。",
+    "tags": [
+      "米中間選挙",
+      "中間選挙 2026",
+      "アメリカ中間選挙",
+      "上院選",
+      "開票速報",
+      "選挙速報",
+      "ライブ",
+      "テキサス",
+      "アラスカ",
+      "カンザス",
+      "メーン",
+      "オハイオ",
+      "ミシガン",
+      "US midterms 2026"
+    ],
+    "category_id": "25",
+    "default_language": "ja",
+    "default_audio_language": "ja",
+    "scheduled_start": "2026-11-04T01:27:00+00:00",
+    "privacy_at_create": "public",
+    "thumbnail": "output/youtube/thumb_election_ja.jpg"
+  }
+}
