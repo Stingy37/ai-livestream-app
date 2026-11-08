@@ -1,0 +1,36 @@
+{
+  "_comment": "YouTube side of the election stream election-zh (scripts/election_youtube.py prepares the broadcast; scripts/youtube_live.py --config this file goes live; the stem names the ingest stream / stream key). The youtube texts are DRAFTS: review against research/election/legal.md rules 18, 23, 43-46 before --create.",
+  "config": {
+    "name": "US Senate Results Desk 2026 (Mandarin, Simplified)"
+  },
+  "defaults": {
+    "language": "zh"
+  },
+  "youtube": {
+    "stream_id": "election-zh",
+    "title": "【直播】2026美国中期选举开票结果｜参议院花落谁家？得州、俄亥俄、密歇根等6州 最新计票",
+    "description": "2026年美国中期选举开票直播：参议院整体席位（改选35席），以及得州、阿拉斯加州、堪萨斯州、缅因州、俄亥俄州（特别选举）、密歇根州六场参议员选举详解。各州选举机构公布的计票、各县结果、与2022年和2024年的比较、候选人本人的公开表态。\n\n■ 说明\n本节目由AI撰稿、合成语音播报。数据为各州选举机构公布的非正式计票结果。与任何新闻机构、竞选阵营或政府无关。\n・结果在认证前均为非正式结果。\n・本节目不判定胜负。仅援引新闻报道中美联社（AP）宣布的胜选结果，并注明出处；如美联社撤回，我们将立即撤回。\n・不使用出口民调。\n・时间为北京时间与美国东部时间（ET）。\n\n■ 官方数据来源\n得州州务卿 · 阿拉斯加州选举处 · 堪萨斯州州务卿 · 缅因州州务卿 · 俄亥俄州州务卿 · 密歇根州州务卿。往届结果：各州选举机构。地图：美国人口普查局。\n\n■ 更正\n如有错误，将在该场景下一次播出时更正，并在此注明。",
+    "tags": [
+      "美国中期选举",
+      "2026中期选举",
+      "美国参议院",
+      "参议院选举",
+      "开票直播",
+      "选举结果",
+      "直播",
+      "得州",
+      "阿拉斯加",
+      "堪萨斯",
+      "缅因",
+      "俄亥俄",
+      "密歇根",
+      "US midterms 2026"
+    ],
+    "category_id": "25",
+    "default_language": "zh-Hans",
+    "default_audio_language": "zh-Hans",
+    "scheduled_start": "2026-11-04T01:27:00+00:00",
+    "privacy_at_create": "public",
+    "thumbnail": "output/youtube/thumb_election_zh.jpg"
+  }
+}

@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="ja" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1280">
+<title>Election Thumbnail</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Roboto+Condensed:wght@800&family=Noto+Sans+JP:wght@900&family=Noto+Sans+SC:wght@900&display=swap">
+<!--
+YouTube thumbnail (1280x720) for the US 2026 Senate results streams (election-es / -ja / -zh, docs/ELECTION.md).
+A neutral results-desk look: navy ground, the US map (html/election/geo/us-states.json, Albers with an Alaska inset)
+with the six featured states in gold and named, a big localised LIVE word, the "Senate control" line, a gold box with a
+true time hook, and an equal blue | red balance bar with the majority mark in the middle (party colours appear only
+there, at equal size). No photos, no logos, no winner, nothing that changes with the count (research/election/legal.md
+rules 14-18, 42, 43). Words come from saved_configs/thumb_election_<lang>.json as query parameters:
+  lang=es|ja|zh   live= (chip next to the tag; empty = none)   tag= (event chip)   big= (headline)   bigDot=1 (red dot before it)
+  ctrl= (Senate-control line)   tlab= (time box label)   time= (time hook)   time2= (smaller second time)
+  maj= (majority mark)   dem= rep= (bar labels, Democratic left, Republican right)
+  names=TX:Texas,AK:Alaska,... (featured states and their labels)
+Sets body[data-thumb-ready] (JSON of what it drew) when done, body[data-thumb-error] on failure.
+-->
+<style>
+:root {
+  --navy-950: #0E1124; --navy-900: #1B1948; --navy-800: #232657; --navy-700: #2E3270;
+  --gold: #E2B227; --gold-2: #F1DD20; --white: #FFFFFF; --ink: #0B0E1F;
+  --dem: #1F6FD1; --dem-d: #0B5AA6; --rep: #CC142E; --rep-d: #AD0004; --live: #D30E23;
+  --race: #4A5686; --norace: #2A3163; --line: #0E1124;
+  --disp: "Oswald", "Noto Sans JP", sans-serif; --num: "Roboto Condensed", "Oswald", sans-serif;
+}
+html[lang="ja"] { --disp: "Noto Sans JP", "Noto Sans CJK JP", sans-serif; --num: "Roboto Condensed", "Noto Sans JP", "Noto Sans CJK JP", sans-serif; }
+html[lang="zh"] { --disp: "Noto Sans SC", "Noto Sans CJK SC", sans-serif; --num: "Roboto Condensed", "Noto Sans SC", "Noto Sans CJK SC", sans-serif; }
+* { box-sizing: border-box; margin: 0; }
+html, body { width: 1280px; height: 720px; overflow: hidden; background: var(--navy-950); }
+body { position: relative; color: var(--white); font-family: var(--disp);
+  background:
+    repeating-linear-gradient(135deg, rgba(255,255,255,.028) 0 2px, rgba(255,255,255,0) 2px 16px),
+    radial-gradient(90% 110% at 74% 42%, #333985 0%, var(--navy-900) 46%, var(--navy-950) 100%); }
+svg#map { position: absolute; left: 0; top: 0; width: 1280px; height: 720px; }
+.o { paint-order: stroke fill; -webkit-text-stroke: var(--sw, 10px) var(--ink); }
+/* top left: LIVE chip + event chip */
+.top { position: absolute; left: 40px; top: 34px; display: flex; align-items: stretch; gap: 0; border-radius: 10px; overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,.5); }
+.chip-live { display: flex; align-items: center; gap: 12px; background: var(--live); color: #fff; font: 700 40px/1 "Oswald", sans-serif;
+  padding: 8px 20px 10px 16px; letter-spacing: .02em; }
+.chip-live i { width: 18px; height: 18px; border-radius: 50%; background: #fff; }
+.chip-tag { display: flex; align-items: center; background: #fff; color: var(--navy-900); font: 900 34px/1 var(--disp); padding: 10px 20px 12px;
+  white-space: nowrap; }
+html[lang="es"] .chip-tag { font: 700 33px/1 "Oswald", sans-serif; letter-spacing: .01em; }
+/* headline */
+.big { position: absolute; left: 34px; top: 108px; font: 900 158px/1.02 var(--disp); white-space: nowrap; --sw: 14px; letter-spacing: .01em;
+  text-shadow: 0 10px 28px rgba(0,0,0,.55); }
+html[lang="es"] .big { font: 700 176px/1 "Oswald", sans-serif; letter-spacing: 0; }
+.big .dot { display: inline-block; width: .36em; height: .36em; border-radius: 50%; background: var(--live); border: 9px solid #fff;
+  vertical-align: .2em; margin-right: .1em; box-shadow: 0 0 0 6px var(--ink), 0 8px 22px rgba(0,0,0,.5); }
+/* Senate control */
+.ctrl { position: absolute; left: 38px; font: 900 78px/1.1 var(--disp); color: var(--gold-2); white-space: nowrap; --sw: 10px;
+  text-shadow: 0 8px 22px rgba(0,0,0,.5); }
+html[lang="es"] .ctrl { font: 700 74px/1.05 "Oswald", sans-serif; }
+/* time box */
+.when { position: absolute; left: 40px; background: var(--gold); color: var(--ink); border: 5px solid #fff; border-radius: 14px;
+  padding: 6px 24px 10px; box-shadow: 0 10px 28px rgba(0,0,0,.55); white-space: nowrap; }
+.when small { display: block; font: 900 28px/1.15 var(--disp); color: var(--navy-900); letter-spacing: .02em; }
+html[lang="es"] .when small { font: 700 28px/1.15 "Oswald", sans-serif; letter-spacing: .04em; }
+.when b { display: block; font: 800 74px/1.02 var(--num); color: var(--ink); }
+html[lang="es"] .when b { font: 700 80px/1 "Oswald", sans-serif; }
+.when b em { font-style: normal; font-size: .56em; color: var(--navy-900); margin-left: .35em; }
+/* balance bar: equal halves, majority mark in the middle; raised clear of YouTube's corner badge */
+.bar { position: absolute; left: 40px; right: 40px; bottom: 62px; height: 62px; display: flex; border-radius: 10px; overflow: hidden;
+  border: 4px solid #fff; box-shadow: 0 10px 28px rgba(0,0,0,.55); }
+.bar div { flex: 1 1 0; display: flex; align-items: center; font: 900 36px/1 var(--disp); letter-spacing: .02em; color: #fff; padding: 0 26px 3px;
+  text-shadow: 0 2px 6px rgba(0,0,0,.4); }
+html[lang="es"] .bar div { font: 700 36px/1 "Oswald", sans-serif; letter-spacing: .05em; }
+.bar .d { background: linear-gradient(90deg, var(--dem-d), var(--dem)); justify-content: flex-start; }
+.bar .r { background: linear-gradient(270deg, var(--rep-d), var(--rep)); justify-content: flex-end; }
+.maj { position: absolute; left: 640px; bottom: 50px; transform: translateX(-50%); background: #fff; color: var(--navy-900);
+  border: 4px solid var(--navy-950); border-radius: 12px; padding: 4px 22px 8px; font: 900 42px/1.05 var(--num); white-space: nowrap;
+  box-shadow: 0 8px 22px rgba(0,0,0,.5); }
+html[lang="es"] .maj { font: 700 42px/1.05 "Oswald", sans-serif; letter-spacing: .03em; }
+.maj::before { content: ""; position: absolute; left: 50%; top: -30px; width: 6px; height: 26px; margin-left: -3px; background: #fff;
+  box-shadow: 0 0 0 2px var(--navy-950); }
+/* map labels */
+.lab { font-family: var(--disp); font-weight: 900; }
+html[lang="es"] .lab { font-family: "Oswald", sans-serif; font-weight: 700; letter-spacing: .02em; }
+[hidden] { display: none !important; }
+/* "hot" variant (election night, counting under way): red urgency box, bigger gold question with a heavy outline */
+html.hot .when { background: #d30e23; border-color: #fff; box-shadow: 0 0 0 6px rgba(211,14,35,.35), 0 12px 32px rgba(0,0,0,.6); }
+html.hot .when small, html.hot .when b, html.hot .when b em { color: #fff; }
+html.hot .ctrl { font-size: 80px; color: #ffe14d; --sw: 12px; }
+html[lang="es"].hot .ctrl { font-size: 72px; }
+</style>
+</head>
+<body>
+<svg id="map" viewBox="0 0 1280 720">
+  <defs>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="7" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000" flood-opacity=".55"/></filter>
+  </defs>
+  <g id="states" filter="url(#shadow)"></g><g id="feat"></g><g id="leads"></g><g id="labels"></g>
+</svg>
+<div class="top" id="top"><span class="chip-live" id="live"><i></i><span id="liveWord">LIVE</span></span><span class="chip-tag" id="tag"></span></div>
+<div class="big o" id="big"></div>
+<div class="ctrl o" id="ctrl"></div>
+<div class="when" id="when"><small id="tlab"></small><b id="time"></b></div>
+<div class="bar"><div class="d" id="dem"></div><div class="r" id="rep"></div></div>
+<div class="maj" id="maj"></div>
+<script>
+const $ = id => document.getElementById(id);
+const Q = new URLSearchParams(location.search);
+const LANG = Q.get("lang") || "ja";
+document.documentElement.lang = LANG;
+if (Q.get("hot") === "1") document.documentElement.classList.add("hot");
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+// Albers equal-area conic; returns [x, y] with y pointing down (screen)
+function albers(lon0, lat0, p1, p2) {
+  const r = Math.PI / 180, n = (Math.sin(p1 * r) + Math.sin(p2 * r)) / 2, C = Math.cos(p1 * r) ** 2 + 2 * n * Math.sin(p1 * r);
+  const rho0 = Math.sqrt(C - 2 * n * Math.sin(lat0 * r)) / n;
+  return (lon, lat) => { const rho = Math.sqrt(C - 2 * n * Math.sin(lat * r)) / n, t = n * (lon - lon0) * r;
+                         return [rho * Math.sin(t), -(rho0 - rho * Math.cos(t))]; };
+}
+const PROJ = { L48: albers(-96, 37.5, 29.5, 45.5), AK: albers(-154, 50, 55, 65), HI: albers(-157, 20, 8, 18) };
+// where the label of each featured state goes, relative to its centroid (px); [0, 0] = inside the state
+const LABEL_AT = { TX: [-8, 6], KS: [0, 0], AK: [10, -4], MI: [-34, -96], OH: [96, 26], ME: [-46, -64] };
+// states whose 2026 Senate race is on the ballot (33 Class II + FL and OH specials; data/election/races.json)
+const RACES = "AL AK AR CO DE FL GA ID IL IA KS KY LA ME MA MI MN MS MT NE NH NJ NM NC OH OK OR RI SC SD TN TX VA WV WY".split(" ");
+
+async function main() {
+  const names = Object.fromEntries((Q.get("names") || "TX:TX,AK:AK,KS:KS,ME:ME,OH:OH,MI:MI").split(",").map(x => x.split(":").map(s => s.trim())));
+  const FEAT = Object.keys(names);
+  const geo = await fetch("election/geo/us-states.json").then(r => { if (!r.ok) throw new Error("us-states.json " + r.status); return r.json(); });
+
+  // project every ring; Alaska's Aleutians cross the antimeridian
+  const shapes = geo.features.map(f => {
+    const id = f.properties.id, p = PROJ[id === "AK" || id === "HI" ? id : "L48"];
+    const polys = f.geometry.type === "Polygon" ? [f.geometry.coordinates] : f.geometry.coordinates;
+    return { id, polys: polys.map(poly => poly.map(ring => ring.map(([lo, la]) => p(id === "AK" && lo > 0 ? lo - 360 : lo, la)))) };
+  });
+  const bbox = list => { let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+    for (const s of list) for (const poly of s.polys) for (const ring of poly) for (const [x, y] of ring) { x0 = Math.min(x0, x); y0 = Math.min(y0, y); x1 = Math.max(x1, x); y1 = Math.max(y1, y); }
+    return { x0, y0, x1, y1, w: x1 - x0, h: y1 - y0 }; };
+  const l48 = bbox(shapes.filter(s => s.id !== "AK" && s.id !== "HI"));
+  // insets in L48 units: Alaska at 0.4x below the south-west, Hawaii to its right
+  const place = (id, k, left, bottom) => { const s = shapes.find(t => t.id === id), b = bbox([s]);
+    s.polys = s.polys.map(poly => poly.map(ring => ring.map(([x, y]) => [left + (x - b.x0) * k, bottom - (b.y1 - y) * k]))); return bbox([s]); };
+  // Alaska fills the empty corner under California and Arizona; Hawaii sits between it and Texas
+  const ak = place("AK", 0.46, l48.x0 - 0.03 * l48.w, l48.y1 + 0.04 * l48.h);
+  place("HI", 0.9, ak.x1 + 0.005 * l48.w, l48.y1 + 0.045 * l48.h);
+  const all = bbox(shapes);
+  // fit into the map frame (right side, above the bar)
+  const F = { x: 600, y: 110, w: 650, h: 440 };
+  const k = Math.min(F.w / all.w, F.h / all.h), ox = F.x + (F.w - all.w * k) / 2 - all.x0 * k, oy = F.y + (F.h - all.h * k) / 2 - all.y0 * k;
+  const P = ([x, y]) => [ox + x * k, oy + y * k];
+  const d = s => s.polys.map(poly => poly.map(ring => "M" + ring.map(pt => P(pt).map(n => n.toFixed(1)).join(",")).join("L") + "Z").join("")).join("");
+  const ns = "http://www.w3.org/2000/svg";
+  const add = (g, tag, a, text) => { const e = document.createElementNS(ns, tag); for (const n in a) e.setAttribute(n, a[n]); if (text != null) e.textContent = text; $(g).appendChild(e); return e; };
+  for (const s of shapes) {
+    if (FEAT.includes(s.id)) continue;
+    add("states", "path", { d: d(s), fill: RACES.includes(s.id) ? "var(--race)" : "var(--norace)", stroke: "var(--line)", "stroke-width": 1.1, "stroke-linejoin": "round" });
+  }
+  // featured: gold with a white edge and a soft glow
+  const cent = {}, box = {};
+  for (const s of shapes.filter(t => FEAT.includes(t.id))) {
+    add("feat", "path", { d: d(s), fill: "var(--gold)", stroke: "#fff", "stroke-width": 2.6, "stroke-linejoin": "round", filter: "url(#glow)" });
+    // label anchor: area-weighted centroid of the largest polygon's outer ring
+    let best = null, bestA = 0;
+    for (const poly of s.polys) { const r = poly[0].map(P); let a = 0, cx = 0, cy = 0;
+      for (let i = 0, j = r.length - 1; i < r.length; j = i++) { const f = r[j][0] * r[i][1] - r[i][0] * r[j][1]; a += f; cx += (r[j][0] + r[i][0]) * f; cy += (r[j][1] + r[i][1]) * f; }
+      if (Math.abs(a) > bestA) { bestA = Math.abs(a); best = [cx / (3 * a), cy / (3 * a)]; } }
+    cent[s.id] = best;
+    box[s.id] = Math.max(...s.polys.map(poly => { const xs = poly[0].map(pt => P(pt)[0]); return Math.max(...xs) - Math.min(...xs); }));
+  }
+  // labels (drawn once the fonts are in, so the plates fit): inside the state, or a plate with a leader line
+  const drawn = [];
+  const drawLabels = () => { for (const id of FEAT) {
+    const [cx, cy] = cent[id] || [0, 0], [dx, dy] = LABEL_AT[id] || [0, 0], inside = !dx && !dy || id === "TX" || id === "AK";
+    const lx = cx + dx, ly = cy + dy, size = id === "TX" ? 34 : inside ? 26 : 28;
+    if (!inside) add("leads", "path", { d: `M${cx.toFixed(1)},${cy.toFixed(1)}L${lx.toFixed(1)},${ly.toFixed(1)}`, stroke: "#fff", "stroke-width": 3, "stroke-linecap": "round" });
+    if (!inside) add("leads", "circle", { cx, cy, r: 4.5, fill: "#fff", stroke: "var(--ink)", "stroke-width": 2 });
+    const t = add("labels", "text", { x: lx, y: ly, "text-anchor": "middle", "dominant-baseline": "central", class: "lab",
+      "font-size": size, fill: inside ? "var(--ink)" : "#fff" }, names[id]);
+    if (inside && box[id] && id !== "AK")                  // shrink an inside label to fit its state (Kansas is narrow)
+      for (let fs = size; t.getBBox().width > box[id] * 0.9 && fs > 16; fs -= 1) t.setAttribute("font-size", fs - 1);
+    if (!inside) {                                          // a navy plate with a gold edge behind the label
+      const b = t.getBBox(), pad = 9;
+      const plate = document.createElementNS(ns, "rect");
+      for (const [n, v] of Object.entries({ x: b.x - pad, y: b.y - 3, width: b.width + 2 * pad, height: b.height + 6, rx: 7,
+        fill: "var(--navy-950)", stroke: "var(--gold)", "stroke-width": 3 })) plate.setAttribute(n, v);
+      $("labels").insertBefore(plate, t);
+    }
+    drawn.push({ id, label: names[id], inside, size: +t.getAttribute("font-size") });
+  } };
+
+  // words
+  const live = Q.get("live") ?? "LIVE";
+  $("live").hidden = !live; $("liveWord").textContent = live;
+  $("tag").textContent = Q.get("tag") || ""; $("tag").hidden = !Q.get("tag");
+  $("top").hidden = !live && !Q.get("tag");
+  $("big").innerHTML = (Q.get("bigDot") === "1" ? '<span class="dot"></span>' : "") + esc(Q.get("big") || "LIVE");
+  $("ctrl").textContent = Q.get("ctrl") || "";
+  $("tlab").textContent = Q.get("tlab") || ""; $("tlab").hidden = !Q.get("tlab");
+  $("time").innerHTML = esc(Q.get("time") || "") + (Q.get("time2") ? `<em>${esc(Q.get("time2"))}</em>` : "");
+  $("when").hidden = !Q.get("time");
+  $("dem").textContent = Q.get("dem") || ""; $("rep").textContent = Q.get("rep") || "";
+  $("maj").textContent = Q.get("maj") || "51";
+  await document.fonts.ready;
+  drawLabels();
+
+  // shrink lines that would run into the map, then stack the left column
+  const fit = (id, maxRight, min) => { const e = $(id); let fs = parseFloat(getComputedStyle(e).fontSize);
+    while (e.getBoundingClientRect().right > maxRight && fs > min) { fs -= 2; e.style.fontSize = fs + "px"; } return fs; };
+  fit("big", 640, 90); fit("ctrl", 680, 44); fit("tag", 1240, 22);
+  const timeFs = fit("time", 640, 40);
+  const bigR = $("big").getBoundingClientRect();
+  $("ctrl").style.top = (bigR.bottom + 14) + "px";
+  const ctrlR = $("ctrl").getBoundingClientRect();
+  $("when").style.top = (ctrlR.bottom + 20) + "px";
+  const whenR = $("when").getBoundingClientRect(), barTop = document.querySelector(".bar").getBoundingClientRect().top;
+  if (whenR.bottom > barTop - 24) throw new Error(`left column overflows the bar by ${Math.round(whenR.bottom - barTop + 24)}px`);
+  for (const t of document.querySelectorAll("#labels text")) { const r = t.getBoundingClientRect();
+    if (r.right > 1272 || r.top < 0) throw new Error("map label outside the frame: " + t.textContent); }
+  document.body.dataset.thumbReady = JSON.stringify({ lang: LANG, featured: drawn, timeFontPx: timeFs,
+    text: { big: Q.get("big"), ctrl: Q.get("ctrl"), time: [Q.get("tlab"), Q.get("time"), Q.get("time2")].filter(Boolean).join(" "), tag: Q.get("tag") } });
+}
+main().catch(e => { document.body.dataset.thumbError = String(e && e.stack || e); console.error(e); });
+</script>
+</body>
+</html>

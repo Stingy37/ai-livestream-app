@@ -1,0 +1,35 @@
+{
+  "_comment": "YouTube side of the election stream election-es (scripts/election_youtube.py prepares the broadcast; scripts/youtube_live.py --config this file goes live; the stem names the ingest stream / stream key). The youtube texts are DRAFTS: review against research/election/legal.md rules 18, 23, 43-46 before --create.",
+  "config": {
+    "name": "US Senate Results Desk 2026 (Spanish)"
+  },
+  "defaults": {
+    "language": "es"
+  },
+  "youtube": {
+    "stream_id": "election-es",
+    "title": "🔴 EN VIVO: Resultados Elecciones EE.UU. 2026 | ¿Quién controlará el Senado? Texas, Ohio y más",
+    "description": "Noche electoral en vivo de las elecciones de medio término de 2026 en Estados Unidos: el Senado (35 escaños en juego) y seis contiendas en detalle: Texas, Alaska, Kansas, Maine, Ohio (elección especial) y Míchigan. Conteo oficial por condado, comparación con 2022 y 2024, y los candidatos según sus propias declaraciones.\n\n■ Aviso\nGuion escrito con IA y leído por una voz sintética. Resultados no oficiales de las oficinas electorales estatales. Sin afiliación con ningún medio, campaña ni gobierno.\n・Los resultados son no oficiales hasta su certificación.\n・No declaramos ganadores. Solo citamos las declaraciones de The Associated Press publicadas en medios, con atribución, y las retiramos de inmediato si AP las retira.\n・No usamos encuestas a boca de urna.\n・Horas en hora del Este de EE. UU. (ET).\n\n■ Fuentes oficiales\nSecretaría de Estado de Texas · División de Elecciones de Alaska · Secretaría de Estado de Kansas · Secretaría de Estado de Maine · Secretaría de Estado de Ohio · Secretaría de Estado de Míchigan. Resultados anteriores: oficinas electorales estatales. Mapas: Oficina del Censo de EE. UU.\n\n■ Correcciones\nSi cometemos un error, lo corregimos al aire en la siguiente pasada de la escena y lo anotamos aquí.",
+    "tags": [
+      "elecciones 2026",
+      "elecciones de medio término",
+      "elecciones Estados Unidos",
+      "Senado de Estados Unidos",
+      "resultados electorales",
+      "noche electoral",
+      "Texas",
+      "Alaska",
+      "Kansas",
+      "Maine",
+      "Ohio",
+      "Míchigan",
+      "en vivo"
+    ],
+    "category_id": "25",
+    "default_language": "es",
+    "default_audio_language": "es",
+    "scheduled_start": "2026-11-04T01:27:00+00:00",
+    "privacy_at_create": "public",
+    "thumbnail": "output/youtube/thumb_election_es.jpg"
+  }
+}
