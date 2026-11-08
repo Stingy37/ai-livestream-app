@@ -1,0 +1,765 @@
+{
+ "state": "AK",
+ "name": "Alaska",
+ "fips": "02",
+ "unit_type": "house_district",
+ "statewide": {
+  "pres2024": {
+   "dem": 140026,
+   "rep": 184458,
+   "other": 13693,
+   "total": 338177,
+   "dem_name": "Kamala Harris",
+   "rep_name": "Donald Trump"
+  },
+  "sen_prev": {
+   "year": 2020,
+   "dem": 146068,
+   "rep": 191112,
+   "other": 17407,
+   "total": 354587,
+   "dem_name": "Al Gross",
+   "rep_name": "Dan Sullivan",
+   "winner": "REP",
+   "note": "Al Gross was a registered independent (nonpartisan) who won the Democratic primary and ran as the Alaska Democratic Party's nominee; official results list him under DEM. Recorded here as dem. other = John Wayne Howe (AIP) 16,806 + write-ins 601."
+  },
+  "turnout2022": 267047
+ },
+ "units": [
+  {
+   "id": "AK-HD01",
+   "name": "House District 1",
+   "pres2024": {
+    "dem": 3367,
+    "rep": 4861,
+    "other": 356,
+    "total": 8584
+   },
+   "sen_prev": {
+    "dem": 3554,
+    "rep": 5055,
+    "other": 491,
+    "total": 9100
+   },
+   "turnout2022": 6888
+  },
+  {
+   "id": "AK-HD02",
+   "name": "House District 2",
+   "pres2024": {
+    "dem": 4571,
+    "rep": 4534,
+    "other": 458,
+    "total": 9563
+   },
+   "sen_prev": {
+    "dem": 5426,
+    "rep": 4512,
+    "other": 675,
+    "total": 10613
+   },
+   "turnout2022": 7567
+  },
+  {
+   "id": "AK-HD03",
+   "name": "House District 3",
+   "pres2024": {
+    "dem": 6130,
+    "rep": 4496,
+    "other": 481,
+    "total": 11107
+   },
+   "sen_prev": {
+    "dem": 7219,
+    "rep": 5053,
+    "other": 452,
+    "total": 12724
+   },
+   "turnout2022": 8804
+  },
+  {
+   "id": "AK-HD04",
+   "name": "House District 4",
+   "pres2024": {
+    "dem": 6161,
+    "rep": 2691,
+    "other": 418,
+    "total": 9270
+   },
+   "sen_prev": {
+    "dem": 5848,
+    "rep": 2686,
+    "other": 346,
+    "total": 8880
+   },
+   "turnout2022": 7713
+  },
+  {
+   "id": "AK-HD05",
+   "name": "House District 5",
+   "pres2024": {
+    "dem": 3328,
+    "rep": 4351,
+    "other": 341,
+    "total": 8020
+   },
+   "sen_prev": {
+    "dem": 3330,
+    "rep": 4405,
+    "other": 445,
+    "total": 8180
+   },
+   "turnout2022": 5989
+  },
+  {
+   "id": "AK-HD06",
+   "name": "House District 6",
+   "pres2024": {
+    "dem": 4773,
+    "rep": 6705,
+    "other": 522,
+    "total": 12000
+   },
+   "sen_prev": {
+    "dem": 5004,
+    "rep": 6245,
+    "other": 480,
+    "total": 11729
+   },
+   "turnout2022": 9847
+  },
+  {
+   "id": "AK-HD07",
+   "name": "House District 7",
+   "pres2024": {
+    "dem": 2513,
+    "rep": 6777,
+    "other": 319,
+    "total": 9609
+   },
+   "sen_prev": {
+    "dem": 2432,
+    "rep": 6884,
+    "other": 494,
+    "total": 9810
+   },
+   "turnout2022": 7443
+  },
+  {
+   "id": "AK-HD08",
+   "name": "House District 8",
+   "pres2024": {
+    "dem": 2576,
+    "rep": 7950,
+    "other": 279,
+    "total": 10805
+   },
+   "sen_prev": {
+    "dem": 2796,
+    "rep": 7624,
+    "other": 522,
+    "total": 10942
+   },
+   "turnout2022": 8793
+  },
+  {
+   "id": "AK-HD09",
+   "name": "House District 9",
+   "pres2024": {
+    "dem": 5849,
+    "rep": 5581,
+    "other": 406,
+    "total": 11836
+   },
+   "sen_prev": {
+    "dem": 5711,
+    "rep": 6738,
+    "other": 281,
+    "total": 12730
+   },
+   "turnout2022": 10284
+  },
+  {
+   "id": "AK-HD10",
+   "name": "House District 10",
+   "pres2024": {
+    "dem": 4070,
+    "rep": 4357,
+    "other": 336,
+    "total": 8763
+   },
+   "sen_prev": {
+    "dem": 4435,
+    "rep": 5288,
+    "other": 276,
+    "total": 9999
+   },
+   "turnout2022": 7153
+  },
+  {
+   "id": "AK-HD11",
+   "name": "House District 11",
+   "pres2024": {
+    "dem": 4633,
+    "rep": 4864,
+    "other": 343,
+    "total": 9840
+   },
+   "sen_prev": {
+    "dem": 3914,
+    "rep": 5614,
+    "other": 253,
+    "total": 9781
+   },
+   "turnout2022": 8190
+  },
+  {
+   "id": "AK-HD12",
+   "name": "House District 12",
+   "pres2024": {
+    "dem": 4169,
+    "rep": 4059,
+    "other": 287,
+    "total": 8515
+   },
+   "sen_prev": {
+    "dem": 4367,
+    "rep": 4556,
+    "other": 362,
+    "total": 9285
+   },
+   "turnout2022": 6774
+  },
+  {
+   "id": "AK-HD13",
+   "name": "House District 13",
+   "pres2024": {
+    "dem": 3682,
+    "rep": 3589,
+    "other": 306,
+    "total": 7577
+   },
+   "sen_prev": {
+    "dem": 4065,
+    "rep": 4168,
+    "other": 365,
+    "total": 8598
+   },
+   "turnout2022": 5790
+  },
+  {
+   "id": "AK-HD14",
+   "name": "House District 14",
+   "pres2024": {
+    "dem": 4346,
+    "rep": 2768,
+    "other": 312,
+    "total": 7426
+   },
+   "sen_prev": {
+    "dem": 4622,
+    "rep": 3147,
+    "other": 354,
+    "total": 8123
+   },
+   "turnout2022": 6155
+  },
+  {
+   "id": "AK-HD15",
+   "name": "House District 15",
+   "pres2024": {
+    "dem": 4364,
+    "rep": 4594,
+    "other": 335,
+    "total": 9293
+   },
+   "sen_prev": {
+    "dem": 4275,
+    "rep": 5210,
+    "other": 319,
+    "total": 9804
+   },
+   "turnout2022": 7709
+  },
+  {
+   "id": "AK-HD16",
+   "name": "House District 16",
+   "pres2024": {
+    "dem": 5344,
+    "rep": 3929,
+    "other": 396,
+    "total": 9669
+   },
+   "sen_prev": {
+    "dem": 5345,
+    "rep": 4433,
+    "other": 335,
+    "total": 10113
+   },
+   "turnout2022": 8068
+  },
+  {
+   "id": "AK-HD17",
+   "name": "House District 17",
+   "pres2024": {
+    "dem": 4990,
+    "rep": 2407,
+    "other": 321,
+    "total": 7718
+   },
+   "sen_prev": {
+    "dem": 4743,
+    "rep": 2633,
+    "other": 216,
+    "total": 7592
+   },
+   "turnout2022": 6465
+  },
+  {
+   "id": "AK-HD18",
+   "name": "House District 18",
+   "pres2024": {
+    "dem": 1928,
+    "rep": 2686,
+    "other": 202,
+    "total": 4816
+   },
+   "sen_prev": {
+    "dem": 2550,
+    "rep": 2409,
+    "other": 313,
+    "total": 5272
+   },
+   "turnout2022": 2297
+  },
+  {
+   "id": "AK-HD19",
+   "name": "House District 19",
+   "pres2024": {
+    "dem": 2825,
+    "rep": 1971,
+    "other": 229,
+    "total": 5025
+   },
+   "sen_prev": {
+    "dem": 3365,
+    "rep": 2081,
+    "other": 353,
+    "total": 5799
+   },
+   "turnout2022": 3728
+  },
+  {
+   "id": "AK-HD20",
+   "name": "House District 20",
+   "pres2024": {
+    "dem": 3924,
+    "rep": 3041,
+    "other": 302,
+    "total": 7267
+   },
+   "sen_prev": {
+    "dem": 4280,
+    "rep": 3475,
+    "other": 414,
+    "total": 8169
+   },
+   "turnout2022": 5469
+  },
+  {
+   "id": "AK-HD21",
+   "name": "House District 21",
+   "pres2024": {
+    "dem": 4711,
+    "rep": 3984,
+    "other": 348,
+    "total": 9043
+   },
+   "sen_prev": {
+    "dem": 4715,
+    "rep": 4543,
+    "other": 372,
+    "total": 9630
+   },
+   "turnout2022": 7313
+  },
+  {
+   "id": "AK-HD22",
+   "name": "House District 22",
+   "pres2024": {
+    "dem": 2660,
+    "rep": 2594,
+    "other": 209,
+    "total": 5463
+   },
+   "sen_prev": {
+    "dem": 3359,
+    "rep": 3039,
+    "other": 364,
+    "total": 6762
+   },
+   "turnout2022": 3964
+  },
+  {
+   "id": "AK-HD23",
+   "name": "House District 23",
+   "pres2024": {
+    "dem": 4116,
+    "rep": 6101,
+    "other": 468,
+    "total": 10685
+   },
+   "sen_prev": {
+    "dem": 3774,
+    "rep": 6862,
+    "other": 415,
+    "total": 11051
+   },
+   "turnout2022": 8336
+  },
+  {
+   "id": "AK-HD24",
+   "name": "House District 24",
+   "pres2024": {
+    "dem": 3234,
+    "rep": 6482,
+    "other": 402,
+    "total": 10118
+   },
+   "sen_prev": {
+    "dem": 3260,
+    "rep": 7300,
+    "other": 467,
+    "total": 11027
+   },
+   "turnout2022": 7996
+  },
+  {
+   "id": "AK-HD25",
+   "name": "House District 25",
+   "pres2024": {
+    "dem": 3172,
+    "rep": 6891,
+    "other": 397,
+    "total": 10460
+   },
+   "sen_prev": {
+    "dem": 2911,
+    "rep": 6792,
+    "other": 455,
+    "total": 10158
+   },
+   "turnout2022": 8378
+  },
+  {
+   "id": "AK-HD26",
+   "name": "House District 26",
+   "pres2024": {
+    "dem": 2013,
+    "rep": 7143,
+    "other": 292,
+    "total": 9448
+   },
+   "sen_prev": {
+    "dem": 1736,
+    "rep": 5993,
+    "other": 468,
+    "total": 8197
+   },
+   "turnout2022": 7213
+  },
+  {
+   "id": "AK-HD27",
+   "name": "House District 27",
+   "pres2024": {
+    "dem": 1807,
+    "rep": 6785,
+    "other": 268,
+    "total": 8860
+   },
+   "sen_prev": {
+    "dem": 1741,
+    "rep": 5911,
+    "other": 446,
+    "total": 8098
+   },
+   "turnout2022": 6678
+  },
+  {
+   "id": "AK-HD28",
+   "name": "House District 28",
+   "pres2024": {
+    "dem": 2213,
+    "rep": 6713,
+    "other": 353,
+    "total": 9279
+   },
+   "sen_prev": {
+    "dem": 2322,
+    "rep": 6967,
+    "other": 556,
+    "total": 9845
+   },
+   "turnout2022": 7098
+  },
+  {
+   "id": "AK-HD29",
+   "name": "House District 29",
+   "pres2024": {
+    "dem": 2708,
+    "rep": 7418,
+    "other": 374,
+    "total": 10500
+   },
+   "sen_prev": {
+    "dem": 2680,
+    "rep": 6560,
+    "other": 478,
+    "total": 9718
+   },
+   "turnout2022": 8220
+  },
+  {
+   "id": "AK-HD30",
+   "name": "House District 30",
+   "pres2024": {
+    "dem": 2701,
+    "rep": 7312,
+    "other": 293,
+    "total": 10306
+   },
+   "sen_prev": {
+    "dem": 2693,
+    "rep": 6849,
+    "other": 569,
+    "total": 10111
+   },
+   "turnout2022": 8135
+  },
+  {
+   "id": "AK-HD31",
+   "name": "House District 31",
+   "pres2024": {
+    "dem": 3240,
+    "rep": 3475,
+    "other": 288,
+    "total": 7003
+   },
+   "sen_prev": {
+    "dem": 3553,
+    "rep": 3751,
+    "other": 454,
+    "total": 7758
+   },
+   "turnout2022": 5330
+  },
+  {
+   "id": "AK-HD32",
+   "name": "House District 32",
+   "pres2024": {
+    "dem": 1883,
+    "rep": 3742,
+    "other": 239,
+    "total": 5864
+   },
+   "sen_prev": {
+    "dem": 1741,
+    "rep": 3330,
+    "other": 386,
+    "total": 5457
+   },
+   "turnout2022": 3406
+  },
+  {
+   "id": "AK-HD33",
+   "name": "House District 33",
+   "pres2024": {
+    "dem": 2016,
+    "rep": 6548,
+    "other": 295,
+    "total": 8859
+   },
+   "sen_prev": {
+    "dem": 1915,
+    "rep": 6332,
+    "other": 518,
+    "total": 8765
+   },
+   "turnout2022": 6256
+  },
+  {
+   "id": "AK-HD34",
+   "name": "House District 34",
+   "pres2024": {
+    "dem": 3759,
+    "rep": 5836,
+    "other": 417,
+    "total": 10012
+   },
+   "sen_prev": {
+    "dem": 3219,
+    "rep": 5695,
+    "other": 450,
+    "total": 9364
+   },
+   "turnout2022": 7693
+  },
+  {
+   "id": "AK-HD35",
+   "name": "House District 35",
+   "pres2024": {
+    "dem": 4885,
+    "rep": 4395,
+    "other": 452,
+    "total": 9732
+   },
+   "sen_prev": {
+    "dem": 5170,
+    "rep": 4553,
+    "other": 366,
+    "total": 10089
+   },
+   "turnout2022": 7878
+  },
+  {
+   "id": "AK-HD36",
+   "name": "House District 36",
+   "pres2024": {
+    "dem": 3538,
+    "rep": 5633,
+    "other": 427,
+    "total": 9598
+   },
+   "sen_prev": {
+    "dem": 4547,
+    "rep": 6153,
+    "other": 632,
+    "total": 11332
+   },
+   "turnout2022": 7952
+  },
+  {
+   "id": "AK-HD37",
+   "name": "House District 37",
+   "pres2024": {
+    "dem": 1921,
+    "rep": 2208,
+    "other": 221,
+    "total": 4350
+   },
+   "sen_prev": {
+    "dem": 2378,
+    "rep": 2331,
+    "other": 387,
+    "total": 5096
+   },
+   "turnout2022": 3680
+  },
+  {
+   "id": "AK-HD38",
+   "name": "House District 38",
+   "pres2024": {
+    "dem": 2028,
+    "rep": 1558,
+    "other": 408,
+    "total": 3994
+   },
+   "sen_prev": {
+    "dem": 2744,
+    "rep": 1535,
+    "other": 552,
+    "total": 4831
+   },
+   "turnout2022": 3763
+  },
+  {
+   "id": "AK-HD39",
+   "name": "House District 39",
+   "pres2024": {
+    "dem": 2180,
+    "rep": 1690,
+    "other": 336,
+    "total": 4206
+   },
+   "sen_prev": {
+    "dem": 2383,
+    "rep": 2132,
+    "other": 723,
+    "total": 5238
+   },
+   "turnout2022": 3817
+  },
+  {
+   "id": "AK-HD40",
+   "name": "House District 40",
+   "pres2024": {
+    "dem": 1362,
+    "rep": 1688,
+    "other": 243,
+    "total": 3293
+   },
+   "sen_prev": {
+    "dem": 1599,
+    "rep": 2216,
+    "other": 593,
+    "total": 4408
+   },
+   "turnout2022": 2711
+  }
+ ],
+ "not_in_units": {
+  "note": "HD99 'Fed Overseas Absentee': federal-offices-only ballots from overseas (UOCAVA) voters, which the Division of Elections reports as a separate statewide line outside every house district. statewide = sum(units) + not_in_units.",
+  "pres2024": {
+   "dem": 336,
+   "rep": 51,
+   "other": 14,
+   "total": 401
+  },
+  "sen_prev": {
+   "dem": 347,
+   "rep": 52,
+   "other": 10,
+   "total": 409
+  },
+  "turnout2022": 104
+ },
+ "notes": [
+  "pres2024 and turnout2022 are exact official district figures: the 2022 and 2024 general elections were run on the 2022 house district plan (400 identical precinct codes and names with the same district prefix in both years; JBER split into JBER No.1/No.2, both HD18). District-level Absentee, Early Voting and Question rows count toward their district.",
+  "Statewide numbers are the official certified totals; per-unit sums differ only by the HD99 federal overseas bucket: pres2024 units sum 337776 + HD99 401 (Harris 336, Trump 51, other 14) = 338177; sen_prev units sum 354178 + HD99 409 (Gross 347, Sullivan 52, Howe 10) = 354587; turnout2022 units sum 266943 + HD99 104 = 267047.",
+  "sen_prev per unit is an ESTIMATE. The 2020 race was reported on the old 2013-2021 house districts; it was re-allocated to the 2022+ districts. Method: (1) 2020 Statement of Votes Cast per precinct (441 precincts) incl. write-ins; (2) each old district's Absentee, Early Voting and Question votes (56.0% of in-district votes) were spread over that old district's precincts in proportion to each precinct's election-day votes for the same candidate; (3) each 2020 precinct = the Census 2020 voting district (VTD) with the same code (all 441 matched, no fallback needed) was split across new districts by 2020 Census voting-age population (PL 94-171 P0030001) of its blocks, using the Census 2022 SLDL block equivalency file; (4) integers by largest remainder per candidate so per-unit sums are exact. Election-day votes from precincts wholly inside one new district: 32.2%; from 91 precincts split between new districts: 11.8%; old-HD fallback crosswalk: 0%.",
+  "Sensitivity of the 2020 estimate: versus a plain old-district-to-new-district voting-age-population crosswalk, the per-district Sullivan-Gross margin differs by a median 2.4 points and at most 19.0 points (new HD34).",
+  "turnout2022 = 'Voters Cast' (ballots cast) per house district from the official 2022 Statement of Votes Cast by district, not a governor-race total."
+ ],
+ "sources": [
+  {
+   "what": "pres2024",
+   "publisher": "State of Alaska Division of Elections",
+   "url": "https://www.elections.alaska.gov/results/24GENR/ENRbyPrecinct.csv",
+   "note": "2024 General Election official results by precinct (president, all candidates; no write-in line for president). Statewide checked against the official Election Summary Report https://www.elections.alaska.gov/results/24GENR/ElectionSummaryReport.pdf (Harris 140,026; Trump 184,458; total votes 338,177; ballots cast 340,981)."
+  },
+  {
+   "what": "sen_prev",
+   "publisher": "State of Alaska Division of Elections",
+   "url": "https://www.elections.alaska.gov/results/20GENR/",
+   "note": "2020 General Election official Statement of Votes Cast by old house district, https://www.elections.alaska.gov/results/20GENR/data/sovc/HD{1..40,99}p.pdf (per-precinct incl. write-ins), cross-checked with https://www.elections.alaska.gov/results/20GENR/resultsbyprecinct.txt; statewide from https://www.elections.alaska.gov/results/20GENR/data/sovc/ElectionSummaryReportRPT24.pdf (Sullivan 191,112; Gross 146,068; Howe 16,806; write-in 601; total 354,587). Per-unit values re-allocated to the 2022+ districts (estimate, see notes)."
+  },
+  {
+   "what": "sen_prev crosswalk",
+   "publisher": "US Census Bureau",
+   "url": "https://www2.census.gov/programs-surveys/decennial/rdo/mapping-files/2023/2022-state-legislative-bef/sldl_2022.zip",
+   "note": "02_AK_SLDL22.txt (2020 block -> 2022 state house district); 2020 block -> VTD and old SLDL from https://www2.census.gov/geo/docs/maps-data/data/baf2020/BlockAssign_ST02_AK.zip; block voting-age population from 2020 PL 94-171 https://www2.census.gov/programs-surveys/decennial/2020/data/01-Redistricting_File--PL_94-171/Alaska/ak2020.pl.zip. Public domain."
+  },
+  {
+   "what": "turnout2022",
+   "publisher": "State of Alaska Division of Elections",
+   "url": "https://elections.alaska.gov/results/22GENR/ElectionSummaryReportRPT.pdf",
+   "note": "Statewide ballots cast 267,047 (official). Per district: 'Voters Cast' total of the official 2022 Statement of Votes Cast per house district, https://elections.alaska.gov/results/22GENR/HD{1..40}.pdf, plus HD99.pdf (federal overseas, 104)."
+  },
+  {
+   "what": "units",
+   "publisher": "US Census Bureau",
+   "url": "https://www2.census.gov/geo/tiger/GENZ2024/shp/cb_2024_02_sldl_500k.zip",
+   "note": "AK-HDnn = State House District nn of the 2022 plan (LSY 2024). The Census 2024 SLD block equivalency release (sldl24.zip) lists only states whose districts changed after 2022 and does not include Alaska."
+  }
+ ]
+}

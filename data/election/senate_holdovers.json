@@ -1,0 +1,1198 @@
+{
+ "as_of": "2026-11-02",
+ "description": "US Senate seats NOT up on 2026-11-03 (holdovers), by state and party, plus the current composition. 'senators' = holdovers; 'up_in_2026' = the seat(s) on the 2026 ballot (33 Class II regular + FL and OH Class III specials).",
+ "composition": {
+  "R": 53,
+  "D": 45,
+  "I": 2,
+  "vacant": 0,
+  "total": 100,
+  "independents_caucus_with": "D",
+  "note": "Independents Bernie Sanders (VT) and Angus King (ME) caucus with the Democrats. Changes in the 119th Congress, all Republican to Republican, so the 53-45-2 split is unchanged since 2025-01-03: Jon Husted (OH) for JD Vance, sworn in 2025-01-21; Ashley Moody (FL) for Marco Rubio, 2025-01-21; Alan Armstrong (OK) for Markwayne Mullin (resigned 2026-03-23 to become Secretary of Homeland Security), 2026-03-24, barred by Oklahoma law from running in 2026; Darline Graham (SC) for Lindsey Graham (died 2026-07-11), 2026-07-14. No vacancies as of 2026-11-02."
+ },
+ "holdovers": {
+  "seats": 65,
+  "R": 31,
+  "D": 32,
+  "I": 2
+ },
+ "up_in_2026": {
+  "seats": 35,
+  "R": 22,
+  "D": 13,
+  "I": 0,
+  "regular": 33,
+  "special": [
+   "FL",
+   "OH"
+  ]
+ },
+ "by_state": {
+  "AK": {
+   "R": 1,
+   "D": 0,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Lisa Murkowski",
+     "party": "R",
+     "class": "III",
+     "bioguide_id": "M001153",
+     "next_election": 2028
+    }
+   ],
+   "up_in_2026": [
+    {
+     "name": "Dan Sullivan",
+     "party": "R",
+     "class": "II",
+     "bioguide_id": "S001198",
+     "race": "regular"
+    }
+   ]
+  },
+  "AL": {
+   "R": 1,
+   "D": 0,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Katie Boyd Britt",
+     "party": "R",
+     "class": "III",
+     "bioguide_id": "B001319",
+     "next_election": 2028
+    }
+   ],
+   "up_in_2026": [
+    {
+     "name": "Tommy Tuberville",
+     "party": "R",
+     "class": "II",
+     "bioguide_id": "T000278",
+     "race": "regular"
+    }
+   ]
+  },
+  "AR": {
+   "R": 1,
+   "D": 0,
+   "I": 0,
+   "senators": [
+    {
+     "name": "John Boozman",
+     "party": "R",
+     "class": "III",
+     "bioguide_id": "B001236",
+     "next_election": 2028
+    }
+   ],
+   "up_in_2026": [
+    {
+     "name": "Tom Cotton",
+     "party": "R",
+     "class": "II",
+     "bioguide_id": "C001095",
+     "race": "regular"
+    }
+   ]
+  },
+  "AZ": {
+   "R": 0,
+   "D": 2,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Ruben Gallego",
+     "party": "D",
+     "class": "I",
+     "bioguide_id": "G000574",
+     "next_election": 2030
+    },
+    {
+     "name": "Mark Kelly",
+     "party": "D",
+     "class": "III",
+     "bioguide_id": "K000377",
+     "next_election": 2028
+    }
+   ],
+   "up_in_2026": []
+  },
+  "CA": {
+   "R": 0,
+   "D": 2,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Adam B. Schiff",
+     "party": "D",
+     "class": "I",
+     "bioguide_id": "S001150",
+     "next_election": 2030
+    },
+    {
+     "name": "Alex Padilla",
+     "party": "D",
+     "class": "III",
+     "bioguide_id": "P000145",
+     "next_election": 2028
+    }
+   ],
+   "up_in_2026": []
+  },
+  "CO": {
+   "R": 0,
+   "D": 1,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Michael F. Bennet",
+     "party": "D",
+     "class": "III",
+     "bioguide_id": "B001267",
+     "next_election": 2028
+    }
+   ],
+   "up_in_2026": [
+    {
+     "name": "John W. Hickenlooper",
+     "party": "D",
+     "class": "II",
+     "bioguide_id": "H000273",
+     "race": "regular"
+    }
+   ]
+  },
+  "CT": {
+   "R": 0,
+   "D": 2,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Christopher Murphy",
+     "party": "D",
+     "class": "I",
+     "bioguide_id": "M001169",
+     "next_election": 2030
+    },
+    {
+     "name": "Richard Blumenthal",
+     "party": "D",
+     "class": "III",
+     "bioguide_id": "B001277",
+     "next_election": 2028
+    }
+   ],
+   "up_in_2026": []
+  },
+  "DE": {
+   "R": 0,
+   "D": 1,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Lisa Blunt Rochester",
+     "party": "D",
+     "class": "I",
+     "bioguide_id": "B001303",
+     "next_election": 2030
+    }
+   ],
+   "up_in_2026": [
+    {
+     "name": "Christopher A. Coons",
+     "party": "D",
+     "class": "II",
+     "bioguide_id": "C001088",
+     "race": "regular"
+    }
+   ]
+  },
+  "FL": {
+   "R": 1,
+   "D": 0,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Rick Scott",
+     "party": "R",
+     "class": "I",
+     "bioguide_id": "S001217",
+     "next_election": 2030
+    }
+   ],
+   "up_in_2026": [
+    {
+     "name": "Ashley Moody",
+     "party": "R",
+     "class": "III",
+     "bioguide_id": "M001244",
+     "race": "special"
+    }
+   ]
+  },
+  "GA": {
+   "R": 0,
+   "D": 1,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Raphael G. Warnock",
+     "party": "D",
+     "class": "III",
+     "bioguide_id": "W000790",
+     "next_election": 2028
+    }
+   ],
+   "up_in_2026": [
+    {
+     "name": "Jon Ossoff",
+     "party": "D",
+     "class": "II",
+     "bioguide_id": "O000174",
+     "race": "regular"
+    }
+   ]
+  },
+  "HI": {
+   "R": 0,
+   "D": 2,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Mazie K. Hirono",
+     "party": "D",
+     "class": "I",
+     "bioguide_id": "H001042",
+     "next_election": 2030
+    },
+    {
+     "name": "Brian Schatz",
+     "party": "D",
+     "class": "III",
+     "bioguide_id": "S001194",
+     "next_election": 2028
+    }
+   ],
+   "up_in_2026": []
+  },
+  "IA": {
+   "R": 1,
+   "D": 0,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Chuck Grassley",
+     "party": "R",
+     "class": "III",
+     "bioguide_id": "G000386",
+     "next_election": 2028
+    }
+   ],
+   "up_in_2026": [
+    {
+     "name": "Joni Ernst",
+     "party": "R",
+     "class": "II",
+     "bioguide_id": "E000295",
+     "race": "regular"
+    }
+   ]
+  },
+  "ID": {
+   "R": 1,
+   "D": 0,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Mike Crapo",
+     "party": "R",
+     "class": "III",
+     "bioguide_id": "C000880",
+     "next_election": 2028
+    }
+   ],
+   "up_in_2026": [
+    {
+     "name": "James E. Risch",
+     "party": "R",
+     "class": "II",
+     "bioguide_id": "R000584",
+     "race": "regular"
+    }
+   ]
+  },
+  "IL": {
+   "R": 0,
+   "D": 1,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Tammy Duckworth",
+     "party": "D",
+     "class": "III",
+     "bioguide_id": "D000622",
+     "next_election": 2028
+    }
+   ],
+   "up_in_2026": [
+    {
+     "name": "Richard J. Durbin",
+     "party": "D",
+     "class": "II",
+     "bioguide_id": "D000563",
+     "race": "regular"
+    }
+   ]
+  },
+  "IN": {
+   "R": 2,
+   "D": 0,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Jim Banks",
+     "party": "R",
+     "class": "I",
+     "bioguide_id": "B001299",
+     "next_election": 2030
+    },
+    {
+     "name": "Todd Young",
+     "party": "R",
+     "class": "III",
+     "bioguide_id": "Y000064",
+     "next_election": 2028
+    }
+   ],
+   "up_in_2026": []
+  },
+  "KS": {
+   "R": 1,
+   "D": 0,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Jerry Moran",
+     "party": "R",
+     "class": "III",
+     "bioguide_id": "M000934",
+     "next_election": 2028
+    }
+   ],
+   "up_in_2026": [
+    {
+     "name": "Roger Marshall",
+     "party": "R",
+     "class": "II",
+     "bioguide_id": "M001198",
+     "race": "regular"
+    }
+   ]
+  },
+  "KY": {
+   "R": 1,
+   "D": 0,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Rand Paul",
+     "party": "R",
+     "class": "III",
+     "bioguide_id": "P000603",
+     "next_election": 2028
+    }
+   ],
+   "up_in_2026": [
+    {
+     "name": "Mitch McConnell",
+     "party": "R",
+     "class": "II",
+     "bioguide_id": "M000355",
+     "race": "regular"
+    }
+   ]
+  },
+  "LA": {
+   "R": 1,
+   "D": 0,
+   "I": 0,
+   "senators": [
+    {
+     "name": "John Kennedy",
+     "party": "R",
+     "class": "III",
+     "bioguide_id": "K000393",
+     "next_election": 2028
+    }
+   ],
+   "up_in_2026": [
+    {
+     "name": "Bill Cassidy",
+     "party": "R",
+     "class": "II",
+     "bioguide_id": "C001075",
+     "race": "regular"
+    }
+   ]
+  },
+  "MA": {
+   "R": 0,
+   "D": 1,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Elizabeth Warren",
+     "party": "D",
+     "class": "I",
+     "bioguide_id": "W000817",
+     "next_election": 2030
+    }
+   ],
+   "up_in_2026": [
+    {
+     "name": "Edward J. Markey",
+     "party": "D",
+     "class": "II",
+     "bioguide_id": "M000133",
+     "race": "regular"
+    }
+   ]
+  },
+  "MD": {
+   "R": 0,
+   "D": 2,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Angela D. Alsobrooks",
+     "party": "D",
+     "class": "I",
+     "bioguide_id": "A000382",
+     "next_election": 2030
+    },
+    {
+     "name": "Chris Van Hollen",
+     "party": "D",
+     "class": "III",
+     "bioguide_id": "V000128",
+     "next_election": 2028
+    }
+   ],
+   "up_in_2026": []
+  },
+  "ME": {
+   "R": 0,
+   "D": 0,
+   "I": 1,
+   "senators": [
+    {
+     "name": "Angus S. King Jr.",
+     "party": "I",
+     "class": "I",
+     "bioguide_id": "K000383",
+     "next_election": 2030
+    }
+   ],
+   "up_in_2026": [
+    {
+     "name": "Susan M. Collins",
+     "party": "R",
+     "class": "II",
+     "bioguide_id": "C001035",
+     "race": "regular"
+    }
+   ]
+  },
+  "MI": {
+   "R": 0,
+   "D": 1,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Elissa Slotkin",
+     "party": "D",
+     "class": "I",
+     "bioguide_id": "S001208",
+     "next_election": 2030
+    }
+   ],
+   "up_in_2026": [
+    {
+     "name": "Gary C. Peters",
+     "party": "D",
+     "class": "II",
+     "bioguide_id": "P000595",
+     "race": "regular"
+    }
+   ]
+  },
+  "MN": {
+   "R": 0,
+   "D": 1,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Amy Klobuchar",
+     "party": "D",
+     "class": "I",
+     "bioguide_id": "K000367",
+     "next_election": 2030
+    }
+   ],
+   "up_in_2026": [
+    {
+     "name": "Tina Smith",
+     "party": "D",
+     "class": "II",
+     "bioguide_id": "S001203",
+     "race": "regular"
+    }
+   ]
+  },
+  "MO": {
+   "R": 2,
+   "D": 0,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Josh Hawley",
+     "party": "R",
+     "class": "I",
+     "bioguide_id": "H001089",
+     "next_election": 2030
+    },
+    {
+     "name": "Eric Schmitt",
+     "party": "R",
+     "class": "III",
+     "bioguide_id": "S001227",
+     "next_election": 2028
+    }
+   ],
+   "up_in_2026": []
+  },
+  "MS": {
+   "R": 1,
+   "D": 0,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Roger F. Wicker",
+     "party": "R",
+     "class": "I",
+     "bioguide_id": "W000437",
+     "next_election": 2030
+    }
+   ],
+   "up_in_2026": [
+    {
+     "name": "Cindy Hyde-Smith",
+     "party": "R",
+     "class": "II",
+     "bioguide_id": "H001079",
+     "race": "regular"
+    }
+   ]
+  },
+  "MT": {
+   "R": 1,
+   "D": 0,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Tim Sheehy",
+     "party": "R",
+     "class": "I",
+     "bioguide_id": "S001232",
+     "next_election": 2030
+    }
+   ],
+   "up_in_2026": [
+    {
+     "name": "Steve Daines",
+     "party": "R",
+     "class": "II",
+     "bioguide_id": "D000618",
+     "race": "regular"
+    }
+   ]
+  },
+  "NC": {
+   "R": 1,
+   "D": 0,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Ted Budd",
+     "party": "R",
+     "class": "III",
+     "bioguide_id": "B001305",
+     "next_election": 2028
+    }
+   ],
+   "up_in_2026": [
+    {
+     "name": "Thom Tillis",
+     "party": "R",
+     "class": "II",
+     "bioguide_id": "T000476",
+     "race": "regular"
+    }
+   ]
+  },
+  "ND": {
+   "R": 2,
+   "D": 0,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Kevin Cramer",
+     "party": "R",
+     "class": "I",
+     "bioguide_id": "C001096",
+     "next_election": 2030
+    },
+    {
+     "name": "John Hoeven",
+     "party": "R",
+     "class": "III",
+     "bioguide_id": "H001061",
+     "next_election": 2028
+    }
+   ],
+   "up_in_2026": []
+  },
+  "NE": {
+   "R": 1,
+   "D": 0,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Deb Fischer",
+     "party": "R",
+     "class": "I",
+     "bioguide_id": "F000463",
+     "next_election": 2030
+    }
+   ],
+   "up_in_2026": [
+    {
+     "name": "Pete Ricketts",
+     "party": "R",
+     "class": "II",
+     "bioguide_id": "R000618",
+     "race": "regular"
+    }
+   ]
+  },
+  "NH": {
+   "R": 0,
+   "D": 1,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Margaret Wood Hassan",
+     "party": "D",
+     "class": "III",
+     "bioguide_id": "H001076",
+     "next_election": 2028
+    }
+   ],
+   "up_in_2026": [
+    {
+     "name": "Jeanne Shaheen",
+     "party": "D",
+     "class": "II",
+     "bioguide_id": "S001181",
+     "race": "regular"
+    }
+   ]
+  },
+  "NJ": {
+   "R": 0,
+   "D": 1,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Andy Kim",
+     "party": "D",
+     "class": "I",
+     "bioguide_id": "K000394",
+     "next_election": 2030
+    }
+   ],
+   "up_in_2026": [
+    {
+     "name": "Cory A. Booker",
+     "party": "D",
+     "class": "II",
+     "bioguide_id": "B001288",
+     "race": "regular"
+    }
+   ]
+  },
+  "NM": {
+   "R": 0,
+   "D": 1,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Martin Heinrich",
+     "party": "D",
+     "class": "I",
+     "bioguide_id": "H001046",
+     "next_election": 2030
+    }
+   ],
+   "up_in_2026": [
+    {
+     "name": "Ben Ray Luján",
+     "party": "D",
+     "class": "II",
+     "bioguide_id": "L000570",
+     "race": "regular"
+    }
+   ]
+  },
+  "NV": {
+   "R": 0,
+   "D": 2,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Jacky Rosen",
+     "party": "D",
+     "class": "I",
+     "bioguide_id": "R000608",
+     "next_election": 2030
+    },
+    {
+     "name": "Catherine Cortez Masto",
+     "party": "D",
+     "class": "III",
+     "bioguide_id": "C001113",
+     "next_election": 2028
+    }
+   ],
+   "up_in_2026": []
+  },
+  "NY": {
+   "R": 0,
+   "D": 2,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Kirsten E. Gillibrand",
+     "party": "D",
+     "class": "I",
+     "bioguide_id": "G000555",
+     "next_election": 2030
+    },
+    {
+     "name": "Charles E. Schumer",
+     "party": "D",
+     "class": "III",
+     "bioguide_id": "S000148",
+     "next_election": 2028
+    }
+   ],
+   "up_in_2026": []
+  },
+  "OH": {
+   "R": 1,
+   "D": 0,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Bernie Moreno",
+     "party": "R",
+     "class": "I",
+     "bioguide_id": "M001242",
+     "next_election": 2030
+    }
+   ],
+   "up_in_2026": [
+    {
+     "name": "Jon Husted",
+     "party": "R",
+     "class": "III",
+     "bioguide_id": "H001104",
+     "race": "special"
+    }
+   ]
+  },
+  "OK": {
+   "R": 1,
+   "D": 0,
+   "I": 0,
+   "senators": [
+    {
+     "name": "James Lankford",
+     "party": "R",
+     "class": "III",
+     "bioguide_id": "L000575",
+     "next_election": 2028
+    }
+   ],
+   "up_in_2026": [
+    {
+     "name": "Alan Armstrong",
+     "party": "R",
+     "class": "II",
+     "bioguide_id": "A000383",
+     "race": "regular"
+    }
+   ]
+  },
+  "OR": {
+   "R": 0,
+   "D": 1,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Ron Wyden",
+     "party": "D",
+     "class": "III",
+     "bioguide_id": "W000779",
+     "next_election": 2028
+    }
+   ],
+   "up_in_2026": [
+    {
+     "name": "Jeff Merkley",
+     "party": "D",
+     "class": "II",
+     "bioguide_id": "M001176",
+     "race": "regular"
+    }
+   ]
+  },
+  "PA": {
+   "R": 1,
+   "D": 1,
+   "I": 0,
+   "senators": [
+    {
+     "name": "David McCormick",
+     "party": "R",
+     "class": "I",
+     "bioguide_id": "M001243",
+     "next_election": 2030
+    },
+    {
+     "name": "John Fetterman",
+     "party": "D",
+     "class": "III",
+     "bioguide_id": "F000479",
+     "next_election": 2028
+    }
+   ],
+   "up_in_2026": []
+  },
+  "RI": {
+   "R": 0,
+   "D": 1,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Sheldon Whitehouse",
+     "party": "D",
+     "class": "I",
+     "bioguide_id": "W000802",
+     "next_election": 2030
+    }
+   ],
+   "up_in_2026": [
+    {
+     "name": "Jack Reed",
+     "party": "D",
+     "class": "II",
+     "bioguide_id": "R000122",
+     "race": "regular"
+    }
+   ]
+  },
+  "SC": {
+   "R": 1,
+   "D": 0,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Tim Scott",
+     "party": "R",
+     "class": "III",
+     "bioguide_id": "S001184",
+     "next_election": 2028
+    }
+   ],
+   "up_in_2026": [
+    {
+     "name": "Darline Graham",
+     "party": "R",
+     "class": "II",
+     "bioguide_id": "G000608",
+     "race": "regular"
+    }
+   ]
+  },
+  "SD": {
+   "R": 1,
+   "D": 0,
+   "I": 0,
+   "senators": [
+    {
+     "name": "John Thune",
+     "party": "R",
+     "class": "III",
+     "bioguide_id": "T000250",
+     "next_election": 2028
+    }
+   ],
+   "up_in_2026": [
+    {
+     "name": "Mike Rounds",
+     "party": "R",
+     "class": "II",
+     "bioguide_id": "R000605",
+     "race": "regular"
+    }
+   ]
+  },
+  "TN": {
+   "R": 1,
+   "D": 0,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Marsha Blackburn",
+     "party": "R",
+     "class": "I",
+     "bioguide_id": "B001243",
+     "next_election": 2030
+    }
+   ],
+   "up_in_2026": [
+    {
+     "name": "Bill Hagerty",
+     "party": "R",
+     "class": "II",
+     "bioguide_id": "H000601",
+     "race": "regular"
+    }
+   ]
+  },
+  "TX": {
+   "R": 1,
+   "D": 0,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Ted Cruz",
+     "party": "R",
+     "class": "I",
+     "bioguide_id": "C001098",
+     "next_election": 2030
+    }
+   ],
+   "up_in_2026": [
+    {
+     "name": "John Cornyn",
+     "party": "R",
+     "class": "II",
+     "bioguide_id": "C001056",
+     "race": "regular"
+    }
+   ]
+  },
+  "UT": {
+   "R": 2,
+   "D": 0,
+   "I": 0,
+   "senators": [
+    {
+     "name": "John R. Curtis",
+     "party": "R",
+     "class": "I",
+     "bioguide_id": "C001114",
+     "next_election": 2030
+    },
+    {
+     "name": "Mike Lee",
+     "party": "R",
+     "class": "III",
+     "bioguide_id": "L000577",
+     "next_election": 2028
+    }
+   ],
+   "up_in_2026": []
+  },
+  "VA": {
+   "R": 0,
+   "D": 1,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Tim Kaine",
+     "party": "D",
+     "class": "I",
+     "bioguide_id": "K000384",
+     "next_election": 2030
+    }
+   ],
+   "up_in_2026": [
+    {
+     "name": "Mark R. Warner",
+     "party": "D",
+     "class": "II",
+     "bioguide_id": "W000805",
+     "race": "regular"
+    }
+   ]
+  },
+  "VT": {
+   "R": 0,
+   "D": 1,
+   "I": 1,
+   "senators": [
+    {
+     "name": "Bernard Sanders",
+     "party": "I",
+     "class": "I",
+     "bioguide_id": "S000033",
+     "next_election": 2030
+    },
+    {
+     "name": "Peter Welch",
+     "party": "D",
+     "class": "III",
+     "bioguide_id": "W000800",
+     "next_election": 2028
+    }
+   ],
+   "up_in_2026": []
+  },
+  "WA": {
+   "R": 0,
+   "D": 2,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Maria Cantwell",
+     "party": "D",
+     "class": "I",
+     "bioguide_id": "C000127",
+     "next_election": 2030
+    },
+    {
+     "name": "Patty Murray",
+     "party": "D",
+     "class": "III",
+     "bioguide_id": "M001111",
+     "next_election": 2028
+    }
+   ],
+   "up_in_2026": []
+  },
+  "WI": {
+   "R": 1,
+   "D": 1,
+   "I": 0,
+   "senators": [
+    {
+     "name": "Tammy Baldwin",
+     "party": "D",
+     "class": "I",
+     "bioguide_id": "B001230",
+     "next_election": 2030
+    },
+    {
+     "name": "Ron Johnson",
+     "party": "R",
+     "class": "III",
+     "bioguide_id": "J000293",
+     "next_election": 2028
+    }
+   ],
+   "up_in_2026": []
+  },
+  "WV": {
+   "R": 1,
+   "D": 0,
+   "I": 0,
+   "senators": [
+    {
+     "name": "James C. Justice",
+     "party": "R",
+     "class": "I",
+     "bioguide_id": "J000312",
+     "next_election": 2030
+    }
+   ],
+   "up_in_2026": [
+    {
+     "name": "Shelley Moore Capito",
+     "party": "R",
+     "class": "II",
+     "bioguide_id": "C001047",
+     "race": "regular"
+    }
+   ]
+  },
+  "WY": {
+   "R": 1,
+   "D": 0,
+   "I": 0,
+   "senators": [
+    {
+     "name": "John Barrasso",
+     "party": "R",
+     "class": "I",
+     "bioguide_id": "B001261",
+     "next_election": 2030
+    }
+   ],
+   "up_in_2026": [
+    {
+     "name": "Cynthia M. Lummis",
+     "party": "R",
+     "class": "II",
+     "bioguide_id": "L000571",
+     "race": "regular"
+    }
+   ]
+  }
+ },
+ "sources": [
+  {
+   "what": "current senators, party, class",
+   "publisher": "United States Senate",
+   "url": "https://www.senate.gov/general/contact_information/senators_cfm.xml",
+   "note": "Fetched 2026-11-02 (Last-Modified 2026-10-08); 100 members, 53 R / 45 D / 2 I."
+  },
+  {
+   "what": "composition",
+   "publisher": "United States Senate (Senate Historical Office), Party Division",
+   "url": "https://www.senate.gov/about/parties-leadership/party-division.htm",
+   "note": "119th Congress, 2nd session: 53 Republicans, 45 Democrats, 2 Independents, 0 vacant."
+  },
+  {
+   "what": "appointments 2025-2026",
+   "publisher": "United States Senate, Appointed Senators",
+   "url": "https://www.senate.gov/senators/AppointedSenators.htm",
+   "note": "Husted (R-OH) and Moody (R-FL) 2025-01-21; Armstrong (R-OK) 2026-03-24; Darline Graham (R-SC) appointed 2026-07-13, sworn in 2026-07-14."
+  },
+  {
+   "what": "class lists",
+   "publisher": "United States Senate",
+   "url": "https://www.senate.gov/senators/Class_II.htm"
+  },
+  {
+   "what": "dates of Mullin's resignation and Lindsey Graham's death (secondary)",
+   "publisher": "Wikipedia, '2026 United States Senate elections' (citing NPR 2026-03-23 and The Washington Post 2026-03-24)",
+   "url": "https://en.wikipedia.org/wiki/2026_United_States_Senate_elections",
+   "note": "Fetched 2026-11-02. Not confirmed on senate.gov, which does confirm both replacement appointments."
+  }
+ ]
+}

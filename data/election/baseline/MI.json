@@ -1,0 +1,1471 @@
+{
+ "state": "MI",
+ "name": "Michigan",
+ "fips": "26",
+ "unit_type": "county",
+ "statewide": {
+  "pres2024": {
+   "dem": 2736533,
+   "rep": 2816636,
+   "other": 111017,
+   "total": 5664186,
+   "dem_name": "Kamala Harris",
+   "rep_name": "Donald Trump"
+  },
+  "sen_prev": {
+   "dem": 2734568,
+   "rep": 2642233,
+   "other": 102919,
+   "total": 5479720,
+   "year": 2020,
+   "dem_name": "Gary Peters",
+   "rep_name": "John James",
+   "winner": "DEM"
+  },
+  "turnout2022": 4500400
+ },
+ "units": [
+  {
+   "id": "26001",
+   "name": "Alcona",
+   "pres2024": {
+    "dem": 2140,
+    "rep": 5257,
+    "other": 86,
+    "total": 7483
+   },
+   "sen_prev": {
+    "dem": 2284,
+    "rep": 4614,
+    "other": 99,
+    "total": 6997
+   },
+   "turnout2022": 6030
+  },
+  {
+   "id": "26003",
+   "name": "Alger",
+   "pres2024": {
+    "dem": 2075,
+    "rep": 3116,
+    "other": 67,
+    "total": 5258
+   },
+   "sen_prev": {
+    "dem": 2089,
+    "rep": 2919,
+    "other": 74,
+    "total": 5082
+   },
+   "turnout2022": 4357
+  },
+  {
+   "id": "26005",
+   "name": "Allegan",
+   "pres2024": {
+    "dem": 25627,
+    "rep": 45202,
+    "other": 1070,
+    "total": 71899
+   },
+   "sen_prev": {
+    "dem": 22939,
+    "rep": 42362,
+    "other": 1144,
+    "total": 66445
+   },
+   "turnout2022": 57638
+  },
+  {
+   "id": "26007",
+   "name": "Alpena",
+   "pres2024": {
+    "dem": 6038,
+    "rep": 10967,
+    "other": 208,
+    "total": 17213
+   },
+   "sen_prev": {
+    "dem": 6273,
+    "rep": 10257,
+    "other": 241,
+    "total": 16771
+   },
+   "turnout2022": 14088
+  },
+  {
+   "id": "26009",
+   "name": "Antrim",
+   "pres2024": {
+    "dem": 6330,
+    "rep": 10341,
+    "other": 212,
+    "total": 16883
+   },
+   "sen_prev": {
+    "dem": 5758,
+    "rep": 9924,
+    "other": 195,
+    "total": 15877
+   },
+   "turnout2022": 14107
+  },
+  {
+   "id": "26011",
+   "name": "Arenac",
+   "pres2024": {
+    "dem": 2662,
+    "rep": 6379,
+    "other": 117,
+    "total": 9158
+   },
+   "sen_prev": {
+    "dem": 3085,
+    "rep": 5443,
+    "other": 184,
+    "total": 8712
+   },
+   "turnout2022": 7245
+  },
+  {
+   "id": "26013",
+   "name": "Baraga",
+   "pres2024": {
+    "dem": 1488,
+    "rep": 2779,
+    "other": 65,
+    "total": 4332
+   },
+   "sen_prev": {
+    "dem": 1528,
+    "rep": 2409,
+    "other": 63,
+    "total": 4000
+   },
+   "turnout2022": 3477
+  },
+  {
+   "id": "26015",
+   "name": "Barry",
+   "pres2024": {
+    "dem": 12391,
+    "rep": 25650,
+    "other": 584,
+    "total": 38625
+   },
+   "sen_prev": {
+    "dem": 11369,
+    "rep": 23499,
+    "other": 702,
+    "total": 35570
+   },
+   "turnout2022": 30895
+  },
+  {
+   "id": "26017",
+   "name": "Bay",
+   "pres2024": {
+    "dem": 25767,
+    "rep": 34792,
+    "other": 779,
+    "total": 61338
+   },
+   "sen_prev": {
+    "dem": 27072,
+    "rep": 31314,
+    "other": 1086,
+    "total": 59472
+   },
+   "turnout2022": 50150
+  },
+  {
+   "id": "26019",
+   "name": "Benzie",
+   "pres2024": {
+    "dem": 5780,
+    "rep": 6895,
+    "other": 171,
+    "total": 12846
+   },
+   "sen_prev": {
+    "dem": 5328,
+    "rep": 6692,
+    "other": 149,
+    "total": 12169
+   },
+   "turnout2022": 10762
+  },
+  {
+   "id": "26021",
+   "name": "Berrien",
+   "pres2024": {
+    "dem": 38323,
+    "rep": 44975,
+    "other": 1190,
+    "total": 84488
+   },
+   "sen_prev": {
+    "dem": 34777,
+    "rep": 44801,
+    "other": 1541,
+    "total": 81119
+   },
+   "turnout2022": 64498
+  },
+  {
+   "id": "26023",
+   "name": "Branch",
+   "pres2024": {
+    "dem": 5911,
+    "rep": 14848,
+    "other": 330,
+    "total": 21089
+   },
+   "sen_prev": {
+    "dem": 6119,
+    "rep": 13682,
+    "other": 479,
+    "total": 20280
+   },
+   "turnout2022": 16256
+  },
+  {
+   "id": "26025",
+   "name": "Calhoun",
+   "pres2024": {
+    "dem": 28988,
+    "rep": 38606,
+    "other": 911,
+    "total": 68505
+   },
+   "sen_prev": {
+    "dem": 28145,
+    "rep": 35786,
+    "other": 1625,
+    "total": 65556
+   },
+   "turnout2022": 51955
+  },
+  {
+   "id": "26027",
+   "name": "Cass",
+   "pres2024": {
+    "dem": 9050,
+    "rep": 18505,
+    "other": 316,
+    "total": 27871
+   },
+   "sen_prev": {
+    "dem": 8565,
+    "rep": 16814,
+    "other": 472,
+    "total": 25851
+   },
+   "turnout2022": 20490
+  },
+  {
+   "id": "26029",
+   "name": "Charlevoix",
+   "pres2024": {
+    "dem": 7197,
+    "rep": 10183,
+    "other": 281,
+    "total": 17661
+   },
+   "sen_prev": {
+    "dem": 6664,
+    "rep": 10030,
+    "other": 194,
+    "total": 16888
+   },
+   "turnout2022": 14796
+  },
+  {
+   "id": "26031",
+   "name": "Cheboygan",
+   "pres2024": {
+    "dem": 5543,
+    "rep": 10653,
+    "other": 227,
+    "total": 16423
+   },
+   "sen_prev": {
+    "dem": 5475,
+    "rep": 10026,
+    "other": 233,
+    "total": 15734
+   },
+   "turnout2022": 13454
+  },
+  {
+   "id": "26033",
+   "name": "Chippewa",
+   "pres2024": {
+    "dem": 6796,
+    "rep": 11249,
+    "other": 320,
+    "total": 18365
+   },
+   "sen_prev": {
+    "dem": 6729,
+    "rep": 10497,
+    "other": 263,
+    "total": 17489
+   },
+   "turnout2022": 14658
+  },
+  {
+   "id": "26035",
+   "name": "Clare",
+   "pres2024": {
+    "dem": 5273,
+    "rep": 11772,
+    "other": 243,
+    "total": 17288
+   },
+   "sen_prev": {
+    "dem": 5372,
+    "rep": 10468,
+    "other": 268,
+    "total": 16108
+   },
+   "turnout2022": 13321
+  },
+  {
+   "id": "26037",
+   "name": "Clinton",
+   "pres2024": {
+    "dem": 22450,
+    "rep": 26751,
+    "other": 785,
+    "total": 49986
+   },
+   "sen_prev": {
+    "dem": 21490,
+    "rep": 25269,
+    "other": 656,
+    "total": 47415
+   },
+   "turnout2022": 41506
+  },
+  {
+   "id": "26039",
+   "name": "Crawford",
+   "pres2024": {
+    "dem": 2752,
+    "rep": 5613,
+    "other": 111,
+    "total": 8476
+   },
+   "sen_prev": {
+    "dem": 2653,
+    "rep": 5021,
+    "other": 106,
+    "total": 7780
+   },
+   "turnout2022": 6716
+  },
+  {
+   "id": "26041",
+   "name": "Delta",
+   "pres2024": {
+    "dem": 7462,
+    "rep": 14109,
+    "other": 303,
+    "total": 21874
+   },
+   "sen_prev": {
+    "dem": 7827,
+    "rep": 12828,
+    "other": 262,
+    "total": 20917
+   },
+   "turnout2022": 17474
+  },
+  {
+   "id": "26043",
+   "name": "Dickinson",
+   "pres2024": {
+    "dem": 4763,
+    "rep": 10324,
+    "other": 225,
+    "total": 15312
+   },
+   "sen_prev": {
+    "dem": 4881,
+    "rep": 9431,
+    "other": 174,
+    "total": 14486
+   },
+   "turnout2022": 12212
+  },
+  {
+   "id": "26045",
+   "name": "Eaton",
+   "pres2024": {
+    "dem": 31056,
+    "rep": 33102,
+    "other": 1050,
+    "total": 65208
+   },
+   "sen_prev": {
+    "dem": 31460,
+    "rep": 30876,
+    "other": 1251,
+    "total": 63587
+   },
+   "turnout2022": 53964
+  },
+  {
+   "id": "26047",
+   "name": "Emmet",
+   "pres2024": {
+    "dem": 10005,
+    "rep": 12465,
+    "other": 381,
+    "total": 22851
+   },
+   "sen_prev": {
+    "dem": 9216,
+    "rep": 12506,
+    "other": 300,
+    "total": 22022
+   },
+   "turnout2022": 19338
+  },
+  {
+   "id": "26049",
+   "name": "Genesee",
+   "pres2024": {
+    "dem": 114670,
+    "rep": 105303,
+    "other": 3295,
+    "total": 223268
+   },
+   "sen_prev": {
+    "dem": 120380,
+    "rep": 94505,
+    "other": 4225,
+    "total": 219110
+   },
+   "turnout2022": 172823
+  },
+  {
+   "id": "26051",
+   "name": "Gladwin",
+   "pres2024": {
+    "dem": 4501,
+    "rep": 10809,
+    "other": 178,
+    "total": 15488
+   },
+   "sen_prev": {
+    "dem": 4905,
+    "rep": 9245,
+    "other": 214,
+    "total": 14364
+   },
+   "turnout2022": 12122
+  },
+  {
+   "id": "26053",
+   "name": "Gogebic",
+   "pres2024": {
+    "dem": 3385,
+    "rep": 4803,
+    "other": 107,
+    "total": 8295
+   },
+   "sen_prev": {
+    "dem": 3556,
+    "rep": 4436,
+    "other": 140,
+    "total": 8132
+   },
+   "turnout2022": 6504
+  },
+  {
+   "id": "26055",
+   "name": "Grand Traverse",
+   "pres2024": {
+    "dem": 30339,
+    "rep": 31423,
+    "other": 1010,
+    "total": 62772
+   },
+   "sen_prev": {
+    "dem": 27291,
+    "rep": 31792,
+    "other": 757,
+    "total": 59840
+   },
+   "turnout2022": 52760
+  },
+  {
+   "id": "26057",
+   "name": "Gratiot",
+   "pres2024": {
+    "dem": 6682,
+    "rep": 12894,
+    "other": 272,
+    "total": 19848
+   },
+   "sen_prev": {
+    "dem": 6856,
+    "rep": 11746,
+    "other": 346,
+    "total": 18948
+   },
+   "turnout2022": 15471
+  },
+  {
+   "id": "26059",
+   "name": "Hillsdale",
+   "pres2024": {
+    "dem": 5875,
+    "rep": 18631,
+    "other": 322,
+    "total": 24828
+   },
+   "sen_prev": {
+    "dem": 6237,
+    "rep": 16227,
+    "other": 478,
+    "total": 22942
+   },
+   "turnout2022": 18787
+  },
+  {
+   "id": "26061",
+   "name": "Houghton",
+   "pres2024": {
+    "dem": 7881,
+    "rep": 11181,
+    "other": 312,
+    "total": 19374
+   },
+   "sen_prev": {
+    "dem": 7941,
+    "rep": 10151,
+    "other": 258,
+    "total": 18350
+   },
+   "turnout2022": 15582
+  },
+  {
+   "id": "26063",
+   "name": "Huron",
+   "pres2024": {
+    "dem": 5522,
+    "rep": 13224,
+    "other": 223,
+    "total": 18969
+   },
+   "sen_prev": {
+    "dem": 6021,
+    "rep": 11730,
+    "other": 225,
+    "total": 17976
+   },
+   "turnout2022": 15124
+  },
+  {
+   "id": "26065",
+   "name": "Ingham",
+   "pres2024": {
+    "dem": 94542,
+    "rep": 50564,
+    "other": 2995,
+    "total": 148101
+   },
+   "sen_prev": {
+    "dem": 92378,
+    "rep": 48378,
+    "other": 2801,
+    "total": 143557
+   },
+   "turnout2022": 119792
+  },
+  {
+   "id": "26067",
+   "name": "Ionia",
+   "pres2024": {
+    "dem": 11338,
+    "rep": 22179,
+    "other": 504,
+    "total": 34021
+   },
+   "sen_prev": {
+    "dem": 10639,
+    "rep": 20361,
+    "other": 762,
+    "total": 31762
+   },
+   "turnout2022": 27424
+  },
+  {
+   "id": "26069",
+   "name": "Iosco",
+   "pres2024": {
+    "dem": 5344,
+    "rep": 10155,
+    "other": 232,
+    "total": 15731
+   },
+   "sen_prev": {
+    "dem": 5804,
+    "rep": 9040,
+    "other": 291,
+    "total": 15135
+   },
+   "turnout2022": 12753
+  },
+  {
+   "id": "26071",
+   "name": "Iron",
+   "pres2024": {
+    "dem": 2441,
+    "rep": 4501,
+    "other": 85,
+    "total": 7027
+   },
+   "sen_prev": {
+    "dem": 2554,
+    "rep": 4063,
+    "other": 102,
+    "total": 6719
+   },
+   "turnout2022": 5684
+  },
+  {
+   "id": "26073",
+   "name": "Isabella",
+   "pres2024": {
+    "dem": 14011,
+    "rep": 16320,
+    "other": 504,
+    "total": 30835
+   },
+   "sen_prev": {
+    "dem": 13849,
+    "rep": 14673,
+    "other": 563,
+    "total": 29085
+   },
+   "turnout2022": 24401
+  },
+  {
+   "id": "26075",
+   "name": "Jackson",
+   "pres2024": {
+    "dem": 32348,
+    "rep": 50199,
+    "other": 1280,
+    "total": 83827
+   },
+   "sen_prev": {
+    "dem": 32649,
+    "rep": 45054,
+    "other": 1978,
+    "total": 79681
+   },
+   "turnout2022": 65246
+  },
+  {
+   "id": "26077",
+   "name": "Kalamazoo",
+   "pres2024": {
+    "dem": 84501,
+    "rep": 58671,
+    "other": 2538,
+    "total": 145710
+   },
+   "sen_prev": {
+    "dem": 78842,
+    "rep": 60227,
+    "other": 3146,
+    "total": 142215
+   },
+   "turnout2022": 117583
+  },
+  {
+   "id": "26079",
+   "name": "Kalkaska",
+   "pres2024": {
+    "dem": 3206,
+    "rep": 8149,
+    "other": 174,
+    "total": 11529
+   },
+   "sen_prev": {
+    "dem": 3013,
+    "rep": 7328,
+    "other": 172,
+    "total": 10513
+   },
+   "turnout2022": 8930
+  },
+  {
+   "id": "26081",
+   "name": "Kent",
+   "pres2024": {
+    "dem": 192668,
+    "rep": 172720,
+    "other": 6559,
+    "total": 371947
+   },
+   "sen_prev": {
+    "dem": 175256,
+    "rep": 176795,
+    "other": 6626,
+    "total": 358677
+   },
+   "turnout2022": 301804
+  },
+  {
+   "id": "26083",
+   "name": "Keweenaw",
+   "pres2024": {
+    "dem": 690,
+    "rep": 896,
+    "other": 25,
+    "total": 1611
+   },
+   "sen_prev": {
+    "dem": 686,
+    "rep": 837,
+    "other": 12,
+    "total": 1535
+   },
+   "turnout2022": 1401
+  },
+  {
+   "id": "26085",
+   "name": "Lake",
+   "pres2024": {
+    "dem": 2298,
+    "rep": 4523,
+    "other": 94,
+    "total": 6915
+   },
+   "sen_prev": {
+    "dem": 2286,
+    "rep": 3804,
+    "other": 134,
+    "total": 6224
+   },
+   "turnout2022": 5312
+  },
+  {
+   "id": "26087",
+   "name": "Lapeer",
+   "pres2024": {
+    "dem": 16338,
+    "rep": 38398,
+    "other": 703,
+    "total": 55439
+   },
+   "sen_prev": {
+    "dem": 16590,
+    "rep": 34340,
+    "other": 1007,
+    "total": 51937
+   },
+   "turnout2022": 44198
+  },
+  {
+   "id": "26089",
+   "name": "Leelanau",
+   "pres2024": {
+    "dem": 9406,
+    "rep": 8035,
+    "other": 244,
+    "total": 17685
+   },
+   "sen_prev": {
+    "dem": 8277,
+    "rep": 8380,
+    "other": 178,
+    "total": 16835
+   },
+   "turnout2022": 15578
+  },
+  {
+   "id": "26091",
+   "name": "Lenawee",
+   "pres2024": {
+    "dem": 20787,
+    "rep": 33463,
+    "other": 766,
+    "total": 55016
+   },
+   "sen_prev": {
+    "dem": 19767,
+    "rep": 31659,
+    "other": 1091,
+    "total": 52517
+   },
+   "turnout2022": 43200
+  },
+  {
+   "id": "26093",
+   "name": "Livingston",
+   "pres2024": {
+    "dem": 49503,
+    "rep": 81217,
+    "other": 1728,
+    "total": 132448
+   },
+   "sen_prev": {
+    "dem": 46118,
+    "rep": 77802,
+    "other": 1797,
+    "total": 125717
+   },
+   "turnout2022": 109658
+  },
+  {
+   "id": "26095",
+   "name": "Luce",
+   "pres2024": {
+    "dem": 769,
+    "rep": 2170,
+    "other": 46,
+    "total": 2985
+   },
+   "sen_prev": {
+    "dem": 855,
+    "rep": 2070,
+    "other": 50,
+    "total": 2975
+   },
+   "turnout2022": 2382
+  },
+  {
+   "id": "26097",
+   "name": "Mackinac",
+   "pres2024": {
+    "dem": 2675,
+    "rep": 4476,
+    "other": 87,
+    "total": 7238
+   },
+   "sen_prev": {
+    "dem": 2638,
+    "rep": 4263,
+    "other": 84,
+    "total": 6985
+   },
+   "turnout2022": 6054
+  },
+  {
+   "id": "26099",
+   "name": "Macomb",
+   "pres2024": {
+    "dem": 214977,
+    "rep": 284660,
+    "other": 9515,
+    "total": 509152
+   },
+   "sen_prev": {
+    "dem": 224448,
+    "rep": 252052,
+    "other": 9982,
+    "total": 486482
+   },
+   "turnout2022": 388046
+  },
+  {
+   "id": "26101",
+   "name": "Manistee",
+   "pres2024": {
+    "dem": 6309,
+    "rep": 8748,
+    "other": 240,
+    "total": 15297
+   },
+   "sen_prev": {
+    "dem": 5995,
+    "rep": 8356,
+    "other": 212,
+    "total": 14563
+   },
+   "turnout2022": 12730
+  },
+  {
+   "id": "26103",
+   "name": "Marquette",
+   "pres2024": {
+    "dem": 20866,
+    "rep": 17459,
+    "other": 684,
+    "total": 39009
+   },
+   "sen_prev": {
+    "dem": 20408,
+    "rep": 16247,
+    "other": 523,
+    "total": 37178
+   },
+   "turnout2022": 31617
+  },
+  {
+   "id": "26105",
+   "name": "Mason",
+   "pres2024": {
+    "dem": 6973,
+    "rep": 10830,
+    "other": 261,
+    "total": 18064
+   },
+   "sen_prev": {
+    "dem": 6660,
+    "rep": 10238,
+    "other": 260,
+    "total": 17158
+   },
+   "turnout2022": 14879
+  },
+  {
+   "id": "26107",
+   "name": "Mecosta",
+   "pres2024": {
+    "dem": 7688,
+    "rep": 14445,
+    "other": 356,
+    "total": 22489
+   },
+   "sen_prev": {
+    "dem": 7228,
+    "rep": 13275,
+    "other": 353,
+    "total": 20856
+   },
+   "turnout2022": 17628
+  },
+  {
+   "id": "26109",
+   "name": "Menominee",
+   "pres2024": {
+    "dem": 4256,
+    "rep": 8647,
+    "other": 157,
+    "total": 13060
+   },
+   "sen_prev": {
+    "dem": 4230,
+    "rep": 7795,
+    "other": 239,
+    "total": 12264
+   },
+   "turnout2022": 9755
+  },
+  {
+   "id": "26111",
+   "name": "Midland",
+   "pres2024": {
+    "dem": 20926,
+    "rep": 28571,
+    "other": 804,
+    "total": 50301
+   },
+   "sen_prev": {
+    "dem": 19927,
+    "rep": 28057,
+    "other": 665,
+    "total": 48649
+   },
+   "turnout2022": 41513
+  },
+  {
+   "id": "26113",
+   "name": "Missaukee",
+   "pres2024": {
+    "dem": 1945,
+    "rep": 7066,
+    "other": 141,
+    "total": 9152
+   },
+   "sen_prev": {
+    "dem": 1999,
+    "rep": 6598,
+    "other": 110,
+    "total": 8707
+   },
+   "turnout2022": 7492
+  },
+  {
+   "id": "26115",
+   "name": "Monroe",
+   "pres2024": {
+    "dem": 32622,
+    "rep": 57405,
+    "other": 1329,
+    "total": 91356
+   },
+   "sen_prev": {
+    "dem": 32721,
+    "rep": 50580,
+    "other": 1931,
+    "total": 85232
+   },
+   "turnout2022": 69672
+  },
+  {
+   "id": "26117",
+   "name": "Montcalm",
+   "pres2024": {
+    "dem": 10368,
+    "rep": 23946,
+    "other": 531,
+    "total": 34845
+   },
+   "sen_prev": {
+    "dem": 9714,
+    "rep": 21146,
+    "other": 768,
+    "total": 31628
+   },
+   "turnout2022": 26636
+  },
+  {
+   "id": "26119",
+   "name": "Montmorency",
+   "pres2024": {
+    "dem": 1702,
+    "rep": 4599,
+    "other": 90,
+    "total": 6391
+   },
+   "sen_prev": {
+    "dem": 1717,
+    "rep": 4029,
+    "other": 59,
+    "total": 5805
+   },
+   "turnout2022": 5171
+  },
+  {
+   "id": "26121",
+   "name": "Muskegon",
+   "pres2024": {
+    "dem": 46028,
+    "rep": 47733,
+    "other": 1420,
+    "total": 95181
+   },
+   "sen_prev": {
+    "dem": 44192,
+    "rep": 44637,
+    "other": 2224,
+    "total": 91053
+   },
+   "turnout2022": 74369
+  },
+  {
+   "id": "26123",
+   "name": "Newaygo",
+   "pres2024": {
+    "dem": 8131,
+    "rep": 20630,
+    "other": 440,
+    "total": 29201
+   },
+   "sen_prev": {
+    "dem": 7696,
+    "rep": 18593,
+    "other": 607,
+    "total": 26896
+   },
+   "turnout2022": 22892
+  },
+  {
+   "id": "26125",
+   "name": "Oakland",
+   "pres2024": {
+    "dem": 419519,
+    "rep": 337791,
+    "other": 14835,
+    "total": 772145
+   },
+   "sen_prev": {
+    "dem": 418312,
+    "rep": 334629,
+    "other": 10653,
+    "total": 763594
+   },
+   "turnout2022": 635275
+  },
+  {
+   "id": "26127",
+   "name": "Oceana",
+   "pres2024": {
+    "dem": 5085,
+    "rep": 9547,
+    "other": 238,
+    "total": 14870
+   },
+   "sen_prev": {
+    "dem": 4796,
+    "rep": 8808,
+    "other": 316,
+    "total": 13920
+   },
+   "turnout2022": 12193
+  },
+  {
+   "id": "26129",
+   "name": "Ogemaw",
+   "pres2024": {
+    "dem": 3578,
+    "rep": 8879,
+    "other": 165,
+    "total": 12622
+   },
+   "sen_prev": {
+    "dem": 3788,
+    "rep": 7758,
+    "other": 202,
+    "total": 11748
+   },
+   "turnout2022": 9994
+  },
+  {
+   "id": "26131",
+   "name": "Ontonagon",
+   "pres2024": {
+    "dem": 1313,
+    "rep": 2479,
+    "other": 49,
+    "total": 3841
+   },
+   "sen_prev": {
+    "dem": 1464,
+    "rep": 2225,
+    "other": 65,
+    "total": 3754
+   },
+   "turnout2022": 3362
+  },
+  {
+   "id": "26133",
+   "name": "Osceola",
+   "pres2024": {
+    "dem": 3326,
+    "rep": 9639,
+    "other": 219,
+    "total": 13184
+   },
+   "sen_prev": {
+    "dem": 3226,
+    "rep": 8808,
+    "other": 189,
+    "total": 12223
+   },
+   "turnout2022": 10458
+  },
+  {
+   "id": "26135",
+   "name": "Oscoda",
+   "pres2024": {
+    "dem": 1414,
+    "rep": 3716,
+    "other": 62,
+    "total": 5192
+   },
+   "sen_prev": {
+    "dem": 1384,
+    "rep": 3376,
+    "other": 72,
+    "total": 4832
+   },
+   "turnout2022": 4048
+  },
+  {
+   "id": "26137",
+   "name": "Otsego",
+   "pres2024": {
+    "dem": 5052,
+    "rep": 10693,
+    "other": 226,
+    "total": 15971
+   },
+   "sen_prev": {
+    "dem": 4703,
+    "rep": 9727,
+    "other": 200,
+    "total": 14630
+   },
+   "turnout2022": 12905
+  },
+  {
+   "id": "26139",
+   "name": "Ottawa",
+   "pres2024": {
+    "dem": 69653,
+    "rep": 106133,
+    "other": 2721,
+    "total": 178507
+   },
+   "sen_prev": {
+    "dem": 59187,
+    "rep": 106108,
+    "other": 2406,
+    "total": 167701
+   },
+   "turnout2022": 147273
+  },
+  {
+   "id": "26141",
+   "name": "Presque Isle",
+   "pres2024": {
+    "dem": 3036,
+    "rep": 5568,
+    "other": 138,
+    "total": 8742
+   },
+   "sen_prev": {
+    "dem": 3056,
+    "rep": 5167,
+    "other": 71,
+    "total": 8294
+   },
+   "turnout2022": 7349
+  },
+  {
+   "id": "26143",
+   "name": "Roscommon",
+   "pres2024": {
+    "dem": 5290,
+    "rep": 10582,
+    "other": 196,
+    "total": 16068
+   },
+   "sen_prev": {
+    "dem": 5309,
+    "rep": 9385,
+    "other": 195,
+    "total": 14889
+   },
+   "turnout2022": 13079
+  },
+  {
+   "id": "26145",
+   "name": "Saginaw",
+   "pres2024": {
+    "dem": 49515,
+    "rep": 52912,
+    "other": 1419,
+    "total": 103846
+   },
+   "sen_prev": {
+    "dem": 51520,
+    "rep": 49209,
+    "other": 1595,
+    "total": 102324
+   },
+   "turnout2022": 82239
+  },
+  {
+   "id": "26147",
+   "name": "St. Clair",
+   "pres2024": {
+    "dem": 30844,
+    "rep": 64277,
+    "other": 1403,
+    "total": 96524
+   },
+   "sen_prev": {
+    "dem": 31846,
+    "rep": 56476,
+    "other": 2213,
+    "total": 90535
+   },
+   "turnout2022": 75224
+  },
+  {
+   "id": "26149",
+   "name": "St. Joseph",
+   "pres2024": {
+    "dem": 9452,
+    "rep": 19403,
+    "other": 452,
+    "total": 29307
+   },
+   "sen_prev": {
+    "dem": 8824,
+    "rep": 18018,
+    "other": 739,
+    "total": 27581
+   },
+   "turnout2022": 22060
+  },
+  {
+   "id": "26151",
+   "name": "Sanilac",
+   "pres2024": {
+    "dem": 5957,
+    "rep": 17080,
+    "other": 302,
+    "total": 23339
+   },
+   "sen_prev": {
+    "dem": 6244,
+    "rep": 15544,
+    "other": 425,
+    "total": 22213
+   },
+   "turnout2022": 18933
+  },
+  {
+   "id": "26153",
+   "name": "Schoolcraft",
+   "pres2024": {
+    "dem": 1631,
+    "rep": 3196,
+    "other": 71,
+    "total": 4898
+   },
+   "sen_prev": {
+    "dem": 1712,
+    "rep": 2905,
+    "other": 55,
+    "total": 4672
+   },
+   "turnout2022": 3923
+  },
+  {
+   "id": "26155",
+   "name": "Shiawassee",
+   "pres2024": {
+    "dem": 15335,
+    "rep": 24718,
+    "other": 632,
+    "total": 40685
+   },
+   "sen_prev": {
+    "dem": 15830,
+    "rep": 22110,
+    "other": 785,
+    "total": 38725
+   },
+   "turnout2022": 32682
+  },
+  {
+   "id": "26157",
+   "name": "Tuscola",
+   "pres2024": {
+    "dem": 8562,
+    "rep": 21764,
+    "other": 391,
+    "total": 30717
+   },
+   "sen_prev": {
+    "dem": 9422,
+    "rep": 19174,
+    "other": 541,
+    "total": 29137
+   },
+   "turnout2022": 24201
+  },
+  {
+   "id": "26159",
+   "name": "Van Buren",
+   "pres2024": {
+    "dem": 17185,
+    "rep": 23411,
+    "other": 587,
+    "total": 41183
+   },
+   "sen_prev": {
+    "dem": 15944,
+    "rep": 21816,
+    "other": 939,
+    "total": 38699
+   },
+   "turnout2022": 32144
+  },
+  {
+   "id": "26161",
+   "name": "Washtenaw",
+   "pres2024": {
+    "dem": 157152,
+    "rep": 58844,
+    "other": 5546,
+    "total": 221542
+   },
+   "sen_prev": {
+    "dem": 150529,
+    "rep": 60745,
+    "other": 3515,
+    "total": 214789
+   },
+   "turnout2022": 182040
+  },
+  {
+   "id": "26163",
+   "name": "Wayne",
+   "pres2024": {
+    "dem": 537032,
+    "rep": 288860,
+    "other": 30798,
+    "total": 856690
+   },
+   "sen_prev": {
+    "dem": 582367,
+    "rep": 260146,
+    "other": 20306,
+    "total": 862819
+   },
+   "turnout2022": 651513
+  },
+  {
+   "id": "26165",
+   "name": "Wexford",
+   "pres2024": {
+    "dem": 6224,
+    "rep": 12968,
+    "other": 284,
+    "total": 19476
+   },
+   "sen_prev": {
+    "dem": 5684,
+    "rep": 12122,
+    "other": 306,
+    "total": 18112
+   },
+   "turnout2022": 17145
+  }
+ ],
+ "notes": [
+  "Per-county sums equal the statewide certified totals exactly for pres2024, sen_prev and turnout2022 (Michigan reports absentee/UOCAVA ballots within the local jurisdictions, so there is no statewide-only remainder).",
+  "pres2024 other = Stein 44,607 + Kennedy 26,785 (remained on the Michigan ballot) + Oliver 22,440 + West 6,664 + Terry 6,509 + Kishore 2,330 + Sonski 1,212 + de la Cruz 458 + other declared write-ins 12.",
+  "pres2024 county figures come from MEDSL (CC0) rather than a state file because the official Michigan sites block automated access from this network; statewide totals verified against the certified figures."
+ ],
+ "sources": [
+  {
+   "what": "pres2024",
+   "publisher": "MIT Election Data + Science Lab (MEDSL), 2024 precinct-level returns (CC0), compiled from the Michigan Secretary of State / Bureau of Elections official precinct results (mielections.us)",
+   "url": "https://github.com/MEDSL/2024-elections-official/blob/main/individual_states/mi24.zip",
+   "note": "Fallback: michigan.gov and mvic.sos.state.mi.us (official 2024 county results) return HTTP 403 to automated clients and mielections.us timed out; no archived copy of the 2024 county file exists. US PRESIDENT precinct rows (mode TOTAL) summed by county_fips, including the SOS \"{Statistical Adjustments}\" lines (5 small negative rows, county canvass corrections). Statewide sums equal the certified totals exactly (MI SOS official results updated 2024-11-22, Counties 83/83; FEC 2024 compilation). Dataverse: https://dataverse.harvard.edu/dataverse/2024_precincts"
+  },
+  {
+   "what": "sen_prev",
+   "publisher": "Michigan Secretary of State, Bureau of Elections",
+   "url": "https://mielections.us/election/results/DATA/2020GEN_MI_CENR_BY_COUNTY.xls",
+   "note": "Official county results file (footer: RESULTS: OFFICIAL, RUNDATE 11/23/2020), office code 05 United States Senator. Retrieved from the Internet Archive capture https://web.archive.org/web/20240116132320/https://mielections.us/election/results/DATA/2020GEN_MI_CENR_BY_COUNTY.xls because mielections.us is unreachable from this network. other = Valerie Willis (UST) 50,597 + Marcia Squier (GRN) 39,217 + Doug Dern (NLP) 13,093 + declared write-ins 12. County code n maps to FIPS 26(2n-1)."
+  },
+  {
+   "what": "turnout2022",
+   "publisher": "Michigan Secretary of State, Bureau of Elections",
+   "url": "https://mielections.us/election/results/DATA/2022GEN_MI_CENR_TURNOUT.xls",
+   "note": "Official 2022-11-08 general election turnout by county, \"County Voters\" = ballots cast (footer: RESULTS: OFFICIAL, RUNDATE 12/22/2022; statewide 4,500,400). Retrieved from the Internet Archive capture https://web.archive.org/web/20240116141509/https://mielections.us/election/results/DATA/2022GEN_MI_CENR_TURNOUT.xls. (For reference, 2022 governor total votes were 4,461,972.)"
+  },
+  {
+   "what": "statewide cross-check",
+   "publisher": "Federal Election Commission",
+   "url": "https://www.fec.gov/resources/cms-content/documents/2024presgeresults.pdf",
+   "note": "FEC Official 2024 Presidential General Election Results: MI Harris 2,736,533, Trump 2,816,636, total 5,664,186. FEC Federal Elections 2020 (https://www.fec.gov/resources/cms-content/documents/federalelections2020.pdf): MI Senate Peters 2,734,568, James 2,642,233, total 5,479,720."
+  }
+ ]
+}

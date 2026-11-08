@@ -1,0 +1,7712 @@
+{
+ "cards": {
+  "TX": {
+   "paxton": {
+    "es": {
+     "role": "Fiscal General de Texas (desde 2015)",
+     "facts": [
+      "Nacido en Minot, Dakota del Norte, donde su padre estaba destinado con la Fuerza Aérea de los Estados Unidos.",
+      "Se desempeñó como presidente del cuerpo estudiantil en la Universidad de Baylor.",
+      "Dirigió su propio bufete de abogados en McKinney, Texas, durante 14 años antes de ingresar a la función pública."
+     ],
+     "positions": [
+      "Dice que ayudará a completar el muro fronterizo, asegurar la frontera y deportar a las personas que se encuentran en el país ilegalmente.",
+      "Apoya recortar impuestos y el gasto federal, citando la deuda nacional, y eliminar regulaciones a las empresas de energía.",
+      "Dice que enfrentará a las grandes empresas farmacéuticas y alimentarias y buscará más transparencia en los sistemas de alimentos y atención médica.",
+      "Dice que protegerá los derechos de portar armas y \"defenderá al no nacido\"."
+     ]
+    },
+    "ja": {
+     "role": "テキサス州司法長官（2015年から）",
+     "facts": [
+      "ノースダコタ州マイノットで生まれる。父親が米空軍に所属していたため。",
+      "ベイラー大学で学生会長を務めた。",
+      "公職に就く前、テキサス州マッキニーで自身の法律事務所を14年間経営した。"
+     ],
+     "positions": [
+      "国境の壁の完成、国境の安全確保、不法滞在者の国外追放を支援すると述べている。",
+      "国家債務を挙げ、減税と連邦支出削減、エネルギー企業への規制撤廃を支持している。",
+      "大手製薬会社や食品会社に対抗し、食品・医療制度の透明性向上を求めると述べている。",
+      "銃の権利を守り、「胎児を守る」と述べている。"
+     ]
+    },
+    "zh": {
+     "role": "德克萨斯州总检察长（自2015年起）",
+     "facts": [
+      "出生于北达科他州迈诺特，其父曾在美国空军服役并驻扎于此。",
+      "在贝勒大学担任过学生会主席。",
+      "在进入公职前，他在德克萨斯州麦金尼经营自己的律师事务所长达14年。"
+     ],
+     "positions": [
+      "他表示将帮助完成边境墙建设，确保边境安全，并驱逐非法入境者。",
+      "他支持减税和削减联邦开支，援引国家债务问题，并主张取消对能源公司的监管。",
+      "他表示将针对大型制药和食品公司，并寻求提高食品和医疗保健系统的透明度。",
+      "他表示将保护枪支权利并“捍卫未出生的生命”。"
+     ]
+    }
+   },
+   "talarico": {
+    "es": {
+     "role": "Miembro de la Cámara de Representantes de Texas, Distrito 50 (en la Cámara desde 2018)",
+     "facts": [
+      "Enseñó artes del lenguaje de sexto grado en la Escuela Secundaria Rhodes, en el lado oeste de San Antonio.",
+      "Trabajó como director de una organización sin fines de lucro antes de servir en la Cámara de Representantes de Texas.",
+      "Se describe a sí mismo como seminarista presbiteriano."
+     ],
+     "positions": [
+      "Apoya una reforma migratoria integral, más agentes de la Patrulla Fronteriza y un camino a la ciudadanía para residentes de largo plazo, cónyuges y soñadores (DREAMers).",
+      "Dice que recortará impuestos para los trabajadores, limitará las tasas de interés de las tarjetas de crédito y hará que los multimillonarios y las grandes corporaciones paguen más.",
+      "Apoya permitir que los estadounidenses de cualquier edad se afilien a Medicare y limitar los costos de bolsillo de los medicamentos recetados.",
+      "Apoya prohibir los super PAC y los PAC corporativos, y prohibir la negociación de acciones por parte de los miembros del Congreso."
+     ]
+    },
+    "zh": {
+     "role": "德克萨斯州众议院第50选区议员（自2018年起任职）",
+     "facts": [
+      "曾在圣安东尼奥西区的罗兹中学教授六年级语言艺术。",
+      "在进入德克萨斯州众议院之前，曾担任非营利组织主任。",
+      "自称是长老会神学院学生。"
+     ],
+     "positions": [
+      "支持全面移民改革，增加边境巡逻人员，并为长期居民、配偶和梦想生提供入籍途径。",
+      "表示将为工薪阶层减税，限制信用卡利率，并让亿万富翁和大企业缴纳更多税款。",
+      "支持允许任何年龄的美国人加入联邦医疗保险，并限制处方药自付费用。",
+      "支持禁止超级政治行动委员会和公司政治行动委员会，并禁止国会议员进行股票交易。"
+     ]
+    },
+    "ja": {
+     "role": "テキサス州下院議員、第50選挙区（2018年から下院議員）",
+     "facts": [
+      "サンアントニオ西側のローズ中学校で6年生の国語を教えた。",
+      "テキサス州下院議員になる前に非営利団体の理事を務めた。",
+      "自身を長老派教会の神学生と表現している。"
+     ],
+     "positions": [
+      "包括的な移民改革、国境警備隊員の増員、長期滞在者、配偶者、DREAMerへの市民権取得の道を支持している。",
+      "労働者向けの減税、クレジットカード金利の上限設定、億万長者や大企業への増税を主張している。",
+      "あらゆる年齢のアメリカ人がメディケアに加入できるようにすることと、自己負担の処方薬費用に上限を設けることを支持している。",
+      "スーパーPACと企業PACの禁止、および連邦議会議員による株式取引の禁止を支持している。"
+     ]
+    }
+   }
+  },
+  "AK": {
+   "sullivan": {
+    "ja": {
+     "role": "アラスカ州選出の米上院議員（2015年から）",
+     "facts": [
+      "オハイオ州フェアビューパーク生まれ。アラスカ州に29年間居住し、フェアバンクスとアンカレッジに住む。",
+      "2015年1月6日にアラスカ州選出の8人目の米上院議員として宣誓就任し、2020年に再選された。",
+      "アラスカ州司法長官（2009〜2010年）およびアラスカ州天然資源局長官（2010〜2013年）を務めた。"
+     ],
+     "positions": [
+      "NPR-AとANWRからのアラスカのエネルギー生産を拡大し、コストを下げ、雇用を創出したと主張している。",
+      "混獲を減らし、海洋を浄化し、ロシアと中国のトロール漁獲魚の輸入を禁止する法律を成立させたと主張している。",
+      "自身が投票した2025年の税制・支出法を支持しており、これによりチップへの課税を廃止し、児童税額控除を2,200ドルに引き上げると主張している。",
+      "アラスカでの軍と沿岸警備隊の増強を実現したと主張しており、エルメンドルフ・リチャードソン統合基地の70億ドルの改修と砕氷船4隻を含む。"
+     ]
+    },
+    "zh": {
+     "role": "美国阿拉斯加州联邦参议员（自2015年起）",
+     "facts": [
+      "出生于俄亥俄州费尔维尤帕克；已在阿拉斯加居住29年，分别住在费尔班克斯和安克雷奇。",
+      "于2015年1月6日宣誓就任阿拉斯加州第八位联邦参议员，并于2020年连任。",
+      "曾任阿拉斯加州总检察长（2009-2010年）和阿拉斯加州自然资源专员（2010-2013年）。"
+     ],
+     "positions": [
+      "表示他已扩大阿拉斯加在NPR-A和ANWR的能源生产，以降低成本并创造就业机会。",
+      "表示他通过了减少兼捕、清洁海洋以及禁止进口俄罗斯和中国拖网捕捞鱼类的法律。",
+      "支持他投票支持的2025年税收和支出法案，他表示该法案取消小费税并将儿童税收抵免提高到2200美元。",
+      "表示他已在阿拉斯加实现军事和海岸警卫队建设，包括对埃尔门多夫-理查德森联合基地进行70亿美元的资本重组以及四艘破冰船。"
+     ]
+    },
+    "es": {
+     "role": "Senador de los Estados Unidos por Alaska (desde 2015)",
+     "facts": [
+      "Nacido en Fairview Park, Ohio; ha vivido en Alaska durante 29 años, en Fairbanks y Anchorage.",
+      "Fue juramentado como el octavo senador de los Estados Unidos por Alaska el 6 de enero de 2015, y fue reelegido en 2020.",
+      "Se desempeñó como fiscal general de Alaska (2009-2010) y como comisionado del Departamento de Recursos Naturales de Alaska (2010-2013)."
+     ],
+     "positions": [
+      "Dice que ha expandido la producción de energía de Alaska en el NPR-A y ANWR para reducir costos y crear empleos.",
+      "Dice que aprobó leyes para reducir la captura incidental, limpiar los océanos y prohibir las importaciones de pescado capturado con redes de arrastre de Rusia y China.",
+      "Apoya la ley de impuestos y gastos de 2025 que votó, la cual dice que elimina los impuestos sobre las propinas y aumenta el crédito tributario por hijo a $2,200.",
+      "Dice que ha logrado un aumento militar y de la Guardia Costera en Alaska, incluida una recapitalización de $7 mil millones de la Base Conjunta Elmendorf-Richardson y cuatro rompehielos."
+     ]
+    }
+   },
+   "peltola": {
+    "es": {
+     "role": "Exrepresentante de los Estados Unidos por el distrito general de Alaska (2022-2025)",
+     "facts": [
+      "Nacida en Anchorage; creció en Kwethluk, Tuntutuliak, Platinum y Bethel a lo largo del río Kuskokwim, y ha vivido en Anchorage desde 2025.",
+      "Se convirtió en la primera nativa de Alaska en prestar juramento en el Congreso en septiembre de 2022, sucediendo al fallecido representante Don Young.",
+      "Sirvió en la Cámara de Representantes de Alaska de 1999 a 2009."
+     ],
+     "positions": [
+      "Apoya la reforma de permisos federales para proyectos energéticos de Alaska y respalda el oleoducto Alaska LNG.",
+      "Apoya la prohibición de la pesca de arrastre industrial y la reducción de la captura incidental para restaurar las pesquerías de Alaska.",
+      "Apoya eliminar el impuesto federal sobre la renta para los habitantes de Alaska que ganen menos de 92,000 dólares al año, financiado con impuestos más altos a millonarios y multimillonarios.",
+      "Apoya límites de mandato de 12 años para los miembros del Congreso y una prohibición de la negociación de acciones por parte del Congreso."
+     ]
+    },
+    "ja": {
+     "role": "アラスカ州全州区選出の元連邦下院議員（2022〜2025年）",
+     "facts": [
+      "アンカレッジ生まれ。クウェスラック、トゥントゥトゥリアック、プラチナム、ベセルで育ち、クスコクウィム川沿いに居住。2025年からはアンカレッジに在住。",
+      "2022年9月、故ドン・ヤング下院議員の後任として、アラスカ先住民として初めて連邦議会に就任した。",
+      "1999年から2009年までアラスカ州下院議員を務めた。"
+     ],
+     "positions": [
+      "アラスカのエネルギー事業に関する連邦許可手続きの改革を支持し、アラスカLNGパイプラインを支持している。",
+      "トロール漁業の禁止と混獲の削減によるアラスカ水産業の回復を支持している。",
+      "年収9万2000ドル未満のアラスカ住民に対する連邦所得税の廃止を支持しており、その財源は富裕層への増税で賄うとしている。",
+      "連邦議会議員の任期を12年に制限することと、議会での株式取引の禁止を支持している。"
+     ]
+    },
+    "zh": {
+     "role": "前美国阿拉斯加州全区众议员（2022-2025年）",
+     "facts": [
+      "出生于安克雷奇；在库斯克维姆河沿岸的奎斯卢克、图图利亚克、普拉蒂纳姆和贝塞尔长大，自2025年起居住在安克雷奇。",
+      "2022年9月成为首位宣誓就职国会的阿拉斯加原住民，接替已故众议员唐·扬。",
+      "1999年至2009年担任阿拉斯加州众议院议员。"
+     ],
+     "positions": [
+      "支持阿拉斯加能源项目的联邦许可改革，并支持阿拉斯加液化天然气管道。",
+      "支持禁止工厂拖网捕捞并减少兼捕，以恢复阿拉斯加渔业。",
+      "支持对年收入低于9.2万美元的阿拉斯加人免除联邦所得税，通过对百万富翁和亿万富翁增税来弥补。",
+      "支持国会议员12年任期限制，并禁止国会股票交易。"
+     ]
+    }
+   }
+  },
+  "KS": {
+   "marshall": {
+    "es": {
+     "role": "Senador de los Estados Unidos por Kansas (desde 2021)",
+     "facts": [
+      "Ejercicio como obstetra-ginecólogo en Great Bend durante 25 años; su campaña dice que atendió más de 5,000 partos.",
+      "Se desempeñó como presidente de la junta directiva del Hospital Regional de Great Bend durante 14 años.",
+      "Creció en una familia agrícola de quinta generación en Kansas y fue el primero de su familia en asistir a la universidad."
+     ],
+     "positions": [
+      "Apoya la eliminación de los derechos compensatorios sobre el fosfato importado para fertilizantes, con el fin de reducir los costos de insumos agrícolas; es el patrocinador principal de la S. 4418, la Ley para Reducir los Costos de Insumos para los Agricultores Estadounidenses.",
+      "Apoya los plazos de decisión de 24 y 72 horas para las solicitudes de autorización previa de Medicare Advantage; es el patrocinador principal de la S. 1816, la Ley para Mejorar el Acceso Oportuno de las Personas Mayores a la Atención Médica.",
+      "Apoya la construcción de un muro en la frontera sur; es copatrocinador de la S. 42, la Ley de Construcción del Muro, y de la Ley Laken Riley (S. 5), promulgada en enero de 2025.",
+      "Apoya la venta durante todo el año de combustible E15; es copatrocinador de la S. 593, la Ley Nacional de Elección del Consumidor y del Minorista de Combustible."
+     ]
+    },
+    "ja": {
+     "role": "カンザス州選出の米上院議員（2021年〜）",
+     "facts": [
+      "グレートベンドで25年間産婦人科医として勤務。選挙運動によると、5,000人以上の赤ちゃんを取り上げたとしている。",
+      "グレートベンド地域病院の理事会会長を14年間務めた。",
+      "5代続くカンザス州の農家の家庭で育ち、家族で初めて大学に進学した。"
+     ],
+     "positions": [
+      "輸入リン酸肥料に対する相殺関税の撤廃を支持し、農家の投入コストを削減。S. 4418「米国農家の投入コスト削減法」の主要スポンサー。",
+      "メディケア・アドバンテージの事前承認申請に対する24時間および72時間の決定期限を支持。S. 1816「高齢者のタイムリーな医療アクセス改善法」の主要スポンサー。",
+      "南部国境の壁建設を支持。S. 42「壁建設法」および2025年1月に署名され法律となったレイクン・ライリー法（S. 5）の共同スポンサー。",
+      "E15燃料の年間販売を支持。S. 593「全国消費者および燃料小売業者選択法」の共同スポンサー。"
+     ]
+    },
+    "zh": {
+     "role": "堪萨斯州联邦参议员（自2021年起）",
+     "facts": [
+      "在大本德从事妇产科医生工作25年；其竞选团队表示他接生了超过5000名婴儿。",
+      "担任大本德地区医院董事会主席14年。",
+      "在堪萨斯州一个第五代农场家庭长大，是家中第一个上大学的人。"
+     ],
+     "positions": [
+      "支持取消对进口磷酸盐肥料的反补贴税，以降低农业投入成本；是S. 4418号法案《降低美国农民投入成本法案》的主要发起人。",
+      "支持医疗保险优势计划预先授权请求的24小时和72小时决策期限；是S. 1816号法案《改善老年人及时获得护理法案》的主要发起人。",
+      "支持修建南部边境墙；是S. 42号法案《修建边境墙法案》和《莱肯·莱利法案》（S. 5）的共同提案人，后者于2025年1月签署成为法律。",
+      "支持全年销售E15燃料；是S. 593号法案《全国消费者和燃料零售商选择法案》的共同提案人。"
+     ]
+    }
+   },
+   "hamilton": {
+    "es": {
+     "role": "Pastor principal, Iglesia Metodista Unida de la Resurrección, Leawood, Kansas (pastor fundador, desde 1990)",
+     "facts": [
+      "Inició la Iglesia de la Resurrección en el área de Kansas City en 1990, comenzando con cuatro personas.",
+      "Ha escrito más de 30 libros.",
+      "Es un kansano de quinta generación cuya familia se estableció en el condado de Dickinson, según su campaña."
+     ],
+     "positions": [
+      "Apoya exigir la aprobación del Congreso antes de que nuevos aranceles entren en vigor.",
+      "Apoya ampliar la negociación de precios de medicamentos de Medicare y restaurar los subsidios de primas de la Ley de Atención Médica Asequible.",
+      "Apoya prohibir que los miembros del Congreso y sus hogares compren o vendan acciones individuales mientras estén en el cargo.",
+      "Apoya aprobar una ley agrícola completa y la venta durante todo el año de combustible E15."
+     ]
+    },
+    "ja": {
+     "role": "カンザス州リーウッドにあるユナイテッド・メソジスト教会「チャーチ・オブ・ザ・リザレクション」のシニア牧師（創設牧師、1990年から）",
+     "facts": [
+      "1990年にカンザスシティー地域でチャーチ・オブ・ザ・リザレクションを4人から始めた。",
+      "30冊以上の著書がある。",
+      "選挙運動によると、5代目のカンザス州出身で、家族はディキンソン郡に定住した。"
+     ],
+     "positions": [
+      "新しい関税が発効する前に議会の承認を求めることを支持している。",
+      "メディケアの医薬品価格交渉の拡大と、 Affordable Care Act の保険料補助の回復を支持している。",
+      "連邦議会議員とその世帯が在任中に個別株を売買することを禁止することを支持している。",
+      "完全な農業法案とE15燃料の通年販売を可決することを支持している。"
+     ]
+    },
+    "zh": {
+     "role": "堪萨斯州利伍德市复活联合卫理公会高级牧师（创始牧师，自1990年起）",
+     "facts": [
+      "1990年在堪萨斯城地区创立复活教会，起初仅有四人。",
+      "已撰写超过30本书。",
+      "据其竞选活动称，他是堪萨斯州第五代居民，家族定居于迪金森县。"
+     ],
+     "positions": [
+      "支持新关税生效前需经国会批准。",
+      "支持扩大医疗保险药品价格谈判，并恢复《平价医疗法案》保费补贴。",
+      "支持禁止国会议员及其家庭成员在任期内买卖个股。",
+      "支持通过完整的农业法案，并全年销售E15燃料。"
+     ]
+    }
+   }
+  },
+  "ME": {
+   "collins": {
+    "es": {
+     "role": "Senadora de los Estados Unidos por Maine (desde 1997); presidenta del Comité de Asignaciones del Senado",
+     "facts": [
+      "Creció en Caribou, donde su familia dirige un negocio maderero fundado en 1844; ambos padres fueron alcaldes de Caribou.",
+      "Comenzó su carrera en el personal del representante y luego senador de Maine, William Cohen, tras graduarse de la universidad en 1975.",
+      "Fue elegida por primera vez al Senado en 1996 y reelegida en 2002, 2008, 2014 y 2020; busca un sexto mandato en 2026."
+     ],
+     "positions": [
+      "Dice que redactó la Ley de Equidad del Seguro Social, promulgada en 2025, y que restauró beneficios ganados para más de 25,000 habitantes de Maine.",
+      "Apoya hacer permanentes las flexibilidades de telesalud de Medicare y dice que ha trabajado para aumentar la financiación federal para la investigación del Alzheimer y la diabetes.",
+      "Apoya ampliar el acceso a la capacitación laboral y dice que redactó el Programa de Protección de Cheques de Pago para pequeñas empresas durante la pandemia.",
+      "Dice que ha utilizado su papel como presidenta del Comité de Asignaciones para dirigir fondos federales a proyectos en los 16 condados de Maine."
+     ]
+    },
+    "zh": {
+     "role": "缅因州美国参议员（自1997年起）；参议院拨款委员会主席",
+     "facts": [
+      "在卡里布长大，其家族经营一家创立于1844年的木材企业；她的父母都曾担任卡里布市长。",
+      "1975年大学毕业后，在缅因州众议员、后任参议员的威廉·科恩的幕僚中开始了职业生涯。",
+      "1996年首次当选参议员，并于2002年、2008年、2014年和2020年连任；正在寻求2026年的第六个任期。"
+     ],
+     "positions": [
+      "表示她撰写了《社会保障公平法案》，该法案于2025年签署成为法律，并恢复了超过25,000名缅因州人的应得福利。",
+      "支持将医疗保险远程医疗的灵活性永久化，并表示她致力于增加联邦对阿尔茨海默病和糖尿病研究的资助。",
+      "支持扩大职业培训机会，并表示她在疫情期间撰写了针对小企业的薪资保护计划。",
+      "表示她利用拨款委员会主席的角色，将联邦资金引导至缅因州全部16个县的项目。"
+     ]
+    },
+    "ja": {
+     "role": "メイン州選出の米上院議員（1997年〜）。上院歳出委員会委員長。",
+     "facts": [
+      "カリブーで育つ。家族は1844年創業の材木業を営む。両親ともカリブー市長を務めた。",
+      "1975年に大学卒業後、メイン州選出の下院議員、後に上院議員となるウィリアム・コーエンのスタッフとしてキャリアを開始。",
+      "1996年に初当選し、2002年、2008年、2014年、2020年に再選。2026年に6期目を目指す。"
+     ],
+     "positions": [
+      "2025年に署名された社会保障公正法を起草したと主張し、これにより2万5000人以上のメイン州民の受給権が回復したと述べている。",
+      "メディケアの遠隔医療の柔軟性を恒久化することを支持し、アルツハイマー病と糖尿病の研究への連邦資金を増やすために取り組んできたと述べている。",
+      "職業訓練へのアクセス拡大を支持し、パンデミック時に中小企業向け給与保護プログラムを起草したと述べている。",
+      "歳出委員会委員長として、メイン州の全16郡のプロジェクトに連邦資金を振り向けてきたと述べている。"
+     ]
+    }
+   },
+   "jackson": {
+    "es": {
+     "role": "Expresidente del Senado de Maine (2018-2024)",
+     "facts": [
+      "Creció en Allagash y trabajó como leñador, la quinta generación de su familia en trabajar en los bosques.",
+      "Dice que entró en política después de ayudar a liderar un bloqueo de leñadores en 1998 en la frontera entre Maine y Canadá por la contratación de trabajadores canadienses.",
+      "Fue nominado por una convención del Partido Demócrata de Maine en Bangor el 25 de julio de 2026, reemplazando al ganador de las primarias de junio, quien se retiró el 10 de julio."
+     ],
+     "positions": [
+      "Apoya Medicare para Todos y la negociación federal de los precios de los medicamentos recetados; dice que copatrocinaría la Ley de Medicare para Todos.",
+      "Apoya impuestos más altos a los multimillonarios y las grandes corporaciones, eliminar el tope del impuesto sobre la nómina del Seguro Social y expandir el Crédito Tributario por Hijos y el Crédito por Ingreso del Trabajo.",
+      "Apoya abolir el Servicio de Inmigración y Control de Aduanas de EE. UU. (ICE) y un sistema de inmigración centrado en el debido proceso y las amenazas a la seguridad pública.",
+      "Apoya aprobar una ley federal que establezca el derecho al aborto."
+     ]
+    },
+    "ja": {
+     "role": "メイン州上院元議長（2018〜2024年）",
+     "facts": [
+      "アラガッシュで育ち、家族で5代目の林業労働者として働いた。",
+      "1998年にメイン州とカナダの国境でカナダ人労働者の雇用に抗議して丸太封鎖を主導した後、政治に関わったと主張している。",
+      "2026年7月25日にバンゴーで開かれたメイン州民主党大会で指名され、6月の予備選の勝者（7月10日に撤退）に代わった。"
+     ],
+     "positions": [
+      "メディケア・フォー・オールと処方薬価格の連邦政府による交渉を支持し、メディケア・フォー・オール法の共同提案者になると述べている。",
+      "億万長者や大企業への増税、社会保障の給与税上限の撤廃、児童税額控除と勤労所得税額控除の拡大を支持している。",
+      "米国移民関税執行局（ICE）の廃止と、適正手続きと公安上の脅威に焦点を当てた移民制度を支持している。",
+      "中絶の権利を確立する連邦法の制定を支持している。"
+     ]
+    },
+    "zh": {
+     "role": "前缅因州参议院议长（2018-2024年）",
+     "facts": [
+      "在阿拉加什长大，曾从事伐木工作，是家族中第五代从事林业工作的人。",
+      "他表示，在1998年缅因州与加拿大边境因雇佣加拿大工人而发生的伐木工人封锁事件中，他协助领导了那次行动，之后进入政界。",
+      "2026年7月25日，在班戈举行的缅因州民主党大会上被提名，取代了6月初选获胜者，后者于7月10日退出。"
+     ],
+     "positions": [
+      "支持全民医保和联邦谈判处方药价格；他表示将共同发起《全民医保法案》。",
+      "支持对亿万富翁和大公司增税，取消社会保障工资税上限，并扩大儿童税收抵免和劳动所得税抵免。",
+      "支持废除美国移民和海关执法局（ICE），并支持一个注重正当程序和公共安全威胁的移民体系。",
+      "支持通过联邦法律确立堕胎权。"
+     ]
+    }
+   }
+  },
+  "OH": {
+   "husted": {
+    "es": {
+     "role": "Senador de los Estados Unidos por Ohio (designado; en el cargo desde enero de 2025)",
+     "facts": [
+      "Pasó sus primeros meses en cuidado de crianza antes de ser adoptado por Jim y Judy Husted.",
+      "Jugó como defensive back en el equipo de la Universidad de Dayton que ganó el campeonato nacional de fútbol americano de la División III de la NCAA en 1989.",
+      "Como vicegobernador, dirigió la Oficina del Gobernador para la Transformación de la Fuerza Laboral y lideró la iniciativa InnovateOhio."
+     ],
+     "positions": [
+      "Apoya presionar a los reguladores de servicios públicos estatales para que exijan a los centros de datos pagar sus propios costos de servicios públicos; patrocinó la Ley de Protección al Contribuyente de Tarifas del Senado (S.5028).",
+      "Apoya permitir que los estados alineen las reglas de elegibilidad entre los programas de asistencia pública para que ganar más no reduzca los beneficios abruptamente (su Ley de Movilidad Ascendente).",
+      "Apoya exigir a los votantes que muestren identificación con foto en las elecciones federales; patrocinó la S.5271 para enmendar la Ley de Ayuda a América para Votar.",
+      "Dice que ha trabajado en el Senado para asegurar la frontera y dar a las fuerzas del orden más herramientas contra el tráfico de fentanilo."
+     ]
+    },
+    "ja": {
+     "role": "オハイオ州選出の米上院議員（任命、2025年1月から在任）",
+     "facts": [
+      "生後数か月を里親のもとで過ごし、その後ジム・ハステッドとジュディ・ハステッドに養子として迎えられた。",
+      "デイトン大学のディフェンシブバックとして、1989年のNCAAディビジョンIIIフットボール全国選手権で優勝したチームに所属していた。",
+      "副知事として、知事室の労働力変革局を統括し、イノベート・オハイオ構想を主導した。"
+     ],
+     "positions": [
+      "州の公益事業規制当局に対し、データセンターに自らの公益事業費を負担させるよう求めることを支持し、上院法案S.5028（納税者保護法）を提出した。",
+      "州が公的扶助プログラム間で受給資格基準を統一し、収入が増えても給付が急に打ち切られないようにすることを支持している（彼の「上方移動法」）。",
+      "連邦選挙で有権者に写真付き身分証明書の提示を義務付けることを支持し、ヘルプ・アメリカ・ボート法を改正するS.5271を提出した。",
+      "上院で国境の確保と、フェンタニル密売対策のための法執行機関への権限強化に取り組んだと述べている。"
+     ]
+    },
+    "zh": {
+     "role": "美国俄亥俄州参议员（任命产生；自2025年1月起任职）",
+     "facts": [
+      "出生后最初几个月在寄养家庭度过，后被吉姆·赫斯特德和朱迪·赫斯特德收养。",
+      "曾效力于代顿大学橄榄球队，担任防守后卫，该队赢得了1989年NCAA三级联赛全国冠军。",
+      "担任副州长期间，负责州长劳动力转型办公室，并领导了“创新俄亥俄”计划。"
+     ],
+     "positions": [
+      "支持敦促州公用事业监管机构要求数据中心自行承担公用事业费用；发起了《参议院纳税人保护法案》（S.5028）。",
+      "支持允许各州在公共援助项目中统一资格标准，以避免收入增加导致福利突然削减（其《向上流动法案》）。",
+      "支持在联邦选举中要求选民出示带照片的身份证件；发起了S.5271号法案，以修订《帮助美国投票法案》。",
+      "表示他已在参议院致力于加强边境安全，并为执法部门提供更多打击芬太尼贩运的工具。"
+     ]
+    }
+   },
+   "brown": {
+    "es": {
+     "role": "Exsenador de los Estados Unidos por Ohio (2007-2025); cargo más reciente",
+     "facts": [
+      "Presidió el Comité Senatorial de Banca, Vivienda y Asuntos Urbanos de 2021 a 2025.",
+      "Fundó el Instituto Dignidad del Trabajo, un think tank sin fines de lucro centrado en los trabajadores, en marzo de 2025.",
+      "Sirvió en la Cámara de Representantes de los Estados Unidos de 1993 a 2007 antes de su elección al Senado."
+     ],
+     "positions": [
+      "Se opone a los acuerdos comerciales que, según él, perjudican a los trabajadores de Ohio.",
+      "Apoya limitar el costo de la insulina y reducir los precios de los medicamentos recetados para los adultos mayores.",
+      "Se opone a las exenciones fiscales para corporaciones y multimillonarios que, según él, se hacen a expensas de los trabajadores de Ohio.",
+      "Apoya proteger las pensiones de los trabajadores y los beneficios del Seguro Social, citando su trabajo para restaurar los pagos completos del Seguro Social a los jubilados del sector público."
+     ]
+    },
+    "ja": {
+     "role": "オハイオ州選出の元米上院議員（2007年〜2025年）。直近の公職。",
+     "facts": [
+      "2021年から2025年まで上院銀行・住宅・都市問題委員会の委員長を務めた。",
+      "2025年3月、労働者に焦点を当てた非営利シンクタンク「ディグニティ・オブ・ワーク研究所」を設立した。",
+      "上院選出以前の1993年から2007年まで米下院議員を務めた。"
+     ],
+     "positions": [
+      "オハイオ州の労働者を傷つけると主張する貿易協定に反対している。",
+      "インスリンの費用に上限を設け、高齢者の処方薬価格を引き下げることを支持している。",
+      "オハイオ州の労働者の犠牲の上になると主張する企業や億万長者への減税に反対している。",
+      "公務員退職者への社会保障給付の全額回復に取り組んだことを挙げ、労働者の年金と社会保障給付の保護を支持している。"
+     ]
+    },
+    "zh": {
+     "role": "俄亥俄州前美国参议员（2007-2025年）；最近任职",
+     "facts": [
+      "2021年至2025年担任参议院银行、住房和城市事务委员会主席。",
+      "2025年3月创立尊严劳动研究所，一个专注于工人的非营利智库。",
+      "1993年至2007年担任美国众议院议员，之后当选参议员。"
+     ],
+     "positions": [
+      "反对他所说的损害俄亥俄州工人的贸易协议。",
+      "支持限制胰岛素费用并降低老年人处方药价格。",
+      "反对他所说的以牺牲俄亥俄州工人为代价的企业和亿万富翁税收减免。",
+      "支持保护工人的养老金和社会保障福利，援引他恢复公共部门退休人员全额社会保障金的工作。"
+     ]
+    }
+   }
+  },
+  "MI": {
+   "rogers": {
+    "es": {
+     "role": "Exrepresentante de los Estados Unidos por el 8.º distrito de Míchigan (cargo más reciente, 2001-2015); propietario de un negocio que trabaja en ciberseguridad desde 2015.",
+     "facts": [
+      "Trabajó como agente especial del FBI en Chicago en casos de crimen organizado y corrupción pública antes de entrar en política.",
+      "Presidió el Comité de Inteligencia de la Cámara y sirvió en el Comité de Energía y Comercio de la Cámara durante su tiempo en el Congreso.",
+      "Fue el candidato republicano al Senado de los Estados Unidos por Míchigan en 2024."
+     ],
+     "positions": [
+      "Apoya multar a los hospitales y aseguradoras que no publiquen públicamente los precios reales, y sanciones para las aseguradoras con denegaciones o demoras excesivas de reclamos.",
+      "Apoya ampliar los planes de ahorro 529 para cubrir los pagos iniciales de la primera vivienda y hacer que la construcción de nuevas viviendas esté libre de impuestos en zonas residenciales designadas.",
+      "Dice que trabajará para traer de vuelta los empleos de manufactura a los Estados Unidos.",
+      "Dice que protegerá el Seguro Social y Medicare para los adultos mayores."
+     ]
+    },
+    "ja": {
+     "role": "元米下院議員（ミシガン州第8選挙区、直近の公職、2001年〜2015年）。2015年からサイバーセキュリティ分野で事業を経営。",
+     "facts": [
+      "政界入り前は、シカゴでFBI特別捜査官として組織犯罪と公的汚職事件を担当した。",
+      "下院情報委員会の委員長を務め、下院エネルギー商業委員会の委員でもあった。",
+      "2024年ミシガン州の米上院選挙で共和党候補だった。"
+     ],
+     "positions": [
+      "実際の価格を公表しない病院や保険会社への罰金、過剰な保険金支払い拒否や遅延を行う保険会社への罰則を支持している。",
+      "529貯蓄プランを拡大し、初回住宅購入の頭金に充てられるようにすること、指定された住宅地域での新築住宅建設を非課税にすることを支持している。",
+      "製造業の雇用を米国に取り戻すために取り組むと述べている。",
+      "高齢者のための社会保障とメディケアを守ると述べている。"
+     ]
+    },
+    "zh": {
+     "role": "前美国众议院密歇根州第8选区议员（最近职务，2001-2015年）；自2015年起从事网络安全业务的业主。",
+     "facts": [
+      "在进入政界前，曾在芝加哥担任联邦调查局特工，负责有组织犯罪和公共腐败案件。",
+      "在国会任职期间，曾担任众议院情报委员会主席，并在众议院能源和商务委员会任职。",
+      "2024年密歇根州美国参议院共和党候选人。"
+     ],
+     "positions": [
+      "支持对未公开实际价格的医院和保险公司处以罚款，并对过度拒绝或延迟理赔的保险公司进行处罚。",
+      "支持扩大529储蓄计划以覆盖首次购房首付，并在指定住宅区使新住房建设免税。",
+      "表示将努力把制造业工作岗位带回美国。",
+      "表示将保护老年人的社会保障和医疗保险。"
+     ]
+    }
+   },
+   "elsayed": {
+    "ja": {
+     "role": "ウェイン郡保健・福祉・退役軍人サービス局の元局長（直近の公職、2023〜2025年）",
+     "facts": [
+      "2015年にデトロイト市の破綻後、市の保健局長に採用され、2017年までその職にあった。",
+      "オックスフォード大学のローズ奨学生であり、その後コロンビア大学で公衆衛生を教えた。",
+      "2018年のミシガン州知事民主党予備選挙の候補者だった。"
+     ],
+     "positions": [
+      "保険料、自己負担、控除なしで、視覚、歯科、聴覚ケアを含むすべてのアメリカ人をカバーする「メディケア・フォー・オール」を支持している。",
+      "住宅市場で投機する大企業が住宅を所有することを禁止することを支持している。",
+      "「シチズンズ・ユナイテッド」判決を覆し、スーパーPACや企業系501(c)(4)団体による外部支出を禁止することを支持している。",
+      "10億ドルを超える資産への課税と、100万ドルを超える所得へのより高い限界税率を支持している。"
+     ]
+    },
+    "zh": {
+     "role": "前韦恩县卫生、人类与退伍军人服务部主任（最近职务，2023-2025年）",
+     "facts": [
+      "2015年受聘领导底特律卫生局，当时该市刚经历破产，任职至2017年。",
+      "曾是牛津大学罗德学者，后在哥伦比亚大学教授公共卫生。",
+      "曾参加密歇根州2018年民主党州长初选。"
+     ],
+     "positions": [
+      "支持全民医保（Medicare for All），覆盖所有美国人，无保费、共付额或免赔额，包括视力、牙科和听力护理。",
+      "支持禁止投机房地产市场的公司拥有住房。",
+      "支持推翻“公民联合会”裁决，并禁止超级政治行动委员会和公司501(c)(4)组织的外部支出。",
+      "支持对超过10亿美元的财富征税，并对超过100万美元的收入征收更高的边际税率。"
+     ]
+    },
+    "es": {
+     "role": "Exdirector del Departamento de Salud, Servicios Humanos y para Veteranos del Condado de Wayne (cargo más reciente, 2023-2025)",
+     "facts": [
+      "Fue contratado en 2015 para dirigir el Departamento de Salud de Detroit después de la quiebra de la ciudad y ocupó el cargo hasta 2017.",
+      "Fue becario Rhodes en la Universidad de Oxford y posteriormente enseñó salud pública en la Universidad de Columbia.",
+      "Fue candidato en las primarias demócratas de 2018 para gobernador de Míchigan."
+     ],
+     "positions": [
+      "Apoya Medicare para Todos, que cubra a todos los estadounidenses sin primas, copagos ni deducibles, incluidos los cuidados de visión, dentales y auditivos.",
+      "Apoya prohibir que las grandes corporaciones que especulan en el mercado inmobiliario sean dueñas de viviendas.",
+      "Apoya anular la decisión Citizens United y prohibir el gasto externo de los super PAC y los grupos corporativos 501(c)(4).",
+      "Apoya un impuesto sobre la riqueza superior a mil millones de dólares y una tasa impositiva marginal más alta sobre los ingresos superiores a un millón de dólares."
+     ]
+    }
+   }
+  }
+ },
+ "units": {
+  "TX": {
+   "es": {
+    "48001": {
+     "name": "condado de Anderson",
+     "short": "Anderson"
+    },
+    "48003": {
+     "name": "condado de Andrews",
+     "short": "Andrews"
+    },
+    "48005": {
+     "name": "condado de Angelina",
+     "short": "Angelina"
+    },
+    "48007": {
+     "name": "condado de Aransas",
+     "short": "Aransas"
+    },
+    "48009": {
+     "name": "condado de Archer",
+     "short": "Archer"
+    },
+    "48011": {
+     "name": "condado de Armstrong",
+     "short": "Armstrong"
+    },
+    "48013": {
+     "name": "condado de Atascosa",
+     "short": "Atascosa"
+    },
+    "48015": {
+     "name": "condado de Austin",
+     "short": "Austin"
+    },
+    "48017": {
+     "name": "condado de Bailey",
+     "short": "Bailey"
+    },
+    "48019": {
+     "name": "condado de Bandera",
+     "short": "Bandera"
+    },
+    "48021": {
+     "name": "condado de Bastrop",
+     "short": "Bastrop"
+    },
+    "48023": {
+     "name": "condado de Baylor",
+     "short": "Baylor"
+    },
+    "48025": {
+     "name": "condado de Bee",
+     "short": "Bee"
+    },
+    "48027": {
+     "name": "condado de Bell",
+     "short": "Bell"
+    },
+    "48029": {
+     "name": "condado de Bexar",
+     "short": "Bexar"
+    },
+    "48031": {
+     "name": "condado de Blanco",
+     "short": "Blanco"
+    },
+    "48033": {
+     "name": "condado de Borden",
+     "short": "Borden"
+    },
+    "48035": {
+     "name": "condado de Bosque",
+     "short": "Bosque"
+    },
+    "48037": {
+     "name": "condado de Bowie",
+     "short": "Bowie"
+    },
+    "48039": {
+     "name": "condado de Brazoria",
+     "short": "Brazoria"
+    },
+    "48041": {
+     "name": "condado de Brazos",
+     "short": "Brazos"
+    },
+    "48043": {
+     "name": "condado de Brewster",
+     "short": "Brewster"
+    },
+    "48045": {
+     "name": "condado de Briscoe",
+     "short": "Briscoe"
+    },
+    "48047": {
+     "name": "condado de Brooks",
+     "short": "Brooks"
+    },
+    "48049": {
+     "name": "condado de Brown",
+     "short": "Brown"
+    },
+    "48051": {
+     "name": "condado de Burleson",
+     "short": "Burleson"
+    },
+    "48053": {
+     "name": "condado de Burnet",
+     "short": "Burnet"
+    },
+    "48055": {
+     "name": "condado de Caldwell",
+     "short": "Caldwell"
+    },
+    "48057": {
+     "name": "condado de Calhoun",
+     "short": "Calhoun"
+    },
+    "48059": {
+     "name": "condado de Callahan",
+     "short": "Callahan"
+    },
+    "48061": {
+     "name": "condado de Cameron",
+     "short": "Cameron"
+    },
+    "48063": {
+     "name": "condado de Camp",
+     "short": "Camp"
+    },
+    "48065": {
+     "name": "condado de Carson",
+     "short": "Carson"
+    },
+    "48067": {
+     "name": "condado de Cass",
+     "short": "Cass"
+    },
+    "48069": {
+     "name": "condado de Castro",
+     "short": "Castro"
+    },
+    "48071": {
+     "name": "condado de Chambers",
+     "short": "Chambers"
+    },
+    "48073": {
+     "name": "condado de Cherokee",
+     "short": "Cherokee"
+    },
+    "48075": {
+     "name": "condado de Childress",
+     "short": "Childress"
+    },
+    "48077": {
+     "name": "condado de Clay",
+     "short": "Clay"
+    },
+    "48079": {
+     "name": "condado de Cochran",
+     "short": "Cochran"
+    },
+    "48081": {
+     "name": "condado de Coke",
+     "short": "Coke"
+    },
+    "48083": {
+     "name": "condado de Coleman",
+     "short": "Coleman"
+    },
+    "48085": {
+     "name": "condado de Collin",
+     "short": "Collin"
+    },
+    "48087": {
+     "name": "condado de Collingsworth",
+     "short": "Collingsworth"
+    },
+    "48089": {
+     "name": "condado de Colorado",
+     "short": "Colorado"
+    },
+    "48091": {
+     "name": "condado de Comal",
+     "short": "Comal"
+    },
+    "48093": {
+     "name": "condado de Comanche",
+     "short": "Comanche"
+    },
+    "48095": {
+     "name": "condado de Concho",
+     "short": "Concho"
+    },
+    "48097": {
+     "name": "condado de Cooke",
+     "short": "Cooke"
+    },
+    "48099": {
+     "name": "condado de Coryell",
+     "short": "Coryell"
+    },
+    "48101": {
+     "name": "condado de Cottle",
+     "short": "Cottle"
+    },
+    "48103": {
+     "name": "condado de Crane",
+     "short": "Crane"
+    },
+    "48105": {
+     "name": "condado de Crockett",
+     "short": "Crockett"
+    },
+    "48107": {
+     "name": "condado de Crosby",
+     "short": "Crosby"
+    },
+    "48109": {
+     "name": "condado de Culberson",
+     "short": "Culberson"
+    },
+    "48111": {
+     "name": "condado de Dallam",
+     "short": "Dallam"
+    },
+    "48113": {
+     "name": "condado de Dallas",
+     "short": "Dallas"
+    },
+    "48115": {
+     "name": "condado de Dawson",
+     "short": "Dawson"
+    },
+    "48117": {
+     "name": "condado de Deaf Smith",
+     "short": "Deaf Smith"
+    },
+    "48119": {
+     "name": "condado de Delta",
+     "short": "Delta"
+    },
+    "48121": {
+     "name": "condado de Denton",
+     "short": "Denton"
+    },
+    "48123": {
+     "name": "condado de DeWitt",
+     "short": "DeWitt"
+    },
+    "48125": {
+     "name": "condado de Dickens",
+     "short": "Dickens"
+    },
+    "48127": {
+     "name": "condado de Dimmit",
+     "short": "Dimmit"
+    },
+    "48129": {
+     "name": "condado de Donley",
+     "short": "Donley"
+    },
+    "48131": {
+     "name": "condado de Duval",
+     "short": "Duval"
+    },
+    "48133": {
+     "name": "condado de Eastland",
+     "short": "Eastland"
+    },
+    "48135": {
+     "name": "condado de Ector",
+     "short": "Ector"
+    },
+    "48137": {
+     "name": "condado de Edwards",
+     "short": "Edwards"
+    },
+    "48139": {
+     "name": "condado de Ellis",
+     "short": "Ellis"
+    },
+    "48141": {
+     "name": "condado de El Paso",
+     "short": "El Paso"
+    },
+    "48143": {
+     "name": "condado de Erath",
+     "short": "Erath"
+    },
+    "48145": {
+     "name": "condado de Falls",
+     "short": "Falls"
+    },
+    "48147": {
+     "name": "condado de Fannin",
+     "short": "Fannin"
+    },
+    "48149": {
+     "name": "condado de Fayette",
+     "short": "Fayette"
+    },
+    "48151": {
+     "name": "condado de Fisher",
+     "short": "Fisher"
+    },
+    "48153": {
+     "name": "condado de Floyd",
+     "short": "Floyd"
+    },
+    "48155": {
+     "name": "condado de Foard",
+     "short": "Foard"
+    },
+    "48157": {
+     "name": "condado de Fort Bend",
+     "short": "Fort Bend"
+    },
+    "48159": {
+     "name": "condado de Franklin",
+     "short": "Franklin"
+    },
+    "48161": {
+     "name": "condado de Freestone",
+     "short": "Freestone"
+    },
+    "48163": {
+     "name": "condado de Frio",
+     "short": "Frio"
+    },
+    "48165": {
+     "name": "condado de Gaines",
+     "short": "Gaines"
+    },
+    "48167": {
+     "name": "condado de Galveston",
+     "short": "Galveston"
+    },
+    "48169": {
+     "name": "condado de Garza",
+     "short": "Garza"
+    },
+    "48171": {
+     "name": "condado de Gillespie",
+     "short": "Gillespie"
+    },
+    "48173": {
+     "name": "condado de Glasscock",
+     "short": "Glasscock"
+    },
+    "48175": {
+     "name": "condado de Goliad",
+     "short": "Goliad"
+    },
+    "48177": {
+     "name": "condado de Gonzales",
+     "short": "Gonzales"
+    },
+    "48179": {
+     "name": "condado de Gray",
+     "short": "Gray"
+    },
+    "48181": {
+     "name": "condado de Grayson",
+     "short": "Grayson"
+    },
+    "48183": {
+     "name": "condado de Gregg",
+     "short": "Gregg"
+    },
+    "48185": {
+     "name": "condado de Grimes",
+     "short": "Grimes"
+    },
+    "48187": {
+     "name": "condado de Guadalupe",
+     "short": "Guadalupe"
+    },
+    "48189": {
+     "name": "condado de Hale",
+     "short": "Hale"
+    },
+    "48191": {
+     "name": "condado de Hall",
+     "short": "Hall"
+    },
+    "48193": {
+     "name": "condado de Hamilton",
+     "short": "Hamilton"
+    },
+    "48195": {
+     "name": "condado de Hansford",
+     "short": "Hansford"
+    },
+    "48197": {
+     "name": "condado de Hardeman",
+     "short": "Hardeman"
+    },
+    "48199": {
+     "name": "condado de Hardin",
+     "short": "Hardin"
+    },
+    "48201": {
+     "name": "condado de Harris",
+     "short": "Harris"
+    },
+    "48203": {
+     "name": "condado de Harrison",
+     "short": "Harrison"
+    },
+    "48205": {
+     "name": "condado de Hartley",
+     "short": "Hartley"
+    },
+    "48207": {
+     "name": "condado de Haskell",
+     "short": "Haskell"
+    },
+    "48209": {
+     "name": "condado de Hays",
+     "short": "Hays"
+    },
+    "48211": {
+     "name": "condado de Hemphill",
+     "short": "Hemphill"
+    },
+    "48213": {
+     "name": "condado de Henderson",
+     "short": "Henderson"
+    },
+    "48215": {
+     "name": "condado de Hidalgo",
+     "short": "Hidalgo"
+    },
+    "48217": {
+     "name": "condado de Hill",
+     "short": "Hill"
+    },
+    "48219": {
+     "name": "condado de Hockley",
+     "short": "Hockley"
+    },
+    "48221": {
+     "name": "condado de Hood",
+     "short": "Hood"
+    },
+    "48223": {
+     "name": "condado de Hopkins",
+     "short": "Hopkins"
+    },
+    "48225": {
+     "name": "condado de Houston",
+     "short": "Houston"
+    },
+    "48227": {
+     "name": "condado de Howard",
+     "short": "Howard"
+    },
+    "48229": {
+     "name": "condado de Hudspeth",
+     "short": "Hudspeth"
+    },
+    "48231": {
+     "name": "condado de Hunt",
+     "short": "Hunt"
+    },
+    "48233": {
+     "name": "condado de Hutchinson",
+     "short": "Hutchinson"
+    },
+    "48235": {
+     "name": "condado de Irion",
+     "short": "Irion"
+    },
+    "48237": {
+     "name": "condado de Jack",
+     "short": "Jack"
+    },
+    "48239": {
+     "name": "condado de Jackson",
+     "short": "Jackson"
+    },
+    "48241": {
+     "name": "condado de Jasper",
+     "short": "Jasper"
+    },
+    "48243": {
+     "name": "condado de Jeff Davis",
+     "short": "Jeff Davis"
+    },
+    "48245": {
+     "name": "condado de Jefferson",
+     "short": "Jefferson"
+    },
+    "48247": {
+     "name": "condado de Jim Hogg",
+     "short": "Jim Hogg"
+    },
+    "48249": {
+     "name": "condado de Jim Wells",
+     "short": "Jim Wells"
+    },
+    "48251": {
+     "name": "condado de Johnson",
+     "short": "Johnson"
+    },
+    "48253": {
+     "name": "condado de Jones",
+     "short": "Jones"
+    },
+    "48255": {
+     "name": "condado de Karnes",
+     "short": "Karnes"
+    },
+    "48257": {
+     "name": "condado de Kaufman",
+     "short": "Kaufman"
+    },
+    "48259": {
+     "name": "condado de Kendall",
+     "short": "Kendall"
+    },
+    "48261": {
+     "name": "condado de Kenedy",
+     "short": "Kenedy"
+    },
+    "48263": {
+     "name": "condado de Kent",
+     "short": "Kent"
+    },
+    "48265": {
+     "name": "condado de Kerr",
+     "short": "Kerr"
+    },
+    "48267": {
+     "name": "condado de Kimble",
+     "short": "Kimble"
+    },
+    "48269": {
+     "name": "condado de King",
+     "short": "King"
+    },
+    "48271": {
+     "name": "condado de Kinney",
+     "short": "Kinney"
+    },
+    "48273": {
+     "name": "condado de Kleberg",
+     "short": "Kleberg"
+    },
+    "48275": {
+     "name": "condado de Knox",
+     "short": "Knox"
+    },
+    "48277": {
+     "name": "condado de Lamar",
+     "short": "Lamar"
+    },
+    "48279": {
+     "name": "condado de Lamb",
+     "short": "Lamb"
+    },
+    "48281": {
+     "name": "condado de Lampasas",
+     "short": "Lampasas"
+    },
+    "48283": {
+     "name": "condado de La Salle",
+     "short": "La Salle"
+    },
+    "48285": {
+     "name": "condado de Lavaca",
+     "short": "Lavaca"
+    },
+    "48287": {
+     "name": "condado de Lee",
+     "short": "Lee"
+    },
+    "48289": {
+     "name": "condado de Leon",
+     "short": "Leon"
+    },
+    "48291": {
+     "name": "condado de Liberty",
+     "short": "Liberty"
+    },
+    "48293": {
+     "name": "condado de Limestone",
+     "short": "Limestone"
+    },
+    "48295": {
+     "name": "condado de Lipscomb",
+     "short": "Lipscomb"
+    },
+    "48297": {
+     "name": "condado de Live Oak",
+     "short": "Live Oak"
+    },
+    "48299": {
+     "name": "condado de Llano",
+     "short": "Llano"
+    },
+    "48301": {
+     "name": "condado de Loving",
+     "short": "Loving"
+    },
+    "48303": {
+     "name": "condado de Lubbock",
+     "short": "Lubbock"
+    },
+    "48305": {
+     "name": "condado de Lynn",
+     "short": "Lynn"
+    },
+    "48307": {
+     "name": "condado de McCulloch",
+     "short": "McCulloch"
+    },
+    "48309": {
+     "name": "condado de McLennan",
+     "short": "McLennan"
+    },
+    "48311": {
+     "name": "condado de McMullen",
+     "short": "McMullen"
+    },
+    "48313": {
+     "name": "condado de Madison",
+     "short": "Madison"
+    },
+    "48315": {
+     "name": "condado de Marion",
+     "short": "Marion"
+    },
+    "48317": {
+     "name": "condado de Martin",
+     "short": "Martin"
+    },
+    "48319": {
+     "name": "condado de Mason",
+     "short": "Mason"
+    },
+    "48321": {
+     "name": "condado de Matagorda",
+     "short": "Matagorda"
+    },
+    "48323": {
+     "name": "condado de Maverick",
+     "short": "Maverick"
+    },
+    "48325": {
+     "name": "condado de Medina",
+     "short": "Medina"
+    },
+    "48327": {
+     "name": "condado de Menard",
+     "short": "Menard"
+    },
+    "48329": {
+     "name": "condado de Midland",
+     "short": "Midland"
+    },
+    "48331": {
+     "name": "condado de Milam",
+     "short": "Milam"
+    },
+    "48333": {
+     "name": "condado de Mills",
+     "short": "Mills"
+    },
+    "48335": {
+     "name": "condado de Mitchell",
+     "short": "Mitchell"
+    },
+    "48337": {
+     "name": "condado de Montague",
+     "short": "Montague"
+    },
+    "48339": {
+     "name": "condado de Montgomery",
+     "short": "Montgomery"
+    },
+    "48341": {
+     "name": "condado de Moore",
+     "short": "Moore"
+    },
+    "48343": {
+     "name": "condado de Morris",
+     "short": "Morris"
+    },
+    "48345": {
+     "name": "condado de Motley",
+     "short": "Motley"
+    },
+    "48347": {
+     "name": "condado de Nacogdoches",
+     "short": "Nacogdoches"
+    },
+    "48349": {
+     "name": "condado de Navarro",
+     "short": "Navarro"
+    },
+    "48351": {
+     "name": "condado de Newton",
+     "short": "Newton"
+    },
+    "48353": {
+     "name": "condado de Nolan",
+     "short": "Nolan"
+    },
+    "48355": {
+     "name": "condado de Nueces",
+     "short": "Nueces"
+    },
+    "48357": {
+     "name": "condado de Ochiltree",
+     "short": "Ochiltree"
+    },
+    "48359": {
+     "name": "condado de Oldham",
+     "short": "Oldham"
+    },
+    "48361": {
+     "name": "condado de Orange",
+     "short": "Orange"
+    },
+    "48363": {
+     "name": "condado de Palo Pinto",
+     "short": "Palo Pinto"
+    },
+    "48365": {
+     "name": "condado de Panola",
+     "short": "Panola"
+    },
+    "48367": {
+     "name": "condado de Parker",
+     "short": "Parker"
+    },
+    "48369": {
+     "name": "condado de Parmer",
+     "short": "Parmer"
+    },
+    "48371": {
+     "name": "condado de Pecos",
+     "short": "Pecos"
+    },
+    "48373": {
+     "name": "condado de Polk",
+     "short": "Polk"
+    },
+    "48375": {
+     "name": "condado de Potter",
+     "short": "Potter"
+    },
+    "48377": {
+     "name": "condado de Presidio",
+     "short": "Presidio"
+    },
+    "48379": {
+     "name": "condado de Rains",
+     "short": "Rains"
+    },
+    "48381": {
+     "name": "condado de Randall",
+     "short": "Randall"
+    },
+    "48383": {
+     "name": "condado de Reagan",
+     "short": "Reagan"
+    },
+    "48385": {
+     "name": "condado de Real",
+     "short": "Real"
+    },
+    "48387": {
+     "name": "condado de Red River",
+     "short": "Red River"
+    },
+    "48389": {
+     "name": "condado de Reeves",
+     "short": "Reeves"
+    },
+    "48391": {
+     "name": "condado de Refugio",
+     "short": "Refugio"
+    },
+    "48393": {
+     "name": "condado de Roberts",
+     "short": "Roberts"
+    },
+    "48395": {
+     "name": "condado de Robertson",
+     "short": "Robertson"
+    },
+    "48397": {
+     "name": "condado de Rockwall",
+     "short": "Rockwall"
+    },
+    "48399": {
+     "name": "condado de Runnels",
+     "short": "Runnels"
+    },
+    "48401": {
+     "name": "condado de Rusk",
+     "short": "Rusk"
+    },
+    "48403": {
+     "name": "condado de Sabine",
+     "short": "Sabine"
+    },
+    "48405": {
+     "name": "condado de San Augustine",
+     "short": "San Augustine"
+    },
+    "48407": {
+     "name": "condado de San Jacinto",
+     "short": "San Jacinto"
+    },
+    "48409": {
+     "name": "condado de San Patricio",
+     "short": "San Patricio"
+    },
+    "48411": {
+     "name": "condado de San Saba",
+     "short": "San Saba"
+    },
+    "48413": {
+     "name": "condado de Schleicher",
+     "short": "Schleicher"
+    },
+    "48415": {
+     "name": "condado de Scurry",
+     "short": "Scurry"
+    },
+    "48417": {
+     "name": "condado de Shackelford",
+     "short": "Shackelford"
+    },
+    "48419": {
+     "name": "condado de Shelby",
+     "short": "Shelby"
+    },
+    "48421": {
+     "name": "condado de Sherman",
+     "short": "Sherman"
+    },
+    "48423": {
+     "name": "condado de Smith",
+     "short": "Smith"
+    },
+    "48425": {
+     "name": "condado de Somervell",
+     "short": "Somervell"
+    },
+    "48427": {
+     "name": "condado de Starr",
+     "short": "Starr"
+    },
+    "48429": {
+     "name": "condado de Stephens",
+     "short": "Stephens"
+    },
+    "48431": {
+     "name": "condado de Sterling",
+     "short": "Sterling"
+    },
+    "48433": {
+     "name": "condado de Stonewall",
+     "short": "Stonewall"
+    },
+    "48435": {
+     "name": "condado de Sutton",
+     "short": "Sutton"
+    },
+    "48437": {
+     "name": "condado de Swisher",
+     "short": "Swisher"
+    },
+    "48439": {
+     "name": "condado de Tarrant",
+     "short": "Tarrant"
+    },
+    "48441": {
+     "name": "condado de Taylor",
+     "short": "Taylor"
+    },
+    "48443": {
+     "name": "condado de Terrell",
+     "short": "Terrell"
+    },
+    "48445": {
+     "name": "condado de Terry",
+     "short": "Terry"
+    },
+    "48447": {
+     "name": "condado de Throckmorton",
+     "short": "Throckmorton"
+    },
+    "48449": {
+     "name": "condado de Titus",
+     "short": "Titus"
+    },
+    "48451": {
+     "name": "condado de Tom Green",
+     "short": "Tom Green"
+    },
+    "48453": {
+     "name": "condado de Travis",
+     "short": "Travis"
+    },
+    "48455": {
+     "name": "condado de Trinity",
+     "short": "Trinity"
+    },
+    "48457": {
+     "name": "condado de Tyler",
+     "short": "Tyler"
+    },
+    "48459": {
+     "name": "condado de Upshur",
+     "short": "Upshur"
+    },
+    "48461": {
+     "name": "condado de Upton",
+     "short": "Upton"
+    },
+    "48463": {
+     "name": "condado de Uvalde",
+     "short": "Uvalde"
+    },
+    "48465": {
+     "name": "condado de Val Verde",
+     "short": "Val Verde"
+    },
+    "48467": {
+     "name": "condado de Van Zandt",
+     "short": "Van Zandt"
+    },
+    "48469": {
+     "name": "condado de Victoria",
+     "short": "Victoria"
+    },
+    "48471": {
+     "name": "condado de Walker",
+     "short": "Walker"
+    },
+    "48473": {
+     "name": "condado de Waller",
+     "short": "Waller"
+    },
+    "48475": {
+     "name": "condado de Ward",
+     "short": "Ward"
+    },
+    "48477": {
+     "name": "condado de Washington",
+     "short": "Washington"
+    },
+    "48479": {
+     "name": "condado de Webb",
+     "short": "Webb"
+    },
+    "48481": {
+     "name": "condado de Wharton",
+     "short": "Wharton"
+    },
+    "48483": {
+     "name": "condado de Wheeler",
+     "short": "Wheeler"
+    },
+    "48485": {
+     "name": "condado de Wichita",
+     "short": "Wichita"
+    },
+    "48487": {
+     "name": "condado de Wilbarger",
+     "short": "Wilbarger"
+    },
+    "48489": {
+     "name": "condado de Willacy",
+     "short": "Willacy"
+    },
+    "48491": {
+     "name": "condado de Williamson",
+     "short": "Williamson"
+    },
+    "48493": {
+     "name": "condado de Wilson",
+     "short": "Wilson"
+    },
+    "48495": {
+     "name": "condado de Winkler",
+     "short": "Winkler"
+    },
+    "48497": {
+     "name": "condado de Wise",
+     "short": "Wise"
+    },
+    "48499": {
+     "name": "condado de Wood",
+     "short": "Wood"
+    },
+    "48501": {
+     "name": "condado de Yoakum",
+     "short": "Yoakum"
+    },
+    "48503": {
+     "name": "condado de Young",
+     "short": "Young"
+    },
+    "48505": {
+     "name": "condado de Zapata",
+     "short": "Zapata"
+    },
+    "48507": {
+     "name": "condado de Zavala",
+     "short": "Zavala"
+    }
+   },
+   "ja": {
+    "48001": {
+     "name": "アンダーソン郡",
+     "short": "アンダーソン"
+    },
+    "48003": {
+     "name": "アンドリュース郡",
+     "short": "アンドリュース"
+    },
+    "48005": {
+     "name": "アンジェリーナ郡",
+     "short": "アンジェリーナ"
+    },
+    "48007": {
+     "name": "アランサス郡",
+     "short": "アランサス"
+    },
+    "48009": {
+     "name": "アーチャー郡",
+     "short": "アーチャー"
+    },
+    "48011": {
+     "name": "アームストロング郡",
+     "short": "アームストロング"
+    },
+    "48013": {
+     "name": "アタスコサ郡",
+     "short": "アタスコサ"
+    },
+    "48015": {
+     "name": "オースティン郡",
+     "short": "オースティン"
+    },
+    "48017": {
+     "name": "ベイリー郡",
+     "short": "ベイリー"
+    },
+    "48019": {
+     "name": "バンデラ郡",
+     "short": "バンデラ"
+    },
+    "48021": {
+     "name": "バストロップ郡",
+     "short": "バストロップ"
+    },
+    "48023": {
+     "name": "ベイラー郡",
+     "short": "ベイラー"
+    },
+    "48025": {
+     "name": "ビー郡",
+     "short": "ビー"
+    },
+    "48027": {
+     "name": "ベル郡",
+     "short": "ベル"
+    },
+    "48029": {
+     "name": "ベア郡",
+     "short": "ベア"
+    },
+    "48031": {
+     "name": "ブランコ郡",
+     "short": "ブランコ"
+    },
+    "48033": {
+     "name": "ボーデン郡",
+     "short": "ボーデン"
+    },
+    "48035": {
+     "name": "ボスキー郡",
+     "short": "ボスキー"
+    },
+    "48037": {
+     "name": "ボウイ郡",
+     "short": "ボウイ"
+    },
+    "48039": {
+     "name": "ブラゾリア郡",
+     "short": "ブラゾリア"
+    },
+    "48041": {
+     "name": "ブラゾス郡",
+     "short": "ブラゾス"
+    },
+    "48043": {
+     "name": "ブルースター郡",
+     "short": "ブルースター"
+    },
+    "48045": {
+     "name": "ブリスコー郡",
+     "short": "ブリスコー"
+    },
+    "48047": {
+     "name": "ブルックス郡",
+     "short": "ブルックス"
+    },
+    "48049": {
+     "name": "ブラウン郡",
+     "short": "ブラウン"
+    },
+    "48051": {
+     "name": "バールソン郡",
+     "short": "バールソン"
+    },
+    "48053": {
+     "name": "バーネット郡",
+     "short": "バーネット"
+    },
+    "48055": {
+     "name": "コールドウェル郡",
+     "short": "コールドウェル"
+    },
+    "48057": {
+     "name": "カルフーン郡",
+     "short": "カルフーン"
+    },
+    "48059": {
+     "name": "キャラハン郡",
+     "short": "キャラハン"
+    },
+    "48061": {
+     "name": "キャメロン郡",
+     "short": "キャメロン"
+    },
+    "48063": {
+     "name": "キャンプ郡",
+     "short": "キャンプ"
+    },
+    "48065": {
+     "name": "カーソン郡",
+     "short": "カーソン"
+    },
+    "48067": {
+     "name": "キャス郡",
+     "short": "キャス"
+    },
+    "48069": {
+     "name": "カストロ郡",
+     "short": "カストロ"
+    },
+    "48071": {
+     "name": "チェンバース郡",
+     "short": "チェンバース"
+    },
+    "48073": {
+     "name": "チェロキー郡",
+     "short": "チェロキー"
+    },
+    "48075": {
+     "name": "チルドレス郡",
+     "short": "チルドレス"
+    },
+    "48077": {
+     "name": "クレイ郡",
+     "short": "クレイ"
+    },
+    "48079": {
+     "name": "コクラン郡",
+     "short": "コクラン"
+    },
+    "48081": {
+     "name": "コーク郡",
+     "short": "コーク"
+    },
+    "48083": {
+     "name": "コールマン郡",
+     "short": "コールマン"
+    },
+    "48085": {
+     "name": "コリン郡",
+     "short": "コリン"
+    },
+    "48087": {
+     "name": "コリングズワース郡",
+     "short": "コリングズワース"
+    },
+    "48089": {
+     "name": "コロラド郡",
+     "short": "コロラド"
+    },
+    "48091": {
+     "name": "コマル郡",
+     "short": "コマル"
+    },
+    "48093": {
+     "name": "コマンチ郡",
+     "short": "コマンチ"
+    },
+    "48095": {
+     "name": "コンコ郡",
+     "short": "コンコ"
+    },
+    "48097": {
+     "name": "クック郡",
+     "short": "クック"
+    },
+    "48099": {
+     "name": "コリエル郡",
+     "short": "コリエル"
+    },
+    "48101": {
+     "name": "コトル郡",
+     "short": "コトル"
+    },
+    "48103": {
+     "name": "クレーン郡",
+     "short": "クレーン"
+    },
+    "48105": {
+     "name": "クロケット郡",
+     "short": "クロケット"
+    },
+    "48107": {
+     "name": "クロスビー郡",
+     "short": "クロスビー"
+    },
+    "48109": {
+     "name": "カルバーソン郡",
+     "short": "カルバーソン"
+    },
+    "48111": {
+     "name": "ダラム郡",
+     "short": "ダラム"
+    },
+    "48113": {
+     "name": "ダラス郡",
+     "short": "ダラス"
+    },
+    "48115": {
+     "name": "ドーソン郡",
+     "short": "ドーソン"
+    },
+    "48117": {
+     "name": "デフスミス郡",
+     "short": "デフスミス"
+    },
+    "48119": {
+     "name": "デルタ郡",
+     "short": "デルタ"
+    },
+    "48121": {
+     "name": "デントン郡",
+     "short": "デントン"
+    },
+    "48123": {
+     "name": "デウィット郡",
+     "short": "デウィット"
+    },
+    "48125": {
+     "name": "ディケンズ郡",
+     "short": "ディケンズ"
+    },
+    "48127": {
+     "name": "ディミット郡",
+     "short": "ディミット"
+    },
+    "48129": {
+     "name": "ドンリー郡",
+     "short": "ドンリー"
+    },
+    "48131": {
+     "name": "デュバル郡",
+     "short": "デュバル"
+    },
+    "48133": {
+     "name": "イーストランド郡",
+     "short": "イーストランド"
+    },
+    "48135": {
+     "name": "エクター郡",
+     "short": "エクター"
+    },
+    "48137": {
+     "name": "エドワーズ郡",
+     "short": "エドワーズ"
+    },
+    "48139": {
+     "name": "エリス郡",
+     "short": "エリス"
+    },
+    "48141": {
+     "name": "エルパソ郡",
+     "short": "エルパソ"
+    },
+    "48143": {
+     "name": "イラス郡",
+     "short": "イラス"
+    },
+    "48145": {
+     "name": "フォールズ郡",
+     "short": "フォールズ"
+    },
+    "48147": {
+     "name": "ファニン郡",
+     "short": "ファニン"
+    },
+    "48149": {
+     "name": "フェイエット郡",
+     "short": "フェイエット"
+    },
+    "48151": {
+     "name": "フィッシャー郡",
+     "short": "フィッシャー"
+    },
+    "48153": {
+     "name": "フロイド郡",
+     "short": "フロイド"
+    },
+    "48155": {
+     "name": "フォード郡",
+     "short": "フォード"
+    },
+    "48157": {
+     "name": "フォートベンド郡",
+     "short": "フォートベンド"
+    },
+    "48159": {
+     "name": "フランクリン郡",
+     "short": "フランクリン"
+    },
+    "48161": {
+     "name": "フリーストーン郡",
+     "short": "フリーストーン"
+    },
+    "48163": {
+     "name": "フリオ郡",
+     "short": "フリオ"
+    },
+    "48165": {
+     "name": "ゲインズ郡",
+     "short": "ゲインズ"
+    },
+    "48167": {
+     "name": "ガルベストン郡",
+     "short": "ガルベストン"
+    },
+    "48169": {
+     "name": "ガルザ郡",
+     "short": "ガルザ"
+    },
+    "48171": {
+     "name": "ギレスピー郡",
+     "short": "ギレスピー"
+    },
+    "48173": {
+     "name": "グラスコック郡",
+     "short": "グラスコック"
+    },
+    "48175": {
+     "name": "ゴリアド郡",
+     "short": "ゴリアド"
+    },
+    "48177": {
+     "name": "ゴンザレス郡",
+     "short": "ゴンザレス"
+    },
+    "48179": {
+     "name": "グレイ郡",
+     "short": "グレイ"
+    },
+    "48181": {
+     "name": "グレイソン郡",
+     "short": "グレイソン"
+    },
+    "48183": {
+     "name": "グレッグ郡",
+     "short": "グレッグ"
+    },
+    "48185": {
+     "name": "グライムズ郡",
+     "short": "グライムズ"
+    },
+    "48187": {
+     "name": "グアダルーペ郡",
+     "short": "グアダルーペ"
+    },
+    "48189": {
+     "name": "ヘイル郡",
+     "short": "ヘイル"
+    },
+    "48191": {
+     "name": "ホール郡",
+     "short": "ホール"
+    },
+    "48193": {
+     "name": "ハミルトン郡",
+     "short": "ハミルトン"
+    },
+    "48195": {
+     "name": "ハンズフォード郡",
+     "short": "ハンズフォード"
+    },
+    "48197": {
+     "name": "ハーデマン郡",
+     "short": "ハーデマン"
+    },
+    "48199": {
+     "name": "ハーディン郡",
+     "short": "ハーディン"
+    },
+    "48201": {
+     "name": "ハリス郡",
+     "short": "ハリス"
+    },
+    "48203": {
+     "name": "ハリソン郡",
+     "short": "ハリソン"
+    },
+    "48205": {
+     "name": "ハートリー郡",
+     "short": "ハートリー"
+    },
+    "48207": {
+     "name": "ハスケル郡",
+     "short": "ハスケル"
+    },
+    "48209": {
+     "name": "ヘイズ郡",
+     "short": "ヘイズ"
+    },
+    "48211": {
+     "name": "ヘンフィル郡",
+     "short": "ヘンフィル"
+    },
+    "48213": {
+     "name": "ヘンダーソン郡",
+     "short": "ヘンダーソン"
+    },
+    "48215": {
+     "name": "イダルゴ郡",
+     "short": "イダルゴ"
+    },
+    "48217": {
+     "name": "ヒル郡",
+     "short": "ヒル"
+    },
+    "48219": {
+     "name": "ホックリー郡",
+     "short": "ホックリー"
+    },
+    "48221": {
+     "name": "フッド郡",
+     "short": "フッド"
+    },
+    "48223": {
+     "name": "ホプキンス郡",
+     "short": "ホプキンス"
+    },
+    "48225": {
+     "name": "ヒューストン郡",
+     "short": "ヒューストン"
+    },
+    "48227": {
+     "name": "ハワード郡",
+     "short": "ハワード"
+    },
+    "48229": {
+     "name": "ハズペス郡",
+     "short": "ハズペス"
+    },
+    "48231": {
+     "name": "ハント郡",
+     "short": "ハント"
+    },
+    "48233": {
+     "name": "ハッチンソン郡",
+     "short": "ハッチンソン"
+    },
+    "48235": {
+     "name": "アイリオン郡",
+     "short": "アイリオン"
+    },
+    "48237": {
+     "name": "ジャック郡",
+     "short": "ジャック"
+    },
+    "48239": {
+     "name": "ジャクソン郡",
+     "short": "ジャクソン"
+    },
+    "48241": {
+     "name": "ジャスパー郡",
+     "short": "ジャスパー"
+    },
+    "48243": {
+     "name": "ジェフデイビス郡",
+     "short": "ジェフデイビス"
+    },
+    "48245": {
+     "name": "ジェファーソン郡",
+     "short": "ジェファーソン"
+    },
+    "48247": {
+     "name": "ジムホッグ郡",
+     "short": "ジムホッグ"
+    },
+    "48249": {
+     "name": "ジムウェルズ郡",
+     "short": "ジムウェルズ"
+    },
+    "48251": {
+     "name": "ジョンソン郡",
+     "short": "ジョンソン"
+    },
+    "48253": {
+     "name": "ジョーンズ郡",
+     "short": "ジョーンズ"
+    },
+    "48255": {
+     "name": "カーンズ郡",
+     "short": "カーンズ"
+    },
+    "48257": {
+     "name": "カウフマン郡",
+     "short": "カウフマン"
+    },
+    "48259": {
+     "name": "ケンダル郡",
+     "short": "ケンダル"
+    },
+    "48261": {
+     "name": "ケネディ郡",
+     "short": "ケネディ"
+    },
+    "48263": {
+     "name": "ケント郡",
+     "short": "ケント"
+    },
+    "48265": {
+     "name": "カー郡",
+     "short": "カー"
+    },
+    "48267": {
+     "name": "キンブル郡",
+     "short": "キンブル"
+    },
+    "48269": {
+     "name": "キング郡",
+     "short": "キング"
+    },
+    "48271": {
+     "name": "キニー郡",
+     "short": "キニー"
+    },
+    "48273": {
+     "name": "クレバーグ郡",
+     "short": "クレバーグ"
+    },
+    "48275": {
+     "name": "ノックス郡",
+     "short": "ノックス"
+    },
+    "48277": {
+     "name": "ラマー郡",
+     "short": "ラマー"
+    },
+    "48279": {
+     "name": "ラム郡",
+     "short": "ラム"
+    },
+    "48281": {
+     "name": "ランパサス郡",
+     "short": "ランパサス"
+    },
+    "48283": {
+     "name": "ラサール郡",
+     "short": "ラサール"
+    },
+    "48285": {
+     "name": "ラバカ郡",
+     "short": "ラバカ"
+    },
+    "48287": {
+     "name": "リー郡",
+     "short": "リー"
+    },
+    "48289": {
+     "name": "レオン郡",
+     "short": "レオン"
+    },
+    "48291": {
+     "name": "リバティ郡",
+     "short": "リバティ"
+    },
+    "48293": {
+     "name": "ライムストーン郡",
+     "short": "ライムストーン"
+    },
+    "48295": {
+     "name": "リップスコム郡",
+     "short": "リップスコム"
+    },
+    "48297": {
+     "name": "ライブオーク郡",
+     "short": "ライブオーク"
+    },
+    "48299": {
+     "name": "ラノ郡",
+     "short": "ラノ"
+    },
+    "48301": {
+     "name": "ラビング郡",
+     "short": "ラビング"
+    },
+    "48303": {
+     "name": "ラボック郡",
+     "short": "ラボック"
+    },
+    "48305": {
+     "name": "リン郡",
+     "short": "リン"
+    },
+    "48307": {
+     "name": "マカロック郡",
+     "short": "マカロック"
+    },
+    "48309": {
+     "name": "マクレナン郡",
+     "short": "マクレナン"
+    },
+    "48311": {
+     "name": "マクマレン郡",
+     "short": "マクマレン"
+    },
+    "48313": {
+     "name": "マディソン郡",
+     "short": "マディソン"
+    },
+    "48315": {
+     "name": "マリオン郡",
+     "short": "マリオン"
+    },
+    "48317": {
+     "name": "マーティン郡",
+     "short": "マーティン"
+    },
+    "48319": {
+     "name": "メイソン郡",
+     "short": "メイソン"
+    },
+    "48321": {
+     "name": "マタゴルダ郡",
+     "short": "マタゴルダ"
+    },
+    "48323": {
+     "name": "マーベリック郡",
+     "short": "マーベリック"
+    },
+    "48325": {
+     "name": "メディナ郡",
+     "short": "メディナ"
+    },
+    "48327": {
+     "name": "メナード郡",
+     "short": "メナード"
+    },
+    "48329": {
+     "name": "ミッドランド郡",
+     "short": "ミッドランド"
+    },
+    "48331": {
+     "name": "マイラム郡",
+     "short": "マイラム"
+    },
+    "48333": {
+     "name": "ミルズ郡",
+     "short": "ミルズ"
+    },
+    "48335": {
+     "name": "ミッチェル郡",
+     "short": "ミッチェル"
+    },
+    "48337": {
+     "name": "モンタギュー郡",
+     "short": "モンタギュー"
+    },
+    "48339": {
+     "name": "モンゴメリー郡",
+     "short": "モンゴメリー"
+    },
+    "48341": {
+     "name": "ムーア郡",
+     "short": "ムーア"
+    },
+    "48343": {
+     "name": "モリス郡",
+     "short": "モリス"
+    },
+    "48345": {
+     "name": "モトリー郡",
+     "short": "モトリー"
+    },
+    "48347": {
+     "name": "ナコドチェス郡",
+     "short": "ナコドチェス"
+    },
+    "48349": {
+     "name": "ナバロ郡",
+     "short": "ナバロ"
+    },
+    "48351": {
+     "name": "ニュートン郡",
+     "short": "ニュートン"
+    },
+    "48353": {
+     "name": "ノーラン郡",
+     "short": "ノーラン"
+    },
+    "48355": {
+     "name": "ヌエセス郡",
+     "short": "ヌエセス"
+    },
+    "48357": {
+     "name": "オキルツリー郡",
+     "short": "オキルツリー"
+    },
+    "48359": {
+     "name": "オールダム郡",
+     "short": "オールダム"
+    },
+    "48361": {
+     "name": "オレンジ郡",
+     "short": "オレンジ"
+    },
+    "48363": {
+     "name": "パロピント郡",
+     "short": "パロピント"
+    },
+    "48365": {
+     "name": "パノラ郡",
+     "short": "パノラ"
+    },
+    "48367": {
+     "name": "パーカー郡",
+     "short": "パーカー"
+    },
+    "48369": {
+     "name": "パーマー郡",
+     "short": "パーマー"
+    },
+    "48371": {
+     "name": "ペコス郡",
+     "short": "ペコス"
+    },
+    "48373": {
+     "name": "ポーク郡",
+     "short": "ポーク"
+    },
+    "48375": {
+     "name": "ポッター郡",
+     "short": "ポッター"
+    },
+    "48377": {
+     "name": "プレシディオ郡",
+     "short": "プレシディオ"
+    },
+    "48379": {
+     "name": "レインズ郡",
+     "short": "レインズ"
+    },
+    "48381": {
+     "name": "ランドール郡",
+     "short": "ランドール"
+    },
+    "48383": {
+     "name": "レーガン郡",
+     "short": "レーガン"
+    },
+    "48385": {
+     "name": "レアル郡",
+     "short": "レアル"
+    },
+    "48387": {
+     "name": "レッドリバー郡",
+     "short": "レッドリバー"
+    },
+    "48389": {
+     "name": "リーブス郡",
+     "short": "リーブス"
+    },
+    "48391": {
+     "name": "レフュージオ郡",
+     "short": "レフュージオ"
+    },
+    "48393": {
+     "name": "ロバーツ郡",
+     "short": "ロバーツ"
+    },
+    "48395": {
+     "name": "ロバートソン郡",
+     "short": "ロバートソン"
+    },
+    "48397": {
+     "name": "ロックウォール郡",
+     "short": "ロックウォール"
+    },
+    "48399": {
+     "name": "ラネルズ郡",
+     "short": "ラネルズ"
+    },
+    "48401": {
+     "name": "ラスク郡",
+     "short": "ラスク"
+    },
+    "48403": {
+     "name": "サビーン郡",
+     "short": "サビーン"
+    },
+    "48405": {
+     "name": "サンオーガスティン郡",
+     "short": "サンオーガスティン"
+    },
+    "48407": {
+     "name": "サンハシント郡",
+     "short": "サンハシント"
+    },
+    "48409": {
+     "name": "サンパトリシオ郡",
+     "short": "サンパトリシオ"
+    },
+    "48411": {
+     "name": "サンサバ郡",
+     "short": "サンサバ"
+    },
+    "48413": {
+     "name": "シュライヒャー郡",
+     "short": "シュライヒャー"
+    },
+    "48415": {
+     "name": "スカリー郡",
+     "short": "スカリー"
+    },
+    "48417": {
+     "name": "シャックルフォード郡",
+     "short": "シャックルフォード"
+    },
+    "48419": {
+     "name": "シェルビー郡",
+     "short": "シェルビー"
+    },
+    "48421": {
+     "name": "シャーマン郡",
+     "short": "シャーマン"
+    },
+    "48423": {
+     "name": "スミス郡",
+     "short": "スミス"
+    },
+    "48425": {
+     "name": "サマーベル郡",
+     "short": "サマーベル"
+    },
+    "48427": {
+     "name": "スター郡",
+     "short": "スター"
+    },
+    "48429": {
+     "name": "スティーブンス郡",
+     "short": "スティーブンス"
+    },
+    "48431": {
+     "name": "スターリング郡",
+     "short": "スターリング"
+    },
+    "48433": {
+     "name": "ストーンウォール郡",
+     "short": "ストーンウォール"
+    },
+    "48435": {
+     "name": "サットン郡",
+     "short": "サットン"
+    },
+    "48437": {
+     "name": "スウィッシャー郡",
+     "short": "スウィッシャー"
+    },
+    "48439": {
+     "name": "タラント郡",
+     "short": "タラント"
+    },
+    "48441": {
+     "name": "テイラー郡",
+     "short": "テイラー"
+    },
+    "48443": {
+     "name": "テレル郡",
+     "short": "テレル"
+    },
+    "48445": {
+     "name": "テリー郡",
+     "short": "テリー"
+    },
+    "48447": {
+     "name": "スロックモートン郡",
+     "short": "スロックモートン"
+    },
+    "48449": {
+     "name": "タイタス郡",
+     "short": "タイタス"
+    },
+    "48451": {
+     "name": "トムグリーン郡",
+     "short": "トムグリーン"
+    },
+    "48453": {
+     "name": "トラビス郡",
+     "short": "トラビス"
+    },
+    "48455": {
+     "name": "トリニティ郡",
+     "short": "トリニティ"
+    },
+    "48457": {
+     "name": "タイラー郡",
+     "short": "タイラー"
+    },
+    "48459": {
+     "name": "アップシャー郡",
+     "short": "アップシャー"
+    },
+    "48461": {
+     "name": "アップトン郡",
+     "short": "アップトン"
+    },
+    "48463": {
+     "name": "ユバルデ郡",
+     "short": "ユバルデ"
+    },
+    "48465": {
+     "name": "バルベルデ郡",
+     "short": "バルベルデ"
+    },
+    "48467": {
+     "name": "バンザント郡",
+     "short": "バンザント"
+    },
+    "48469": {
+     "name": "ビクトリア郡",
+     "short": "ビクトリア"
+    },
+    "48471": {
+     "name": "ウォーカー郡",
+     "short": "ウォーカー"
+    },
+    "48473": {
+     "name": "ウォーラー郡",
+     "short": "ウォーラー"
+    },
+    "48475": {
+     "name": "ワード郡",
+     "short": "ワード"
+    },
+    "48477": {
+     "name": "ワシントン郡",
+     "short": "ワシントン"
+    },
+    "48479": {
+     "name": "ウェブ郡",
+     "short": "ウェブ"
+    },
+    "48481": {
+     "name": "ワートン郡",
+     "short": "ワートン"
+    },
+    "48483": {
+     "name": "ウィーラー郡",
+     "short": "ウィーラー"
+    },
+    "48485": {
+     "name": "ウィチタ郡",
+     "short": "ウィチタ"
+    },
+    "48487": {
+     "name": "ウィルバーガー郡",
+     "short": "ウィルバーガー"
+    },
+    "48489": {
+     "name": "ウィラシー郡",
+     "short": "ウィラシー"
+    },
+    "48491": {
+     "name": "ウィリアムソン郡",
+     "short": "ウィリアムソン"
+    },
+    "48493": {
+     "name": "ウィルソン郡",
+     "short": "ウィルソン"
+    },
+    "48495": {
+     "name": "ウィンクラー郡",
+     "short": "ウィンクラー"
+    },
+    "48497": {
+     "name": "ワイズ郡",
+     "short": "ワイズ"
+    },
+    "48499": {
+     "name": "ウッド郡",
+     "short": "ウッド"
+    },
+    "48501": {
+     "name": "ヨーカム郡",
+     "short": "ヨーカム"
+    },
+    "48503": {
+     "name": "ヤング郡",
+     "short": "ヤング"
+    },
+    "48505": {
+     "name": "サパタ郡",
+     "short": "サパタ"
+    },
+    "48507": {
+     "name": "サバラ郡",
+     "short": "サバラ"
+    }
+   },
+   "zh": {
+    "48001": {
+     "name": "安德森县",
+     "short": "安德森"
+    },
+    "48003": {
+     "name": "安德鲁斯县",
+     "short": "安德鲁斯"
+    },
+    "48005": {
+     "name": "安杰利纳县",
+     "short": "安杰利纳"
+    },
+    "48007": {
+     "name": "阿兰瑟斯县",
+     "short": "阿兰瑟斯"
+    },
+    "48009": {
+     "name": "阿彻县",
+     "short": "阿彻"
+    },
+    "48011": {
+     "name": "阿姆斯特朗县",
+     "short": "阿姆斯特朗"
+    },
+    "48013": {
+     "name": "阿塔斯科萨县",
+     "short": "阿塔斯科萨"
+    },
+    "48015": {
+     "name": "奥斯汀县",
+     "short": "奥斯汀"
+    },
+    "48017": {
+     "name": "贝利县",
+     "short": "贝利"
+    },
+    "48019": {
+     "name": "班德拉县",
+     "short": "班德拉"
+    },
+    "48021": {
+     "name": "巴斯特罗普县",
+     "short": "巴斯特罗普"
+    },
+    "48023": {
+     "name": "贝勒县",
+     "short": "贝勒"
+    },
+    "48025": {
+     "name": "比县",
+     "short": "比"
+    },
+    "48027": {
+     "name": "贝尔县",
+     "short": "贝尔"
+    },
+    "48029": {
+     "name": "贝尔县",
+     "short": "贝尔"
+    },
+    "48031": {
+     "name": "布兰科县",
+     "short": "布兰科"
+    },
+    "48033": {
+     "name": "博登县",
+     "short": "博登"
+    },
+    "48035": {
+     "name": "博斯克县",
+     "short": "博斯克"
+    },
+    "48037": {
+     "name": "鲍伊县",
+     "short": "鲍伊"
+    },
+    "48039": {
+     "name": "布拉佐里亚县",
+     "short": "布拉佐里亚"
+    },
+    "48041": {
+     "name": "布拉索斯县",
+     "short": "布拉索斯"
+    },
+    "48043": {
+     "name": "布鲁斯特县",
+     "short": "布鲁斯特"
+    },
+    "48045": {
+     "name": "布里斯科县",
+     "short": "布里斯科"
+    },
+    "48047": {
+     "name": "布鲁克斯县",
+     "short": "布鲁克斯"
+    },
+    "48049": {
+     "name": "布朗县",
+     "short": "布朗"
+    },
+    "48051": {
+     "name": "伯勒森县",
+     "short": "伯勒森"
+    },
+    "48053": {
+     "name": "伯内特县",
+     "short": "伯内特"
+    },
+    "48055": {
+     "name": "考德威尔县",
+     "short": "考德威尔"
+    },
+    "48057": {
+     "name": "卡尔霍恩县",
+     "short": "卡尔霍恩"
+    },
+    "48059": {
+     "name": "卡拉汉县",
+     "short": "卡拉汉"
+    },
+    "48061": {
+     "name": "卡梅伦县",
+     "short": "卡梅伦"
+    },
+    "48063": {
+     "name": "坎普县",
+     "short": "坎普"
+    },
+    "48065": {
+     "name": "卡森县",
+     "short": "卡森"
+    },
+    "48067": {
+     "name": "卡斯县",
+     "short": "卡斯"
+    },
+    "48069": {
+     "name": "卡斯特罗县",
+     "short": "卡斯特罗"
+    },
+    "48071": {
+     "name": "钱伯斯县",
+     "short": "钱伯斯"
+    },
+    "48073": {
+     "name": "切罗基县",
+     "short": "切罗基"
+    },
+    "48075": {
+     "name": "奇尔德雷斯县",
+     "short": "奇尔德雷斯"
+    },
+    "48077": {
+     "name": "克莱县",
+     "short": "克莱"
+    },
+    "48079": {
+     "name": "科克伦县",
+     "short": "科克伦"
+    },
+    "48081": {
+     "name": "科克县",
+     "short": "科克"
+    },
+    "48083": {
+     "name": "科尔曼县",
+     "short": "科尔曼"
+    },
+    "48085": {
+     "name": "科林县",
+     "short": "科林"
+    },
+    "48087": {
+     "name": "科林斯沃思县",
+     "short": "科林斯沃思"
+    },
+    "48089": {
+     "name": "科罗拉多县",
+     "short": "科罗拉多"
+    },
+    "48091": {
+     "name": "科马尔县",
+     "short": "科马尔"
+    },
+    "48093": {
+     "name": "科曼奇县",
+     "short": "科曼奇"
+    },
+    "48095": {
+     "name": "孔乔县",
+     "short": "孔乔"
+    },
+    "48097": {
+     "name": "库克县",
+     "short": "库克"
+    },
+    "48099": {
+     "name": "科里尔县",
+     "short": "科里尔"
+    },
+    "48101": {
+     "name": "科特尔县",
+     "short": "科特尔"
+    },
+    "48103": {
+     "name": "克兰县",
+     "short": "克兰"
+    },
+    "48105": {
+     "name": "克罗基特县",
+     "short": "克罗基特"
+    },
+    "48107": {
+     "name": "克罗斯比县",
+     "short": "克罗斯比"
+    },
+    "48109": {
+     "name": "卡尔伯森县",
+     "short": "卡尔伯森"
+    },
+    "48111": {
+     "name": "达拉姆县",
+     "short": "达拉姆"
+    },
+    "48113": {
+     "name": "达拉斯县",
+     "short": "达拉斯"
+    },
+    "48115": {
+     "name": "道森县",
+     "short": "道森"
+    },
+    "48117": {
+     "name": "迪夫史密斯县",
+     "short": "迪夫史密斯"
+    },
+    "48119": {
+     "name": "德尔塔县",
+     "short": "德尔塔"
+    },
+    "48121": {
+     "name": "丹顿县",
+     "short": "丹顿"
+    },
+    "48123": {
+     "name": "德威特县",
+     "short": "德威特"
+    },
+    "48125": {
+     "name": "迪肯斯县",
+     "short": "迪肯斯"
+    },
+    "48127": {
+     "name": "迪米特县",
+     "short": "迪米特"
+    },
+    "48129": {
+     "name": "唐利县",
+     "short": "唐利"
+    },
+    "48131": {
+     "name": "杜瓦尔县",
+     "short": "杜瓦尔"
+    },
+    "48133": {
+     "name": "伊斯特兰县",
+     "short": "伊斯特兰"
+    },
+    "48135": {
+     "name": "埃克托县",
+     "short": "埃克托"
+    },
+    "48137": {
+     "name": "爱德华兹县",
+     "short": "爱德华兹"
+    },
+    "48139": {
+     "name": "埃利斯县",
+     "short": "埃利斯"
+    },
+    "48141": {
+     "name": "埃尔帕索县",
+     "short": "埃尔帕索"
+    },
+    "48143": {
+     "name": "埃拉斯县",
+     "short": "埃拉斯"
+    },
+    "48145": {
+     "name": "福尔斯县",
+     "short": "福尔斯"
+    },
+    "48147": {
+     "name": "范宁县",
+     "short": "范宁"
+    },
+    "48149": {
+     "name": "费耶特县",
+     "short": "费耶特"
+    },
+    "48151": {
+     "name": "费舍尔县",
+     "short": "费舍尔"
+    },
+    "48153": {
+     "name": "弗洛伊德县",
+     "short": "弗洛伊德"
+    },
+    "48155": {
+     "name": "福尔德县",
+     "short": "福尔德"
+    },
+    "48157": {
+     "name": "福本德县",
+     "short": "福本德"
+    },
+    "48159": {
+     "name": "富兰克林县",
+     "short": "富兰克林"
+    },
+    "48161": {
+     "name": "弗里斯特恩县",
+     "short": "弗里斯特恩"
+    },
+    "48163": {
+     "name": "弗里奥县",
+     "short": "弗里奥"
+    },
+    "48165": {
+     "name": "盖恩斯县",
+     "short": "盖恩斯"
+    },
+    "48167": {
+     "name": "加尔维斯顿县",
+     "short": "加尔维斯顿"
+    },
+    "48169": {
+     "name": "加尔扎县",
+     "short": "加尔扎"
+    },
+    "48171": {
+     "name": "吉莱斯皮县",
+     "short": "吉莱斯皮"
+    },
+    "48173": {
+     "name": "格拉斯科克县",
+     "short": "格拉斯科克"
+    },
+    "48175": {
+     "name": "戈利亚德县",
+     "short": "戈利亚德"
+    },
+    "48177": {
+     "name": "冈萨雷斯县",
+     "short": "冈萨雷斯"
+    },
+    "48179": {
+     "name": "格雷县",
+     "short": "格雷"
+    },
+    "48181": {
+     "name": "格雷森县",
+     "short": "格雷森"
+    },
+    "48183": {
+     "name": "格雷格县",
+     "short": "格雷格"
+    },
+    "48185": {
+     "name": "格兰姆斯县",
+     "short": "格兰姆斯"
+    },
+    "48187": {
+     "name": "瓜达卢佩县",
+     "short": "瓜达卢佩"
+    },
+    "48189": {
+     "name": "黑尔县",
+     "short": "黑尔"
+    },
+    "48191": {
+     "name": "霍尔县",
+     "short": "霍尔"
+    },
+    "48193": {
+     "name": "汉密尔顿县",
+     "short": "汉密尔顿"
+    },
+    "48195": {
+     "name": "汉斯福德县",
+     "short": "汉斯福德"
+    },
+    "48197": {
+     "name": "哈德曼县",
+     "short": "哈德曼"
+    },
+    "48199": {
+     "name": "哈丁县",
+     "short": "哈丁"
+    },
+    "48201": {
+     "name": "哈里斯县",
+     "short": "哈里斯"
+    },
+    "48203": {
+     "name": "哈里森县",
+     "short": "哈里森"
+    },
+    "48205": {
+     "name": "哈特利县",
+     "short": "哈特利"
+    },
+    "48207": {
+     "name": "哈斯克尔县",
+     "short": "哈斯克尔"
+    },
+    "48209": {
+     "name": "海斯县",
+     "short": "海斯"
+    },
+    "48211": {
+     "name": "亨普希尔县",
+     "short": "亨普希尔"
+    },
+    "48213": {
+     "name": "亨德森县",
+     "short": "亨德森"
+    },
+    "48215": {
+     "name": "伊达尔戈县",
+     "short": "伊达尔戈"
+    },
+    "48217": {
+     "name": "希尔县",
+     "short": "希尔"
+    },
+    "48219": {
+     "name": "霍克利县",
+     "short": "霍克利"
+    },
+    "48221": {
+     "name": "胡德县",
+     "short": "胡德"
+    },
+    "48223": {
+     "name": "霍普金斯县",
+     "short": "霍普金斯"
+    },
+    "48225": {
+     "name": "休斯顿县",
+     "short": "休斯顿"
+    },
+    "48227": {
+     "name": "霍华德县",
+     "short": "霍华德"
+    },
+    "48229": {
+     "name": "赫兹佩斯县",
+     "short": "赫兹佩斯"
+    },
+    "48231": {
+     "name": "亨特县",
+     "short": "亨特"
+    },
+    "48233": {
+     "name": "哈钦森县",
+     "short": "哈钦森"
+    },
+    "48235": {
+     "name": "艾里昂县",
+     "short": "艾里昂"
+    },
+    "48237": {
+     "name": "杰克县",
+     "short": "杰克"
+    },
+    "48239": {
+     "name": "杰克逊县",
+     "short": "杰克逊"
+    },
+    "48241": {
+     "name": "贾斯珀县",
+     "short": "贾斯珀"
+    },
+    "48243": {
+     "name": "杰夫戴维斯县",
+     "short": "杰夫戴维斯"
+    },
+    "48245": {
+     "name": "杰斐逊县",
+     "short": "杰斐逊"
+    },
+    "48247": {
+     "name": "吉姆霍格县",
+     "short": "吉姆霍格"
+    },
+    "48249": {
+     "name": "吉姆韦尔斯县",
+     "short": "吉姆韦尔斯"
+    },
+    "48251": {
+     "name": "约翰逊县",
+     "short": "约翰逊"
+    },
+    "48253": {
+     "name": "琼斯县",
+     "short": "琼斯"
+    },
+    "48255": {
+     "name": "卡恩斯县",
+     "short": "卡恩斯"
+    },
+    "48257": {
+     "name": "考夫曼县",
+     "short": "考夫曼"
+    },
+    "48259": {
+     "name": "肯德尔县",
+     "short": "肯德尔"
+    },
+    "48261": {
+     "name": "肯尼迪县",
+     "short": "肯尼迪"
+    },
+    "48263": {
+     "name": "肯特县",
+     "short": "肯特"
+    },
+    "48265": {
+     "name": "克尔县",
+     "short": "克尔"
+    },
+    "48267": {
+     "name": "金布尔县",
+     "short": "金布尔"
+    },
+    "48269": {
+     "name": "金县",
+     "short": "金"
+    },
+    "48271": {
+     "name": "金尼县",
+     "short": "金尼"
+    },
+    "48273": {
+     "name": "克莱伯格县",
+     "short": "克莱伯格"
+    },
+    "48275": {
+     "name": "诺克斯县",
+     "short": "诺克斯"
+    },
+    "48277": {
+     "name": "拉马尔县",
+     "short": "拉马尔"
+    },
+    "48279": {
+     "name": "兰姆县",
+     "short": "兰姆"
+    },
+    "48281": {
+     "name": "兰帕瑟斯县",
+     "short": "兰帕瑟斯"
+    },
+    "48283": {
+     "name": "拉萨尔县",
+     "short": "拉萨尔"
+    },
+    "48285": {
+     "name": "拉瓦卡县",
+     "short": "拉瓦卡"
+    },
+    "48287": {
+     "name": "李县",
+     "short": "李"
+    },
+    "48289": {
+     "name": "利昂县",
+     "short": "利昂"
+    },
+    "48291": {
+     "name": "利伯蒂县",
+     "short": "利伯蒂"
+    },
+    "48293": {
+     "name": "莱姆斯通县",
+     "short": "莱姆斯通"
+    },
+    "48295": {
+     "name": "利普斯科姆县",
+     "short": "利普斯科姆"
+    },
+    "48297": {
+     "name": "莱夫奥克县",
+     "short": "莱夫奥克"
+    },
+    "48299": {
+     "name": "利亚诺县",
+     "short": "利亚诺"
+    },
+    "48301": {
+     "name": "洛文县",
+     "short": "洛文"
+    },
+    "48303": {
+     "name": "拉伯克县",
+     "short": "拉伯克"
+    },
+    "48305": {
+     "name": "林恩县",
+     "short": "林恩"
+    },
+    "48307": {
+     "name": "麦卡洛克县",
+     "short": "麦卡洛克"
+    },
+    "48309": {
+     "name": "麦克伦南县",
+     "short": "麦克伦南"
+    },
+    "48311": {
+     "name": "麦克马伦县",
+     "short": "麦克马伦"
+    },
+    "48313": {
+     "name": "麦迪逊县",
+     "short": "麦迪逊"
+    },
+    "48315": {
+     "name": "马里恩县",
+     "short": "马里恩"
+    },
+    "48317": {
+     "name": "马丁县",
+     "short": "马丁"
+    },
+    "48319": {
+     "name": "梅森县",
+     "short": "梅森"
+    },
+    "48321": {
+     "name": "马塔戈达县",
+     "short": "马塔戈达"
+    },
+    "48323": {
+     "name": "马弗里克县",
+     "short": "马弗里克"
+    },
+    "48325": {
+     "name": "梅迪纳县",
+     "short": "梅迪纳"
+    },
+    "48327": {
+     "name": "梅纳德县",
+     "short": "梅纳德"
+    },
+    "48329": {
+     "name": "米德兰县",
+     "short": "米德兰"
+    },
+    "48331": {
+     "name": "米拉姆县",
+     "short": "米拉姆"
+    },
+    "48333": {
+     "name": "米尔斯县",
+     "short": "米尔斯"
+    },
+    "48335": {
+     "name": "米切尔县",
+     "short": "米切尔"
+    },
+    "48337": {
+     "name": "蒙塔古县",
+     "short": "蒙塔古"
+    },
+    "48339": {
+     "name": "蒙哥马利县",
+     "short": "蒙哥马利"
+    },
+    "48341": {
+     "name": "穆尔县",
+     "short": "穆尔"
+    },
+    "48343": {
+     "name": "莫里斯县",
+     "short": "莫里斯"
+    },
+    "48345": {
+     "name": "莫特利县",
+     "short": "莫特利"
+    },
+    "48347": {
+     "name": "纳科多奇斯县",
+     "short": "纳科多奇斯"
+    },
+    "48349": {
+     "name": "纳瓦罗县",
+     "short": "纳瓦罗"
+    },
+    "48351": {
+     "name": "牛顿县",
+     "short": "牛顿"
+    },
+    "48353": {
+     "name": "诺兰县",
+     "short": "诺兰"
+    },
+    "48355": {
+     "name": "努埃塞斯县",
+     "short": "努埃塞斯"
+    },
+    "48357": {
+     "name": "奥奇尔特里县",
+     "short": "奥奇尔特里"
+    },
+    "48359": {
+     "name": "奥尔德姆县",
+     "short": "奥尔德姆"
+    },
+    "48361": {
+     "name": "奥兰治县",
+     "short": "奥兰治"
+    },
+    "48363": {
+     "name": "帕洛平托县",
+     "short": "帕洛平托"
+    },
+    "48365": {
+     "name": "帕诺拉县",
+     "short": "帕诺拉"
+    },
+    "48367": {
+     "name": "帕克县",
+     "short": "帕克"
+    },
+    "48369": {
+     "name": "帕默县",
+     "short": "帕默"
+    },
+    "48371": {
+     "name": "佩科斯县",
+     "short": "佩科斯"
+    },
+    "48373": {
+     "name": "波尔克县",
+     "short": "波尔克"
+    },
+    "48375": {
+     "name": "波特县",
+     "short": "波特"
+    },
+    "48377": {
+     "name": "普雷西迪奥县",
+     "short": "普雷西迪奥"
+    },
+    "48379": {
+     "name": "雷恩斯县",
+     "short": "雷恩斯"
+    },
+    "48381": {
+     "name": "兰德尔县",
+     "short": "兰德尔"
+    },
+    "48383": {
+     "name": "里根县",
+     "short": "里根"
+    },
+    "48385": {
+     "name": "里尔县",
+     "short": "里尔"
+    },
+    "48387": {
+     "name": "雷德河县",
+     "short": "雷德河"
+    },
+    "48389": {
+     "name": "里夫斯县",
+     "short": "里夫斯"
+    },
+    "48391": {
+     "name": "雷富希奥县",
+     "short": "雷富希奥"
+    },
+    "48393": {
+     "name": "罗伯茨县",
+     "short": "罗伯茨"
+    },
+    "48395": {
+     "name": "罗伯逊县",
+     "short": "罗伯逊"
+    },
+    "48397": {
+     "name": "罗克沃尔县",
+     "short": "罗克沃尔"
+    },
+    "48399": {
+     "name": "朗内尔斯县",
+     "short": "朗内尔斯"
+    },
+    "48401": {
+     "name": "拉斯克县",
+     "short": "拉斯克"
+    },
+    "48403": {
+     "name": "萨宾县",
+     "short": "萨宾"
+    },
+    "48405": {
+     "name": "圣奥古斯丁县",
+     "short": "圣奥古斯丁"
+    },
+    "48407": {
+     "name": "圣哈辛托县",
+     "short": "圣哈辛托"
+    },
+    "48409": {
+     "name": "圣帕特里西奥县",
+     "short": "圣帕特里西奥"
+    },
+    "48411": {
+     "name": "圣萨巴县",
+     "short": "圣萨巴"
+    },
+    "48413": {
+     "name": "施莱谢尔县",
+     "short": "施莱谢尔"
+    },
+    "48415": {
+     "name": "斯库里县",
+     "short": "斯库里"
+    },
+    "48417": {
+     "name": "沙克尔福德县",
+     "short": "沙克尔福德"
+    },
+    "48419": {
+     "name": "谢尔比县",
+     "short": "谢尔比"
+    },
+    "48421": {
+     "name": "谢尔曼县",
+     "short": "谢尔曼"
+    },
+    "48423": {
+     "name": "史密斯县",
+     "short": "史密斯"
+    },
+    "48425": {
+     "name": "萨默维尔县",
+     "short": "萨默维尔"
+    },
+    "48427": {
+     "name": "斯塔尔县",
+     "short": "斯塔尔"
+    },
+    "48429": {
+     "name": "斯蒂芬斯县",
+     "short": "斯蒂芬斯"
+    },
+    "48431": {
+     "name": "斯特林县",
+     "short": "斯特林"
+    },
+    "48433": {
+     "name": "斯通沃尔县",
+     "short": "斯通沃尔"
+    },
+    "48435": {
+     "name": "萨顿县",
+     "short": "萨顿"
+    },
+    "48437": {
+     "name": "斯威舍县",
+     "short": "斯威舍"
+    },
+    "48439": {
+     "name": "塔兰特县",
+     "short": "塔兰特"
+    },
+    "48441": {
+     "name": "泰勒县",
+     "short": "泰勒"
+    },
+    "48443": {
+     "name": "特雷尔县",
+     "short": "特雷尔"
+    },
+    "48445": {
+     "name": "特里县",
+     "short": "特里"
+    },
+    "48447": {
+     "name": "思罗克莫顿县",
+     "short": "思罗克莫顿"
+    },
+    "48449": {
+     "name": "泰特斯县",
+     "short": "泰特斯"
+    },
+    "48451": {
+     "name": "汤姆格林县",
+     "short": "汤姆格林"
+    },
+    "48453": {
+     "name": "特拉维斯县",
+     "short": "特拉维斯"
+    },
+    "48455": {
+     "name": "特里尼蒂县",
+     "short": "特里尼蒂"
+    },
+    "48457": {
+     "name": "泰勒县",
+     "short": "泰勒"
+    },
+    "48459": {
+     "name": "厄普舍县",
+     "short": "厄普舍"
+    },
+    "48461": {
+     "name": "厄普顿县",
+     "short": "厄普顿"
+    },
+    "48463": {
+     "name": "尤瓦尔迪县",
+     "short": "尤瓦尔迪"
+    },
+    "48465": {
+     "name": "瓦尔韦德县",
+     "short": "瓦尔韦德"
+    },
+    "48467": {
+     "name": "范赞特县",
+     "short": "范赞特"
+    },
+    "48469": {
+     "name": "维多利亚县",
+     "short": "维多利亚"
+    },
+    "48471": {
+     "name": "沃克县",
+     "short": "沃克"
+    },
+    "48473": {
+     "name": "沃勒县",
+     "short": "沃勒"
+    },
+    "48475": {
+     "name": "沃德县",
+     "short": "沃德"
+    },
+    "48477": {
+     "name": "华盛顿县",
+     "short": "华盛顿"
+    },
+    "48479": {
+     "name": "韦布县",
+     "short": "韦布"
+    },
+    "48481": {
+     "name": "沃顿县",
+     "short": "沃顿"
+    },
+    "48483": {
+     "name": "惠勒县",
+     "short": "惠勒"
+    },
+    "48485": {
+     "name": "威奇托县",
+     "short": "威奇托"
+    },
+    "48487": {
+     "name": "威尔巴格县",
+     "short": "威尔巴格"
+    },
+    "48489": {
+     "name": "威拉西县",
+     "short": "威拉西"
+    },
+    "48491": {
+     "name": "威廉森县",
+     "short": "威廉森"
+    },
+    "48493": {
+     "name": "威尔逊县",
+     "short": "威尔逊"
+    },
+    "48495": {
+     "name": "温克勒县",
+     "short": "温克勒"
+    },
+    "48497": {
+     "name": "怀斯县",
+     "short": "怀斯"
+    },
+    "48499": {
+     "name": "伍德县",
+     "short": "伍德"
+    },
+    "48501": {
+     "name": "约阿库姆县",
+     "short": "约阿库姆"
+    },
+    "48503": {
+     "name": "扬县",
+     "short": "扬"
+    },
+    "48505": {
+     "name": "萨帕塔县",
+     "short": "萨帕塔"
+    },
+    "48507": {
+     "name": "萨瓦拉县",
+     "short": "萨瓦拉"
+    }
+   }
+  },
+  "AK": {
+   "es": {
+    "AK-HD01": {
+     "name": "Distrito 1",
+     "short": "D1"
+    },
+    "AK-HD02": {
+     "name": "Distrito 2",
+     "short": "D2"
+    },
+    "AK-HD03": {
+     "name": "Distrito 3",
+     "short": "D3"
+    },
+    "AK-HD04": {
+     "name": "Distrito 4",
+     "short": "D4"
+    },
+    "AK-HD05": {
+     "name": "Distrito 5",
+     "short": "D5"
+    },
+    "AK-HD06": {
+     "name": "Distrito 6",
+     "short": "D6"
+    },
+    "AK-HD07": {
+     "name": "Distrito 7",
+     "short": "D7"
+    },
+    "AK-HD08": {
+     "name": "Distrito 8",
+     "short": "D8"
+    },
+    "AK-HD09": {
+     "name": "Distrito 9",
+     "short": "D9"
+    },
+    "AK-HD10": {
+     "name": "Distrito 10",
+     "short": "D10"
+    },
+    "AK-HD11": {
+     "name": "Distrito 11",
+     "short": "D11"
+    },
+    "AK-HD12": {
+     "name": "Distrito 12",
+     "short": "D12"
+    },
+    "AK-HD13": {
+     "name": "Distrito 13",
+     "short": "D13"
+    },
+    "AK-HD14": {
+     "name": "Distrito 14",
+     "short": "D14"
+    },
+    "AK-HD15": {
+     "name": "Distrito 15",
+     "short": "D15"
+    },
+    "AK-HD16": {
+     "name": "Distrito 16",
+     "short": "D16"
+    },
+    "AK-HD17": {
+     "name": "Distrito 17",
+     "short": "D17"
+    },
+    "AK-HD18": {
+     "name": "Distrito 18",
+     "short": "D18"
+    },
+    "AK-HD19": {
+     "name": "Distrito 19",
+     "short": "D19"
+    },
+    "AK-HD20": {
+     "name": "Distrito 20",
+     "short": "D20"
+    },
+    "AK-HD21": {
+     "name": "Distrito 21",
+     "short": "D21"
+    },
+    "AK-HD22": {
+     "name": "Distrito 22",
+     "short": "D22"
+    },
+    "AK-HD23": {
+     "name": "Distrito 23",
+     "short": "D23"
+    },
+    "AK-HD24": {
+     "name": "Distrito 24",
+     "short": "D24"
+    },
+    "AK-HD25": {
+     "name": "Distrito 25",
+     "short": "D25"
+    },
+    "AK-HD26": {
+     "name": "Distrito 26",
+     "short": "D26"
+    },
+    "AK-HD27": {
+     "name": "Distrito 27",
+     "short": "D27"
+    },
+    "AK-HD28": {
+     "name": "Distrito 28",
+     "short": "D28"
+    },
+    "AK-HD29": {
+     "name": "Distrito 29",
+     "short": "D29"
+    },
+    "AK-HD30": {
+     "name": "Distrito 30",
+     "short": "D30"
+    },
+    "AK-HD31": {
+     "name": "Distrito 31",
+     "short": "D31"
+    },
+    "AK-HD32": {
+     "name": "Distrito 32",
+     "short": "D32"
+    },
+    "AK-HD33": {
+     "name": "Distrito 33",
+     "short": "D33"
+    },
+    "AK-HD34": {
+     "name": "Distrito 34",
+     "short": "D34"
+    },
+    "AK-HD35": {
+     "name": "Distrito 35",
+     "short": "D35"
+    },
+    "AK-HD36": {
+     "name": "Distrito 36",
+     "short": "D36"
+    },
+    "AK-HD37": {
+     "name": "Distrito 37",
+     "short": "D37"
+    },
+    "AK-HD38": {
+     "name": "Distrito 38",
+     "short": "D38"
+    },
+    "AK-HD39": {
+     "name": "Distrito 39",
+     "short": "D39"
+    },
+    "AK-HD40": {
+     "name": "Distrito 40",
+     "short": "D40"
+    }
+   },
+   "ja": {
+    "AK-HD01": {
+     "name": "第1選挙区",
+     "short": "1区"
+    },
+    "AK-HD02": {
+     "name": "第2選挙区",
+     "short": "2区"
+    },
+    "AK-HD03": {
+     "name": "第3選挙区",
+     "short": "3区"
+    },
+    "AK-HD04": {
+     "name": "第4選挙区",
+     "short": "4区"
+    },
+    "AK-HD05": {
+     "name": "第5選挙区",
+     "short": "5区"
+    },
+    "AK-HD06": {
+     "name": "第6選挙区",
+     "short": "6区"
+    },
+    "AK-HD07": {
+     "name": "第7選挙区",
+     "short": "7区"
+    },
+    "AK-HD08": {
+     "name": "第8選挙区",
+     "short": "8区"
+    },
+    "AK-HD09": {
+     "name": "第9選挙区",
+     "short": "9区"
+    },
+    "AK-HD10": {
+     "name": "第10選挙区",
+     "short": "10区"
+    },
+    "AK-HD11": {
+     "name": "第11選挙区",
+     "short": "11区"
+    },
+    "AK-HD12": {
+     "name": "第12選挙区",
+     "short": "12区"
+    },
+    "AK-HD13": {
+     "name": "第13選挙区",
+     "short": "13区"
+    },
+    "AK-HD14": {
+     "name": "第14選挙区",
+     "short": "14区"
+    },
+    "AK-HD15": {
+     "name": "第15選挙区",
+     "short": "15区"
+    },
+    "AK-HD16": {
+     "name": "第16選挙区",
+     "short": "16区"
+    },
+    "AK-HD17": {
+     "name": "第17選挙区",
+     "short": "17区"
+    },
+    "AK-HD18": {
+     "name": "第18選挙区",
+     "short": "18区"
+    },
+    "AK-HD19": {
+     "name": "第19選挙区",
+     "short": "19区"
+    },
+    "AK-HD20": {
+     "name": "第20選挙区",
+     "short": "20区"
+    },
+    "AK-HD21": {
+     "name": "第21選挙区",
+     "short": "21区"
+    },
+    "AK-HD22": {
+     "name": "第22選挙区",
+     "short": "22区"
+    },
+    "AK-HD23": {
+     "name": "第23選挙区",
+     "short": "23区"
+    },
+    "AK-HD24": {
+     "name": "第24選挙区",
+     "short": "24区"
+    },
+    "AK-HD25": {
+     "name": "第25選挙区",
+     "short": "25区"
+    },
+    "AK-HD26": {
+     "name": "第26選挙区",
+     "short": "26区"
+    },
+    "AK-HD27": {
+     "name": "第27選挙区",
+     "short": "27区"
+    },
+    "AK-HD28": {
+     "name": "第28選挙区",
+     "short": "28区"
+    },
+    "AK-HD29": {
+     "name": "第29選挙区",
+     "short": "29区"
+    },
+    "AK-HD30": {
+     "name": "第30選挙区",
+     "short": "30区"
+    },
+    "AK-HD31": {
+     "name": "第31選挙区",
+     "short": "31区"
+    },
+    "AK-HD32": {
+     "name": "第32選挙区",
+     "short": "32区"
+    },
+    "AK-HD33": {
+     "name": "第33選挙区",
+     "short": "33区"
+    },
+    "AK-HD34": {
+     "name": "第34選挙区",
+     "short": "34区"
+    },
+    "AK-HD35": {
+     "name": "第35選挙区",
+     "short": "35区"
+    },
+    "AK-HD36": {
+     "name": "第36選挙区",
+     "short": "36区"
+    },
+    "AK-HD37": {
+     "name": "第37選挙区",
+     "short": "37区"
+    },
+    "AK-HD38": {
+     "name": "第38選挙区",
+     "short": "38区"
+    },
+    "AK-HD39": {
+     "name": "第39選挙区",
+     "short": "39区"
+    },
+    "AK-HD40": {
+     "name": "第40選挙区",
+     "short": "40区"
+    }
+   },
+   "zh": {
+    "AK-HD01": {
+     "name": "第1选区",
+     "short": "1区"
+    },
+    "AK-HD02": {
+     "name": "第2选区",
+     "short": "2区"
+    },
+    "AK-HD03": {
+     "name": "第3选区",
+     "short": "3区"
+    },
+    "AK-HD04": {
+     "name": "第4选区",
+     "short": "4区"
+    },
+    "AK-HD05": {
+     "name": "第5选区",
+     "short": "5区"
+    },
+    "AK-HD06": {
+     "name": "第6选区",
+     "short": "6区"
+    },
+    "AK-HD07": {
+     "name": "第7选区",
+     "short": "7区"
+    },
+    "AK-HD08": {
+     "name": "第8选区",
+     "short": "8区"
+    },
+    "AK-HD09": {
+     "name": "第9选区",
+     "short": "9区"
+    },
+    "AK-HD10": {
+     "name": "第10选区",
+     "short": "10区"
+    },
+    "AK-HD11": {
+     "name": "第11选区",
+     "short": "11区"
+    },
+    "AK-HD12": {
+     "name": "第12选区",
+     "short": "12区"
+    },
+    "AK-HD13": {
+     "name": "第13选区",
+     "short": "13区"
+    },
+    "AK-HD14": {
+     "name": "第14选区",
+     "short": "14区"
+    },
+    "AK-HD15": {
+     "name": "第15选区",
+     "short": "15区"
+    },
+    "AK-HD16": {
+     "name": "第16选区",
+     "short": "16区"
+    },
+    "AK-HD17": {
+     "name": "第17选区",
+     "short": "17区"
+    },
+    "AK-HD18": {
+     "name": "第18选区",
+     "short": "18区"
+    },
+    "AK-HD19": {
+     "name": "第19选区",
+     "short": "19区"
+    },
+    "AK-HD20": {
+     "name": "第20选区",
+     "short": "20区"
+    },
+    "AK-HD21": {
+     "name": "第21选区",
+     "short": "21区"
+    },
+    "AK-HD22": {
+     "name": "第22选区",
+     "short": "22区"
+    },
+    "AK-HD23": {
+     "name": "第23选区",
+     "short": "23区"
+    },
+    "AK-HD24": {
+     "name": "第24选区",
+     "short": "24区"
+    },
+    "AK-HD25": {
+     "name": "第25选区",
+     "short": "25区"
+    },
+    "AK-HD26": {
+     "name": "第26选区",
+     "short": "26区"
+    },
+    "AK-HD27": {
+     "name": "第27选区",
+     "short": "27区"
+    },
+    "AK-HD28": {
+     "name": "第28选区",
+     "short": "28区"
+    },
+    "AK-HD29": {
+     "name": "第29选区",
+     "short": "29区"
+    },
+    "AK-HD30": {
+     "name": "第30选区",
+     "short": "30区"
+    },
+    "AK-HD31": {
+     "name": "第31选区",
+     "short": "31区"
+    },
+    "AK-HD32": {
+     "name": "第32选区",
+     "short": "32区"
+    },
+    "AK-HD33": {
+     "name": "第33选区",
+     "short": "33区"
+    },
+    "AK-HD34": {
+     "name": "第34选区",
+     "short": "34区"
+    },
+    "AK-HD35": {
+     "name": "第35选区",
+     "short": "35区"
+    },
+    "AK-HD36": {
+     "name": "第36选区",
+     "short": "36区"
+    },
+    "AK-HD37": {
+     "name": "第37选区",
+     "short": "37区"
+    },
+    "AK-HD38": {
+     "name": "第38选区",
+     "short": "38区"
+    },
+    "AK-HD39": {
+     "name": "第39选区",
+     "short": "39区"
+    },
+    "AK-HD40": {
+     "name": "第40选区",
+     "short": "40区"
+    }
+   }
+  },
+  "KS": {
+   "es": {
+    "20001": {
+     "name": "condado de Allen",
+     "short": "Allen"
+    },
+    "20003": {
+     "name": "condado de Anderson",
+     "short": "Anderson"
+    },
+    "20005": {
+     "name": "condado de Atchison",
+     "short": "Atchison"
+    },
+    "20007": {
+     "name": "condado de Barber",
+     "short": "Barber"
+    },
+    "20009": {
+     "name": "condado de Barton",
+     "short": "Barton"
+    },
+    "20011": {
+     "name": "condado de Bourbon",
+     "short": "Bourbon"
+    },
+    "20013": {
+     "name": "condado de Brown",
+     "short": "Brown"
+    },
+    "20015": {
+     "name": "condado de Butler",
+     "short": "Butler"
+    },
+    "20017": {
+     "name": "condado de Chase",
+     "short": "Chase"
+    },
+    "20019": {
+     "name": "condado de Chautauqua",
+     "short": "Chautauqua"
+    },
+    "20021": {
+     "name": "condado de Cherokee",
+     "short": "Cherokee"
+    },
+    "20023": {
+     "name": "condado de Cheyenne",
+     "short": "Cheyenne"
+    },
+    "20025": {
+     "name": "condado de Clark",
+     "short": "Clark"
+    },
+    "20027": {
+     "name": "condado de Clay",
+     "short": "Clay"
+    },
+    "20029": {
+     "name": "condado de Cloud",
+     "short": "Cloud"
+    },
+    "20031": {
+     "name": "condado de Coffey",
+     "short": "Coffey"
+    },
+    "20033": {
+     "name": "condado de Comanche",
+     "short": "Comanche"
+    },
+    "20035": {
+     "name": "condado de Cowley",
+     "short": "Cowley"
+    },
+    "20037": {
+     "name": "condado de Crawford",
+     "short": "Crawford"
+    },
+    "20039": {
+     "name": "condado de Decatur",
+     "short": "Decatur"
+    },
+    "20041": {
+     "name": "condado de Dickinson",
+     "short": "Dickinson"
+    },
+    "20043": {
+     "name": "condado de Doniphan",
+     "short": "Doniphan"
+    },
+    "20045": {
+     "name": "condado de Douglas",
+     "short": "Douglas"
+    },
+    "20047": {
+     "name": "condado de Edwards",
+     "short": "Edwards"
+    },
+    "20049": {
+     "name": "condado de Elk",
+     "short": "Elk"
+    },
+    "20051": {
+     "name": "condado de Ellis",
+     "short": "Ellis"
+    },
+    "20053": {
+     "name": "condado de Ellsworth",
+     "short": "Ellsworth"
+    },
+    "20055": {
+     "name": "condado de Finney",
+     "short": "Finney"
+    },
+    "20057": {
+     "name": "condado de Ford",
+     "short": "Ford"
+    },
+    "20059": {
+     "name": "condado de Franklin",
+     "short": "Franklin"
+    },
+    "20061": {
+     "name": "condado de Geary",
+     "short": "Geary"
+    },
+    "20063": {
+     "name": "condado de Gove",
+     "short": "Gove"
+    },
+    "20065": {
+     "name": "condado de Graham",
+     "short": "Graham"
+    },
+    "20067": {
+     "name": "condado de Grant",
+     "short": "Grant"
+    },
+    "20069": {
+     "name": "condado de Gray",
+     "short": "Gray"
+    },
+    "20071": {
+     "name": "condado de Greeley",
+     "short": "Greeley"
+    },
+    "20073": {
+     "name": "condado de Greenwood",
+     "short": "Greenwood"
+    },
+    "20075": {
+     "name": "condado de Hamilton",
+     "short": "Hamilton"
+    },
+    "20077": {
+     "name": "condado de Harper",
+     "short": "Harper"
+    },
+    "20079": {
+     "name": "condado de Harvey",
+     "short": "Harvey"
+    },
+    "20081": {
+     "name": "condado de Haskell",
+     "short": "Haskell"
+    },
+    "20083": {
+     "name": "condado de Hodgeman",
+     "short": "Hodgeman"
+    },
+    "20085": {
+     "name": "condado de Jackson",
+     "short": "Jackson"
+    },
+    "20087": {
+     "name": "condado de Jefferson",
+     "short": "Jefferson"
+    },
+    "20089": {
+     "name": "condado de Jewell",
+     "short": "Jewell"
+    },
+    "20091": {
+     "name": "condado de Johnson",
+     "short": "Johnson"
+    },
+    "20093": {
+     "name": "condado de Kearny",
+     "short": "Kearny"
+    },
+    "20095": {
+     "name": "condado de Kingman",
+     "short": "Kingman"
+    },
+    "20097": {
+     "name": "condado de Kiowa",
+     "short": "Kiowa"
+    },
+    "20099": {
+     "name": "condado de Labette",
+     "short": "Labette"
+    },
+    "20101": {
+     "name": "condado de Lane",
+     "short": "Lane"
+    },
+    "20103": {
+     "name": "condado de Leavenworth",
+     "short": "Leavenworth"
+    },
+    "20105": {
+     "name": "condado de Lincoln",
+     "short": "Lincoln"
+    },
+    "20107": {
+     "name": "condado de Linn",
+     "short": "Linn"
+    },
+    "20109": {
+     "name": "condado de Logan",
+     "short": "Logan"
+    },
+    "20111": {
+     "name": "condado de Lyon",
+     "short": "Lyon"
+    },
+    "20113": {
+     "name": "condado de McPherson",
+     "short": "McPherson"
+    },
+    "20115": {
+     "name": "condado de Marion",
+     "short": "Marion"
+    },
+    "20117": {
+     "name": "condado de Marshall",
+     "short": "Marshall"
+    },
+    "20119": {
+     "name": "condado de Meade",
+     "short": "Meade"
+    },
+    "20121": {
+     "name": "condado de Miami",
+     "short": "Miami"
+    },
+    "20123": {
+     "name": "condado de Mitchell",
+     "short": "Mitchell"
+    },
+    "20125": {
+     "name": "condado de Montgomery",
+     "short": "Montgomery"
+    },
+    "20127": {
+     "name": "condado de Morris",
+     "short": "Morris"
+    },
+    "20129": {
+     "name": "condado de Morton",
+     "short": "Morton"
+    },
+    "20131": {
+     "name": "condado de Nemaha",
+     "short": "Nemaha"
+    },
+    "20133": {
+     "name": "condado de Neosho",
+     "short": "Neosho"
+    },
+    "20135": {
+     "name": "condado de Ness",
+     "short": "Ness"
+    },
+    "20137": {
+     "name": "condado de Norton",
+     "short": "Norton"
+    },
+    "20139": {
+     "name": "condado de Osage",
+     "short": "Osage"
+    },
+    "20141": {
+     "name": "condado de Osborne",
+     "short": "Osborne"
+    },
+    "20143": {
+     "name": "condado de Ottawa",
+     "short": "Ottawa"
+    },
+    "20145": {
+     "name": "condado de Pawnee",
+     "short": "Pawnee"
+    },
+    "20147": {
+     "name": "condado de Phillips",
+     "short": "Phillips"
+    },
+    "20149": {
+     "name": "condado de Pottawatomie",
+     "short": "Pottawatomie"
+    },
+    "20151": {
+     "name": "condado de Pratt",
+     "short": "Pratt"
+    },
+    "20153": {
+     "name": "condado de Rawlins",
+     "short": "Rawlins"
+    },
+    "20155": {
+     "name": "condado de Reno",
+     "short": "Reno"
+    },
+    "20157": {
+     "name": "condado de Republic",
+     "short": "Republic"
+    },
+    "20159": {
+     "name": "condado de Rice",
+     "short": "Rice"
+    },
+    "20161": {
+     "name": "condado de Riley",
+     "short": "Riley"
+    },
+    "20163": {
+     "name": "condado de Rooks",
+     "short": "Rooks"
+    },
+    "20165": {
+     "name": "condado de Rush",
+     "short": "Rush"
+    },
+    "20167": {
+     "name": "condado de Russell",
+     "short": "Russell"
+    },
+    "20169": {
+     "name": "condado de Saline",
+     "short": "Saline"
+    },
+    "20171": {
+     "name": "condado de Scott",
+     "short": "Scott"
+    },
+    "20173": {
+     "name": "condado de Sedgwick",
+     "short": "Sedgwick"
+    },
+    "20175": {
+     "name": "condado de Seward",
+     "short": "Seward"
+    },
+    "20177": {
+     "name": "condado de Shawnee",
+     "short": "Shawnee"
+    },
+    "20179": {
+     "name": "condado de Sheridan",
+     "short": "Sheridan"
+    },
+    "20181": {
+     "name": "condado de Sherman",
+     "short": "Sherman"
+    },
+    "20183": {
+     "name": "condado de Smith",
+     "short": "Smith"
+    },
+    "20185": {
+     "name": "condado de Stafford",
+     "short": "Stafford"
+    },
+    "20187": {
+     "name": "condado de Stanton",
+     "short": "Stanton"
+    },
+    "20189": {
+     "name": "condado de Stevens",
+     "short": "Stevens"
+    },
+    "20191": {
+     "name": "condado de Sumner",
+     "short": "Sumner"
+    },
+    "20193": {
+     "name": "condado de Thomas",
+     "short": "Thomas"
+    },
+    "20195": {
+     "name": "condado de Trego",
+     "short": "Trego"
+    },
+    "20197": {
+     "name": "condado de Wabaunsee",
+     "short": "Wabaunsee"
+    },
+    "20199": {
+     "name": "condado de Wallace",
+     "short": "Wallace"
+    },
+    "20201": {
+     "name": "condado de Washington",
+     "short": "Washington"
+    },
+    "20203": {
+     "name": "condado de Wichita",
+     "short": "Wichita"
+    },
+    "20205": {
+     "name": "condado de Wilson",
+     "short": "Wilson"
+    },
+    "20207": {
+     "name": "condado de Woodson",
+     "short": "Woodson"
+    },
+    "20209": {
+     "name": "condado de Wyandotte",
+     "short": "Wyandotte"
+    }
+   },
+   "ja": {
+    "20001": {
+     "name": "アレン郡",
+     "short": "アレン"
+    },
+    "20003": {
+     "name": "アンダーソン郡",
+     "short": "アンダーソン"
+    },
+    "20005": {
+     "name": "アッチソン郡",
+     "short": "アッチソン"
+    },
+    "20007": {
+     "name": "バーバー郡",
+     "short": "バーバー"
+    },
+    "20009": {
+     "name": "バートン郡",
+     "short": "バートン"
+    },
+    "20011": {
+     "name": "バーボン郡",
+     "short": "バーボン"
+    },
+    "20013": {
+     "name": "ブラウン郡",
+     "short": "ブラウン"
+    },
+    "20015": {
+     "name": "バトラー郡",
+     "short": "バトラー"
+    },
+    "20017": {
+     "name": "チェイス郡",
+     "short": "チェイス"
+    },
+    "20019": {
+     "name": "シャトークア郡",
+     "short": "シャトークア"
+    },
+    "20021": {
+     "name": "チェロキー郡",
+     "short": "チェロキー"
+    },
+    "20023": {
+     "name": "シャイアン郡",
+     "short": "シャイアン"
+    },
+    "20025": {
+     "name": "クラーク郡",
+     "short": "クラーク"
+    },
+    "20027": {
+     "name": "クレイ郡",
+     "short": "クレイ"
+    },
+    "20029": {
+     "name": "クラウド郡",
+     "short": "クラウド"
+    },
+    "20031": {
+     "name": "コフィー郡",
+     "short": "コフィー"
+    },
+    "20033": {
+     "name": "コマンチ郡",
+     "short": "コマンチ"
+    },
+    "20035": {
+     "name": "カウリー郡",
+     "short": "カウリー"
+    },
+    "20037": {
+     "name": "クロフォード郡",
+     "short": "クロフォード"
+    },
+    "20039": {
+     "name": "ディケーター郡",
+     "short": "ディケーター"
+    },
+    "20041": {
+     "name": "ディキンソン郡",
+     "short": "ディキンソン"
+    },
+    "20043": {
+     "name": "ドニファン郡",
+     "short": "ドニファン"
+    },
+    "20045": {
+     "name": "ダグラス郡",
+     "short": "ダグラス"
+    },
+    "20047": {
+     "name": "エドワーズ郡",
+     "short": "エドワーズ"
+    },
+    "20049": {
+     "name": "エルク郡",
+     "short": "エルク"
+    },
+    "20051": {
+     "name": "エリス郡",
+     "short": "エリス"
+    },
+    "20053": {
+     "name": "エルズワース郡",
+     "short": "エルズワース"
+    },
+    "20055": {
+     "name": "フィニー郡",
+     "short": "フィニー"
+    },
+    "20057": {
+     "name": "フォード郡",
+     "short": "フォード"
+    },
+    "20059": {
+     "name": "フランクリン郡",
+     "short": "フランクリン"
+    },
+    "20061": {
+     "name": "ギアリー郡",
+     "short": "ギアリー"
+    },
+    "20063": {
+     "name": "ゴーブ郡",
+     "short": "ゴーブ"
+    },
+    "20065": {
+     "name": "グレアム郡",
+     "short": "グレアム"
+    },
+    "20067": {
+     "name": "グラント郡",
+     "short": "グラント"
+    },
+    "20069": {
+     "name": "グレイ郡",
+     "short": "グレイ"
+    },
+    "20071": {
+     "name": "グリーリー郡",
+     "short": "グリーリー"
+    },
+    "20073": {
+     "name": "グリーンウッド郡",
+     "short": "グリーンウッド"
+    },
+    "20075": {
+     "name": "ハミルトン郡",
+     "short": "ハミルトン"
+    },
+    "20077": {
+     "name": "ハーパー郡",
+     "short": "ハーパー"
+    },
+    "20079": {
+     "name": "ハーベイ郡",
+     "short": "ハーベイ"
+    },
+    "20081": {
+     "name": "ハスケル郡",
+     "short": "ハスケル"
+    },
+    "20083": {
+     "name": "ホッジマン郡",
+     "short": "ホッジマン"
+    },
+    "20085": {
+     "name": "ジャクソン郡",
+     "short": "ジャクソン"
+    },
+    "20087": {
+     "name": "ジェファーソン郡",
+     "short": "ジェファーソン"
+    },
+    "20089": {
+     "name": "ジュエル郡",
+     "short": "ジュエル"
+    },
+    "20091": {
+     "name": "ジョンソン郡",
+     "short": "ジョンソン"
+    },
+    "20093": {
+     "name": "カーニー郡",
+     "short": "カーニー"
+    },
+    "20095": {
+     "name": "キングマン郡",
+     "short": "キングマン"
+    },
+    "20097": {
+     "name": "カイオワ郡",
+     "short": "カイオワ"
+    },
+    "20099": {
+     "name": "ラベット郡",
+     "short": "ラベット"
+    },
+    "20101": {
+     "name": "レーン郡",
+     "short": "レーン"
+    },
+    "20103": {
+     "name": "レブンワース郡",
+     "short": "レブンワース"
+    },
+    "20105": {
+     "name": "リンカーン郡",
+     "short": "リンカーン"
+    },
+    "20107": {
+     "name": "リン郡",
+     "short": "リン"
+    },
+    "20109": {
+     "name": "ローガン郡",
+     "short": "ローガン"
+    },
+    "20111": {
+     "name": "ライアン郡",
+     "short": "ライアン"
+    },
+    "20113": {
+     "name": "マクファーソン郡",
+     "short": "マクファーソン"
+    },
+    "20115": {
+     "name": "マリオン郡",
+     "short": "マリオン"
+    },
+    "20117": {
+     "name": "マーシャル郡",
+     "short": "マーシャル"
+    },
+    "20119": {
+     "name": "ミード郡",
+     "short": "ミード"
+    },
+    "20121": {
+     "name": "マイアミ郡",
+     "short": "マイアミ"
+    },
+    "20123": {
+     "name": "ミッチェル郡",
+     "short": "ミッチェル"
+    },
+    "20125": {
+     "name": "モンゴメリー郡",
+     "short": "モンゴメリー"
+    },
+    "20127": {
+     "name": "モリス郡",
+     "short": "モリス"
+    },
+    "20129": {
+     "name": "モートン郡",
+     "short": "モートン"
+    },
+    "20131": {
+     "name": "ネマハ郡",
+     "short": "ネマハ"
+    },
+    "20133": {
+     "name": "ネオショー郡",
+     "short": "ネオショー"
+    },
+    "20135": {
+     "name": "ネス郡",
+     "short": "ネス"
+    },
+    "20137": {
+     "name": "ノートン郡",
+     "short": "ノートン"
+    },
+    "20139": {
+     "name": "オセージ郡",
+     "short": "オセージ"
+    },
+    "20141": {
+     "name": "オズボーン郡",
+     "short": "オズボーン"
+    },
+    "20143": {
+     "name": "オタワ郡",
+     "short": "オタワ"
+    },
+    "20145": {
+     "name": "ポーニー郡",
+     "short": "ポーニー"
+    },
+    "20147": {
+     "name": "フィリップス郡",
+     "short": "フィリップス"
+    },
+    "20149": {
+     "name": "ポタワトミー郡",
+     "short": "ポタワトミー"
+    },
+    "20151": {
+     "name": "プラット郡",
+     "short": "プラット"
+    },
+    "20153": {
+     "name": "ローリンズ郡",
+     "short": "ローリンズ"
+    },
+    "20155": {
+     "name": "リノ郡",
+     "short": "リノ"
+    },
+    "20157": {
+     "name": "リパブリック郡",
+     "short": "リパブリック"
+    },
+    "20159": {
+     "name": "ライス郡",
+     "short": "ライス"
+    },
+    "20161": {
+     "name": "ライリー郡",
+     "short": "ライリー"
+    },
+    "20163": {
+     "name": "ルークス郡",
+     "short": "ルークス"
+    },
+    "20165": {
+     "name": "ラッシュ郡",
+     "short": "ラッシュ"
+    },
+    "20167": {
+     "name": "ラッセル郡",
+     "short": "ラッセル"
+    },
+    "20169": {
+     "name": "サリン郡",
+     "short": "サリン"
+    },
+    "20171": {
+     "name": "スコット郡",
+     "short": "スコット"
+    },
+    "20173": {
+     "name": "セジウィック郡",
+     "short": "セジウィック"
+    },
+    "20175": {
+     "name": "スワード郡",
+     "short": "スワード"
+    },
+    "20177": {
+     "name": "ショーニー郡",
+     "short": "ショーニー"
+    },
+    "20179": {
+     "name": "シェリダン郡",
+     "short": "シェリダン"
+    },
+    "20181": {
+     "name": "シャーマン郡",
+     "short": "シャーマン"
+    },
+    "20183": {
+     "name": "スミス郡",
+     "short": "スミス"
+    },
+    "20185": {
+     "name": "スタッフォード郡",
+     "short": "スタッフォード"
+    },
+    "20187": {
+     "name": "スタントン郡",
+     "short": "スタントン"
+    },
+    "20189": {
+     "name": "スティーブンス郡",
+     "short": "スティーブンス"
+    },
+    "20191": {
+     "name": "サムナー郡",
+     "short": "サムナー"
+    },
+    "20193": {
+     "name": "トーマス郡",
+     "short": "トーマス"
+    },
+    "20195": {
+     "name": "トレゴ郡",
+     "short": "トレゴ"
+    },
+    "20197": {
+     "name": "ワボンシー郡",
+     "short": "ワボンシー"
+    },
+    "20199": {
+     "name": "ウォレス郡",
+     "short": "ウォレス"
+    },
+    "20201": {
+     "name": "ワシントン郡",
+     "short": "ワシントン"
+    },
+    "20203": {
+     "name": "ウィチタ郡",
+     "short": "ウィチタ"
+    },
+    "20205": {
+     "name": "ウィルソン郡",
+     "short": "ウィルソン"
+    },
+    "20207": {
+     "name": "ウッドソン郡",
+     "short": "ウッドソン"
+    },
+    "20209": {
+     "name": "ワイアンドット郡",
+     "short": "ワイアンドット"
+    }
+   },
+   "zh": {
+    "20001": {
+     "name": "艾伦县",
+     "short": "艾伦"
+    },
+    "20003": {
+     "name": "安德森县",
+     "short": "安德森"
+    },
+    "20005": {
+     "name": "艾奇逊县",
+     "short": "艾奇逊"
+    },
+    "20007": {
+     "name": "巴伯县",
+     "short": "巴伯"
+    },
+    "20009": {
+     "name": "巴顿县",
+     "short": "巴顿"
+    },
+    "20011": {
+     "name": "波旁县",
+     "short": "波旁"
+    },
+    "20013": {
+     "name": "布朗县",
+     "short": "布朗"
+    },
+    "20015": {
+     "name": "巴特勒县",
+     "short": "巴特勒"
+    },
+    "20017": {
+     "name": "蔡斯县",
+     "short": "蔡斯"
+    },
+    "20019": {
+     "name": "肖托夸县",
+     "short": "肖托夸"
+    },
+    "20021": {
+     "name": "切罗基县",
+     "short": "切罗基"
+    },
+    "20023": {
+     "name": "夏延县",
+     "short": "夏延"
+    },
+    "20025": {
+     "name": "克拉克县",
+     "short": "克拉克"
+    },
+    "20027": {
+     "name": "克莱县",
+     "short": "克莱"
+    },
+    "20029": {
+     "name": "克劳德县",
+     "short": "克劳德"
+    },
+    "20031": {
+     "name": "科菲县",
+     "short": "科菲"
+    },
+    "20033": {
+     "name": "科曼奇县",
+     "short": "科曼奇"
+    },
+    "20035": {
+     "name": "考利县",
+     "short": "考利"
+    },
+    "20037": {
+     "name": "克劳福德县",
+     "short": "克劳福德"
+    },
+    "20039": {
+     "name": "迪凯特县",
+     "short": "迪凯特"
+    },
+    "20041": {
+     "name": "迪金森县",
+     "short": "迪金森"
+    },
+    "20043": {
+     "name": "多尼芬县",
+     "short": "多尼芬"
+    },
+    "20045": {
+     "name": "道格拉斯县",
+     "short": "道格拉斯"
+    },
+    "20047": {
+     "name": "爱德华兹县",
+     "short": "爱德华兹"
+    },
+    "20049": {
+     "name": "埃尔克县",
+     "short": "埃尔克"
+    },
+    "20051": {
+     "name": "埃利斯县",
+     "short": "埃利斯"
+    },
+    "20053": {
+     "name": "埃尔斯沃思县",
+     "short": "埃尔斯沃思"
+    },
+    "20055": {
+     "name": "芬尼县",
+     "short": "芬尼"
+    },
+    "20057": {
+     "name": "福特县",
+     "short": "福特"
+    },
+    "20059": {
+     "name": "富兰克林县",
+     "short": "富兰克林"
+    },
+    "20061": {
+     "name": "吉尔里县",
+     "short": "吉尔里"
+    },
+    "20063": {
+     "name": "戈夫县",
+     "short": "戈夫"
+    },
+    "20065": {
+     "name": "格雷厄姆县",
+     "short": "格雷厄姆"
+    },
+    "20067": {
+     "name": "格兰特县",
+     "short": "格兰特"
+    },
+    "20069": {
+     "name": "格雷县",
+     "short": "格雷"
+    },
+    "20071": {
+     "name": "格里利县",
+     "short": "格里利"
+    },
+    "20073": {
+     "name": "格林伍德县",
+     "short": "格林伍德"
+    },
+    "20075": {
+     "name": "汉密尔顿县",
+     "short": "汉密尔顿"
+    },
+    "20077": {
+     "name": "哈珀县",
+     "short": "哈珀"
+    },
+    "20079": {
+     "name": "哈维县",
+     "short": "哈维"
+    },
+    "20081": {
+     "name": "哈斯克尔县",
+     "short": "哈斯克尔"
+    },
+    "20083": {
+     "name": "霍奇曼县",
+     "short": "霍奇曼"
+    },
+    "20085": {
+     "name": "杰克逊县",
+     "short": "杰克逊"
+    },
+    "20087": {
+     "name": "杰斐逊县",
+     "short": "杰斐逊"
+    },
+    "20089": {
+     "name": "朱厄尔县",
+     "short": "朱厄尔"
+    },
+    "20091": {
+     "name": "约翰逊县",
+     "short": "约翰逊"
+    },
+    "20093": {
+     "name": "卡尼县",
+     "short": "卡尼"
+    },
+    "20095": {
+     "name": "金曼县",
+     "short": "金曼"
+    },
+    "20097": {
+     "name": "基奥瓦县",
+     "short": "基奥瓦"
+    },
+    "20099": {
+     "name": "拉贝特县",
+     "short": "拉贝特"
+    },
+    "20101": {
+     "name": "莱恩县",
+     "short": "莱恩"
+    },
+    "20103": {
+     "name": "莱文沃思县",
+     "short": "莱文沃思"
+    },
+    "20105": {
+     "name": "林肯县",
+     "short": "林肯"
+    },
+    "20107": {
+     "name": "林恩县",
+     "short": "林恩"
+    },
+    "20109": {
+     "name": "洛根县",
+     "short": "洛根"
+    },
+    "20111": {
+     "name": "莱昂县",
+     "short": "莱昂"
+    },
+    "20113": {
+     "name": "麦克弗森县",
+     "short": "麦克弗森"
+    },
+    "20115": {
+     "name": "马里昂县",
+     "short": "马里昂"
+    },
+    "20117": {
+     "name": "马歇尔县",
+     "short": "马歇尔"
+    },
+    "20119": {
+     "name": "米德县",
+     "short": "米德"
+    },
+    "20121": {
+     "name": "迈阿密县",
+     "short": "迈阿密"
+    },
+    "20123": {
+     "name": "米切尔县",
+     "short": "米切尔"
+    },
+    "20125": {
+     "name": "蒙哥马利县",
+     "short": "蒙哥马利"
+    },
+    "20127": {
+     "name": "莫里斯县",
+     "short": "莫里斯"
+    },
+    "20129": {
+     "name": "莫顿县",
+     "short": "莫顿"
+    },
+    "20131": {
+     "name": "内马哈县",
+     "short": "内马哈"
+    },
+    "20133": {
+     "name": "尼欧肖县",
+     "short": "尼欧肖"
+    },
+    "20135": {
+     "name": "内斯县",
+     "short": "内斯"
+    },
+    "20137": {
+     "name": "诺顿县",
+     "short": "诺顿"
+    },
+    "20139": {
+     "name": "奥塞奇县",
+     "short": "奥塞奇"
+    },
+    "20141": {
+     "name": "奥斯本县",
+     "short": "奥斯本"
+    },
+    "20143": {
+     "name": "渥太华县",
+     "short": "渥太华"
+    },
+    "20145": {
+     "name": "波尼县",
+     "short": "波尼"
+    },
+    "20147": {
+     "name": "菲利普斯县",
+     "short": "菲利普斯"
+    },
+    "20149": {
+     "name": "波塔瓦托米县",
+     "short": "波塔瓦托米"
+    },
+    "20151": {
+     "name": "普拉特县",
+     "short": "普拉特"
+    },
+    "20153": {
+     "name": "罗林斯县",
+     "short": "罗林斯"
+    },
+    "20155": {
+     "name": "里诺县",
+     "short": "里诺"
+    },
+    "20157": {
+     "name": "里帕布利克县",
+     "short": "里帕布利克"
+    },
+    "20159": {
+     "name": "赖斯县",
+     "short": "赖斯"
+    },
+    "20161": {
+     "name": "赖利县",
+     "short": "赖利"
+    },
+    "20163": {
+     "name": "鲁克斯县",
+     "short": "鲁克斯"
+    },
+    "20165": {
+     "name": "拉什县",
+     "short": "拉什"
+    },
+    "20167": {
+     "name": "拉塞尔县",
+     "short": "拉塞尔"
+    },
+    "20169": {
+     "name": "萨林县",
+     "short": "萨林"
+    },
+    "20171": {
+     "name": "斯科特县",
+     "short": "斯科特"
+    },
+    "20173": {
+     "name": "塞奇威克县",
+     "short": "塞奇威克"
+    },
+    "20175": {
+     "name": "苏厄德县",
+     "short": "苏厄德"
+    },
+    "20177": {
+     "name": "肖尼县",
+     "short": "肖尼"
+    },
+    "20179": {
+     "name": "谢里登县",
+     "short": "谢里登"
+    },
+    "20181": {
+     "name": "谢尔曼县",
+     "short": "谢尔曼"
+    },
+    "20183": {
+     "name": "史密斯县",
+     "short": "史密斯"
+    },
+    "20185": {
+     "name": "斯塔福德县",
+     "short": "斯塔福德"
+    },
+    "20187": {
+     "name": "斯坦顿县",
+     "short": "斯坦顿"
+    },
+    "20189": {
+     "name": "史蒂文斯县",
+     "short": "史蒂文斯"
+    },
+    "20191": {
+     "name": "萨姆纳县",
+     "short": "萨姆纳"
+    },
+    "20193": {
+     "name": "托马斯县",
+     "short": "托马斯"
+    },
+    "20195": {
+     "name": "特里戈县",
+     "short": "特里戈"
+    },
+    "20197": {
+     "name": "沃邦西县",
+     "short": "沃邦西"
+    },
+    "20199": {
+     "name": "华莱士县",
+     "short": "华莱士"
+    },
+    "20201": {
+     "name": "华盛顿县",
+     "short": "华盛顿"
+    },
+    "20203": {
+     "name": "威奇托县",
+     "short": "威奇托"
+    },
+    "20205": {
+     "name": "威尔逊县",
+     "short": "威尔逊"
+    },
+    "20207": {
+     "name": "伍德森县",
+     "short": "伍德森"
+    },
+    "20209": {
+     "name": "怀恩多特县",
+     "short": "怀恩多特"
+    }
+   }
+  },
+  "ME": {
+   "es": {
+    "23001": {
+     "name": "condado de Androscoggin",
+     "short": "Androscoggin"
+    },
+    "23003": {
+     "name": "condado de Aroostook",
+     "short": "Aroostook"
+    },
+    "23005": {
+     "name": "condado de Cumberland",
+     "short": "Cumberland"
+    },
+    "23007": {
+     "name": "condado de Franklin",
+     "short": "Franklin"
+    },
+    "23009": {
+     "name": "condado de Hancock",
+     "short": "Hancock"
+    },
+    "23011": {
+     "name": "condado de Kennebec",
+     "short": "Kennebec"
+    },
+    "23013": {
+     "name": "condado de Knox",
+     "short": "Knox"
+    },
+    "23015": {
+     "name": "condado de Lincoln",
+     "short": "Lincoln"
+    },
+    "23017": {
+     "name": "condado de Oxford",
+     "short": "Oxford"
+    },
+    "23019": {
+     "name": "condado de Penobscot",
+     "short": "Penobscot"
+    },
+    "23021": {
+     "name": "condado de Piscataquis",
+     "short": "Piscataquis"
+    },
+    "23023": {
+     "name": "condado de Sagadahoc",
+     "short": "Sagadahoc"
+    },
+    "23025": {
+     "name": "condado de Somerset",
+     "short": "Somerset"
+    },
+    "23027": {
+     "name": "condado de Waldo",
+     "short": "Waldo"
+    },
+    "23029": {
+     "name": "condado de Washington",
+     "short": "Washington"
+    },
+    "23031": {
+     "name": "condado de York",
+     "short": "York"
+    }
+   },
+   "ja": {
+    "23001": {
+     "name": "アンドロスコギン郡",
+     "short": "アンドロスコギン"
+    },
+    "23003": {
+     "name": "アルーストック郡",
+     "short": "アルーストック"
+    },
+    "23005": {
+     "name": "カンバーランド郡",
+     "short": "カンバーランド"
+    },
+    "23007": {
+     "name": "フランクリン郡",
+     "short": "フランクリン"
+    },
+    "23009": {
+     "name": "ハンコック郡",
+     "short": "ハンコック"
+    },
+    "23011": {
+     "name": "ケネベック郡",
+     "short": "ケネベック"
+    },
+    "23013": {
+     "name": "ノックス郡",
+     "short": "ノックス"
+    },
+    "23015": {
+     "name": "リンカーン郡",
+     "short": "リンカーン"
+    },
+    "23017": {
+     "name": "オックスフォード郡",
+     "short": "オックスフォード"
+    },
+    "23019": {
+     "name": "ペノブスコット郡",
+     "short": "ペノブスコット"
+    },
+    "23021": {
+     "name": "ピスカタキス郡",
+     "short": "ピスカタキス"
+    },
+    "23023": {
+     "name": "サガダホク郡",
+     "short": "サガダホク"
+    },
+    "23025": {
+     "name": "サマセット郡",
+     "short": "サマセット"
+    },
+    "23027": {
+     "name": "ウォルド郡",
+     "short": "ウォルド"
+    },
+    "23029": {
+     "name": "ワシントン郡",
+     "short": "ワシントン"
+    },
+    "23031": {
+     "name": "ヨーク郡",
+     "short": "ヨーク"
+    }
+   },
+   "zh": {
+    "23001": {
+     "name": "安德罗斯科金县",
+     "short": "安德罗斯科金"
+    },
+    "23003": {
+     "name": "阿鲁斯图克县",
+     "short": "阿鲁斯图克"
+    },
+    "23005": {
+     "name": "坎伯兰县",
+     "short": "坎伯兰"
+    },
+    "23007": {
+     "name": "富兰克林县",
+     "short": "富兰克林"
+    },
+    "23009": {
+     "name": "汉考克县",
+     "short": "汉考克"
+    },
+    "23011": {
+     "name": "肯纳贝克县",
+     "short": "肯纳贝克"
+    },
+    "23013": {
+     "name": "诺克斯县",
+     "short": "诺克斯"
+    },
+    "23015": {
+     "name": "林肯县",
+     "short": "林肯"
+    },
+    "23017": {
+     "name": "牛津县",
+     "short": "牛津"
+    },
+    "23019": {
+     "name": "佩诺布斯科特县",
+     "short": "佩诺布斯科特"
+    },
+    "23021": {
+     "name": "皮斯卡塔奎斯县",
+     "short": "皮斯卡塔奎斯"
+    },
+    "23023": {
+     "name": "萨加达霍克县",
+     "short": "萨加达霍克"
+    },
+    "23025": {
+     "name": "萨默塞特县",
+     "short": "萨默塞特"
+    },
+    "23027": {
+     "name": "沃尔多县",
+     "short": "沃尔多"
+    },
+    "23029": {
+     "name": "华盛顿县",
+     "short": "华盛顿"
+    },
+    "23031": {
+     "name": "约克县",
+     "short": "约克"
+    }
+   }
+  },
+  "OH": {
+   "es": {
+    "39001": {
+     "name": "condado de Adams",
+     "short": "Adams"
+    },
+    "39003": {
+     "name": "condado de Allen",
+     "short": "Allen"
+    },
+    "39005": {
+     "name": "condado de Ashland",
+     "short": "Ashland"
+    },
+    "39007": {
+     "name": "condado de Ashtabula",
+     "short": "Ashtabula"
+    },
+    "39009": {
+     "name": "condado de Athens",
+     "short": "Athens"
+    },
+    "39011": {
+     "name": "condado de Auglaize",
+     "short": "Auglaize"
+    },
+    "39013": {
+     "name": "condado de Belmont",
+     "short": "Belmont"
+    },
+    "39015": {
+     "name": "condado de Brown",
+     "short": "Brown"
+    },
+    "39017": {
+     "name": "condado de Butler",
+     "short": "Butler"
+    },
+    "39019": {
+     "name": "condado de Carroll",
+     "short": "Carroll"
+    },
+    "39021": {
+     "name": "condado de Champaign",
+     "short": "Champaign"
+    },
+    "39023": {
+     "name": "condado de Clark",
+     "short": "Clark"
+    },
+    "39025": {
+     "name": "condado de Clermont",
+     "short": "Clermont"
+    },
+    "39027": {
+     "name": "condado de Clinton",
+     "short": "Clinton"
+    },
+    "39029": {
+     "name": "condado de Columbiana",
+     "short": "Columbiana"
+    },
+    "39031": {
+     "name": "condado de Coshocton",
+     "short": "Coshocton"
+    },
+    "39033": {
+     "name": "condado de Crawford",
+     "short": "Crawford"
+    },
+    "39035": {
+     "name": "condado de Cuyahoga",
+     "short": "Cuyahoga"
+    },
+    "39037": {
+     "name": "condado de Darke",
+     "short": "Darke"
+    },
+    "39039": {
+     "name": "condado de Defiance",
+     "short": "Defiance"
+    },
+    "39041": {
+     "name": "condado de Delaware",
+     "short": "Delaware"
+    },
+    "39043": {
+     "name": "condado de Erie",
+     "short": "Erie"
+    },
+    "39045": {
+     "name": "condado de Fairfield",
+     "short": "Fairfield"
+    },
+    "39047": {
+     "name": "condado de Fayette",
+     "short": "Fayette"
+    },
+    "39049": {
+     "name": "condado de Franklin",
+     "short": "Franklin"
+    },
+    "39051": {
+     "name": "condado de Fulton",
+     "short": "Fulton"
+    },
+    "39053": {
+     "name": "condado de Gallia",
+     "short": "Gallia"
+    },
+    "39055": {
+     "name": "condado de Geauga",
+     "short": "Geauga"
+    },
+    "39057": {
+     "name": "condado de Greene",
+     "short": "Greene"
+    },
+    "39059": {
+     "name": "condado de Guernsey",
+     "short": "Guernsey"
+    },
+    "39061": {
+     "name": "condado de Hamilton",
+     "short": "Hamilton"
+    },
+    "39063": {
+     "name": "condado de Hancock",
+     "short": "Hancock"
+    },
+    "39065": {
+     "name": "condado de Hardin",
+     "short": "Hardin"
+    },
+    "39067": {
+     "name": "condado de Harrison",
+     "short": "Harrison"
+    },
+    "39069": {
+     "name": "condado de Henry",
+     "short": "Henry"
+    },
+    "39071": {
+     "name": "condado de Highland",
+     "short": "Highland"
+    },
+    "39073": {
+     "name": "condado de Hocking",
+     "short": "Hocking"
+    },
+    "39075": {
+     "name": "condado de Holmes",
+     "short": "Holmes"
+    },
+    "39077": {
+     "name": "condado de Huron",
+     "short": "Huron"
+    },
+    "39079": {
+     "name": "condado de Jackson",
+     "short": "Jackson"
+    },
+    "39081": {
+     "name": "condado de Jefferson",
+     "short": "Jefferson"
+    },
+    "39083": {
+     "name": "condado de Knox",
+     "short": "Knox"
+    },
+    "39085": {
+     "name": "condado de Lake",
+     "short": "Lake"
+    },
+    "39087": {
+     "name": "condado de Lawrence",
+     "short": "Lawrence"
+    },
+    "39089": {
+     "name": "condado de Licking",
+     "short": "Licking"
+    },
+    "39091": {
+     "name": "condado de Logan",
+     "short": "Logan"
+    },
+    "39093": {
+     "name": "condado de Lorain",
+     "short": "Lorain"
+    },
+    "39095": {
+     "name": "condado de Lucas",
+     "short": "Lucas"
+    },
+    "39097": {
+     "name": "condado de Madison",
+     "short": "Madison"
+    },
+    "39099": {
+     "name": "condado de Mahoning",
+     "short": "Mahoning"
+    },
+    "39101": {
+     "name": "condado de Marion",
+     "short": "Marion"
+    },
+    "39103": {
+     "name": "condado de Medina",
+     "short": "Medina"
+    },
+    "39105": {
+     "name": "condado de Meigs",
+     "short": "Meigs"
+    },
+    "39107": {
+     "name": "condado de Mercer",
+     "short": "Mercer"
+    },
+    "39109": {
+     "name": "condado de Miami",
+     "short": "Miami"
+    },
+    "39111": {
+     "name": "condado de Monroe",
+     "short": "Monroe"
+    },
+    "39113": {
+     "name": "condado de Montgomery",
+     "short": "Montgomery"
+    },
+    "39115": {
+     "name": "condado de Morgan",
+     "short": "Morgan"
+    },
+    "39117": {
+     "name": "condado de Morrow",
+     "short": "Morrow"
+    },
+    "39119": {
+     "name": "condado de Muskingum",
+     "short": "Muskingum"
+    },
+    "39121": {
+     "name": "condado de Noble",
+     "short": "Noble"
+    },
+    "39123": {
+     "name": "condado de Ottawa",
+     "short": "Ottawa"
+    },
+    "39125": {
+     "name": "condado de Paulding",
+     "short": "Paulding"
+    },
+    "39127": {
+     "name": "condado de Perry",
+     "short": "Perry"
+    },
+    "39129": {
+     "name": "condado de Pickaway",
+     "short": "Pickaway"
+    },
+    "39131": {
+     "name": "condado de Pike",
+     "short": "Pike"
+    },
+    "39133": {
+     "name": "condado de Portage",
+     "short": "Portage"
+    },
+    "39135": {
+     "name": "condado de Preble",
+     "short": "Preble"
+    },
+    "39137": {
+     "name": "condado de Putnam",
+     "short": "Putnam"
+    },
+    "39139": {
+     "name": "condado de Richland",
+     "short": "Richland"
+    },
+    "39141": {
+     "name": "condado de Ross",
+     "short": "Ross"
+    },
+    "39143": {
+     "name": "condado de Sandusky",
+     "short": "Sandusky"
+    },
+    "39145": {
+     "name": "condado de Scioto",
+     "short": "Scioto"
+    },
+    "39147": {
+     "name": "condado de Seneca",
+     "short": "Seneca"
+    },
+    "39149": {
+     "name": "condado de Shelby",
+     "short": "Shelby"
+    },
+    "39151": {
+     "name": "condado de Stark",
+     "short": "Stark"
+    },
+    "39153": {
+     "name": "condado de Summit",
+     "short": "Summit"
+    },
+    "39155": {
+     "name": "condado de Trumbull",
+     "short": "Trumbull"
+    },
+    "39157": {
+     "name": "condado de Tuscarawas",
+     "short": "Tuscarawas"
+    },
+    "39159": {
+     "name": "condado de Union",
+     "short": "Union"
+    },
+    "39161": {
+     "name": "condado de Van Wert",
+     "short": "Van Wert"
+    },
+    "39163": {
+     "name": "condado de Vinton",
+     "short": "Vinton"
+    },
+    "39165": {
+     "name": "condado de Warren",
+     "short": "Warren"
+    },
+    "39167": {
+     "name": "condado de Washington",
+     "short": "Washington"
+    },
+    "39169": {
+     "name": "condado de Wayne",
+     "short": "Wayne"
+    },
+    "39171": {
+     "name": "condado de Williams",
+     "short": "Williams"
+    },
+    "39173": {
+     "name": "condado de Wood",
+     "short": "Wood"
+    },
+    "39175": {
+     "name": "condado de Wyandot",
+     "short": "Wyandot"
+    }
+   },
+   "ja": {
+    "39001": {
+     "name": "アダムズ郡",
+     "short": "アダムズ"
+    },
+    "39003": {
+     "name": "アレン郡",
+     "short": "アレン"
+    },
+    "39005": {
+     "name": "アシュランド郡",
+     "short": "アシュランド"
+    },
+    "39007": {
+     "name": "アシュタビューラ郡",
+     "short": "アシュタビューラ"
+    },
+    "39009": {
+     "name": "アセンズ郡",
+     "short": "アセンズ"
+    },
+    "39011": {
+     "name": "オーグレイズ郡",
+     "short": "オーグレイズ"
+    },
+    "39013": {
+     "name": "ベルモント郡",
+     "short": "ベルモント"
+    },
+    "39015": {
+     "name": "ブラウン郡",
+     "short": "ブラウン"
+    },
+    "39017": {
+     "name": "バトラー郡",
+     "short": "バトラー"
+    },
+    "39019": {
+     "name": "キャロル郡",
+     "short": "キャロル"
+    },
+    "39021": {
+     "name": "シャンペーン郡",
+     "short": "シャンペーン"
+    },
+    "39023": {
+     "name": "クラーク郡",
+     "short": "クラーク"
+    },
+    "39025": {
+     "name": "クレアモント郡",
+     "short": "クレアモント"
+    },
+    "39027": {
+     "name": "クリントン郡",
+     "short": "クリントン"
+    },
+    "39029": {
+     "name": "コロンビアナ郡",
+     "short": "コロンビアナ"
+    },
+    "39031": {
+     "name": "コショクトン郡",
+     "short": "コショクトン"
+    },
+    "39033": {
+     "name": "クロフォード郡",
+     "short": "クロフォード"
+    },
+    "39035": {
+     "name": "カヤホガ郡",
+     "short": "カヤホガ"
+    },
+    "39037": {
+     "name": "ダーク郡",
+     "short": "ダーク"
+    },
+    "39039": {
+     "name": "ディファイアンス郡",
+     "short": "ディファイアンス"
+    },
+    "39041": {
+     "name": "デラウェア郡",
+     "short": "デラウェア"
+    },
+    "39043": {
+     "name": "エリー郡",
+     "short": "エリー"
+    },
+    "39045": {
+     "name": "フェアフィールド郡",
+     "short": "フェアフィールド"
+    },
+    "39047": {
+     "name": "フェイエット郡",
+     "short": "フェイエット"
+    },
+    "39049": {
+     "name": "フランクリン郡",
+     "short": "フランクリン"
+    },
+    "39051": {
+     "name": "フルトン郡",
+     "short": "フルトン"
+    },
+    "39053": {
+     "name": "ガリア郡",
+     "short": "ガリア"
+    },
+    "39055": {
+     "name": "ジオーガ郡",
+     "short": "ジオーガ"
+    },
+    "39057": {
+     "name": "グリーン郡",
+     "short": "グリーン"
+    },
+    "39059": {
+     "name": "ガーンジー郡",
+     "short": "ガーンジー"
+    },
+    "39061": {
+     "name": "ハミルトン郡",
+     "short": "ハミルトン"
+    },
+    "39063": {
+     "name": "ハンコック郡",
+     "short": "ハンコック"
+    },
+    "39065": {
+     "name": "ハーディン郡",
+     "short": "ハーディン"
+    },
+    "39067": {
+     "name": "ハリソン郡",
+     "short": "ハリソン"
+    },
+    "39069": {
+     "name": "ヘンリー郡",
+     "short": "ヘンリー"
+    },
+    "39071": {
+     "name": "ハイランド郡",
+     "short": "ハイランド"
+    },
+    "39073": {
+     "name": "ホッキング郡",
+     "short": "ホッキング"
+    },
+    "39075": {
+     "name": "ホームズ郡",
+     "short": "ホームズ"
+    },
+    "39077": {
+     "name": "ヒューロン郡",
+     "short": "ヒューロン"
+    },
+    "39079": {
+     "name": "ジャクソン郡",
+     "short": "ジャクソン"
+    },
+    "39081": {
+     "name": "ジェファーソン郡",
+     "short": "ジェファーソン"
+    },
+    "39083": {
+     "name": "ノックス郡",
+     "short": "ノックス"
+    },
+    "39085": {
+     "name": "レイク郡",
+     "short": "レイク"
+    },
+    "39087": {
+     "name": "ローレンス郡",
+     "short": "ローレンス"
+    },
+    "39089": {
+     "name": "リッキング郡",
+     "short": "リッキング"
+    },
+    "39091": {
+     "name": "ローガン郡",
+     "short": "ローガン"
+    },
+    "39093": {
+     "name": "ロレイン郡",
+     "short": "ロレイン"
+    },
+    "39095": {
+     "name": "ルーカス郡",
+     "short": "ルーカス"
+    },
+    "39097": {
+     "name": "マディソン郡",
+     "short": "マディソン"
+    },
+    "39099": {
+     "name": "マホニング郡",
+     "short": "マホニング"
+    },
+    "39101": {
+     "name": "マリオン郡",
+     "short": "マリオン"
+    },
+    "39103": {
+     "name": "メディナ郡",
+     "short": "メディナ"
+    },
+    "39105": {
+     "name": "メグズ郡",
+     "short": "メグズ"
+    },
+    "39107": {
+     "name": "マーサー郡",
+     "short": "マーサー"
+    },
+    "39109": {
+     "name": "マイアミ郡",
+     "short": "マイアミ"
+    },
+    "39111": {
+     "name": "モンロー郡",
+     "short": "モンロー"
+    },
+    "39113": {
+     "name": "モンゴメリー郡",
+     "short": "モンゴメリー"
+    },
+    "39115": {
+     "name": "モーガン郡",
+     "short": "モーガン"
+    },
+    "39117": {
+     "name": "モロー郡",
+     "short": "モロー"
+    },
+    "39119": {
+     "name": "マスキンガム郡",
+     "short": "マスキンガム"
+    },
+    "39121": {
+     "name": "ノーブル郡",
+     "short": "ノーブル"
+    },
+    "39123": {
+     "name": "オタワ郡",
+     "short": "オタワ"
+    },
+    "39125": {
+     "name": "ポールディング郡",
+     "short": "ポールディング"
+    },
+    "39127": {
+     "name": "ペリー郡",
+     "short": "ペリー"
+    },
+    "39129": {
+     "name": "ピカウェイ郡",
+     "short": "ピカウェイ"
+    },
+    "39131": {
+     "name": "パイク郡",
+     "short": "パイク"
+    },
+    "39133": {
+     "name": "ポーテージ郡",
+     "short": "ポーテージ"
+    },
+    "39135": {
+     "name": "プレブル郡",
+     "short": "プレブル"
+    },
+    "39137": {
+     "name": "パットナム郡",
+     "short": "パットナム"
+    },
+    "39139": {
+     "name": "リッチランド郡",
+     "short": "リッチランド"
+    },
+    "39141": {
+     "name": "ロス郡",
+     "short": "ロス"
+    },
+    "39143": {
+     "name": "サンダスキー郡",
+     "short": "サンダスキー"
+    },
+    "39145": {
+     "name": "サイオト郡",
+     "short": "サイオト"
+    },
+    "39147": {
+     "name": "セネカ郡",
+     "short": "セネカ"
+    },
+    "39149": {
+     "name": "シェルビー郡",
+     "short": "シェルビー"
+    },
+    "39151": {
+     "name": "スターク郡",
+     "short": "スターク"
+    },
+    "39153": {
+     "name": "サミット郡",
+     "short": "サミット"
+    },
+    "39155": {
+     "name": "トランブル郡",
+     "short": "トランブル"
+    },
+    "39157": {
+     "name": "タスカラワス郡",
+     "short": "タスカラワス"
+    },
+    "39159": {
+     "name": "ユニオン郡",
+     "short": "ユニオン"
+    },
+    "39161": {
+     "name": "バンワート郡",
+     "short": "バンワート"
+    },
+    "39163": {
+     "name": "ビントン郡",
+     "short": "ビントン"
+    },
+    "39165": {
+     "name": "ウォーレン郡",
+     "short": "ウォーレン"
+    },
+    "39167": {
+     "name": "ワシントン郡",
+     "short": "ワシントン"
+    },
+    "39169": {
+     "name": "ウェイン郡",
+     "short": "ウェイン"
+    },
+    "39171": {
+     "name": "ウィリアムズ郡",
+     "short": "ウィリアムズ"
+    },
+    "39173": {
+     "name": "ウッド郡",
+     "short": "ウッド"
+    },
+    "39175": {
+     "name": "ワイアンドット郡",
+     "short": "ワイアンドット"
+    }
+   },
+   "zh": {
+    "39001": {
+     "name": "亚当斯县",
+     "short": "亚当斯"
+    },
+    "39003": {
+     "name": "艾伦县",
+     "short": "艾伦"
+    },
+    "39005": {
+     "name": "阿什兰县",
+     "short": "阿什兰"
+    },
+    "39007": {
+     "name": "阿什塔比拉县",
+     "short": "阿什塔比拉"
+    },
+    "39009": {
+     "name": "雅典县",
+     "short": "雅典"
+    },
+    "39011": {
+     "name": "奥格莱兹县",
+     "short": "奥格莱兹"
+    },
+    "39013": {
+     "name": "贝尔蒙特县",
+     "short": "贝尔蒙特"
+    },
+    "39015": {
+     "name": "布朗县",
+     "short": "布朗"
+    },
+    "39017": {
+     "name": "巴特勒县",
+     "short": "巴特勒"
+    },
+    "39019": {
+     "name": "卡罗尔县",
+     "short": "卡罗尔"
+    },
+    "39021": {
+     "name": "尚佩恩县",
+     "short": "尚佩恩"
+    },
+    "39023": {
+     "name": "克拉克县",
+     "short": "克拉克"
+    },
+    "39025": {
+     "name": "克莱蒙县",
+     "short": "克莱蒙"
+    },
+    "39027": {
+     "name": "克林顿县",
+     "short": "克林顿"
+    },
+    "39029": {
+     "name": "哥伦布纳县",
+     "short": "哥伦布纳"
+    },
+    "39031": {
+     "name": "科肖克顿县",
+     "short": "科肖克顿"
+    },
+    "39033": {
+     "name": "克劳福德县",
+     "short": "克劳福德"
+    },
+    "39035": {
+     "name": "凯霍加县",
+     "short": "凯霍加"
+    },
+    "39037": {
+     "name": "达克县",
+     "short": "达克"
+    },
+    "39039": {
+     "name": "迪法恩斯县",
+     "short": "迪法恩斯"
+    },
+    "39041": {
+     "name": "特拉华县",
+     "short": "特拉华"
+    },
+    "39043": {
+     "name": "伊利县",
+     "short": "伊利"
+    },
+    "39045": {
+     "name": "费尔菲尔德县",
+     "short": "费尔菲尔德"
+    },
+    "39047": {
+     "name": "费耶特县",
+     "short": "费耶特"
+    },
+    "39049": {
+     "name": "富兰克林县",
+     "short": "富兰克林"
+    },
+    "39051": {
+     "name": "富尔顿县",
+     "short": "富尔顿"
+    },
+    "39053": {
+     "name": "加利亚县",
+     "short": "加利亚"
+    },
+    "39055": {
+     "name": "吉奥格县",
+     "short": "吉奥格"
+    },
+    "39057": {
+     "name": "格林县",
+     "short": "格林"
+    },
+    "39059": {
+     "name": "根西县",
+     "short": "根西"
+    },
+    "39061": {
+     "name": "汉密尔顿县",
+     "short": "汉密尔顿"
+    },
+    "39063": {
+     "name": "汉考克县",
+     "short": "汉考克"
+    },
+    "39065": {
+     "name": "哈丁县",
+     "short": "哈丁"
+    },
+    "39067": {
+     "name": "哈里森县",
+     "short": "哈里森"
+    },
+    "39069": {
+     "name": "亨利县",
+     "short": "亨利"
+    },
+    "39071": {
+     "name": "海兰县",
+     "short": "海兰"
+    },
+    "39073": {
+     "name": "霍金县",
+     "short": "霍金"
+    },
+    "39075": {
+     "name": "霍姆斯县",
+     "short": "霍姆斯"
+    },
+    "39077": {
+     "name": "休伦县",
+     "short": "休伦"
+    },
+    "39079": {
+     "name": "杰克逊县",
+     "short": "杰克逊"
+    },
+    "39081": {
+     "name": "杰斐逊县",
+     "short": "杰斐逊"
+    },
+    "39083": {
+     "name": "诺克斯县",
+     "short": "诺克斯"
+    },
+    "39085": {
+     "name": "莱克县",
+     "short": "莱克"
+    },
+    "39087": {
+     "name": "劳伦斯县",
+     "short": "劳伦斯"
+    },
+    "39089": {
+     "name": "利金县",
+     "short": "利金"
+    },
+    "39091": {
+     "name": "洛根县",
+     "short": "洛根"
+    },
+    "39093": {
+     "name": "洛雷恩县",
+     "short": "洛雷恩"
+    },
+    "39095": {
+     "name": "卢卡斯县",
+     "short": "卢卡斯"
+    },
+    "39097": {
+     "name": "麦迪逊县",
+     "short": "麦迪逊"
+    },
+    "39099": {
+     "name": "马霍宁县",
+     "short": "马霍宁"
+    },
+    "39101": {
+     "name": "马里恩县",
+     "short": "马里恩"
+    },
+    "39103": {
+     "name": "梅迪纳县",
+     "short": "梅迪纳"
+    },
+    "39105": {
+     "name": "梅格斯县",
+     "short": "梅格斯"
+    },
+    "39107": {
+     "name": "默瑟县",
+     "short": "默瑟"
+    },
+    "39109": {
+     "name": "迈阿密县",
+     "short": "迈阿密"
+    },
+    "39111": {
+     "name": "门罗县",
+     "short": "门罗"
+    },
+    "39113": {
+     "name": "蒙哥马利县",
+     "short": "蒙哥马利"
+    },
+    "39115": {
+     "name": "摩根县",
+     "short": "摩根"
+    },
+    "39117": {
+     "name": "莫罗县",
+     "short": "莫罗"
+    },
+    "39119": {
+     "name": "马斯金格姆县",
+     "short": "马斯金格姆"
+    },
+    "39121": {
+     "name": "诺布尔县",
+     "short": "诺布尔"
+    },
+    "39123": {
+     "name": "渥太华县",
+     "short": "渥太华"
+    },
+    "39125": {
+     "name": "保尔丁县",
+     "short": "保尔丁"
+    },
+    "39127": {
+     "name": "佩里县",
+     "short": "佩里"
+    },
+    "39129": {
+     "name": "皮卡韦县",
+     "short": "皮卡韦"
+    },
+    "39131": {
+     "name": "派克县",
+     "short": "派克"
+    },
+    "39133": {
+     "name": "波蒂奇县",
+     "short": "波蒂奇"
+    },
+    "39135": {
+     "name": "普雷布尔县",
+     "short": "普雷布尔"
+    },
+    "39137": {
+     "name": "帕特南县",
+     "short": "帕特南"
+    },
+    "39139": {
+     "name": "里奇兰县",
+     "short": "里奇兰"
+    },
+    "39141": {
+     "name": "罗斯县",
+     "short": "罗斯"
+    },
+    "39143": {
+     "name": "桑达斯基县",
+     "short": "桑达斯基"
+    },
+    "39145": {
+     "name": "赛欧托县",
+     "short": "赛欧托"
+    },
+    "39147": {
+     "name": "塞尼卡县",
+     "short": "塞尼卡"
+    },
+    "39149": {
+     "name": "谢尔比县",
+     "short": "谢尔比"
+    },
+    "39151": {
+     "name": "斯塔克县",
+     "short": "斯塔克"
+    },
+    "39153": {
+     "name": "萨米特县",
+     "short": "萨米特"
+    },
+    "39155": {
+     "name": "特朗布尔县",
+     "short": "特朗布尔"
+    },
+    "39157": {
+     "name": "塔斯卡罗瓦斯县",
+     "short": "塔斯卡罗瓦斯"
+    },
+    "39159": {
+     "name": "尤宁县",
+     "short": "尤宁"
+    },
+    "39161": {
+     "name": "范沃特县",
+     "short": "范沃特"
+    },
+    "39163": {
+     "name": "文顿县",
+     "short": "文顿"
+    },
+    "39165": {
+     "name": "沃伦县",
+     "short": "沃伦"
+    },
+    "39167": {
+     "name": "华盛顿县",
+     "short": "华盛顿"
+    },
+    "39169": {
+     "name": "韦恩县",
+     "short": "韦恩"
+    },
+    "39171": {
+     "name": "威廉姆斯县",
+     "short": "威廉姆斯"
+    },
+    "39173": {
+     "name": "伍德县",
+     "short": "伍德"
+    },
+    "39175": {
+     "name": "怀恩多特县",
+     "short": "怀恩多特"
+    }
+   }
+  },
+  "MI": {
+   "es": {
+    "26001": {
+     "name": "condado de Alcona",
+     "short": "Alcona"
+    },
+    "26003": {
+     "name": "condado de Alger",
+     "short": "Alger"
+    },
+    "26005": {
+     "name": "condado de Allegan",
+     "short": "Allegan"
+    },
+    "26007": {
+     "name": "condado de Alpena",
+     "short": "Alpena"
+    },
+    "26009": {
+     "name": "condado de Antrim",
+     "short": "Antrim"
+    },
+    "26011": {
+     "name": "condado de Arenac",
+     "short": "Arenac"
+    },
+    "26013": {
+     "name": "condado de Baraga",
+     "short": "Baraga"
+    },
+    "26015": {
+     "name": "condado de Barry",
+     "short": "Barry"
+    },
+    "26017": {
+     "name": "condado de Bay",
+     "short": "Bay"
+    },
+    "26019": {
+     "name": "condado de Benzie",
+     "short": "Benzie"
+    },
+    "26021": {
+     "name": "condado de Berrien",
+     "short": "Berrien"
+    },
+    "26023": {
+     "name": "condado de Branch",
+     "short": "Branch"
+    },
+    "26025": {
+     "name": "condado de Calhoun",
+     "short": "Calhoun"
+    },
+    "26027": {
+     "name": "condado de Cass",
+     "short": "Cass"
+    },
+    "26029": {
+     "name": "condado de Charlevoix",
+     "short": "Charlevoix"
+    },
+    "26031": {
+     "name": "condado de Cheboygan",
+     "short": "Cheboygan"
+    },
+    "26033": {
+     "name": "condado de Chippewa",
+     "short": "Chippewa"
+    },
+    "26035": {
+     "name": "condado de Clare",
+     "short": "Clare"
+    },
+    "26037": {
+     "name": "condado de Clinton",
+     "short": "Clinton"
+    },
+    "26039": {
+     "name": "condado de Crawford",
+     "short": "Crawford"
+    },
+    "26041": {
+     "name": "condado de Delta",
+     "short": "Delta"
+    },
+    "26043": {
+     "name": "condado de Dickinson",
+     "short": "Dickinson"
+    },
+    "26045": {
+     "name": "condado de Eaton",
+     "short": "Eaton"
+    },
+    "26047": {
+     "name": "condado de Emmet",
+     "short": "Emmet"
+    },
+    "26049": {
+     "name": "condado de Genesee",
+     "short": "Genesee"
+    },
+    "26051": {
+     "name": "condado de Gladwin",
+     "short": "Gladwin"
+    },
+    "26053": {
+     "name": "condado de Gogebic",
+     "short": "Gogebic"
+    },
+    "26055": {
+     "name": "condado de Grand Traverse",
+     "short": "Grand Traverse"
+    },
+    "26057": {
+     "name": "condado de Gratiot",
+     "short": "Gratiot"
+    },
+    "26059": {
+     "name": "condado de Hillsdale",
+     "short": "Hillsdale"
+    },
+    "26061": {
+     "name": "condado de Houghton",
+     "short": "Houghton"
+    },
+    "26063": {
+     "name": "condado de Huron",
+     "short": "Huron"
+    },
+    "26065": {
+     "name": "condado de Ingham",
+     "short": "Ingham"
+    },
+    "26067": {
+     "name": "condado de Ionia",
+     "short": "Ionia"
+    },
+    "26069": {
+     "name": "condado de Iosco",
+     "short": "Iosco"
+    },
+    "26071": {
+     "name": "condado de Iron",
+     "short": "Iron"
+    },
+    "26073": {
+     "name": "condado de Isabella",
+     "short": "Isabella"
+    },
+    "26075": {
+     "name": "condado de Jackson",
+     "short": "Jackson"
+    },
+    "26077": {
+     "name": "condado de Kalamazoo",
+     "short": "Kalamazoo"
+    },
+    "26079": {
+     "name": "condado de Kalkaska",
+     "short": "Kalkaska"
+    },
+    "26081": {
+     "name": "condado de Kent",
+     "short": "Kent"
+    },
+    "26083": {
+     "name": "condado de Keweenaw",
+     "short": "Keweenaw"
+    },
+    "26085": {
+     "name": "condado de Lake",
+     "short": "Lake"
+    },
+    "26087": {
+     "name": "condado de Lapeer",
+     "short": "Lapeer"
+    },
+    "26089": {
+     "name": "condado de Leelanau",
+     "short": "Leelanau"
+    },
+    "26091": {
+     "name": "condado de Lenawee",
+     "short": "Lenawee"
+    },
+    "26093": {
+     "name": "condado de Livingston",
+     "short": "Livingston"
+    },
+    "26095": {
+     "name": "condado de Luce",
+     "short": "Luce"
+    },
+    "26097": {
+     "name": "condado de Mackinac",
+     "short": "Mackinac"
+    },
+    "26099": {
+     "name": "condado de Macomb",
+     "short": "Macomb"
+    },
+    "26101": {
+     "name": "condado de Manistee",
+     "short": "Manistee"
+    },
+    "26103": {
+     "name": "condado de Marquette",
+     "short": "Marquette"
+    },
+    "26105": {
+     "name": "condado de Mason",
+     "short": "Mason"
+    },
+    "26107": {
+     "name": "condado de Mecosta",
+     "short": "Mecosta"
+    },
+    "26109": {
+     "name": "condado de Menominee",
+     "short": "Menominee"
+    },
+    "26111": {
+     "name": "condado de Midland",
+     "short": "Midland"
+    },
+    "26113": {
+     "name": "condado de Missaukee",
+     "short": "Missaukee"
+    },
+    "26115": {
+     "name": "condado de Monroe",
+     "short": "Monroe"
+    },
+    "26117": {
+     "name": "condado de Montcalm",
+     "short": "Montcalm"
+    },
+    "26119": {
+     "name": "condado de Montmorency",
+     "short": "Montmorency"
+    },
+    "26121": {
+     "name": "condado de Muskegon",
+     "short": "Muskegon"
+    },
+    "26123": {
+     "name": "condado de Newaygo",
+     "short": "Newaygo"
+    },
+    "26125": {
+     "name": "condado de Oakland",
+     "short": "Oakland"
+    },
+    "26127": {
+     "name": "condado de Oceana",
+     "short": "Oceana"
+    },
+    "26129": {
+     "name": "condado de Ogemaw",
+     "short": "Ogemaw"
+    },
+    "26131": {
+     "name": "condado de Ontonagon",
+     "short": "Ontonagon"
+    },
+    "26133": {
+     "name": "condado de Osceola",
+     "short": "Osceola"
+    },
+    "26135": {
+     "name": "condado de Oscoda",
+     "short": "Oscoda"
+    },
+    "26137": {
+     "name": "condado de Otsego",
+     "short": "Otsego"
+    },
+    "26139": {
+     "name": "condado de Ottawa",
+     "short": "Ottawa"
+    },
+    "26141": {
+     "name": "condado de Presque Isle",
+     "short": "Presque Isle"
+    },
+    "26143": {
+     "name": "condado de Roscommon",
+     "short": "Roscommon"
+    },
+    "26145": {
+     "name": "condado de Saginaw",
+     "short": "Saginaw"
+    },
+    "26147": {
+     "name": "condado de St. Clair",
+     "short": "St. Clair"
+    },
+    "26149": {
+     "name": "condado de St. Joseph",
+     "short": "St. Joseph"
+    },
+    "26151": {
+     "name": "condado de Sanilac",
+     "short": "Sanilac"
+    },
+    "26153": {
+     "name": "condado de Schoolcraft",
+     "short": "Schoolcraft"
+    },
+    "26155": {
+     "name": "condado de Shiawassee",
+     "short": "Shiawassee"
+    },
+    "26157": {
+     "name": "condado de Tuscola",
+     "short": "Tuscola"
+    },
+    "26159": {
+     "name": "condado de Van Buren",
+     "short": "Van Buren"
+    },
+    "26161": {
+     "name": "condado de Washtenaw",
+     "short": "Washtenaw"
+    },
+    "26163": {
+     "name": "condado de Wayne",
+     "short": "Wayne"
+    },
+    "26165": {
+     "name": "condado de Wexford",
+     "short": "Wexford"
+    }
+   },
+   "ja": {
+    "26001": {
+     "name": "アルコナ郡",
+     "short": "アルコナ"
+    },
+    "26003": {
+     "name": "アルジャー郡",
+     "short": "アルジャー"
+    },
+    "26005": {
+     "name": "アレガン郡",
+     "short": "アレガン"
+    },
+    "26007": {
+     "name": "アルピーナ郡",
+     "short": "アルピーナ"
+    },
+    "26009": {
+     "name": "アントリム郡",
+     "short": "アントリム"
+    },
+    "26011": {
+     "name": "アリナック郡",
+     "short": "アリナック"
+    },
+    "26013": {
+     "name": "バラガ郡",
+     "short": "バラガ"
+    },
+    "26015": {
+     "name": "バリー郡",
+     "short": "バリー"
+    },
+    "26017": {
+     "name": "ベイ郡",
+     "short": "ベイ"
+    },
+    "26019": {
+     "name": "ベンジー郡",
+     "short": "ベンジー"
+    },
+    "26021": {
+     "name": "ベリアン郡",
+     "short": "ベリアン"
+    },
+    "26023": {
+     "name": "ブランチ郡",
+     "short": "ブランチ"
+    },
+    "26025": {
+     "name": "カルフーン郡",
+     "short": "カルフーン"
+    },
+    "26027": {
+     "name": "カス郡",
+     "short": "カス"
+    },
+    "26029": {
+     "name": "シャルルボア郡",
+     "short": "シャルルボア"
+    },
+    "26031": {
+     "name": "シボイガン郡",
+     "short": "シボイガン"
+    },
+    "26033": {
+     "name": "チッペワ郡",
+     "short": "チッペワ"
+    },
+    "26035": {
+     "name": "クレア郡",
+     "short": "クレア"
+    },
+    "26037": {
+     "name": "クリントン郡",
+     "short": "クリントン"
+    },
+    "26039": {
+     "name": "クロフォード郡",
+     "short": "クロフォード"
+    },
+    "26041": {
+     "name": "デルタ郡",
+     "short": "デルタ"
+    },
+    "26043": {
+     "name": "ディキンソン郡",
+     "short": "ディキンソン"
+    },
+    "26045": {
+     "name": "イートン郡",
+     "short": "イートン"
+    },
+    "26047": {
+     "name": "エメット郡",
+     "short": "エメット"
+    },
+    "26049": {
+     "name": "ジェネシー郡",
+     "short": "ジェネシー"
+    },
+    "26051": {
+     "name": "グラッドウィン郡",
+     "short": "グラッドウィン"
+    },
+    "26053": {
+     "name": "ゴゲビック郡",
+     "short": "ゴゲビック"
+    },
+    "26055": {
+     "name": "グランドトラバース郡",
+     "short": "グランドトラバース"
+    },
+    "26057": {
+     "name": "グラティオット郡",
+     "short": "グラティオット"
+    },
+    "26059": {
+     "name": "ヒルズデール郡",
+     "short": "ヒルズデール"
+    },
+    "26061": {
+     "name": "ホートン郡",
+     "short": "ホートン"
+    },
+    "26063": {
+     "name": "ヒューロン郡",
+     "short": "ヒューロン"
+    },
+    "26065": {
+     "name": "インガム郡",
+     "short": "インガム"
+    },
+    "26067": {
+     "name": "アイオニア郡",
+     "short": "アイオニア"
+    },
+    "26069": {
+     "name": "アイオスコ郡",
+     "short": "アイオスコ"
+    },
+    "26071": {
+     "name": "アイアン郡",
+     "short": "アイアン"
+    },
+    "26073": {
+     "name": "イザベラ郡",
+     "short": "イザベラ"
+    },
+    "26075": {
+     "name": "ジャクソン郡",
+     "short": "ジャクソン"
+    },
+    "26077": {
+     "name": "カラマズー郡",
+     "short": "カラマズー"
+    },
+    "26079": {
+     "name": "カルカスカ郡",
+     "short": "カルカスカ"
+    },
+    "26081": {
+     "name": "ケント郡",
+     "short": "ケント"
+    },
+    "26083": {
+     "name": "キーウィノー郡",
+     "short": "キーウィノー"
+    },
+    "26085": {
+     "name": "レイク郡",
+     "short": "レイク"
+    },
+    "26087": {
+     "name": "ラピア郡",
+     "short": "ラピア"
+    },
+    "26089": {
+     "name": "リーラノー郡",
+     "short": "リーラノー"
+    },
+    "26091": {
+     "name": "レナウィー郡",
+     "short": "レナウィー"
+    },
+    "26093": {
+     "name": "リビングストン郡",
+     "short": "リビングストン"
+    },
+    "26095": {
+     "name": "ルース郡",
+     "short": "ルース"
+    },
+    "26097": {
+     "name": "マキナック郡",
+     "short": "マキナック"
+    },
+    "26099": {
+     "name": "マコーム郡",
+     "short": "マコーム"
+    },
+    "26101": {
+     "name": "マニスティー郡",
+     "short": "マニスティー"
+    },
+    "26103": {
+     "name": "マーケット郡",
+     "short": "マーケット"
+    },
+    "26105": {
+     "name": "メイソン郡",
+     "short": "メイソン"
+    },
+    "26107": {
+     "name": "メコスタ郡",
+     "short": "メコスタ"
+    },
+    "26109": {
+     "name": "メノミニー郡",
+     "short": "メノミニー"
+    },
+    "26111": {
+     "name": "ミッドランド郡",
+     "short": "ミッドランド"
+    },
+    "26113": {
+     "name": "ミソーキー郡",
+     "short": "ミソーキー"
+    },
+    "26115": {
+     "name": "モンロー郡",
+     "short": "モンロー"
+    },
+    "26117": {
+     "name": "モントカルム郡",
+     "short": "モントカルム"
+    },
+    "26119": {
+     "name": "モンモランシー郡",
+     "short": "モンモランシー"
+    },
+    "26121": {
+     "name": "マスキーゴン郡",
+     "short": "マスキーゴン"
+    },
+    "26123": {
+     "name": "ニューエイゴ郡",
+     "short": "ニューエイゴ"
+    },
+    "26125": {
+     "name": "オークランド郡",
+     "short": "オークランド"
+    },
+    "26127": {
+     "name": "オセアナ郡",
+     "short": "オセアナ"
+    },
+    "26129": {
+     "name": "オジモー郡",
+     "short": "オジモー"
+    },
+    "26131": {
+     "name": "オントナゴン郡",
+     "short": "オントナゴン"
+    },
+    "26133": {
+     "name": "オシオラ郡",
+     "short": "オシオラ"
+    },
+    "26135": {
+     "name": "オスコダ郡",
+     "short": "オスコダ"
+    },
+    "26137": {
+     "name": "オツェゴ郡",
+     "short": "オツェゴ"
+    },
+    "26139": {
+     "name": "オタワ郡",
+     "short": "オタワ"
+    },
+    "26141": {
+     "name": "プレスクアイル郡",
+     "short": "プレスクアイル"
+    },
+    "26143": {
+     "name": "ロスコモン郡",
+     "short": "ロスコモン"
+    },
+    "26145": {
+     "name": "サギノー郡",
+     "short": "サギノー"
+    },
+    "26147": {
+     "name": "セントクレア郡",
+     "short": "セントクレア"
+    },
+    "26149": {
+     "name": "セントジョセフ郡",
+     "short": "セントジョセフ"
+    },
+    "26151": {
+     "name": "サニラック郡",
+     "short": "サニラック"
+    },
+    "26153": {
+     "name": "スクールクラフト郡",
+     "short": "スクールクラフト"
+    },
+    "26155": {
+     "name": "シャイアワシー郡",
+     "short": "シャイアワシー"
+    },
+    "26157": {
+     "name": "タスコラ郡",
+     "short": "タスコラ"
+    },
+    "26159": {
+     "name": "ヴァンビューレン郡",
+     "short": "ヴァンビューレン"
+    },
+    "26161": {
+     "name": "ワシュトノー郡",
+     "short": "ワシュトノー"
+    },
+    "26163": {
+     "name": "ウェイン郡",
+     "short": "ウェイン"
+    },
+    "26165": {
+     "name": "ウェックスフォード郡",
+     "short": "ウェックスフォード"
+    }
+   },
+   "zh": {
+    "26001": {
+     "name": "阿尔科纳县",
+     "short": "阿尔科纳"
+    },
+    "26003": {
+     "name": "阿尔杰县",
+     "short": "阿尔杰"
+    },
+    "26005": {
+     "name": "阿勒根县",
+     "short": "阿勒根"
+    },
+    "26007": {
+     "name": "阿尔皮纳县",
+     "short": "阿尔皮纳"
+    },
+    "26009": {
+     "name": "安特里姆县",
+     "short": "安特里姆"
+    },
+    "26011": {
+     "name": "阿雷纳克县",
+     "short": "阿雷纳克"
+    },
+    "26013": {
+     "name": "巴拉加县",
+     "short": "巴拉加"
+    },
+    "26015": {
+     "name": "巴里县",
+     "short": "巴里"
+    },
+    "26017": {
+     "name": "贝县",
+     "short": "贝"
+    },
+    "26019": {
+     "name": "本齐县",
+     "short": "本齐"
+    },
+    "26021": {
+     "name": "贝里恩县",
+     "short": "贝里恩"
+    },
+    "26023": {
+     "name": "布兰奇县",
+     "short": "布兰奇"
+    },
+    "26025": {
+     "name": "卡尔霍恩县",
+     "short": "卡尔霍恩"
+    },
+    "26027": {
+     "name": "卡斯县",
+     "short": "卡斯"
+    },
+    "26029": {
+     "name": "沙勒沃伊县",
+     "short": "沙勒沃伊"
+    },
+    "26031": {
+     "name": "希博伊根县",
+     "short": "希博伊根"
+    },
+    "26033": {
+     "name": "奇珀瓦县",
+     "short": "奇珀瓦"
+    },
+    "26035": {
+     "name": "克莱尔县",
+     "short": "克莱尔"
+    },
+    "26037": {
+     "name": "克林顿县",
+     "short": "克林顿"
+    },
+    "26039": {
+     "name": "克劳福德县",
+     "short": "克劳福德"
+    },
+    "26041": {
+     "name": "德尔塔县",
+     "short": "德尔塔"
+    },
+    "26043": {
+     "name": "迪金森县",
+     "short": "迪金森"
+    },
+    "26045": {
+     "name": "伊顿县",
+     "short": "伊顿"
+    },
+    "26047": {
+     "name": "埃米特县",
+     "short": "埃米特"
+    },
+    "26049": {
+     "name": "杰纳西县",
+     "short": "杰纳西"
+    },
+    "26051": {
+     "name": "格拉德温县",
+     "short": "格拉德温"
+    },
+    "26053": {
+     "name": "戈吉比克县",
+     "short": "戈吉比克"
+    },
+    "26055": {
+     "name": "大特拉弗斯县",
+     "short": "大特拉弗斯"
+    },
+    "26057": {
+     "name": "格拉希厄特县",
+     "short": "格拉希厄特"
+    },
+    "26059": {
+     "name": "希尔斯代尔县",
+     "short": "希尔斯代尔"
+    },
+    "26061": {
+     "name": "霍顿县",
+     "short": "霍顿"
+    },
+    "26063": {
+     "name": "休伦县",
+     "short": "休伦"
+    },
+    "26065": {
+     "name": "英厄姆县",
+     "short": "英厄姆"
+    },
+    "26067": {
+     "name": "爱奥尼亚县",
+     "short": "爱奥尼亚"
+    },
+    "26069": {
+     "name": "艾奥斯科县",
+     "short": "艾奥斯科"
+    },
+    "26071": {
+     "name": "艾恩县",
+     "short": "艾恩"
+    },
+    "26073": {
+     "name": "伊莎贝拉县",
+     "short": "伊莎贝拉"
+    },
+    "26075": {
+     "name": "杰克逊县",
+     "short": "杰克逊"
+    },
+    "26077": {
+     "name": "卡拉马祖县",
+     "short": "卡拉马祖"
+    },
+    "26079": {
+     "name": "卡尔卡斯卡县",
+     "short": "卡尔卡斯卡"
+    },
+    "26081": {
+     "name": "肯特县",
+     "short": "肯特"
+    },
+    "26083": {
+     "name": "基威诺县",
+     "short": "基威诺"
+    },
+    "26085": {
+     "name": "莱克县",
+     "short": "莱克"
+    },
+    "26087": {
+     "name": "拉皮尔县",
+     "short": "拉皮尔"
+    },
+    "26089": {
+     "name": "利勒诺县",
+     "short": "利勒诺"
+    },
+    "26091": {
+     "name": "莱纳维县",
+     "short": "莱纳维"
+    },
+    "26093": {
+     "name": "利文斯顿县",
+     "short": "利文斯顿"
+    },
+    "26095": {
+     "name": "卢斯县",
+     "short": "卢斯"
+    },
+    "26097": {
+     "name": "麦基诺县",
+     "short": "麦基诺"
+    },
+    "26099": {
+     "name": "马科姆县",
+     "short": "马科姆"
+    },
+    "26101": {
+     "name": "马尼斯蒂县",
+     "short": "马尼斯蒂"
+    },
+    "26103": {
+     "name": "马凯特县",
+     "short": "马凯特"
+    },
+    "26105": {
+     "name": "梅森县",
+     "short": "梅森"
+    },
+    "26107": {
+     "name": "梅科斯塔县",
+     "short": "梅科斯塔"
+    },
+    "26109": {
+     "name": "梅诺米尼县",
+     "short": "梅诺米尼"
+    },
+    "26111": {
+     "name": "米德兰县",
+     "short": "米德兰"
+    },
+    "26113": {
+     "name": "米索基县",
+     "short": "米索基"
+    },
+    "26115": {
+     "name": "门罗县",
+     "short": "门罗"
+    },
+    "26117": {
+     "name": "蒙卡尔姆县",
+     "short": "蒙卡尔姆"
+    },
+    "26119": {
+     "name": "蒙莫朗西县",
+     "short": "蒙莫朗西"
+    },
+    "26121": {
+     "name": "马斯基根县",
+     "short": "马斯基根"
+    },
+    "26123": {
+     "name": "纽艾戈县",
+     "short": "纽艾戈"
+    },
+    "26125": {
+     "name": "奥克兰县",
+     "short": "奥克兰"
+    },
+    "26127": {
+     "name": "奥希阿纳县",
+     "short": "奥希阿纳"
+    },
+    "26129": {
+     "name": "奥格莫县",
+     "short": "奥格莫"
+    },
+    "26131": {
+     "name": "昂托纳贡县",
+     "short": "昂托纳贡"
+    },
+    "26133": {
+     "name": "奥西奥拉县",
+     "short": "奥西奥拉"
+    },
+    "26135": {
+     "name": "奥斯科达县",
+     "short": "奥斯科达"
+    },
+    "26137": {
+     "name": "奥齐戈县",
+     "short": "奥齐戈"
+    },
+    "26139": {
+     "name": "渥太华县",
+     "short": "渥太华"
+    },
+    "26141": {
+     "name": "普雷斯克艾尔县",
+     "short": "普雷斯克艾尔"
+    },
+    "26143": {
+     "name": "罗斯康芒县",
+     "short": "罗斯康芒"
+    },
+    "26145": {
+     "name": "萨吉诺县",
+     "short": "萨吉诺"
+    },
+    "26147": {
+     "name": "圣克莱尔县",
+     "short": "圣克莱尔"
+    },
+    "26149": {
+     "name": "圣约瑟夫县",
+     "short": "圣约瑟夫"
+    },
+    "26151": {
+     "name": "萨尼拉克县",
+     "short": "萨尼拉克"
+    },
+    "26153": {
+     "name": "斯库克拉夫特县",
+     "short": "斯库克拉夫特"
+    },
+    "26155": {
+     "name": "夏沃西县",
+     "short": "夏沃西"
+    },
+    "26157": {
+     "name": "塔斯科拉县",
+     "short": "塔斯科拉"
+    },
+    "26159": {
+     "name": "范布伦县",
+     "short": "范布伦"
+    },
+    "26161": {
+     "name": "沃什特诺县",
+     "short": "沃什特诺"
+    },
+    "26163": {
+     "name": "韦恩县",
+     "short": "韦恩"
+    },
+    "26165": {
+     "name": "韦克斯福德县",
+     "short": "韦克斯福德"
+    }
+   }
+  }
+ },
+ "notes": {
+  "TX": {
+   "es": [
+    "",
+    ""
+   ],
+   "ja": [
+    "",
+    ""
+   ],
+   "zh": [
+    "",
+    ""
+   ]
+  },
+  "AK": {
+   "es": [
+    "Ocupa el escaño en la boleta de 2026; busca un tercer mandato. Juramentado el 6 de enero de 2015; reelegido en 2020.",
+    "Nombrado el 20 de diciembre de 2002; elegido en 2004, 2010, 2016 y 2022. El escaño no está en disputa en 2026."
+   ],
+   "ja": [
+    "",
+    ""
+   ],
+   "zh": [
+    "",
+    ""
+   ]
+  },
+  "KS": {
+   "es": [
+    "Escaño en disputa en 2026; Marshall es el nominado republicano.",
+    "Escaño de Clase 3; mandato hasta el 2029-01-03. Elegido por primera vez al Senado en 2010 (mandato comenzó el 2011-01-03; juramentado el 2011-01-05)."
+   ],
+   "ja": [
+    "",
+    ""
+   ],
+   "zh": [
+    "",
+    ""
+   ]
+  },
+  "ME": {
+   "es": [
+    "Escaño en juego en 2026; busca un sexto mandato. Presidente del Comité de Asignaciones del Senado.",
+    "Independiente; se agrupa con los demócratas del Senado. Exgobernador de Maine (dos mandatos). Escaño no en juego en 2026."
+   ],
+   "ja": [
+    "",
+    ""
+   ],
+   "zh": [
+    "该席位将于2026年改选；正在寻求第六个任期。担任参议院拨款委员会主席。",
+    "独立人士；与参议院民主党人举行党团会议。前缅因州州长（两届）。该席位在2026年不进行改选。"
+   ]
+  },
+  "OH": {
+   "es": [
+    "Elegido en 2024; su mandato termina el 03-01-2031.",
+    "Nombrado por el gobernador Mike DeWine para el escaño que dejó vacante JD Vance; la elección especial de 2026 decide quién lo ocupará hasta el 03-01-2029."
+   ],
+   "ja": [
+    "",
+    ""
+   ],
+   "zh": [
+    "",
+    ""
+   ]
+  },
+  "MI": {
+   "es": [
+    "Anunció el 2025-01-28 que no buscaría un tercer mandato; su mandato termina el 2027-01-03. El mandato comenzó el 2015-01-03; tomó posesión el 2015-01-06.",
+    "No está en disputa en 2026; su mandato termina el 2031-01-03."
+   ],
+   "ja": [
+    "",
+    ""
+   ],
+   "zh": [
+    "",
+    ""
+   ]
+  }
+ }
+}

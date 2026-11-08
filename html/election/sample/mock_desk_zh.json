@@ -1,0 +1,737 @@
+{
+ "as_of": "2026-11-04T03:12:00Z",
+ "lang": "zh",
+ "is_test": true,
+ "mock": true,
+ "national": {
+  "balance": {
+   "majority": 51,
+   "holdover": {
+    "REP": 31,
+    "DEM": 32,
+    "IND": 2
+   },
+   "declared": {
+    "REP": 0,
+    "DEM": 0,
+    "IND": 0
+   },
+   "undecided": 35
+  },
+  "races": [
+   {
+    "state": "AL",
+    "state_name": "Alabama",
+    "status": "polls_closed",
+    "incumbent_party": "REP",
+    "declared": null,
+    "featured": false,
+    "poll_close_last_et": "2026-11-03T20:00:00-05:00",
+    "leader": null,
+    "special": false,
+    "rows": null
+   },
+   {
+    "state": "AK",
+    "state_name": "阿拉斯加州",
+    "status": "polls_open",
+    "incumbent_party": "REP",
+    "declared": null,
+    "featured": true,
+    "poll_close_last_et": "2026-11-04T01:00:00-05:00",
+    "leader": null,
+    "special": false,
+    "rows": [
+     {
+      "short": "沙利文",
+      "party": "REP",
+      "pct": null
+     },
+     {
+      "short": "佩尔托拉",
+      "party": "DEM",
+      "pct": null
+     }
+    ]
+   },
+   {
+    "state": "AR",
+    "state_name": "Arkansas",
+    "status": "polls_closed",
+    "incumbent_party": "REP",
+    "declared": null,
+    "featured": false,
+    "poll_close_last_et": "2026-11-03T20:30:00-05:00",
+    "leader": null,
+    "special": false,
+    "rows": null
+   },
+   {
+    "state": "CO",
+    "state_name": "Colorado",
+    "status": "polls_closed",
+    "incumbent_party": "DEM",
+    "declared": null,
+    "featured": false,
+    "poll_close_last_et": "2026-11-03T21:00:00-05:00",
+    "leader": null,
+    "special": false,
+    "rows": null
+   },
+   {
+    "state": "DE",
+    "state_name": "Delaware",
+    "status": "polls_closed",
+    "incumbent_party": "DEM",
+    "declared": null,
+    "featured": false,
+    "poll_close_last_et": "2026-11-03T20:00:00-05:00",
+    "leader": null,
+    "special": false,
+    "rows": null
+   },
+   {
+    "state": "FL",
+    "state_name": "Florida",
+    "status": "polls_closed",
+    "incumbent_party": "REP",
+    "declared": null,
+    "featured": false,
+    "poll_close_last_et": "2026-11-03T20:00:00-05:00",
+    "leader": null,
+    "special": true,
+    "rows": null
+   },
+   {
+    "state": "GA",
+    "state_name": "Georgia",
+    "status": "polls_closed",
+    "incumbent_party": "DEM",
+    "declared": null,
+    "featured": false,
+    "poll_close_last_et": "2026-11-03T19:00:00-05:00",
+    "leader": null,
+    "special": false,
+    "rows": null
+   },
+   {
+    "state": "ID",
+    "state_name": "Idaho",
+    "status": "polls_open",
+    "incumbent_party": "REP",
+    "declared": null,
+    "featured": false,
+    "poll_close_last_et": "2026-11-03T23:00:00-05:00",
+    "leader": null,
+    "special": false,
+    "rows": null
+   },
+   {
+    "state": "IL",
+    "state_name": "Illinois",
+    "status": "polls_closed",
+    "incumbent_party": "DEM",
+    "declared": null,
+    "featured": false,
+    "poll_close_last_et": "2026-11-03T20:00:00-05:00",
+    "leader": null,
+    "special": false,
+    "rows": null
+   },
+   {
+    "state": "IA",
+    "state_name": "Iowa",
+    "status": "polls_closed",
+    "incumbent_party": "REP",
+    "declared": null,
+    "featured": false,
+    "poll_close_last_et": "2026-11-03T21:00:00-05:00",
+    "leader": null,
+    "special": false,
+    "rows": null
+   },
+   {
+    "state": "KS",
+    "state_name": "堪萨斯州",
+    "status": "polls_closed",
+    "incumbent_party": "REP",
+    "declared": null,
+    "featured": true,
+    "poll_close_last_et": "2026-11-03T21:00:00-05:00",
+    "leader": null,
+    "special": false,
+    "rows": [
+     {
+      "short": "马歇尔",
+      "party": "REP",
+      "pct": null
+     },
+     {
+      "short": "汉密尔顿",
+      "party": "DEM",
+      "pct": null
+     }
+    ]
+   },
+   {
+    "state": "KY",
+    "state_name": "Kentucky",
+    "status": "polls_closed",
+    "incumbent_party": "REP",
+    "declared": null,
+    "featured": false,
+    "poll_close_last_et": "2026-11-03T19:00:00-05:00",
+    "leader": null,
+    "special": false,
+    "rows": null
+   },
+   {
+    "state": "LA",
+    "state_name": "Louisiana",
+    "status": "polls_closed",
+    "incumbent_party": "REP",
+    "declared": null,
+    "featured": false,
+    "poll_close_last_et": "2026-11-03T21:00:00-05:00",
+    "leader": null,
+    "special": false,
+    "rows": null
+   },
+   {
+    "state": "ME",
+    "state_name": "缅因州",
+    "status": "polls_closed",
+    "incumbent_party": "REP",
+    "declared": null,
+    "featured": true,
+    "poll_close_last_et": "2026-11-03T20:00:00-05:00",
+    "leader": null,
+    "special": false,
+    "rows": [
+     {
+      "short": "柯林斯",
+      "party": "REP",
+      "pct": null
+     },
+     {
+      "short": "杰克逊",
+      "party": "DEM",
+      "pct": null
+     }
+    ]
+   },
+   {
+    "state": "MA",
+    "state_name": "Massachusetts",
+    "status": "polls_closed",
+    "incumbent_party": "DEM",
+    "declared": null,
+    "featured": false,
+    "poll_close_last_et": "2026-11-03T20:00:00-05:00",
+    "leader": null,
+    "special": false,
+    "rows": null
+   },
+   {
+    "state": "MI",
+    "state_name": "密歇根州",
+    "status": "polls_closed",
+    "incumbent_party": "DEM",
+    "declared": null,
+    "featured": true,
+    "poll_close_last_et": "2026-11-03T21:00:00-05:00",
+    "leader": null,
+    "special": false,
+    "rows": [
+     {
+      "short": "赛义德",
+      "party": "DEM",
+      "pct": null
+     },
+     {
+      "short": "罗杰斯",
+      "party": "REP",
+      "pct": null
+     }
+    ]
+   },
+   {
+    "state": "MN",
+    "state_name": "Minnesota",
+    "status": "polls_closed",
+    "incumbent_party": "DEM",
+    "declared": null,
+    "featured": false,
+    "poll_close_last_et": "2026-11-03T21:00:00-05:00",
+    "leader": null,
+    "special": false,
+    "rows": null
+   },
+   {
+    "state": "MS",
+    "state_name": "Mississippi",
+    "status": "polls_closed",
+    "incumbent_party": "REP",
+    "declared": null,
+    "featured": false,
+    "poll_close_last_et": "2026-11-03T20:00:00-05:00",
+    "leader": null,
+    "special": false,
+    "rows": null
+   },
+   {
+    "state": "MT",
+    "state_name": "Montana",
+    "status": "polls_closed",
+    "incumbent_party": "REP",
+    "declared": null,
+    "featured": false,
+    "poll_close_last_et": "2026-11-03T22:00:00-05:00",
+    "leader": null,
+    "special": false,
+    "rows": null
+   },
+   {
+    "state": "NE",
+    "state_name": "Nebraska",
+    "status": "polls_closed",
+    "incumbent_party": "REP",
+    "declared": null,
+    "featured": false,
+    "poll_close_last_et": "2026-11-03T21:00:00-05:00",
+    "leader": null,
+    "special": false,
+    "rows": null
+   },
+   {
+    "state": "NH",
+    "state_name": "New Hampshire",
+    "status": "polls_closed",
+    "incumbent_party": "DEM",
+    "declared": null,
+    "featured": false,
+    "poll_close_last_et": "2026-11-03T20:00:00-05:00",
+    "leader": null,
+    "special": false,
+    "rows": null
+   },
+   {
+    "state": "NJ",
+    "state_name": "New Jersey",
+    "status": "polls_closed",
+    "incumbent_party": "DEM",
+    "declared": null,
+    "featured": false,
+    "poll_close_last_et": "2026-11-03T20:00:00-05:00",
+    "leader": null,
+    "special": false,
+    "rows": null
+   },
+   {
+    "state": "NM",
+    "state_name": "New Mexico",
+    "status": "polls_closed",
+    "incumbent_party": "DEM",
+    "declared": null,
+    "featured": false,
+    "poll_close_last_et": "2026-11-03T21:00:00-05:00",
+    "leader": null,
+    "special": false,
+    "rows": null
+   },
+   {
+    "state": "NC",
+    "state_name": "North Carolina",
+    "status": "polls_closed",
+    "incumbent_party": "REP",
+    "declared": null,
+    "featured": false,
+    "poll_close_last_et": "2026-11-03T19:30:00-05:00",
+    "leader": null,
+    "special": false,
+    "rows": null
+   },
+   {
+    "state": "OH",
+    "state_name": "俄亥俄州",
+    "status": "counting",
+    "incumbent_party": "REP",
+    "declared": null,
+    "featured": true,
+    "poll_close_last_et": "2026-11-03T19:30:00-05:00",
+    "leader": {
+     "party": "REP",
+     "short": "赫斯特德",
+     "pct": 56.7
+    },
+    "special": true,
+    "rows": [
+     {
+      "short": "赫斯特德",
+      "party": "REP",
+      "pct": 56.7
+     },
+     {
+      "short": "布朗",
+      "party": "DEM",
+      "pct": 43.3
+     }
+    ]
+   },
+   {
+    "state": "OK",
+    "state_name": "Oklahoma",
+    "status": "polls_closed",
+    "incumbent_party": "REP",
+    "declared": null,
+    "featured": false,
+    "poll_close_last_et": "2026-11-03T20:00:00-05:00",
+    "leader": null,
+    "special": false,
+    "rows": null
+   },
+   {
+    "state": "OR",
+    "state_name": "Oregon",
+    "status": "polls_open",
+    "incumbent_party": "DEM",
+    "declared": null,
+    "featured": false,
+    "poll_close_last_et": "2026-11-03T23:00:00-05:00",
+    "leader": null,
+    "special": false,
+    "rows": null
+   },
+   {
+    "state": "RI",
+    "state_name": "Rhode Island",
+    "status": "polls_closed",
+    "incumbent_party": "DEM",
+    "declared": null,
+    "featured": false,
+    "poll_close_last_et": "2026-11-03T20:00:00-05:00",
+    "leader": null,
+    "special": false,
+    "rows": null
+   },
+   {
+    "state": "SC",
+    "state_name": "South Carolina",
+    "status": "polls_closed",
+    "incumbent_party": "REP",
+    "declared": null,
+    "featured": false,
+    "poll_close_last_et": "2026-11-03T19:00:00-05:00",
+    "leader": null,
+    "special": false,
+    "rows": null
+   },
+   {
+    "state": "SD",
+    "state_name": "South Dakota",
+    "status": "polls_closed",
+    "incumbent_party": "REP",
+    "declared": null,
+    "featured": false,
+    "poll_close_last_et": "2026-11-03T21:00:00-05:00",
+    "leader": null,
+    "special": false,
+    "rows": null
+   },
+   {
+    "state": "TN",
+    "state_name": "Tennessee",
+    "status": "polls_closed",
+    "incumbent_party": "REP",
+    "declared": null,
+    "featured": false,
+    "poll_close_last_et": "2026-11-03T20:00:00-05:00",
+    "leader": null,
+    "special": false,
+    "rows": null
+   },
+   {
+    "state": "TX",
+    "state_name": "得州",
+    "status": "counting",
+    "incumbent_party": "REP",
+    "declared": null,
+    "featured": true,
+    "poll_close_last_et": "2026-11-03T21:00:00-05:00",
+    "leader": {
+     "party": "REP",
+     "short": "帕克斯顿",
+     "pct": 51.3
+    },
+    "special": false,
+    "rows": [
+     {
+      "short": "帕克斯顿",
+      "party": "REP",
+      "pct": 51.3
+     },
+     {
+      "short": "塔拉里科",
+      "party": "DEM",
+      "pct": 48.7
+     }
+    ]
+   },
+   {
+    "state": "VA",
+    "state_name": "Virginia",
+    "status": "polls_closed",
+    "incumbent_party": "DEM",
+    "declared": null,
+    "featured": false,
+    "poll_close_last_et": "2026-11-03T19:00:00-05:00",
+    "leader": null,
+    "special": false,
+    "rows": null
+   },
+   {
+    "state": "WV",
+    "state_name": "West Virginia",
+    "status": "polls_closed",
+    "incumbent_party": "REP",
+    "declared": null,
+    "featured": false,
+    "poll_close_last_et": "2026-11-03T19:30:00-05:00",
+    "leader": null,
+    "special": false,
+    "rows": null
+   },
+   {
+    "state": "WY",
+    "state_name": "Wyoming",
+    "status": "polls_closed",
+    "incumbent_party": "REP",
+    "declared": null,
+    "featured": false,
+    "poll_close_last_et": "2026-11-03T21:00:00-05:00",
+    "leader": null,
+    "special": false,
+    "rows": null
+   }
+  ],
+  "schedule": [
+   {
+    "et": "2026-11-03T19:00:00-05:00",
+    "states": [
+     "GA",
+     "KY",
+     "SC",
+     "VA"
+    ]
+   },
+   {
+    "et": "2026-11-03T19:30:00-05:00",
+    "states": [
+     "NC",
+     "OH",
+     "WV"
+    ]
+   },
+   {
+    "et": "2026-11-03T20:00:00-05:00",
+    "states": [
+     "AL",
+     "DE",
+     "FL",
+     "IL",
+     "MA",
+     "ME",
+     "MS",
+     "NH",
+     "NJ",
+     "OK",
+     "RI",
+     "TN"
+    ]
+   },
+   {
+    "et": "2026-11-03T20:30:00-05:00",
+    "states": [
+     "AR"
+    ]
+   },
+   {
+    "et": "2026-11-03T21:00:00-05:00",
+    "states": [
+     "CO",
+     "IA",
+     "KS",
+     "LA",
+     "MI",
+     "MN",
+     "NE",
+     "NM",
+     "SD",
+     "TX",
+     "WY"
+    ]
+   },
+   {
+    "et": "2026-11-03T22:00:00-05:00",
+    "states": [
+     "MT"
+    ]
+   },
+   {
+    "et": "2026-11-03T23:00:00-05:00",
+    "states": [
+     "ID",
+     "OR"
+    ]
+   },
+   {
+    "et": "2026-11-04T01:00:00-05:00",
+    "states": [
+     "AK"
+    ]
+   }
+  ],
+  "as_of": "2026-11-04T03:12:00Z"
+ },
+ "strip": [
+  {
+   "state": "TX",
+   "label": "TX 参议院选举",
+   "state_name": "得州",
+   "status": "counting",
+   "rows": [
+    {
+     "short": "帕克斯顿",
+     "party": "REP",
+     "pct": 51.3,
+     "incumbent": false
+    },
+    {
+     "short": "塔拉里科",
+     "party": "DEM",
+     "pct": 48.7,
+     "incumbent": false
+    }
+   ],
+   "counted_vs_2022_pct": 31.1
+  },
+  {
+   "state": "AK",
+   "label": "AK 参议院选举",
+   "state_name": "阿拉斯加州",
+   "status": "polls_open",
+   "rows": [
+    {
+     "short": "沙利文",
+     "party": "REP",
+     "pct": null,
+     "incumbent": true
+    },
+    {
+     "short": "佩尔托拉",
+     "party": "DEM",
+     "pct": null,
+     "incumbent": false
+    }
+   ],
+   "counted_vs_2022_pct": null
+  },
+  {
+   "state": "KS",
+   "label": "KS 参议院选举",
+   "state_name": "堪萨斯州",
+   "status": "polls_closed",
+   "rows": [
+    {
+     "short": "马歇尔",
+     "party": "REP",
+     "pct": null,
+     "incumbent": true
+    },
+    {
+     "short": "汉密尔顿",
+     "party": "DEM",
+     "pct": null,
+     "incumbent": false
+    }
+   ],
+   "counted_vs_2022_pct": null
+  },
+  {
+   "state": "ME",
+   "label": "ME 参议院选举",
+   "state_name": "缅因州",
+   "status": "polls_closed",
+   "rows": [
+    {
+     "short": "柯林斯",
+     "party": "REP",
+     "pct": null,
+     "incumbent": true
+    },
+    {
+     "short": "杰克逊",
+     "party": "DEM",
+     "pct": null,
+     "incumbent": false
+    }
+   ],
+   "counted_vs_2022_pct": null
+  },
+  {
+   "state": "OH",
+   "label": "OH 参议院选举",
+   "state_name": "俄亥俄州",
+   "status": "counting",
+   "rows": [
+    {
+     "short": "赫斯特德",
+     "party": "REP",
+     "pct": 56.7,
+     "incumbent": true
+    },
+    {
+     "short": "布朗",
+     "party": "DEM",
+     "pct": 43.3,
+     "incumbent": false
+    }
+   ],
+   "counted_vs_2022_pct": 47.8
+  },
+  {
+   "state": "MI",
+   "label": "MI 参议院选举",
+   "state_name": "密歇根州",
+   "status": "polls_closed",
+   "rows": [
+    {
+     "short": "赛义德",
+     "party": "DEM",
+     "pct": null,
+     "incumbent": false
+    },
+    {
+     "short": "罗杰斯",
+     "party": "REP",
+     "pct": null,
+     "incumbent": false
+    }
+   ],
+   "counted_vs_2022_pct": null
+  }
+ ],
+ "next_close": {
+  "et": "2026-11-03T23:00:00-05:00",
+  "states": [
+   "ID",
+   "OR"
+  ]
+ },
+ "ticker": [
+  "【测试】得州参议院 帕克斯顿 51.3% 塔拉里科 48.7% 已计票为2022年的31.1%",
+  "【测试】俄亥俄州参议院 赫斯特德 56.7% 布朗 43.3% 已计票为2022年的47.8%",
+  "阿拉斯加州投票于美东时间凌晨1点截止",
+  "缅因、堪萨斯、密歇根三州尚未公布官方计票"
+ ]
+}
