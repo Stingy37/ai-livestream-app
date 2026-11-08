@@ -491,16 +491,31 @@ def _in_landfall(desk: dict, lang: str) -> str:
     cls = IN_CLASS.get(lf.get("class_short") or "", ("", ""))[_i(lang)]
     near = _place(lf.get("near"), lang)
     out = []
-    if te and lf.get("crossed"):
-        s = "భారత వాతావరణ శాఖ ప్రకారం, తుఫాను "
-        s += f"{between[0]}, {between[1]} మధ్య " if len(between) >= 2 else ""
-        s += f"{near} సమీపంలో " if near else ""
+    unit = "km" if te else "km/h"
+    w, g = _range(lf.get("wind_kmh"), lang, unit), _range(lf.get("gust_kmh"), lang, unit)
+    if lf.get("crossed"):                       # IMD reports the crossing (past tense, its own window: "during 0330 to 0530 hours IST")
         t = lf.get("crossed_ist") or []
-        s += f"తెల్లవారుజామున {int(t[0][:2])}:{t[0][2:]} నుంచి {int(t[1][:2])}:{t[1][2:]} గంటల మధ్య " if len(t) == 2 else ""
-        out.append(s + "తీరం దాటింది.")
-        w, g = _range(lf.get("wind_kmh"), lang, "km"), _range(lf.get("gust_kmh"), lang, "km")
+        hm = lambda x: f"{int(x[:2])}:{x[2:]}"
+        early = len(t) == 2 and t[1] <= "0600"
+        day = _in_date(lf.get("date", ""), "early morning" if early else "", lang) or (IN_PART["early morning"][_i(lang)] if early else "")
+        span = ((f"{hm(t[0])} నుంచి {hm(t[1])} గంటల మధ్య " if te else f"{hm(t[0])} முதல் {hm(t[1])} மணிக்குள் ")
+                if len(t) == 2 else "")
+        if te:
+            s = "భారత వాతావరణ శాఖ ప్రకారం, తుఫాను "
+            s += f"{between[0]}, {between[1]} మధ్య " if len(between) >= 2 else ""
+            s += f"{near} సమీపంలో " if near else ""
+            s += f"{day} {span}" if day else span
+            s += (f"{cls}గా " if cls else "") + "తీరం దాటింది."
+        else:
+            s = "இந்திய வானிலை ஆய்வு மையத்தின் தகவலின்படி, புயல் "
+            s += f"{between[0]} மற்றும் {between[1]} இடையே " if len(between) >= 2 else ""
+            s += f"{near} அருகே " if near else ""
+            s += f"{day} {span}" if day else span
+            s += (f"{_ta_as(cls)} " if cls else "") + "கரையைக் கடந்தது."
+        out.append(s)
         if w:
-            out.append(f"తీరం దాటే సమయంలో గాలుల వేగం గంటకు {w}" + (f", గరిష్ఠంగా {g}" if g else "") + ".")
+            out.append((f"తీరం దాటే సమయంలో గాలుల వేగం గంటకు {w}" + (f", గరిష్ఠంగా {g}" if g else "") + ".") if te else
+                       (f"கரையைக் கடந்தபோது காற்றின் வேகம் {w}" + (f", அதிகபட்சமாக {g}" if g else "") + "."))
         return "\n".join(out)
     if te:
         s = "భారత వాతావరణ శాఖ అంచనా ప్రకారం, తుఫాను "
@@ -516,8 +531,6 @@ def _in_landfall(desk: dict, lang: str) -> str:
         s += f"{when} " if when else ""
         s += (f"{_ta_as(cls)} " if cls else "") + "கரையைக் கடக்கக்கூடும்."
     out.append(s)
-    unit = "km" if te else "km/h"
-    w, g = _range(lf.get("wind_kmh"), lang, unit), _range(lf.get("gust_kmh"), lang, unit)
     if w:
         out.append((f"తీరం దాటే సమయంలో గాలుల వేగం గంటకు {w}" + (f", గరిష్ఠంగా {g}" if g else "") + " ఉండవచ్చు.") if te else
                    (f"கரையைக் கடக்கும்போது காற்றின் வேகம் {w}" + (f", அதிகபட்சமாக {g}" if g else "") + " இருக்கலாம்."))

@@ -377,7 +377,16 @@ def parse_national(t: str) -> dict:
         w = re.search(r"(\d+)\s*(?:-|to)\s*(\d+)\s*kmph gusting (?:to )?(\d+)\s*kmph", s2)
         if w:
             land["wind_kmh"], land["gust_kmh"] = [int(w.group(1)), int(w.group(2))], int(w.group(3))
+        if out.get("issuedUTC"):                  # IMD reports the crossing in that day's bulletins: the times are of the issue date
+            day = datetime.fromisoformat(out["issuedUTC"].replace("Z", "+00:00")).astimezone(IST).date()
+            hh, mm = int(crossed.group(5)[:2]), int(crossed.group(5)[2:])
+            end = datetime(day.year, day.month, day.day, hh, mm, tzinfo=IST)
+            land["date"], land["timeUTC"] = day.isoformat(), S.iso(end.astimezone(timezone.utc))
+            land["time_basis"] = "IMD National Bulletin (crossed)"
+        if out.get("class"):
+            land["class"], land["class_short"] = out["class"], out.get("class_short", "")
         out["landfall"] = land
+        out["landfall_text"] = land["crossed_text"]   # the India page's landfall panel and ticker read this
     tz = IST if re.search(r"Date/Time\s*\(IST\)", t) else timezone.utc
     out["forecast"] = _table(t, tz)
     if out["forecast"]:
@@ -458,14 +467,16 @@ def parse_tcac(t: str) -> dict:
     return out
 
 
-def parse_districts(doc: dict) -> dict:
-    """IMD district warnings (WFS, attributes only) -> {"issued", "days": [dates], "states": {state: {district: [day1..3]}}}."""
+def parse_districts(doc: dict, today=None) -> dict:
+    """IMD district warnings (WFS, attributes only) -> {"issued", "days": [dates], "states": {state: {district: [day1..3]}}}.
+    IMD's layer moves its Day columns forward at midnight IST but keeps the issue date in "Date" (seen 2-3 Nov 2026:
+    after 0000 IST Day1 held the 3 Nov colours, still dated 2 Nov), so Day1 is the later of the issue date and today (IST)."""
     feats = doc.get("features") or []
     if not feats:
         raise ValueError("no district warning features")
     to_state = {d: s for s, ds in STATE_DISTRICTS.items() for d in ds}
     p0 = feats[0]["properties"]
-    base = datetime.fromisoformat(p0["Date"]).date()
+    base = max(datetime.fromisoformat(p0["Date"]).date(), today or datetime.now(IST).date())
     days = [(base + timedelta(days=k)).isoformat() for k in range(3)]
     states: dict[str, dict] = {}
     for f in feats:

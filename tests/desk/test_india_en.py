@@ -246,3 +246,18 @@ def test_murasu_crossed_coast_0730():
     assert "crossed the coast between Nellore and Narasapur, close to Ongole, between 3:30 am and 5:30 am IST." in en
     assert "expects" not in en
     assert "తీరం దాటింది" in _say("in_te_landfall", doc)
+
+
+def test_murasu_crossed_coast_tamil_and_date():
+    """IMD 0730 IST 3 Nov: Tamil says it in the past tense too, and both name the day (early morning of 3 November)."""
+    from desk import sources_nio as N
+
+    imd = N.parse_national((ROOT / "tests" / "desk" / "fixtures" / "imd_national_bulletin_murasu_0730.txt").read_text(encoding="utf-8"))
+    lf = imd["landfall"]
+    assert lf["date"] == "2026-11-03" and imd["landfall_text"].startswith("crossed ")
+    doc = _doc()
+    doc["storm"]["name"] = "MURASU"
+    doc["in"]["imd"]["landfall"] = lf
+    ta, te = _say("in_ta_landfall", doc), _say("in_te_landfall", doc)
+    assert "கரையைக் கடந்தது" in ta and "கடக்கக்கூடும்" not in ta and "3:30 முதல் 5:30 மணிக்குள்" in ta
+    assert "తెల్లవారుజామున 3:30 నుంచి 5:30 గంటల మధ్య" in te and "అవకాశం" not in te

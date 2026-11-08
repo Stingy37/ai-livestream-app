@@ -154,7 +154,7 @@ async function main() {
   // the view: the landfall coast on the left third, the storm (on IMD's track at the satellite's time) to the right
   const b = frame.box, W = 1920, H = 1080;
   const X = lon => (lon - b.lon0) / (b.lon1 - b.lon0) * W, Y = lat => (b.lat1 - lat) / (b.lat1 - b.lat0) * H;
-  const land = COORD[lf.near] || COORD.Yanam, lx = X(land[1]), ly = Y(land[0]);
+  const land = COORD[Q.get("land")] || COORD[lf.near] || COORD.Yanam, lx = X(land[1]), ly = Y(land[0]);
   const storm = onTrack(frame.forecast || [], Date.parse(frame.time)) || frame.center;
   const wide = Q.get("view") === "wide";
   const zw = Math.min(W, Math.max(+(Q.get("zw") || (wide ? 1500 : NEWS ? 1400 : 1700)), (storm.x - lx) / 0.42)), zh = zw * H / W;
@@ -173,7 +173,7 @@ async function main() {
   // a thick arrow along the official track, from the storm to the edge of the landfall target. It starts a little
   // coastward of the track point so it leaves from the visible core (Himawari sees the bay obliquely: cloud tops
   // appear shifted north-west of the low-level centre)
-  const R = 58 * k, d0 = Math.hypot(lx - storm.x, ly - storm.y) || 1, lead = NEWS ? Math.max(0.5 * d0, 90 * k) : Math.min(80, 0.15 * d0);   // news: keep the eye clear
+  const R = 58 * k, d0 = Math.hypot(lx - storm.x, ly - storm.y) || 1, lead = NEWS ? Math.max((+Q.get("lead") || 0.5) * d0, 90 * k) : Math.min(80, 0.15 * d0);   // news: keep the eye clear
   let pts = [[storm.x + (lx - storm.x) / d0 * lead, storm.y + (ly - storm.y) / d0 * lead], ...(frame.forecast || []).filter(p => Date.parse(p.timeUTC) > Date.parse(frame.time) && (!t || Date.parse(p.timeUTC) < t)).map(p => [p.x, p.y]), [lx, ly]];
   const toLand = p => Math.hypot(lx - p[0], ly - p[1]), d1 = toLand(pts[0]);    // only track points ahead of the arrow's start
   pts = NEWS ? [pts[0], pts[pts.length - 1]] : pts.filter((p, i) => i === 0 || i === pts.length - 1 || toLand(p) < d1);   // news: one straight arrow

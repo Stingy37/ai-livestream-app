@@ -3,6 +3,7 @@ IMD district warnings, JTWC's IO past track, and the builder with a failed sourc
 Cyclone Arnab (26 Oct 2026); the National Bulletin and RSMC advisory are stored as their extracted text."""
 
 import json
+from datetime import date
 from pathlib import Path
 
 from desk import sources as S, sources_nio as N
@@ -23,7 +24,7 @@ def raw_fixture(**overrides):
     imd["_tcac"] = N.parse_tcac(pdf_text((FX / "imd_tcac.pdf").read_bytes()))
     jt = S.parse_jtwc(fx("jtwc_io0226.tcw"), fx("jtwc_io0226web.txt"), "io0226")
     jt["past"] = N.jtwc_past(fx("jtwc_io0226.tcw"))
-    raw = {"jtwc_id": "io0226", "jtwc": jt, "imd": imd, "districts": N.parse_districts(json.loads(fx("imd_district_warnings.json"))),
+    raw = {"jtwc_id": "io0226", "jtwc": jt, "imd": imd, "districts": N.parse_districts(json.loads(fx("imd_district_warnings.json")), today=date(2026, 10, 26)),
            "fetched_at": "2026-10-26T15:00:00Z"}
     raw.update(overrides)
     return raw
@@ -71,8 +72,15 @@ def test_rsmc_advisory():
     assert N.parse_rsmc(fx("imd_rsmc_advisory.txt")) == {"landfall_timeUTC": "2026-10-28T06:00:00Z", "pressure_hpa": 999.0, "pressure_wind_kt": 35}
 
 
+def test_district_days_follow_ist_midnight():
+    """IMD's layer moves its Day columns at midnight IST but keeps the issue date: Day1 is today once the issue date is past."""
+    doc = json.loads(fx("imd_district_warnings.json"))
+    assert N.parse_districts(doc, today=date(2026, 10, 27))["days"] == ["2026-10-27", "2026-10-28", "2026-10-29"]
+    assert N.parse_districts(doc, today=date(2026, 10, 26))["days"] == ["2026-10-26", "2026-10-27", "2026-10-28"]
+
+
 def test_district_warnings():
-    d = N.parse_districts(json.loads(fx("imd_district_warnings.json")))
+    d = N.parse_districts(json.loads(fx("imd_district_warnings.json")), today=date(2026, 10, 26))
     assert d["days"] == ["2026-10-26", "2026-10-27", "2026-10-28"] and d["issued"] == "2026-10-26 0600 UTC"
     assert len(d["states"]["Andhra Pradesh"]) == 26 and len(d["states"]["Tamil Nadu"]) == 38
     kak = d["states"]["Andhra Pradesh"]["Kakinada"]
@@ -106,3 +114,16 @@ def test_failed_imd_keeps_previous_bulletin_and_falls_back_to_jtwc():
     assert doc["center"]["source"] == "JTWC" and doc["forecast"]["source"].startswith("JTWC")
     assert doc["in"]["imd_stale"] and doc["in"]["imd"]["bulletin"] == prev["in"]["imd"]["bulletin"]
     assert validate_nio(doc) == []
+
+
+def test_national_bulletin_after_landfall():
+    """IMD 0730 IST 3 Nov 2026: the crossing is reported in the past tense, inside the position paragraph."""
+    t = ("NATIONAL BULLETIN NO. 20 (BOB/09/2026)\nTIME OF ISSUE: 0730 HOURS IST DATED: 03.11.2026\n\n"
+         "The Severe Cyclonic Storm “Murasu” over Westcentral Bay of Bengal close to south Andhra Pradesh coast moved "
+         "north-northwestwards with a speed of 08 kmph during past 06 hours, crossed south Andhra Pradesh coast between Nellore and "
+         "Narasapur close to Ongole (near Latitude 15.53°N and Longitude 80.22°E) during 0330 to 0530 hours IST with the wind speed "
+         "of 100-110 kmph gusting to 120 kmph, and lay centered at 0530 hours IST.\n\n")
+    lf = N.parse_national(t)["landfall"]
+    assert lf["crossed"] and lf["between"] == ["Nellore", "Narasapur"] and lf["near"] == "Ongole"
+    assert (lf["crossed_ist"], lf["date"], lf["timeUTC"]) == (["0330", "0530"], "2026-11-03", "2026-11-03T00:00:00Z")
+    assert lf["wind_kmh"] == [100, 110] and lf["gust_kmh"] == 120
